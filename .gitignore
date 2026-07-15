@@ -4,3 +4,10 @@ __pycache__/
 *.pyc
 .env
 docs/
+
+.git
+.venv
+venv
+.env.local
+*.pdf
+data/
