@@ -26,6 +26,10 @@ planning_router = _load_router(
     "planning_route_module",
     Path(__file__).parent / "api" / "planning.py" / "router.py",
 )
+ocr_router = _load_router(
+    "ocr_route_module",
+    Path(__file__).parent / "api" / "ocr" / "router.py",
+)
 
 
 app = FastAPI(
@@ -52,3 +56,4 @@ def healthcheck() -> dict[str, bool]:
 app.include_router(projets_router, prefix="/api", tags=["projets"])
 app.include_router(documents_router, prefix="/api", tags=["documents"])
 app.include_router(planning_router, prefix="/api", tags=["planning"])
+app.include_router(ocr_router, prefix="/api", tags=["ocr"])

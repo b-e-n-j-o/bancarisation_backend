@@ -1,0 +1,646 @@
+Ok, le user me demande d'extraire toutes les fiches-actions du plan de gestion fourni. Le document est un PDF OCRisé complet avec des marqueurs de page. Je dois identifier chaque fiche-action avec les codes EP, TU, TE, SE, MG.
+
+D'après la table des matières et le contenu, je vois que les fiches-actions sont dans la section 4.3 "Description des actions prévues" avec les sous-sections :
+- 4.3.1. Travaux uniques (TU)
+- 4.3.2. Travaux d'entretien (TE)
+- 4.3.3. Suivis et indicateurs de réussite (SE)
+- 4.3.4. Mise en œuvre générale du plan de gestion (MG)
+
+En examinant le document, je trouve les fiches suivantes :
+
+1. **TU1** : "Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles" (pages 15-17)
+2. **TU2** : "Créer et maintenir des espaces de landes en faveur du Fadet des laïches et des oiseaux landicoles" (pages 18-21)
+3. **TU3** : "Création des zones d'étrépage" (pages 22-23)
+4. **TE1** : "Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles" (pages 24-25)
+5. **SE1** : "Suivi des habitats naturels, de la flore et de la faune" (pages 26-29)
+6. **MG1** : "Pilotage et coordination à la mise en œuvre du programme d'actions" (pages 30-31)
+7. **MG2** : "Mises à jour du plan de gestion et bilan de fin de mesure compensatoire" (pages 32)
+
+Je note qu'il n'y a pas de fiches EP (Études Préalables) dans le document fourni. Le tableau de synthèse (Tabl. 1) confirme ces codes : TU1, TU2, TU3, TE1, SE1, MG1, MG2.
+
+Maintenant, je dois extraire chaque fiche avec son contenu intégral. Je vais commencer par TU1.
+
+Pour TU1 (pages 15-17) :
+- Titre : TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles
+- Contenu complet des pages 15, 16, 17
+
+Je vois que la fiche commence à la page 15 avec :
+"**TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles**"
+
+Et se termine à la page 17 avec les intervenants.
+
+Je dois capturer TOUT le texte entre ces marqueurs, y compris les tableaux, les notes de bas de page, etc.
+
+Je vais structurer chaque fiche comme suit :
+
+{
+  "id": "TU1",
+  "code": "TU1",
+  "categorie": "TU",
+  "titre": "Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles",
+  "contenu_integral": "...",
+  "pages": [15,16,17],
+  ...
+}
+
+Mais le user veut que je ne mettes que le JSON, sans markdown.
+
+Je vais donc créer un tableau de toutes les fiches avec leur contenu intégral.
+
+Commençons par TU1 :
+
+Pages 15-17 :
+```
+## 4.3.1. Travaux uniques (TU)
+
+#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles
+
+**Objectif à long terme :** A – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés
+
+**Objectif opérationnel :** A1 - Réorienter les pratiques sylvicoles
+
+**Unités de gestion :** UG 1
+
+**Parcelles concernées :** 33284D1055 (en partie) – commune de Mios
+
+**Cadrage surfacique :** Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune $^{1}$
+
+**Description de la mesure :** Cette parcelle a fait l'objet d'un programme de replantation par ALLIANCE FORET BOIS en 2021 adapté, de façon à offrir des espaces suffisamment ouverts et lumineux (élargissement des inter-bandes entre deux bandes plantées) permettant la présence pérenne de la plante hôte du Fadet laîches, à savoir la Molinie bleue.
+
+L'itinéraire technique de plantation a été réadapté par rapport à un itinéraire technique standard avec une plantation à environ 1 100 tiges hectares (soit un arbre tous les 2 mètres) avec des inter-rangs de 5 mètres (contre 4 mètres habituellement). Le programme de replantation respectera durant la totalité de la mesure compensatoire, les prescriptions suivantes afin d'obtenir un gain écologique supplémentaire à savoir :
+
+- L'absence de broyage en plein au moment de la plantation afin de préserver au maximum les faciès de landes, favorables aux espèces cibles. Un broyage lourd sera effectué uniquement sur les lignes de plantation (2 mètres de large), suivi d'un passage au débroussailleur puis d'un labour et tassement (1,4 mètres de large). Cette technique permettra de préserver au maximum les faciès de landes à l'inverse d'une plantation standard qui consiste à un travail du sol sur la totalité de la parcelle
+
+$^{1}$ Cadrage surfacique issue du guide technique de la DREAL Nouvelle Aquitaine d'octobre 2020 « Compensations écologiques en milieu forestier des Landes de Gascogne »
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+
+SARL PROMOBAT
+
+15
+
+<!-- ===== PAGE 16 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+- La première éclaircie entre 12 et 15 ans (fonction de la station) avec un taux de prélèvement maximal de 30 %. Un dégagement manuel sur la ligne de plantation pourra être effectué au cours des trois premières années si la concurrence de la végétation est trop forte sur les Pins. Elle sera effectuée à la débroussailleuse à dos pour favoriser la mise en lumière des Pins (action optionnelle) et en dehors de la période de nidification (intervention entre le 1er novembre et le 1er mars).
+- La deuxième éclaircie à réaliser 6 ans minimum après la première, avec un taux de prélèvement maximal de 25 %
+- La troisième éclaircie à réaliser 6 ans minimum après la deuxième, avec un taux de prélèvement maximal de 25 %
+
+Des engagements de base devront également être respectés à savoir :
+
+- Tous les travaux (coupes, plantation, éclaircies, broyage, labour,...) devront être effectués en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des Laîches soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols.
+- Pas d'utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc) ;
+- Pas d'utilisation de fertilisants chimiques et/ou organiques ;
+- Pas d'utilisation de rouleau landais en plein et sur les inter-rangs;
+- Pas de broyage en plein ;
+- Une gestion sur une durée de 30 ans
+
+Nota bene : Une mesure corrective a été mise en place sur le restant de la parcelle 33284D1055 en raison d'un non-respect du calendrier travaux ayant eu des impacts sur l'avifaune nicheuse. La mesure mise en place consiste à décaler le programme de replantation à 2024 (soit 3 ans) et maintenir l'état de landes arbustifs. Les travaux de replantation prévus sur cette mesure corrective devront être fait en dehors des périodes sensibles soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols.
+
+Indicateurs de suivi : Densité du peuplement / Etat de conservation des habitats / Nombre d'imago sur le pic d'émergence
+
+Périodicité : Ces travaux devront être effectués en dehors de la période de nidification et d'activité du Fadet des laîches soit entre le 1er octobre et le 1er mars (avec une possibilité d'intervention dès septembre en fonction de la portance des sols).
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+SARL PROMOBAT
+
+16
+
+<!-- ===== PAGE 17 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+|  2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|   | Préparation du sol | Travaux de replantation |  |  |  |  |  |  |  |  |  |  |  |   |
+|  2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |
+|  1^{ère} éclaircie |   |   |  |  |  |  |  |  | 2^{ème} éclaircie |   |   |   |   |   |
+
+**Intervenants :** 2019 à 2022 ALLIANCE FORETS BOIS (travaux forestiers) / CERAG (encadrement écologique)
+
+2023 à 2048 ALLIANCE FORETS BOIS (travaux forestiers) / ECO-COMPENSATION (encadrement écologique)
+```
+
+Donc le contenu intégral de TU1 est tout ce texte.
+
+Je vais faire de même pour les autres fiches.
+
+Pour TU2 (pages 18-21) :
+```
+# **TU 2 : Créer et maintenir des espaces de landes en faveur du Fadet des laïches et des oiseaux landicoles**
+
+**Objectif à long terme :** A – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés
+
+**Objectif opérationnel :** A2 - Réorienter les pratiques sylvicoles
+
+**Unités de gestion :** UG 2
+
+**Parcelles concernées :** 33555C4577 – commune de Marcheprime
+
+**Cadrage surfacique :** Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation pour la création de milieux ouverts. Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion pour le maintien de milieux ouverts ². En cas de non-respect des seuils la parcelle devra faire l'objet d'une demande de défrichement.
+
+**Description de la mesure** Ce type d'itinéraire technique sylvicole consiste à la création ou le maintien de milieux landicoles ouverts via un engagement de non replantation. Il permet de maintenir un habitat optimal pour les espèces cibles (Fadet des Laïches et Tarier pâtre) couplé à une gestion adaptée. Pour rappel, la surface valorisable pour une parcelle forestière est variable selon qu'il s'agisse d'une action de création ou de maintien :
+
+- En cas de création la surface valorisable sans demande de défrichement est limitée à 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation ;
+- En cas de maintien, la surface valorisable sans demande de défrichement est limitée à 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion ;
+- En cas de non-respect des seuils une demande de défrichement devra être effectuée pour maintenir un état de landes après une coupe rase au-delà de 5 ans.
+
+La parcelle ciblée a fait l'objet d'une demande de défrichement intégrée à celle du site projet. La strate arbustive présente sur la parcelle compensatoire a fait l'objet d'un premier abattage en 2019 des résineux afin de favoriser les milieux landicoles humides. En complément et suite aux résultats des premières
+
+² Cadrage surfacique issu du guide technique de la DREAL Nouvelle Aquitaine d'octobre 2020 « Compensations écologiques en milieu forestier des Landes de Gascogne »
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+
+SARL PROMOBAT
+
+18
+
+<!-- ===== PAGE 19 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+années de suivi, une éclaircie sélective des feuillus a été réalisée en septembre 2023 par l'entreprise LUCANE. Les résidus de la coupe ont été entreposés sur site sous la forme d'un andain qui se décomposera naturellement. Si besoin et sous visa préalable de l'écologue, des nouvelles éclaircies sélectives pourront avoir lieu au cours des 25 prochaines années. Ces travaux devront être effectués en dehors de la période de nidification des oiseaux soit entre le 1er septembre et le 1er mars.
+
+L'état des lieux effectué en 2019, mentionné la présence de plusieurs stations d'Aronie à feuilles d'Arbousier (espèce exotiques à caractère envahissant) devant faire l'objet d'un arrachage manuel avec export en déchèterie. Initialement prévue en 2019, ces foyers n'ont fait l'objet d'une intervention qu'en 2023 lors de la reprise en gestion par ECO-COMPENSATION. Deux campagnes d'arrachages ont été engagées en mai et septembre 2023. Si jugé nécessaire par l'écologue des nouvelles campagnes pourront être réalisées au cours des 25 prochaines années.
+
+Des engagements de base devront également être respectés à savoir :
+
+- Tous les travaux de coupes devront être effectués en dehors des périodes sensibles vis à vis de nidification des oiseaux soit entre le 1er septembre et le 1er mars sous réserve de la portance des sols.
+- Pas d'utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc) ;
+- Pas d'utilisation de fertilisants chimiques et/ou organiques ;
+- Pas d'utilisation de rouleau landais ;
+- Pas de broyage en plein ;
+- Une gestion sur une durée de 30 ans
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+SARL PROMOBAT
+
+19
+
+<!-- ===== PAGE 20 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+![img-7.jpeg](img-7.jpeg)
+
+Fig. 4. Foyers d'Aronie à feuilles d'Arbousier recensés en 2022
+
+Indicateurs de suivi : Recouvrement de la strate arborée / Etat de conservation des habitats / Nombre d'imago sur le pic d'émergence
+
+Périodicité : Ces travaux devront être effectués en dehors de la période de nidification des oiseaux soit entre le 1er septembre et le 1er mars
+
+|  2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  Exploitation des résineux |  |  |  | Éclaircie sélective Arrachage des EEE |  |  |  |  |  |  |  |  |  |   |
+|  2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+SARL PROMOBAT
+
+20
+
+<!-- ===== PAGE 21 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+**Intervenants** : 2019 à 2022 ESPACE MORLIER SERVICES (travaux forestiers) / CERAG (encadrement écologique)
+
+2023 à 2048 LUCANE (travaux forestiers) / ECO-COMPENSATION (encadrement écologique)
+```
+
+Pour TU3 (pages 22-23) :
+```
+# **TU 3 : Création des zones d'étrépage**
+
+**Objectif à long terme :** B – Favoriser l’apparition du Rossolis intermédiaire
+
+**Objectif opérationnel :** B1 – Créer et préserver des zones d’étrépage
+
+**Unités de gestion :** UG 3
+
+**Parcelles concernées :** 33284D1055 (en partie) – commune de Mios
+
+**Cadrage surfacique :** Non concerné
+
+**Description de la mesure :** Cette action consiste à la création d’une dépression humide à réaliser par étrépage (< 30 cm), moins profonde qu’une mare, elle possèdera des berges « moins travaillées ». Il s’agit le plus souvent d’un creux topographique consistant à supprimer la végétation en place sur une épaisseur de 10 à 30 cm de l’horizon humifère superficiel.
+
+![img-8.jpeg](img-8.jpeg)
+
+Deux placettes d’environ 60 m² ont été créées par ALLIANCE FORETS BOIS à l’automne 2021 en limite Sud de la parcelle avec une colonisation par le Rossolis intermédiaire dès la première année. L’entretien des placettes se traduira par un rotobroyage et un griffaage tous les 3 ans en dehors des périodes sensibles vis à vis de nidification des oiseaux soit entre le 1er septembre et le 1er mars sous réserve de la portance des sols. Cette périodicité pourra être réajustée si besoin selon la dynamique de fermeture du milieu.
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées  
+SARL PROMOBAT
+
+22
+
+<!-- ===== PAGE 23 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+**Indicateurs de suivi** : Suivi des station de Rossolis intermédiaire / Etat de conservation des habitats
+
+**Périodicité** : Ces travaux devront être effectués en dehors de la période de nidification des oiseaux soit entre le 1$^{er}$ septembre et le 1$^{er}$ mars
+
+|  2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|   |  | Création des placettes |  |  | Renouvellement des placettes si nécessaire  |   |   |   |   |   |   |   |   |   |
+|  2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |
+|  Renouvellement des placettes si nécessaire  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+
+**Intervenants** : 2019 à 2022 ALLIANCE FORETS BOIS (travaux forestiers) / CERAG (encadrement écologique)
+
+2023 à 2048 ALLIANCE FORETS BOIS (travaux forestiers) / ECO-COMPENSATION (encadrement écologique)
+```
+
+Pour TE1 (pages 24-25) :
+```
+### 4.3.2. Travaux d’entretien (TE)
+
+# TE 1 : Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles
+
+**Objectif à long terme :** A – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés
+
+**Objectif opérationnel :** A2 – Préserver et entretenir les espaces de landes
+
+**Unités de gestion :** UG 1 et UG 2
+
+**Description de la mesure :** L’ensemble des parcelles retenues pour la compensation écologique du Fadet des laîches et des oiseaux landicoles se verront affectées les mêmes modalités d’entretien à savoir :
+
+- Un gyrobroyage tardif à 30 cm sans export, afin de créer une hétérogénéité dans la lande. L’entretien sera à prévoir tous les 4 ans en fonction de la dynamique de fermeture (avec un décalage possible d’un an ou deux possible si la portance des sols ne permet pas l’intervention).
+- Les travaux d’entretien devront être effectués entre novembre et février (avec une possibilité d’intervention dès septembre en fonction de la portance des sols)
+- Secteur Marcheprime : Passage du rouleau brise fougère ³ sur les secteurs à traités à raison de deux campagnes par an pendant trois ans à partir de 2023. En fonction du résultat des campagnes complémentaires pourront être mises en place.
+
+Des engagements de base devront également être respectés à savoir :
+
+³ Le rouleau brise-fougère est un rouleau ouvert composé de barres transversales. Il peut être tracté par un tracteur, un quad mais aussi par un cheval. Son originalité réside dans le fait qu’au lieu de couper les fougères comme pour la fauche, il ne fait que les blesser : il écrase les fougères, les fend mais sans les sectionner. Les fougères sont alors fragilisées : la sève monte et s’écoule par les contusions provoquant un épuisement des rhizomes. La plante est affaiblie car elle a alors du mal à absorber ses nutriments. La saison suivante, on observe une production accrue de tiges mais une diminution de leur hauteur. C’est le signe d’un épuisement des rhizomes. Les plantes herbacées cachées en dessous des fougères ont alors de nouveau accès à la lumière et à des ressources en eau et en nutriments plus importantes, elles deviennent davantage compétitives par rapport aux fougères aigles. De 3 à 5 saisons de traitement sont nécessaires pour encore diminuer la hauteur globale des tiges et pour que la strate herbacée s’installe durablement.
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+
+24
+
+<!-- ===== PAGE 25 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+- Tous les travaux (coupes, plantation, éclaircies, broyage, labour,...) devront être effectués en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des Laîches soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols.
+- Pas d'utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc) ;
+- Pas d'utilisation de fertilisants chimiques et/ou organiques ;
+- Pas d'utilisation de rouleau landais ;
+- Pas de broyage en plein ;
+- Une gestion sur une durée de 30 ans.
+
+Indicateurs de suivi : Etat de conservation des habitats / Nombre d'imago sur le pic d'émergence
+
+Périodicité : Ces travaux devront être effectués en dehors de la période de nidification et d'activité du Fadet des laîches soit entre le 1er novembre et le 1er mars (avec une possibilité d'intervention dès septembre en fonction de la portance des sols).
+
+|  2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  Marcheprime |  |  |  | Marcheprime | Mios |  |  | Marcheprime | Mios |  |  | Marcheprime | Mios |   |
+|  2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |
+|   | Marcheprime | Mios |  |  | Marcheprime | Mios |  | Marcheprime | Mios |  |  | Marcheprime | Mios |   |
+
+Intervenants : 2019 à 2022 ESPACE MORLIER SERVICES / ALLIANCE FORETS BOIS (travaux forestiers) / CERAG (encadrement écologique)
+
+2023 à 2048 LUCANE / ALLIANCE FORETS BOIS (travaux forestiers) / ECO-COMPENSATION (encadrement écologique)
+```
+
+Pour SE1 (pages 26-29) :
+```
+### 4.3.3. Suivis et indicateurs de réussite (SE)
+
+#### SE 1 : Suivi des habitats naturels, de la flore et de la faune
+
+**Objectif à long terme :** C – Garantir la pérennité des espaces de compensation et des zones évitées
+
+**Objectif opérationnel :** C1 - Évaluer l'efficacité des actions mises en œuvre
+
+**Parcelles concernées :** 33284D1055 (en partie) – commune de Mios + 33555C4577 – commune de Marcheprime
+
+**Description de la mesure :** Un suivi écologique devra être effectué par un écologue confirmé sur les espaces de compensation et zones évitées dès 2019 (état zéro – année n) et dès l'année suivant la fin des travaux de génie écologique à raison d'une campagne tous les ans sur les 4 premières années puis tous les 5 ans les 25 ans dernières années soit un total de 10 campagnes (n à n+29). Celui-ci devra prendre en compte les thématiques suivantes :
+
+- L'étude des **formations végétales** par la mise en place de **relevés phytosociologiques** à raison de deux passages par campagne (Avril/Mai et Juin/Juillet). Il permettra de voir l'évolution du recouvrement des espèces végétales et de l'évolution de la typicité des formations végétales sous l'effet des opérations de gestion. Une attention sera également porté sur les espèces exotiques végétales à caractère envahissante (en particulier sur l'Aronie à feuilles d'Arbousier présenté sur la zone de compensation de Marcheprime)
+- L'étude des **rhopalocères** avec une détermination de la fonctionnalité des habitats naturels présents pour les espèces (reproduction, alimentation, zone de maturation,...) à raison de deux passages par campagne sur la période Avril à Juillet avec une recherche du Damier de la Succise (Avril/Mai) et du Fadet des laïches (Juin/Juillet).
+- L'étude de l'**avifaune nicheuse** avec une détermination de la fonctionnalité de habitats naturels présents pour les espèces (reproduction, alimentation,...) à raison de deux passages par campagne (Avril/Juin).
+
+|   | Avril | Mai | Juin | Juillet | Août  |
+| --- | --- | --- | --- | --- | --- |
+|  **Avifaune** | 2 passages |   |   |  |   |
+|  **Flore** | 2 passages |   |   |   |   |
+|  **Rhopalocères** | 2 passages |   |   |   |   |
+
+Un bilan devra être effectué par l'écologue en charge des suivis après chaque campagne à travers un rapport qui sera transmis aux services de l'Etat. Des résultats positifs (diversité d'espèces, développement de milieux humides, milieu à l'équilibre) ne nécessiteront pas de modification particulière. En revanche, en cas de constat d'une perte d'espèces sur le site, d'une faible diversité floristique dans les cortèges des milieux humides, des modifications seront à
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+
+26
+
+SARL PROMOBAT
+
+<!-- ===== PAGE 27 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+apporter, en accord avec l'écologue. Elles seront fonctions des résultats obtenus et viseront à une réorientation des mesures de gestion en faveur de la zone humide.
+
+*Nota bene : Une mesure corrective a été mise en place sur le restant de la parcelle 33284D1055 en raison d'un non-respect du calendrier travaux ayant eu des impacts sur l'avifaune nicheuse. Cette dernier a donc été rajoutée dans les zones à investiguée à minima jusqu'en 2024.*
+
+![img-9.jpeg](img-9.jpeg)
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées  
+SARL PROMOBAT
+
+27
+
+<!-- ===== PAGE 28 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+![img-10.jpeg](img-10.jpeg)
+
+Indicateurs de suivi :
+
+Suivi des formations végétales et de la flore :
+
+- % de recouvrement des espèces végétales
+- Composition floristique et richesse spécifique
+- Présence d'espèce patrimoniale
+- Présence / absence d'espèce végétales exotiques envahissante
+
+Suivi des rhopalocères :
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+SARL PROMOBAT
+
+28
+
+<!-- ===== PAGE 29 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+- Fonctionnalité du site pour les espèces (reproduction, repos,...)
+- Richesse spécifique et présence d'espèce patrimoniale
+- Dynamique des populations
+
+**Périodicité :** La première campagne constituera l'état initial de référence avant travaux en 2019, puis sera réalisé une campagne par an sur les 4 premières années puis tous les 3 ans les 15 années suivantes et une campagne tous les 5 ans les 12 derniers années soit un total de 10 campagnes.
+
+|  2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|  2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |
+|  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+
+**Intervenants :** ECO-COMPENSATION / SIMETHIS
+```
+
+Pour MG1 (pages 30-31) :
+```
+### 4.3.4. Mise en œuvre générale du plan de gestion (MG)
+
+#### MG 1 : Pilotage et coordination à la mise en œuvre du programme d'actions
+
+**Objectif à long terme :** D - Coordination de la gestion
+
+**Objectif opérationnel :** D1 - Assurer la mise en œuvre du programme d'actions
+
+**Parcelles concernées :** 33284D1055 (en partie) – commune de Mios + 33555C4577 – commune de Marcheprime
+
+**Description de la mesure :** A compter de 2023 (sous réserve d'un renouvellement de contrat tous les 5 ans), Eco-compensation assurera pour le compte de la SARL PROMOBAT, le rôle d'opérateur de compensation dont les missions seront les suivantes :
+
+- **Pilotage et coordination des travaux de génie écologiques et des suivis :** Eco-compensation jouera le rôle d'AMO pour le compte de la SARL PROMOBAT en pilotant l'ensemble de l'équipe projet de la phase d'avant-projet (rédaction des cahiers des charges, analyses des offres, réunion d'avant chantier,...) à la mise en œuvre des travaux de génie écologique (réunion de chantier, encadrement écologique,...) et aux suivis (contrôle qualité des livrables produits).
+- **Bilan annuel :** Une synthèse annuelle de l'état d'avancement (actions menées, résultats obtenus, difficultés rencontrées,...) sous la forme d'un tableau de bord sera produit chaque fin d'année. Ils permettront de suivre le bon déroulement de la mise en œuvre du plan de gestion. Ces bilans intégreront également les résultats des suivis écologiques réalisées par SIMETHIS. Selon l'évolution des indicateurs, un ajustement du plan de gestion pourra être envisagé et présenté dans ces synthèses. Ce plan de gestion fera notamment l'objet d'une mise à jour tous les 5 ans si jugé nécessaire en concertation avec l'équipe projet (Eco-compensation/Simethis/Entreprise travaux) et sera soumis à validation des services de l'Etat.
+- **Dépôt des données naturalistes :** Toutes les données naturalistes récoltées dans le cadre des suivis sont transmises au SINP à chaque fin de campagne. En complément, il devra également être fourni toutes les informations nécessaires, à la bonne tenue de l'outil national de géolocalisation des mesures de compensation des atteintes à la biodiversité (GéoMCE).
+- **Comité de pilotage et de suivi :** L'arrêté DDEP n°2022/05/12-062 du 28 janvier 2019 ne mentionne pas la nécessité de comités de pilotage et de suivis pour ce dossier.
+
+**Indicateurs de suivi :** Remise des reportings aux services de l'Etat et à la SARL PROMOBAT / Certificat de dépôts des données biodiversité
+
+**Périodicité** : Reporting annuel en fin d'année sous la forme d'un tableau de bord
+
+|  2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|  2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |
+|  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+
+**Intervenants** : ECO-COMPENSATION
+```
+
+Pour MG2 (page 32) :
+```
+# **MG 2 : Mises à jour du plan de gestion et bilan de fin de mesure compensatoire**
+
+**Objectif à long terme :** D – Coordination de la gestion
+
+**Objectif opérationnel :** D1 - Assurer la mise en œuvre du programme d'actions
+
+**Description de la mesure :** Sur la base des bilans annuels et/ou des rapports des suivis écologiques, une mise à jour du plan de gestion sera effectuée tous les 5 ans si jugé nécessaire. Celui-ci intégrera notamment un bilan du précédent plan de gestion en ciblant les points positifs et négatifs. Ce préambule servira du support pour ajuster, réorienter ou corriger les actions définies dans l'ancien plan de gestion en concertation avec l'équipe projet. Il intégrera notamment une réactualisation des coûts si nécessaire (ajout d'une mesure corrective, changement d'entreprise travaux, variation des coûts,...). Les nouveaux plans de gestion seront transmis à la SARL PROMOBAT et aux services de l'Etat pour validation avant mise en œuvre.
+
+En fin de mesure compensatoire (soit à N+29), Eco-compensation, accompagné du bureau d'études SIMETHIS un bilan final de la mesure compensatoire sur toute sa temporalité. Il aura pour objectif de conclure sur l'efficacité des mesures réalisées et les résultats obtenus par le biais des suivis pluriannuels des différents indicateurs de gestion retenus.
+
+**Indicateurs de suivi :** Remise du plan de gestion et du bilan de fin de mesure compensatoire aux services de l'Etat et à la SARL PROMOBAT
+
+**Périodicité :** Tous les 5 ans si jugé nécessaire en jusqu'en 2058
+
+|  2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|   |  |  |  |  |  |  |  |  | Si nécessaire |  |  |  |  | Si nécessaire  |
+|  2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |
+|   |  |  |  | Si nécessaire |  |  |  |  | Si nécessaire |  |  |  |  |   |
+
+**Intervenants :** ECO-COMPENSATION / SIMETHIS
+```
+
+Maintenant, je dois vérifier s'il y a d'autres fiches. Le tableau de synthèse (Tabl. 1) ne montre que ces 7 fiches. Il n'y a pas de fiches EP dans le document.
+
+Je vais maintenant structurer chaque fiche en JSON avec :
+- id
+- code
+- categorie
+- titre
+- contenu_integral (tout le texte OCR de la fiche)
+- pages (liste des numéros de page)
+- confiance (je vais mettre 1.0 car l'OCR semble bon)
+- autres champs optionnels
+
+Pour les pages, je dois identifier les numéros de page pour chaque fiche :
+
+- TU1 : pages 15, 16, 17
+- TU2 : pages 18, 19, 20, 21
+- TU3 : pages 22, 23
+- TE1 : pages 24, 25
+- SE1 : pages 26, 27, 28, 29
+- MG1 : pages 30, 31
+- MG2 : page 32
+
+Je vais maintenant créer le JSON complet.
+
+Note : Le user veut que le contenu_integral soit EXACTEMENT le texte OCR, sans modification. Donc je dois copier-coller exactement le texte entre les marqueurs de page.
+
+Je vais commencer par TU1. Le texte commence à la page 15 avec "## 4.3.1. Travaux uniques (TU)" mais la fiche elle-même commence avec "#### TU 1 : ...". Je vais prendre à partir de "#### TU 1 : ..." jusqu'à la fin de la fiche.
+
+Pour TU1, le contenu intégral est :
+```
+#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles
+
+**Objectif à long terme :** A – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés
+
+**Objectif opérationnel :** A1 - Réorienter les pratiques sylvicoles
+
+**Unités de gestion :** UG 1
+
+**Parcelles concernées :** 33284D1055 (en partie) – commune de Mios
+
+**Cadrage surfacique :** Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune $^{1}$
+
+**Description de la mesure :** Cette parcelle a fait l'objet d'un programme de replantation par ALLIANCE FORET BOIS en 2021 adapté, de façon à offrir des espaces suffisamment ouverts et lumineux (élargissement des inter-bandes entre deux bandes plantées) permettant la présence pérenne de la plante hôte du Fadet laîches, à savoir la Molinie bleue.
+
+L'itinéraire technique de plantation a été réadapté par rapport à un itinéraire technique standard avec une plantation à environ 1 100 tiges hectares (soit un arbre tous les 2 mètres) avec des inter-rangs de 5 mètres (contre 4 mètres habituellement). Le programme de replantation respectera durant la totalité de la mesure compensatoire, les prescriptions suivantes afin d'obtenir un gain écologique supplémentaire à savoir :
+
+- L'absence de broyage en plein au moment de la plantation afin de préserver au maximum les faciès de landes, favorables aux espèces cibles. Un broyage lourd sera effectué uniquement sur les lignes de plantation (2 mètres de large), suivi d'un passage au débroussailleur puis d'un labour et tassement (1,4 mètres de large). Cette technique permettra de préserver au maximum les faciès de landes à l'inverse d'une plantation standard qui consiste à un travail du sol sur la totalité de la parcelle
+
+$^{1}$ Cadrage surfacique issue du guide technique de la DREAL Nouvelle Aquitaine d'octobre 2020 « Compensations écologiques en milieu forestier des Landes de Gascogne »
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+
+SARL PROMOBAT
+
+15
+
+<!-- ===== PAGE 16 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+- La première éclaircie entre 12 et 15 ans (fonction de la station) avec un taux de prélèvement maximal de 30 %. Un dégagement manuel sur la ligne de plantation pourra être effectué au cours des trois premières années si la concurrence de la végétation est trop forte sur les Pins. Elle sera effectuée à la débroussailleuse à dos pour favoriser la mise en lumière des Pins (action optionnelle) et en dehors de la période de nidification (intervention entre le 1er novembre et le 1er mars).
+- La deuxième éclaircie à réaliser 6 ans minimum après la première, avec un taux de prélèvement maximal de 25 %
+- La troisième éclaircie à réaliser 6 ans minimum après la deuxième, avec un taux de prélèvement maximal de 25 %
+
+Des engagements de base devront également être respectés à savoir :
+
+- Tous les travaux (coupes, plantation, éclaircies, broyage, labour,...) devront être effectués en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des Laîches soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols.
+- Pas d'utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc) ;
+- Pas d'utilisation de fertilisants chimiques et/ou organiques ;
+- Pas d'utilisation de rouleau landais en plein et sur les inter-rangs;
+- Pas de broyage en plein ;
+- Une gestion sur une durée de 30 ans
+
+Nota bene : Une mesure corrective a été mise en place sur le restant de la parcelle 33284D1055 en raison d'un non-respect du calendrier travaux ayant eu des impacts sur l'avifaune nicheuse. La mesure mise en place consiste à décaler le programme de replantation à 2024 (soit 3 ans) et maintenir l'état de landes arbustifs. Les travaux de replantation prévus sur cette mesure corrective devront être fait en dehors des périodes sensibles soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols.
+
+Indicateurs de suivi : Densité du peuplement / Etat de conservation des habitats / Nombre d'imago sur le pic d'émergence
+
+Périodicité : Ces travaux devront être effectués en dehors de la période de nidification et d'activité du Fadet des laîches soit entre le 1er octobre et le 1er mars (avec une possibilité d'intervention dès septembre en fonction de la portance des sols).
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+SARL PROMOBAT
+
+16
+
+<!-- ===== PAGE 17 ===== -->
+
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+|  2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|   | Préparation du sol | Travaux de replantation |  |  |  |  |  |  |  |  |  |  |  |   |
+|  2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |
+|  1^{ère} éclaircie |   |   |  |  |  |  |  |  | 2^{ème} éclaircie |   |   |   |   |   |
+
+**Intervenants :** 2019 à 2022 ALLIANCE FORETS BOIS (travaux forestiers) / CERAG (encadrement écologique)
+
+2023 à 2048 ALLIANCE FORETS BOIS (travaux forestiers) / ECO-COMPENSATION (encadrement écologique)
+```
+
+Mais je dois enlever les marqueurs de page comme `<!-- ===== PAGE 16 ===== -->` et les pieds de page "Opération immobilière..." et "SARL PROMOBAT" car ce ne sont pas des parties du contenu de la fiche. Le user a dit "contenu_integral" doit reprendre TOUT le texte OCR pertinent à la fiche. Les pieds de page et les marqueurs de page ne font pas partie du contenu de la fiche.
+
+Donc je vais nettoyer un peu :
+- Enlever les marqueurs `<!-- ===== PAGE N ===== -->`
+- Enlever les lignes "Opération immobilière..." et "SARL PROMOBAT" qui sont des pieds de page
+- Garder tout le reste
+
+Pour TU1, le contenu intégral nettoyé serait :
+```
+#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles
+
+**Objectif à long terme :** A – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés
+
+**Objectif opérationnel :** A1 - Réorienter les pratiques sylvicoles
+
+**Unités de gestion :** UG 1
+
+**Parcelles concernées :** 33284D1055 (en partie) – commune de Mios
+
+**Cadrage surfacique :** Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune $^{1}$
+
+**Description de la mesure :** Cette parcelle a fait l'objet d'un programme de replantation par ALLIANCE FORET BOIS en 2021 adapté, de façon à offrir des espaces suffisamment ouverts et lumineux (élargissement des inter-bandes entre deux bandes plantées) permettant la présence pérenne de la plante hôte du Fadet laîches, à savoir la Molinie bleue.
+
+L'itinéraire technique de plantation a été réadapté par rapport à un itinéraire technique standard avec une plantation à environ 1 100 tiges hectares (soit un arbre tous les 2 mètres) avec des inter-rangs de 5 mètres (contre 4 mètres habituellement). Le programme de replantation respectera durant la totalité de la mesure compensatoire, les prescriptions suivantes afin d'obtenir un gain écologique supplémentaire à savoir :
+
+- L'absence de broyage en plein au moment de la plantation afin de préserver au maximum les faciès de landes, favorables aux espèces cibles. Un broyage lourd sera effectué uniquement sur les lignes de plantation (2 mètres de large), suivi d'un passage au débroussailleur puis d'un labour et tassement (1,4 mètres de large). Cette technique permettra de préserver au maximum les faciès de landes à l'inverse d'une plantation standard qui consiste à un travail du sol sur la totalité de la parcelle
+
+$^{1}$ Cadrage surfacique issue du guide technique de la DREAL Nouvelle Aquitaine d'octobre 2020 « Compensations écologiques en milieu forestier des Landes de Gascogne »
+
+- La première éclaircie entre 12 et 15 ans (fonction de la station) avec un taux de prélèvement maximal de 30 %. Un dégagement manuel sur la ligne de plantation pourra être effectué au cours des trois premières années si la concurrence de la végétation est trop forte sur les Pins. Elle sera effectuée à la débroussailleuse à dos pour favoriser la mise en lumière des Pins (action optionnelle) et en dehors de la période de nidification (intervention entre le 1er novembre et le 1er mars).
+- La deuxième éclaircie à réaliser 6 ans minimum après la première, avec un taux de prélèvement maximal de 25 %
+- La troisième éclaircie à réaliser 6 ans minimum après la deuxième, avec un taux de prélèvement maximal de 25 %
+
+Des engagements de base devront également être respectés à savoir :
+
+- Tous les travaux (coupes, plantation, éclaircies, broyage, labour,...) devront être effectués en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des Laîches soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols.
+- Pas d'utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc) ;
+- Pas d'utilisation de fertilisants chimiques et/ou organiques ;
+- Pas d'utilisation de rouleau landais en plein et sur les inter-rangs;
+- Pas de broyage en plein ;
+- Une gestion sur une durée de 30 ans
+
+Nota bene : Une mesure corrective a été mise en place sur le restant de la parcelle 33284D1055 en raison d'un non-respect du calendrier travaux ayant eu des impacts sur l'avifaune nicheuse. La mesure mise en place consiste à décaler le programme de replantation à 2024 (soit 3 ans) et maintenir l'état de landes arbustifs. Les travaux de replantation prévus sur cette mesure corrective devront être fait en dehors des périodes sensibles soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols.
+
+Indicateurs de suivi : Densité du peuplement / Etat de conservation des habitats / Nombre d'imago sur le pic d'émergence
+
+Périodicité : Ces travaux devront être effectués en dehors de la période de nidification et d'activité du Fadet des laîches soit entre le 1er octobre et le 1er mars (avec une possibilité d'intervention dès septembre en fonction de la portance des sols).
+
+|  2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|   | Préparation du sol | Travaux de replantation |  |  |  |  |  |  |  |  |  |  |  |   |
+|  2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |
+|  1^{ère} éclaircie |   |   |  |  |  |  |  |  | 2^{ème} éclaircie |   |   |   |   |   |
+
+**Intervenants :** 2019 à 2022 ALLIANCE FORETS BOIS (travaux forestiers) / CERAG (encadrement écologique)
+
+2023 à 2048 ALLIANCE FORETS BOIS (travaux forestiers) / ECO-COMPENSATION (encadrement écologique)
+```
+
+Je vais faire de même pour toutes les fiches.
+
+Maintenant, je vais structurer le JSON final.
+
+Je vais aussi ajouter les champs dérivés comme objectif_long_terme, objectif_operationnel, etc. quand ils sont disponibles dans le texte.
+
+Pour TU1 :
+- objectif_long_terme: "A – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés"
+- objectif_operationnel: "A1 - Réorienter les pratiques sylvicoles"
+- unites_gestion: ["UG 1"]
+- parcelles: ["33284D1055 (en partie)"]
+- communes: ["Mios"]
+- cadrage_surfacique: "Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune"
+- description: (le texte de la description)
+- engagements: (la liste des engagements)
+- indicateurs: ["Densité du peuplement", "Etat de conservation des habitats", "Nombre d'imago sur le pic d'émergence"]
+- intervenants: ["2019 à 2022 ALLIANCE FORETS BOIS (travaux forestiers) / CERAG (encadrement écologique)", "2023 à 2048 ALLIANCE FORETS BOIS (travaux forestiers) / ECO-COMPENSATION (encadrement écologique)"]
+- periodicite_texte: "Ces travaux devront être effectués en dehors de la période de nidification et d'activité du Fadet des laîches soit entre le 1er octobre et le 1er mars (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)."
+- frise_markdown: le tableau markdown
+- pages: [15,16,17]
+
+Je vais faire ça pour toutes les fiches.
+
+Je vais commencer à construire le JSON. Comme c'est très long, je vais le faire par étapes.
+
+D'abord, la liste des actions :
+
+1. TU1
+2. TU2
+3. TU3
+4. TE1
+5. SE1
+6. MG1
+7. MG2
+
+Je vais maintenant écrire le JSON complet.

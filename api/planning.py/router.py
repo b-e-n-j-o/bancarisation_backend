@@ -45,6 +45,7 @@ class ActionCreateRequest(BaseModel):
     categorie: str
     libelle_prestation: str = Field(min_length=1, max_length=500)
     statut: str = "projete"
+    thema_code: Optional[str] = None
     cout_ht_prevu: Optional[float] = None
     prestataire_id: Optional[UUID] = None
     unit_id: Optional[UUID] = None
@@ -56,6 +57,7 @@ class ActionUpdateRequest(BaseModel):
     categorie: Optional[str] = None
     libelle_prestation: Optional[str] = Field(default=None, min_length=1, max_length=500)
     statut: Optional[str] = None
+    thema_code: Optional[str] = None
     cout_ht_prevu: Optional[float] = None
     prestataire_id: Optional[UUID] = None
     unit_id: Optional[UUID] = None
@@ -124,6 +126,7 @@ def create_action_route(payload: ActionCreateRequest) -> IdResponse:
                 categorie=payload.categorie,
                 libelle_prestation=payload.libelle_prestation,
                 statut=payload.statut,
+                thema_code=payload.thema_code,
                 cout_ht_prevu=payload.cout_ht_prevu,
                 prestataire_id=payload.prestataire_id,
                 unit_id=payload.unit_id,
@@ -145,6 +148,7 @@ def update_action_route(action_id: UUID, payload: ActionUpdateRequest) -> dict[s
                 categorie=payload.categorie,
                 libelle_prestation=payload.libelle_prestation,
                 statut=payload.statut,
+                thema_code=payload.thema_code,
                 cout_ht_prevu=payload.cout_ht_prevu,
                 prestataire_id=payload.prestataire_id,
                 unit_id=payload.unit_id,

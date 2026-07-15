@@ -1,0 +1,122 @@
+{
+  "dossier": {
+    "nom_operation": "Opération immobilière « Testemaure »",
+    "maitre_ouvrage": "SARL PROMOBAT",
+    "operateur": "ECO-COMPENSATION",
+    "communes": [
+      "Marcheprime",
+      "Mios"
+    ],
+    "arrete_numero": "DREAL/2018D/718",
+    "arrete_date": "28 janvier 2019",
+    "horizon": {
+      "annee_debut": 2019,
+      "annee_fin": 2049,
+      "duree_ans": 30,
+      "champs_a_confirmer": [
+        "durée exacte (25, 26 ou 30 ans)",
+        "année de fin exacte (2048 ou 2049)"
+      ],
+      "avertissements": [
+        "P.4: période 2019 à 2049 (30 ans) explicitement mentionnée",
+        "P.5: 25 années restantes (2023-2048) mentionnées pour la gestion par ECO-COMPENSATION",
+        "P.11: durée minimum de 25 ans pour le plan de gestion",
+        "P.17: planning des travaux jusqu'en 2048",
+        "P.32: mention de mise à jour jusqu'en 2058 (hors scope principal)"
+      ]
+    },
+    "especes_protegees": [
+      "Rossolis intermédiaire",
+      "Fadet des Laîches",
+      "Tarier pâtre"
+    ],
+    "especes_detruites": [
+      "Rossolis intermédiaire",
+      "Tarier pâtre",
+      "Fadet des Laîches"
+    ],
+    "milieux_cibles": [
+      "landes humides",
+      "landes méso-hygrophiles",
+      "landes à Molinie bleue",
+      "zones humides",
+      "landes pré-forestières",
+      "crastes"
+    ],
+    "zones": [
+      {
+        "nom": "Zone n°1",
+        "commune": "Marcheprime",
+        "superficie": "9 250 m²",
+        "especes_cibles": [
+          "Fadet des Laîches"
+        ]
+      },
+      {
+        "nom": "Zone n°2",
+        "commune": "Mios",
+        "superficie": "15 ha",
+        "especes_cibles": [
+          "Fadet des Laîches",
+          "Rossolis intermédiaire"
+        ]
+      }
+    ],
+    "unites_gestion": [
+      {
+        "id": "UG 1",
+        "objectif": "Adapter les itinéraires techniques sylvicoles en faveur du Fadet des Laîches et des oiseaux landicoles (Réorienter les pratiques sylvicoles - A1)",
+        "communes": [
+          "Mios"
+        ],
+        "parcelles": [
+          "33284D1055 (en partie)"
+        ]
+      },
+      {
+        "id": "UG 2",
+        "objectif": "Créer et maintenir des espaces de landes en faveur du Fadet des Laîches et des oiseaux landicoles (Préserver et entretenir les espaces de landes - A2)",
+        "communes": [
+          "Marcheprime"
+        ],
+        "parcelles": [
+          "33555C4577"
+        ]
+      },
+      {
+        "id": "UG 3",
+        "objectif": "Créer et préserver des zones d'étrépage pour favoriser l'apparition du Rossolis intermédiaire (B1)",
+        "communes": [
+          "Mios"
+        ],
+        "parcelles": [
+          "33284D1055 (en partie)"
+        ]
+      }
+    ],
+    "budget_global_ht": 135550.0,
+    "budget_devise": "EUR",
+    "dette_ecologique": "Compensation pour destruction de : une station de Rossolis intermédiaire (10 pieds, 38 ml), 1 740 m² d'habitat de nidification du Tarier pâtre, et 37 506 m² d'habitat du Fadet des Laîches",
+    "type_obligation": "Compensation écologique au titre des espèces protégées (séquence ERC - Éviter, Réduire, Compenser)",
+    "intervenants": [
+      "ECO-COMPENSATION",
+      "SIMETHIS",
+      "ALLIANCE FORETS BOIS",
+      "LUCANE",
+      "CERAG",
+      "ESPACE MORLIER SERVICES"
+    ],
+    "confiance": 0.95,
+    "champs_a_confirmer": [
+      "Numéro exact de l'arrêté (2018D/718 vs 2022/05/12-062 mentionné p.6 et p.40)",
+      "Année de fin exacte de la mesure compensatoire (2048 ou 2049)",
+      "Durée contractuelle exacte (25, 26 ou 30 ans)"
+    ],
+    "avertissements": [
+      "Contradiction sur le numéro d'arrêté : DREAL/2018D/718 (p.1, p.4, p.35) vs DDEP n°2022/05/12-062 (p.6, p.40)",
+      "Incohérence de durée : 30 ans (2019-2049, p.4) vs 25 ans (2023-2048, p.5) vs 26 ans (p.33)",
+      "Fin des plannings à 2048 (p.17, p.20, p.23, p.25, p.32) vs 2049 dans le texte (p.4)",
+      "Mention de 2058 pour les mises à jour du plan (p.32) hors scope principal"
+    ]
+  }
+}

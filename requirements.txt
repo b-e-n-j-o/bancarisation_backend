@@ -4,3 +4,7 @@ supabase
 python-dotenv
 pydantic
 python-multipart
+psycopg[binary]
+httpx
+mistralai
+pypdf

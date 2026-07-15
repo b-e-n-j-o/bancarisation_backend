@@ -1,0 +1,919 @@
+OK, l'utilisateur me demande d'extraire toutes les échéances d'un plan de gestion OCRisé. C'est un travail complexe qui nécessite une analyse minutieuse du document. Je vais devoir :
+
+1. Identifier toutes les actions (TU, TE, SE, MG) et leurs sous-actions
+2. Extraire les détails de chaque échéance : type, fréquence, dates, conditions, etc.
+3. Respecter strictement le schéma JSON fourni
+4. Ne rien inventer, tout doit être basé sur le texte source
+
+Commençons par parcourir le document pour repérer les sections pertinentes.
+
+Le document contient :
+- Un plan de gestion pour la SARL PROMOBAT, opération "Testemaure"
+- Arrêté DDEP n°2018D/718 du 28 janvier 2019
+- Période de gestion : 2019-2049 (30 ans)
+- Deux zones : Marcheprime (9 250 m²) et Mios (15 ha)
+- Trois unités de gestion (UG1, UG2, UG3)
+
+Les sections clés sont :
+- 4.3. Description des actions prévues (TU, TE, SE, MG)
+- Les tableaux de synthèse et frises temporelles
+
+Analysons chaque type d'action :
+
+### Travaux Uniques (TU)
+
+#### TU1 : Adapter les itinéraires techniques sylvicoles
+- UG : UG1
+- Parcelle : 33284D1055 (en partie) – commune de Mios
+- Description :
+  - Programme de replantation en 2021 par ALLIANCE FORETS BOIS
+  - Plantation à 1 100 tiges/ha, inter-rangs de 5m
+  - Pas de broyage en plein, seulement sur lignes de plantation
+  - Éclaircies :
+    - 1ère éclaircie entre 12 et 15 ans (taux max 30%)
+    - 2ème éclaircie 6 ans après la 1ère (taux max 25%)
+    - 3ème éclaircie 6 ans après la 2ème (taux max 25%)
+  - Conditions : travaux entre 1er novembre et 1er mars (hors nidification), sous réserve de portance des sols
+  - Frise temporelle : 
+    - 2019 : Préparation du sol
+    - 2021 : Travaux de replantation
+    - 2034 : 1ère éclaircie
+    - 2040 : 2ème éclaircie
+    - 2046 : 3ème éclaircie
+
+Pour TU1, je vois plusieurs échéances :
+1. La préparation du sol (2019) - ponctuelle
+2. La replantation (2021) - ponctuelle
+3. Les éclaircies : 2034, 2040, 2046 - mais la description dit "entre 12 et 15 ans" pour la première, ce qui correspond à 2033-2036 si plantation en 2021. La frise montre 2034, 2040, 2046. Je vais prendre les dates de la frise comme ancrage.
+
+Mais la règle dit : si ancrage vient de la frise, je dois mettre "ancrage_annee" dans champs_a_confirmer. Donc pour les éclaircies, ancrage_annee = 2034 pour la première, mais comme c'est déduit de la frise, je dois le signaler.
+
+Attendez, la description dit "La première éclaircie entre 12 et 15 ans (fonction de la station) avec un taux de prélèvement maximal de 30 %." et la frise montre 2034. Si plantation en 2021, 2021+12=2033, 2021+15=2036. La frise montre 2034, qui est dans cette fourchette. Donc c'est cohérent.
+
+Mais la périodicité n'est pas fixe : "entre 12 et 15 ans" puis "6 ans minimum après la première". Ce n'est pas une périodicité régulière. Donc type "dependant_evenement" ?
+
+Non, la frise montre des dates précises : 2034, 2040, 2046. Et la description dit "6 ans minimum après la première", donc 2034+6=2040, 2040+6=2046. Donc c'est une périodicité de 6 ans après la première.
+
+Mais la première est entre 12 et 15 ans. Donc :
+- 1ère éclaircie : entre 2033 et 2036 (2021+12 à 2021+15)
+- 2ème éclaircie : 6 ans après la 1ère
+- 3ème éclaircie : 6 ans après la 2ème
+
+C'est compliqué. La frise montre des dates fixes. Je pense que pour le calendrier de suivi, on peut prendre les dates de la frise comme échéances ponctuelles, avec ancrage_annee déduit de la frise.
+
+Donc pour TU1, je vais créer :
+- Échéance 1 : Préparation du sol (2019) - ponctuelle
+- Échéance 2 : Travaux de replantation (2021) - ponctuelle
+- Échéance 3 : 1ère éclaircie (2034) - ponctuelle, mais avec ancrage_annee à confirmer
+- Échéance 4 : 2ème éclaircie (2040) - ponctuelle
+- Échéance 5 : 3ème éclaircie (2046) - ponctuelle
+
+Mais la règle 3 dit : "N ans après <autre action>" → type "dependant_evenement". Ici, c'est "6 ans après la première éclaircie", donc type "dependant_evenement" avec regle_source = "6 ans après la première éclaircie".
+
+Mais la première éclaircie elle-même est entre 12 et 15 ans après plantation. Donc :
+- Plantation : 2021 (ponctuelle)
+- 1ère éclaircie : type "dependant_evenement", regle_source = "entre 12 et 15 ans après plantation"
+- 2ème éclaircie : type "dependant_evenement", regle_source = "6 ans après la première éclaircie"
+- 3ème éclaircie : type "dependant_evenement", regle_source = "6 ans après la deuxième éclaircie"
+
+C'est plus fidèle au texte. Et ancrage_annee = null pour ces dépendances.
+
+Pour les conditions : "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des Laîches soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols."
+
+Fenêtre d'intervention : début = "11-01", fin = "03-01", traverse_nouvel_an = true, texte_source = "entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+
+Intervenants : 2019-2022 ALLIANCE FORETS BOIS / CERAG; 2023-2048 ALLIANCE FORETS BOIS / ECO-COMPENSATION
+
+Parcelles : ["33284D1055 (en partie)"]
+Communes : ["Mios"]
+Unités de gestion : ["UG1"]
+
+Objectifs :
+- Objectif long terme : "A – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés"
+- Objectif opérationnel : "A1 - Réorienter les pratiques sylvicoles"
+
+Indicateurs : ["Densité du peuplement", "Etat de conservation des habitats", "Nombre d'imago sur le pic d'émergence"]
+
+Durée de gestion : 30 ans (mentionné dans TU1)
+
+Confiance : 0.9 (texte clair)
+
+Champs à confirmer : pour les éclaircies, ancrage_annee est déduit de la frise, donc je dois l'indiquer.
+
+Mais pour les actions ponctuelles (préparation, replantation), ancrage_annee est clair : 2019 et 2021.
+
+Donc pour TU1, je vais créer plusieurs échéances :
+
+1. TU1-preparation-sol-UG1 : ponctuelle, ancrage_annee=2019
+2. TU1-replantation-UG1 : ponctuelle, ancrage_annee=2021
+3. TU1-1ere-eclaircie-UG1 : type dependant_evenement, regle_source="entre 12 et 15 ans après plantation", ancrage_annee=null, champs_a_confirmer=["ancrage_annee"]
+4. TU1-2eme-eclaircie-UG1 : type dependant_evenement, regle_source="6 ans après la première éclaircie"
+5. TU1-3eme-eclaircie-UG1 : type dependant_evenement, regle_source="6 ans après la deuxième éclaircie"
+
+Mais la frise montre des dates précises. Peut-être que le plan de gestion a fixé des dates précises malgré la description flexible. Dans ce cas, je peux utiliser les dates de la frise comme échéances ponctuelles avec ancrage_annee déduit de la frise.
+
+La règle 4 dit : "Si l'ancrage vient de la frise et non du texte rédigé, ajoute 'ancrage_annee' à champs_a_confirmer et dis-le dans avertissements."
+
+Donc pour les éclaircies, je peux faire :
+- type: ponctuel
+- ancrage_annee: 2034 (pour la 1ère)
+- champs_a_confirmer: ["ancrage_annee"]
+- avertissements: ["Ancrage déduit de la frise temporelle page 17"]
+
+C'est plus simple et plus utile pour un calendrier.
+
+Je vais opter pour cette approche : utiliser les dates de la frise comme échéances ponctuelles, avec ancrage_annee à confirmer.
+
+Donc pour TU1 :
+- Échéance 1 : Préparation du sol - 2019 - ponctuel
+- Échéance 2 : Travaux de replantation - 2021 - ponctuel
+- Échéance 3 : 1ère éclaircie - 2034 - ponctuel
+- Échéance 4 : 2ème éclaircie - 2040 - ponctuel
+- Échéance 5 : 3ème éclaircie - 2046 - ponctuel
+
+Toutes avec les mêmes métadonnées (UG1, Mios, parcelle, conditions, etc.)
+
+#### TU2 : Créer et maintenir des espaces de landes
+- UG : UG2
+- Parcelle : 33555C4577 – commune de Marcheprime
+- Description :
+  - Abattage des résineux en 2019
+  - Éclaircie sélective des feuillus en septembre 2023
+  - Arrachage des EEE (Aronie) : deux campagnes en mai et septembre 2023
+  - Possibilité de nouvelles éclaircies sélectives au cours des 25 prochaines années sous visa écologue
+  - Possibilité de nouvelles campagnes d'arrachage au cours des 25 prochaines années si jugé nécessaire
+
+Frise temporelle :
+- 2019 : Exploitation des résineux
+- 2023 : Éclaircie sélective, Arrachage des EEE
+
+Conditions : travaux entre 1er septembre et 1er mars sous réserve de portance des sols
+
+Fenêtre : début="09-01", fin="03-01", traverse_nouvel_an=true
+
+Échéances pour TU2 :
+1. Exploitation des résineux - 2019 - ponctuel
+2. Éclaircie sélective - 2023 - ponctuel
+3. Arrachage des EEE - mai 2023 - ponctuel (mais deux campagnes : mai et septembre)
+   - Je peux créer une échéance pour mai 2023 et une pour septembre 2023, ou une seule avec occurrences_par_an=2 pour 2023
+   - Le texte dit "Deux campagnes d'arrachages ont été engagées en mai et septembre 2023"
+   - Donc deux échéances ponctuelles : une en mai, une en septembre
+   - Mais la fenêtre d'intervention est septembre-mars, donc mai est en dehors? Contradiction!
+   - Attendez, le texte dit : "Ces travaux devront être effectués en dehors de la période de nidification des oiseaux soit entre le 1er septembre et le 1er mars sous réserve de la portance des sols."
+   - Mais les arrachages ont eu lieu en mai et septembre 2023. Mai est en période de nidification!
+   - C'est une contradiction. Je dois signaler cela dans avertissements.
+
+   En fait, pour les EEE, le texte dit : "Initialement prévue en 2019, ces foyers n'ont fait l'objet d'une intervention qu'en 2023 lors de la reprise en gestion par ECO-COMPENSATION. Deux campagnes d'arrachages ont été engagées en mai et septembre 2023."
+
+   Et plus haut : "Tous les travaux de coupes devront être effectués en dehors des périodes sensibles vis à vis de nidification des oiseaux soit entre le 1er septembre et le 1er mars sous réserve de la portance des sols."
+
+   Donc il y a une contradiction : les arrachages ont eu lieu en mai (hors période autorisée). Je dois le signaler.
+
+   Pour l'échéance, je vais créer :
+   - Arrachage EEE - campagne 1 : 2023-05, type ponctuel
+   - Arrachage EEE - campagne 2 : 2023-09, type ponctuel
+
+   Mais la campagne de mai est non conforme. Je vais mettre confiance=0.7 et avertissement.
+
+4. Possibilité de nouvelles éclaircies : type "dependant_evenement", regle_source="si jugé nécessaire par l'écologue au cours des 25 prochaines années"
+5. Possibilité de nouvelles campagnes d'arrachage : type "dependant_evenement", regle_source="si jugé nécessaire par l'écologue au cours des 25 prochaines années"
+
+Mais ce sont des actions conditionnelles, pas des échéances planifiées. Je ne sais pas si je dois les inclure. La règle dit : "extraire l'ensemble des tâches à échéance". Si c'est conditionnel et non planifié, peut-être pas.
+
+Je vais me concentrer sur les actions planifiées.
+
+#### TU3 : Création des zones d'étrépage
+- UG : UG3
+- Parcelle : 33284D1055 (en partie) – commune de Mios
+- Description :
+  - Création de deux placettes d'environ 60 m² à l'automne 2021
+  - Entretien : rotobroyage et griffaage tous les 3 ans
+  - Conditions : entre 1er septembre et 1er mars sous réserve de portance des sols
+
+Frise :
+- 2021 : Création des placettes
+- 2024 : Renouvellement des placettes si nécessaire
+- 2037 : Renouvellement des placettes si nécessaire
+
+Échéances :
+1. Création des placettes - 2021 - ponctuel
+2. Entretien (rotobroyage+griffaage) - tous les 3 ans à partir de 2021? La description dit "tous les 3 ans", mais la frise montre 2024 et 2037.
+   - 2021 + 3 = 2024
+   - 2024 + 13 = 2037? Non, 2024+3=2027, 2027+3=2030, 2030+3=2033, 2033+3=2036, 2036+3=2039...
+   - La frise montre 2024 et 2037, ce qui n'est pas cohérent avec "tous les 3 ans".
+
+Attendez, la description dit : "L’entretien des placettes se traduira par un rotobroyage et un griffaage tous les 3 ans en fonction de la dynamique de fermeture du milieu."
+
+Et la frise montre :
+- 2021 : Création
+- 2024 : Renouvellement si nécessaire
+- 2037 : Renouvellement si nécessaire
+
+"Renouvellement" peut vouloir dire recréer les placettes, pas juste entretenir. Le texte dit "Renouvellement des placettes si nécessaire".
+
+Donc :
+- Création : 2021
+- Renouvellement : 2024, 2037 (et peut-être d'autres années non indiquées)
+
+Mais "tous les 3 ans" suggère une périodicité. Je vais interpréter comme :
+- Entretien : type periodique, intervalle_ans=3, ancrage_annee=2021
+
+Mais la frise ne montre que 2024 et 2037. 2021+3=2024, 2024+13=2037? Non.
+
+Peut-être que "renouvellement" signifie recréer les placettes tous les 13 ans? Ce n'est pas clair.
+
+Je vais me baser sur le texte : "tous les 3 ans". Donc :
+- Échéance : Entretien TU3 - type periodique, intervalle_ans=3, ancrage_annee=2021
+
+Mais la frise montre 2024 et 2037. 2021+3=2024, 2024+13=2037. Ce n'est pas cohérent.
+
+En fait, la frise montre :
+| 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | ... | 2037 | ...
+| --- | --- | --- | --- | --- | --- | --- | --- | ---
+|   |   | Création des placettes |   |   | Renouvellement... | ... | Renouvellement... | 
+
+Donc "Renouvellement des placettes si nécessaire" en 2024 et 2037. Ce n'est pas une périodicité fixe, mais conditionnelle.
+
+Donc :
+- Création : 2021 - ponctuel
+- Renouvellement : type "dependant_evenement", regle_source="si nécessaire en fonction de la dynamique de fermeture du milieu", avec ancrage possible en 2024, 2037, etc.
+
+Mais pour le calendrier, je peux créer :
+- Entretien TU3 : type periodique, intervalle_ans=3, ancrage_annee=2021, mais avec avertissement que la frise montre 2024 et 2037
+
+C'est ambigu. Je vais opter pour la périodicité de 3 ans mentionnée dans le texte, et signaler la divergence avec la frise.
+
+### Travaux d'entretien (TE)
+
+#### TE1 : Entretenir les landes humides
+- UG : UG1 et UG2
+- Description :
+  - Gyrobroyage tardif à 30 cm sans export, tous les 4 ans (avec décalage possible d'un an ou deux si portance des sols ne permet pas)
+  - Secteur Marcheprime : passage du rouleau brise fougère à raison de deux campagnes par an pendant trois ans à partir de 2023
+  - Conditions : entre novembre et février (avec possibilité dès septembre)
+
+Frise :
+- 2023 : Marcheprime
+- 2024 : Mios
+- 2027 : Marcheprime
+- 2028 : Mios
+- 2031 : Marcheprime
+- 2032 : Mios
+- etc.
+
+Donc pour le gyrobroyage :
+- UG1 et UG2 : tous les 4 ans, mais décalé entre UG1 et UG2?
+- La frise montre :
+  - 2023 : Marcheprime (UG2)
+  - 2024 : Mios (UG1)
+  - 2027 : Marcheprime (UG2)
+  - 2028 : Mios (UG1)
+  - etc.
+
+Donc :
+- UG2 (Marcheprime) : gyrobroyage en 2023, 2027, 2031, ... → tous les 4 ans, ancrage_annee=2023
+- UG1 (Mios) : gyrobroyage en 2024, 2028, 2032, ... → tous les 4 ans, ancrage_annee=2024
+
+Pour le rouleau brise fougère :
+- Secteur Marcheprime : deux campagnes par an pendant trois ans à partir de 2023
+  - Donc 2023, 2024, 2025 : 2 campagnes/an
+  - Type : campagnes, occurrences_par_an=2, duree_ans=3, ancrage_annee=2023
+
+Conditions : entre novembre et février (avec possibilité dès septembre) → début="11-01", fin="02-28", traverse_nouvel_an=false? Non, novembre à février ne traverse pas le nouvel an.
+- début="11-01", fin="02-28", traverse_nouvel_an=false, texte_source="entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+
+Mais la possibilité dès septembre complique. Je vais mettre :
+- début="09-01", fin="02-28", traverse_nouvel_an=true, texte_source="entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+
+Oui, car septembre à février traverse le nouvel an.
+
+### Suivis et indicateurs (SE)
+
+#### SE1 : Suivi des habitats naturels, de la flore et de la faune
+- Parcelles : 33284D1055 (Mios) et 33555C4577 (Marcheprime)
+- Description :
+  - Campagne tous les ans sur les 4 premières années (2019-2022)
+  - Puis tous les 3 ans les 15 années suivantes (2025-2039)
+  - Puis tous les 5 ans les 10 dernières années (2044-2048)
+  - Total : 10 campagnes
+
+Mais le texte dit aussi : "La première campagne constituera l'état initial de référence avant travaux en 2019, puis sera réalisé une campagne par an sur les 4 premières années puis tous les 3 ans les 15 années suivantes et une campagne tous les 5 ans les 12 dernières années soit un total de 10 campagnes."
+
+Attendez, 30 ans de gestion : 2019-2048 (29 ans? 2019 à 2048 inclus = 30 ans)
+
+- 2019 : état initial (n)
+- 2020,2021,2022,2023 : annuel (n+1 à n+4) → 4 campagnes
+- 2026,2029,2032,2035,2038,2041,2044,2047 : tous les 3 ans? Non, "tous les 3 ans les 15 années suivantes" → 2025 à 2039 (15 ans) : 2025,2028,2031,2034,2037
+- Puis "tous les 5 ans les 12 dernières années" → 2040 à 2051? Mais la gestion va jusqu'en 2048.
+
+Le texte dit : "durant 30 ans à raison d'un suivi annuel les 5 premières années, puis tous les 3 ans les quinze années suivantes et un suivi tous les 5 ans les dix dernières années." (Article 8)
+
+Donc :
+- Années 1-5 (2019-2023) : annuel
+- Années 6-20 (2024-2038) : tous les 3 ans → 2024,2027,2030,2033,2036
+- Années 21-30 (2039-2048) : tous les 5 ans → 2039,2044
+
+Mais le plan de gestion dit : "La première campagne constituera l'état initial de référence avant travaux en 2019, puis sera réalisé une campagne par an sur les 4 premières années puis tous les 3 ans les 15 années suivantes et une campagne tous les 5 ans les 12 dernières années"
+
+C'est différent. Il y a une contradiction entre l'arrêté et le plan de gestion.
+
+La règle 10 dit : en cas de contradiction, retenir la valeur la plus restrictive, baisse confiance, et détaille les versions divergentes.
+
+L'arrêté (page 6) dit : "durant 30 ans à raison d'un suivi annuel les 5 premières années, puis tous les 3 ans les quinze années suivantes et un suivi tous les 5 ans les dix dernières années."
+
+Le plan de gestion (page 26) dit : "une campagne par an sur les 4 premières années puis tous les 3 ans les 15 années suivantes et une campagne tous les 5 ans les 12 dernières années"
+
+La version la plus restrictive serait celle avec le plus de suivis : annuel pendant 5 ans vs 4 ans. Donc je retiens la version de l'arrêté : annuel 5 ans, puis tous les 3 ans 15 ans, puis tous les 5 ans 10 ans.
+
+Mais le plan de gestion est plus récent (2023) et fait référence à l'arrêté. Je dois vérifier.
+
+Page 6 (rappel des obligations) : "Ces suivis seront divisés en deux grandes catégories (faune et flore) et seront effectués durant 30 ans à raison d'un suivi annuel les 5 premières années, puis tous les 3 ans les quinze années suivantes et un suivi tous les 5 ans les dix dernières années."
+
+Page 26 (SE1) : "La première campagne constituera l'état initial de référence avant travaux en 2019, puis sera réalisé une campagne par an sur les 4 premières années puis tous les 3 ans les 15 années suivantes et une campagne tous les 5 ans les 12 dernières années soit un total de 10 campagnes."
+
+Contradiction : 5 vs 4 ans pour la phase annuelle, 10 vs 12 ans pour la phase finale.
+
+La version la plus restrictive est celle avec le plus de suivis : annuel pendant 5 ans (2019-2023) puis tous les 3 ans pendant 15 ans (2024-2038) puis tous les 5 ans pendant 10 ans (2039-2048).
+
+Cela donne :
+- 2019,2020,2021,2022,2023 : 5 campagnes
+- 2024,2027,2030,2033,2036 : 5 campagnes (tous les 3 ans sur 15 ans)
+- 2039,2044,2048 : 3 campagnes? 2039,2044,2049 mais 2049>2048. Donc 2039,2044.
+
+Total : 5+5+2=12 campagnes, pas 10.
+
+Le plan de gestion dit "soit un total de 10 campagnes (n à n+29)". n=2019, n+29=2048.
+
+Avec la version arrêté :
+- 2019-2023 : 5 ans → 5 campagnes (2019,2020,2021,2022,2023)
+- 2024-2038 : 15 ans, tous les 3 ans → 2024,2027,2030,2033,2036 → 5 campagnes
+- 2039-2048 : 10 ans, tous les 5 ans → 2039,2044,2049 (hors période) → 2039,2044 → 2 campagnes
+Total : 12 campagnes.
+
+Avec la version plan de gestion :
+- 2019 : état initial
+- 2020,2021,2022,2023 : 4 années → 4 campagnes
+- 2026,2029,2032,2035,2038,2041,2044,2047 : tous les 3 ans sur 15 ans? 2025-2039 = 15 ans → 2025,2028,2031,2034,2037 → 5 campagnes
+- 2040-2051 : tous les 5 ans sur 12 ans → 2040,2045,2050 → mais gestion jusqu'en 2048, donc 2040,2045 → 2 campagnes
+Total : 1+4+5+2=12 campagnes aussi.
+
+Mais le plan de gestion dit "soit un total de 10 campagnes". Il y a une erreur.
+
+Je vais me baser sur l'arrêté qui est le document réglementaire : annuel 5 ans, tous les 3 ans 15 ans, tous les 5 ans 10 ans.
+
+Pour le type de récurrence, c'est des paliers :
+- Ancrage : 2019 (état initial)
+- Paliers :
+  - intervalle_ans=1, nombre_occurrences=5 (2019-2023)
+  - intervalle_ans=3, nombre_occurrences=5 (2024,2027,2030,2033,2036)
+  - intervalle_ans=5, nombre_occurrences=2 (2039,2044)
+
+Mais la règle 3 dit : "cadence à PALIERS [...] type 'paliers', ancrage_annee = première campagne / état zéro, paliers = liste ordonnée de {intervalle_ans, nombre_occurrences}. Chaque palier enchaîne depuis la DERNIÈRE occurrence émise (pas le début du segment)."
+
+Exemple : ancrage 2019, paliers [{1,4},{3,5}] → 2019, 2020,2021,2022, 2023,2026,2029,2032,2035,2038.
+
+Dans notre cas :
+- Palier 1 : intervalle=1, occurrences=5 → 2019,2020,2021,2022,2023
+- Palier 2 : intervalle=3, occurrences=5 → à partir de 2023, +3=2026, +3=2029, +3=2032, +3=2035, +3=2038
+- Palier 3 : intervalle=5, occurrences=2 → à partir de 2038, +5=2043, +5=2048
+
+Mais l'arrêté dit "tous les 3 ans les quinze années suivantes" (2024-2038), donc premier suivi à 2024, pas 2026.
+
+Le palier doit commencer à la fin du précédent. Donc :
+- Palier 1 : 2019-2023 (5 campagnes)
+- Palier 2 : commence en 2024, intervalle=3, occurrences=5 → 2024,2027,2030,2033,2036
+- Palier 3 : commence en 2037? Non, "tous les 5 ans les dix dernières années" (2039-2048), donc 2039,2044
+
+Mais 2036 + 3 = 2039, qui est le début du palier 3.
+
+Donc paliers :
+- {intervalle_ans: 1, nombre_occurrences: 5}  // 2019-2023
+- {intervalle_ans: 3, nombre_occurrences: 5}  // 2024,2027,2030,2033,2036
+- {intervalle_ans: 5, nombre_occurrences: 2}  // 2039,2044
+
+Ancrage_annee = 2019
+
+Vérification :
+- 2019 + 0*1 = 2019
+- 2019 + 1*1 = 2020
+- 2019 + 2*1 = 2021
+- 2019 + 3*1 = 2022
+- 2019 + 4*1 = 2023
+- Puis dernier = 2023, +3 = 2026? Non, le palier 2 doit commencer à 2024.
+
+Le problème est que le palier 2 doit commencer en 2024, pas en 2023+1=2024? 2023+1=2024, oui!
+
+Donc :
+- Palier 1 : intervalle=1, occurrences=5 → 2019,2020,2021,2022,2023
+- Palier 2 : intervalle=3, occurrences=5 → 2023+1=2024, 2024+3=2027, 2027+3=2030, 2030+3=2033, 2033+3=2036
+- Palier 3 : intervalle=5, occurrences=2 → 2036+3=2039? Non, 2036+3=2039, mais intervalle=5. Donc 2036+5=2041, 2041+5=2046.
+
+Mais l'arrêté dit "tous les 5 ans les dix dernières années" (2039-2048), donc 2039,2044.
+
+Il y a un décalage. Peut-être que le palier 3 commence en 2039, pas en 2036+intervalle.
+
+La règle dit : "Chaque palier enchaîne depuis la DERNIÈRE occurrence émise (pas le début du segment)."
+
+Donc :
+- Après palier 1 : dernière = 2023
+- Palier 2 : intervalle=3, occurrences=5 → 2023+3=2026, 2026+3=2029, 2029+3=2032, 2032+3=2035, 2035+3=2038
+- Palier 3 : intervalle=5, occurrences=2 → 2038+5=2043, 2043+5=2048
+
+Mais l'arrêté dit que la phase "tous les 3 ans" couvre 15 ans (2024-2038), donc 2024,2027,2030,2033,2036.
+
+Et la phase "tous les 5 ans" couvre 10 ans (2039-2048), donc 2039,2044.
+
+Donc le palier 2 devrait commencer en 2024, pas en 2026.
+
+Comment obtenir 2024? 2023 + 1 = 2024, mais intervalle=3.
+
+Je pense que la règle des paliers est mal adaptée ici. Peut-être que je dois utiliser un autre type.
+
+Alternative : type "paliers" avec ancrage_annee=2019, paliers=[
+  {intervalle_ans: 1, nombre_occurrences: 5},  // 2019-2023
+  {intervalle_ans: 3, nombre_occurrences: 5, debut_relatif: 5},  // commence 5 ans après ancrage
+  {intervalle_ans: 5, nombre_occurrences: 2, debut_relatif: 20}  // commence 20 ans après ancrage
+]
+
+Mais le schéma ne prévoit pas debut_relatif.
+
+Je vais devoir utiliser type "paliers" avec les intervalles comme décrit, et accepter que les dates ne correspondent pas exactement, mais signaler la divergence.
+
+Ou alors, créer des échéances séparées pour chaque phase.
+
+Mais la règle 1 dit : "Une fiche-action [...] peut générer PLUSIEURS échéances. Crée une échéance distincte chaque fois qu'un rythme d'intervention diffère."
+
+Donc pour SE1, je peux créer :
+1. SE1-etat-zero : 2019 - ponctuel
+2. SE1-suivi-annuel : type campagnes, occurrences_par_an=1, duree_ans=4, ancrage_annee=2020 (2020-2023)
+   - Mais occurrences_par_an=1, duree_ans=4 → 2020,2021,2022,2023
+3. SE1-suivi-3ans : type periodique, intervalle_ans=3, ancrage_annee=2024, duree_ans=15
+   - Mais duree_ans n'est pas dans le schéma pour periodique. Le schéma a pour periodique : intervalle_ans, ancrage_annee.
+   - Pour limiter la durée, je peux utiliser duree_gestion_ans=30, mais ce n'est pas précis.
+4. SE1-suivi-5ans : type periodique, intervalle_ans=5, ancrage_annee=2039
+
+Mais cela ne capture pas exactement la limitation à 15 ans et 10 ans.
+
+Alternative : utiliser type "paliers" comme dans l'exemple donné dans la règle 3 :
+ancrage 2019, paliers [{1,4},{3,5}] → 2019, 2020,2021,2022, 2026,2029,2032,2035,2038
+
+Dans notre cas, pour correspondre à l'arrêté :
+- 2019 (état initial)
+- 2020,2021,2022,2023 (4 années annuelles)
+- 2024,2027,2030,2033,2036 (5 campagnes tous les 3 ans)
+- 2039,2044 (2 campagnes tous les 5 ans)
+
+Donc paliers :
+- {intervalle_ans: 1, nombre_occurrences: 5}  // 2019-2023 (5 campagnes)
+- {intervalle_ans: 3, nombre_occurrences: 5}  // 2024,2027,2030,2033,2036
+- {intervalle_ans: 5, nombre_occurrences: 2}  // 2039,2044
+
+Ancrage_annee = 2019
+
+Vérification avec la règle : "Chaque palier enchaîne depuis la DERNIÈRE occurrence émise"
+- Palier 1 : 2019,2020,2021,2022,2023 (dernière=2023)
+- Palier 2 : 2023 + 3 = 2026, mais on veut 2024. Donc ça ne marche pas.
+
+Le problème est que le premier palier a 5 occurrences, mais l'intervalle entre 2019 et 2020 est 1 an, donc :
+- 2019 + 0*1 = 2019
+- 2019 + 1*1 = 2020
+- 2019 + 2*1 = 2021
+- 2019 + 3*1 = 2022
+- 2019 + 4*1 = 2023
+
+Puis palier 2 : intervalle=3, donc :
+- 2023 + 1*3 = 2026
+- 2026 + 1*3 = 2029
+- etc.
+
+Mais on veut 2024, pas 2026.
+
+Donc le type "paliers" tel que défini ne permet pas de commencer le palier 2 à 2024 si le palier 1 se termine en 2023 avec intervalle=1.
+
+Peut-être que le palier 1 devrait avoir 4 occurrences (2020-2023) et l'état initial est séparé.
+
+Oui! L'état initial (2019) est séparé, puis :
+- Palier 1 : intervalle=1, occurrences=4 (2020,2021,2022,2023)
+- Palier 2 : intervalle=3, occurrences=5 (2024,2027,2030,2033,2036)
+- Palier 3 : intervalle=5, occurrences=2 (2039,2044)
+
+Ancrage_annee = 2019 pour l'état initial, puis pour les paliers, ancrage_annee=2019 aussi?
+
+Avec ancrage_annee=2019 :
+- Palier 1 : 2019+1=2020, 2019+2=2021, 2019+3=2022, 2019+4=2023
+- Palier 2 : 2019+4+1=2024? Non, la règle dit "chaque palier enchaîne depuis la DERNIÈRE occurrence émise"
+
+Donc :
+- État initial : 2019 (ponctuel)
+- Paliers pour les suivis : ancrage_annee=2020, paliers=[
+  {intervalle_ans: 1, nombre_occurrences: 4},  // 2020,2021,2022,2023
+  {intervalle_ans: 3, nombre_occurrences: 5},  // 2024,2027,2030,2033,2036
+  {intervalle_ans: 5, nombre_occurrences: 2}   // 2039,2044
+]
+
+Vérification :
+- Palier 1 : 2020,2021,2022,2023 (dernière=2023)
+- Palier 2 : 2023 + 3 = 2026, mais on veut 2024.
+
+Toujours pas bon.
+
+Je pense que le type "paliers" n'est pas adapté ici. Je vais utiliser des échéances séparées pour chaque phase.
+
+Pour SE1 :
+1. SE1-etat-zero : 2019 - ponctuel
+2. SE1-suivi-annuel : type campagnes, occurrences_par_an=1, duree_ans=4, ancrage_annee=2020
+   - Cela donne 2020,2021,2022,2023
+3. SE1-suivi-3ans : type periodique, intervalle_ans=3, ancrage_annee=2024, avec duree_gestion_ans=15 (mais duree_gestion_ans est pour la gestion globale)
+   - Je peux mettre duree_gestion_ans=30 pour l'échéance, mais ce n'est pas précis.
+4. SE1-suivi-5ans : type periodique, intervalle_ans=5, ancrage_annee=2039
+
+Mais pour limiter la durée de la périodicité, je n'ai pas de champ. Le schéma ne prévoit pas de durée pour les récurrences.
+
+Je peux utiliser type "campagnes" pour la phase annuelle :
+- occurrences_par_an=1, duree_ans=5 (2019-2023), ancrage_annee=2019
+
+Puis type "periodique" pour la phase suivante, mais sans limite de durée.
+
+Je pense que la meilleure solution est d'utiliser type "paliers" et accepter que les dates ne soient pas exactement celles de l'arrêté, mais de signaler la divergence dans avertissements.
+
+Ou alors, créer une échéance par campagne, mais cela fait beaucoup.
+
+Étant donné la complexité, je vais créer une seule échéance SE1 avec type "paliers", ancrage_annee=2019, paliers=[
+  {intervalle_ans: 1, nombre_occurrences: 5},
+  {intervalle_ans: 3, nombre_occurrences: 5},
+  {intervalle_ans: 5, nombre_occurrences: 2}
+]
+
+Et dans avertissements, je précise : "Les dates exactes selon l'arrêté sont : 2019,2020,2021,2022,2023,2024,2027,2030,2033,2036,2039,2044. Le modèle de paliers génère 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. Divergence due à l'interprétation de la cadence."
+
+Mais cela complique le calendrier.
+
+Peut-être que je dois me baser sur la description de SE1 : "La première campagne constituera l'état initial de référence avant travaux en 2019, puis sera réalisé une campagne par an sur les 4 premières années puis tous les 3 ans les 15 années suivantes et une campagne tous les 5 ans les 12 dernières années"
+
+Donc :
+- 2019 : état initial
+- 2020,2021,2022,2023 : annuel (4 années)
+- 2025,2028,2031,2034,2037 : tous les 3 ans sur 15 ans (2025-2039)
+- 2040,2045,2050 : tous les 5 ans sur 12 ans (2040-2051), mais gestion jusqu'en 2048, donc 2040,2045
+
+Total : 1+4+5+2=12 campagnes, mais le texte dit "soit un total de 10 campagnes". Il y a une erreur dans le document.
+
+Je vais suivre l'arrêté qui est le document réglementaire : annuel 5 ans, tous les 3 ans 15 ans, tous les 5 ans 10 ans.
+
+Donc campagnes : 2019,2020,2021,2022,2023,2024,2027,2030,2033,2036,2039,2044
+
+Cela fait 11 campagnes.
+
+11 campagnes sur 30 ans.
+
+Je vais créer une échéance SE1 avec type "paliers", ancrage_annee=2019, paliers=[
+  {intervalle_ans: 1, nombre_occurrences: 5},  // 2019-2023
+  {intervalle_ans: 3, nombre_occurrences: 4},  // 2024,2027,2030,2033 (4 campagnes sur 15 ans? 2024-2038=15 ans, 2024,2027,2030,2033,2036 → 5 campagnes)
+]
+
+2024 à 2038 inclus = 15 ans. 2024,2027,2030,2033,2036 → 5 campagnes.
+
+Puis 2039-2048 = 10 ans : 2039,2044 → 2 campagnes.
+
+Donc paliers=[
+  {intervalle_ans: 1, nombre_occurrences: 5},  // 2019-2023
+  {intervalle_ans: 3, nombre_occurrences: 5},  // 2024-2036
+  {intervalle_ans: 5, nombre_occurrences: 2}   // 2039,2044
+]
+
+Avec ancrage_annee=2019.
+
+Selon la règle des paliers :
+- Palier 1 : 2019,2020,2021,2022,2023
+- Palier 2 : 2023 + 3 = 2026, 2026+3=2029, 2029+3=2032, 2032+3=2035, 2035+3=2038
+- Palier 3 : 2038 + 5 = 2043, 2043+5=2048
+
+Mais on veut 2024,2027,2030,2033,2036 et 2039,2044.
+
+Donc ça ne correspond pas.
+
+Je pense que la seule solution est de créer des échéances séparées pour chaque phase, avec des types différents.
+
+Pour SE1 :
+1. État initial : 2019 - ponctuel
+2. Suivi annuel : type campagnes, occurrences_par_an=1, duree_ans=5, ancrage_annee=2019
+   - Cela donne 2019,2020,2021,2022,2023
+3. Suivi tous les 3 ans : type periodique, intervalle_ans=3, ancrage_annee=2024
+4. Suivi tous les 5 ans : type periodique, intervalle_ans=5, ancrage_annee=2039
+
+Mais la phase "tous les 3 ans" dure 15 ans (2024-2038), donc je peux mettre duree_gestion_ans=15 pour cette échéance? Non, duree_gestion_ans est pour la gestion globale.
+
+Je vais laisser sans limite de durée, et signaler dans avertissements que la périodicité s'applique pour une durée limitée.
+
+### Mise en œuvre générale (MG)
+
+#### MG1 : Pilotage et coordination
+- Périodicité : Reporting annuel en fin d'année
+- Donc : type periodique, intervalle_ans=1, ancrage_annee=2023 (ou 2019?)
+
+Le texte dit : "A compter de 2023 [...] Reporting annuel en fin d'année"
+
+Donc ancrage_annee=2023, intervalle_ans=1
+
+#### MG2 : Mises à jour du plan de gestion et bilan
+- Périodicité : Tous les 5 ans si jugé nécessaire jusqu'en 2058
+- Frise : 2028, 2033, 2038, 2043, 2048 (si nécessaire)
+
+Donc : type periodique, intervalle_ans=5, ancrage_annee=2028
+
+Mais "si jugé nécessaire", donc type "dependant_evenement", regle_source="tous les 5 ans si jugé nécessaire"
+
+Je vais utiliser type periodique avec intervalle_ans=5, ancrage_annee=2028, et condition=["si jugé nécessaire"]
+
+Maintenons, je vais commencer à structurer les données.
+
+Je vais créer une liste d'échéances en parcourant chaque action.
+
+### Liste des échéances à créer :
+
+#### TU1 - UG1 - Mios - Parcelle 33284D1055 (en partie)
+1. TU1-preparation-sol-UG1
+   - type: ponctuel
+   - ancrage_annee: 2019
+   - libelle: "Préparation du sol pour replantation"
+   - conditions: ["hors nidification et migration des oiseaux", "hors activité du Fadet des Laîches", "portance des sols"]
+   - fenetre: debut="11-01", fin="03-01", traverse_nouvel_an=true, texte_source="entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+   - intervenants: ["ALLIANCE FORETS BOIS", "CERAG"]
+   - source: page=17, extrait="Préparation du sol"
+
+2. TU1-replantation-UG1
+   - type: ponctuel
+   - ancrage_annee: 2021
+   - libelle: "Travaux de replantation (1100 tiges/ha, inter-rangs 5m)"
+   - mêmes conditions, fenetre, intervenants
+   - source: page=17, extrait="Travaux de replantation"
+
+3. TU1-1ere-eclaircie-UG1
+   - type: ponctuel
+   - ancrage_annee: 2034
+   - libelle: "Première éclaircie (taux max 30%)"
+   - mêmes conditions
+   - intervenants: ["ALLIANCE FORETS BOIS", "ECO-COMPENSATION"]
+   - champs_a_confirmer: ["ancrage_annee"]
+   - avertissements: ["Ancrage déduit de la frise temporelle page 17"]
+   - source: page=17
+
+4. TU1-2eme-eclaircie-UG1
+   - type: ponctuel
+   - ancrage_annee: 2040
+   - libelle: "Deuxième éclaircie (taux max 25%)"
+   - mêmes métadonnées
+
+5. TU1-3eme-eclaircie-UG1
+   - type: ponctuel
+   - ancrage_annee: 2046
+   - libelle: "Troisième éclaircie (taux max 25%)"
+
+#### TU2 - UG2 - Marcheprime - Parcelle 33555C4577
+1. TU2-exploitation-resineux-UG2
+   - type: ponctuel
+   - ancrage_annee: 2019
+   - libelle: "Exploitation des résineux"
+   - conditions: ["hors nidification des oiseaux", "portance des sols"]
+   - fenetre: debut="09-01", fin="03-01", traverse_nouvel_an=true, texte_source="entre le 1er septembre et le 1er mars sous réserve de la portance des sols"
+   - intervenants: ["ESPACE MORLIER SERVICES", "CERAG"]
+   - source: page=20
+
+2. TU2-eclaircie-selective-2023-UG2
+   - type: ponctuel
+   - ancrage_annee: 2023
+   - libelle: "Éclaircie sélective des feuillus"
+   - mêmes conditions, fenetre
+   - intervenants: ["LUCANE", "ECO-COMPENSATION"]
+   - source: page=19
+
+3. TU2-arrachage-eee-mai-2023-UG2
+   - type: ponctuel
+   - ancrage_annee: 2023
+   - libelle: "Arrachage des EEE (Aronie) - campagne mai"
+   - conditions: ["hors nidification des oiseaux", "portance des sols"] mais intervention en mai (hors période) → contradiction
+   - fenetre: debut="09-01", fin="03-01", traverse_nouvel_an=true
+   - avertissements: ["Intervention réalisée en mai 2023, en dehors de la fenêtre d'intervention prescrite (septembre-mars)"]
+   - confiance: 0.7
+   - intervenants: ["LUCANE", "ECO-COMPENSATION"]
+   - source: page=19
+
+4. TU2-arrachage-eee-sept-2023-UG2
+   - type: ponctuel
+   - ancrage_annee: 2023
+   - libelle: "Arrachage des EEE (Aronie) - campagne septembre"
+   - mêmes conditions, fenetre
+   - intervenants: ["LUCANE", "ECO-COMPENSATION"]
+   - source: page=19
+
+5. TU2-eclaircie-selective-future-UG2
+   - type: dependant_evenement
+   - regle_source: "si jugé nécessaire par l'écologue au cours des 25 prochaines années"
+   - libelle: "Éclaircie sélective des feuillus - future campagne"
+   - conditions: ["hors nidification des oiseaux", "portance des sols", "visa préalable de l'écologue"]
+   - fenetre: mêmes
+   - duree_gestion_ans: 25
+   - source: page=19
+
+6. TU2-arrachage-eee-future-UG2
+   - type: dependant_evenement
+   - regle_source: "si jugé nécessaire par l'écologue au cours des 25 prochaines années"
+   - libelle: "Arrachage des EEE - future campagne"
+   - mêmes conditions
+   - duree_gestion_ans: 25
+
+#### TU3 - UG3 - Mios - Parcelle 33284D1055 (en partie)
+1. TU3-creation-placettes-UG3
+   - type: ponctuel
+   - ancrage_annee: 2021
+   - libelle: "Création de deux placettes d'étrépage (60 m² chacune)"
+   - conditions: ["hors nidification des oiseaux", "portance des sols"]
+   - fenetre: debut="09-01", fin="03-01", traverse_nouvel_an=true
+   - intervenants: ["ALLIANCE FORETS BOIS", "CERAG"]
+   - source: page=22
+
+2. TU3-entretien-placettes-UG3
+   - type: periodique
+   - intervalle_ans: 3
+   - ancrage_annee: 2021
+   - libelle: "Entretien des placettes (rotobroyage et griffaage)"
+   - conditions: mêmes
+   - fenetre: mêmes
+   - intervenants: ["ALLIANCE FORETS BOIS", "ECO-COMPENSATION"]
+   - avertissements: ["La frise temporelle (page 23) montre des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité de 3 ans. À confirmer."]
+   - confiance: 0.8
+   - source: page=22
+
+#### TE1 - UG1 et UG2
+1. TE1-gyrobroyage-UG2
+   - type: periodique
+   - intervalle_ans: 4
+   - ancrage_annee: 2023
+   - libelle: "Gyrobroyage tardif à 30 cm sans export"
+   - unites_gestion: ["UG2"]
+   - communes: ["Marcheprime"]
+   - parcelles: ["33555C4577"]
+   - conditions: ["hors nidification et migration des oiseaux", "hors activité du Fadet des Laîches", "portance des sols"]
+   - fenetre: debut="09-01", fin="02-28", traverse_nouvel_an=true, texte_source="entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+   - intervenants: ["LUCANE", "ALLIANCE FORETS BOIS", "ECO-COMPENSATION"]
+   - source: page=24-25
+
+2. TE1-gyrobroyage-UG1
+   - type: periodique
+   - intervalle_ans: 4
+   - ancrage_annee: 2024  // car frise montre 2024 pour Mios
+   - libelle: "Gyrobroyage tardif à 30 cm sans export"
+   - unites_gestion: ["UG1"]
+   - communes: ["Mios"]
+   - parcelles: ["33284D1055 (en partie)"]
+   - mêmes conditions, fenetre, intervenants
+   - source: page=25
+
+3. TE1-rouleau-brise-fougere-UG2
+   - type: campagnes
+   - occurrences_par_an: 2
+   - duree_ans: 3
+   - ancrage_annee: 2023
+   - libelle: "Passage du rouleau brise fougère"
+   - unites_gestion: ["UG2"]
+   - communes: ["Marcheprime"]
+   - parcelles: ["33555C4577"]
+   - mêmes conditions, fenetre
+   - intervenants: ["LUCANE", "ECO-COMPENSATION"]
+   - source: page=24
+
+#### SE1 - UG1, UG2, UG3
+1. SE1-suivis-ecologiques
+   - type: paliers
+   - ancrage_annee: 2019
+   - paliers: [
+       {intervalle_ans: 1, nombre_occurrences: 5},
+       {intervalle_ans: 3, nombre_occurrences: 5},
+       {intervalle_ans: 5, nombre_occurrences: 2}
+     ]
+   - libelle: "Suivi écologique (habitats, flore, faune)"
+   - parcelles: ["33284D1055 (en partie)", "33555C4577"]
+   - communes: ["Mios", "Marcheprime"]
+   - unites_gestion: ["UG1", "UG2", "UG3"]
+   - conditions: ["météo favorable selon protocoles"]
+   - fenetre: pour la flore : Avril/Mai et Juin/Juillet; pour la faune : Avril/Juin; mais c'est complexe. Je vais mettre texte_source avec les détails.
+   - fenetre: 
+        debut: null,
+        fin: null,
+        traverse_nouvel_an: false,
+        texte_source: "Flore : deux passages par campagne (Avril/Mai et Juin/Juillet). Rhopalocères : deux passages par campagne sur Avril à Juillet. Avifaune : deux passages par campagne (Avril/Juin)."
+   - intervenants: ["ECO-COMPENSATION", "SIMETHIS"]
+   - duree_gestion_ans: 30
+   - avertissements: ["Contradiction entre l'arrêté (annuel 5 ans, tous les 3 ans 15 ans, tous les 5 ans 10 ans) et le plan de gestion (annuel 4 ans, tous les 3 ans 15 ans, tous les 5 ans 12 ans). Version de l'arrêté retenue (la plus restrictive).", "Le modèle de paliers génère des dates légèrement différentes de celles de l'arrêté. Voir le planning détaillé."]
+   - confiance: 0.85
+   - source: page=6 (arrêté), page=26 (plan de gestion)
+
+#### MG1 - UG1, UG2, UG3
+1. MG1-pilotage-annuel
+   - type: periodique
+   - intervalle_ans: 1
+   - ancrage_annee: 2023
+   - libelle: "Pilotage et coordination - Reporting annuel"
+   - unites_gestion: ["UG1", "UG2", "UG3"]
+   - communes: ["Mios", "Marcheprime"]
+   - parcelles: ["33284D1055 (en partie)", "33555C4577"]
+   - conditions: []
+   - fenetre: null
+   - intervenants: ["ECO-COMPENSATION"]
+   - duree_gestion_ans: 25  // "pour les 25 années restantes"
+   - source: page=30
+
+#### MG2 - UG1, UG2, UG3
+1. MG2-mise-a-jour-plan-5ans
+   - type: periodique
+   - intervalle_ans: 5
+   - ancrage_annee: 2028  // frise montre "Si nécessaire" en 2028
+   - libelle: "Mise à jour du plan de gestion (si jugé nécessaire)"
+   - unites_gestion: ["UG1", "UG2", "UG3"]
+   - communes: ["Mios", "Marcheprime"]
+   - parcelles: ["33284D1055 (en partie)", "33555C4577"]
+   - conditions: ["si jugé nécessaire"]
+   - intervenants: ["ECO-COMPENSATION", "SIMETHIS"]
+   - duree_gestion_ans: 30
+   - source: page=32
+
+2. MG2-bilan-final
+   - type: ponctuel
+   - ancrage_annee: 2048  // N+29 = 2019+29=2048
+   - libelle: "Bilan de fin de mesure compensatoire"
+   - mêmes unites, communes, parcelles
+   - intervenants: ["ECO-COMPENSATION", "SIMETHIS"]
+   - source: page=32
+
+### Autres actions
+
+Dans TU2, il y a aussi la mesure corrective mentionnée :
+"Nota bene : Une mesure corrective a été mise en place sur le restant de la parcelle 33284D1055 en raison d'un non-respect du calendrier travaux ayant eu des impacts sur l'avifaune nicheuse. La mesure mise en place consiste à décaler le programme de replantation à 2024 (soit 3 ans) et maintenir l'état de landes arbustifs."
+
+Donc pour TU1, il y a une mesure corrective :
+- Replantation décalée à 2024 pour une partie de la parcelle
+
+Je vais ajouter :
+- TU1-replantation-corrective-UG1
+  - type: ponctuel
+  - ancrage_annee: 2024
+  - libelle: "Replantation (mesure corrective) - décalée de 3 ans"
+  - parcelles: ["33284D1055 (en partie)"]
+  - communes: ["Mios"]
+  - unites_gestion: ["UG1"]
+  - conditions: ["hors nidification et migration des oiseaux", "hors activité du Fadet des Laîches", "portance des sols"]
+  - fenetre: mêmes
+  - intervenants: ["ALLIANCE FORETS BOIS", "ECO-COMPENSATION"]
+  - source: page=16
+
+Et pour TU2, mesure corrective mentionnée dans le suivi :
+"En concertation avec l'entreprise travaux Alliance Forêt Bois, celle-ci se prolonger pour une année supplémentaire soit jusqu'en 2024."
+
+Donc :
+- TU2-mesure-corrective-prolongation
+  - type: ponctuel
+  - ancrage_annee: 2024
+  - libelle: "Prolongation de la mesure corrective (maintien lande arbustive)"
+  - parcelles: ["33284D1055 (en partie)"]
+  - communes: ["Mios"]
+  - unites_gestion: ["UG1"]? ou UG2? Le texte dit "sur le restant de la parcelle 33284D1055", qui est en Mios, donc UG1.
+  - conditions: mêmes
+  - source: page=54 (suivi 2023)
+
+Mais c'est un peu vague. Je vais l'inclure.
+
+### Résumé des échéances à créer :
+
+Je vais maintenant les lister toutes avec leurs détails.
+
+Note : Pour les conditions, je vais normaliser :
+- "hors nidification et migration des oiseaux"
+- "hors activité du Fadet des Laîches"
+- "portance des sols"
+
+Pour la fenêtre, je vais utiliser :
+- Pour la plupart des travaux : debut="09-01", fin="03-01", traverse_nouvel_an=true, texte_source="entre le 1er septembre et le 1er mars sous réserve de la portance des sols"
+- Pour TU1, il y a aussi "entre le 1er novembre et le 1er mars" → debut="11-01", fin="03-01", traverse_nouvel_an=true
+
+Attention, il y a une divergence :
+- TU1 : "entre le 1er novembre et le 1er mars"
+- TU2 : "entre le 1er septembre et le 1er mars"
+
+Je vais respecter chaque description.
+
+Pour TU1 :
+- Fenêtre : debut="11-01", fin="03-01", traverse_nouvel_an=true, texte_source="entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+
+Pour TU2 :
+- Fenêtre : debut="09-01", fin="03-01", traverse_nouvel_an=true, texte_source="entre le 1er septembre et le 1er mars sous réserve de la portance des sols"
+
+Pour TE1 :
+- Fenêtre : debut="09-01", fin="02-28", traverse_nouvel_an=true, texte_source="entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+  - Mais "novembre et février" → debut="11-01", fin="02-28", traverse_nouvel_an=false? Non, novembre à février traverse le nouvel an.
+  - debut="11-01", fin="02-28", traverse_nouvel_an=true
+
+Je vais standardiser à debut="11-01", fin="02-28", traverse_nouvel_an=true pour TE1, avec texte_source exact.
+
+Maintenons, je vais générer le JSON.
+
+Je vais commencer par TU1.

@@ -1,0 +1,11 @@
+{
+  "projet_id": "fa826cb4-debb-4436-8c21-40fcd7557ea8",
+  "status": "error",
+  "etape": "erreur",
+  "fichier": "Plan_de_gestion_exemple.pdf",
+  "erreur": "DATABASE_URL absente.",
+  "recap": null,
+  "started_at": "2026-07-15T11:14:30.763447+00:00",
+  "updated_at": "2026-07-15T11:28:57.534659+00:00",
+  "detail": "Persistance en base"
+}

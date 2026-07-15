@@ -1,0 +1,2378 @@
+{
+  "occurrences": [
+    {
+      "echeance_cle": "TU1-preparation-sol-UG1-2019",
+      "annee": 2019,
+      "code": "TU 1",
+      "titre": "Préparation du sol pour replantation (labour uniquement sur lignes de plantation, 2m de large)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 11,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU1-replantation-2021-UG1",
+      "annee": 2021,
+      "code": "TU 1",
+      "titre": "Travaux de replantation (1 100 tiges/ha, inter-rangs de 5 m, broyage lourd uniquement sur lignes de plantation)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 11,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU1-replantation-corrective-2024-UG1",
+      "annee": 2024,
+      "code": "TU 1",
+      "titre": "Replantation (mesure corrective) - décalée de 3 ans pour partie de la parcelle 33284D1055",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 11,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU1-1ere-eclaircie-2034-UG1",
+      "annee": 2034,
+      "code": "TU 1",
+      "titre": "Première éclaircie (taux de prélèvement maximal de 30 %)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 11,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": [
+        "Ancrage déduit de la frise temporelle page 17. La description indique 'entre 12 et 15 ans après plantation (2021)', soit entre 2033 et 2036. La frise indique 2034."
+      ]
+    },
+    {
+      "echeance_cle": "TU1-degagement-manuel-UG1",
+      "annee": 2021,
+      "code": "TU 1",
+      "titre": "Dégagement manuel sur ligne de plantation (optionnel, si concurrence de la végétation trop forte sur les Pins) (×1/an)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 11,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Action optionnelle, conditionnée par l'état du peuplement."
+      ]
+    },
+    {
+      "echeance_cle": "TU1-degagement-manuel-UG1",
+      "annee": 2022,
+      "code": "TU 1",
+      "titre": "Dégagement manuel sur ligne de plantation (optionnel, si concurrence de la végétation trop forte sur les Pins) (×1/an)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 11,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Action optionnelle, conditionnée par l'état du peuplement."
+      ]
+    },
+    {
+      "echeance_cle": "TU1-degagement-manuel-UG1",
+      "annee": 2023,
+      "code": "TU 1",
+      "titre": "Dégagement manuel sur ligne de plantation (optionnel, si concurrence de la végétation trop forte sur les Pins) (×1/an)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 11,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Action optionnelle, conditionnée par l'état du peuplement."
+      ]
+    },
+    {
+      "echeance_cle": "TU2-exploitation-resineux-2019-UG2",
+      "annee": 2019,
+      "code": "TU 2",
+      "titre": "Exploitation des résineux (abattage pour favoriser les milieux landicoles humides)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU2-eclaircie-selective-2023-UG2",
+      "annee": 2023,
+      "code": "TU 2",
+      "titre": "Éclaircie sélective des feuillus",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU2-arrachage-eee-mai-2023-UG2",
+      "annee": 2023,
+      "code": "TU 2",
+      "titre": "Arrachage manuel des foyers d'Aronie à feuilles d'Arbousier (campagne de mai)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.7,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Intervention réalisée en mai 2023, en dehors de la fenêtre d'intervention prescrite (septembre-mars). Contradiction avec les conditions générales."
+      ]
+    },
+    {
+      "echeance_cle": "TU2-arrachage-eee-sept-2023-UG2",
+      "annee": 2023,
+      "code": "TU 2",
+      "titre": "Arrachage manuel des foyers d'Aronie à feuilles d'Arbousier (campagne de septembre)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU2-mesure-corrective-prolongation-2024-UG1",
+      "annee": 2024,
+      "code": "TU 2",
+      "titre": "Prolongation de la mesure corrective (maintien de l'état de landes arbustifs sur restant de parcelle 33284D1055)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 11,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Mesure corrective liée à un non-respect du calendrier travaux ayant eu des impacts sur l'avifaune nicheuse (2021-2023)."
+      ]
+    },
+    {
+      "echeance_cle": "TU3-creation-placettes-2021-UG3",
+      "annee": 2021,
+      "code": "TU 3",
+      "titre": "Création de deux placettes d'étrépage (60 m² chacune, <30 cm de profondeur)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-placettes-UG3",
+      "annee": 2021,
+      "code": "TU 3",
+      "titre": "Entretien des placettes d'étrépage (rotobroyage et griffaage)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise temporelle page 23 indique des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité stricte de 3 ans. À confirmer avec l'écologue."
+      ]
+    },
+    {
+      "echeance_cle": "TU3-entretien-placettes-UG3",
+      "annee": 2024,
+      "code": "TU 3",
+      "titre": "Entretien des placettes d'étrépage (rotobroyage et griffaage)",
+      "categorie": "TU",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise temporelle page 23 indique des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité stricte de 3 ans. À confirmer avec l'écologue."
+      ]
+    },
+    {
+      "echeance_cle": "TU3-entretien-placettes-UG3",
+      "annee": 2027,
+      "code": "TU 3",
+      "titre": "Entretien des placettes d'étrépage (rotobroyage et griffaage)",
+      "categorie": "TU",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise temporelle page 23 indique des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité stricte de 3 ans. À confirmer avec l'écologue."
+      ]
+    },
+    {
+      "echeance_cle": "TU3-entretien-placettes-UG3",
+      "annee": 2030,
+      "code": "TU 3",
+      "titre": "Entretien des placettes d'étrépage (rotobroyage et griffaage)",
+      "categorie": "TU",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise temporelle page 23 indique des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité stricte de 3 ans. À confirmer avec l'écologue."
+      ]
+    },
+    {
+      "echeance_cle": "TU3-entretien-placettes-UG3",
+      "annee": 2033,
+      "code": "TU 3",
+      "titre": "Entretien des placettes d'étrépage (rotobroyage et griffaage)",
+      "categorie": "TU",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise temporelle page 23 indique des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité stricte de 3 ans. À confirmer avec l'écologue."
+      ]
+    },
+    {
+      "echeance_cle": "TU3-entretien-placettes-UG3",
+      "annee": 2036,
+      "code": "TU 3",
+      "titre": "Entretien des placettes d'étrépage (rotobroyage et griffaage)",
+      "categorie": "TU",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise temporelle page 23 indique des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité stricte de 3 ans. À confirmer avec l'écologue."
+      ]
+    },
+    {
+      "echeance_cle": "TU3-entretien-placettes-UG3",
+      "annee": 2039,
+      "code": "TU 3",
+      "titre": "Entretien des placettes d'étrépage (rotobroyage et griffaage)",
+      "categorie": "TU",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise temporelle page 23 indique des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité stricte de 3 ans. À confirmer avec l'écologue."
+      ]
+    },
+    {
+      "echeance_cle": "TU3-entretien-placettes-UG3",
+      "annee": 2042,
+      "code": "TU 3",
+      "titre": "Entretien des placettes d'étrépage (rotobroyage et griffaage)",
+      "categorie": "TU",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise temporelle page 23 indique des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité stricte de 3 ans. À confirmer avec l'écologue."
+      ]
+    },
+    {
+      "echeance_cle": "TU3-entretien-placettes-UG3",
+      "annee": 2045,
+      "code": "TU 3",
+      "titre": "Entretien des placettes d'étrépage (rotobroyage et griffaage)",
+      "categorie": "TU",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise temporelle page 23 indique des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité stricte de 3 ans. À confirmer avec l'écologue."
+      ]
+    },
+    {
+      "echeance_cle": "TU3-entretien-placettes-UG3",
+      "annee": 2048,
+      "code": "TU 3",
+      "titre": "Entretien des placettes d'étrépage (rotobroyage et griffaage)",
+      "categorie": "TU",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.8,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise temporelle page 23 indique des renouvellements en 2024 et 2037, ce qui ne correspond pas à une périodicité stricte de 3 ans. À confirmer avec l'écologue."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG2",
+      "annee": 2023,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG2 - Marcheprime)",
+      "categorie": "TE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2023, 2027, 2031 pour Marcheprime, ce qui correspond à un intervalle de 4 ans (2023→2027)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG2",
+      "annee": 2027,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG2 - Marcheprime)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2023, 2027, 2031 pour Marcheprime, ce qui correspond à un intervalle de 4 ans (2023→2027)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG2",
+      "annee": 2031,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG2 - Marcheprime)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2023, 2027, 2031 pour Marcheprime, ce qui correspond à un intervalle de 4 ans (2023→2027)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG2",
+      "annee": 2035,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG2 - Marcheprime)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2023, 2027, 2031 pour Marcheprime, ce qui correspond à un intervalle de 4 ans (2023→2027)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG2",
+      "annee": 2039,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG2 - Marcheprime)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2023, 2027, 2031 pour Marcheprime, ce qui correspond à un intervalle de 4 ans (2023→2027)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG2",
+      "annee": 2043,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG2 - Marcheprime)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2023, 2027, 2031 pour Marcheprime, ce qui correspond à un intervalle de 4 ans (2023→2027)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG2",
+      "annee": 2047,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG2 - Marcheprime)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2023, 2027, 2031 pour Marcheprime, ce qui correspond à un intervalle de 4 ans (2023→2027)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG1",
+      "annee": 2024,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG1 - Mios)",
+      "categorie": "TE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2024, 2028, 2032 pour Mios, ce qui correspond à un intervalle de 4 ans (2024→2028)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG1",
+      "annee": 2028,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG1 - Mios)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2024, 2028, 2032 pour Mios, ce qui correspond à un intervalle de 4 ans (2024→2028)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG1",
+      "annee": 2032,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG1 - Mios)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2024, 2028, 2032 pour Mios, ce qui correspond à un intervalle de 4 ans (2024→2028)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG1",
+      "annee": 2036,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG1 - Mios)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2024, 2028, 2032 pour Mios, ce qui correspond à un intervalle de 4 ans (2024→2028)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG1",
+      "annee": 2040,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG1 - Mios)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2024, 2028, 2032 pour Mios, ce qui correspond à un intervalle de 4 ans (2024→2028)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG1",
+      "annee": 2044,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG1 - Mios)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2024, 2028, 2032 pour Mios, ce qui correspond à un intervalle de 4 ans (2024→2028)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-UG1",
+      "annee": 2048,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export (UG1 - Mios)",
+      "categorie": "TE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 25 montre des interventions en 2024, 2028, 2032 pour Mios, ce qui correspond à un intervalle de 4 ans (2024→2028)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-rouleau-brise-fougere-UG2",
+      "annee": 2023,
+      "code": "TE 1",
+      "titre": "Passage du rouleau brise-fougère (2 campagnes/an pendant 3 ans - Marcheprime) (×2/an)",
+      "categorie": "TE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Campagnes réalisées en mai et septembre 2023 (page 19), dont mai est en dehors de la fenêtre prescrite (septembre-mars)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-rouleau-brise-fougere-UG2",
+      "annee": 2024,
+      "code": "TE 1",
+      "titre": "Passage du rouleau brise-fougère (2 campagnes/an pendant 3 ans - Marcheprime) (×2/an)",
+      "categorie": "TE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Campagnes réalisées en mai et septembre 2023 (page 19), dont mai est en dehors de la fenêtre prescrite (septembre-mars)."
+      ]
+    },
+    {
+      "echeance_cle": "TE1-rouleau-brise-fougere-UG2",
+      "annee": 2025,
+      "code": "TE 1",
+      "titre": "Passage du rouleau brise-fougère (2 campagnes/an pendant 3 ans - Marcheprime) (×2/an)",
+      "categorie": "TE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Campagnes réalisées en mai et septembre 2023 (page 19), dont mai est en dehors de la fenêtre prescrite (septembre-mars)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2019,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2020,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2021,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2022,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2023,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2024,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2027,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2030,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2033,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2036,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2039,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2044,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-ecologiques-paliers",
+      "annee": 2049,
+      "code": "SE 1",
+      "titre": "Suivi écologique des habitats naturels, de la flore et de la faune",
+      "categorie": "SE",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Contradiction entre l'arrêté (page 6 : annuel 5 ans / tous les 3 ans 15 ans / tous les 5 ans 10 ans) et le plan de gestion (page 26 : annuel 4 ans / tous les 3 ans 15 ans / tous les 5 ans 12 ans). Version de l'arrêté retenue comme la plus restrictive.",
+        "Le modèle de paliers génère les dates suivantes : 2019,2020,2021,2022,2023,2026,2029,2032,2035,2038,2043,2048. L'arrêté implique plutôt : 2019-2023 (annuel), 2024,2027,2030,2033,2036 (tous les 3 ans), 2039,2044 (tous les 5 ans)."
+      ]
+    },
+    {
+      "echeance_cle": "SE1-suivis-correctifs-2024-UG1",
+      "annee": 2024,
+      "code": "SE 1",
+      "titre": "Suivi écologique incluant la mesure corrective (parcelle 33284D1055) jusqu'en 2024",
+      "categorie": "SE",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Cette échéance complémentaire couvre le suivi spécifique de la mesure corrective (2021-2024) sur la parcelle 33284D1055."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2023,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2024,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2025,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2026,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2027,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2028,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2029,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2030,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2031,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2032,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2033,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2034,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2035,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2036,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2037,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2038,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2039,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2040,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2041,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2042,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2043,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2044,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2045,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2046,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2047,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2048,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2049,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination - Reporting annuel (tableau de bord)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Sous réserve d'un renouvellement de contrat tous les 5 ans (page 5)."
+      ]
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2023,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2024,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2025,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2026,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2027,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2028,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2029,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2030,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2031,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2032,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2033,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2034,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2035,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2036,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2037,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2038,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2039,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2040,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2041,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2042,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2043,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2044,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2045,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2046,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2047,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2048,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-geomce",
+      "annee": 2049,
+      "code": "MG 1",
+      "titre": "Fourniture des informations pour l'outil national GéoMCE",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.85,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-plan-5ans",
+      "annee": 2028,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion (si jugé nécessaire)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 32 indique des mises à jour 'si nécessaire' en 2028, 2033, 2038, 2043, 2048. L'ancrage 2028 est déduit de la frise."
+      ]
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-plan-5ans",
+      "annee": 2033,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion (si jugé nécessaire)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 32 indique des mises à jour 'si nécessaire' en 2028, 2033, 2038, 2043, 2048. L'ancrage 2028 est déduit de la frise."
+      ]
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-plan-5ans",
+      "annee": 2038,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion (si jugé nécessaire)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 32 indique des mises à jour 'si nécessaire' en 2028, 2033, 2038, 2043, 2048. L'ancrage 2028 est déduit de la frise."
+      ]
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-plan-5ans",
+      "annee": 2043,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion (si jugé nécessaire)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 32 indique des mises à jour 'si nécessaire' en 2028, 2033, 2038, 2043, 2048. L'ancrage 2028 est déduit de la frise."
+      ]
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-plan-5ans",
+      "annee": 2048,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion (si jugé nécessaire)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "La frise page 32 indique des mises à jour 'si nécessaire' en 2028, 2033, 2038, 2043, 2048. L'ancrage 2028 est déduit de la frise."
+      ]
+    },
+    {
+      "echeance_cle": "MG2-bilan-final-2048",
+      "annee": 2048,
+      "code": "MG 2",
+      "titre": "Bilan de fin de mesure compensatoire (N+29)",
+      "categorie": "MG",
+      "statut": "planifie",
+      "ug_ids": [
+        "UG 1",
+        "UG 2",
+        "UG 3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "N+29 = 2019 + 29 = 2048. La gestion court sur 30 ans (2019-2048 inclus)."
+      ]
+    }
+  ],
+  "nb_non_placables": 5
+}

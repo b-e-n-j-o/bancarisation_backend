@@ -1,0 +1,226 @@
+Je dois extraire les métadonnées du dossier de compensation écologique à partir du plan de gestion fourni. Je vais analyser le document page par page pour identifier toutes les informations pertinentes.
+
+Commençons par les informations de base :
+
+1. **Nom de l'opération** : "OPERATION IMMOBILIERE « TESTEMAURE »" (page 1 et 4)
+2. **Maître d'ouvrage** : SARL PROMOBAT (pages 1, 4, 39)
+3. **Opérateur** : ECO-COMPENSATION (pages 1, 4, 5, 39)
+
+**Arrêté préfectoral** :
+- Numéro : "ARRETE DDEP N° 2018D/718 DU 28 JANVIER 2019" (page 1)
+- Mais aussi mentionné comme "arrêté DDEP n°DREAL/2018D/718 du 28 janvier 2019" (page 4)
+- Et "arrêté DDEP n°2022/05/12-062 du 28 janvier 2019" (page 6, 40) - il y a une incohérence ici
+- La date est cohérente : 28 janvier 2019
+
+**Communes** :
+- Marcheprime (page 1, 4)
+- Mios (page 4)
+
+**Horizon de gestion** :
+- Page 4 : "période 2019 à 2049 soit 30 ans"
+- Page 5 : "pour les 25 années restantes" (2023 à 2048)
+- Page 11 : "sur une durée minimum de 25 ans"
+- Page 17 : planning jusqu'à 2048
+- Page 32 : "jusqu'en 2058" (mais c'est pour les mises à jour)
+- Page 33 : "26 années restantes" (2023-2048 = 25 ans, mais 2023-2049 = 26 ans)
+
+Il y a des contradictions. La valeur la plus probable est 2019-2049 (30 ans) car c'est la mention la plus explicite et cohérente avec l'arrêté.
+
+**Espèces protégées ciblées** :
+- Rossolis intermédiaire (pages 4, 6, 9, 10)
+- Fadet des Laîches (pages 4, 6, 9, 10)
+- Tarier pâtre (pages 4, 6, 9, 10)
+
+**Espèces/habitats détruits** :
+- Station de Rossolis intermédiaire (10 pieds, 38 m linéaires)
+- 1 740 m² d'habitat de nidification pour le Tarier pâtre
+- 37 506 m² d'habitat d'espèces du Fadet des Laîches
+
+**Milieux cibles** :
+- Landes humides (pages 4, 11, 15)
+- Zones humides (implicite)
+- Landes méso-hygrophiles (page 54)
+- Landes à Molinie bleue (pages 51, 54)
+
+**Zones de compensation** :
+1. Zone n°1 : 9 250 m², Commune de Marcheprime, compensation Fadet des laîches
+2. Zone n°2 : 15 ha, Commune de Mios, compensation Fadet des laîches et Rossolis intermédiaire
+
+**Unités de gestion** :
+- UG 1 : Parcelle 33284D1055 (en partie) – commune de Mios
+- UG 2 : Parcelle 33555C4577 – commune de Marcheprime
+- UG 3 : Parcelle 33284D1055 (en partie) – commune de Mios (pour les zones d'étrépage)
+
+**Budget** :
+- Page 33 : "Le total des actions réparties sur 26 années restantes est estimé à 135 550,00 € hors taxes"
+- C'est le budget global HT
+
+**Type d'obligation** :
+- Compensation écologique au titre des espèces protégées (page 4)
+- Séquence ERC (Éviter, Réduire, Compenser)
+
+**Intervenants** :
+- ECO-COMPENSATION (opérateur)
+- SIMETHIS (bureau d'études)
+- ALLIANCE FORETS BOIS (travaux forestiers)
+- LUCANE (travaux forestiers)
+- CERAG (encadrement écologique, jusqu'en 2022)
+- ESPACE MORLIER SERVICES (travaux forestiers, jusqu'en 2022)
+
+**Dette écologique** :
+- Non explicitement mentionnée, mais on peut déduire qu'il s'agit de la compensation pour les espèces détruites
+
+**Confiance** :
+- Le document semble complet et détaillé, mais il y a des contradictions sur les dates et durées. Je vais mettre une confiance de 0.9
+
+**Avertissements** :
+- Incohérence sur le numéro d'arrêté : 2018D/718 vs 2022/05/12-062
+- Incohérence sur la durée : 30 ans (2019-2049) vs 25 ans (2023-2048) vs 26 ans
+- Incohérence sur la fin : 2048 vs 2049 vs 2058
+
+**Champs à confirmer** :
+- Numéro exact de l'arrêté
+- Durée exacte de la gestion
+- Date de fin exacte
+
+Maintenant, structurons tout cela en JSON :
+
+```json
+{
+  "dossier": {
+    "nom_operation": "Opération immobilière « Testemaure »",
+    "maitre_ouvrage": "SARL PROMOBAT",
+    "operateur": "ECO-COMPENSATION",
+    "communes": ["Marcheprime", "Mios"],
+    "arrete_numero": "DREAL/2018D/718",
+    "arrete_date": "28 janvier 2019",
+    "horizon": {
+      "annee_debut": 2019,
+      "annee_fin": 2049,
+      "duree_ans": 30,
+      "champs_a_confirmer": ["durée exacte (25 ou 30 ans)", "année de fin exacte (2048 ou 2049)"],
+      "avertissements": [
+        "Page 4: période 2019 à 2049 (30 ans)",
+        "Page 5: 25 années restantes (2023-2048)",
+        "Page 11: durée minimum de 25 ans",
+        "Page 32: jusqu'en 2058 pour les mises à jour",
+        "Page 33: 26 années restantes"
+      ]
+    },
+    "especes_protegees": ["Rossolis intermédiaire", "Fadet des Laîches", "Tarier pâtre"],
+    "especes_detruites": ["Rossolis intermédiaire", "Tarier pâtre", "Fadet des Laîches"],
+    "milieux_cibles": ["landes humides", "landes méso-hygrophiles", "landes à Molinie bleue", "zones humides"],
+    "zones": [
+      {
+        "nom": "Zone n°1",
+        "commune": "Marcheprime",
+        "superficie": "9 250 m²",
+        "especes_cibles": ["Fadet des Laîches"]
+      },
+      {
+        "nom": "Zone n°2",
+        "commune": "Mios",
+        "superficie": "15 ha",
+        "especes_cibles": ["Fadet des Laîches", "Rossolis intermédiaire"]
+      }
+    ],
+    "unites_gestion": [
+      {
+        "id": "UG 1",
+        "objectif": "Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+        "communes": ["Mios"],
+        "parcelles": ["33284D1055 (en partie)"]
+      },
+      {
+        "id": "UG 2",
+        "objectif": "Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+        "communes": ["Marcheprime"],
+        "parcelles": ["33555C4577"]
+      },
+      {
+        "id": "UG 3",
+        "objectif": "Favoriser l'apparition du Rossolis intermédiaire",
+        "communes": ["Mios"],
+        "parcelles": ["33284D1055 (en partie)"]
+      }
+    ],
+    "budget_global_ht": 135550.0,
+    "dette_ecologique": "Compensation pour destruction de stations de Rossolis intermédiaire, habitats de nidification du Tarier pâtre et habitats du Fadet des Laîches",
+    "type_obligation": "Compensation écologique au titre des espèces protégées (séquence ERC)",
+    "intervenants": [
+      "ECO-COMPENSATION",
+      "SIMETHIS",
+      "ALLIANCE FORETS BOIS",
+      "LUCANE",
+      "CERAG",
+      "ESPACE MORLIER SERVICES"
+    ],
+    "confiance": 0.9,
+    "champs_a_confirmer": [
+      "Numéro exact de l'arrêté préfectoral (2018D/718 vs 2022/05/12-062)",
+      "Durée exacte de gestion (25, 26 ou 30 ans)",
+      "Année de fin exacte (2048 ou 2049)"
+    ],
+    "avertissements": [
+      "Incohérence entre les numéros d'arrêté mentionnés (2018D/718 et 2022/05/12-062)",
+      "Incohérence sur la durée de gestion: 30 ans (2019-2049) vs 25 ans (2023-2048)",
+      "Incohérence sur l'année de fin: 2048 (plannings) vs 2049 (texte)",
+      "Page 32 mentionne une durée jusqu'en 2058 pour les mises à jour"
+    ]
+  }
+}
+```
+
+Vérifions quelques points supplémentaires :
+
+- **Espèces détruites** : Le document mentionne clairement la destruction de :
+  - Une station de Rossolis intermédiaire
+  - 1 740 m² d'habitat de nidification pour le Tarier pâtre
+  - 37 506 m² d'habitat d'espèces du Fadet des Laîches
+
+- **Milieux cibles** : Les mentions principales sont "landes humides", "landes méso-hygrophiles", "landes à Molinie bleue". On peut aussi ajouter "zones humides" comme milieu général.
+
+- **Unités de gestion** : Le tableau page 13 montre que :
+  - UG1 est associée à TU1 (parcelle 33284D1055 à Mios)
+  - UG2 est associée à TU2 (parcelle 33555C4577 à Marcheprime)
+  - UG3 est associée à TU3 (parcelle 33284D1055 à Mios)
+
+- **Budget** : 135 550,00 € HT (page 33)
+
+- **Type d'obligation** : Compensation écologique pour espèces protégées, dans le cadre de la séquence ERC
+
+- **Dette écologique** : La compensation est liée à la destruction des habitats mentionnés.
+
+Pour les avertissements, il faut aussi noter :
+- Page 4 : "période 2019 à 2049 soit 30 ans"
+- Page 5 : "pour les 25 années restantes (sous-réserve de la bonne reconduite du contrat quinquennal actuel)"
+- Page 11 : "sur une durée minimum de 25 ans"
+- Page 17 : planning jusqu'à 2048
+- Page 32 : "jusqu'en 2058" (mais c'est pour les mises à jour du plan de gestion)
+- Page 33 : "26 années restantes"
+
+La valeur la plus probable est 2019-2049 (30 ans) car c'est la mention la plus explicite et cohérente avec l'arrêté. Les autres mentions (25 ans, 26 ans) peuvent être des approximations ou des sous-périodes.
+
+Pour les unités de gestion, les objectifs peuvent être extraits de la section 4.1 :
+- Objectif A : Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés
+- Objectif B : Favoriser l'apparition du Rossolis intermédiaire
+- Objectif C : Garantir la pérennité des espaces de compensation et zones évitées
+- Objectif D : Coordination de la gestion
+
+Donc :
+- UG1 et UG2 sont liées à l'objectif A
+- UG3 est liée à l'objectif B
+
+Mais dans le tableau page 13, on voit que :
+- UG1 : TU1 (A1)
+- UG2 : TU2 (A2)
+- UG3 : TU3 (B1)
+
+Donc les objectifs par UG :
+- UG1 : Réorienter les pratiques sylvicoles (A1)
+- UG2 : Préserver et entretenir les espaces de landes (A2)
+- UG3 : Créer et préserver des zones d'étrépage (B1)
+
+Je vais ajuster les objectifs des UG en conséquence.
+
+Finalement, voici le JSON structuré :

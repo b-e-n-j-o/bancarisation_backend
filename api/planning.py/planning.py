@@ -40,6 +40,7 @@ class CreateActionPayload:
     categorie: str                        # MG | SE | TU | TE
     libelle_prestation: str
     statut: str = "projete"
+    thema_code: Optional[str] = None
     cout_ht_prevu: Optional[float] = None
     prestataire_id: Optional[UUID] = None
     unit_id: Optional[UUID] = None        # nullable si action transversale
@@ -52,6 +53,7 @@ class UpdateActionPayload:
     categorie: Optional[str] = None
     libelle_prestation: Optional[str] = None
     statut: Optional[str] = None
+    thema_code: Optional[str] = None
     cout_ht_prevu: Optional[float] = None
     prestataire_id: Optional[UUID] = None
     unit_id: Optional[UUID] = None
@@ -135,6 +137,8 @@ def creer_action(payload: CreateActionPayload) -> UUID:
         "unit_id": str(payload.unit_id) if payload.unit_id else None,
         "note": payload.note,
     }
+    if payload.thema_code is not None:
+        insert_payload["thema_code"] = payload.thema_code.strip() or None
 
     try:
         response = (
@@ -166,6 +170,8 @@ def mettre_a_jour_action(action_id: UUID, payload: UpdateActionPayload) -> dict[
     if payload.statut is not None:
         _validate_statut(payload.statut)
         updates["statut"] = payload.statut
+    if payload.thema_code is not None:
+        updates["thema_code"] = payload.thema_code
     if payload.cout_ht_prevu is not None:
         updates["cout_ht_prevu"] = payload.cout_ht_prevu
     if payload.prestataire_id is not None:

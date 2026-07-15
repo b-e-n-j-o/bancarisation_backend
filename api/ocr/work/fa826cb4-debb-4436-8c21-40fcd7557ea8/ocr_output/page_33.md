@@ -1,0 +1,42 @@
+ECO-COMPENSATION – SIMETHIS – Novembre 2023
+
+#### 4.4. Planning de mise en œuvre des actions et des coûts
+
+Le total des actions réparties sur 26 années restantes est estimé à 135 550,00 € hors taxes (hors aléas et hors travaux forestiers pris en charge par ALLIANCE FORETS BOIS). Cette estimation financière est basée sur les coûts 2023. Les **bordures orangés** correspondent à notre proposition d'offre contractuelle sur les 5 prochaines années 2023-2027. Elle ne prend pas en compte l'indexation des prix dans le temps et les éventuelles mesures correctives qui pourront être mises en place à la révision des plans de gestion et/ou sur demande des services de l'Etat lors de l'instruction du dossier. Cette estimation doit être prise comme une base de travail à compter de l'année 2028.
+
+|   | ANNEX 8 | NO 1 | NO 2 | NO 3 | NO 4 | OUI 1 | NO 2 | OUI 2 | NO 3 | OUI 3 | NO 4 | NO 5 | NO 11 | NO 12 | NO 13 | NO 14 | NO 15 | NO 16 | NO 17 | NO 18 | NO 19 | NO 20 | NO 21 | NO 22 | NO 23 | NO 24 | NO 25 | OUI 26 | NO 27 | NO 28 | NO 29  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  **PARTAGE D'USINES ÉCONOMIQUES - AFFICEE F et R**  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|  **Plutage et coordination** | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |   |
+|  **Planage et coordination** | Coordination de l'espace avant et des comptes, travaux (procédés ou d'appui d'offres, commandos, instructions, contrôles, quyết des risques) le transfert avec les services de l'Etat pour la collecte de l'IAQ. Mise en route de la CIE (fiche certifiée avec tableau de texte) |  |  |  | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 € | 1 000,00 €  |   |
+|  **Rédaction du plan de gestion des espaces de compensation par période de 5 ans** | Mise à jour du plan de gestion | Maétal |  |  | 2 850,00 € |  |  |  |  | 2 850,00 € |  |  |  |  | 2 850,00 € |  |  |  |  | 2 850,00 € |  |  |  |  | 2 850,00 € |  |  |  |  |   |   |
+|  **Taxes écologiques de l'espace de compensation et du lieu préjet** | Total Taxe l'objet (2 passages inférieurs + 1 passage approximative) Taxe Promoteur (1 passage relative à l'œuvre en force) Rédaction d'un rapport de texte écologique de l'espace de compensation et du lieu préjet (revisant en force) Rédaction de 6 000m propensée à la vente (tous locUMS) et l'architecture des données du Institut ESE (tous ruraux tragiques) | Alpétal (l'674,00gamma) | Braduit | Maétal | Braduit | 4 625,00 € |  |  | 4 625,00 € |  |  | 4 625,00 € |  |  | 4 625,00 € |  |  | 4 625,00 € |  |  | 4 625,00 € |  |  |  | 4 625,00 € |  |  |  |  | 4 625,00 €  |   |
+|  **Enseignement écologique** | Enseignement écologique des opérations de pièce écologiques (très aux617,00 et d'innocents) (revisant en 2K) | CERAG | CERAG | CERAG | CERAG | 2 775,00 € | 1 850,00 € | 365,00 € | 825,00 € | 365,00 € |  | 925,00 € | 925,00 € |  | 925,00 € | 925,00 € |  | 925,00 € | 925,00 € |  | 925,00 € | 925,00 € |  |  | 925,00 € |  |  | 925,00 € |  | 925,00 €  |   |
+|  **Rédaction d'un bilan de fin des mesures{homogenees** | Rédaction d'un bilan de fin des mesures compensation |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 1 000,00 €  |   |
+|  **TOTAL ESTIMATE 2023**  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   | ANNEX 8 | NO 1 | NO 2 | NO 3 | NO 4 | OUI 1 | NO 2 | OUI 2 | NO 3 | OUI 3 | NO 4 | OUI 4 | OUI 5 | OUI 6 | OUI 7 | OUI 8 | OUI 9 | OUI 10 | OUI 11 | OUI 12 | OUI 13 | OUI 14 | OUI 15 | OUI 16 | OUI 17 | OUI 18 | OUI 19 | OUI 20 | OUI 21 | OUI 22  |   |
+|  **TRUSSES DE GENE ÉCONOMIQUE - AFFICEE F et R**  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|  **Forme de pièce écologique (Plan de compensation de l'Etat) (Taux)** | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048  |   |
+|  **Trusses de pièce écologique (Plan de compensation de l'Etat) (Taux)** | Suplommage à 20 cm sans regard avec les 3 ans sans regard et le représentant des trusses Wattage des pays d'entrée à l'œuvre d'innocents Trusses de texte usée à l'origine (glo de l'ennui d'un fougon) | Maétal |  |  | 1 500,00 € |  |  |  | 1 500,00 € |  |  |  | 1 500,00 € |  |  |  | 1 500,00 € |  |  |  | 1 500,00 € |  |  |  | 1 500,00 € |  |  |  | 1 500,00 € |   |   |
+|   | Non capital | Non capital | Non capital | Non capital | 1 000,00 € |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |   |   |
+|   | Trusses de texte usée à l'origine (glo de l'ennui d'un fougon) |  | Non capital | Non capital | 910,00 € | 1 000,00 € | 1 353,00 € |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |   |   |
+|  **Trusses de pièce écologique (Plan de compensation de l'Etat)** | Trusses annoncées pour présentation de la période Programme de représentation en 5 m à 1 m avec une 80 m à 1 m (1000 m) | Braduit | Maétal |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |   |   |
+|   | Suplommage à 20 cm sans regard avec les 3 à 4 ans sans regard |  | Maétal |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |   |   |
+|   | Charterre de deux planches d'étranger |  | Maétal |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |   |   |
+|   | Renouvellement des planches d'échange par لاعffage |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |   |   |
+|  **TOTAL ESTIMATE 2023**  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |  |  |  |  | 2 000,00 € | 1 500,00 € | 1 200,00 € | 600 € | 1 200,00 € | 500 € | 600 € | 200 € | 2 150,00 € | 500 € | 600 € | 200 € | 1 500,00 € | 600 € | 600 € | 500 € | 1 500,00 € | 600 € | 500 € | 600 € | 1 500,00 € | 600 € | 500 € | 600 € | 1 500,00 € | 600 €  |   |
+|  **TOTAL ESTIMATE 2023**  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |  |  |  |  | 19 850,00 € | 6 700,00 € | 3 875,00 € | 6 750,00 € | 9 201,00 € | 4 650,00 € | 6 750,00 € | 2 725,00 € | 5 500,00 € | 6 750,00 € | 5 575,00 € | 1 800,00 € | 8 000,00 € | 2 725,00 € | 1 850,00 € | 9 600,00 € | 3 375,00 € | 1 800,00 € | 3 000,00 € | 2 725,00 € | 10 205,00 € | 3 000,00 € | 2 725,00 € | 2 600,00 € | 3 075,00 € | 11 750,00 €  |   |
+|  **TOTAL ESTIMATE 2023**  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |  |  |  |  | 22 800,00 € | 5 440,00 € | 4 650,00 € | 8 100,00 € | 5 300,00 € | 5 500,00 € | 8 100,00 € | 3 270,00 € | 3 950,00 € | 8 100,00 € | 4 600,00 € | 2 160,00 € | 9 950,00 € | 3 270,00 € | 2 150,00 € | 11 520,00 € | 5 300,00 € | 2 160,00 € | 3 100,00 € | 3 270,00 € | 12 240,00 € | 2 160,00 € | 3 270,00 € | 2 150,00 € | 4 000,00 € | 14 100,00 €  |   |
+|  **TOTAL ESTIMATE 2023**  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|  **TOTAL ESTIMATE 2023**  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+
+Opération immobilière « Testemaure » sur la commune de Marcheprime – Plan de gestion des espaces de compensation et des zones évitées
+
+SARL PROMOBAT
+
+33
