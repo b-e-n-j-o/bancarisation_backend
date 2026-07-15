@@ -49,16 +49,10 @@ import httpx
 from dotenv import load_dotenv
 from pydantic import ValidationError
 
-_SCRIPT_DIR = Path(__file__).resolve().parent
-_OCR_DIR = _SCRIPT_DIR.parent
-if str(_OCR_DIR) not in sys.path:
-    sys.path.insert(0, str(_OCR_DIR))
-sys.path.insert(0, str(_OCR_DIR / "prompts"))
+from ..models import ExtractionResult
+from ..prompts.prompt_extract_echeances import SYSTEM_PROMPT
 
-from models import ExtractionResult
-
-# Prompt système mutualisé avec la version Anthropic : une seule vérité.
-from prompt_extract_echeances import SYSTEM_PROMPT
+_OCR_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(_OCR_DIR / ".env")
 

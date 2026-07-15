@@ -1,24 +1,17 @@
 from datetime import date
-from importlib import util
-from pathlib import Path
 from typing import Optional
 from uuid import UUID
 
 from fastapi import APIRouter, File, Form, HTTPException, Query, UploadFile, status
 from pydantic import BaseModel
 
-_service_path = Path(__file__).parent / "crud_document.py"
-_spec = util.spec_from_file_location("documents_service_module", _service_path)
-if _spec is None or _spec.loader is None:
-    raise RuntimeError(f"Impossible de charger le CRUD documents: {_service_path}")
-_service_module = util.module_from_spec(_spec)
-_spec.loader.exec_module(_service_module)
-
-DocumentServiceError = _service_module.DocumentServiceError
-create_signed_url = _service_module.create_signed_url
-delete_document = _service_module.delete_document
-list_documents = _service_module.list_documents
-upload_document = _service_module.upload_document
+from .crud_document import (
+    DocumentServiceError,
+    create_signed_url,
+    delete_document,
+    list_documents,
+    upload_document,
+)
 
 
 router = APIRouter()

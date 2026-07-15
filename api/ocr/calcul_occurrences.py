@@ -23,15 +23,12 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import sys
 from datetime import date
 from pathlib import Path
 
-_SCRIPT_DIR = Path(__file__).resolve().parent
-if str(_SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(_SCRIPT_DIR))
+from .models import Echeance, ExtractionResult, Occurrence, Recurrence, TypeRecurrence
 
-from models import Echeance, ExtractionResult, Occurrence, Recurrence, TypeRecurrence
+_SCRIPT_DIR = Path(__file__).resolve().parent
 
 DEFAULT_INPUT = _SCRIPT_DIR / "echeances_mistral.json"
 DEFAULT_OUTPUT = _SCRIPT_DIR / "occurrences.json"

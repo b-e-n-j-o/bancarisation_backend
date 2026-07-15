@@ -1,40 +1,30 @@
-from importlib import util
-from pathlib import Path
 from typing import Any, Optional
 from uuid import UUID
 
 from fastapi import APIRouter, HTTPException, Query, status
 from pydantic import BaseModel, Field
 
-_crud_path = Path(__file__).parent / "planning.py"
-_spec = util.spec_from_file_location("planning_crud_module", _crud_path)
-if _spec is None or _spec.loader is None:
-    raise RuntimeError(f"Impossible de charger le CRUD planning: {_crud_path}")
-_crud_module = util.module_from_spec(_spec)
-_spec.loader.exec_module(_crud_module)
-
-PlanningCrudError = _crud_module.PlanningCrudError
-
-CreateActionPayload = _crud_module.CreateActionPayload
-UpdateActionPayload = _crud_module.UpdateActionPayload
-lister_actions = _crud_module.lister_actions
-lire_action = _crud_module.lire_action
-creer_action = _crud_module.creer_action
-mettre_a_jour_action = _crud_module.mettre_a_jour_action
-supprimer_action = _crud_module.supprimer_action
-
-CreateUnitePayload = _crud_module.CreateUnitePayload
-UpdateUnitePayload = _crud_module.UpdateUnitePayload
-lister_unites = _crud_module.lister_unites
-creer_unite = _crud_module.creer_unite
-mettre_a_jour_unite = _crud_module.mettre_a_jour_unite
-supprimer_unite = _crud_module.supprimer_unite
-
-CreatePrestaPayload = _crud_module.CreatePrestaPayload
-UpdatePrestaPayload = _crud_module.UpdatePrestaPayload
-lister_prestataires = _crud_module.lister_prestataires
-creer_prestataire = _crud_module.creer_prestataire
-mettre_a_jour_prestataire = _crud_module.mettre_a_jour_prestataire
+from .planning import (
+    CreateActionPayload,
+    CreatePrestaPayload,
+    CreateUnitePayload,
+    PlanningCrudError,
+    UpdateActionPayload,
+    UpdatePrestaPayload,
+    UpdateUnitePayload,
+    creer_action,
+    creer_prestataire,
+    creer_unite,
+    lire_action,
+    lister_actions,
+    lister_prestataires,
+    lister_unites,
+    mettre_a_jour_action,
+    mettre_a_jour_prestataire,
+    mettre_a_jour_unite,
+    supprimer_action,
+    supprimer_unite,
+)
 
 router = APIRouter()
 

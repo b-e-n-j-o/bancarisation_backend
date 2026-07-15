@@ -6,16 +6,13 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import sys
 from pathlib import Path
 
-_SCRIPT_DIR = Path(__file__).resolve().parent
-if str(_SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(_SCRIPT_DIR))
+from .calcul_occurrences import annee_fin_suggeree, generer
+from .ingestion_base_de_donnees import charger_occurrences, connect, ingérer
+from .models import ActionsResult, DossierResult, EcheancesLieesResult, ExtractionResult
 
-from calcul_occurrences import annee_fin_suggeree, generer
-from ingestion_base_de_donnees import charger_occurrences, connect, ingérer
-from models import ActionsResult, DossierResult, EcheancesLieesResult, ExtractionResult
+_SCRIPT_DIR = Path(__file__).resolve().parent
 
 
 def _horizon(dossier: DossierResult | None, echeances: ExtractionResult) -> int:

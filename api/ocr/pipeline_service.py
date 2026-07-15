@@ -8,13 +8,13 @@ import logging
 from pathlib import Path
 from typing import Any, Callable
 
-from calcul_occurrences import annee_fin_suggeree, generer
-from extractions.extract_actions_mistral import extraire as extraire_actions
-from extractions.extract_dossier_mistral import extraire as extraire_dossier
-from extractions.extract_echeances_mistral import extraire as extraire_echeances
-from ingestion_base_de_donnees import connect, ingérer
-from lier_echeances_actions import lier
-from mistral_client import (
+from .calcul_occurrences import annee_fin_suggeree, generer
+from .extractions.extract_actions_mistral import extraire as extraire_actions
+from .extractions.extract_dossier_mistral import extraire as extraire_dossier
+from .extractions.extract_echeances_mistral import extraire as extraire_echeances
+from .ingestion_base_de_donnees import connect, ingérer
+from .lier_echeances_actions import lier
+from .mistral_client import (
     DEFAULT_EFFORT,
     DEFAULT_MAX_TOKENS,
     DEFAULT_MODEL,
@@ -22,7 +22,7 @@ from mistral_client import (
     PRIX_DEFAUT,
     Compteur,
 )
-from models import ActionsResult, DossierResult, ExtractionResult
+from .models import ActionsResult, DossierResult, ExtractionResult
 
 log = logging.getLogger("pipeline.service")
 

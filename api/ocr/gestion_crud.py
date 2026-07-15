@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from typing import Any
 from uuid import UUID
 
-from supabase_client import bancarisation, get_supabase
+from .supabase_client import bancarisation, get_supabase
 
 _CHAMPS_MODIFIABLES = {
     "annee", "code", "titre", "categorie", "statut", "ug_ids",

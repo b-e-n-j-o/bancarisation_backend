@@ -1,28 +1,21 @@
 from datetime import date
-from importlib import util
-from pathlib import Path
 from typing import Any, Optional
 from uuid import UUID
 
 from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel, Field, field_validator
 
-_service_path = Path(__file__).parent / "crud_projet.py"
-_spec = util.spec_from_file_location("projets_service_module", _service_path)
-if _spec is None or _spec.loader is None:
-    raise RuntimeError(f"Impossible de charger le CRUD projet: {_service_path}")
-_service_module = util.module_from_spec(_spec)
-_spec.loader.exec_module(_service_module)
-
-CreateProjetPayload = _service_module.CreateProjetPayload
-UpdateProjetPayload = _service_module.UpdateProjetPayload
-ProjetCrudError = _service_module.ProjetCrudError
-creer_projet = _service_module.creer_projet
-lire_projet = _service_module.lire_projet
-lister_projets = _service_module.lister_projets
-mettre_a_jour_projet = _service_module.mettre_a_jour_projet
-supprimer_projet = _service_module.supprimer_projet
-lister_geometries_projet = _service_module.lister_geometries_projet
+from .crud_projet import (
+    CreateProjetPayload,
+    ProjetCrudError,
+    UpdateProjetPayload,
+    creer_projet,
+    lire_projet,
+    lister_geometries_projet,
+    lister_projets,
+    mettre_a_jour_projet,
+    supprimer_projet,
+)
 
 
 router = APIRouter()

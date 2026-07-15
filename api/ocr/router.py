@@ -4,21 +4,15 @@ router.py — Endpoints HTTP pour les données OCR post-ingestion.
 Expose gestion_crud.py sous /api/projets/{id}/…
 """
 
-import sys
-from pathlib import Path
 from typing import Any, Optional
 from uuid import UUID
 
 from fastapi import APIRouter, BackgroundTasks, File, HTTPException, Response, UploadFile, status
 from pydantic import BaseModel, Field
 
-_SCRIPT_DIR = Path(__file__).resolve().parent
-if str(_SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(_SCRIPT_DIR))
-
-import gestion_crud as crud
-from analyse_jobs import lire_status
-from analyse_service import lancer_analyse
+from . import gestion_crud as crud
+from .analyse_jobs import lire_status
+from .analyse_service import lancer_analyse
 
 router = APIRouter()
 

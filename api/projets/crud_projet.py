@@ -8,7 +8,7 @@ from uuid import UUID
 from dotenv import load_dotenv
 from supabase import Client, create_client
 
-_BACKEND_DIR = Path(__file__).resolve().parents[2]
+_BACKEND_DIR = Path(__file__).resolve().parents[1]
 load_dotenv(_BACKEND_DIR / ".env")
 
 ORGANISATION_ID_V0 = "a1000000-0000-0000-0000-000000000001"

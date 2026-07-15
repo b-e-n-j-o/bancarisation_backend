@@ -24,27 +24,24 @@ import hashlib
 import json
 import logging
 import os
-import sys
 from pathlib import Path
 from typing import Any
 from uuid import UUID
 
 import psycopg
-from db_env import get_database_url, load_db_env
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
-_SCRIPT_DIR = Path(__file__).resolve().parent
-if str(_SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(_SCRIPT_DIR))
-
-from models import (
+from .db_env import get_database_url, load_db_env
+from .models import (
     ActionsResult,
     DossierResult,
     EcheancesLieesResult,
     ExtractionResult,
     Occurrence,
 )
+
+_SCRIPT_DIR = Path(__file__).resolve().parent
 
 load_db_env()
 

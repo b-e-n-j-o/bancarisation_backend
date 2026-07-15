@@ -17,13 +17,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-_SCRIPT_DIR = Path(__file__).resolve().parent
-_OCR_DIR = _SCRIPT_DIR.parent
-if str(_OCR_DIR) not in sys.path:
-    sys.path.insert(0, str(_OCR_DIR))
-sys.path.insert(0, str(_OCR_DIR / "prompts"))
-
-from mistral_client import (
+from ..mistral_client import (
     DEFAULT_EFFORT,
     DEFAULT_MAX_TOKENS,
     DEFAULT_MODEL,
@@ -32,8 +26,10 @@ from mistral_client import (
     Compteur,
     extraire_structure,
 )
-from models import ActionsResult
-from prompt_extract_actions import SYSTEM_PROMPT
+from ..models import ActionsResult
+from ..prompts.prompt_extract_actions import SYSTEM_PROMPT
+
+_OCR_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(_OCR_DIR / ".env")
 

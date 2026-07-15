@@ -7,7 +7,7 @@ pour garantir une seule vérité sur les règles d'extraction.
 
 from __future__ import annotations
 
-from models import VOCAB_TYPE_METIER
+from ..models import VOCAB_TYPE_METIER
 
 SYSTEM_PROMPT = f"""\
 Tu es un assistant d'extraction spécialisé dans les plans de gestion de mesures \

@@ -24,23 +24,18 @@ import argparse
 import hashlib
 import json
 import logging
-import sys
 from datetime import datetime
 from pathlib import Path
 
 from dotenv import load_dotenv
 
-_SCRIPT_DIR = Path(__file__).resolve().parent
-if str(_SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(_SCRIPT_DIR))
-
-from calcul_occurrences import annee_fin_suggeree, generer
-from extractions.extract_actions_mistral import extraire as extraire_actions
-from extractions.extract_dossier_mistral import extraire as extraire_dossier
-from extractions.extract_echeances_mistral import extraire as extraire_echeances
-from ingestion_base_de_donnees import connect, ingérer, resoudre_projet_id
-from lier_echeances_actions import lier
-from mistral_client import (
+from .calcul_occurrences import annee_fin_suggeree, generer
+from .extractions.extract_actions_mistral import extraire as extraire_actions
+from .extractions.extract_dossier_mistral import extraire as extraire_dossier
+from .extractions.extract_echeances_mistral import extraire as extraire_echeances
+from .ingestion_base_de_donnees import connect, ingérer, resoudre_projet_id
+from .lier_echeances_actions import lier
+from .mistral_client import (
     DEFAULT_EFFORT,
     DEFAULT_MAX_TOKENS,
     DEFAULT_MODEL,
@@ -49,7 +44,9 @@ from mistral_client import (
     Compteur,
     configurer_logging,
 )
-from models import ActionsResult, DossierResult, ExtractionResult
+from .models import ActionsResult, DossierResult, ExtractionResult
+
+_SCRIPT_DIR = Path(__file__).resolve().parent
 
 load_dotenv(_SCRIPT_DIR / ".env")
 
