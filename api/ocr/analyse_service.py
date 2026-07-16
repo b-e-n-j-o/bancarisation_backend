@@ -23,6 +23,7 @@ def lancer_analyse(
     replace: bool = True,
 ) -> None:
     """Fonction de fond (BackgroundTasks) — ne pas appeler depuis une requête synchrone."""
+    load_db_env()
     try:
         demarrer(projet_id, filename)
         wd = work_dir(projet_id)

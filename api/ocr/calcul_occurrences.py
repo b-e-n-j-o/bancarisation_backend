@@ -27,6 +27,7 @@ from datetime import date
 from pathlib import Path
 
 from .models import Echeance, ExtractionResult, Occurrence, Recurrence, TypeRecurrence
+from .ug_ids import normalize_ug_ids
 
 _SCRIPT_DIR = Path(__file__).resolve().parent
 
@@ -179,7 +180,7 @@ def generer(
                 titre=titre,
                 categorie=e.type_operation,
                 statut=statut_initial(annee, e, annee_courante),
-                ug_ids=e.unites_gestion,
+                ug_ids=normalize_ug_ids(e.ug_ids),
                 mois_debut=md,
                 mois_fin=mf,
                 traverse_nouvel_an=e.fenetre_intervention.traverse_nouvel_an,

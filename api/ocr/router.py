@@ -23,6 +23,14 @@ class ActionFicheCreateRequest(BaseModel):
     titre: str
     contenu_integral: str
     cle: Optional[str] = None
+    ug_ids: list[str] = Field(default_factory=list)
+
+
+class ActionFicheUpdateRequest(BaseModel):
+    ug_ids: Optional[list[str]] = None
+    titre: Optional[str] = None
+    contenu_integral: Optional[str] = None
+    categorie: Optional[str] = None
 
 
 class OccurrenceCreateRequest(BaseModel):
@@ -77,12 +85,40 @@ def list_actions_fiche(projet_id: UUID) -> list[dict[str, Any]]:
         raise _server_error(exc) from exc
 
 
+@router.get("/projets/{projet_id}/unites-gestion/{ug_id}/actions")
+def list_actions_pour_ug(projet_id: UUID, ug_id: str) -> list[dict[str, Any]]:
+    try:
+        return crud.lister_actions_pour_ug(projet_id, ug_id)
+    except ValueError as exc:
+        raise _db_error(exc) from exc
+    except RuntimeError as exc:
+        raise _server_error(exc) from exc
+
+
 @router.post("/projets/{projet_id}/actions-fiche", status_code=status.HTTP_201_CREATED)
 def create_action_fiche(projet_id: UUID, payload: ActionFicheCreateRequest) -> dict[str, Any]:
     try:
         return crud.creer_action_fiche(projet_id, **payload.model_dump(exclude_none=True))
     except (RuntimeError, ValueError) as exc:
         raise _db_error(exc) from exc
+
+
+@router.patch("/projets/{projet_id}/actions-fiche/{action_id}")
+def update_action_fiche(
+    projet_id: UUID,
+    action_id: UUID,
+    payload: ActionFicheUpdateRequest,
+) -> dict[str, Any]:
+    champs = payload.model_dump(exclude_none=True)
+    if not champs:
+        raise HTTPException(status_code=400, detail="Aucun champ à modifier.")
+    try:
+        row = crud.modifier_action_fiche(projet_id, action_id, **champs)
+    except (RuntimeError, ValueError) as exc:
+        raise _db_error(exc) from exc
+    if not row:
+        raise HTTPException(status_code=404, detail="Fiche-action introuvable.")
+    return row
 
 
 @router.get("/projets/{projet_id}/echeances")

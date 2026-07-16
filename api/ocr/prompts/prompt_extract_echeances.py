@@ -30,7 +30,7 @@ rouleau brise-fougère par an pendant trois ans" → DEUX échéances distinctes
 2. SÉPARATION PAR COMMUNE / UG. Si une même action s'applique à plusieurs communes ou \
 unités de gestion avec un régime différent, produis une échéance par régime. Si le \
 régime est identique, garde une seule échéance avec plusieurs entrées dans `communes` \
-et `unites_gestion`.
+et `ug_ids`.
 
 3. RÉCURRENCE. Normalise le rythme dans l'objet `recurrence` :
    - action unique → type "ponctuel"
@@ -95,7 +95,7 @@ SCHÉMA D'UNE ÉCHÉANCE
   "libelle": "string",
   "objectif_long_terme": "string|null",
   "objectif_operationnel": "string|null",
-  "unites_gestion": ["string"],
+  "ug_ids": ["ug1"],
   "parcelles": ["string"],
   "communes": ["string"],
   "recurrence": {{

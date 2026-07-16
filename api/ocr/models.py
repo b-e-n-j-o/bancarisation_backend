@@ -27,7 +27,9 @@ from __future__ import annotations
 from enum import Enum
 from typing import Annotated, Any, Literal, Optional
 
-from pydantic import BaseModel, BeforeValidator, Field, field_validator
+from pydantic import AliasChoices, BaseModel, BeforeValidator, Field, field_validator
+
+from .ug_ids import normalize_ug_ids as _normalize_ug_ids_list
 
 # --- Vocabulaires contrôlés --------------------------------------------------
 
@@ -138,7 +140,10 @@ class Echeance(BaseModel):
     libelle: str
     objectif_long_terme: Optional[str] = None
     objectif_operationnel: Optional[str] = None
-    unites_gestion: ListeStr = Field(default_factory=list)
+    ug_ids: ListeStr = Field(
+        default_factory=list,
+        validation_alias=AliasChoices("ug_ids", "unites_gestion"),
+    )
     parcelles: ListeStr = Field(default_factory=list)
     communes: ListeStr = Field(default_factory=list)
     recurrence: Recurrence                      # essentiel : reste strict
@@ -163,6 +168,13 @@ class Echeance(BaseModel):
         stable quel que soit le modèle d'extraction utilisé.
         """
         return v.replace(" ", "").strip().upper()
+
+    @field_validator("ug_ids", mode="before")
+    @classmethod
+    def _normaliser_ug_ids(cls, v: Any) -> list[str]:
+        if v is None:
+            return []
+        return _normalize_ug_ids_list(list(v) if not isinstance(v, list) else v)
 
 
 class ExtractionResult(BaseModel):
@@ -235,7 +247,10 @@ class ActionFiche(BaseModel):
     titre: str
     objectif_long_terme: Optional[str] = None
     objectif_operationnel: Optional[str] = None
-    unites_gestion: ListeStr = Field(default_factory=list)
+    ug_ids: ListeStr = Field(
+        default_factory=list,
+        validation_alias=AliasChoices("ug_ids", "unites_gestion"),
+    )
     parcelles: ListeStr = Field(default_factory=list)
     communes: ListeStr = Field(default_factory=list)
     cadrage_surfacique: Optional[str] = None
@@ -260,6 +275,13 @@ class ActionFiche(BaseModel):
     @classmethod
     def _normaliser_id(cls, v: str) -> str:
         return v.replace(" ", "").strip().upper()
+
+    @field_validator("ug_ids", mode="before")
+    @classmethod
+    def _normaliser_ug_ids_action(cls, v: Any) -> list[str]:
+        if v is None:
+            return []
+        return _normalize_ug_ids_list(list(v) if not isinstance(v, list) else v)
 
 
 class ActionsResult(BaseModel):

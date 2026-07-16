@@ -11,12 +11,15 @@ from typing import Any
 from uuid import UUID
 
 from .supabase_client import bancarisation, get_supabase
+from .ug_ids import normalize_ug_id, normalize_ug_ids
 
 _CHAMPS_MODIFIABLES = {
     "annee", "code", "titre", "categorie", "statut", "ug_ids",
     "mois_debut", "mois_fin", "traverse_nouvel_an",
     "date_realisation", "commentaire",
 }
+
+_CHAMPS_ACTION_MODIFIABLES = {"ug_ids", "titre", "contenu_integral", "categorie"}
 
 
 def _now_iso() -> str:
@@ -53,7 +56,7 @@ def lister_actions(projet_id: UUID | str) -> list[dict[str, Any]]:
         bancarisation(client)
         .table("action_fiche")
         .select(
-            "id, cle, code, categorie, titre, contenu_integral, confiance, "
+            "id, cle, code, categorie, titre, contenu_integral, ug_ids, confiance, "
             "champs_a_confirmer, avertissements"
         )
         .eq("projet_id", _pid(projet_id))
@@ -61,6 +64,58 @@ def lister_actions(projet_id: UUID | str) -> list[dict[str, Any]]:
         .execute()
     )
     return response.data or []
+
+
+def lister_actions_pour_ug(
+    projet_id: UUID | str,
+    ug_id: str,
+) -> list[dict[str, Any]]:
+    """Actions liées à une UG + nombre d'occurrences sur cette UG."""
+    ug = normalize_ug_id(ug_id)
+    if not ug:
+        raise ValueError("ug_id invalide.")
+
+    pid = _pid(projet_id)
+    actions = lister_actions(pid)
+    occs = lister_occurrences(pid, ug_id=ug, inclure_supprimees=False)
+
+    counts: dict[str, int] = {}
+    for o in occs:
+        cle = o.get("action_cle")
+        if cle:
+            counts[str(cle)] = counts.get(str(cle), 0) + 1
+
+    out: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for a in actions:
+        cle = str(a.get("cle") or "")
+        action_ugs = normalize_ug_ids(a.get("ug_ids") or [])
+        linked = ug in action_ugs or cle in counts
+        if not linked:
+            continue
+        row = dict(a)
+        row["ug_ids"] = action_ugs
+        row["nb_occurrences"] = counts.get(cle, 0)
+        out.append(row)
+        seen.add(cle)
+
+    # Actions absentes de la liste (rare) mais présentes via occurrences
+    for cle, n in counts.items():
+        if cle in seen:
+            continue
+        out.append({
+            "id": None,
+            "cle": cle,
+            "code": cle,
+            "categorie": "",
+            "titre": cle,
+            "contenu_integral": "",
+            "ug_ids": [ug],
+            "nb_occurrences": n,
+        })
+
+    out.sort(key=lambda r: (str(r.get("code") or ""), str(r.get("cle") or "")))
+    return out
 
 
 def _normaliser_code_action(code: str) -> str:
@@ -78,6 +133,7 @@ def creer_action_fiche(
     titre: str,
     contenu_integral: str,
     cle: str | None = None,
+    ug_ids: list[str] | None = None,
 ) -> dict[str, Any]:
     """Crée une fiche-action saisie manuellement (hors import OCR)."""
     code_norm = _normaliser_code_action(code)
@@ -94,6 +150,7 @@ def creer_action_fiche(
         raise ValueError("Le contenu est obligatoire.")
 
     cle_norm = _normaliser_code_action(cle or code_norm)
+    ugs = normalize_ug_ids(ug_ids)
     client = get_supabase()
 
     existing = (
@@ -114,6 +171,7 @@ def creer_action_fiche(
         "categorie": cat,
         "titre": titre_clean,
         "contenu_integral": contenu_clean,
+        "ug_ids": ugs,
         "confiance": 1.0,
         "champs_a_confirmer": [],
         "avertissements": ["Fiche créée manuellement"],
@@ -130,6 +188,7 @@ def creer_action_fiche(
             "titre": titre_clean,
             "contenu_integral": contenu_clean,
             "fiche_json": fiche_json,
+            "ug_ids": ugs,
             "confiance": 1.0,
             "champs_a_confirmer": [],
             "avertissements": ["Fiche créée manuellement"],
@@ -142,6 +201,34 @@ def creer_action_fiche(
     return data[0] if isinstance(data, list) else data
 
 
+def modifier_action_fiche(
+    projet_id: UUID | str,
+    action_id: UUID | str,
+    **champs: Any,
+) -> dict[str, Any] | None:
+    maj = {k: v for k, v in champs.items() if k in _CHAMPS_ACTION_MODIFIABLES}
+    if not maj:
+        raise ValueError(
+            f"Aucun champ modifiable. Autorisés : {sorted(_CHAMPS_ACTION_MODIFIABLES)}"
+        )
+    if "ug_ids" in maj:
+        maj["ug_ids"] = normalize_ug_ids(maj["ug_ids"])
+
+    client = get_supabase()
+    response = (
+        bancarisation(client)
+        .table("action_fiche")
+        .update(maj, returning="representation")
+        .eq("id", str(action_id))
+        .eq("projet_id", _pid(projet_id))
+        .execute()
+    )
+    data = response.data
+    if not data:
+        return None
+    return data[0] if isinstance(data, list) else data
+
+
 def lister_echeances(projet_id: UUID | str) -> list[dict[str, Any]]:
     client = get_supabase()
     response = (
@@ -149,7 +236,7 @@ def lister_echeances(projet_id: UUID | str) -> list[dict[str, Any]]:
         .table("echeance")
         .select(
             "id, cle, action_cle, code_operation, libelle, confiance, "
-            "champs_a_confirmer, avertissements, source_page"
+            "champs_a_confirmer, avertissements, source_page, ug_ids"
         )
         .eq("projet_id", _pid(projet_id))
         .order("code_operation")
@@ -161,7 +248,7 @@ def lister_echeances(projet_id: UUID | str) -> list[dict[str, Any]]:
 _ECHEANCE_SELECT = (
     "id, cle, action_cle, code_operation, type_operation, type_metier, libelle, "
     "recurrence, confiance, champs_a_confirmer, avertissements, source_page, "
-    "unites_gestion, fenetre_debut, fenetre_fin, fenetre_traverse_nouvel_an"
+    "ug_ids, fenetre_debut, fenetre_fin, fenetre_traverse_nouvel_an"
 )
 
 
@@ -225,7 +312,9 @@ def lister_occurrences(
     if annee is not None:
         query = query.eq("annee", annee)
     if ug_id is not None:
-        query = query.contains("ug_ids", [ug_id])
+        ug_norm = normalize_ug_id(ug_id)
+        if ug_norm:
+            query = query.contains("ug_ids", [ug_norm])
     if not inclure_supprimees:
         query = query.neq("statut", "supprime")
 
@@ -243,6 +332,8 @@ def creer_occurrence(projet_id: UUID | str, **champs: Any) -> dict[str, Any]:
     }
     if colonnes.get("echeance_id") is not None:
         colonnes["echeance_id"] = str(colonnes["echeance_id"])
+    if "ug_ids" in colonnes:
+        colonnes["ug_ids"] = normalize_ug_ids(colonnes["ug_ids"])
     colonnes["projet_id"] = _pid(projet_id)
     colonnes["origine"] = "user"
 
@@ -266,6 +357,8 @@ def modifier_occurrence(
     maj = {k: v for k, v in champs.items() if k in _CHAMPS_MODIFIABLES}
     if not maj:
         raise ValueError(f"Aucun champ modifiable. Autorisés : {sorted(_CHAMPS_MODIFIABLES)}")
+    if "ug_ids" in maj:
+        maj["ug_ids"] = normalize_ug_ids(maj["ug_ids"])
 
     maj["modifie_le"] = _now_iso()
     client = get_supabase()

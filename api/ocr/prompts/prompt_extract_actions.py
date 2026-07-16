@@ -52,7 +52,7 @@ SCHÉMA D'UNE ACTION
   "titre": "string",
   "objectif_long_terme": "string|null",
   "objectif_operationnel": "string|null",
-  "unites_gestion": ["UG1"],
+  "ug_ids": ["ug1"],
   "parcelles": ["string"],
   "communes": ["string"],
   "cadrage_surfacique": "string|null",

@@ -114,6 +114,7 @@ CREATE TABLE IF NOT EXISTS bancarisation.action_fiche (
     titre               text NOT NULL,
     contenu_integral    text NOT NULL,
     fiche_json          jsonb NOT NULL,
+    ug_ids              text[] NOT NULL DEFAULT '{}',
     confiance           float,
     champs_a_confirmer  text[] NOT NULL DEFAULT '{}',
     avertissements      text[] NOT NULL DEFAULT '{}',
@@ -132,7 +133,7 @@ CREATE TABLE IF NOT EXISTS bancarisation.echeance (
     libelle                 text NOT NULL,
     objectif_long_terme     text,
     objectif_operationnel   text,
-    unites_gestion          text[] NOT NULL DEFAULT '{}',
+    ug_ids                  text[] NOT NULL DEFAULT '{}',
     parcelles               text[] NOT NULL DEFAULT '{}',
     communes                text[] NOT NULL DEFAULT '{}',
     recurrence              jsonb NOT NULL,
@@ -154,6 +155,9 @@ CREATE TABLE IF NOT EXISTS bancarisation.echeance (
 
 ALTER TABLE bancarisation.echeance
     ADD COLUMN IF NOT EXISTS action_cle text;
+
+ALTER TABLE bancarisation.action_fiche
+    ADD COLUMN IF NOT EXISTS ug_ids text[] NOT NULL DEFAULT '{}';
 
 CREATE TABLE IF NOT EXISTS bancarisation.occurrence (
     id                  uuid PRIMARY KEY DEFAULT gen_random_uuid(),

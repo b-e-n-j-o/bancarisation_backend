@@ -13,9 +13,15 @@ _BACKEND_DIR = _OCR_DIR.parents[1]
 
 
 def load_db_env() -> None:
-    """backend/.env puis api/ocr/.env (surcharges locales)."""
-    load_dotenv(_BACKEND_DIR / ".env")
-    load_dotenv(_OCR_DIR / ".env", override=True)
+    """Charge backend/.env (idempotent). Cherche aussi le cwd si besoin."""
+    candidates = [
+        _BACKEND_DIR / ".env",
+        Path.cwd() / ".env",
+        Path.cwd() / "backend" / ".env",
+    ]
+    for path in candidates:
+        if path.is_file():
+            load_dotenv(path, override=False)
 
 
 def get_database_url() -> str:
@@ -30,10 +36,21 @@ def get_database_url() -> str:
     user = os.environ.get("SUPABASE_USER", "").strip()
     password = os.environ.get("SUPABASE_PASSWORD", "").strip()
 
-    if not all([host, user, password]):
+    missing = [
+        name
+        for name, val in (
+            ("SUPABASE_HOST", host),
+            ("SUPABASE_USER", user),
+            ("SUPABASE_PASSWORD", password),
+        )
+        if not val
+    ]
+    if missing:
         raise RuntimeError(
-            "DATABASE_URL absente. Définir DATABASE_URL ou "
-            "SUPABASE_HOST / SUPABASE_USER / SUPABASE_PASSWORD dans backend/.env"
+            "Connexion Postgres impossible : variables manquantes "
+            f"({', '.join(missing)}). "
+            "Définir DATABASE_URL ou SUPABASE_HOST / SUPABASE_USER / "
+            "SUPABASE_PASSWORD dans backend/.env (et redémarrer uvicorn)."
         )
 
     return (

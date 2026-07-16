@@ -11,7 +11,6 @@ from .crud_projet import (
     UpdateProjetPayload,
     creer_projet,
     lire_projet,
-    lister_geometries_projet,
     lister_projets,
     mettre_a_jour_projet,
     supprimer_projet,
@@ -167,11 +166,3 @@ def delete_projet_route(projet_id: UUID) -> None:
         supprimer_projet(projet_id)
     except ProjetCrudError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
-
-
-@router.get("/projets/{projet_id}/geometries", response_model=list[dict[str, Any]])
-def list_projet_geometries_route(projet_id: UUID) -> list[dict[str, Any]]:
-    try:
-        return lister_geometries_projet(projet_id)
-    except ProjetCrudError as exc:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc

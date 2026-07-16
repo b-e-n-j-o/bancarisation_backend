@@ -40,6 +40,7 @@ from .models import (
     ExtractionResult,
     Occurrence,
 )
+from .ug_ids import normalize_ug_ids
 
 _SCRIPT_DIR = Path(__file__).resolve().parent
 
@@ -233,13 +234,16 @@ def ingérer(
             # 3. Fiches-actions
             actions_upsert = 0
             for a in actions.actions:
+                action_ug_ids = normalize_ug_ids(a.ug_ids)
+                fiche_payload = a.model_dump(mode="json")
+                fiche_payload["ug_ids"] = action_ug_ids
                 cur.execute(
                     """
                     insert into bancarisation.action_fiche (
                         projet_id, import_id, cle, code, categorie, titre,
-                        contenu_integral, fiche_json, confiance,
+                        contenu_integral, fiche_json, ug_ids, confiance,
                         champs_a_confirmer, avertissements
-                    ) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    ) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     on conflict (projet_id, cle) do update set
                         import_id = excluded.import_id,
                         code = excluded.code,
@@ -247,13 +251,14 @@ def ingérer(
                         titre = excluded.titre,
                         contenu_integral = excluded.contenu_integral,
                         fiche_json = excluded.fiche_json,
+                        ug_ids = excluded.ug_ids,
                         confiance = excluded.confiance,
                         champs_a_confirmer = excluded.champs_a_confirmer,
                         avertissements = excluded.avertissements
                     """,
                     (
                         projet_id, import_id, a.id, a.code, a.categorie, a.titre,
-                        a.contenu_integral, Jsonb(a.model_dump(mode="json")),
+                        a.contenu_integral, Jsonb(fiche_payload), action_ug_ids,
                         a.confiance, a.champs_a_confirmer, a.avertissements,
                     ),
                 )
@@ -262,12 +267,13 @@ def ingérer(
             # 4. Échéances (templates + lien action)
             cle_vers_id: dict[str, UUID] = {}
             for e in echeances:
+                echeance_ug_ids = normalize_ug_ids(e.ug_ids)
                 cur.execute(
                     """
                     insert into bancarisation.echeance (
                         projet_id, import_id, cle, action_cle, code_operation, type_operation,
                         type_metier, libelle, objectif_long_terme, objectif_operationnel,
-                        unites_gestion, parcelles, communes, recurrence,
+                        ug_ids, parcelles, communes, recurrence,
                         fenetre_debut, fenetre_fin, fenetre_traverse_nouvel_an,
                         fenetre_texte_source, conditions, indicateurs, intervenants,
                         duree_gestion_ans, source_page, source_extrait,
@@ -280,6 +286,7 @@ def ingérer(
                         import_id = excluded.import_id,
                         action_cle = excluded.action_cle,
                         libelle = excluded.libelle,
+                        ug_ids = excluded.ug_ids,
                         recurrence = excluded.recurrence,
                         confiance = excluded.confiance,
                         champs_a_confirmer = excluded.champs_a_confirmer,
@@ -290,7 +297,7 @@ def ingérer(
                         projet_id, import_id, e.id, e.action_id, e.code_operation,
                         e.type_operation, e.type_metier, e.libelle,
                         e.objectif_long_terme, e.objectif_operationnel,
-                        e.unites_gestion, e.parcelles, e.communes,
+                        echeance_ug_ids, e.parcelles, e.communes,
                         Jsonb(e.recurrence.model_dump(mode="json")),
                         e.fenetre_intervention.debut, e.fenetre_intervention.fin,
                         e.fenetre_intervention.traverse_nouvel_an,
@@ -306,6 +313,7 @@ def ingérer(
             inserees = 0
             for o in occurrences:
                 echeance_id = cle_vers_id.get(o.echeance_cle) if o.echeance_cle else None
+                occ_ug_ids = normalize_ug_ids(o.ug_ids)
                 cur.execute(
                     """
                     insert into bancarisation.occurrence (
@@ -319,7 +327,7 @@ def ingérer(
                     """,
                     (
                         projet_id, echeance_id, o.annee, o.code, o.titre, o.categorie,
-                        o.statut, o.ug_ids, o.mois_debut, o.mois_fin, o.traverse_nouvel_an,
+                        o.statut, occ_ug_ids, o.mois_debut, o.mois_fin, o.traverse_nouvel_an,
                         o.origine, o.confiance, o.champs_a_confirmer, o.avertissements,
                     ),
                 )
