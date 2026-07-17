@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 
 from .calcul_occurrences import annee_fin_suggeree, generer
-from .ingestion_base_de_donnees import charger_occurrences, connect, ingérer
+from .db.ingestion import charger_occurrences, connect, ingérer
 from .models import ActionsResult, DossierResult, EcheancesLieesResult, ExtractionResult
 
 _SCRIPT_DIR = Path(__file__).resolve().parent
@@ -27,20 +27,44 @@ def _assurer_occurrences(wd: Path) -> Path:
         return occ_path
 
     dossier_path = wd / "dossier.json"
+    liees_path = wd / "echeances_liees.json"
     echeances_path = wd / "echeances_mistral.json"
-    if not echeances_path.exists():
-        raise SystemExit(f"❌ {echeances_path} introuvable — impossible de régénérer les occurrences.")
+    actions_path = wd / "actions.json"
 
     dossier_result = None
     if dossier_path.exists():
         dossier_result = DossierResult.model_validate_json(
             dossier_path.read_text(encoding="utf-8")
         )
-    echeances_result = ExtractionResult.model_validate_json(
-        echeances_path.read_text(encoding="utf-8")
+
+    if liees_path.exists():
+        liees = EcheancesLieesResult.model_validate_json(
+            liees_path.read_text(encoding="utf-8")
+        )
+        echeances_pour_gen = list(liees.echeances)
+    elif echeances_path.exists() and actions_path.exists():
+        from .lier_echeances_actions import lier
+        echeances_result = ExtractionResult.model_validate_json(
+            echeances_path.read_text(encoding="utf-8")
+        )
+        actions_result = ActionsResult.model_validate_json(
+            actions_path.read_text(encoding="utf-8")
+        )
+        liees = lier(echeances_result, actions_result)
+        echeances_pour_gen = list(liees.echeances)
+    elif echeances_path.exists():
+        echeances_result = ExtractionResult.model_validate_json(
+            echeances_path.read_text(encoding="utf-8")
+        )
+        echeances_pour_gen = list(echeances_result.echeances)
+    else:
+        raise SystemExit(f"❌ {echeances_path} introuvable — impossible de régénérer les occurrences.")
+
+    annee_fin = _horizon(
+        dossier_result,
+        ExtractionResult(echeances=echeances_pour_gen),
     )
-    annee_fin = _horizon(dossier_result, echeances_result)
-    occs, non_placables = generer(echeances_result.echeances, annee_fin=annee_fin)
+    occs, non_placables = generer(echeances_pour_gen, annee_fin=annee_fin)
     occ_path.write_text(
         json.dumps(
             {

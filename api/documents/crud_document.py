@@ -12,7 +12,7 @@ from supabase import Client, create_client
 
 load_dotenv()
 
-BUCKET = "documents-projets"
+BUCKET = "documents-projet"
 GEOM_TABLE = "projet_geometries"
 
 
@@ -107,23 +107,48 @@ def _store_geojson_features(
         ) from exc
 
 
-def list_documents(projet_id: UUID) -> list[dict[str, Any]]:
+def list_documents(
+    projet_id: UUID,
+    occurrence_id: Optional[UUID] = None,
+    *,
+    only_global: bool = False,
+) -> list[dict[str, Any]]:
+    """Liste les documents d'un projet.
+
+    - occurrence_id : filtre les docs liés à cette occurrence
+    - only_global : docs sans occurrence (niveau projet)
+    - sinon : tous les docs du projet
+    """
     client = _get_supabase_client()
     try:
-        response = (
+        query = (
             client.schema("bancarisation")
             .table("documents")
             .select("*")
             .eq("projet_id", str(projet_id))
-            .order("categorie")
-            .order("created_at", desc=True)
-            .execute()
         )
+        if occurrence_id is not None:
+            query = query.eq("occurrence_id", str(occurrence_id))
+        elif only_global:
+            query = query.is_("occurrence_id", "null")
+        response = query.order("categorie").order("created_at", desc=True).execute()
     except Exception as exc:  # pragma: no cover
         raise DocumentServiceError(f"Erreur Supabase: {exc}") from exc
 
     data = response.data or []
     return data if isinstance(data, list) else [data]
+
+
+def _build_bucket_path(
+    projet_id: UUID,
+    file_name: str,
+    occurrence_id: Optional[UUID],
+) -> str:
+    safe_name = _safe_file_name(file_name)
+    ts = int(time.time() * 1000)
+    if occurrence_id is not None:
+        return f"{projet_id}/occurrences/{occurrence_id}/{ts}_{safe_name}"
+    return f"{projet_id}/_projet/{ts}_{safe_name}"
 
 
 def upload_document(
@@ -134,6 +159,9 @@ def upload_document(
     categorie: str,
     date_document: Optional[date],
     description: Optional[str],
+    *,
+    nom: Optional[str] = None,
+    occurrence_id: Optional[UUID] = None,
 ) -> dict[str, Any]:
     client = _get_supabase_client()
     geojson_features: list[dict[str, Any]] | None = None
@@ -145,8 +173,8 @@ def upload_document(
             )
         geojson_features = _parse_geojson_features(content)
 
-    safe_name = _safe_file_name(file_name)
-    bucket_path = f"{projet_id}/{categorie}/{int(time.time() * 1000)}_{safe_name}"
+    display_name = (nom or "").strip() or file_name
+    bucket_path = _build_bucket_path(projet_id, file_name, occurrence_id)
 
     try:
         client.storage.from_(BUCKET).upload(
@@ -160,9 +188,9 @@ def upload_document(
     except Exception as exc:  # pragma: no cover
         raise DocumentServiceError(f"Erreur upload bucket: {exc}") from exc
 
-    insert_payload = {
+    insert_payload: dict[str, Any] = {
         "projet_id": str(projet_id),
-        "nom": file_name,
+        "nom": display_name,
         "nom_fichier": file_name,
         "bucket_path": bucket_path,
         "taille_octets": len(content),
@@ -171,6 +199,8 @@ def upload_document(
         "date_document": date_document.isoformat() if date_document else None,
         "description": description or None,
     }
+    if occurrence_id is not None:
+        insert_payload["occurrence_id"] = str(occurrence_id)
 
     try:
         response = (
@@ -247,6 +277,52 @@ def delete_document(document_id: UUID) -> None:
         )
     except Exception as exc:  # pragma: no cover
         raise DocumentServiceError(f"Erreur suppression base: {exc}") from exc
+
+
+def get_document_content(document_id: UUID) -> tuple[bytes, str, str]:
+    """Télécharge le fichier via le backend (proxy) pour affichage navigateur.
+
+    Returns:
+        (content, content_type, filename)
+    """
+    client = _get_supabase_client()
+    try:
+        lookup = (
+            client.schema("bancarisation")
+            .table("documents")
+            .select("id,bucket_path,type_mime,nom_fichier,nom")
+            .eq("id", str(document_id))
+            .maybe_single()
+            .execute()
+        )
+    except Exception as exc:  # pragma: no cover
+        raise DocumentServiceError(f"Erreur Supabase: {exc}") from exc
+
+    row = lookup.data
+    if not row:
+        raise DocumentServiceError("Document introuvable.")
+
+    bucket_path = row.get("bucket_path")
+    if not bucket_path:
+        raise DocumentServiceError("Chemin bucket manquant.")
+
+    try:
+        raw = client.storage.from_(BUCKET).download(bucket_path)
+    except Exception as exc:  # pragma: no cover
+        raise DocumentServiceError(f"Erreur téléchargement bucket: {exc}") from exc
+
+    if isinstance(raw, memoryview):
+        content = raw.tobytes()
+    elif isinstance(raw, bytearray):
+        content = bytes(raw)
+    elif isinstance(raw, bytes):
+        content = raw
+    else:
+        content = bytes(raw)
+
+    content_type = row.get("type_mime") or "application/octet-stream"
+    filename = row.get("nom_fichier") or row.get("nom") or "document"
+    return content, str(content_type), str(filename)
 
 
 def create_signed_url(bucket_path: str, download: Optional[str]) -> str:

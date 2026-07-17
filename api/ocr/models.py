@@ -29,20 +29,20 @@ from typing import Annotated, Any, Literal, Optional
 
 from pydantic import AliasChoices, BaseModel, BeforeValidator, Field, field_validator
 
-from .ug_ids import normalize_ug_ids as _normalize_ug_ids_list
+from .domain.ug_ids import normalize_ug_ids as _normalize_ug_ids_list
+from .extractions.catalogue.thema import LIB_THEMA_AUTRE, normaliser_lib_thema
 
 # --- Vocabulaires contrôlés --------------------------------------------------
 
 TypeOperation = Literal["EP", "TU", "TE", "SE", "MG"]
 
-# Aligné sur les StatutChip / StatutBadge du frontend.
+# Aligné sur les StatutChip du frontend (retard = dérivé à l'affichage).
 Statut = Literal[
     "planifie",
     "a_confirmer",
-    "en_attente",
-    "partiel",
+    "en_cours",
     "realise",
-    "retard",
+    "repousse",
     "supprime",
 ]
 
@@ -138,6 +138,7 @@ class Echeance(BaseModel):
     type_operation: TypeOperation
     type_metier: str
     libelle: str
+    lib_thema: str = LIB_THEMA_AUTRE            # propagé depuis la fiche-action
     objectif_long_terme: Optional[str] = None
     objectif_operationnel: Optional[str] = None
     ug_ids: ListeStr = Field(
@@ -168,6 +169,11 @@ class Echeance(BaseModel):
         stable quel que soit le modèle d'extraction utilisé.
         """
         return v.replace(" ", "").strip().upper()
+
+    @field_validator("lib_thema", mode="before")
+    @classmethod
+    def _normaliser_lib_thema_echeance(cls, v: Any) -> str:
+        return normaliser_lib_thema(v)
 
     @field_validator("ug_ids", mode="before")
     @classmethod
@@ -240,11 +246,13 @@ class ActionFiche(BaseModel):
     """
     Fiche-action du plan de gestion (TU1, TE1, SE1…).
     `contenu_integral` = texte OCR repris intégralement, sans résumé.
+    `lib_thema` = code nomenclature Théma (ex. C2.1.c) ou ``autre``.
     """
     id: str
     code: str
     categorie: TypeOperation
     titre: str
+    lib_thema: str = LIB_THEMA_AUTRE
     objectif_long_terme: Optional[str] = None
     objectif_operationnel: Optional[str] = None
     ug_ids: ListeStr = Field(
@@ -275,6 +283,11 @@ class ActionFiche(BaseModel):
     @classmethod
     def _normaliser_id(cls, v: str) -> str:
         return v.replace(" ", "").strip().upper()
+
+    @field_validator("lib_thema", mode="before")
+    @classmethod
+    def _normaliser_lib_thema_action(cls, v: Any) -> str:
+        return normaliser_lib_thema(v)
 
     @field_validator("ug_ids", mode="before")
     @classmethod
@@ -311,6 +324,7 @@ class Occurrence(BaseModel):
     code: str                                   # "TU 3" (formaté pour l'affichage)
     titre: str
     categorie: TypeOperation
+    lib_thema: str = LIB_THEMA_AUTRE            # propagé depuis l'échéance / action
     statut: Statut = "planifie"
     ug_ids: list[str] = Field(default_factory=list)
     mois_debut: Optional[int] = None
@@ -320,3 +334,8 @@ class Occurrence(BaseModel):
     confiance: Optional[float] = None
     champs_a_confirmer: list[str] = Field(default_factory=list)
     avertissements: list[str] = Field(default_factory=list)
+
+    @field_validator("lib_thema", mode="before")
+    @classmethod
+    def _normaliser_lib_thema_occ(cls, v: Any) -> str:
+        return normaliser_lib_thema(v)

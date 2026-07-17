@@ -1,4 +1,4 @@
--- Index requis par ingestion_base_de_donnees (ON CONFLICT occurrences IA)
+-- Index requis par api.ocr.db.ingestion (ON CONFLICT occurrences IA)
 -- À exécuter dans le SQL Editor Supabase si l'ingestion échoue avec :
 -- "there is no unique or exclusion constraint matching the ON CONFLICT specification"
 

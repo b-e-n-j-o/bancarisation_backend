@@ -50,7 +50,7 @@ from dotenv import load_dotenv
 from pydantic import ValidationError
 
 from ..models import ExtractionResult
-from ..prompts.prompt_extract_echeances import SYSTEM_PROMPT
+from .prompts.prompt_extract_echeances import SYSTEM_PROMPT
 
 _OCR_DIR = Path(__file__).resolve().parent.parent
 

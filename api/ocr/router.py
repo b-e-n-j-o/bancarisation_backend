@@ -1,7 +1,7 @@
 """
 router.py — Endpoints HTTP pour les données OCR post-ingestion.
 
-Expose gestion_crud.py sous /api/projets/{id}/…
+Expose api.ocr.db.crud sous /api/projets/{id}/…
 """
 
 from typing import Any, Optional
@@ -10,7 +10,7 @@ from uuid import UUID
 from fastapi import APIRouter, BackgroundTasks, File, HTTPException, Response, UploadFile, status
 from pydantic import BaseModel, Field
 
-from . import gestion_crud as crud
+from .db import crud
 from .analyse_jobs import lire_status
 from .analyse_service import lancer_analyse
 
@@ -24,6 +24,7 @@ class ActionFicheCreateRequest(BaseModel):
     contenu_integral: str
     cle: Optional[str] = None
     ug_ids: list[str] = Field(default_factory=list)
+    lib_thema: Optional[str] = "autre"
 
 
 class ActionFicheUpdateRequest(BaseModel):
@@ -31,6 +32,7 @@ class ActionFicheUpdateRequest(BaseModel):
     titre: Optional[str] = None
     contenu_integral: Optional[str] = None
     categorie: Optional[str] = None
+    lib_thema: Optional[str] = None
 
 
 class OccurrenceCreateRequest(BaseModel):
@@ -38,6 +40,7 @@ class OccurrenceCreateRequest(BaseModel):
     code: str
     titre: str
     categorie: str
+    lib_thema: Optional[str] = "autre"
     statut: str = "planifie"
     ug_ids: list[str] = Field(default_factory=list)
     mois_debut: Optional[int] = None
@@ -52,6 +55,7 @@ class OccurrenceUpdateRequest(BaseModel):
     code: Optional[str] = None
     titre: Optional[str] = None
     categorie: Optional[str] = None
+    lib_thema: Optional[str] = None
     statut: Optional[str] = None
     ug_ids: Optional[list[str]] = None
     mois_debut: Optional[int] = None

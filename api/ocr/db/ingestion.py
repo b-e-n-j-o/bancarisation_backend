@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ingestion_base_de_donnees.py — Semis atomique en base après les 3 extractions LLM.
+ingestion.py — Semis atomique en base après les 3 extractions LLM.
 
 Persiste 4 domaines rattachés au même projet_id (= bancarisation.projets.id) :
   1. projet_metadata  — métadonnées dossier (DossierResult)
@@ -9,12 +9,12 @@ Persiste 4 domaines rattachés au même projet_id (= bancarisation.projets.id) :
   4. occurrence       — instances calendrier (moteur calcul_occurrences)
 
 Usage standalone :
-    python ingestion_base_de_donnees.py --creer-projet
-    python ingestion_base_de_donnees.py --projet <uuid>
-    python ingestion_base_de_donnees.py --projet <uuid> --replace
-    python ingestion_base_de_donnees.py --creer-projet --dry-run
+    python -m api.ocr.db.ingestion --creer-projet
+    python -m api.ocr.db.ingestion --projet <uuid>
+    python -m api.ocr.db.ingestion --projet <uuid> --replace
+    python -m api.ocr.db.ingestion --creer-projet --dry-run
 
-Prérequis : DATABASE_URL + migration sql/001_bancarisation_extraction.sql appliquée.
+Prérequis : DATABASE_URL + migration db/sql/001_bancarisation_extraction.sql appliquée.
 """
 
 from __future__ import annotations
@@ -32,26 +32,26 @@ import psycopg
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
-from .db_env import get_database_url, load_db_env
-from .models import (
+from api.db.env import get_database_url, load_db_env
+from api.ocr.domain.ug_ids import normalize_ug_ids
+from api.ocr.models import (
     ActionsResult,
     DossierResult,
     EcheancesLieesResult,
     ExtractionResult,
     Occurrence,
 )
-from .ug_ids import normalize_ug_ids
 
-_SCRIPT_DIR = Path(__file__).resolve().parent
+_OCR_DIR = Path(__file__).resolve().parent.parent
 
 load_db_env()
 
 log = logging.getLogger("ingestion")
 
-DEFAULT_DOSSIER = _SCRIPT_DIR / "dossier.json"
-DEFAULT_ACTIONS = _SCRIPT_DIR / "actions.json"
-DEFAULT_ECHEANCES = _SCRIPT_DIR / "echeances_liees.json"
-DEFAULT_OCCURRENCES = _SCRIPT_DIR / "occurrences.json"
+DEFAULT_DOSSIER = _OCR_DIR / "dossier.json"
+DEFAULT_ACTIONS = _OCR_DIR / "actions.json"
+DEFAULT_ECHEANCES = _OCR_DIR / "echeances_liees.json"
+DEFAULT_OCCURRENCES = _OCR_DIR / "occurrences.json"
 
 ORGANISATION_ID_V0 = "a1000000-0000-0000-0000-000000000001"
 
@@ -241,9 +241,9 @@ def ingérer(
                     """
                     insert into bancarisation.action_fiche (
                         projet_id, import_id, cle, code, categorie, titre,
-                        contenu_integral, fiche_json, ug_ids, confiance,
+                        contenu_integral, fiche_json, ug_ids, lib_thema, confiance,
                         champs_a_confirmer, avertissements
-                    ) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    ) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     on conflict (projet_id, cle) do update set
                         import_id = excluded.import_id,
                         code = excluded.code,
@@ -252,6 +252,7 @@ def ingérer(
                         contenu_integral = excluded.contenu_integral,
                         fiche_json = excluded.fiche_json,
                         ug_ids = excluded.ug_ids,
+                        lib_thema = excluded.lib_thema,
                         confiance = excluded.confiance,
                         champs_a_confirmer = excluded.champs_a_confirmer,
                         avertissements = excluded.avertissements
@@ -259,7 +260,7 @@ def ingérer(
                     (
                         projet_id, import_id, a.id, a.code, a.categorie, a.titre,
                         a.contenu_integral, Jsonb(fiche_payload), action_ug_ids,
-                        a.confiance, a.champs_a_confirmer, a.avertissements,
+                        a.lib_thema, a.confiance, a.champs_a_confirmer, a.avertissements,
                     ),
                 )
                 actions_upsert += 1
@@ -272,20 +273,21 @@ def ingérer(
                     """
                     insert into bancarisation.echeance (
                         projet_id, import_id, cle, action_cle, code_operation, type_operation,
-                        type_metier, libelle, objectif_long_terme, objectif_operationnel,
+                        type_metier, libelle, lib_thema, objectif_long_terme, objectif_operationnel,
                         ug_ids, parcelles, communes, recurrence,
                         fenetre_debut, fenetre_fin, fenetre_traverse_nouvel_an,
                         fenetre_texte_source, conditions, indicateurs, intervenants,
                         duree_gestion_ans, source_page, source_extrait,
                         confiance, champs_a_confirmer, avertissements
                     ) values (
-                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
                         %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
                     )
                     on conflict (projet_id, cle) do update set
                         import_id = excluded.import_id,
                         action_cle = excluded.action_cle,
                         libelle = excluded.libelle,
+                        lib_thema = excluded.lib_thema,
                         ug_ids = excluded.ug_ids,
                         recurrence = excluded.recurrence,
                         confiance = excluded.confiance,
@@ -295,7 +297,7 @@ def ingérer(
                     """,
                     (
                         projet_id, import_id, e.id, e.action_id, e.code_operation,
-                        e.type_operation, e.type_metier, e.libelle,
+                        e.type_operation, e.type_metier, e.libelle, e.lib_thema,
                         e.objectif_long_terme, e.objectif_operationnel,
                         echeance_ug_ids, e.parcelles, e.communes,
                         Jsonb(e.recurrence.model_dump(mode="json")),
@@ -317,18 +319,19 @@ def ingérer(
                 cur.execute(
                     """
                     insert into bancarisation.occurrence (
-                        projet_id, echeance_id, annee, code, titre, categorie, statut,
+                        projet_id, echeance_id, annee, code, titre, categorie, lib_thema, statut,
                         ug_ids, mois_debut, mois_fin, traverse_nouvel_an, origine,
                         confiance, champs_a_confirmer, avertissements
-                    ) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    ) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     on conflict (echeance_id, annee)
                         where origine = 'ia' and echeance_id is not null
                     do nothing
                     """,
                     (
                         projet_id, echeance_id, o.annee, o.code, o.titre, o.categorie,
-                        o.statut, occ_ug_ids, o.mois_debut, o.mois_fin, o.traverse_nouvel_an,
-                        o.origine, o.confiance, o.champs_a_confirmer, o.avertissements,
+                        o.lib_thema, o.statut, occ_ug_ids, o.mois_debut, o.mois_fin,
+                        o.traverse_nouvel_an, o.origine, o.confiance,
+                        o.champs_a_confirmer, o.avertissements,
                     ),
                 )
                 inserees += cur.rowcount
@@ -401,7 +404,7 @@ def main() -> None:
         echeances_liees = EcheancesLieesResult.model_validate(echeances_raw)
     else:
         extraction = ExtractionResult.model_validate(echeances_raw)
-        from lier_echeances_actions import lier
+        from api.ocr.lier_echeances_actions import lier
         echeances_liees = lier(extraction, actions_result)
 
     occs, nb_non_placables = charger_occurrences(occ_path)

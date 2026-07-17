@@ -8,7 +8,7 @@ from uuid import UUID
 
 import psycopg
 
-from api.ocr.db_env import get_database_url
+from api.db.env import get_database_url
 
 from .ingestion import GeometryIngestError
 

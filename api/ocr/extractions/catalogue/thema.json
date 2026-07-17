@@ -1,0 +1,87 @@
+{
+  "version": "1.0",
+  "source": "Référentiel Théma — nomenclature des mesures compensatoires",
+  "familles": [
+    {
+      "code": "C1",
+      "label": "Création / Renaturation de milieux",
+      "groupes": [
+        {
+          "id": "c1-creation",
+          "label": "Mesures de création / renaturation",
+          "mesures": [
+            { "code": "C1.1.a", "intitule": "Création/renaturation d'habitats" },
+            { "code": "C1.1.b", "intitule": "Aménagement ponctuel (abris/gîtes) complémentaire C1.a ou C2" },
+            { "code": "C1.1.c", "intitule": "Prescriptions d'un APG" },
+            { "code": "C1.1.d", "intitule": "Autre : à préciser" }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "C2",
+      "label": "Restauration / Réhabilitation",
+      "groupes": [
+        {
+          "id": "c2-cat1",
+          "label": "Cat. 1 : tous milieux",
+          "mesures": [
+            { "code": "C2.1.a", "intitule": "Enlèvement dispositifs antérieurs (déconstruction)" },
+            { "code": "C2.1.b", "intitule": "Traitement EEE" },
+            { "code": "C2.1.c", "intitule": "Etrépage / Décapage / Décaissement" },
+            { "code": "C2.1.d", "intitule": "Réensemencement / replantation / haies" },
+            { "code": "C2.1.e", "intitule": "Réouverture du milieu (débroussaillage, abattage)" },
+            { "code": "C2.1.f", "intitule": "Restauration de corridor écologique" },
+            { "code": "C2.1.g", "intitule": "Aménagement ponctuel (abris/gîtes) complémentaire C2" },
+            { "code": "C2.1.h", "intitule": "Prescriptions d'un APG" },
+            { "code": "C2.1.i", "intitule": "Autre : à préciser" }
+          ]
+        },
+        {
+          "id": "c2-cat2",
+          "label": "Cat. 2 : milieux aquatiques",
+          "mesures": [
+            { "code": "C2.2.a", "intitule": "Reprofilage / Restauration de berges" },
+            { "code": "C2.2.b", "intitule": "Annexes hydrauliques / décolmatage" },
+            { "code": "C2.2.c", "intitule": "Reconnexion hydraulique / frayères" },
+            { "code": "C2.2.d", "intitule": "Hydromorphologie lit mineur" },
+            { "code": "C2.2.e", "intitule": "Alimentation/circulation eau zone humide" },
+            { "code": "C2.2.f", "intitule": "Restauration ripisylve" },
+            { "code": "C2.2.g", "intitule": "Modification d'ouvrage existant" },
+            { "code": "C2.2.h", "intitule": "Arasement / dérasement obstacle" },
+            { "code": "C2.2.i", "intitule": "Point d'abreuvement / mise en défens" },
+            { "code": "C2.2.k", "intitule": "Autre : à préciser" }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "C3",
+      "label": "Évolution des pratiques",
+      "groupes": [
+        {
+          "id": "c3-cat1",
+          "label": "Cat. 1 : abandon / changement total",
+          "mesures": [
+            { "code": "C3.1.a", "intitule": "Abandon traitements phytosanitaires" },
+            { "code": "C3.1.b", "intitule": "Abandon de gestion / sénescence" },
+            { "code": "C3.1.c", "intitule": "Conversion pratiques culturales" },
+            { "code": "C3.1.d", "intitule": "Prescriptions d'un APG" },
+            { "code": "C3.1.e", "intitule": "Autre : à préciser" }
+          ]
+        },
+        {
+          "id": "c3-cat2",
+          "label": "Cat. 2 : simple évolution",
+          "mesures": [
+            { "code": "C3.2.a", "intitule": "Fauche / pâturage / niveaux d'eau" },
+            { "code": "C3.2.b", "intitule": "Pratiques de gestion alternatives" },
+            { "code": "C3.2.c", "intitule": "Gestion fréquentation humaine" },
+            { "code": "C3.2.d", "intitule": "Prescriptions d'un APG" },
+            { "code": "C3.2.e", "intitule": "Autre : à préciser" }
+          ]
+        }
+      ]
+    }
+  ]
+}

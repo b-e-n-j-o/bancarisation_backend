@@ -3,8 +3,6 @@
 -- geom = CRS source ; geom_3857 = Web Mercator (affichage / analyses web).
 -- L'API sert du GeoJSON en EPSG:4326 via ST_Transform(geom_3857, 4326) pour MapLibre.
 
-CREATE EXTENSION IF NOT EXISTS postgis;
-
 -- ── Surfacique (Polygon / MultiPolygon) ──────────────────────────────────────
 
 CREATE TABLE IF NOT EXISTS bancarisation.unites_de_gestion_surf (

@@ -12,7 +12,7 @@ from .calcul_occurrences import annee_fin_suggeree, generer
 from .extractions.extract_actions_mistral import extraire as extraire_actions
 from .extractions.extract_dossier_mistral import extraire as extraire_dossier
 from .extractions.extract_echeances_mistral import extraire as extraire_echeances
-from .ingestion_base_de_donnees import connect, ingérer
+from .db.ingestion import connect, ingérer
 from .lier_echeances_actions import lier
 from .mistral_client import (
     DEFAULT_EFFORT,
@@ -91,7 +91,7 @@ def executer(
 
     _progress("occurrences", "Génération calendrier")
     annee_fin = _horizon(dossier_result, echeances_result)
-    occs, non_placables = generer(echeances_result.echeances, annee_fin=annee_fin)
+    occs, non_placables = generer(liees.echeances, annee_fin=annee_fin)
     occ_path = work_dir / "occurrences.json"
     occ_path.write_text(
         json.dumps(

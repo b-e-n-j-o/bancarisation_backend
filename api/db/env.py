@@ -8,8 +8,8 @@ from urllib.parse import quote_plus
 
 from dotenv import load_dotenv
 
-_OCR_DIR = Path(__file__).resolve().parent
-_BACKEND_DIR = _OCR_DIR.parents[1]
+_API_DIR = Path(__file__).resolve().parent.parent
+_BACKEND_DIR = _API_DIR.parent
 
 
 def load_db_env() -> None:

@@ -1,5 +1,5 @@
 """
-gestion_crud.py — CRUD post-ingestion sur le schéma bancarisation.
+crud.py — CRUD post-ingestion sur le schéma bancarisation.
 
 Accès via API REST Supabase (SUPABASE_URL HTTPS), pas Postgres direct.
 """
@@ -10,16 +10,16 @@ from datetime import datetime, timezone
 from typing import Any
 from uuid import UUID
 
-from .supabase_client import bancarisation, get_supabase
-from .ug_ids import normalize_ug_id, normalize_ug_ids
+from api.db.supabase import bancarisation, get_supabase
+from api.ocr.domain.ug_ids import normalize_ug_id, normalize_ug_ids
 
 _CHAMPS_MODIFIABLES = {
-    "annee", "code", "titre", "categorie", "statut", "ug_ids",
+    "annee", "code", "titre", "categorie", "lib_thema", "statut", "ug_ids",
     "mois_debut", "mois_fin", "traverse_nouvel_an",
     "date_realisation", "commentaire",
 }
 
-_CHAMPS_ACTION_MODIFIABLES = {"ug_ids", "titre", "contenu_integral", "categorie"}
+_CHAMPS_ACTION_MODIFIABLES = {"ug_ids", "titre", "contenu_integral", "categorie", "lib_thema"}
 
 
 def _now_iso() -> str:
@@ -56,7 +56,7 @@ def lister_actions(projet_id: UUID | str) -> list[dict[str, Any]]:
         bancarisation(client)
         .table("action_fiche")
         .select(
-            "id, cle, code, categorie, titre, contenu_integral, ug_ids, confiance, "
+            "id, cle, code, categorie, titre, contenu_integral, ug_ids, lib_thema, confiance, "
             "champs_a_confirmer, avertissements"
         )
         .eq("projet_id", _pid(projet_id))
@@ -134,8 +134,11 @@ def creer_action_fiche(
     contenu_integral: str,
     cle: str | None = None,
     ug_ids: list[str] | None = None,
+    lib_thema: str | None = None,
 ) -> dict[str, Any]:
     """Crée une fiche-action saisie manuellement (hors import OCR)."""
+    from api.ocr.extractions.catalogue.thema import normaliser_lib_thema
+
     code_norm = _normaliser_code_action(code)
     cat = categorie.strip().upper()
     if cat not in _CATEGORIES_ACTION:
@@ -151,6 +154,7 @@ def creer_action_fiche(
 
     cle_norm = _normaliser_code_action(cle or code_norm)
     ugs = normalize_ug_ids(ug_ids)
+    thema = normaliser_lib_thema(lib_thema)
     client = get_supabase()
 
     existing = (
@@ -170,6 +174,7 @@ def creer_action_fiche(
         "code": code_norm,
         "categorie": cat,
         "titre": titre_clean,
+        "lib_thema": thema,
         "contenu_integral": contenu_clean,
         "ug_ids": ugs,
         "confiance": 1.0,
@@ -189,6 +194,7 @@ def creer_action_fiche(
             "contenu_integral": contenu_clean,
             "fiche_json": fiche_json,
             "ug_ids": ugs,
+            "lib_thema": thema,
             "confiance": 1.0,
             "champs_a_confirmer": [],
             "avertissements": ["Fiche créée manuellement"],
@@ -206,6 +212,8 @@ def modifier_action_fiche(
     action_id: UUID | str,
     **champs: Any,
 ) -> dict[str, Any] | None:
+    from api.ocr.extractions.catalogue.thema import normaliser_lib_thema
+
     maj = {k: v for k, v in champs.items() if k in _CHAMPS_ACTION_MODIFIABLES}
     if not maj:
         raise ValueError(
@@ -213,6 +221,8 @@ def modifier_action_fiche(
         )
     if "ug_ids" in maj:
         maj["ug_ids"] = normalize_ug_ids(maj["ug_ids"])
+    if "lib_thema" in maj:
+        maj["lib_thema"] = normaliser_lib_thema(maj["lib_thema"])
 
     client = get_supabase()
     response = (

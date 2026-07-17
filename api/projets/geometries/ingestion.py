@@ -25,8 +25,8 @@ from shapely.geometry import (
 from shapely.geometry.base import BaseGeometry
 from shapely.ops import unary_union
 
-from api.ocr.db_env import get_database_url
-from api.ocr.ug_ids import normalize_ug_id
+from api.db.env import get_database_url
+from api.ocr.domain.ug_ids import normalize_ug_id
 
 CoucheKind = Literal["surf", "lin", "pct", "emprise"]
 

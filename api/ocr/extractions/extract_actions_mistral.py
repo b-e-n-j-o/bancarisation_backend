@@ -27,7 +27,7 @@ from ..mistral_client import (
     extraire_structure,
 )
 from ..models import ActionsResult
-from ..prompts.prompt_extract_actions import SYSTEM_PROMPT
+from .prompts.prompt_extract_actions import SYSTEM_PROMPT
 
 _OCR_DIR = Path(__file__).resolve().parent.parent
 

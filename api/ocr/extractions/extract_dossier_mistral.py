@@ -28,7 +28,7 @@ from ..mistral_client import (
     extraire_structure,
 )
 from ..models import DossierResult
-from ..prompts.prompt_extract_dossier import SYSTEM_PROMPT
+from .prompts.prompt_extract_dossier import SYSTEM_PROMPT
 
 _OCR_DIR = Path(__file__).resolve().parent.parent
 

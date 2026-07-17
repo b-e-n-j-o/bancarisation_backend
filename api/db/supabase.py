@@ -8,8 +8,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 from supabase import Client, create_client
 
-_OCR_DIR = Path(__file__).resolve().parent
-_BACKEND_DIR = _OCR_DIR.parents[1]
+_API_DIR = Path(__file__).resolve().parent.parent
+_BACKEND_DIR = _API_DIR.parent
+_OCR_DIR = _API_DIR / "ocr"
 
 
 def load_supabase_env() -> None:

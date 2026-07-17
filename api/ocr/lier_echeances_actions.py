@@ -14,9 +14,11 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import sys
 from pathlib import Path
 
-from .models import ActionsResult, EcheanceLiee, EcheancesLieesResult, ExtractionResult
+from .extractions.catalogue.thema import LIB_THEMA_AUTRE
+from .models import ActionFiche, ActionsResult, EcheanceLiee, EcheancesLieesResult, ExtractionResult
 
 _SCRIPT_DIR = Path(__file__).resolve().parent
 
@@ -37,12 +39,12 @@ def _resoudre_chemin(chemin: str | Path) -> Path:
     return candidat if candidat.exists() else p
 
 
-def _index_actions(actions: ActionsResult) -> dict[str, str]:
-    """code normalisé → action id."""
-    idx: dict[str, str] = {}
+def _index_actions(actions: ActionsResult) -> dict[str, ActionFiche]:
+    """code / id normalisé → fiche-action."""
+    idx: dict[str, ActionFiche] = {}
     for a in actions.actions:
-        idx[a.code] = a.id
-        idx[a.id] = a.id
+        idx[a.code] = a
+        idx[a.id] = a
     return idx
 
 
@@ -57,14 +59,19 @@ def lier(
 
     for e in echeances.echeances:
         code = e.code_operation  # déjà normalisé TU1
-        action_id = idx.get(code)
+        action = idx.get(code)
+        action_id = action.id if action else None
+        lib_thema = action.lib_thema if action else LIB_THEMA_AUTRE
         if not action_id:
             orphelines.append(e.id)
             log.warning("Échéance orpheline %s (code %s)", e.id, code)
         else:
             liaisons[e.id] = action_id
 
-        liees.append(EcheanceLiee(**e.model_dump(), action_id=action_id))
+        liees.append(EcheanceLiee(
+            **{**e.model_dump(), "lib_thema": lib_thema},
+            action_id=action_id,
+        ))
 
     return EcheancesLieesResult(
         echeances=liees,

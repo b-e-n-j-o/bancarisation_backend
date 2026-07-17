@@ -6,7 +6,7 @@ Déroule les échéances-templates en occurrences concrètes, UNE SEULE FOIS, à
 ⚠️ Nature du moteur : c'est un SEMOIR, pas une vue.
 Une fois les occurrences matérialisées en base, elles appartiennent au user
 (CRUD libre). Le moteur ne repasse jamais dessus : le re-jouer sur un dossier
-déjà semé écraserait son travail. Voir ingestion_base_de_donnees.ingérer(replace=...)
+déjà semé écraserait son travail. Voir api.ocr.db.ingestion.ingérer(replace=...)
 pour le garde-fou.
 
 Ce module est PUR (aucune I/O, aucun accès base) → testable directement.
@@ -27,7 +27,8 @@ from datetime import date
 from pathlib import Path
 
 from .models import Echeance, ExtractionResult, Occurrence, Recurrence, TypeRecurrence
-from .ug_ids import normalize_ug_ids
+from .domain.ug_ids import normalize_ug_ids
+from .extractions.catalogue.thema import LIB_THEMA_AUTRE
 
 _SCRIPT_DIR = Path(__file__).resolve().parent
 
@@ -179,6 +180,7 @@ def generer(
                 code=code,
                 titre=titre,
                 categorie=e.type_operation,
+                lib_thema=getattr(e, "lib_thema", None) or LIB_THEMA_AUTRE,
                 statut=statut_initial(annee, e, annee_courante),
                 ug_ids=normalize_ug_ids(e.ug_ids),
                 mois_debut=md,

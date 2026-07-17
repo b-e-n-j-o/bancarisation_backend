@@ -5,7 +5,7 @@ pipeline_extraction.py — Orchestrateur bout-en-bout : extraction LLM → base.
     full.md
       ├─► dossier + actions + échéances (3 appels Mistral)
       ├─► liaison + occurrences (déterministe)
-      └─► ingestion_base_de_donnees (Supabase)
+      └─► api.ocr.db.ingestion (Supabase)
 
 Usage :
     python pipeline_extraction.py --creer-projet
@@ -33,7 +33,7 @@ from .calcul_occurrences import annee_fin_suggeree, generer
 from .extractions.extract_actions_mistral import extraire as extraire_actions
 from .extractions.extract_dossier_mistral import extraire as extraire_dossier
 from .extractions.extract_echeances_mistral import extraire as extraire_echeances
-from .ingestion_base_de_donnees import connect, ingérer, resoudre_projet_id
+from .db.ingestion import connect, ingérer, resoudre_projet_id
 from .lier_echeances_actions import lier
 from .mistral_client import (
     DEFAULT_EFFORT,
@@ -210,7 +210,7 @@ def main() -> None:
     print("═" * 62)
     annee_fin = _horizon(dossier_result, echeances_result)
     log.info("Horizon occurrences : %d", annee_fin)
-    occs, non_placables = generer(echeances_result.echeances, annee_fin=annee_fin)
+    occs, non_placables = generer(liees.echeances, annee_fin=annee_fin)
     occ_path.write_text(json.dumps({
         "annee_fin": annee_fin,
         "annee_fin_source": "dossier" if dossier_result and dossier_result.dossier.horizon.annee_fin else "inferee",
