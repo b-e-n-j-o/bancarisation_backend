@@ -17,6 +17,8 @@ _CHAMPS_MODIFIABLES = {
     "annee", "code", "titre", "categorie", "lib_thema", "statut", "ug_ids",
     "mois_debut", "mois_fin", "traverse_nouvel_an",
     "date_realisation", "commentaire",
+    "montant_ht", "montant_ttc", "taux_tva", "prestataire", "ligne_budget_id",
+    "montant_engage", "montant_realise",
 }
 
 _CHAMPS_ACTION_MODIFIABLES = {"ug_ids", "titre", "contenu_integral", "categorie", "lib_thema"}

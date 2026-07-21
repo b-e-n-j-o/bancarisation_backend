@@ -63,6 +63,16 @@ class OccurrenceUpdateRequest(BaseModel):
     traverse_nouvel_an: Optional[bool] = None
     date_realisation: Optional[str] = None
     commentaire: Optional[str] = None
+    montant_ht: Optional[float] = None
+    montant_ttc: Optional[float] = None
+    taux_tva: Optional[float] = None
+    prestataire: Optional[str] = None
+    ligne_budget_id: Optional[UUID] = None
+    montant_engage: Optional[float] = None
+    montant_realise: Optional[float] = None
+    # Motif pour le trigger budget_mouvement (nécessite UPDATE psycopg).
+    motif: Optional[str] = None
+    # montant_initial / annee_initiale : uniquement via POST …/budget/baseline
 
 
 def _db_error(exc: Exception) -> HTTPException:
@@ -177,12 +187,32 @@ def create_occurrence(projet_id: UUID, payload: OccurrenceCreateRequest) -> dict
 
 @router.patch("/occurrences/{occurrence_id}")
 def update_occurrence(occurrence_id: UUID, payload: OccurrenceUpdateRequest) -> dict[str, Any]:
-    champs = payload.model_dump(exclude_none=True)
+    # exclude_unset : conserve les null explicites (ex. effacer montant_ht / prestataire).
+    champs = payload.model_dump(exclude_unset=True)
+    motif = champs.pop("motif", None)
+    if "ligne_budget_id" in champs and champs["ligne_budget_id"] is not None:
+        champs["ligne_budget_id"] = str(champs["ligne_budget_id"])
     if not champs:
         raise HTTPException(status_code=400, detail="Aucun champ à modifier.")
     try:
-        row = crud.modifier_occurrence(occurrence_id, **champs)
+        # Motif fourni → UPDATE psycopg + SET LOCAL (même transaction que le trigger).
+        # Sinon → Supabase REST : le trigger logue quand même, motif NULL.
+        if motif is not None:
+            from api.budget.mouvements import modifier_occurrence_avec_contexte
+
+            row = modifier_occurrence_avec_contexte(
+                occurrence_id,
+                champs,
+                motif=motif,
+                modifie_par=None,
+            )
+        else:
+            row = crud.modifier_occurrence(occurrence_id, **champs)
     except (RuntimeError, ValueError) as exc:
+        raise _db_error(exc) from exc
+    except Exception as exc:  # noqa: BLE001 — erreurs tunnel / psycopg
+        if motif is not None:
+            raise _server_error(exc) from exc
         raise _db_error(exc) from exc
     if not row:
         raise HTTPException(status_code=404, detail="Occurrence introuvable.")

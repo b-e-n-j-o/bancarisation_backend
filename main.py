@@ -14,6 +14,7 @@ from api.budget.router import router as budget_router
 from api.documents.route import router as documents_router
 from api.ocr.router import router as ocr_router
 from api.planning.router import router as planning_router
+from api.prestataires.router import router as prestataires_router
 from api.projets.geometries.router import router as geometries_router
 from api.projets.router import router as projets_router
 
@@ -45,6 +46,7 @@ def healthcheck() -> dict[str, bool]:
 app.include_router(projets_router, prefix="/api", tags=["projets"])
 app.include_router(geometries_router, prefix="/api", tags=["geometries"])
 app.include_router(budget_router, prefix="/api", tags=["budget"])
+app.include_router(prestataires_router, prefix="/api", tags=["prestataires"])
 app.include_router(documents_router, prefix="/api", tags=["documents"])
 app.include_router(planning_router, prefix="/api", tags=["planning"])
 app.include_router(ocr_router, prefix="/api", tags=["ocr"])
