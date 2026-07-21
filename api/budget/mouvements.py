@@ -142,3 +142,36 @@ def lister_mouvements_occurrence(occurrence_id: UUID, limite: int = 100) -> list
 
 def lister_mouvements_projet(projet_id: UUID, limite: int = 500) -> list[dict[str, Any]]:
     return _mouvements("m.projet_id = %s", str(projet_id), limite)
+
+
+def etiqueter_dernier_mouvement(
+    occurrence_id: UUID,
+    champ: str,
+    motif: str,
+) -> dict[str, Any] | None:
+    """Pose le motif sur le mouvement le plus récent de ce champ resté sans motif.
+
+    Utilisé après une édition déjà tracée (motif NULL) : on n'UPDATE pas
+    l'occurrence (valeur identique = pas de nouveau trigger).
+    """
+    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                UPDATE bancarisation.budget_mouvement
+                SET motif = %s
+                WHERE id = (
+                    SELECT id
+                    FROM bancarisation.budget_mouvement
+                    WHERE occurrence_id = %s
+                      AND champ = %s
+                      AND (motif IS NULL OR motif = '')
+                    ORDER BY modifie_le DESC
+                    LIMIT 1
+                )
+                RETURNING id::text, champ, motif, modifie_le::text
+                """,
+                (motif, str(occurrence_id), champ),
+            )
+            row = cur.fetchone()
+    return dict(row) if row else None

@@ -1,4 +1,4 @@
-"""Routes budget projet : lecture + ingestion JSON + baseline + mouvements."""
+"""Routes budget projet : lecture + ingestion JSON + baseline + mouvements + agrégats."""
 
 from __future__ import annotations
 
@@ -7,14 +7,29 @@ from typing import Any
 from uuid import UUID
 
 from fastapi import APIRouter, File, HTTPException, Query, UploadFile, status
+from pydantic import BaseModel, Field
 
+from .agrege import lister_budget_annuel
 from .baseline import router as baseline_router
 from .crud import lister_lignes_budget
 from .ingestion import BudgetIngestError, ingérer_budget_json
-from .mouvements import lister_mouvements_occurrence, lister_mouvements_projet
+from .mouvements import (
+    etiqueter_dernier_mouvement,
+    lister_mouvements_occurrence,
+    lister_mouvements_projet,
+)
 
 router = APIRouter()
 router.include_router(baseline_router)
+
+_CHAMPS_MOTIF = frozenset(
+    {"montant_ht", "montant_engage", "montant_realise", "statut", "annee"}
+)
+
+
+class MotifPayload(BaseModel):
+    champ: str = Field(..., min_length=1)
+    motif: str = Field(..., min_length=1)
 
 
 @router.get("/projets/{projet_id}/budget/lignes")
@@ -23,6 +38,17 @@ def list_budget_lignes_route(projet_id: UUID) -> dict[str, Any]:
         return lister_lignes_budget(projet_id)
     except BudgetIngestError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+
+
+@router.get("/projets/{projet_id}/budget/annuel")
+def list_budget_annuel_route(projet_id: UUID) -> list[dict[str, Any]]:
+    try:
+        return lister_budget_annuel(projet_id)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Lecture budget annuel impossible : {exc}",
+        ) from exc
 
 
 @router.get("/projets/{projet_id}/budget/mouvements")
@@ -51,6 +77,28 @@ def list_budget_mouvements_occurrence_route(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Lecture mouvements impossible : {exc}",
         ) from exc
+
+
+@router.patch("/occurrences/{occurrence_id}/dernier-mouvement/motif")
+def etiqueter_motif_route(occurrence_id: UUID, payload: MotifPayload) -> dict[str, Any]:
+    if payload.champ not in _CHAMPS_MOTIF:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Champ non supporté. Autorisés : {sorted(_CHAMPS_MOTIF)}",
+        )
+    motif = payload.motif.strip()
+    if not motif:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Motif vide.")
+    try:
+        res = etiqueter_dernier_mouvement(occurrence_id, payload.champ, motif)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Étiquetage motif impossible : {exc}",
+        ) from exc
+    if res is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Aucun mouvement à étiqueter.")
+    return res
 
 
 @router.post(
