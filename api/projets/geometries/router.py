@@ -7,7 +7,11 @@ from uuid import UUID
 
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile, status
 
-from .crud import lister_geometries_ug
+from .crud import (
+    compter_projets_parc_par_departement,
+    lister_geometries_parc,
+    lister_geometries_ug,
+)
 from .ingestion import GeometryIngestError, ingest_shapefile_zip
 
 router = APIRouter()
@@ -17,6 +21,24 @@ router = APIRouter()
 def list_geometries_route(projet_id: UUID) -> dict[str, Any]:
     try:
         return lister_geometries_ug(projet_id)
+    except GeometryIngestError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+
+
+@router.get("/geometries/parc")
+def list_geometries_parc_route(departement: str | None = None) -> dict[str, Any]:
+    """Toutes les UG du parc (carte liste projets), filtrable par département."""
+    try:
+        return lister_geometries_parc(departement=departement)
+    except GeometryIngestError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+
+
+@router.get("/geometries/parc/departements")
+def list_parc_departements_route() -> list[dict[str, Any]]:
+    """Décompte projets parc (avec UG) par département — pastilles carte France."""
+    try:
+        return compter_projets_parc_par_departement()
     except GeometryIngestError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 

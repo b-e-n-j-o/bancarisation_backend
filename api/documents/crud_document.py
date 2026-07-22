@@ -143,9 +143,14 @@ def _build_bucket_path(
     projet_id: UUID,
     file_name: str,
     occurrence_id: Optional[UUID],
+    *,
+    sous_dossier: Optional[str] = None,
 ) -> str:
     safe_name = _safe_file_name(file_name)
     ts = int(time.time() * 1000)
+    if sous_dossier:
+        folder = re.sub(r"[^a-zA-Z0-9._-]", "_", sous_dossier.strip("/")) or "autres"
+        return f"{projet_id}/{folder}/{ts}_{safe_name}"
     if occurrence_id is not None:
         return f"{projet_id}/occurrences/{occurrence_id}/{ts}_{safe_name}"
     return f"{projet_id}/_projet/{ts}_{safe_name}"
@@ -162,6 +167,7 @@ def upload_document(
     *,
     nom: Optional[str] = None,
     occurrence_id: Optional[UUID] = None,
+    sous_dossier: Optional[str] = None,
 ) -> dict[str, Any]:
     client = _get_supabase_client()
     geojson_features: list[dict[str, Any]] | None = None
@@ -174,7 +180,12 @@ def upload_document(
         geojson_features = _parse_geojson_features(content)
 
     display_name = (nom or "").strip() or file_name
-    bucket_path = _build_bucket_path(projet_id, file_name, occurrence_id)
+    bucket_path = _build_bucket_path(
+        projet_id,
+        file_name,
+        occurrence_id,
+        sous_dossier=sous_dossier,
+    )
 
     try:
         client.storage.from_(BUCKET).upload(

@@ -12,3 +12,5 @@ geopandas>=1.0.0
 shapely>=2.0.0
 pyproj>=3.6.0
 fiona>=1.9.0
+jinja2>=3.1.0
+weasyprint>=62.0

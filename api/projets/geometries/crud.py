@@ -131,3 +131,129 @@ def lister_geometries_ug(projet_id: UUID) -> dict[str, Any]:
             ),
         },
     }
+
+
+_SELECT_PARC_UG = """
+SELECT
+    ug.id::text AS feature_id,
+    ug.projet_id::text AS projet_id,
+    ug.ug_id,
+    ug.libelle,
+    ug.description,
+    ug.source_fichier,
+    %s AS couche,
+    p.nom AS projet_nom,
+    p.departement,
+    p.commune,
+    ST_AsGeoJSON(ST_Transform(ug.geom_3857, 4326))::text AS geometry_geojson
+FROM bancarisation.{table} ug
+JOIN bancarisation.projets p ON p.id = ug.projet_id
+WHERE ug.geom_3857 IS NOT NULL
+  AND (%s::text IS NULL OR p.departement = %s)
+ORDER BY p.nom, ug.ug_id, ug.created_at
+"""
+
+
+def lister_geometries_parc(*, departement: str | None = None) -> dict[str, Any]:
+    """FeatureCollection de toutes les UG du parc (liste projets / carte nationale).
+
+    Géométrie = ``geom_3857`` (transformée en 4326 pour MapLibre), pas le jsonb
+    ``properties``. ``properties.id`` = ``projet_id`` pour le zoom liste ↔ carte.
+    """
+    features: list[dict[str, Any]] = []
+    dept = departement.strip() if departement and departement.strip() else None
+    try:
+        with psycopg.connect(get_database_url()) as conn:
+            with conn.cursor() as cur:
+                for table, couche in (
+                    ("unites_de_gestion_surf", "surf"),
+                    ("unites_de_gestion_lin", "lin"),
+                    ("unites_de_gestion_pct", "pct"),
+                ):
+                    cur.execute(
+                        _SELECT_PARC_UG.format(table=table),
+                        (couche, dept, dept),
+                    )
+                    cols = [d.name for d in cur.description]
+                    for tup in cur.fetchall():
+                        row = dict(zip(cols, tup))
+                        geom = (
+                            json.loads(row["geometry_geojson"])
+                            if row.get("geometry_geojson")
+                            else None
+                        )
+                        if not geom:
+                            continue
+                        features.append(
+                            {
+                                "type": "Feature",
+                                "id": row["feature_id"],
+                                "geometry": geom,
+                                "properties": {
+                                    "id": row["projet_id"],
+                                    "feature_id": row["feature_id"],
+                                    "projet_id": row["projet_id"],
+                                    "source": "utilisateur",
+                                    "ug_id": row.get("ug_id"),
+                                    "nom": row.get("projet_nom") or "Sans nom",
+                                    "libelle": row.get("libelle") or "",
+                                    "description": row.get("description") or "",
+                                    "couche": row.get("couche"),
+                                    "table_type": row.get("couche"),
+                                    "departement": row.get("departement"),
+                                    "commune": row.get("commune"),
+                                    "source_fichier": row.get("source_fichier"),
+                                },
+                            }
+                        )
+    except Exception as exc:
+        raise GeometryIngestError(f"Lecture géométries parc impossible: {exc}") from exc
+
+    return {
+        "type": "FeatureCollection",
+        "features": features,
+        "meta": {
+            "nb_features": len(features),
+            "nb_projets": len({f["properties"]["projet_id"] for f in features}),
+            "departement": dept,
+        },
+    }
+
+
+def compter_projets_parc_par_departement() -> list[dict[str, Any]]:
+    """Décompte des projets du parc ayant au moins une UG, par département."""
+    try:
+        with psycopg.connect(get_database_url()) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT
+                      p.departement,
+                      count(DISTINCT p.id)::int AS nb_projets
+                    FROM bancarisation.projets p
+                    WHERE p.departement IS NOT NULL
+                      AND p.departement <> ''
+                      AND (
+                        EXISTS (
+                          SELECT 1 FROM bancarisation.unites_de_gestion_surf u
+                          WHERE u.projet_id = p.id AND u.geom_3857 IS NOT NULL
+                        )
+                        OR EXISTS (
+                          SELECT 1 FROM bancarisation.unites_de_gestion_lin u
+                          WHERE u.projet_id = p.id AND u.geom_3857 IS NOT NULL
+                        )
+                        OR EXISTS (
+                          SELECT 1 FROM bancarisation.unites_de_gestion_pct u
+                          WHERE u.projet_id = p.id AND u.geom_3857 IS NOT NULL
+                        )
+                      )
+                    GROUP BY p.departement
+                    ORDER BY nb_projets DESC, p.departement
+                    """
+                )
+                return [
+                    {"departement": str(r[0]), "nb_projets": int(r[1])}
+                    for r in cur.fetchall()
+                ]
+    except Exception as exc:
+        raise GeometryIngestError(f"Stats départements parc impossibles: {exc}") from exc

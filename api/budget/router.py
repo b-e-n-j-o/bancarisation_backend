@@ -1,4 +1,4 @@
-"""Routes budget projet : lecture + ingestion JSON + baseline + mouvements + agrégats."""
+"""Routes budget projet : lecture + ingestion JSON + baseline + mouvements + agrégats + bilans."""
 
 from __future__ import annotations
 
@@ -15,12 +15,15 @@ from .crud import lister_lignes_budget
 from .ingestion import BudgetIngestError, ingérer_budget_json
 from .mouvements import (
     etiqueter_dernier_mouvement,
+    justifier_ecart_occurrence,
     lister_mouvements_occurrence,
     lister_mouvements_projet,
 )
+from .rapport import router as rapport_router
 
 router = APIRouter()
 router.include_router(baseline_router)
+router.include_router(rapport_router)
 
 _CHAMPS_MOTIF = frozenset(
     {"montant_ht", "montant_engage", "montant_realise", "statut", "annee"}
@@ -79,6 +82,11 @@ def list_budget_mouvements_occurrence_route(
         ) from exc
 
 
+class JustificationEcartPayload(BaseModel):
+    motif: str = Field(..., min_length=1, max_length=2000)
+    acteur: str | None = Field(default=None, max_length=200)
+
+
 @router.patch("/occurrences/{occurrence_id}/dernier-mouvement/motif")
 def etiqueter_motif_route(occurrence_id: UUID, payload: MotifPayload) -> dict[str, Any]:
     if payload.champ not in _CHAMPS_MOTIF:
@@ -99,6 +107,29 @@ def etiqueter_motif_route(occurrence_id: UUID, payload: MotifPayload) -> dict[st
     if res is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Aucun mouvement à étiqueter.")
     return res
+
+
+@router.post("/occurrences/{occurrence_id}/justifier-ecart")
+def justifier_ecart_route(
+    occurrence_id: UUID,
+    payload: JustificationEcartPayload,
+) -> dict[str, Any]:
+    """Justifie un écart au budget initial (passe le contrôle ecarts_sans_motif)."""
+    try:
+        return justifier_ecart_occurrence(
+            occurrence_id,
+            payload.motif,
+            acteur=payload.acteur,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    except LookupError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Justification impossible : {exc}",
+        ) from exc
 
 
 @router.post(

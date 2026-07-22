@@ -1,3 +1,4 @@
 from .router import router
+from . import service
 
-__all__ = ["router"]
+__all__ = ["router", "service"]

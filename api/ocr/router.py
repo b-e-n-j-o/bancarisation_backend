@@ -67,6 +67,7 @@ class OccurrenceUpdateRequest(BaseModel):
     montant_ttc: Optional[float] = None
     taux_tva: Optional[float] = None
     prestataire: Optional[str] = None
+    prestataire_id: Optional[UUID] = None
     ligne_budget_id: Optional[UUID] = None
     montant_engage: Optional[float] = None
     montant_realise: Optional[float] = None
@@ -192,6 +193,8 @@ def update_occurrence(occurrence_id: UUID, payload: OccurrenceUpdateRequest) -> 
     motif = champs.pop("motif", None)
     if "ligne_budget_id" in champs and champs["ligne_budget_id"] is not None:
         champs["ligne_budget_id"] = str(champs["ligne_budget_id"])
+    if "prestataire_id" in champs and champs["prestataire_id"] is not None:
+        champs["prestataire_id"] = str(champs["prestataire_id"])
     if not champs:
         raise HTTPException(status_code=400, detail="Aucun champ à modifier.")
     try:
@@ -216,6 +219,16 @@ def update_occurrence(occurrence_id: UUID, payload: OccurrenceUpdateRequest) -> 
         raise _db_error(exc) from exc
     if not row:
         raise HTTPException(status_code=404, detail="Occurrence introuvable.")
+
+    # Assure le rattachement projet ↔ prestataire quand un id est posé.
+    presta_id = champs.get("prestataire_id")
+    if presta_id:
+        try:
+            from api.prestataires.service import lier_occurrence_au_projet
+
+            lier_occurrence_au_projet(occurrence_id, UUID(str(presta_id)))
+        except Exception:  # noqa: BLE001 — non bloquant pour le PATCH
+            pass
     return row
 
 

@@ -1,0 +1,638 @@
+{#
+  Template du bilan financier annuel — rendu WeasyPrint (A4).
+  Reçoit le snapshot `donnees` de rapport_bilan tel quel, plus quelques
+  métadonnées d'archivage (version, statut, id).
+
+  Conventions :
+   * Titres numérotés, pas de mise en page exotique : le document doit
+     pouvoir s'insérer comme chapitre du bilan de suivi DREAL.
+   * Chaque section porte ses propres totaux : un chiffre lu en page 1
+     doit être retrouvable en page 3 puis en annexe.
+#}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Bilan financier {{ d.annee }} — {{ d.projet_nom or 'Projet' }}</title>
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 16mm 18mm 16mm;
+    @top-left {
+      content: "{{ d.projet_nom or 'Projet' }} — Bilan financier {{ d.annee }}";
+      font-family: 'DejaVu Sans', sans-serif;
+      font-size: 7.5pt; color: #6b7280;
+      border-bottom: 0.5pt solid #d1d5db; width: 100%; padding-bottom: 3pt;
+    }
+    @bottom-left {
+      content: "Version {{ meta.version }} · Données arrêtées au {{ d.borne_donnees | dt }}";
+      font-family: 'DejaVu Sans', sans-serif; font-size: 7pt; color: #9ca3af;
+    }
+    @bottom-right {
+      content: "Page " counter(page) " / " counter(pages);
+      font-family: 'DejaVu Sans', sans-serif; font-size: 7pt; color: #9ca3af;
+    }
+  }
+  @page :first {
+    @top-left { content: none; border: none; }
+  }
+
+  body {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 8.5pt; color: #1f2937; line-height: 1.45; margin: 0;
+  }
+
+  h1 { font-size: 19pt; margin: 0 0 4pt; font-weight: 700; letter-spacing: -0.3pt; }
+  h2 {
+    font-size: 11pt; margin: 18pt 0 7pt; font-weight: 700;
+    padding-bottom: 3pt; border-bottom: 1pt solid #1f2937;
+    page-break-after: avoid;
+  }
+  h3 { font-size: 9pt; margin: 11pt 0 5pt; font-weight: 700; color: #374151; page-break-after: avoid; }
+  p  { margin: 0 0 5pt; }
+  .muted  { color: #6b7280; }
+  .small  { font-size: 7.5pt; }
+  .num    { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .pos    { color: #b91c1c; }
+  .neg    { color: #15803d; }
+  .center { text-align: center; }
+
+  /* ---------- Page de garde ---------- */
+  .garde { page-break-after: always; padding-top: 26mm; }
+  .garde .surtitre {
+    font-size: 8pt; letter-spacing: 2pt; text-transform: uppercase;
+    color: #6b7280; margin-bottom: 9pt;
+  }
+  .garde .projet { font-size: 13pt; font-weight: 600; margin: 14pt 0 3pt; }
+  .garde .ref { font-size: 9pt; color: #4b5563; }
+  .garde-meta {
+    margin-top: 30mm; border-top: 1pt solid #1f2937; padding-top: 10pt;
+  }
+  .garde-meta table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  .garde-meta td { padding: 3.5pt 0; vertical-align: top; }
+  .garde-meta td:first-child { color: #6b7280; width: 46%; }
+
+  /* ---------- Cartouches de synthèse ---------- */
+  .cartouches { display: table; width: 100%; border-spacing: 5pt 0; margin: 4pt 0 10pt; }
+  .cartouche {
+    display: table-cell; width: 20%;
+    border: 0.75pt solid #d1d5db; border-radius: 3pt;
+    padding: 7pt 8pt; text-align: center;
+  }
+  .cartouche .lbl { font-size: 6.5pt; text-transform: uppercase; letter-spacing: 0.5pt; color: #6b7280; }
+  .cartouche .val { font-size: 12.5pt; font-weight: 700; margin-top: 3pt; }
+
+  /* ---------- Tableaux ---------- */
+  table.data { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  table.data th {
+    background: #f3f4f6; text-align: left; font-weight: 700; font-size: 6.8pt;
+    text-transform: uppercase; letter-spacing: 0.4pt; color: #4b5563;
+    padding: 4.5pt 4pt; border-bottom: 0.75pt solid #9ca3af;
+  }
+  table.data td { padding: 4pt; border-bottom: 0.4pt solid #e5e7eb; vertical-align: top; }
+  table.data tr { page-break-inside: avoid; }
+  table.data thead { display: table-header-group; }
+  table.data tfoot td {
+    font-weight: 700; border-top: 1pt solid #1f2937; border-bottom: none; padding-top: 5pt;
+  }
+  /* Sans cela, la bordure de la dernière ligne déborde d'un fragment et
+     WeasyPrint répète l'en-tête sur une page vide. */
+  table.data tbody tr:last-child td { border-bottom: none; }
+  table.data { page-break-inside: auto; }
+  tr.sous-total td { background: #f9fafb; font-weight: 600; }
+
+  .code {
+    font-family: 'DejaVu Sans Mono', monospace; font-size: 6.8pt;
+    background: #f3f4f6; padding: 0.5pt 3pt; border-radius: 2pt;
+  }
+  .badge {
+    display: inline-block; font-size: 6.3pt; padding: 0.5pt 3.5pt;
+    border-radius: 6pt; border: 0.5pt solid currentColor; white-space: nowrap;
+  }
+  .badge-alerte  { color: #b45309; }
+  .badge-ajout   { color: #6b7280; }
+  .badge-nojust  { color: #b91c1c; }
+
+  /* ---------- Waterfall des écarts ---------- */
+  .waterfall { width: 100%; border-collapse: collapse; font-size: 8pt; margin-top: 4pt; }
+  .waterfall td { padding: 4.5pt 4pt; border-bottom: 0.4pt solid #e5e7eb; }
+  .waterfall .lbl { width: 42%; }
+  .waterfall .bar-cell { width: 38%; }
+  .bar { height: 8pt; border-radius: 1.5pt; display: inline-block; vertical-align: middle; }
+  .bar-pos { background: #dc9a9a; }
+  .bar-neg { background: #9ac4a5; }
+  .bar-ref { background: #9ca3af; }
+  .waterfall tr.total td { font-weight: 700; border-top: 0.75pt solid #1f2937; border-bottom: none; }
+
+  /* ---------- Encadrés ---------- */
+  .encadre {
+    border: 0.75pt solid #d1d5db; border-left: 2.5pt solid #6b7280;
+    border-radius: 2pt; padding: 7pt 9pt; margin: 7pt 0; font-size: 8pt;
+  }
+  .encadre-alerte { border-left-color: #b91c1c; }
+  .encadre-info   { border-left-color: #2563eb; }
+  .encadre h3 { margin-top: 0; }
+  .encadre ul { margin: 4pt 0 0; padding-left: 13pt; }
+  .encadre li { margin-bottom: 2.5pt; }
+
+  .annexe { page-break-before: always; }
+  .signature { margin-top: 22pt; display: table; width: 100%; border-spacing: 12pt 0; }
+  .signature .case {
+    display: table-cell; width: 50%; border: 0.5pt solid #9ca3af;
+    height: 62pt; padding: 6pt 8pt; font-size: 7.5pt; color: #6b7280;
+  }
+</style>
+</head>
+<body>
+
+{# ══════════════════════ PAGE DE GARDE ══════════════════════ #}
+<section class="garde">
+  <div class="surtitre">Mesures compensatoires — Suivi financier</div>
+  <h1>Bilan financier {{ d.annee }}</h1>
+  <div class="projet">{{ d.projet_nom or "Projet sans intitulé" }}</div>
+  {% if d.projet_reference %}<div class="ref">{{ d.projet_reference }}</div>{% endif %}
+
+  <div class="garde-meta">
+    <table>
+      <tr><td>Exercice couvert</td><td><strong>1<sup>er</sup> janvier – 31 décembre {{ d.annee }}</strong></td></tr>
+      <tr><td>Version du document</td>
+          <td><strong>{{ meta.version }}</strong>{% if meta.statut == 'valide' %} — validé{% endif %}</td></tr>
+      <tr><td>Généré le</td><td>{{ d.genere_le | dt }}{% if d.genere_par %} par {{ d.genere_par }}{% endif %}</td></tr>
+      {% if meta.valide_le %}
+      <tr><td>Validé le</td><td>{{ meta.valide_le | dt }}{% if meta.valide_par %} par {{ meta.valide_par }}{% endif %}</td></tr>
+      {% endif %}
+      <tr><td>Données arrêtées au</td><td><strong>{{ d.borne_donnees | dt }}</strong></td></tr>
+      {% if d.baseline %}
+      <tr><td>Budget de référence</td>
+          <td>« {{ d.baseline.libelle }} » figé le {{ d.baseline.figee_le | dt(heure=False) }}<br>
+              <span class="muted">Total projet : {{ d.baseline.total_ht | eur }}</span></td></tr>
+      {% else %}
+      <tr><td>Budget de référence</td><td class="pos">Aucun budget initial figé</td></tr>
+      {% endif %}
+      {% if meta.id %}
+      <tr><td>Identifiant du document</td><td class="small muted">{{ meta.id }}</td></tr>
+      {% endif %}
+    </table>
+  </div>
+
+  <p class="small muted" style="margin-top:16pt">
+    Les montants sont exprimés en euros hors taxes. « Prévu » désigne le budget
+    planifié, « engagé » les sommes contractualisées (devis signés, bons de commande),
+    « réalisé » les sommes facturées. Les écarts sont calculés par rapport au budget
+    de référence figé indiqué ci-dessus.
+  </p>
+</section>
+
+{# ══════════════════════ 1. SYNTHÈSE ══════════════════════ #}
+<h2>1. Synthèse de l'exercice {{ d.annee }}</h2>
+
+<div class="cartouches">
+  <div class="cartouche">
+    <div class="lbl">Budget initial</div>
+    <div class="val">{{ s.initial | eur(court=True) }}</div>
+  </div>
+  <div class="cartouche">
+    <div class="lbl">Prévu actualisé</div>
+    <div class="val">{{ s.prevu | eur(court=True) }}</div>
+  </div>
+  <div class="cartouche">
+    <div class="lbl">Engagé</div>
+    <div class="val">{{ s.engage | eur(court=True) }}</div>
+  </div>
+  <div class="cartouche">
+    <div class="lbl">Réalisé</div>
+    <div class="val">{{ s.realise | eur(court=True) }}</div>
+  </div>
+  <div class="cartouche">
+    <div class="lbl">Écart / initial</div>
+    <div class="val {{ 'pos' if s.delta_prevu_initial > 0 else ('neg' if s.delta_prevu_initial < 0 else '') }}">
+      {{ s.delta_prevu_initial | eur(court=True, signe=True) }}
+    </div>
+  </div>
+</div>
+
+<p>{{ phrase_synthese }}</p>
+
+<table class="data" style="margin-top:8pt">
+  <thead>
+    <tr>
+      <th>Indicateur</th><th class="num">Montant</th><th style="width:42%">Lecture</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Budget initial {{ d.annee }} (référence figée)</td>
+      <td class="num">{{ s.initial | eur }}</td>
+      <td class="muted small">Montant prévu au moment du figeage du budget de référence.</td>
+    </tr>
+    <tr>
+      <td>Budget prévu actualisé</td>
+      <td class="num">{{ s.prevu | eur }}</td>
+      <td class="muted small">Budget après reports, ajouts, annulations et révisions.</td>
+    </tr>
+    <tr>
+      <td>Montant engagé</td>
+      <td class="num">{{ s.engage | eur }}</td>
+      <td class="muted small">
+        Sommes contractualisées{% if s.taux_engagement is not none %} — soit
+        {{ s.taux_engagement | pct }} du prévu actualisé{% endif %}.
+      </td>
+    </tr>
+    <tr>
+      <td>Montant réalisé (facturé)</td>
+      <td class="num">{{ s.realise | eur }}</td>
+      <td class="muted small">
+        {% if s.taux_execution is not none %}Taux d'exécution : {{ s.taux_execution | pct }} du prévu actualisé.{% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td>Reste à facturer sur l'engagé</td>
+      <td class="num">{{ (s.engage - s.realise) | eur }}</td>
+      <td class="muted small">Sommes contractualisées non encore facturées à la date d'arrêté.</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Écart au budget initial</td>
+      <td class="num {{ 'pos' if s.delta_prevu_initial > 0 else ('neg' if s.delta_prevu_initial < 0 else '') }}">
+        {{ s.delta_prevu_initial | eur(signe=True) }}
+      </td>
+      <td class="small muted">Décomposition détaillée au § 3.</td>
+    </tr>
+  </tfoot>
+</table>
+
+{% if sous_execution %}
+<div class="encadre encadre-alerte">
+  <h3>Point d'attention — sous-exécution</h3>
+  <p style="margin:0">
+    {{ actions_soldees }} action(s) sur {{ lignes | length }} sont soldées pour l'exercice,
+    mais seulement {{ s.taux_execution | pct }} du budget prévu a été facturé.
+    Un budget non consommé peut signaler des mesures compensatoires non réalisées :
+    il convient de justifier chaque écart au § 3 et au § 6.
+  </p>
+</div>
+{% endif %}
+
+{# ══════════════════════ 2. DÉTAIL DES ACTIONS ══════════════════════ #}
+<h2>2. Détail des actions de l'exercice</h2>
+<p class="small muted">
+  {{ lignes | length }} action(s) programmée(s) sur l'exercice {{ d.annee }}.
+  Les actions supprimées ne figurent pas dans ce tableau ; leur incidence
+  budgétaire est reprise au § 3.
+</p>
+
+<table class="data">
+  <thead>
+    <tr>
+      <th style="width:7%">Code</th>
+      <th style="width:27%">Action</th>
+      <th style="width:13%">Prestataire</th>
+      <th style="width:8%">Statut</th>
+      <th class="num" style="width:9%">Initial</th>
+      <th class="num" style="width:9%">Prévu</th>
+      <th class="num" style="width:9%">Engagé</th>
+      <th class="num" style="width:9%">Réalisé</th>
+      <th class="num" style="width:9%">Écart</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for cat, groupe in lignes_par_categorie %}
+    <tr class="sous-total">
+      <td colspan="4">{{ cat }}</td>
+      <td class="num">{{ groupe.totaux.initial | eur(court=True) }}</td>
+      <td class="num">{{ groupe.totaux.prevu | eur(court=True) }}</td>
+      <td class="num">{{ groupe.totaux.engage | eur(court=True) }}</td>
+      <td class="num">{{ groupe.totaux.realise | eur(court=True) }}</td>
+      <td class="num"></td>
+    </tr>
+    {% for l in groupe.lignes %}
+    <tr>
+      <td><span class="code">{{ l.code }}</span></td>
+      <td>
+        {{ l.titre }}
+        {% if l.ug_ids %}<br><span class="small muted">{{ l.ug_ids | join(', ') }}</span>{% endif %}
+        {% if l.motifs %}
+          {% for champ, motif in l.motifs.items() %}
+            <br><span class="small muted">↳ {{ champ | champ_label }} : {{ motif }}</span>
+          {% endfor %}
+        {% endif %}
+      </td>
+      <td>{{ l.prestataire or '—' }}</td>
+      <td>
+        {{ l.statut | statut_label }}
+        {% if l.ajoutee_apres_baseline %}<br><span class="badge badge-ajout">hors budget initial</span>{% endif %}
+        {% if l.champs_a_confirmer %}<br><span class="badge badge-alerte">à confirmer</span>{% endif %}
+        {% if l.ecart_initial and (l.ecart_initial | abs) >= 1 and not l.motifs %}
+          <br><span class="badge badge-nojust">non justifié</span>
+        {% endif %}
+      </td>
+      <td class="num">{{ l.montant_initial | eur_ou_tiret }}</td>
+      <td class="num">{{ l.prevu | eur_ou_tiret }}</td>
+      <td class="num">{{ l.engage | eur_ou_tiret }}</td>
+      <td class="num">{{ l.realise | eur_ou_tiret }}</td>
+      <td class="num {{ 'pos' if (l.ecart_initial or 0) > 0 else ('neg' if (l.ecart_initial or 0) < 0 else '') }}">
+        {% if l.ecart_initial is none %}—{% else %}{{ l.ecart_initial | eur(signe=True, court=True) }}{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4">Total exercice {{ d.annee }}</td>
+      <td class="num">{{ totaux.initial | eur }}</td>
+      <td class="num">{{ totaux.prevu | eur }}</td>
+      <td class="num">{{ totaux.engage | eur }}</td>
+      <td class="num">{{ totaux.realise | eur }}</td>
+      <td class="num {{ 'pos' if totaux.ecart > 0 else ('neg' if totaux.ecart < 0 else '') }}">
+        {{ totaux.ecart | eur(signe=True, court=True) }}
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+{% if lignes_non_justifiees %}
+<div class="encadre encadre-alerte">
+  <h3>Écarts non justifiés</h3>
+  <p style="margin:0 0 4pt">
+    {{ lignes_non_justifiees | length }} ligne(s) présentent un écart au budget initial
+    sans motif renseigné :
+  </p>
+  <ul>
+    {% for l in lignes_non_justifiees %}
+    <li><span class="code">{{ l.code }}</span> {{ l.titre }} —
+        écart de {{ l.ecart_initial | eur(signe=True) }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{# ══════════════════════ 3. DÉCOMPOSITION DES ÉCARTS ══════════════════════ #}
+<h2>3. Décomposition de l'écart au budget initial</h2>
+<p class="small muted">
+  Passage du budget initial {{ d.annee }} au budget prévu actualisé, poste par poste.
+  Un montant négatif réduit le budget de l'exercice.
+</p>
+
+<table class="waterfall">
+  <tr>
+    <td class="lbl"><strong>Budget initial {{ d.annee }}</strong></td>
+    <td class="bar-cell">
+      <span class="bar bar-ref" style="width:{{ waterfall.ref_width }}%"></span>
+    </td>
+    <td class="num"><strong>{{ s.initial | eur }}</strong></td>
+  </tr>
+  {% for poste in waterfall.postes %}
+  <tr>
+    <td class="lbl">{{ poste.libelle }}<br><span class="small muted">{{ poste.aide }}</span></td>
+    <td class="bar-cell">
+      {% if poste.width > 0 %}
+      <span class="bar {{ 'bar-pos' if poste.montant > 0 else 'bar-neg' }}"
+            style="width:{{ poste.width }}%"></span>
+      {% endif %}
+    </td>
+    <td class="num {{ 'pos' if poste.montant > 0 else ('neg' if poste.montant < 0 else '') }}">
+      {{ poste.montant | eur(signe=True) }}
+    </td>
+  </tr>
+  {% endfor %}
+  <tr class="total">
+    <td class="lbl">Budget prévu actualisé {{ d.annee }}</td>
+    <td class="bar-cell">
+      <span class="bar bar-ref" style="width:{{ waterfall.fin_width }}%"></span>
+    </td>
+    <td class="num">{{ s.prevu | eur }}</td>
+  </tr>
+</table>
+
+{% if ecart_non_explique and (ecart_non_explique | abs) >= 1 %}
+<p class="small muted" style="margin-top:6pt">
+  Un résidu de {{ ecart_non_explique | eur(signe=True) }} n'est pas rattaché aux postes
+  ci-dessus (mouvements antérieurs à la mise en place du journal, ou lignes rattachées
+  à un autre exercice de référence).
+</p>
+{% endif %}
+
+{# ══════════════════════ 4. VUE PLURIANNUELLE ══════════════════════ #}
+<h2>4. Situation pluriannuelle du projet</h2>
+<p class="small muted">
+  Positionnement de l'exercice {{ d.annee }} dans la trajectoire globale du projet.
+</p>
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>Exercice</th>
+      <th class="num">Initial</th>
+      <th class="num">Prévu</th>
+      <th class="num">Engagé</th>
+      <th class="num">Réalisé</th>
+      <th class="num">Écart</th>
+      <th style="width:22%">Répartition du prévu</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in pluri.annees %}
+    <tr{% if a.annee == d.annee %} style="background:#f3f4f6;font-weight:600"{% endif %}>
+      <td>{{ a.annee }}{% if a.annee == d.annee %} <span class="small muted">(exercice)</span>{% endif %}</td>
+      <td class="num">{{ a.initial | eur(court=True) }}</td>
+      <td class="num">{{ a.prevu | eur(court=True) }}</td>
+      <td class="num">{{ a.engage | eur(court=True) }}</td>
+      <td class="num">{{ a.realise | eur(court=True) }}</td>
+      <td class="num {{ 'pos' if a.delta_prevu_initial > 0 else ('neg' if a.delta_prevu_initial < 0 else '') }}">
+        {{ a.delta_prevu_initial | eur(signe=True, court=True) }}
+      </td>
+      <td><span class="bar bar-ref" style="width:{{ a.width }}%"></span></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Total projet</td>
+      <td class="num">{{ pluri.totaux.initial | eur }}</td>
+      <td class="num">{{ pluri.totaux.prevu | eur }}</td>
+      <td class="num">{{ pluri.totaux.engage | eur }}</td>
+      <td class="num">{{ pluri.totaux.realise | eur }}</td>
+      <td class="num"></td><td></td>
+    </tr>
+  </tfoot>
+</table>
+
+<table class="data" style="margin-top:9pt">
+  <tbody>
+    <tr>
+      <td>Cumul réalisé depuis l'origine du projet, à fin {{ d.annee }}</td>
+      <td class="num"><strong>{{ pluri.cumul_realise_fin_annee | eur }}</strong></td>
+    </tr>
+    <tr>
+      <td>Reste à engager sur les exercices postérieurs à {{ d.annee }}</td>
+      <td class="num"><strong>{{ pluri.restant_a_engager_apres_annee | eur }}</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+{# ══════════════════════ 5. RACCORDEMENT N-1 ══════════════════════ #}
+<h2>5. Raccordement au bilan {{ d.annee - 1 }}</h2>
+
+{% if racc %}
+<p class="small muted">
+  Comparaison entre les montants archivés dans le bilan {{ d.annee - 1 }}
+  (version {{ racc.bilan_precedent_version }}, validé le
+  {{ racc.bilan_precedent_valide_le | dt(heure=False) }}) et les mêmes montants
+  recalculés à la date du présent bilan.
+</p>
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>Indicateur {{ d.annee - 1 }}</th>
+      <th class="num">Bilan {{ d.annee - 1 }} (archivé)</th>
+      <th class="num">Recalculé ce jour</th>
+      <th class="num">Écart</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for champ in ['initial', 'prevu', 'engage', 'realise'] %}
+    <tr>
+      <td>{{ champ | indic_label }}</td>
+      <td class="num">{{ racc.totaux_archives.get(champ) | eur_ou_tiret }}</td>
+      <td class="num">{{ racc.totaux_recalcules.get(champ) | eur_ou_tiret }}</td>
+      <td class="num {{ 'pos' if (racc.ecarts.get(champ) or 0) > 0 else ('neg' if (racc.ecarts.get(champ) or 0) < 0 else '') }}">
+        {{ racc.ecarts.get(champ) | eur(signe=True) }}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if racc.corrections_posterieures %}
+<div class="encadre encadre-info">
+  <h3>Corrections postérieures à la validation du bilan {{ d.annee - 1 }}</h3>
+  <p style="margin:0">
+    Des écritures ont été enregistrées sur l'exercice {{ d.annee - 1 }} après la
+    validation de son bilan. Les montants du bilan {{ d.annee - 1 }} restent ceux
+    qui y ont été archivés ; les corrections sont retracées ci-dessus et détaillées
+    dans le journal en annexe. Cette information est communiquée à titre de
+    transparence : elle ne remet pas en cause le bilan précédent.
+  </p>
+</div>
+{% else %}
+<p class="small muted">
+  Aucun écart : les montants de l'exercice {{ d.annee - 1 }} n'ont pas été modifiés
+  depuis la validation de son bilan.
+</p>
+{% endif %}
+
+{% else %}
+<p class="muted">
+  Aucun bilan validé n'existe pour l'exercice {{ d.annee - 1 }}. Le présent document
+  constitue le premier bilan de la série ; le raccordement s'appliquera aux exercices
+  suivants.
+</p>
+{% endif %}
+
+{# ══════════════════════ 6. CONTRÔLES ══════════════════════ #}
+<h2>6. Contrôles de cohérence</h2>
+
+{% if controles %}
+<table class="data">
+  <thead>
+    <tr>
+      <th style="width:14%">Niveau</th>
+      <th>Constat</th>
+      <th class="num" style="width:11%">Lignes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in controles %}
+    <tr>
+      <td>
+        {% if c.niveau == 'bloquant' %}
+          <span class="badge badge-nojust">Bloquant</span>
+        {% else %}
+          <span class="badge badge-alerte">Avertissement</span>
+        {% endif %}
+      </td>
+      <td>{{ c.libelle }}</td>
+      <td class="num">{{ c.occurrences | length if c.occurrences else '—' }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% if meta.statut == 'valide' and d.get('validation_forcee') %}
+<div class="encadre encadre-alerte">
+  <p style="margin:0">
+    <strong>Validation forcée.</strong> Ce bilan a été validé alors que des contrôles
+    bloquants n'étaient pas résolus. Cette mention est portée au document à des fins
+    de traçabilité.
+  </p>
+</div>
+{% endif %}
+{% else %}
+<p class="muted">Aucune anomalie relevée à la génération du présent bilan.</p>
+{% endif %}
+
+<div class="signature">
+  <div class="case">
+    Établi par<br><span class="small">Nom, qualité, date et signature</span>
+  </div>
+  <div class="case">
+    Visa du maître d'ouvrage<br><span class="small">Nom, qualité, date et signature</span>
+  </div>
+</div>
+
+{# ══════════════════════ ANNEXE — JOURNAL ══════════════════════ #}
+<section class="annexe">
+  <h2>Annexe A — Journal des écritures de l'exercice {{ d.annee }}</h2>
+  <p class="small muted">
+    Relevé exhaustif et chronologique des modifications enregistrées entre le
+    1<sup>er</sup> janvier et le 31 décembre {{ d.annee }}. Chaque écriture est
+    horodatée et conservée de manière non modifiable.
+    {% if journal %}{{ journal | length }} écriture(s).{% endif %}
+  </p>
+
+  {% if journal %}
+  <table class="data">
+    <thead>
+      <tr>
+        <th style="width:11%">Date</th>
+        <th style="width:8%">Code</th>
+        <th style="width:26%">Action</th>
+        <th style="width:12%">Champ</th>
+        <th class="num" style="width:10%">Avant</th>
+        <th class="num" style="width:10%">Après</th>
+        <th style="width:23%">Motif</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in journal %}
+      <tr>
+        <td class="small">{{ m.modifie_le | dt(heure=False) }}</td>
+        <td><span class="code">{{ m.occurrence_code }}</span></td>
+        <td class="small">{{ m.occurrence_titre }}</td>
+        <td class="small">{{ m.champ | champ_label }}</td>
+        <td class="num small">{{ m.ancienne_val | val_affichee(m.champ) }}</td>
+        <td class="num small">{{ m.nouvelle_val | val_affichee(m.champ) }}</td>
+        <td class="small">
+          {% if m.motif %}{{ m.motif }}
+          {% else %}<span class="muted">non renseigné</span>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">Aucune écriture enregistrée sur l'exercice.</p>
+  {% endif %}
+
+  <p class="small muted" style="margin-top:10pt">
+    Note méthodologique : le journal recense les modifications intervenues depuis la
+    mise en service du dispositif de traçabilité. Les valeurs sont celles effectivement
+    enregistrées en base ; aucune écriture ne peut être supprimée ni modifiée
+    a posteriori.
+  </p>
+</section>
+
+</body>
+</html>

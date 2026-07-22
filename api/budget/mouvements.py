@@ -21,6 +21,7 @@ import psycopg
 from psycopg.rows import dict_row
 
 from api.db.env import get_database_url
+from api.journal_actions import journaliser
 from api.ocr.domain.ug_ids import normalize_ug_ids
 
 # Colonnes occurrence que le trigger surveille + autres champs PATCH utiles
@@ -175,3 +176,73 @@ def etiqueter_dernier_mouvement(
             )
             row = cur.fetchone()
     return dict(row) if row else None
+
+
+def justifier_ecart_occurrence(
+    occurrence_id: UUID,
+    motif: str,
+    *,
+    acteur: str | None = None,
+) -> dict[str, Any]:
+    """Justifie un écart budgétaire (contrôle ecarts_sans_motif).
+
+    1. Étiquette un mouvement récent sans motif (montant_ht en priorité).
+    2. Sinon insère une ligne d'historique explicite (même valeur avant/après)
+       avec le motif — sans modifier l'occurrence.
+    """
+    texte = (motif or "").strip()
+    if not texte:
+        raise ValueError("Motif / justification vide.")
+
+    for champ in ("montant_ht", "annee", "montant_engage", "montant_realise", "statut"):
+        row = etiqueter_dernier_mouvement(occurrence_id, champ, texte)
+        if row is not None:
+            journaliser(
+                action="occurrence.justifier_ecart",
+                cible_type="occurrence",
+                cible_id=occurrence_id,
+                detail={"champ": champ, "motif": texte, "mode": "etiquetage"},
+                acteur=acteur,
+            )
+            return {**row, "mode": "etiquetage"}
+
+    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT id::text, projet_id::text, montant_ht::text AS montant_ht
+                FROM bancarisation.occurrence
+                WHERE id = %s
+                """,
+                (str(occurrence_id),),
+            )
+            occ = cur.fetchone()
+            if occ is None:
+                raise LookupError("Occurrence introuvable.")
+            cur.execute(
+                """
+                INSERT INTO bancarisation.budget_mouvement
+                    (occurrence_id, projet_id, champ, ancienne_val, nouvelle_val, motif, modifie_par)
+                VALUES (%s, %s, 'montant_ht', %s, %s, %s, %s)
+                RETURNING id::text, champ, motif, modifie_le::text
+                """,
+                (
+                    str(occurrence_id),
+                    occ["projet_id"],
+                    occ.get("montant_ht"),
+                    occ.get("montant_ht"),
+                    texte,
+                    acteur,
+                ),
+            )
+            row = dict(cur.fetchone())
+            journaliser(
+                action="occurrence.justifier_ecart",
+                projet_id=occ["projet_id"],
+                cible_type="occurrence",
+                cible_id=occurrence_id,
+                detail={"champ": "montant_ht", "motif": texte, "mode": "insertion"},
+                acteur=acteur,
+                cur=cur,
+            )
+    return {**row, "mode": "insertion"}
