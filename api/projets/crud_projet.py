@@ -107,21 +107,38 @@ def lire_projet(projet_id: UUID) -> dict[str, Any]:
 
 
 def lister_projets(limit: int = 100, offset: int = 0) -> list[dict[str, Any]]:
+    """Liste projets avec résumé calendrier (vue v_projet_liste_resume).
+
+    Fallback sur la table `projets` si la vue n'est pas encore déployée.
+    """
     client = _get_supabase_client()
     try:
         response = (
             client.schema("bancarisation")
-            .table("projets")
+            .table("v_projet_liste_resume")
             .select("*")
             .order("created_at", desc=True)
             .range(offset, offset + limit - 1)
             .execute()
         )
-    except Exception as exc:  # pragma: no cover
-        raise ProjetCrudError(f"Erreur Supabase: {exc}") from exc
+        data = response.data or []
+        return data if isinstance(data, list) else [data]
+    except Exception:
+        # Vue absente → liste minimale (sans prochaine mesure)
+        try:
+            response = (
+                client.schema("bancarisation")
+                .table("projets")
+                .select("*")
+                .order("created_at", desc=True)
+                .range(offset, offset + limit - 1)
+                .execute()
+            )
+        except Exception as exc:  # pragma: no cover
+            raise ProjetCrudError(f"Erreur Supabase: {exc}") from exc
 
-    data = response.data or []
-    return data if isinstance(data, list) else [data]
+        data = response.data or []
+        return data if isinstance(data, list) else [data]
 
 
 def mettre_a_jour_projet(projet_id: UUID, payload: UpdateProjetPayload) -> dict[str, Any]:
