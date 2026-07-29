@@ -10,6 +10,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from api.bilan.router import router as bilan_suivi_router
 from api.budget.router import router as budget_router
 from api.dialogue.router import router as dialogue_router
 from api.documents.route import router as documents_router
@@ -53,6 +54,7 @@ def healthcheck() -> dict[str, bool]:
 app.include_router(projets_router, prefix="/api", tags=["projets"])
 app.include_router(geometries_router, prefix="/api", tags=["geometries"])
 app.include_router(budget_router, prefix="/api", tags=["budget"])
+app.include_router(bilan_suivi_router, prefix="/api", tags=["bilan-suivi"])
 app.include_router(prestataires_router, prefix="/api", tags=["prestataires"])
 app.include_router(documents_router, prefix="/api", tags=["documents"])
 app.include_router(planning_router, prefix="/api", tags=["planning"])

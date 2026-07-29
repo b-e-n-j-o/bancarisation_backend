@@ -1,0 +1,248 @@
+{#
+  Template bilan de suivi écologique — WeasyPrint A4.
+  Snapshot `donnees` de rapport_suivi.
+#}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Bilan de suivi {{ d.annee }} — {{ d.projet_nom or 'Projet' }}</title>
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 16mm 18mm 16mm;
+    @top-left {
+      content: "{{ d.projet_nom or 'Projet' }} — Bilan de suivi {{ d.annee }}";
+      font-family: 'DejaVu Sans', sans-serif;
+      font-size: 7.5pt; color: #6b7280;
+      border-bottom: 0.5pt solid #d1d5db; width: 100%; padding-bottom: 3pt;
+    }
+    @bottom-left {
+      content: "Version {{ meta.version }} · Données arrêtées au {{ d.borne_donnees | dt }}";
+      font-family: 'DejaVu Sans', sans-serif; font-size: 7pt; color: #9ca3af;
+    }
+    @bottom-right {
+      content: "Page " counter(page) " / " counter(pages);
+      font-family: 'DejaVu Sans', sans-serif; font-size: 7pt; color: #9ca3af;
+    }
+  }
+  @page :first { @top-left { content: none; border: none; } }
+
+  body {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 8.5pt; color: #1f2937; line-height: 1.45; margin: 0;
+  }
+  h1 { font-size: 18pt; margin: 0 0 4pt; font-weight: 700; }
+  h2 {
+    font-size: 11pt; margin: 16pt 0 7pt; font-weight: 700;
+    padding-bottom: 3pt; border-bottom: 1pt solid #1f2937;
+    page-break-after: avoid;
+  }
+  h3 { font-size: 9pt; margin: 10pt 0 5pt; font-weight: 700; color: #374151; page-break-after: avoid; }
+  p  { margin: 0 0 5pt; }
+  .muted { color: #6b7280; }
+  .small { font-size: 7.5pt; }
+
+  .garde { page-break-after: always; padding-top: 24mm; }
+  .garde .surtitre {
+    font-size: 8pt; letter-spacing: 2pt; text-transform: uppercase;
+    color: #6b7280; margin-bottom: 9pt;
+  }
+  .garde .projet { font-size: 13pt; font-weight: 600; margin: 14pt 0 3pt; }
+  .garde-meta { margin-top: 28mm; border-top: 1pt solid #1f2937; padding-top: 10pt; }
+  .garde-meta table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  .garde-meta td { padding: 3.5pt 0; }
+  .garde-meta td:first-child { color: #6b7280; width: 46%; }
+
+  .cartouches { display: table; width: 100%; border-spacing: 5pt 0; margin: 4pt 0 10pt; }
+  .cartouche {
+    display: table-cell; width: 20%;
+    border: 0.75pt solid #d1d5db; border-radius: 3pt;
+    padding: 7pt 8pt; text-align: center;
+  }
+  .cartouche .lbl { font-size: 6.5pt; text-transform: uppercase; letter-spacing: 0.5pt; color: #6b7280; }
+  .cartouche .val { font-size: 12.5pt; font-weight: 700; margin-top: 3pt; }
+
+  table.data { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  table.data th {
+    background: #f3f4f6; text-align: left; font-weight: 700; font-size: 6.8pt;
+    text-transform: uppercase; letter-spacing: 0.4pt; color: #4b5563;
+    padding: 4.5pt 4pt; border-bottom: 0.75pt solid #9ca3af;
+  }
+  table.data td { padding: 4pt; border-bottom: 0.4pt solid #e5e7eb; vertical-align: top; }
+  table.data tr { page-break-inside: avoid; }
+  table.data thead { display: table-header-group; }
+
+  .badge {
+    display: inline-block; padding: 1pt 5pt; border-radius: 3pt;
+    font-size: 6.5pt; font-weight: 700; text-transform: uppercase;
+  }
+  .badge-ok { background: #e8f5ee; color: #1a7a52; }
+  .badge-warn { background: #fffbeb; color: #92400e; }
+  .badge-open { background: #eff6ff; color: #1d4ed8; }
+  .badge-rep { background: #f3f4f6; color: #4b5563; }
+
+  .occ { margin: 0 0 10pt; padding: 7pt 8pt; border: 0.5pt solid #e5e7eb; border-radius: 3pt; page-break-inside: avoid; }
+  .occ .titre { font-weight: 700; font-size: 8.5pt; }
+  .occ .meta { color: #6b7280; font-size: 7pt; margin-top: 2pt; }
+  .occ .com { margin-top: 5pt; font-size: 8pt; }
+  .occ ul { margin: 3pt 0 0 14pt; padding: 0; font-size: 7.5pt; }
+
+  .ctrl { margin: 0 0 6pt; padding: 6pt 8pt; border-radius: 3pt; font-size: 8pt; }
+  .ctrl-b { background: #fef2f2; border: 0.5pt solid #fecaca; }
+  .ctrl-a { background: #fffbeb; border: 0.5pt solid #fde68a; }
+</style>
+</head>
+<body>
+
+{# ---------- Garde ---------- #}
+<section class="garde">
+  <div class="surtitre">Suivi écologique · Reporting annuel</div>
+  <h1>Bilan de suivi {{ d.annee }}</h1>
+  <div class="projet">{{ d.projet_nom or 'Projet' }}</div>
+  {% if d.reference_interne %}
+  <p class="muted">Réf. {{ d.reference_interne }}</p>
+  {% endif %}
+  <div class="garde-meta">
+    <table>
+      <tr><td>Exercice</td><td>{{ d.annee }}</td></tr>
+      <tr><td>Version</td><td>v{{ meta.version }}</td></tr>
+      <tr><td>Généré le</td><td>{{ d.genere_le | dt(true) }}{% if meta.genere_par %} · {{ meta.genere_par }}{% endif %}</td></tr>
+      <tr><td>Déposé pour instruction</td><td>{{ meta.depose_le | dt(true) if meta.depose_le else '—' }}</td></tr>
+      <tr><td>Statut archivage</td><td>{{ meta.statut }}</td></tr>
+    </table>
+  </div>
+</section>
+
+{# ---------- Synthèse ---------- #}
+<h2>1. Synthèse d'avancement</h2>
+<div class="cartouches">
+  <div class="cartouche">
+    <div class="lbl">Occurrences</div>
+    <div class="val">{{ s.nb_occurrences or 0 }}</div>
+  </div>
+  <div class="cartouche">
+    <div class="lbl">Réalisées</div>
+    <div class="val">{{ s.nb_realisees or 0 }}</div>
+  </div>
+  <div class="cartouche">
+    <div class="lbl">Avec preuve</div>
+    <div class="val">{{ s.nb_avec_preuve or 0 }}</div>
+  </div>
+  <div class="cartouche">
+    <div class="lbl">Taux preuve</div>
+    <div class="val">{{ s.taux_preuve | pct }}</div>
+  </div>
+  <div class="cartouche">
+    <div class="lbl">Reportées</div>
+    <div class="val">{{ s.nb_reportees or 0 }}</div>
+  </div>
+</div>
+
+{% if d.commentaire_synthese %}
+<h3>Commentaire de synthèse (bureau d'études)</h3>
+<p>{{ d.commentaire_synthese }}</p>
+{% endif %}
+
+{% if bloquants or avertissements %}
+<h3>Points de contrôle</h3>
+{% for c in bloquants %}
+<div class="ctrl ctrl-b"><strong>Bloquant — </strong>{{ c.libelle }}</div>
+{% endfor %}
+{% for c in avertissements %}
+<div class="ctrl ctrl-a"><strong>Attention — </strong>{{ c.libelle }}</div>
+{% endfor %}
+{% endif %}
+
+{# ---------- Détail par catégorie ---------- #}
+<h2>2. Occurrences de l'exercice</h2>
+{% for cat_label, items in lignes_par_categorie %}
+<h3>{{ cat_label }} ({{ items|length }})</h3>
+{% for l in items %}
+<div class="occ">
+  <div class="titre">
+    {% if l.code %}<span class="muted">{{ l.code }}</span> — {% endif %}{{ l.titre or 'Sans titre' }}
+    {% set st = l.statut or '' %}
+    {% if st == 'realise' %}<span class="badge badge-ok">{{ st | statut_label }}</span>
+    {% elif st == 'repousse' %}<span class="badge badge-rep">{{ st | statut_label }}</span>
+    {% elif st in ('planifie', 'en_cours', 'a_confirmer') %}<span class="badge badge-open">{{ st | statut_label }}</span>
+    {% else %}<span class="badge badge-rep">{{ st | statut_label }}</span>{% endif %}
+  </div>
+  <div class="meta">
+    {% if l.mois_debut or l.mois_fin %}
+    Période :
+    {% if l.mois_debut %}{{ l.mois_debut }}{% else %}?{% endif %}
+    – {% if l.mois_fin %}{{ l.mois_fin }}{% else %}?{% endif %}
+    / {{ l.annee }}
+    ·
+    {% endif %}
+    {% if l.date_realisation %}Réalisée le {{ l.date_realisation | dt }} · {% endif %}
+    {% if l.prestataire %}{{ l.prestataire }} · {% endif %}
+    {{ l.nb_documents or 0 }} pièce(s)
+    {% if l.annee_initiale and l.annee_initiale != l.annee %}
+    · Exercice initial {{ l.annee_initiale }}
+    {% endif %}
+  </div>
+
+  {% if l.commentaire_be %}
+  <div class="com"><strong>Précision BE :</strong> {{ l.commentaire_be }}</div>
+  {% endif %}
+
+  {% if l.documents %}
+  <ul>
+    {% for doc in l.documents %}
+    <li>{{ doc.nom }}{% if doc.categorie %} <span class="muted">({{ doc.categorie }})</span>{% endif %}</li>
+    {% endfor %}
+  </ul>
+  {% elif l.statut == 'realise' %}
+  <p class="small muted" style="margin-top:4pt">Aucune pièce jointe rattachée.</p>
+  {% endif %}
+
+  {% if l.changements_annee %}
+  <p class="small" style="margin-top:4pt"><strong>Glissement d'exercice :</strong>
+    {% for m in l.changements_annee %}
+      {{ m.ancienne_val }} → {{ m.nouvelle_val }}{% if m.motif %} ({{ m.motif }}){% endif %}{% if not loop.last %} ; {% endif %}
+    {% endfor %}
+  </p>
+  {% endif %}
+</div>
+{% endfor %}
+{% else %}
+<p class="muted">Aucune occurrence pour cet exercice.</p>
+{% endfor %}
+
+{# ---------- Journal ---------- #}
+{% if journal %}
+<h2>3. Journal des changements (année / statut)</h2>
+<table class="data">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Action</th>
+      <th>Champ</th>
+      <th>Avant → Après</th>
+      <th>Motif</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for j in journal %}
+    <tr>
+      <td>{{ j.modifie_le | dt(true) }}</td>
+      <td>{% if j.occurrence_code %}{{ j.occurrence_code }} — {% endif %}{{ j.occurrence_titre }}</td>
+      <td>{{ j.champ }}</td>
+      <td>{{ j.ancienne_val or '—' }} → {{ j.nouvelle_val or '—' }}</td>
+      <td>{{ j.motif or '—' }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<p class="small muted" style="margin-top:18pt">
+  Ce document constitue le reporting d'avancement des occurrences de l'exercice
+  {{ d.annee }}, destiné à l'instruction du service (DREAL). Un volet budgétaire
+  et des indicateurs externes (ex. satellite) pourront compléter les versions ultérieures.
+</p>
+
+</body>
+</html>

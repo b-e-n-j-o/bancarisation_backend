@@ -126,6 +126,46 @@ def _charger_prescriptions(cur, arrete_ids: list[str]) -> dict[str, list[ArreteP
     return by
 
 
+def _resume_justification_controles(controles: Any) -> tuple[int, int, str | None]:
+    """Extrait les manques de preuve / commentaire depuis rapport_suivi.controles."""
+    if isinstance(controles, str):
+        try:
+            controles = json.loads(controles)
+        except json.JSONDecodeError:
+            controles = []
+    if not isinstance(controles, list):
+        return 0, 0, None
+
+    nb_sans_preuve = 0
+    nb_sans_commentaire = 0
+    for c in controles:
+        if not isinstance(c, dict):
+            continue
+        code = c.get("code")
+        occs = c.get("occurrences") or []
+        n = len(occs) if isinstance(occs, list) else 0
+        if code == "realise_sans_preuve":
+            nb_sans_preuve = max(nb_sans_preuve, n)
+        elif code == "realise_sans_commentaire":
+            nb_sans_commentaire = max(nb_sans_commentaire, n)
+
+    parts: list[str] = []
+    if nb_sans_preuve:
+        parts.append(
+            f"{nb_sans_preuve} sans preuve"
+            if nb_sans_preuve > 1
+            else "1 sans preuve"
+        )
+    if nb_sans_commentaire:
+        parts.append(
+            f"{nb_sans_commentaire} sans précision BE"
+            if nb_sans_commentaire > 1
+            else "1 sans précision BE"
+        )
+    detail = " · ".join(parts) if parts else None
+    return nb_sans_preuve, nb_sans_commentaire, detail
+
+
 def lister_bannette(
     *,
     role: str,
@@ -145,10 +185,18 @@ def lister_bannette(
           b.id, b.projet_id, b.projet_nom, b.organisation_nom,
           b.motif, b.libelle, b.echeance, b.priorite,
           b.statut_controle, b.bilan_id, b.acte_id,
-          coalesce(vp.gravite, 0) AS gravite
+          coalesce(vp.gravite, 0) AS gravite,
+          rs.controles AS rapport_controles
         FROM bancarisation.v_bannette_a_traiter b
         JOIN bancarisation.projets p ON p.id = b.projet_id
         LEFT JOIN bancarisation.v_parc_projet vp ON vp.projet_id = b.projet_id
+        LEFT JOIN bancarisation.bilan_suivi bs ON bs.id = b.bilan_id
+        LEFT JOIN bancarisation.rapport_suivi rs
+          ON rs.id = bs.rapport_suivi_id
+          OR (
+            bs.rapport_suivi_id IS NULL
+            AND rs.bilan_suivi_id = bs.id
+          )
         WHERE {where}
         ORDER BY b.priorite DESC, b.echeance ASC NULLS LAST
     """
@@ -159,6 +207,19 @@ def lister_bannette(
 
     out: list[ItemBannetteOut] = []
     for r in rows:
+        nb_sp, nb_sc, detail = (0, 0, None)
+        if r.get("motif") == "bilan_a_valider":
+            nb_sp, nb_sc, detail = _resume_justification_controles(
+                r.get("rapport_controles")
+            )
+        alerte = bool(nb_sp or nb_sc)
+        priorite = int(r.get("priorite") or 0)
+        if alerte:
+            priorite = max(priorite, 3)
+        libelle = r["libelle"] or ""
+        if alerte and detail:
+            libelle = f"{libelle} — Justifications manquantes : {detail}"
+
         out.append(
             ItemBannetteOut(
                 id=str(r["id"]),
@@ -166,15 +227,28 @@ def lister_bannette(
                 projet_nom=r["projet_nom"],
                 organisation_nom=r["organisation_nom"],
                 motif=r["motif"],
-                libelle=r["libelle"] or "",
+                libelle=libelle,
                 echeance=_iso_date(r.get("echeance")),
-                priorite=int(r.get("priorite") or 0),
+                priorite=priorite,
                 statut_controle=r["statut_controle"],
                 gravite=int(r.get("gravite") or 0),
                 acte_id=r.get("acte_id"),
                 bilan_id=r.get("bilan_id"),
+                alerte_justification=alerte,
+                detail_justification=detail,
+                nb_sans_preuve=nb_sp,
+                nb_sans_commentaire=nb_sc,
             )
         )
+    # Re-tri local si priorités ont été remontées
+    out.sort(
+        key=lambda x: (
+            -x.priorite,
+            x.echeance is None,
+            x.echeance or date.max,
+            -int(x.alerte_justification),
+        )
+    )
     return out
 
 
@@ -342,25 +416,45 @@ def lire_dossier(
 
             cur.execute(
                 """
-                SELECT id, projet_id, annee, statut, depose_le, statue_le, document_id
-                FROM bancarisation.bilan_suivi
-                WHERE projet_id = %s
-                ORDER BY annee DESC
+                SELECT
+                  bs.id, bs.projet_id, bs.annee, bs.statut,
+                  bs.depose_le, bs.statue_le,
+                  coalesce(bs.document_id, rs.document_id) AS document_id,
+                  coalesce(bs.rapport_suivi_id, rs.id) AS rapport_suivi_id,
+                  rs.controles AS rapport_controles
+                FROM bancarisation.bilan_suivi bs
+                LEFT JOIN bancarisation.rapport_suivi rs
+                  ON rs.id = bs.rapport_suivi_id
+                  OR (
+                    bs.rapport_suivi_id IS NULL
+                    AND rs.bilan_suivi_id = bs.id
+                  )
+                WHERE bs.projet_id = %s
+                ORDER BY bs.annee DESC
                 """,
                 (str(projet_id),),
             )
-            bilans = [
-                BilanSuiviOut(
-                    id=r["id"],
-                    projet_id=r["projet_id"],
-                    annee=int(r["annee"]),
-                    statut=r["statut"],
-                    depose_le=r.get("depose_le"),
-                    statue_le=r.get("statue_le"),
-                    document_id=r.get("document_id"),
+            bilans: list[BilanSuiviOut] = []
+            for r in cur.fetchall():
+                nb_sp, nb_sc, detail = _resume_justification_controles(
+                    r.get("rapport_controles")
                 )
-                for r in cur.fetchall()
-            ]
+                bilans.append(
+                    BilanSuiviOut(
+                        id=r["id"],
+                        projet_id=r["projet_id"],
+                        annee=int(r["annee"]),
+                        statut=r["statut"],
+                        depose_le=r.get("depose_le"),
+                        statue_le=r.get("statue_le"),
+                        document_id=r.get("document_id"),
+                        rapport_suivi_id=r.get("rapport_suivi_id"),
+                        alerte_justification=bool(nb_sp or nb_sc),
+                        detail_justification=detail,
+                        nb_sans_preuve=nb_sp,
+                        nb_sans_commentaire=nb_sc,
+                    )
+                )
 
             cur.execute(
                 """
@@ -464,7 +558,8 @@ def patch_bilan_statut(
                       WHEN %s IN ('depose','en_relecture') AND depose_le IS NULL
                       THEN now() ELSE depose_le END
                 WHERE id = %s AND projet_id = %s
-                RETURNING id, projet_id, annee, statut, depose_le, statue_le, document_id
+                RETURNING id, projet_id, annee, statut, depose_le, statue_le,
+                          document_id, rapport_suivi_id
                 """,
                 (statut, statue, statut, str(bilan_id), str(projet_id)),
             )
@@ -480,6 +575,7 @@ def patch_bilan_statut(
                 depose_le=r.get("depose_le"),
                 statue_le=r.get("statue_le"),
                 document_id=r.get("document_id"),
+                rapport_suivi_id=r.get("rapport_suivi_id"),
             )
 
 

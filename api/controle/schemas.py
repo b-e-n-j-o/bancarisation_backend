@@ -88,6 +88,12 @@ class BilanSuiviOut(BaseModel):
     depose_le: datetime | None = None
     statue_le: datetime | None = None
     document_id: UUID | None = None
+    rapport_suivi_id: UUID | None = None
+    # Depuis rapport_suivi.controles (realise_sans_preuve / realise_sans_commentaire).
+    alerte_justification: bool = False
+    detail_justification: str | None = None
+    nb_sans_preuve: int = 0
+    nb_sans_commentaire: int = 0
 
 
 class ActeDrealOut(BaseModel):
@@ -141,6 +147,11 @@ class ItemBannetteOut(BaseModel):
     gravite: int = 0
     acte_id: UUID | None = None
     bilan_id: UUID | None = None
+    # True si le bilan lié a des occurrences sans preuve / sans précision BE.
+    alerte_justification: bool = False
+    detail_justification: str | None = None
+    nb_sans_preuve: int = 0
+    nb_sans_commentaire: int = 0
 
 
 class PatchBilanBody(BaseModel):
