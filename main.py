@@ -14,9 +14,11 @@ from api.budget.router import router as budget_router
 from api.dialogue.router import router as dialogue_router
 from api.documents.route import router as documents_router
 from api.ocr.router import router as ocr_router
+from api.ocr.arrete.router import router as ocr_arrete_router
 from api.geomce.router import router as geomce_router
 from api.geomce.router import router_exports as geomce_exports_router
 from api.parc.router import router as parc_router
+from api.controle.router import router as controle_router
 from api.planning.router import router as planning_router
 from api.prestataires.router import router as prestataires_router
 from api.projets.geometries.router import router as geometries_router
@@ -54,7 +56,9 @@ app.include_router(prestataires_router, prefix="/api", tags=["prestataires"])
 app.include_router(documents_router, prefix="/api", tags=["documents"])
 app.include_router(planning_router, prefix="/api", tags=["planning"])
 app.include_router(ocr_router, prefix="/api", tags=["ocr"])
+app.include_router(ocr_arrete_router, prefix="/api", tags=["ocr-arrete"])
 app.include_router(parc_router, prefix="/api", tags=["parc"])
+app.include_router(controle_router, prefix="/api", tags=["controle"])
 app.include_router(dialogue_router, prefix="/api", tags=["dialogue"])
 app.include_router(geomce_router, prefix="/api", tags=["geomce"])
 app.include_router(geomce_exports_router, prefix="/api", tags=["geomce"])
