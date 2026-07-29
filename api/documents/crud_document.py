@@ -196,6 +196,8 @@ def upload_document(
                 "upsert": "false",
             },
         )
+        # Vérifie que l'objet est bien lisible (évite une ligne documents orpheline).
+        client.storage.from_(BUCKET).download(bucket_path)
     except Exception as exc:  # pragma: no cover
         raise DocumentServiceError(f"Erreur upload bucket: {exc}") from exc
 
