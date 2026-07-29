@@ -43,6 +43,15 @@ def _parse_signaux(raw: Any) -> list[SignalParc]:
 
 
 def _row_to_projet(row: dict[str, Any]) -> ProjetParc:
+    partage = bool(row.get("partager_budget_dreal"))
+    # Défense en profondeur si la vue n'a pas encore masqué les montants.
+    z = 0.0 if not partage else None
+
+    def _m(key: str) -> float:
+        if z is not None:
+            return 0.0
+        return float(row.get(key) or 0)
+
     return ProjetParc(
         projet_id=row["projet_id"],
         nom=row["nom"],
@@ -60,21 +69,22 @@ def _row_to_projet(row: dict[str, Any]) -> ProjetParc:
         nb_signaux_critiques=int(row.get("nb_signaux_critiques") or 0),
         nb_signaux_attention=int(row.get("nb_signaux_attention") or 0),
         signaux=_parse_signaux(row.get("signaux")),
-        total_initial=float(row.get("total_initial") or 0),
-        total_prevu=float(row.get("total_prevu") or 0),
-        total_engage=float(row.get("total_engage") or 0),
-        total_realise=float(row.get("total_realise") or 0),
-        delta_total=float(row.get("delta_total") or 0),
-        prevu_annee_courante=float(row.get("prevu_annee_courante") or 0),
-        realise_annee_courante=float(row.get("realise_annee_courante") or 0),
-        premiere_annee=row.get("premiere_annee"),
-        derniere_annee=row.get("derniere_annee"),
+        total_initial=_m("total_initial"),
+        total_prevu=_m("total_prevu"),
+        total_engage=_m("total_engage"),
+        total_realise=_m("total_realise"),
+        delta_total=_m("delta_total"),
+        prevu_annee_courante=_m("prevu_annee_courante"),
+        realise_annee_courante=_m("realise_annee_courante"),
+        premiere_annee=row.get("premiere_annee") if partage else None,
+        derniere_annee=row.get("derniere_annee") if partage else None,
         nb_occurrences=int(row.get("nb_occurrences") or 0),
         nb_occurrences_realisees=int(row.get("nb_occurrences_realisees") or 0),
         nb_occurrences_reportees=int(row.get("nb_occurrences_reportees") or 0),
         nb_bilans_valides=int(row.get("nb_bilans_valides") or 0),
         nb_bilans_manquants=int(row.get("nb_bilans_manquants") or 0),
         dernier_bilan_valide=row.get("dernier_bilan_valide"),
+        partager_budget_dreal=partage,
     )
 
 
@@ -126,6 +136,7 @@ def lister_projets_parc(
             projet_id, nom, reference_interne, organisation_id, organisation_nom,
             commune, departement, type_procedure, statut,
             date_decision, duree_annees, date_fin,
+            partager_budget_dreal,
             gravite, nb_signaux_critiques, nb_signaux_attention, signaux,
             total_initial::float8, total_prevu::float8,
             total_engage::float8, total_realise::float8, delta_total::float8,

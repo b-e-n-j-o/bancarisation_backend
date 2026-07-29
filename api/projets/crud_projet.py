@@ -84,6 +84,7 @@ class UpdateProjetPayload:
     date_decision: Optional[date] = None
     duree_annees: Optional[int] = None
     type_procedure: Optional[str] = None
+    partager_budget_dreal: Optional[bool] = None
 
 
 def lire_projet(projet_id: UUID) -> dict[str, Any]:
@@ -159,6 +160,8 @@ def mettre_a_jour_projet(projet_id: UUID, payload: UpdateProjetPayload) -> dict[
         updates["duree_annees"] = payload.duree_annees
     if payload.type_procedure is not None:
         updates["type_procedure"] = payload.type_procedure
+    if payload.partager_budget_dreal is not None:
+        updates["partager_budget_dreal"] = bool(payload.partager_budget_dreal)
 
     if not updates:
         raise ProjetCrudError("Aucune donnée à mettre à jour.")

@@ -74,6 +74,7 @@ class ProjetUpdateRequest(BaseModel):
     date_decision: Optional[date] = None
     duree_annees: Optional[int] = Field(default=None, ge=1, le=99)
     type_procedure: Optional[str] = Field(default=None, max_length=255)
+    partager_budget_dreal: Optional[bool] = None
 
     @field_validator("nom", "reference_interne")
     @classmethod
@@ -153,6 +154,7 @@ def update_projet_route(projet_id: UUID, payload: ProjetUpdateRequest) -> Projet
                 date_decision=payload.date_decision,
                 duree_annees=payload.duree_annees,
                 type_procedure=payload.type_procedure,
+                partager_budget_dreal=payload.partager_budget_dreal,
             ),
         )
     except ProjetCrudError as exc:

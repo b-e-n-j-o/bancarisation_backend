@@ -70,6 +70,7 @@ class ProjetParc(BaseModel):
     nb_bilans_valides: int
     nb_bilans_manquants: int
     dernier_bilan_valide: int | None = None
+    partager_budget_dreal: bool = False
 
 
 class CaseBilanMatrice(BaseModel):
