@@ -25,6 +25,7 @@ from api.planning.router import router as planning_router
 from api.prestataires.router import router as prestataires_router
 from api.projets.geometries.router import router as geometries_router
 from api.projets.router import router as projets_router
+from api.satellite.router import router as satellite_router
 
 app = FastAPI(
     title="Bancarisation API",
@@ -66,3 +67,4 @@ app.include_router(controle_router, prefix="/api", tags=["controle"])
 app.include_router(dialogue_router, prefix="/api", tags=["dialogue"])
 app.include_router(geomce_router, prefix="/api", tags=["geomce"])
 app.include_router(geomce_exports_router, prefix="/api", tags=["geomce"])
+app.include_router(satellite_router, prefix="/api", tags=["satellite"])

@@ -22,7 +22,11 @@ def list_geometries_route(projet_id: UUID) -> dict[str, Any]:
     try:
         return lister_geometries_ug(projet_id)
     except GeometryIngestError as exc:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+        detail = str(exc)
+        code = status.HTTP_400_BAD_REQUEST
+        if "connection" in detail.lower() or "postgres" in detail.lower():
+            code = status.HTTP_503_SERVICE_UNAVAILABLE
+        raise HTTPException(status_code=code, detail=detail) from exc
 
 
 @router.get("/geometries/parc")
