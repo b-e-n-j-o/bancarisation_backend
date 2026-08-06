@@ -1,0 +1,25 @@
+8 validation errors for CarteDossier
+parametres.0.cle
+  Field required [type=missing, input_value={'nom': 'annee_t0', 'vale... 'p1', 'confiance': 0.8}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+parametres.0.valeur
+  Input should be a valid string [type=string_type, input_value=2022, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+parametres.1.cle
+  Field required [type=missing, input_value={'nom': "maitre_d'ouvrage...'p5', 'confiance': 0.95}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+parametres.2.cle
+  Field required [type=missing, input_value={'nom': 'bureau_etudes', ...'p2', 'confiance': 0.95}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+parametres.2.valeur
+  Input should be a valid string [type=string_type, input_value=['SIMEHTIS', 'FAGE'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+signaux.0
+  Input should be an object [type=model_type, input_value="Durée d'engagement non ...30 ans non confirmée).", input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/model_type
+signaux.1
+  Input should be an object [type=model_type, input_value='Origine du déclenchemen...ncé dans les aperçus.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/model_type
+signaux.2
+  Input should be an object [type=model_type, input_value='Absence de calendrier pr...néralement en annexe.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/model_type

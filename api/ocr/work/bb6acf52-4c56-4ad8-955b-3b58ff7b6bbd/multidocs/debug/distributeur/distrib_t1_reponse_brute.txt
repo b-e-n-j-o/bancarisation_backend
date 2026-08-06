@@ -1,0 +1,71 @@
+```json
+{
+  "fiches": [
+    {
+      "id": "TU1",
+      "code": "TU1",
+      "categorie": "TU",
+      "titre": "Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "debut": "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "fin_exclusive": "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "lib_thema": "C3.1.c",
+      "objectif_long_terme": "A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": ["UG1"],
+      "zone_source_proposee": null,
+      "parcelles": ["330290B1103", "330290B301", "330290C1064b", "330290C1082", "330290B287", "330290C1076", "330290C252", "330290C974c"],
+      "communes": ["Barp"],
+      "cadrage_surfacique": "Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune",
+      "periodicite_texte": "cf. tab n°6 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février (sous réserve de la portance de sols)",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "echeances": [
+        {
+          "id": "TU1-plantation-initiale",
+          "code_operation": "TU1",
+          "type_operation": "TU",
+          "type_metier": "replantation",
+          "libelle": "Plantation à 1100 tiges/ha avec bande périmétrale non plantée (7m)",
+          "lib_thema": "C3.1.c",
+          "objectif_long_terme": null,
+          "objectif_operationnel": null,
+          "ug_ids": ["UG1"],
+          "zone_source_proposee": null,
+          "parcelles": [],
+          "communes": [],
+          "recurrence": {
+            "type": "ponctuel",
+            "intervalle_ans": null,
+            "occurrences_par_an": null,
+            "duree_ans": null,
+            "ancrage_annee": null,
+            "regle_source": "en fin d'année N+5 (5 ans après la coupe rase au maximum, contrainte régie par le code forestier)",
+            "paliers": null
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": false,
+            "texte_source": "entre le 1er octobre et le 28 février (sous réserve de la portance des sols)"
+          },
+          "conditions": [],
+          "indicateurs": [],
+          "intervenants": [],
+          "duree_gestion_ans": 50,
+          "source": {"page": 40, "extrait": null},
+          "confiance": 0.98,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        },
+        {
+          "id": "TU1-eclaircie1",
+          "code_operation": "TU1",
+          "type_operation": "TU",
+          "type_metier": "eclaircie",
+          "libelle": "Première éclaircie (taux max 30%, densité cible ~770 tiges/ha)",
+          "lib_thema": "C3.1.c",
+          "objectif_long_terme": null,
+          "objectif_operationnel": null,
+          "ug_ids": ["UG1"],
+          "zone_source_proposee":

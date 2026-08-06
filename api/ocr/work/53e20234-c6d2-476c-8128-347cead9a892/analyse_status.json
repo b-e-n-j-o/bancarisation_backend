@@ -1,0 +1,24 @@
+{
+  "projet_id": "53e20234-c6d2-476c-8128-347cead9a892",
+  "status": "error",
+  "etape": "erreur",
+  "fichier": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+  "fichiers": [
+    {
+      "nom": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "statut": "done",
+      "pages": 102,
+      "format": "pdf",
+      "blocs": 102
+    }
+  ],
+  "detail": "Cartographie des rôles documentaires…",
+  "message_user": "HTTP 400 : {\"object\":\"error\",\"message\":\"reasoning_effort='low' is not supported for this model. Must be one of (<ReasoningEffort.none: 'none'>, <ReasoningEffort.high: 'high'>)\",\"type\":\"invalid_request",
+  "progression": 30,
+  "pages_totales": 102,
+  "erreur": "HTTP 400 : {\"object\":\"error\",\"message\":\"reasoning_effort='low' is not supported for this model. Must be one of (<ReasoningEffort.none: 'none'>, <ReasoningEffort.high: 'high'>)\",\"type\":\"invalid_request_invalid_args\",\"param\":null,\"code\":\"3051\",\"raw_status_code\":400}",
+  "recap": null,
+  "started_at": "2026-08-04T15:25:12.519710+00:00",
+  "updated_at": "2026-08-04T15:25:43.766812+00:00"
+}

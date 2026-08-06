@@ -1,0 +1,33 @@
+{
+  "jobs": [
+    {
+      "job_id": "actions_plan_gestion-plan-de-gestion-especes-protegees-lyceec-eff7d2-36361418",
+      "extracteur": "actions_plan_gestion",
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "fiches_actions",
+      "locators": [
+        "p5",
+        "p6",
+        "p7",
+        "p8",
+        "p17",
+        "p26",
+        "p31",
+        "p36",
+        "p37",
+        "p38",
+        "p39",
+        "p40"
+      ],
+      "priorite": 1,
+      "raison": "Introductions des mesures de compensation pour Fauvette pitchou, Fadet des laîches, Chiroptères | Contexte de l'étude, présentation du projet, et plan de gestion proprement dit (section VI)",
+      "cout_estime": "lourd"
+    }
+  ],
+  "avertissements": [],
+  "non_couvert": [
+    "plan-de-gestion-especes-protegees-lyceec-eff7d2 (pdf) / autre : aucun extracteur — Pages de garde, tables des matières et figures, animation foncière, sécurisation foncière",
+    "plan-de-gestion-especes-protegees-lyceec-eff7d2 (pdf) / diagnostic_ecologique : aucun extracteur — Synthèse des espaces évités et de compensation, pré-caractérisation des zones",
+    "plan-de-gestion-especes-protegees-lyceec-eff7d2 (pdf) / carto_ug : aucun extracteur — Cartographie des espaces et tables de parcelles cadastrales pour les mesures de compensation"
+  ]
+}

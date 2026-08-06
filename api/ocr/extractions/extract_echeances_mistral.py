@@ -223,7 +223,7 @@ def _appel_streame(client: httpx.Client, api_key: str, payload: dict):
     ) as r:
         if r.status_code != 200:
             corps = b"".join(r.iter_bytes()).decode(errors="replace")
-            sys.exit(f"\n❌ HTTP {r.status_code} : {corps[:800]}")
+            raise RuntimeError(f"HTTP {r.status_code} : {corps[:800]}")
 
         for ligne in r.iter_lines():
             if not ligne.startswith("data: "):
@@ -289,7 +289,7 @@ def extraire(
 ) -> ExtractionResult:
     api_key = os.environ.get("MISTRAL_API_KEY")
     if not api_key:
-        sys.exit("❌ MISTRAL_API_KEY absente.")
+        raise RuntimeError("MISTRAL_API_KEY absente.")
 
     messages: list[dict] = [
         {"role": "system", "content": SYSTEM_PROMPT},

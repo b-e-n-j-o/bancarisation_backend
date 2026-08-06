@@ -1,0 +1,55 @@
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": [],
+      "description": "Plan de gestion complet incluant contexte, diagnostic, mesures de compensation, unités de gestion et plan d'actions (2022-2027). Contient des fiches-actions détaillées avec modalités et fréquences d'intervention.",
+      "confiance": 0.95
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "carto_ug",
+      "locators": ["p39"],
+      "description": "Localisation des unités de gestion (carte Fig. 17).",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "diagnostic_ecologique",
+      "locators": ["p13", "p14", "p16", "p24", "p25", "p30", "p34"],
+      "description": "Pré-caractérisation des zones évitées et de compensation : habitats naturels, état initial des parcelles (Fauvette pitchou, Fadet des laîches, chiroptères, etc.).",
+      "confiance": 0.9
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "p1",
+      "confiance": 0.95
+    },
+    {
+      "cle": "duree_ans",
+      "valeur": "30",
+      "ancre": "p36",
+      "confiance": 0.8
+    },
+    {
+      "cle": "maitre_d'ouvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "p5",
+      "confiance": 0.9
+    },
+    {
+      "cle": "bureau_d'etudes",
+      "valeur": "SIMEHTIS / FAGE",
+      "ancre": "p1",
+      "confiance": 0.95
+    }
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```

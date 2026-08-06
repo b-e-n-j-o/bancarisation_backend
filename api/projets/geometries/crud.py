@@ -20,6 +20,7 @@ SELECT
     libelle,
     description,
     properties,
+    attributs,
     source_fichier,
     %s AS couche,
     ST_AsGeoJSON(ST_Transform(geom_3857, 4326))::text AS geometry_geojson
@@ -36,6 +37,7 @@ SELECT
     libelle,
     description,
     properties,
+    attributs,
     source_fichier,
     'emprise' AS couche,
     ST_AsGeoJSON(ST_Transform(geom_3857, 4326))::text AS geometry_geojson
@@ -45,14 +47,32 @@ ORDER BY created_at ASC
 """
 
 
+def _parse_json_field(raw: Any, default: Any) -> Any:
+    if raw is None:
+        return default
+    if isinstance(raw, (dict, list)):
+        return raw
+    if isinstance(raw, str):
+        try:
+            return json.loads(raw)
+        except json.JSONDecodeError:
+            return default
+    return default
+
+
 def _row_to_feature(row: dict[str, Any]) -> dict[str, Any]:
     geom = json.loads(row["geometry_geojson"]) if row.get("geometry_geojson") else None
-    props_raw = row.get("properties") or {}
-    if isinstance(props_raw, str):
-        try:
-            props_raw = json.loads(props_raw)
-        except json.JSONDecodeError:
-            props_raw = {}
+    props_raw = _parse_json_field(row.get("properties"), {})
+    attributs = _parse_json_field(row.get("attributs"), [])
+    if not isinstance(attributs, list):
+        # Compat : un seul objet attributaire
+        attributs = [attributs] if isinstance(attributs, dict) else []
+
+    meta_props = (
+        {k: v for k, v in props_raw.items() if not str(k).startswith("_")}
+        if isinstance(props_raw, dict)
+        else {}
+    )
 
     return {
         "type": "Feature",
@@ -67,9 +87,8 @@ def _row_to_feature(row: dict[str, Any]) -> dict[str, Any]:
             "description": row.get("description") or "",
             "couche": row.get("couche"),
             "source_fichier": row.get("source_fichier"),
-            **({} if not isinstance(props_raw, dict) else {
-                k: v for k, v in props_raw.items() if not str(k).startswith("_")
-            }),
+            "attributs": attributs,
+            **meta_props,
         },
     }
 
@@ -257,3 +276,44 @@ def compter_projets_parc_par_departement() -> list[dict[str, Any]]:
                 ]
     except Exception as exc:
         raise GeometryIngestError(f"Stats départements parc impossibles: {exc}") from exc
+
+
+_UG_TABLES = (
+    "unites_de_gestion_surf",
+    "unites_de_gestion_lin",
+    "unites_de_gestion_pct",
+)
+
+
+def renommer_ug(projet_id: UUID, ug_id: str, libelle: str) -> dict[str, Any]:
+    """Met à jour le libellé de toutes les géométries d'une UG."""
+    clean = (libelle or "").strip()
+    if not clean:
+        raise GeometryIngestError("Le libellé ne peut pas être vide.")
+    if not (ug_id or "").strip():
+        raise GeometryIngestError("ug_id manquant.")
+
+    updated = 0
+    try:
+        with psycopg.connect(get_database_url()) as conn:
+            with conn.cursor() as cur:
+                for table in _UG_TABLES:
+                    cur.execute(
+                        f"""
+                        UPDATE bancarisation.{table}
+                        SET libelle = %s, updated_at = now()
+                        WHERE projet_id = %s AND ug_id = %s
+                        """,
+                        (clean, str(projet_id), ug_id),
+                    )
+                    updated += cur.rowcount or 0
+            conn.commit()
+    except GeometryIngestError:
+        raise
+    except Exception as exc:
+        raise GeometryIngestError(f"Renommage UG impossible: {exc}") from exc
+
+    if updated == 0:
+        raise GeometryIngestError(f"UG introuvable: {ug_id}")
+
+    return {"ug_id": ug_id, "libelle": clean, "nb_lignes": updated}

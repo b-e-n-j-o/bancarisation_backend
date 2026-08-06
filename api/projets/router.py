@@ -1,5 +1,5 @@
 from datetime import date
-from typing import Any, Optional
+from typing import Any, Literal, Optional
 from uuid import UUID
 
 from fastapi import APIRouter, HTTPException, status
@@ -19,25 +19,28 @@ from .crud_projet import (
 
 router = APIRouter()
 
+TypeDispositif = Literal["obligation", "site_credits"]
+
 
 class ProjetCreateRequest(BaseModel):
     nom: str = Field(min_length=1, max_length=255)
-    reference_interne: str = Field(min_length=1, max_length=255)
+    reference_interne: Optional[str] = Field(default=None, max_length=255)
     commune: Optional[str] = Field(default=None, max_length=255)
     departement: Optional[str] = Field(default=None, min_length=2, max_length=3)
     date_decision: Optional[date] = None
     duree_annees: Optional[int] = Field(default=None, ge=1, le=99)
     type_procedure: Optional[str] = Field(default=None, max_length=255)
+    type_dispositif: TypeDispositif = "obligation"
 
-    @field_validator("nom", "reference_interne")
+    @field_validator("nom")
     @classmethod
-    def strip_required(cls, value: str) -> str:
+    def strip_nom(cls, value: str) -> str:
         cleaned = value.strip()
         if not cleaned:
             raise ValueError("Champ obligatoire vide.")
         return cleaned
 
-    @field_validator("commune", "type_procedure")
+    @field_validator("reference_interne", "commune", "type_procedure")
     @classmethod
     def strip_optional(cls, value: Optional[str]) -> Optional[str]:
         if value is None:
@@ -68,12 +71,13 @@ class ProjetResponse(BaseModel):
 
 class ProjetUpdateRequest(BaseModel):
     nom: Optional[str] = Field(default=None, min_length=1, max_length=255)
-    reference_interne: Optional[str] = Field(default=None, min_length=1, max_length=255)
+    reference_interne: Optional[str] = Field(default=None, max_length=255)
     commune: Optional[str] = Field(default=None, max_length=255)
     departement: Optional[str] = Field(default=None, min_length=2, max_length=3)
     date_decision: Optional[date] = None
     duree_annees: Optional[int] = Field(default=None, ge=1, le=99)
     type_procedure: Optional[str] = Field(default=None, max_length=255)
+    type_dispositif: Optional[TypeDispositif] = None
     partager_budget_dreal: Optional[bool] = None
 
     @field_validator("nom", "reference_interne")
@@ -113,6 +117,7 @@ def create_projet_route(payload: ProjetCreateRequest) -> ProjetCreateResponse:
                 date_decision=payload.date_decision,
                 duree_annees=payload.duree_annees,
                 type_procedure=payload.type_procedure,
+                type_dispositif=payload.type_dispositif,
             )
         )
     except ProjetCrudError as exc:
@@ -154,6 +159,7 @@ def update_projet_route(projet_id: UUID, payload: ProjetUpdateRequest) -> Projet
                 date_decision=payload.date_decision,
                 duree_annees=payload.duree_annees,
                 type_procedure=payload.type_procedure,
+                type_dispositif=payload.type_dispositif,
                 partager_budget_dreal=payload.partager_budget_dreal,
             ),
         )

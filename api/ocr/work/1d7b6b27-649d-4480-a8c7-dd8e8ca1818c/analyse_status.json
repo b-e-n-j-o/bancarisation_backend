@@ -1,0 +1,94 @@
+{
+  "projet_id": "1d7b6b27-649d-4480-a8c7-dd8e8ca1818c",
+  "status": "done",
+  "etape": "termine",
+  "fichier": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+  "fichiers": [
+    {
+      "nom": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "statut": "done",
+      "pages": 102,
+      "format": "pdf",
+      "blocs": 102
+    }
+  ],
+  "detail": "Job 2/2 · echeances_plan_gestion",
+  "message_user": "Analyse terminée",
+  "progression": 100,
+  "pages_totales": 102,
+  "erreur": null,
+  "recap": {
+    "pipeline": "multidocs",
+    "docs": 1,
+    "blocs": 102,
+    "segments": 1,
+    "jobs": 2,
+    "claims": 0,
+    "par_kind": {},
+    "zones_sig": 6,
+    "laisses": [],
+    "non_couvert": [],
+    "avertissements": [],
+    "sortie": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/work/1d7b6b27-649d-4480-a8c7-dd8e8ca1818c/multidocs",
+    "journal": {
+      "projet_id": "1d7b6b27-649d-4480-a8c7-dd8e8ca1818c",
+      "etapes": [
+        {
+          "n": 1,
+          "nom": "Normalisation",
+          "script": "etape1 + utils/pdf → OCR Mistral",
+          "appels_llm": 0,
+          "appels_ocr": 1,
+          "detail_appels": "1 API",
+          "resultat": "1 doc(s), 102 bloc(s)",
+          "ok": true
+        },
+        {
+          "n": 2,
+          "nom": "Triage",
+          "script": "etape2_triage.cartographier",
+          "appels_llm": 1,
+          "appels_ocr": 0,
+          "detail_appels": "1 chat (retries inclus)",
+          "resultat": "1 segment(s) · rôles : plan_gestion · 5 param. · 3 signal(aux)",
+          "ok": true
+        },
+        {
+          "n": 3,
+          "nom": "Plan",
+          "script": "etape3_planification (déterministe)",
+          "appels_llm": 0,
+          "appels_ocr": 0,
+          "detail_appels": "0 (pas de LLM)",
+          "resultat": "2 job(s) · actions_plan_gestion, echeances_plan_gestion",
+          "ok": true
+        },
+        {
+          "n": 4,
+          "nom": "Extraction",
+          "script": "etape4 → extracteurs (plan_gestion…)",
+          "appels_llm": 1,
+          "appels_ocr": 0,
+          "detail_appels": "1 chat",
+          "resultat": "0 claim(s) · aucun",
+          "ok": true
+        }
+      ],
+      "ocr_appels": 1,
+      "ocr_pages": 102,
+      "ocr_cache_hits": 0,
+      "llm_appels": 2
+    },
+    "llm_appels": 2,
+    "ocr_appels": 1,
+    "stats": {
+      "actions": 0,
+      "echeances": 0,
+      "occurrences": 0,
+      "horizon": 0
+    }
+  },
+  "started_at": "2026-08-04T15:28:03.262324+00:00",
+  "updated_at": "2026-08-04T15:32:04.557095+00:00"
+}

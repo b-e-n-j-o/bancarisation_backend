@@ -1,0 +1,7 @@
+{
+  "jobs": [],
+  "avertissements": [
+    "Aucune source de RÈGLES identifiée : le dossier ne produira pas de calendrier. Vérifier le triage ou demander le plan de gestion au BE."
+  ],
+  "non_couvert": []
+}

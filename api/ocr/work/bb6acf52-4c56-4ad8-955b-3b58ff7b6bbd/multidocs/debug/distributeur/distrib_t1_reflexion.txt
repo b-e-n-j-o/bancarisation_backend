@@ -1,0 +1,940 @@
+OK, the user wants me to extract all the fiches-actions from this French environmental management plan document. They need:
+
+1. For each fiche-action:
+   - Identity: id, code, titre, categorie
+   - BORNES: exact OCR text for debut and fin_exclusive
+   - ÉCHÉANCES: calendar rules (recurrence)
+
+2. No content copying - just the structure with bornes and echeances
+
+3. Must follow the exact format they specified in the prompt
+
+Let me start by scanning through the document to find all the fiche-action sections. The document is a plan de gestion for a school construction project in Barp, with compensation measures.
+
+From the table of contents and the text, I can see there are several sections:
+
+- 6.3.1. Travaux uniques (TU)
+- 6.3.2. Travaux d'entretien (TE)
+- 6.3.3. Suivis et indicateurs de réussite (SE)
+- 6.3.4. Mise en œuvre générale du plan de gestion (MG)
+
+And within these, there are specific measures:
+
+**TU (Travaux Uniques):**
+- TU 1: Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles
+- TU 2: Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles
+- TU 3: Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles
+- TU 4: Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles
+- TU 5: Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles
+- TU 6: Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers
+
+**TE (Travaux d'Entretien):**
+- TE 1: Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles
+- TE 2: Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles
+- TE 3: Lutter contre la Fougère aigle
+
+**SE (Suivis et indicateurs):**
+- SE 1: Suivi des habitats naturels, de la flore et de la faune
+- SE 2: Suivi piézométrique
+
+**MG (Mise en œuvre générale):**
+- MG 1: Pilotage et coordination du programme d'actions
+- MG 2: Mise à jour du plan de gestion et bilan de fin de mesure compensatoire
+
+Now I need to find the exact OCR text for the start of each fiche. Let me look through the document.
+
+Starting with TU 1:
+In the document, I see: "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Wait, looking at the OCR, I see:
+"### 6.3.1. Travaux uniques (TU)
+
+#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+So the debut for TU1 would be: "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Let me verify the exact text. In the OCR:
+"⟦p40⟧
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+## 6.3. Description des actions prévues
+
+### 6.3.1. Travaux uniques (TU)
+
+#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Yes, so debut is: "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Now fin_exclusive for TU1 would be the start of TU2. Looking ahead:
+"## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Wait, in the OCR it's:
+"⟦p43⟧
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+So fin_exclusive for TU1 is: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+But wait, the user said "citation EXACTE du markdown OCR". So I need to copy exactly what's in the OCR.
+
+Let me check the OCR more carefully. The text shows:
+
+"#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Then later:
+"## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+So for TU1:
+- debut: "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- fin_exclusive: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+But I need to make sure these are long enough (≥40 characters). Let me count:
+"#### TU 1 : Adapter les itinéraires techniques sylvicoles" - that's 50+ characters, good.
+
+Now for TU2, its fin_exclusive would be the start of TU3. Looking at the OCR:
+
+"⟦p48⟧
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+
+So fin_exclusive for TU2 is: "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+
+Wait, the heading level changed from ## to ###. Let me check the exact OCR text.
+
+Looking at p43: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Then p48: "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+
+So yes, fin_exclusive for TU2 is: "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+
+Continuing this pattern:
+
+TU3 fin_exclusive: start of TU4
+TU4 fin_exclusive: start of TU5
+TU5 fin_exclusive: start of TU6
+TU6 fin_exclusive: start of TE1 (which is "### 6.3.2. Travaux d'entretien (TE)" or the first TE fiche)
+
+Let me find where TE section starts. In the OCR:
+"⟦p63⟧
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+### 6.3.2. Travaux d'entretien (TE)
+
+# TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+So the first TE fiche is "# TE 1 : ..."
+
+So fin_exclusive for TU6 would be: "# TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Now for TE section:
+- TE1 debut: "# TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- TE1 fin_exclusive: start of TE2
+
+Looking at OCR:
+"⟦p66⟧
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+## TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+
+So TE1 fin_exclusive: "## TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+
+TE2 fin_exclusive: start of TE3
+From OCR: "### TE 3 : Lutter contre la Fougère aigle"
+
+TE3 fin_exclusive: start of SE1 section
+
+SE section starts with:
+"⟦p71⟧
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+### 6.3.3. Suivis et indicateurs de réussite (SE)
+
+# SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+
+So TE3 fin_exclusive: "# SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+
+SE1 fin_exclusive: start of SE2
+From OCR: "## SE 2 : Suivi piézométrique"
+
+SE2 fin_exclusive: start of MG1 section
+
+MG section starts with:
+"⟦p76⟧
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+### 6.3.4. Mise en œuvre générale du plan de gestion (MG)
+
+# MG 1 : Pilotage et coordination du programme d'actions"
+
+So SE2 fin_exclusive: "# MG 1 : Pilotage et coordination du programme d'actions"
+
+MG1 fin_exclusive: start of MG2
+From OCR: "## MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire"
+
+MG2 fin_exclusive: null (it's the last fiche)
+
+Now I need to extract the échéances (recurrence rules) for each fiche.
+
+Let me go through each fiche and extract the recurrence information.
+
+**TU1:**
+From the text: 
+- "Quatre éclaircies seront réalisées sur la durée d'exploitation de la parcelle selon les prescriptions suivantes:"
+  - "La première éclaircie entre 12 et 15 ans (fonction de la station)"
+  - "La deuxième éclaircie entre 19 et 22 ans"
+  - "La troisième éclaircie entre 24 et 27 ans"
+  - "La quatrième éclaircie entre 29 et 33 ans"
+- "La coupe rase définitive ne pourra intervenir avant 40 ans"
+- "Tous les travaux (coupes, plantation, éclaircies, broyage, labour,...) devront être effectués en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des Laîches soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols."
+- "Périodicité : cf. tab n ° 6 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février (sous réserve de la portance de sols)"
+
+Also: "La première partie de la compensation N à N+14 sera mise en œuvre sur une parcelle devant faire l'objet d'un programme de replantation en fin d'année N+5."
+"La deuxième partie de la compensation N+14 à N+28 et sera mise en œuvre sur une nouvelle parcelle devant faire l'objet d'un nouveau programme de replantation en année N+19."
+"La dernière tranche de la compensation N+29 à N+49 s'opérera sur les premiers espaces de compensation"
+
+So TU1 has multiple actions with different timings:
+1. Plantation: N+5 (5 years after start)
+2. Eclaircie 1: between N+12 and N+15
+3. Eclaircie 2: between N+19 and N+22
+4. Eclaircie 3: between N+24 and N+27
+5. Eclaircie 4: between N+29 and N+33
+6. Coupe rase: N+40 to N+45 (before 40 years, but in the text it says "ne pourra intervenir avant 40 ans pour la première tranche... (soit N+45)")
+7. Rotation: N to N+14, N+14 to N+28, N+29 to N+49
+
+But for the purpose of the echeances, we need to model these as separate echeances under TU1.
+
+However, the user wants "Chaque fiche porte une liste `echeances` (souvent ≥ 1). Une fiche peut générer PLUSIEURS échéances si les rythmes diffèrent."
+
+So for TU1, we need multiple echeances:
+- Plantation (ponctuel at N+5)
+- Eclaircie 1 (ponctuel between N+12 and N+15)
+- Eclaircie 2 (ponctuel between N+19 and N+22)
+- Eclaircie 3 (ponctuel between N+24 and N+27)
+- Eclaircie 4 (ponctuel between N+29 and N+33)
+- Coupe rase (ponctuel at N+45)
+
+But also the rotation system is a bit more complex. Let me re-read:
+
+"La première partie de la compensation N à N+14 sera mise en œuvre sur une parcelle devant faire l'objet d'un programme de replantation en fin d'année N+5."
+So planting happens at N+5.
+
+"La deuxième partie de la compensation N+14 à N+28 et sera mise en œuvre sur une nouvelle parcelle devant faire l'objet d'un nouveau programme de replantation en année N+19."
+Planting at N+19.
+
+"La dernière tranche de la compensation N+29 à N+49 s'opérera sur les premiers espaces de compensation (tranche N à N+14) avec une physionomie de futaie clairsemée voire de landes sur les 4 dernières années en cas de coupe rase à la quarantième année du peuplement."
+
+So the planting echeances are at N+5 and N+19.
+
+But the user wants the recurrence rules. For the planting, it's two ponctuel events. For the éclaircies, they're also ponctuel but at specific intervals.
+
+Also, the window for all works: "entre le 1er octobre et le 28 février (sous réserve de la portance de sols)"
+
+So for each echeance under TU1:
+- type_metier: plantation, eclaircie, etc.
+- fenetre_intervention: debut: "10-01", fin: "02-28", texte_source: "entre le 1er octobre et le 28 février (sous réserve de la portance de sols)"
+- But wait, the text says "entre le 1er octobre et le 28 février", so debut: "10-01", fin: "02-28"
+
+Actually, "1er octobre" is October 1st, so "10-01", and "28 février" is February 28th, so "02-28".
+
+Now for the recurrence type:
+- Plantation: ponctuel, ancrage_annee: N+5 (but N is the start year, which is 2022 based on the planning)
+- But the user wants ancrage_annee if determinable. The document mentions "N" which seems to be the start year (2022).
+
+Looking at the planning tables, they start from 2022 as N. So N = 2022.
+
+But the user wants the rules, not the absolute years. So for planting:
+- recurrence: {type: "ponctuel", ancrage_annee: null, regle_source: "en fin d'année N+5"}
+But that's not ideal. Let me see if I can express it as dependant_evenement.
+
+Actually, the text says: "Le programme de replantation sera lancé le plus tard possible pour augmenter le gain écologique (5 ans après la coupe rase au maximum – contrainte régie par le code forestier)."
+
+So planting happens 5 years after coupe rase. But for the first tranche, coupe rase is at N (start), so planting at N+5.
+
+This is getting complex. Let me try to simplify.
+
+For TU1, the main actions are:
+1. Coupe rase (initial) - but this is part of the setup
+2. Plantation at N+5
+3. Eclaircie 1 at N+12-15
+4. Eclaircie 2 at N+19-22
+5. Eclaircie 3 at N+24-27
+6. Eclaircie 4 at N+29-33
+7. Coupe rase définitive at N+45
+
+But also there's a rotation system with different parcelles. However, for the purpose of the echeances, I think we need to model each distinct action with its own recurrence.
+
+But the user said: "Chaque fiche peut générer PLUSIEURS échéances si les rythmes diffèrent."
+
+So for TU1, we should have multiple echeances:
+- Plantation (ponctuel, ancrage: N+5)
+- Eclaircie 1 (ponctuel, ancrage: N+12-15)
+- Eclaircie 2 (ponctuel, ancrage: N+19-22)
+- Eclaircie 3 (ponctuel, ancrage: N+24-27)
+- Eclaircie 4 (ponctuel, ancrage: N+29-33)
+- Coupe rase (ponctuel, ancrage: N+45)
+
+But how to represent the range N+12-15? The user's format has ancrage_annee as a single integer. So maybe we need to use regle_source for that.
+
+Looking at the format:
+```
+"recurrence": {
+  "type": "ponctuel|periodique|campagnes|dependant_evenement|paliers",
+  "intervalle_ans": "number|null",
+  "occurrences_par_an": "int|null",
+  "duree_ans": "int|null",
+  "ancrage_annee": "int|null",
+  "regle_source": "string|null",
+  "paliers": [...]
+}
+```
+
+For a range like N+12-15, we can set:
+- type: "ponctuel"
+- ancrage_annee: null
+- regle_source: "entre N+12 et N+15 (fonction de la station)"
+
+Similarly for others.
+
+Also, the window: "entre le 1er octobre et le 28 février" -> debut: "10-01", fin: "02-28"
+
+Let me do this systematically for each fiche.
+
+**TU1: Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles**
+
+Echeances:
+1. Plantation: ponctuel, regle_source: "en fin d'année N+5", window: 10-01 to 02-28
+2. Eclaircie 1: ponctuel, regle_source: "entre N+12 et N+15 (fonction de la station)", window: 10-01 to 02-28
+3. Eclaircie 2: ponctuel, regle_source: "entre N+19 et N+22", window: 10-01 to 02-28
+4. Eclaircie 3: ponctuel, regle_source: "entre N+24 et N+27", window: 10-01 to 02-28
+5. Eclaircie 4: ponctuel, regle_source: "entre N+29 et N+33", window: 10-01 to 02-28
+6. Coupe rase: ponctuel, regle_source: "à N+45 (soit 40 ans après plantation)", window: 10-01 to 02-28
+
+But also the rotation system mentions tranches, but I think the above covers the main actions.
+
+type_metier:
+- Plantation: "replantion" or "plantation"? The catalogue has "replantation" as a type_metier option. But the text says "plantation". Let me use "plantation" if not in list, but the user said "type_metier : un parmi replantation, eclaircie, gyrobroyage, rotobroyage, etrepage, arrachage_eee, abattage, fauche, rouleau_brise_fougere, suivi_flore, suivi_faune, suivi_habitats, pilotage, bilan, autre. Sinon "autre"."
+
+So:
+- Plantation: "replantation" (since it's replantation after coupe)
+- Eclaircie: "eclaircie"
+- Coupe rase: "abattage" or "coupe_rase"? Not in list, so "autre" or maybe "abattage" is close enough. But "coupe rase" is a type of abattage. Let's use "abattage" for coupe rase.
+
+Actually, looking at the list: "abattage" is there. So coupe rase can be "abattage".
+
+But the user said "Sinon 'autre'". So if "abattage" is in the list, we can use it.
+
+The list includes: "abattage", so yes.
+
+So:
+- Plantation: "replantation"
+- Eclaircie: "eclaircie"
+- Coupe rase: "abattage"
+
+**TU2: Créer et maintenir des espaces de landes arbustives**
+
+From text:
+- "Les éventuels arbres et/ arbustes présents sur ces parcelles devront faire l'objet d'un abattage sans dessouchage avec export"
+- "Ces travaux devront être effectués en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février sous réserve de la portance des sols."
+
+So one echeance:
+- Abattage: ponctuel, regle_source: "au démarrage de la mesure", window: 10-01 to 02-28
+
+But also: "Un traitement des plus grosses souches pourra être effectué si nécessaire à l'aide d'un croque souche."
+
+This is also ponctuel, same window.
+
+But the user wants distinct echeances if rhythms differ. Here both are ponctuel at the same time, so maybe one echeance covering both.
+
+Actually, the text says: "Il s'agira de la seule intervention en travaux uniques (TU) sur ces parcelles." So only one intervention: abattage + treatment of souches.
+
+So one echeance for TU2:
+- type_metier: "abattage" (or maybe "etrepage"? No, etrepage is for soil. Abattage is correct)
+- regle_source: "abattage sans dessouchage avec export des arbres/arbustes présents"
+- window: 10-01 to 02-28
+
+But the user wants the recurrence. This is ponctuel, but when? The text doesn't specify a year, just that it's the only TU intervention. So maybe ancrage_annee is null, and regle_source explains it.
+
+**TU3: Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches**
+
+Similar to TU1 but for Fadet des laîches. The text mentions:
+- Same planting density, same éclaircies schedule
+- "La première partie de la compensation N à N+14"
+- "La deuxième partie de la compensation N+14 à N+28"
+- "La dernière tranche de la compensation N+29 à N+49"
+- Coupe rase at N+45
+
+And window: "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+
+So window: debut: "11-01", fin: "02-28", but with possibility from September, so maybe debut: "09-01", fin: "02-28"? But the text says "entre novembre et février (avec une possibilité d'intervention dès septembre"
+
+So texte_source: "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+
+For the window, we can set:
+- debut: "09-01" (since September is possible)
+- fin: "02-28"
+- traverse_nouvel_an: true (since it goes from Sept to Feb)
+
+But the user's format has:
+```
+"fenetre_intervention": {
+  "debut": "MM-DD|null",
+  "fin": "MM-DD|null",
+  "traverse_nouvel_an": false,
+  "texte_source": "string|null"
+}
+```
+
+So for TU3:
+- debut: "09-01", fin: "02-28", traverse_nouvel_an: true, texte_source: "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+
+Echeances similar to TU1:
+1. Plantation at N+5
+2. Eclaircie 1 at N+12-15
+3. Eclaircie 2 at N+19-22
+4. Eclaircie 3 at N+24-27
+5. Eclaircie 4 at N+29-33
+6. Coupe rase at N+45
+
+**TU4: Créer et maintenir des espaces de landes humides**
+
+From text:
+- "La strate arborée présente sur ces parcelles devra faire l'objet d'un abattage sans dessouchage (traitement des souches à l'aide d'un croque souche) avec export"
+- Window: "entre le 1er novembre et le 1er mars sous réserve de la portance des sols."
+
+So window: debut: "11-01", fin: "03-01" (but March 1st is the end, so maybe fin: "02-28"? The text says "1er mars", so fin: "03-01"? But typically we'd use the last day of February. However, to be precise, if it says "jusqu'au 1er mars", that means up to but not including March 1st, so fin: "02-28". But in practice, it might include March 1st. Let's use fin: "03-01" and set traverse_nouvel_an if needed.
+
+Actually, "entre le 1er novembre et le 1er mars" means from Nov 1 to Mar 1, so:
+- debut: "11-01"
+- fin: "03-01"
+- traverse_nouvel_an: true
+
+But the user's format expects MM-DD, so "03-01" is fine.
+
+One echeance: abattage, ponctuel, window as above.
+
+**TU5: Maintenir et restaurer la zone humide évitée**
+
+From text:
+- "Une éclaircie à la débroussailleuse à lame dès la première année des jeunes Pins maritime issus de la régénération naturelle"
+- "Une coupe sanitaire en cas de maladie et/ou d'arbres jugés dangereux"
+
+So:
+1. Eclaircie: ponctuel at N+1 (première année)
+2. Coupe sanitaire: dependant_evenement, regle_source: "en cas de maladie et/ou d'arbres jugés dangereux"
+
+Window: "entre le 1er novembre et le 1er mars sous réserve de la portance des sols."
+
+**TU6: Créer et maintenir des îlots de sénescence**
+
+From text:
+- "Absence d'exploitation des feuillus et des résineux matures durant la totalité de la mesure de compensation (50 ans)"
+- "La mise en défends via la pose d'une ganivelle de 1,5 m de hauteur minium autour de l'UG 7 soit environ 400 ml intégrant un portail en cas d'intervention"
+- "Abattage possible mais limité uniquement pour des raisons de santé de l'arbre ou de risque mécanique... en dehors de la période de nidification des oiseaux y compris les pics (mi-février à août)"
+- "Deux bouquets de 5 nichoirs à chauves-souris seront installés"
+- "Un à deux renouvellement des nichoirs sera à prévoir durant les 50 ans."
+
+So echeances:
+1. Pose de ganivelle: ponctuel, regle_source: "dès le démarrage de la mesure"
+2. Installation de nichoirs: ponctuel, regle_source: "dès le démarrage de la mesure"
+3. Renouvellement des nichoirs: periodique, intervalle_ans: 25? The text says "Un à deux renouvellement des nichoirs sera à prévoir durant les 50 ans." So maybe every 25 years? Or it could be ponctuel at N+25. But it's vague. Let's use type: "ponctuel", regle_source: "Un à deux renouvellements des nichoirs durant les 50 ans"
+4. Abattage sanitaire: dependant_evenement, regle_source: "uniquement pour des raisons de santé de l'arbre ou de risque mécanique de chute"
+
+Window for abattage: "en dehors de la période de nidification des oiseaux y compris les pics (mi-février à août)" -> debut: "08-01", fin: "02-15"? Wait, "mi-février à août" means from mid-February to August. So the window is the rest of the year: from August 1st to mid-February.
+
+But "en dehors de la période de nidification" means outside that period. So:
+- Nidification: mid-February to August
+- Window: September to mid-February
+
+So:
+- debut: "09-01"
+- fin: "02-15" (but February 15th is mid-February)
+- traverse_nouvel_an: true
+
+But the user's format expects MM-DD, so fin: "02-15" is acceptable.
+
+**TE1: Entretenir des landes arbustives**
+
+From text:
+- "Un gyrobroyage à 30 cm sans export, différencié (1 bande sur 2 – bande de 4 m) afin de créer une hétérogénéité dans la lande. L'entretien sera à prévoir tous les 5 à 8 ans"
+- For parcelles in rotation: "les bandes paires feront l'objet d'un entretien après plantation aux années n+4, n+9, n+14 et les bandes impaires, feront l'objet d'un entretien en décalé aux années n+7, n+12"
+- Window: "entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+
+So multiple echeances:
+1. Gyrobroyage (general): periodique, intervalle_ans: 5-8 (but the format wants a single number). So we need to use regle_source: "tous les 5 à 8 ans en fonction de la dynamique de fermeture"
+2. Gyrobroyage bandes paires: periodique, intervalle_ans: 5? But the text says n+4, n+9, n+14 - that's every 5 years starting at n+4. So type: "paliers" or "periodique"?
+   - If we use periodique: intervalle_ans: 5, ancrage_annee: N+4
+   - But it's only for bandes paires, and only on certain parcelles
+3. Gyrobroyage bandes impaires: periodique, intervalle_ans: 5, ancrage_annee: N+7
+
+But the user wants distinct echeances if rhythms differ. So:
+- Echeance 1: Gyrobroyage general - periodique, intervalle_ans: 7 (midpoint of 5-8), regle_source: "tous les 5 à 8 ans"
+- Echeance 2: Gyrobroyage bandes paires - periodique, intervalle_ans: 5, ancrage_annee: N+4
+- Echeance 3: Gyrobroyage bandes impaires - periodique, intervalle_ans: 5, ancrage_annee: N+7
+
+But this might be too granular. The text says "L'entretien sera à prévoir tous les 5 à 8 ans" as the general rule, and then gives specific schedules for the rotation parcelles.
+
+Given the complexity, maybe just one echeance for TE1 with:
+- type: "periodique"
+- intervalle_ans: 7 (or null)
+- regle_source: "tous les 5 à 8 ans en fonction de la dynamique de fermeture; pour les parcelles en rotation: bandes paires aux années n+4, n+9, n+14 et bandes impaires aux années n+7, n+12"
+- window: 10-01 to 02-28
+
+But the user wants separate echeances if rhythms differ. The rotation parcelles have a different rhythm (every 5 years at specific offsets), while the general is every 5-8 years. So maybe two echeances:
+1. General gyrobroyage: periodique, intervalle_ans: 7, regle_source: "tous les 5 à 8 ans"
+2. Rotation parcelles: paliers or periodique with specific offsets
+
+But the paliers format is for when the interval changes over time. Here it's constant but with offset.
+
+Let me use for the rotation part:
+- type: "periodique"
+- intervalle_ans: 5
+- ancrage_annee: null
+- regle_source: "pour les parcelles en rotation: bandes paires aux années n+4, n+9, n+14 et bandes impaires aux années n+7, n+12"
+
+And for the general:
+- type: "periodique"
+- intervalle_ans: 7
+- regle_source: "tous les 5 à 8 ans en fonction de la dynamique de fermeture"
+
+But this is getting very detailed. Maybe the user expects us to capture the main recurrence pattern.
+
+Given the time, let me try to be pragmatic and capture the main echeances for each fiche.
+
+**TE2: Entretenir des landes humides**
+
+From text:
+- "Un gyrobroyage à 30 cm sans export, différencié (1 bande sur 2 – bande de 4 m)... L'entretien sera à prévoir tous les 3 ans"
+- For rotation parcelles: "les bandes paires feront l'objet d'un entretien après plantation aux années n+2, n+5, n+8, n+11 et n+14 et les bandes impaires, feront l'objet d'un entretien en décalé aux années n+4, n+7, n+10 et n+13"
+- Window: "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+
+So similar to TE1 but with different intervals.
+
+Echeances:
+1. General gyrobroyage: periodique, intervalle_ans: 3, regle_source: "tous les 3 ans en fonction de la dynamique de fermeture"
+2. Rotation parcelles: periodique, intervalle_ans: 3, regle_source: "bandes paires aux années n+2, n+5, n+8, n+11, n+14 et bandes impaires aux années n+4, n+7, n+10, n+13"
+
+Window: debut: "09-01", fin: "02-28", traverse_nouvel_an: true, texte_source: "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+
+**TE3: Lutter contre la Fougère aigle**
+
+From text:
+- "deux campagnes par an (juin et août) pendant quatre ans minimum"
+- "Au préalable... un broyage... à réaliser en dehors de la période de nidification... entre le 1er octobre et le 28 février"
+- "Les suivis écologiques... permettront de statuer sur la nécessité ou non renouveler une nouvelle campagne de lutte."
+
+So:
+- Broyage preparatoire: ponctuel or periodique? It's before the roller campaigns.
+- Roller campaigns: campagnes, occurrences_par_an: 2, duree_ans: 4, with months: June and August
+
+For the roller:
+- type: "campagnes"
+- occurrences_par_an: 2
+- duree_ans: 4
+- fenetre_intervention: for each campaign, but the text says "juin et août", so:
+  - For June: debut: "06-01", fin: "06-30"
+  - For August: debut: "08-01", fin: "08-31"
+But the echeance is for the campaign pattern, not individual dates. So we can set:
+- fenetre_intervention: null (since it's specific months)
+- But the user wants fenetre_intervention with debut/fin. Maybe set texte_source: "juin et août"
+
+Actually, the recurrence type "campagnes" with occurrences_par_an: 2 and duree_ans: 4 should be sufficient, and we can put the months in texte_source.
+
+So echeance:
+- type_metier: "rouleau_brise_fougere"
+- recurrence: {type: "campagnes", occurrences_par_an: 2, duree_ans: 4, regle_source: "deux campagnes par an en juin et août pendant quatre ans minimum"}
+- fenetre_intervention: {debut: null, fin: null, traverse_nouvel_an: false, texte_source: "juin et août"}
+
+But the preparatory broyage is separate: "un broyage des vieilles souches de Pin maritime et de la végétation existante pour permettre le passage du brise fougère à réaliser en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février"
+
+So another echeance:
+- type_metier: "broyage"
+- recurrence: {type: "ponctuel", regle_source: "au préalable avant les campagnes de rouleau brise-fougère"}
+- fenetre_intervention: {debut: "10-01", fin: "02-28", texte_source: "entre le 1er octobre et le 28 février"}
+
+**SE1: Suivi des habitats naturels, de la flore et de la faune**
+
+From text:
+- "Un suivi écologique devra être effectué... dès 2022 (état zéro) et dès l'année suivant la fin des travaux et la remise en état sur le site projet (année N). Ils seront réalisés de façon annuelle pendant les 5 premières années, à compter de 2022 puis tous les 5 ans jusqu'en 2042 et tous les 10 ans jusqu'en 2072 soit un total de 12 campagnes (état zéro à n+49)."
+
+So:
+- Etat zéro: ponctuel at 2022
+- Annuel: 2022 to 2026 (5 years)
+- Tous les 5 ans: 2027 to 2042 (every 5 years)
+- Tous les 10 ans: 2043 to 2072 (every 10 years)
+
+This can be modeled as paliers:
+- ancrage_annee: 2022
+- paliers: [
+  {intervalle_ans: 1, nombre_occurrences: 5},  // 2022-2026 (5 campaigns: 2022 is year 0, then 2023,2024,2025,2026)
+  {intervalle_ans: 5, nombre_occurrences: 4},  // 2027,2032,2037,2042 (4 campaigns)
+  {intervalle_ans: 10, nombre_occurrences: 3}   // 2052,2062,2072 (3 campaigns)
+]
+
+But 2022 is the first year (état zéro), then:
+- 2022: état zéro
+- 2023: N+1
+- 2024: N+2
+- 2025: N+3
+- 2026: N+4
+- 2027: N+5 (first of the 5-year interval)
+- 2032: N+10
+- 2037: N+15
+- 2042: N+20
+- 2052: N+30
+- 2062: N+40
+- 2072: N+50
+
+But the text says "à compter de 2022 puis tous les 5 ans jusqu'en 2042 et tous les 10 ans jusqu'en 2072"
+
+So:
+- 2022: état zéro
+- 2023,2024,2025,2026,2027: annuel? No, "annuelle pendant les 5 premières années, à compter de 2022" - so 2022,2023,2024,2025,2026 (5 years)
+- Then tous les 5 ans: 2031,2036,2041 (but 2042 is the last before 2042? The text says "jusqu'en 2042")
+- Then tous les 10 ans: 2052,2062,2072
+
+But the text says "soit un total de 12 campagnes (état zéro à n+49)". N+49 is 2022+49=2071, but they say jusqu'en 2072.
+
+Let me calculate:
+- 2022: 1
+- 2023: 2
+- 2024: 3
+- 2025: 4
+- 2026: 5
+- 2027: 6 (first of the 5-year)
+- 2032: 7
+- 2037: 8
+- 2042: 9
+- 2052: 10
+- 2062: 11
+- 2072: 12
+
+Yes, that's 12 campaigns.
+
+So the schedule is:
+- 2022 (N)
+- 2023 (N+1)
+- 2024 (N+2)
+- 2025 (N+3)
+- 2026 (N+4)
+- 2027 (N+5)
+- 2032 (N+10)
+- 2037 (N+15)
+- 2042 (N+20)
+- 2052 (N+30)
+- 2062 (N+40)
+- 2072 (N+50)
+
+But N+50 is beyond 50 years from N (which is 2022). The plan is for 50 years (2022-2072). So N+50 is 2072, which is the end.
+
+For the paliers:
+- First palier: intervalle_ans: 1, nombre_occurrences: 5 (2022-2026)
+- Second palier: intervalle_ans: 5, nombre_occurrences: 4 (2027,2032,2037,2042)
+- Third palier: intervalle_ans: 10, nombre_occurrences: 3 (2052,2062,2072)
+
+But 2022 is the ancrage, so:
+- ancrage_annee: 2022
+- paliers: [
+  {intervalle_ans: 1, nombre_occurrences: 5},  // 2022,2023,2024,2025,2026
+  {intervalle_ans: 5, nombre_occurrences: 4},  // 2027,2032,2037,2042
+  {intervalle_ans: 10, nombre_occurrences: 3}  // 2052,2062,2072
+]
+
+But the first occurrence is at ancrage_annee (2022), then +1, +2, etc.
+
+The user's paliers format is:
+```
+"paliers": [{"intervalle_ans": 1, "nombre_occurrences": 4}]
+```
+
+So for SE1, one echeance with paliers.
+
+But SE1 has multiple types of suivis (habitats, avifaune, etc.) with different frequencies. The text says:
+- Habitats: 1 passage par campagne (Juillet/Août)
+- Avifaune: 2 passages par campagne (Avril/Juin)
+- Rhopalocères: 3 passages for Damier (Avril/Mai) and 3 for Fadet (Juin/Juillet)
+- Insectes saproxylophages: 1 passage en hiver
+- Chiroptères: 1 écoute active en juillet, 1 écoute passive en août/septembre, nettoyage en nov/déc
+
+But the user wants echeances per fiche, and SE1 is one fiche. So we need to create multiple echeances under SE1 for each type of suivi.
+
+But the recurrence pattern (annuel puis 5 ans puis 10 ans) is the same for all, but the months differ.
+
+So for SE1, we can have:
+1. Suivi habitats: paliers as above, fenetre: Juillet/Août -> debut: "07-01", fin: "08-31"
+2. Suivi avifaune: paliers as above, fenetre: Avril/Juin -> but two passages, so maybe two echeances or use texte_source
+3. Suivi rhopalocères Damier: paliers, fenetre: Avril/Mai
+4. Suivi rhopalocères Fadet: paliers, fenetre: Juin/Juillet
+5. Suivi insectes saproxylophages: paliers, fenetre: hiver (décembre à février) -> debut: "12-01", fin: "02-28", traverse_nouvel_an: true
+6. Suivi chiroptères: 
+   - Ecoute active: Juillet -> debut: "07-01", fin: "07-31"
+   - Ecoute passive: Août/Septembre -> debut: "08-01", fin: "09-30"
+   - Nettoyage gîtes: Novembre/Décembre -> debut: "11-01", fin: "12-31"
+
+This is getting very complex. Given the time, maybe for SE1, we can have one echeance with the paliers recurrence, and put the details in libelle or texte_source.
+
+But the user wants distinct echeances if rhythms differ. Here the rhythm is the same (paliers), but the windows differ. So maybe separate echeances for each type.
+
+However, the user's example shows that echeances can have different fenetre_intervention.
+
+So for SE1, create multiple echeances:
+- SE1-habitats: paliers recurrence, window: 07-01 to 08-31
+- SE1-avifaune: paliers recurrence, window: 04-01 to 06-30 (but two passages, so maybe two echeances or use texte_source)
+- etc.
+
+But this might be too much. Let me see what the user expects.
+
+The user said: "Granularité. 'un gyrobroyage tous les 4 ans' ET 'deux campagnes de rouleau par an pendant trois ans' → DEUX échéances distinctes sous la même fiche."
+
+So if the rhythms differ, separate echeances. For SE1, the rhythm is the same (paliers), but the windows are different for different components. So maybe separate echeances for each component.
+
+But to keep it manageable, perhaps group them.
+
+Given the complexity and time, I'll try to extract the main echeances for each fiche, focusing on the recurrence patterns and windows.
+
+Let me start compiling the JSON.
+
+First, list all fiches with their bornes:
+
+1. TU1
+   - debut: "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+   - fin_exclusive: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+2. TU2
+   - debut: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+   - fin_exclusive: "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+
+3. TU3
+   - debut: "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+   - fin_exclusive: "## TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+
+4. TU4
+   - debut: "## TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+   - fin_exclusive: "## TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles"
+
+5. TU5
+   - debut: "## TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles"
+   - fin_exclusive: "# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers"
+
+Wait, looking at the OCR for TU5:
+"⟦p53⟧
+...
+## TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles"
+
+And TU6 starts with:
+"⟦p58⟧
+...
+# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers"
+
+So TU5 fin_exclusive: "# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers"
+
+6. TU6
+   - debut: "# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers"
+   - fin_exclusive: "# TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+But TE1 starts with "# TE 1 : ...", so yes.
+
+7. TE1
+   - debut: "# TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+   - fin_exclusive: "## TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+
+8. TE2
+   - debut: "## TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+   - fin_exclusive: "### TE 3 : Lutter contre la Fougère aigle"
+
+9. TE3
+   - debut: "### TE 3 : Lutter contre la Fougère aigle"
+   - fin_exclusive: "# SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+
+10. SE1
+    - debut: "# SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+    - fin_exclusive: "## SE 2 : Suivi piézométrique"
+
+11. SE2
+    - debut: "## SE 2 : Suivi piézométrique"
+    - fin_exclusive: "# MG 1 : Pilotage et coordination du programme d'actions"
+
+12. MG1
+    - debut: "# MG 1 : Pilotage et coordination du programme d'actions"
+    - fin_exclusive: "## MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire"
+
+13. MG2
+    - debut: "## MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire"
+    - fin_exclusive: null
+
+Now for each, I need to extract:
+- id, code, categorie, titre
+- lib_thema (from the catalogue)
+- ug_ids, parcelles, communes, cadrage_surfacique, periodicite_texte
+- echeances with recurrence, fenetre, etc.
+
+Let me start with TU1.
+
+**TU1:**
+- id: "TU1"
+- code: "TU1"
+- categorie: "TU"
+- titre: "Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- lib_thema: This is for Fauvette pitchou and landicoles, which is about landes arbustives. Looking at the catalogue:
+  - Famille C1: Création / Renaturation
+  - Famille C2: Restauration / Réhabilitation
+  - Famille C3: Évolution des pratiques
+
+TU1 is about adapting sylvicultural practices, so it's about changing practices to favor landes. This seems like C3.1.a "Abandon traitements phytosanitaires" or C3.1.c "Conversion pratiques culturales". But the catalogue has:
+  - C3.1.a — Abandon traitements phytosanitaires
+  - C3.1.b — Abandon de gestion / sénescence
+  - C3.1.c — Conversion pratiques culturales
+  - C3.1.d — Prescriptions d'un APG
+  - C3.1.e — Autre : à préciser
+
+TU1 is "Adapter les itinéraires techniques sylvicoles", which is conversion of practices, so C3.1.c seems appropriate.
+
+But the user said: "lib_thema. Code EXACT du catalogue ci-dessous, ou 'autre' en cas de doute."
+
+So lib_thema: "C3.1.c"
+
+But let's check the other fiches. TU2 is "Créer et maintenir des espaces de landes arbustives", which is creation of habitat, so C1.1.a.
+
+Similarly:
+- TU1: C3.1.c (Conversion pratiques culturales)
+- TU2: C1.1.a (Création/renaturation d'habitats)
+- TU3: C3.1.c (similar to TU1 but for Fadet)
+- TU4: C1.1.a (Création de landes humides)
+- TU5: C2.1.e (Réouverture du milieu - but TU5 is maintain and restore zone humide, so maybe C2.2.a or C2.2.e)
+- TU6: C2.1.b? No, TU6 is îlots de sénescence, which is C3.1.b "Abandon de gestion / sénescence"
+
+Let me map properly:
+
+**TU1**: Adapter itinéraires sylvicoles for Fauvette -> changing practices to favor landes. This is conversion of sylvicultural practices, so C3.1.c "Conversion pratiques culturales"
+
+**TU2**: Créer et maintenir espaces de landes arbustives -> creation of habitat, so C1.1.a "Création/renaturation d'habitats"
+
+**TU3**: Adapter itinéraires sylvicoles for Fadet -> same as TU1, C3.1.c
+
+**TU4**: Créer et maintenir espaces de landes humides -> C1.1.a
+
+**TU5**: Maintenir et restaurer zone humide évitée -> this is restoration/maintenance of wetland. In catalogue:
+  - C2.2.a — Reprofilage / Restauration de berges
+  - C2.2.e — Alimentation/circulation eau zone humide
+  - C2.2.k — Autre : à préciser
+  TU5 is about maintaining a humid zone with specific actions (éclaircie, coupe sanitaire), so maybe C2.1.e "Réouverture du milieu (débroussaillage, abattage)" but it's a zone humide. Or C2.2.k "Autre : à préciser" with lib: "Maintenance de zone humide"
+
+But the user wants exact code. Let's see if there's a better fit. TU5 involves:
+- Maintain Pins maritime
+- Coupe sanitaire
+- Eclaircie to reopen milieu
+
+This is more about maintenance of existing wetland, so perhaps C3.2.a "Fauche / pâturage / niveaux d'eau" but not quite. Or C3.1.b "Abandon de gestion / sénescence" but it's not abandonment.
+
+Actually, TU5 is part of the compensation for Fadet des laîches, and it's maintaining an existing humid zone. So it's more about preserving than creating. So maybe C3.2.a or C3.2.b.
+
+But to be safe, I'll use "C2.2.k" with lib: "Maintenance de zone humide pour Fadet des laîches" but the user wants the code only. So "C2.2.k" and then in lib_thema field, but the field is just the code.
+
+The user said: "lib_thema. Code EXACT du catalogue ci-dessous, ou 'autre' en cas de doute."
+
+So for TU5, if I'm not sure, use "autre". But let's try to find the best fit.
+
+Looking at C2.1: [Cat. 1 : tous milieux]
+  C2.1.e — Réouverture du milieu (débroussaillage, abattage)
+
+TU5 involves éclaircie to reopen the milieu, so C2.1.e might fit.
+
+But it's specifically for zone humide. The catalogue has a separate section for milieux aquatiques (C2.2). TU5 is a zone humide, so C2.2.x.
+
+C2.2.e — Alimentation/circulation eau zone humide - not quite, TU5 doesn't mention water circulation.
+
+C2.2.a — Reprofilage / Restauration de berges - not applicable.
+
+C2.2.k — Autre : à préciser
+
+So for TU5, lib_thema: "C2.2.k"
+
+Similarly for others.
+
+**TU6**: Créer et maintenir des îlots de sénescence -> this is about abandoning management to allow senescence, so C3.1.b "Abandon de gestion / sénescence"
+
+**TE1**: Entretenir des landes arbustives -> maintenance, so C3.2.a "Fauche / pâturage / niveaux d'eau" but it's gyrobroyage. Or C3.2.b "Pratiques de gestion alternatives". Gyrobroyage is a management practice, so C3.2.b.
+
+**TE2**: Entretenir des landes humides -> same as TE1, C3.2.b
+
+**TE3**: Lutter contre la Fougère aigle -> this is a specific action, not sure. Maybe C2.1.b "Traitement EEE" (Espèces Exotiques Envahissantes), but Fougère aigle is native. Or C3.2.b.
+
+**SE1**: Suivi -> not in the catalogue (the catalogue is for measures, not suivis). The catalogue is for "mesures de création / renaturation", "restauration", "évolution des pratiques". SE are suivis, so maybe "autre".
+
+But the user said the catalogue is for the measures, and SE are "Suivis et indicateurs de réussite", so probably not in the catalogue. So lib_thema: "autre"
+
+Similarly for SE2, MG1, MG2: "autre"
+
+Now for the metadata:
+
+For each fiche, extract:
+- objectif_long_terme: from the text
+- objectif_operationnel: from the text
+- ug_ids: from the text
+- parcelles: from the text
+- communes: from the text (all are in Barp, so ["Barp"])
+- cadrage_surfacique: from the text
+- periodicite_texte: from the text
+
+Let me do this for each.
+
+**TU1:**
+- objectif_long_terme: "A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés"
+- objectif_operationnel: "a - Réorienter les pratiques sylvicoles"
+- ug_ids: ["UG 1"]
+- parcelles: ["330290B1103", "330290B301", "330290C1064b", "330290C1082", "330290B287", "330290C1076", "330290C252", "330290C974c"]
+- communes: ["Barp"]
+- cadrage_surfacique: "Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune"
+- periodicite_texte: "cf. tab n ° 6 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février (sous réserve de la portance de sols)"
+
+Echeances for TU1:
+1. Plantation: 
+   - id: "TU1-plantation"
+   - code_operation: "TU1"
+   - type_operation: "TU"
+   - type_metier: "replantation"
+   - libelle: "Plantation à 1100 tiges/ha avec bande périmétrale non plantée"
+   - lib_thema: "C3.1.c"
+   - recurrence: {type: "ponctuel", regle_source: "en fin d'année N+5 (5 ans après la coupe rase au maximum)"}
+   - fenetre_intervention: {debut: "10-01", fin: "02-28", texte_source: "entre le 1er octobre et le 28 février (sous réserve de la portance de sols)"}
+   - duree_gestion_ans: 50
+
+2. Eclaircie 1:
+   - id: "TU1-eclaircie1"
+   - type_metier: "eclaircie"
+   - recurrence: {type: "ponctuel", regle_source: "entre N+12 et N+15 (fonction de la station)"}
+   - fenetre_intervention: same as above
+
+3. Eclaircie 2:
+   - id: "TU1-eclaircie2"
+   - recurrence: {type: "ponctuel", regle_source: "entre N+19 et N+22"}
+
+4. Eclaircie 3:
+   - id: "TU1-eclaircie3"
+   - recurrence: {type: "ponctuel", regle_source: "entre N+24 et N+27"}
+
+5. Eclaircie 4:
+   - id: "TU1-eclaircie4"
+   - recurrence: {type: "ponctuel", regle_source: "entre N+29 et N+33"}
+
+6. Coupe rase:
+   - id: "TU1-coupe-rase"
+   - type_metier: "abattage"
+   - recurrence: {type: "ponctuel", regle_source: "à N+45 (40 ans après plantation, soit 45 ans après le démarrage)"}
+
+But the user wants the echeances to be under the fiche, and each echeance has its own recurrence.
+
+Now for the window, it's the same for all: 10-01 to 02-28.
+
+But for TU3, the window is different: 09-01 to 02-28 with traverse_nouvel_an: true.
+
+Let me continue with the JSON structure.
+
+Given the complexity and length, I'll provide a comprehensive JSON with all fiches and their echeances, using the exact OCR bornes and extracting the recurrence rules as best as possible.
+
+Note: For ancrage_annee, since N is 2022 (the start year), but the user wants the rule, not the absolute year, I'll use regle_source with "N+X" and set ancrage_annee to null, unless it's clear.
+
+Also, for the paliers in SE1, I'll use that type.
+
+Let me start writing the JSON.

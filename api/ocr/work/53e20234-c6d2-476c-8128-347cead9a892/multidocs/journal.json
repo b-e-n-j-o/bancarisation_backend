@@ -1,0 +1,29 @@
+{
+  "projet_id": "53e20234-c6d2-476c-8128-347cead9a892",
+  "etapes": [
+    {
+      "n": 1,
+      "nom": "Normalisation",
+      "script": "etape1 + utils/pdf → OCR Mistral",
+      "appels_llm": 0,
+      "appels_ocr": 1,
+      "detail_appels": "1 API",
+      "resultat": "1 doc(s), 102 bloc(s)",
+      "ok": true
+    },
+    {
+      "n": 2,
+      "nom": "Triage",
+      "script": "etape2_triage.cartographier",
+      "appels_llm": 0,
+      "appels_ocr": 0,
+      "detail_appels": "",
+      "resultat": "HTTP 400 : {\"object\":\"error\",\"message\":\"reasoning_effort='low' is not supported for this model. Must be one of (<ReasoningEffort.none: 'none'>, <ReasoningEffort",
+      "ok": false
+    }
+  ],
+  "ocr_appels": 1,
+  "ocr_pages": 102,
+  "ocr_cache_hits": 0,
+  "llm_appels": 0
+}

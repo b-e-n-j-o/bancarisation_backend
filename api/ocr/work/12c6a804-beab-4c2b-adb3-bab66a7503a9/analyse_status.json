@@ -1,0 +1,11 @@
+{
+  "projet_id": "12c6a804-beab-4c2b-adb3-bab66a7503a9",
+  "status": "error",
+  "etape": "erreur",
+  "fichier": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+  "erreur": "[Errno 2] No such file or directory: '._Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf'",
+  "recap": null,
+  "started_at": "2026-08-04T14:23:01.599478+00:00",
+  "updated_at": "2026-08-04T14:23:01.606298+00:00",
+  "detail": "0 job(s) d'extraction…"
+}

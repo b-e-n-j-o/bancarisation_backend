@@ -1,0 +1,22 @@
+{
+  "projet_id": "a9a436a1-ba6d-4e47-955a-d0b6ff095177",
+  "status": "error",
+  "etape": "erreur",
+  "fichier": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+  "fichiers": [
+    {
+      "nom": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+      "statut": "error",
+      "pages": null,
+      "format": "pdf"
+    }
+  ],
+  "detail": "Lecture / OCR des documents…",
+  "message_user": "Aucun document normalisé. Ignorés : Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf (échec : API error occurred: Status 404\n{\"detail\": \"No file matches the given query.\"})",
+  "progression": 5,
+  "pages_totales": null,
+  "erreur": "Aucun document normalisé. Ignorés : Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf (échec : API error occurred: Status 404\n{\"detail\": \"No file matches the given query.\"})",
+  "recap": null,
+  "started_at": "2026-08-04T14:59:29.238908+00:00",
+  "updated_at": "2026-08-04T14:59:32.383175+00:00"
+}

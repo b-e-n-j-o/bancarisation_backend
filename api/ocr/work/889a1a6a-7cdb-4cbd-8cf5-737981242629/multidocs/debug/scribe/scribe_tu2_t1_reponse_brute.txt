@@ -1,0 +1,25 @@
+```json
+{
+  "contenu_propre": "# TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles\n\n## Objectifs\n\n**Objectif à long terme :**\n- A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés.\n\n**Objectif opérationnel :**\n- a - Réorienter les pratiques sylvicoles.\n\n---\n\n## Unités de gestion et parcelles concernées\n\n- **Unités de gestion :** UG 3\n- **Parcelles concernées :** 330290B314, 330290C1064c, 330290C1076, 330290C912 (en partie)\n\n---\n\n## Cadrage surfacique\n\n- **Création de milieux ouverts :**\n  - Limité à 1 ha maximum d'un seul tenant.\n  - Limité à 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation.\n\n- **Maintien de milieux ouverts :**\n  - Limité à 1 ha maximum d'un seul tenant.\n  - Limité à 30 % maximum de la surface de l'unité de gestion.\n\n> *Source : Guide technique de la DREAL Nouvelle-Aquitaine, octobre 2020 – « Compensations écologiques en milieu forestier des Landes de Gascogne ».*\n\n---\n\n## Constat et justification\n\nBien que le cycle de production du Pin maritime favorise le renouvellement des habitats pour la faune et la flore locale, cette mesure vise à créer et maintenir des espaces de landes arbustives **sans plantation de Pin maritime**. Ces espaces doivent rester attractifs pendant toute la durée de la mesure compensatoire, soit **50 ans**. Cette stratégie s'inscrit dans le cadre du groupe de travail « Compensations écologiques en milieu forestier dans les Landes de Gascogne », initié par les services de l'État.\n\n---\n\n## Description de la mesure\n\nLa mesure consiste en un itinéraire technique sylvicole basé sur un **engagement de non-replantation**, permettant de créer ou maintenir des milieux landicoles ouverts optimaux pour les espèces cibles (Fauvette pitchou, Fadet des Laîches) couplé à une gestion adaptée.\n\n### Modalités techniques\n\n- **Création de milieux landicoles :**\n  - Abattage des arbres et arbustes présents sans dessouchage, avec export des rémanents.\n  - Traitement des souches si nécessaire (croque-souche).\n  - Réalisation des travaux **hors période de nidification et de migration** (entre le 1er octobre et le 28 février, sous réserve de la portance des sols).\n\n- **Engagements de base :**\n  - Aucun travail sylvicole (coupes, plantations, éclaircies, broyage, labour, etc.) pendant la durée de la mesure compensatoire.\n  - Interdiction d'utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc.).\n  - Interdiction d'utilisation de fertilisants chimiques et/ou organiques.\n  - Interdiction d'utilisation de rouleau landais et de broyage en plein.\n  - Gestion sur une durée de **50 ans**.\n\n- **Cas de non-respect des seuils :**\n  - Une demande de défrichement doit être effectuée pour maintenir un état de landes après une coupe rase au-delà de 5 ans.\n\n### Gestion des parcelles\n\nLes parcelles concernées sont référencées au Plan Simple de Gestion hors régime forestier (en cours d'intégration au régime forestier par la commune) comme « LE » (Lande et Emprise).\n\n> **Note :** La gestion des parcelles 33028B314, 33029C1064Cc et 33029C1076, actuellement entretenues par RTE, devra être rétrocédée à l'opérateur de compensation assurant la gestion des espaces.\n\n---\n\n## Indicateurs de suivi\n\n- Recouvrement de la strate arborée.\n- État de conservation des habitats.\n- Nombre de couples nicheurs.\n\n---\n\n## Intervenants\n\n- Opérateur de compensation.\n- Entreprise de travaux forestiers.\n- Écologue (encadrement écologique).\n\n---\n\n## Frise temporelle\n\n```\nDurée de la mesure : 50 ans\n```",
+  "description": "Création et maintien de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles via un engagement de non-replantation, avec gestion adaptée sur 50 ans.",
+  "engagements": [
+    "Aucune replantation de Pin maritime.",
+    "Abattage des arbres et arbustes sans dessouchage, avec export des rémanents.",
+    "Aucun travail sylvicole (coupes, plantations, éclaircies, broyage, labour, etc.) pendant la durée de la mesure compensatoire.",
+    "Interdiction d'utilisation de produits phytosanitaires, fertilisants chimiques/organiques, rouleau landais et broyage en plein.",
+    "Respect des périodes de travaux (1er octobre - 28 février, sous réserve de la portance des sols).",
+    "Gestion sur une durée de 50 ans."
+  ],
+  "indicateurs": [
+    "Recouvrement de la strate arborée",
+    "État de conservation des habitats",
+    "Nombre de couples nicheurs"
+  ],
+  "intervenants": [
+    "Opérateur de compensation",
+    "Entreprise de travaux forestiers",
+    "Écologue (encadrement écologique)"
+  ],
+  "frise_markdown": null
+}
+```

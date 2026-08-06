@@ -1,0 +1,17 @@
+Je dois corriger les signaux pour qu'ils aient les champs "type" et "description" requis. D'après le schéma, chaque signal doit avoir :
+- type (string)
+- description (string)
+
+Je vais transformer chaque message en un objet avec ces deux champs. Pour le type, je peux utiliser des catégories comme "manque", "incohérence", "doublon", etc. Ici, ce sont plutôt des manques ou des informations manquantes.
+
+Je vais donc :
+1. Pour chaque signal, ajouter "type" et "description"
+2. Utiliser le message existant comme description
+3. Choisir un type approprié pour chaque signal
+
+Pour les trois signaux :
+1. "Durée d'engagement non explicite..." -> type: "manque", description: le message
+2. "Origine du déclenchement..." -> type: "manque", description: le message
+3. "Absence de calendrier..." -> type: "manque", description: le message
+
+Je vais générer le JSON corrigé.

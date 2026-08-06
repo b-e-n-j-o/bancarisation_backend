@@ -1,0 +1,3 @@
+1 validation error for DistributeurResult
+  Invalid JSON: EOF while parsing a list at line 59 column 9 [type=json_invalid, input_value='{\n  "fiches": [\n    {\...sements": []\n        }', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/json_invalid

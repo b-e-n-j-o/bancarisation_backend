@@ -50,6 +50,9 @@ def get_metadata(projet_id: UUID | str) -> dict[str, Any] | None:
         .maybe_single()
         .execute()
     )
+    # maybe_single() peut renvoyer None (pas d'objet) quand aucune ligne n'existe
+    if response is None:
+        return None
     return response.data
 
 

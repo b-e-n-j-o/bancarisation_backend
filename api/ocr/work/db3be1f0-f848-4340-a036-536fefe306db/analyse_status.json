@@ -1,0 +1,11 @@
+{
+  "projet_id": "db3be1f0-f848-4340-a036-536fefe306db",
+  "status": "error",
+  "etape": "erreur",
+  "fichier": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+  "erreur": "API error occurred: Status 503\n{\"object\":\"error\",\"message\":\"Service unavailable.\",\"type\":\"internal_server_error\",\"param\":null,\"code\":\"3700\",\"raw_status_code\":503}",
+  "recap": null,
+  "started_at": "2026-08-04T11:13:51.348474+00:00",
+  "updated_at": "2026-08-04T11:13:58.279717+00:00",
+  "detail": "Envoi du PDF à Mistral OCR…"
+}

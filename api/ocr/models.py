@@ -99,11 +99,11 @@ class Recurrence(BaseModel):
     type: TypeRecurrence
     intervalle_ans: Optional[float] = None      # si type == periodique
     occurrences_par_an: Optional[int] = None    # si type == campagnes
-    duree_ans: Optional[int] = None             # si type == campagnes
+    duree_ans: Optional[int] = None             # si type == campagnes (ou borne période)
     ancrage_annee: Optional[int] = None         # None = à compléter par le user
+    annee_fin: Optional[int] = None             # borne inclusive de la série ("jusqu'en 2042")
     regle_source: Optional[str] = None          # texte brut de la règle
     paliers: ListePalier = Field(default_factory=list)  # si type == paliers
-
 
 class FenetreIntervention(BaseModel):
     """
@@ -144,6 +144,10 @@ class Echeance(BaseModel):
     ug_ids: ListeStr = Field(
         default_factory=list,
         validation_alias=AliasChoices("ug_ids", "unites_gestion"),
+    )
+    zone_source_proposee: Optional[str] = Field(
+        None,
+        description="Nom exact d'une zone SIG du contexte, ou null si incertitude",
     )
     parcelles: ListeStr = Field(default_factory=list)
     communes: ListeStr = Field(default_factory=list)
@@ -245,7 +249,7 @@ class DossierResult(BaseModel):
 class ActionFiche(BaseModel):
     """
     Fiche-action du plan de gestion (TU1, TE1, SE1…).
-    `contenu_integral` = texte OCR repris intégralement, sans résumé.
+    `contenu_integral` = texte propre prêt à stocker (scribe LLM ou slice OCR).
     `lib_thema` = code nomenclature Théma (ex. C2.1.c) ou ``autre``.
     """
     id: str
@@ -258,6 +262,10 @@ class ActionFiche(BaseModel):
     ug_ids: ListeStr = Field(
         default_factory=list,
         validation_alias=AliasChoices("ug_ids", "unites_gestion"),
+    )
+    zone_source_proposee: Optional[str] = Field(
+        None,
+        description="Nom exact d'une zone SIG du contexte, ou null si incertitude",
     )
     parcelles: ListeStr = Field(default_factory=list)
     communes: ListeStr = Field(default_factory=list)
@@ -299,6 +307,79 @@ class ActionFiche(BaseModel):
 
 class ActionsResult(BaseModel):
     actions: list[ActionFiche]
+
+
+# --- Distributeur plan de gestion (bornes + échéances, sans recopie OCR) -----
+
+class FicheBorne(BaseModel):
+    """
+    Fiche-action telle que le LLM distributeur la pointe dans l'OCR.
+    `debut` / `fin_exclusive` = citations exactes du markdown OCR ;
+    Python coupe le chunk, un LLM léger (scribe) produit le contenu propre.
+    """
+    id: str
+    code: str
+    categorie: TypeOperation
+    titre: str
+    debut: str = Field(description="Citation exacte du début de fiche dans l'OCR")
+    fin_exclusive: Optional[str] = Field(
+        None,
+        description="Citation exacte du début de la fiche suivante (exclue), "
+                    "ou null pour la dernière fiche du document",
+    )
+    lib_thema: str = LIB_THEMA_AUTRE
+    objectif_long_terme: Optional[str] = None
+    objectif_operationnel: Optional[str] = None
+    ug_ids: ListeStr = Field(
+        default_factory=list,
+        validation_alias=AliasChoices("ug_ids", "unites_gestion"),
+    )
+    zone_source_proposee: Optional[str] = None
+    parcelles: ListeStr = Field(default_factory=list)
+    communes: ListeStr = Field(default_factory=list)
+    cadrage_surfacique: Optional[str] = None
+    periodicite_texte: Optional[str] = None
+    confiance: float = Field(default=1.0, ge=0.0, le=1.0)
+    champs_a_confirmer: ListeStr = Field(default_factory=list)
+    avertissements: ListeStr = Field(default_factory=list)
+    echeances: list[Echeance] = Field(default_factory=list)
+
+    @field_validator("code")
+    @classmethod
+    def _normaliser_code_borne(cls, v: str) -> str:
+        return v.replace(" ", "").strip().upper()
+
+    @field_validator("id")
+    @classmethod
+    def _normaliser_id_borne(cls, v: str) -> str:
+        return v.replace(" ", "").strip().upper()
+
+    @field_validator("lib_thema", mode="before")
+    @classmethod
+    def _normaliser_lib_thema_borne(cls, v: Any) -> str:
+        return normaliser_lib_thema(v)
+
+    @field_validator("ug_ids", mode="before")
+    @classmethod
+    def _normaliser_ug_ids_borne(cls, v: Any) -> list[str]:
+        if v is None:
+            return []
+        return _normalize_ug_ids_list(list(v) if not isinstance(v, list) else v)
+
+
+class DistributeurResult(BaseModel):
+    """Sortie du LLM lourd : catalogue de fiches bornées + échéances liées."""
+    fiches: list[FicheBorne]
+
+
+class ScribeActionResult(BaseModel):
+    """Sortie du LLM léger : texte propre prêt à stocker (pas de calendrier)."""
+    contenu_propre: str
+    description: Optional[str] = None
+    engagements: ListeStr = Field(default_factory=list)
+    indicateurs: ListeStr = Field(default_factory=list)
+    intervenants: ListeStr = Field(default_factory=list)
+    frise_markdown: Optional[str] = None
 
 
 class EcheanceLiee(Echeance):

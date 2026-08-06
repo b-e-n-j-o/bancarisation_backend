@@ -1,0 +1,909 @@
+Ok, l'utilisateur me demande de cartographier un plan de gestion environnemental français très détaillé. Il veut que j'extraie chaque fiche-action avec ses bornes OCR exactes (`debut` / `fin_exclusive`) et ses échéances (récurrence).
+
+C'est un document de 100+ pages sur la compensation écologique pour un projet de lycée/college au Barp (33). Le plan de gestion contient plusieurs types de mesures : TU (Travaux Uniques), TE (Travaux d'Entretien), SE (Suivis et Études), MG (Mise en Œuvre Générale).
+
+Je dois :
+1. Identifier chaque fiche-action (TU1, TU2, TE1, etc.)
+2. Pour chaque fiche, trouver le texte exact de début et de fin dans l'OCR
+3. Extraire les échéances avec leurs règles de récurrence
+4. Classer chaque fiche selon le catalogue thématique fourni
+5. Ne pas inclure le contenu intégral des fiches
+
+Commençons par analyser la structure du document. D'après la table des matières et le contenu, je vois que les fiches actions sont dans la section 6.3 "Description des actions prévues", avec des sous-sections :
+- 6.3.1. Travaux uniques (TU)
+- 6.3.2. Travaux d'entretien (TE)
+- 6.3.3. Suivis et indicateurs de réussite (SE)
+- 6.3.4. Mise en œuvre générale du plan de gestion (MG)
+
+Je vais parcourir le document pour identifier chaque fiche.
+
+D'après ce que j'ai lu :
+- TU1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou
+- TU2 : Créer et maintenir des espaces de landes arbustives
+- TU3 : Adapter les itinéraires techniques sylvicoles en faveur du Fadet des laîches
+- TU4 : Créer et maintenir des espaces de landes humides
+- TU5 : Maintenir et restaurer la zone humide évitée
+- TU6 : Créer et maintenir des îlots de sénescence
+
+Puis :
+- TE1 : Entretenir des landes arbustives
+- TE2 : Entretenir des landes humides
+- TE3 : Lutter contre la Fougère aigle
+
+Puis :
+- SE1 : Suivi des habitats naturels, de la flore et de la faune
+- SE2 : Suivi piézométrique
+
+Puis :
+- MG1 : Pilotage et coordination du programme d'actions
+- MG2 : Mise à jour du plan de gestion et bilan de fin
+
+Maintenant, je dois trouver les bornes exactes pour chaque fiche.
+
+Commençons par TU1. Dans le document, je vois :
+```
+## 6.3.1. Travaux uniques (TU)
+
+#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles
+```
+
+Donc `debut` pour TU1 serait : "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Et `fin_exclusive` serait le début de la fiche suivante, qui est TU2 : "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Attendez, je vois que TU2 commence par "## TU 2 : ..." alors que TU1 commence par "#### TU 1 : ...". Il faut que je sois précis.
+
+En regardant le texte :
+```
+⟦p40⟧
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+## 6.3.1. Travaux uniques (TU)
+
+#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles
+```
+
+Donc le début de TU1 est bien "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Puis plus loin, je vois :
+```
+⟦p43⟧
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles
+```
+
+Donc `fin_exclusive` pour TU1 est "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Mais attention, le document a des marqueurs comme ⟦p40⟧, ⟦p43⟧ etc. qui sont des indicateurs de page. Je dois ignorer ces marqueurs et me concentrer sur le contenu textuel.
+
+Continuons à identifier toutes les fiches et leurs bornes.
+
+Pour TU1 :
+- debut: "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- fin_exclusive: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+Pour TU2 :
+- debut: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- fin_exclusive: "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles" (je vois que TU3 commence par "### TU 3 :")
+
+Attendez, je dois vérifier l'exactitude. Dans le texte :
+```
+⟦p48⟧
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles
+```
+
+Donc TU2 se termine avant TU3. Mais entre TU2 et TU3, il y a des tableaux. Je dois trouver où exactement commence TU3.
+
+En fait, TU2 se termine à la fin de sa description, puis il y a des tableaux (Tabl. 6), puis TU3 commence.
+
+Mais pour les bornes, je dois prendre le début exact de chaque fiche. Donc :
+- TU1: debut = "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- fin_exclusive = "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+- TU2: debut = "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- fin_exclusive = "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+
+- TU3: debut = "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+- fin_exclusive = "## TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles" (je vois "## TU 4 : ...")
+
+- TU4: debut = "## TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+- fin_exclusive = "## TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles"
+
+- TU5: debut = "## TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles"
+- fin_exclusive = "# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers"
+
+- TU6: debut = "# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers"
+- fin_exclusive = "### 6.3.2. Travaux d'entretien (TE)" (car après TU6, on passe à la section TE)
+
+Maintenant pour les TE :
+- TE1: debut = "### TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- fin_exclusive = "## TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+
+- TE2: debut = "## TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+- fin_exclusive = "### TE 3 : Lutter contre la Fougère aigle"
+
+- TE3: debut = "### TE 3 : Lutter contre la Fougère aigle"
+- fin_exclusive = "### 6.3.3. Suivis et indicateurs de réussite (SE)"
+
+Pour les SE :
+- SE1: debut = "# SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+- fin_exclusive = "## SE 2 : Suivi piézométrique"
+
+- SE2: debut = "## SE 2 : Suivi piézométrique"
+- fin_exclusive = "### 6.3.4. Mise en œuvre générale du plan de gestion (MG)"
+
+Pour les MG :
+- MG1: debut = "#### MG 1 : Pilotage et coordination du programme d'actions"
+- fin_exclusive = "## MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire"
+
+- MG2: debut = "## MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire"
+- fin_exclusive = null (car c'est la dernière fiche)
+
+Maintenant, pour chaque fiche, je dois extraire les échéances. C'est complexe car il y a beaucoup de détails.
+
+Commençons par TU1. Dans la description de TU1, je vois :
+- Quatre éclaircies à des intervalles spécifiques (12-15 ans, 19-22 ans, 24-27 ans, 29-33 ans)
+- Coupe rase définitive à 40-45 ans
+- Travaux en dehors de la période de nidification : entre 1er novembre et 1er mars
+
+Donc pour TU1, il y a plusieurs échéances :
+1. Première éclaircie : entre 12-15 ans après plantation
+2. Deuxième éclaircie : entre 19-22 ans
+3. Troisième éclaircie : entre 24-27 ans
+4. Quatrième éclaircie : entre 29-33 ans
+5. Coupe rase : entre 40-45 ans
+
+Mais le document mentionne aussi que la compensation est en rotation sur 50 ans, avec des tranches :
+- Tranche N à N+14
+- Tranche N+14 à N+28
+- Tranche N+29 à N+49
+
+C'est un peu compliqué. Je dois normaliser cela selon les règles données.
+
+Pour les éclaircies, c'est des actions périodiques. Mais les intervalles ne sont pas fixes (12-15 ans, etc.). Le document dit "La première éclaircie entre 12 et 15 ans (fonction de la station)". Donc c'est une fourchette.
+
+Mais pour les échéances, je peux créer des règles basées sur les descriptions.
+
+Pour TU1, les échéances principales sont :
+- Éclaircies : 4 fois à des intervalles de ~5 ans (mais avec des fourchettes)
+- Coupe rase : à 40-45 ans
+
+Mais le document mentionne aussi que les travaux doivent être effectués entre novembre et mars.
+
+Donc pour chaque éclaircie, on peut avoir :
+- type: periodique
+- intervalle_ans: 5 (approximatif)
+- fenetre_intervention: debut="11-01", fin="03-01" (mais le texte dit "entre le 1er novembre et le 1er mars")
+
+Attendez, le texte dit : "Tous les travaux (coupes, plantation, éclaircies, broyage, labour,...) devront être effectués en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des Laîches soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols."
+
+Donc fenetre_intervention: debut="11-01", fin="03-01", traverse_nouvel_an: true
+
+Mais pour les éclaircies spécifiques, les intervalles sont :
+- 12-15 ans
+- 19-22 ans
+- 24-27 ans
+- 29-33 ans
+
+C'est un peu particulier. Peut-être que je peux modéliser cela comme des paliers ou des actions ponctuelles à des années spécifiques.
+
+Mais le document dit aussi que le plan est sur 50 ans, avec des tranches de rotation.
+
+Pour simplifier, je vais créer des échéances pour chaque type d'action.
+
+Pour TU1 :
+1. Plantation : ponctuelle, ancrage_annee = N (à confirmer)
+2. Éclaircie 1 : ponctuelle, ancrage_annee = N+12 à N+15
+3. Éclaircie 2 : ponctuelle, ancrage_annee = N+19 à N+22
+4. Éclaircie 3 : ponctuelle, ancrage_annee = N+24 à N+27
+5. Éclaircie 4 : ponctuelle, ancrage_annee = N+29 à N+33
+6. Coupe rase : ponctuelle, ancrage_annee = N+40 à N+45
+
+Mais le document mentionne aussi que la première tranche de compensation est N à N+14, avec replantation en N+5.
+
+C'est très complexe. Peut-être que je devrais me concentrer sur les échéances explicitement mentionnées dans les tableaux et descriptions.
+
+Dans le tableau 6 (pour TU1), il y a des années spécifiques pour les coupes et éclaircies. Mais le tableau semble incomplet dans le texte OCR.
+
+Je vois dans le texte :
+"La première éclaircie entre 12 et 15 ans (fonction de la station) avec un taux de prélèvement maximal de 30%..."
+"La deuxième éclaircie entre 19 et 22 ans..."
+"La troisième éclaircie entre 24 et 27 ans..."
+"La quatrième éclaircie entre 29 et 33 ans..."
+"La coupe rase définitive ne pourra intervenir avant 40 ans... (soit N+45)"
+
+Donc pour TU1, je peux créer 5 échéances :
+1. Éclaircie 1 : type=ponctuel, ancrage_annee=N+12 (ou N+15?), mais c'est une fourchette. Peut-être mieux de mettre type=dependant_evenement avec regle_source="entre 12 et 15 ans après plantation"
+
+Mais la règle dit : "Si le texte dit 'N ans après <autre action>' → type 'dependant_evenement'"
+
+Donc pour les éclaircies :
+- Éclaircie 1 : type=dependant_evenement, regle_source="entre 12 et 15 ans après plantation"
+- Éclaircie 2 : type=dependant_evenement, regle_source="entre 19 et 22 ans après plantation"
+- etc.
+
+Mais pour la coupe rase : "La coupe rase définitive ne pourra intervenir avant 40 ans pour la première tranche... (soit N+45)" → type=dependant_evenement, regle_source="entre 40 et 45 ans après plantation"
+
+Mais il y a aussi la rotation des tranches :
+- Tranche N à N+14 : plantation en N+5
+- Tranche N+14 à N+28 : plantation en N+19
+- Tranche N+29 à N+49 : coupe rase à N+45
+
+C'est très complexe. Peut-être que je devrais créer des échéances pour chaque tranche.
+
+Mais pour simplifier, je vais me concentrer sur les actions récurrentes mentionnées explicitement.
+
+Pour TU1, les échéances principales sont :
+1. Plantation : ponctuelle, ancrage_annee = N (à confirmer)
+2. Éclaircies : 4 fois, à des intervalles de ~5-7 ans
+3. Coupe rase : à 40-45 ans
+
+Mais le document mentionne aussi que les travaux doivent être effectués entre novembre et mars.
+
+Donc pour chaque action (plantation, éclaircies, coupe rase), la fenetre_intervention est :
+- debut: "11-01"
+- fin: "03-01"
+- traverse_nouvel_an: true
+
+Maintenant, pour le type_metier :
+- Plantation : type_metier = "replantation"
+- Éclaircies : type_metier = "eclaircie"
+- Coupe rase : type_metier = "abattage" ou autre?
+
+Selon le catalogue :
+type_metier : un parmi replantation, eclaircie, gyrobroyage, rotobroyage, etrepage, arrachage_eee, abattage, fauche, rouleau_brise_fougere, suivi_flore, suivi_faune, suivi_habitats, pilotage, bilan, autre.
+
+Donc :
+- Plantation : replantation
+- Éclaircies : eclaircie
+- Coupe rase : abattage
+
+Pour TU2, c'est la création et maintien de landes arbustives. Les actions sont :
+- Abattage sans dessouchage avec export
+- Traitement des souches avec croque-souche
+- Pas de replantation
+
+Échéances :
+- Travaux uniques : abattage, ponctuel
+- Puis entretien : gyrobroyage tous les 5-8 ans (mais c'est dans TE1)
+
+Donc pour TU2, l'échéance principale est l'abattage initial, ponctuel.
+
+Pour TU3, similaire à TU1 mais pour Fadet des laîches :
+- Éclaircies aux mêmes intervalles
+- Coupe rase à 40-45 ans
+- Fenetre : novembre à mars (mais le texte dit "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)")
+
+Donc fenetre_intervention: debut="11-01", fin="02-28", traverse_nouvel_an: false? Ou debut="09-01", fin="02-28" avec traverse_nouvel_an: true?
+
+Le texte dit : "en dehors des périodes sensibles pour l'espèce soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+
+Donc fenetre_intervention: debut="09-01", fin="02-28", traverse_nouvel_an: true, texte_source="entre novembre et février (avec possibilité dès septembre selon portance des sols)"
+
+Pour TU4, similaire à TU2 mais pour landes humides.
+
+Pour TU5, entretien de la zone humide :
+- Coupe sanitaire si nécessaire
+- Éclaircie à la débroussailleuse à lame dès la première année des jeunes Pins
+- Travaux entre novembre et mars
+
+Échéances :
+- Éclaircie initiale : ponctuelle, ancrage_annee = N (première année)
+- Coupe sanitaire : dépendant_evenement, regle_source="en cas de maladie et/ou d'arbres jugés dangereux"
+
+Pour TU6, création d'îlots de sénescence :
+- Pose de clôture : ponctuelle, ancrage_annee = N
+- Installation de nichoirs : ponctuelle, ancrage_annee = N
+- Renouvellement des nichoirs : tous les 25 ans? Le texte dit "Un à deux renouvellement des nichoirs sera à prévoir durant les 50 ans." et dans le tableau, il y a "Renouvellement nichoirs si nécessaire" à N+19 et N+39.
+
+Donc :
+- Pose clôture : ponctuelle, ancrage_annee = N
+- Installation nichoirs : ponctuelle, ancrage_annee = N
+- Renouvellement nichoirs : periodique, intervalle_ans=20, ancrage_annee=N (car à N+19 et N+39)
+
+Pour TE1, entretien des landes arbustives :
+- Gyrobroyage à 30 cm sans export, différencié (1 bande sur 2)
+- Tous les 5 à 8 ans
+- Fenetre : octobre à février
+
+Donc échéance :
+- type: periodique
+- intervalle_ans: 5 (ou 8?), mais c'est une fourchette. Peut-être mieux de mettre type=paliers avec paliers=[{intervalle_ans:5, nombre_occurrences:1}, {intervalle_ans:8, nombre_occurrences:1}]? Non, ce n'est pas ça.
+
+Le texte dit : "L'entretien sera à prévoir tous les 5 à 8 ans en fonction de la dynamique de fermeture."
+
+Donc c'est une périodicité variable. Je peux mettre type=periodique, intervalle_ans=6 (moyenne), ou type=dependant_evenement avec regle_source="tous les 5 à 8 ans selon la dynamique de fermeture"
+
+Mais la règle dit : "un gyrobroyage tous les 4 ans" → type=periodique, intervalle_ans=4
+
+Donc pour "tous les 5 à 8 ans", je peux mettre type=periodique, intervalle_ans=6 (moyenne), ou intervalle_ans=5 avec duree_ans=8? Non.
+
+Peut-être mieux de mettre type=periodique, intervalle_ans=5, et dans champs_a_confirmer: ["périodicité exacte entre 5 et 8 ans"]
+
+Mais je vais essayer de normaliser.
+
+Pour TE1 :
+- Gyrobroyage : type=periodique, intervalle_ans=6 (moyenne de 5-8), fenetre_intervention: debut="10-01", fin="02-28", traverse_nouvel_an: true
+
+Mais le texte dit aussi pour les parcelles en rotation : "les bandes paires feront l'objet d'un entretien après plantation aux années n+4, n+9, n+14 et les bandes impaires, feront l'objet d'un entretien en décalé aux années n+7, n+12"
+
+Donc c'est plus complexe. Il y a des échéances spécifiques pour les bandes paires et impaires.
+
+Donc pour TE1, il y a deux échéances :
+1. Bandes paires : type=campagnes, occurrences_par_an=1, duree_ans=50, ancrage_annee=N+4, puis N+9, N+14, etc. Mais c'est tous les 5 ans pour les paires.
+2. Bandes impaires : type=campagnes, occurrences_par_an=1, duree_ans=50, ancrage_annee=N+7, puis N+12, etc.
+
+Mais c'est très spécifique. Peut-être mieux de créer une échéance avec type=paliers.
+
+Mais pour simplifier, je vais créer une échéance pour le gyrobroyage général tous les 5-8 ans.
+
+Pour TE2, entretien des landes humides :
+- Gyrobroyage tous les 3 ans
+- Fenetre : novembre à février (avec possibilité dès septembre)
+
+Donc échéance :
+- type: periodique, intervalle_ans=3
+- fenetre_intervention: debut="09-01", fin="02-28", traverse_nouvel_an: true
+
+Pour TE3, lutte contre la Fougère aigle :
+- Deux campagnes par an (juin et août) pendant quatre ans minimum
+- Mais seulement en cas d'apparition
+
+Donc échéance :
+- type: campagnes, occurrences_par_an=2, duree_ans=4, ancrage_annee=N (mais conditionnel)
+- Mais c'est conditionnel : "En cas d'apparition et/ou de repousses abondantes..."
+
+Donc peut-être type=dependant_evenement, regle_source="deux campagnes par an (juin et août) pendant quatre ans minimum en cas d'apparition de Fougère aigle"
+
+Pour SE1, suivi écologique :
+- État zéro en 2022
+- Puis annuel pendant 5 ans (2022-2026)
+- Puis tous les 5 ans jusqu'en 2042
+- Puis tous les 10 ans jusqu'en 2072
+
+Donc échéance avec type=paliers :
+- ancrage_annee=2022
+- paliers: [
+  {intervalle_ans:1, nombre_occurrences:5}, // 2022-2026 (5 ans: 2022,2023,2024,2025,2026)
+  {intervalle_ans:5, nombre_occurrences:3}, // 2031,2036,2041 (mais 2042 est la fin)
+  {intervalle_ans:10, nombre_occurrences:3} // 2052,2062,2072
+]
+
+Mais 2022 à 2026 c'est 5 campagnes (2022,2023,2024,2025,2026), puis 2031,2036,2041 (3 campagnes), puis 2051,2061,2071? Attendez, le texte dit "tous les 5 ans jusqu'en 2042" et "tous les 10 ans jusqu'en 2072".
+
+Donc :
+- 2022 (état zéro)
+- 2023,2024,2025,2026,2027 (5 premières années à partir de 2022? Le texte dit "annuelle pendant les 5 premières années, à compter de 2022")
+- Puis 2032,2037,2042 (tous les 5 ans)
+- Puis 2052,2062,2072 (tous les 10 ans)
+
+Donc total : 1 (2022) + 5 (2023-2027) + 3 (2032,2037,2042) + 3 (2052,2062,2072) = 12 campagnes
+
+Donc paliers:
+- ancrage_annee=2022
+- paliers: [
+  {intervalle_ans:1, nombre_occurrences:1}, // 2022
+  {intervalle_ans:1, nombre_occurrences:5}, // 2023-2027
+  {intervalle_ans:5, nombre_occurrences:3}, // 2032,2037,2042
+  {intervalle_ans:10, nombre_occurrences:3} // 2052,2062,2072
+]
+
+Mais c'est un peu complexe. Peut-être mieux de décomposer en plusieurs échéances :
+1. État zéro : ponctuel, ancrage_annee=2022
+2. Suivis annuels : campagnes, occurrences_par_an=1, duree_ans=5, ancrage_annee=2023
+3. Suivis quinquennaux : periodique, intervalle_ans=5, duree_ans=20 (2032-2042), ancrage_annee=2032
+4. Suivis décennaux : periodique, intervalle_ans=10, duree_ans=20 (2052-2072), ancrage_annee=2052
+
+Mais la règle dit de préférer un seul objet échéance en paliers plutôt que plusieurs périodiques qui se chevauchent.
+
+Donc je vais faire un paliers pour SE1.
+
+Pour SE2, suivi piézométrique :
+- État zéro en 2022
+- Puis annuel en continu (enregistrement continu)
+- Bilan tous les 5 ans jusqu'en 2042, puis tous les 10 ans jusqu'en 2072
+
+Donc :
+- Enregistrement continu : type=periodique, intervalle_ans=1, duree_ans=50, ancrage_annee=2022
+- Bilan : paliers comme pour SE1 mais sans les annuels
+
+Pour MG1, pilotage et coordination :
+- Bilan annuel : type=periodique, intervalle_ans=1, duree_ans=50, ancrage_annee=2022
+- Comité de suivi : annuel les 5 premières années, puis tous les 5 ans jusqu'en 2042, puis tous les 10 ans jusqu'en 2072
+
+Donc pour MG1, échéance pour le bilan annuel :
+- type=periodique, intervalle_ans=1, duree_ans=50, ancrage_annee=2022
+
+Et pour le comité de suivi :
+- type=paliers, ancrage_annee=2022, paliers=[{intervalle_ans:1, nombre_occurrences:5}, {intervalle_ans:5, nombre_occurrences:3}, {intervalle_ans:10, nombre_occurrences:3}]
+
+Pour MG2, mise à jour du plan de gestion :
+- Tous les 5 ans jusqu'en 2042, puis tous les 10 ans jusqu'en 2072
+- Donc type=paliers, ancrage_annee=2027 (car première mise à jour à N+5, et N=2022), paliers=[{intervalle_ans:5, nombre_occurrences:3}, {intervalle_ans:10, nombre_occurrences:2}] (2027,2032,2037,2042,2052,2062,2072)
+
+Attendez, le texte dit : "tous les 5 ans en jusqu'en 2042 puis par période de 10 ans jusqu'en 2072"
+
+Donc :
+- 2027 (N+5)
+- 2032 (N+10)
+- 2037 (N+15)
+- 2042 (N+20)
+- 2052 (N+30)
+- 2062 (N+40)
+- 2072 (N+50)
+
+Donc paliers:
+- ancrage_annee=2027
+- paliers: [
+  {intervalle_ans:5, nombre_occurrences:4}, // 2027,2032,2037,2042
+  {intervalle_ans:10, nombre_occurrences:3} // 2052,2062,2072
+]
+
+Maintenant, pour chaque fiche, je dois aussi déterminer le lib_thema selon le catalogue fourni.
+
+Catalogue thématique :
+- C1.1.a — Création/renaturation d'habitats
+- C1.1.b — Aménagement ponctuel (abris/gîtes) complémentaire C1.a ou C2
+- C1.1.c — Prescriptions d'un APG
+- C1.1.d — Autre : à préciser
+
+- C2.1.a — Enlèvement dispositifs antérieurs (déconstruction)
+- C2.1.b — Traitement EEE
+- C2.1.c — Etrépage / Décapage / Décaissement
+- C2.1.d — Réensemencement / replantation / haies
+- C2.1.e — Réouverture du milieu (débroussaillage, abattage)
+- C2.1.f — Restauration de corridor écologique
+- C2.1.g — Aménagement ponctuel (abris/gîtes) complémentaire C2
+- C2.1.h — Prescriptions d'un APG
+- C2.1.i — Autre : à préciser
+
+- C2.2.a — Reprofilage / Restauration de berges
+- C2.2.b — Annexes hydrauliques / décolmatage
+- C2.2.c — Reconnexion hydraulique / frayères
+- C2.2.d — Hydromorphologie lit mineur
+- C2.2.e — Alimentation/circulation eau zone humide
+- C2.2.f — Restauration ripisylve
+- C2.2.g — Modification d'ouvrage existant
+- C2.2.h — Arasement / dérasement obstacle
+- C2.2.i — Point d'abreuvement / mise en défens
+- C2.2.k — Autre : à préciser
+
+- C3.1.a — Abandon traitements phytosanitaires
+- C3.1.b — Abandon de gestion / sénescence
+- C3.1.c — Conversion pratiques culturales
+- C3.1.d — Prescriptions d'un APG
+- C3.1.e — Autre : à préciser
+
+- C3.2.a — Fauche / pâturage / niveaux d'eau
+- C3.2.b — Pratiques de gestion alternatives
+- C3.2.c — Gestion fréquentation humaine
+- C3.2.d — Prescriptions d'un APG
+- C3.2.e — Autre : à préciser
+
+Pour TU1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou
+- C'est de la réorientation des pratiques sylvicoles → C3.1.c — Conversion pratiques culturales
+
+Pour TU2 : Créer et maintenir des espaces de landes arbustives
+- Création de milieux ouverts → C1.1.a — Création/renaturation d'habitats
+
+Pour TU3 : Adapter les itinéraires techniques sylvicoles en faveur du Fadet des laîches
+- Même que TU1 → C3.1.c
+
+Pour TU4 : Créer et maintenir des espaces de landes humides
+- Création de milieux → C1.1.a
+
+Pour TU5 : Maintenir et restaurer la zone humide évitée
+- Restauration de zone humide → C2.2.e — Alimentation/circulation eau zone humide? Ou C2.1.e — Réouverture du milieu?
+- Le texte dit "Maintenir et restaurer la zone humide" → C2.2.e semble approprié
+
+Pour TU6 : Créer et maintenir des îlots de sénescence
+- Abandon de gestion → C3.1.b — Abandon de gestion / sénescence
+
+Pour TE1 : Entretenir des landes arbustives
+- Gestion alternative → C3.2.b — Pratiques de gestion alternatives
+
+Pour TE2 : Entretenir des landes humides
+- Même que TE1 → C3.2.b
+
+Pour TE3 : Lutter contre la Fougère aigle
+- Traitement EEE → C2.1.b — Traitement EEE
+
+Pour SE1 : Suivi des habitats naturels, de la flore et de la faune
+- Pas de catégorie claire dans le catalogue. Le catalogue est pour les actions de gestion, pas pour les suivis. Donc peut-être "autre"
+
+Pour SE2 : Suivi piézométrique
+- Même, "autre"
+
+Pour MG1 : Pilotage et coordination
+- "autre"
+
+Pour MG2 : Mise à jour du plan de gestion
+- "autre"
+
+Maintenant, je dois aussi extraire les métadonnées pour chaque fiche : titre, ug_ids, parcelles, communes, cadrage_surfacique, periodicite_texte.
+
+Par exemple pour TU1 :
+- titre: "Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- ug_ids: ["UG 1"]
+- parcelles: ["330290B1103", "330290B301", "330290C1064b", "330290C1082", "330290B287", "330290C1076", "330290C252", "330290C974c"]
+- communes: ["Barp"]
+- cadrage_surfacique: "Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune"
+- periodicite_texte: "cf. tab n ° 6 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles en milieu forestier en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février (sous réserve de la portance de sols)"
+
+Pour TU2 :
+- ug_ids: ["UG 3"]
+- parcelles: ["330290B314", "330290C1064c", "330290C1076", "330290C912 (en partie)"]
+- cadrage_surfacique: "Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation pour la création de milieux ouverts. Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion pour le maintien de milieux ouverts"
+
+Pour TU3 :
+- ug_ids: ["UG 2"]
+- parcelles: ["330290C480a", "330290D2a", "330290C444a", "330290C444c", "30290C480b (en partie)"]
+- cadrage_surfacique: "Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune"
+
+Pour TU4 :
+- ug_ids: ["UG 4"]
+- parcelles: ["330290C444b", "330290C480c (en partie)", "330290C480b (en partie)"]
+- cadrage_surfacique: "Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation pour la création de milieux ouverts. Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion pour le maintien de milieux ouverts"
+
+Pour TU5 :
+- ug_ids: ["UG 6"]
+- parcelles: ["3302940BZ153 (en partie)"]
+- cadrage_surfacique: null (pas mentionné)
+
+Pour TU6 :
+- ug_ids: ["UG 5", "UG 7"]
+- parcelles: ["3302940BZ153 (en partie)", "33029C986b", "33029C216", "33029D325"]
+- cadrage_surfacique: null
+
+Pour TE1 :
+- ug_ids: ["UG 1", "UG 3"]
+- parcelles: ["330290B1103", "330290B301", "330290C1064b", "330290C1082", "330290B287", "330290C1076", "330290C252", "330290C974c", "330290B314", "330290C1064c", "330290C1076", "330290C912 (en partie)"]
+- periodicite_texte: "cf. tab n °8 - Planning des entretiens prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février"
+
+Pour TE2 :
+- ug_ids: ["UG 2", "UG 4", "UG 6"]
+- parcelles: ["330290C480a", "330290D2a", "330290C444a", "330290C444c", "30290C480b (en partie)", "33029444b", "330290C480c (en partie)", "330290C480b (en partie)", "330290BZ153 (en partie)"]
+- periodicite_texte: "cf. tab n °9 - Planning des entretiens prévus sur les parcelles de compensation retenues pour le Fadet des laîches et les oiseaux landicoles en dehors des périodes sensibles pour l'espèce soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+
+Pour TE3 :
+- ug_ids: ["UG 2", "UG 4", "UG 6"]
+- parcelles: mêmes que TE2
+- periodicite_texte: "Juin et août si jugé nécessaire par l'écologue"
+
+Pour SE1 :
+- ug_ids: ["UG 1", "UG 2", "UG 3", "UG 4", "UG 5", "UG 6", "UG 7"]
+- parcelles: null (toutes)
+- periodicite_texte: "Un suivi écologique devra être effectué par un écologue confirmé sur les espaces de compensation et les secteurs évités (zone humide et boisement de feuillus) dès 2022 (état zéro) et dès l'année suivant la fin des travaux et la remise en état sur le site projet (année N). Ils seront réalisés de façon annuelle pendant les 5 premières années, à compter de 2022 puis tous les 5 ans jusqu'en 2042 et tous les 10 ans jusqu'en 2072 soit un total de 12 campagnes (état zéro à n+49)."
+
+Pour SE2 :
+- ug_ids: null (espaces de compensation Fadet des laîches et zone humide évitée)
+- parcelles: null
+- periodicite_texte: "Un suivi piézométrique devra être effectué par un hydrogéologue avec un enregistrement annuel en continu sur les espaces de compensation au profit du Fadet des laîches et sur la zone humide évitée."
+
+Pour MG1 :
+- ug_ids: ["UG 1", "UG 2", "UG 3", "UG 4", "UG 5", "UG 6", "UG 7"]
+- parcelles: null
+- periodicite_texte: "Reporting annuel en fin d'année sous la forme d'un tableau de bord"
+
+Pour MG2 :
+- ug_ids: null
+- parcelles: null
+- periodicite_texte: "Tous les 5 ans en jusqu'en 2042 puis par période de 10 ans jusqu'en 2072"
+
+Maintenant, je dois aussi déterminer l'objectif_long_terme et objectif_operationnel pour chaque fiche.
+
+D'après le tableau 5 :
+- TU1: Objectif A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés / a - Réorienter les pratiques sylvicoles
+- TU2: même objectif
+- TU3: Objectif B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés / a - Réorienter les pratiques sylvicoles
+- TU4: même objectif
+- TU5: même objectif
+- TU6: Objectif C - Favoriser et maintenir des d'îlots de sénescence pour les chauves-souris arboricoles, les insectes saproxylophages et les oiseaux forestiers / a - Réorienter les pratiques sylvicoles
+- TE1: Objectif A / b - Préserver les espaces de landes
+- TE2: Objectif B / b - Préserver les espaces de landes
+- TE3: Objectif B / b - Préserver les espaces de landes
+- SE1: Objectif D - Améliorer les connaissances environnementales sur le site / c - Evaluer de la gestion et suivre les espèces faunistiques et floristiques
+- SE2: même objectif
+- MG1: Objectif E - Garantir la bonne mise en œuvre du programme d'actions / d - Assurer la mise en œuvre du programme d'actions
+- MG2: même objectif
+
+Maintenant, je dois créer le JSON final.
+
+Je vais commencer par TU1.
+
+Pour TU1, les échéances :
+1. Plantation : ponctuelle, ancrage_annee=N (mais N n'est pas défini. Dans le contexte, N semble être 2022)
+   - Mais le texte dit "Le programme de replantation sera lancé le plus tard possible pour augmenter le gain écologique (5 ans après la coupe rase au maximum – contrainte régie par le code forestier)."
+   - Donc plantation à N+5
+   - type_metier: replantation
+   - fenetre: 11-01 à 03-01
+
+2. Éclaircie 1 : dependant_evenement, regle_source="entre 12 et 15 ans après plantation"
+   - type_metier: eclaircie
+   - fenetre: 11-01 à 03-01
+
+3. Éclaircie 2 : dependant_evenement, regle_source="entre 19 et 22 ans après plantation"
+   - type_metier: eclaircie
+
+4. Éclaircie 3 : dependant_evenement, regle_source="entre 24 et 27 ans après plantation"
+   - type_metier: eclaircie
+
+5. Éclaircie 4 : dependant_evenement, regle_source="entre 29 et 33 ans après plantation"
+   - type_metier: eclaircie
+
+6. Coupe rase : dependant_evenement, regle_source="entre 40 et 45 ans après plantation"
+   - type_metier: abattage
+
+Mais le document mentionne aussi que la compensation est en rotation avec des tranches. Peut-être que je devrais créer des échéances pour chaque tranche.
+
+Tranche 1 (N à N+14) :
+- Plantation à N+5
+- Éclaircies à N+12-15, N+19-22 (mais N+19 dépasse N+14)
+C'est compliqué.
+
+Peut-être que pour simplifier, je vais me concentrer sur les actions principales et leurs règles de récurrence telles que décrites dans le texte, sans entrer dans les détails des tranches de rotation.
+
+Pour TU1, je vais créer :
+1. Plantation : ponctuelle, ancrage_annee=2027 (N+5 si N=2022)
+2. Éclaircie 1 : periodique, intervalle_ans=13 (moyenne de 12-15), mais ce n'est pas exact.
+   - Mieux : type=dependant_evenement, regle_source="entre 12 et 15 ans après plantation"
+
+Je vais opter pour dependant_evenement pour les éclaircies et la coupe rase.
+
+Pour la plantation, c'est ponctuelle à N+5.
+
+Mais N n'est pas défini explicitement. Dans le contexte, N semble être l'année de début des travaux compensatoires, qui est 2022.
+
+Donc :
+- Plantation : ancrage_annee=2027 (2022+5)
+- Éclaircie 1 : ancrage_annee=2039 (2027+12) à 2042 (2027+15)
+  - Mais c'est une fourchette. Donc regle_source="entre 12 et 15 ans après plantation"
+
+Donc pour chaque éclaircie, je vais mettre type=dependant_evenement avec regle_source.
+
+Maintenant, je vais commencer à construire le JSON.
+
+Je vais faire une fiche à la fois.
+
+**TU1 :**
+- id: "TU1"
+- code: "TU1"
+- categorie: "TU"
+- titre: "Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- debut: "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- fin_exclusive: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- lib_thema: "C3.1.c"
+- objectif_long_terme: "A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés"
+- objectif_operationnel: "a - Réorienter les pratiques sylvicoles"
+- ug_ids: ["UG1"]
+- parcelles: ["330290B1103", "330290B301", "330290C1064b", "330290C1082", "330290B287", "330290C1076", "330290C252", "330290C974c"]
+- communes: ["Barp"]
+- cadrage_surfacique: "Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune"
+- periodicite_texte: "cf. tab n ° 6 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles en milieu forestier en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février (sous réserve de la portance de sols)"
+- echeances: [
+  {
+    id: "TU1-plantation",
+    code_operation: "TU1",
+    type_operation: "TU",
+    type_metier: "replantation",
+    libelle: "Plantation selon itinéraire technique sylvicole",
+    lib_thema: "C3.1.c",
+    ug_ids: ["UG1"],
+    recurrence: {
+      type: "ponctuel",
+      ancrage_annee: 2027,
+      regle_source: "5 ans après la coupe rase au maximum"
+    },
+    fenetre_intervention: {
+      debut: "11-01",
+      fin: "03-01",
+      traverse_nouvel_an: true,
+      texte_source: "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+    },
+    champs_a_confirmer: ["ancrage_annee"]
+  },
+  {
+    id: "TU1-eclaircie1",
+    code_operation: "TU1",
+    type_operation: "TU",
+    type_metier: "eclaircie",
+    libelle: "Première éclaircie",
+    lib_thema: "C3.1.c",
+    ug_ids: ["UG1"],
+    recurrence: {
+      type: "dependant_evenement",
+      regle_source: "entre 12 et 15 ans après plantation",
+      ancrage_annee: null
+    },
+    fenetre_intervention: {
+      debut: "11-01",
+      fin: "03-01",
+      traverse_nouvel_an: true,
+      texte_source: "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+    }
+  },
+  {
+    id: "TU1-eclaircie2",
+    code_operation: "TU1",
+    type_operation: "TU",
+    type_metier: "eclaircie",
+    libelle: "Deuxième éclaircie",
+    lib_thema: "C3.1.c",
+    ug_ids: ["UG1"],
+    recurrence: {
+      type: "dependant_evenement",
+      regle_source: "entre 19 et 22 ans après plantation",
+      ancrage_annee: null
+    },
+    fenetre_intervention: {
+      debut: "11-01",
+      fin: "03-01",
+      traverse_nouvel_an: true,
+      texte_source: "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+    }
+  },
+  {
+    id: "TU1-eclaircie3",
+    code_operation: "TU1",
+    type_operation: "TU",
+    type_metier: "eclaircie",
+    libelle: "Troisième éclaircie",
+    lib_thema: "C3.1.c",
+    ug_ids: ["UG1"],
+    recurrence: {
+      type: "dependant_evenement",
+      regle_source: "entre 24 et 27 ans après plantation",
+      ancrage_annee: null
+    },
+    fenetre_intervention: {
+      debut: "11-01",
+      fin: "03-01",
+      traverse_nouvel_an: true,
+      texte_source: "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+    }
+  },
+  {
+    id: "TU1-eclaircie4",
+    code_operation: "TU1",
+    type_operation: "TU",
+    type_metier: "eclaircie",
+    libelle: "Quatrième éclaircie",
+    lib_thema: "C3.1.c",
+    ug_ids: ["UG1"],
+    recurrence: {
+      type: "dependant_evenement",
+      regle_source: "entre 29 et 33 ans après plantation",
+      ancrage_annee: null
+    },
+    fenetre_intervention: {
+      debut: "11-01",
+      fin: "03-01",
+      traverse_nouvel_an: true,
+      texte_source: "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+    }
+  },
+  {
+    id: "TU1-couperase",
+    code_operation: "TU1",
+    type_operation: "TU",
+    type_metier: "abattage",
+    libelle: "Coupe rase définitive",
+    lib_thema: "C3.1.c",
+    ug_ids: ["UG1"],
+    recurrence: {
+      type: "dependant_evenement",
+      regle_source: "entre 40 et 45 ans après plantation",
+      ancrage_annee: null
+    },
+    fenetre_intervention: {
+      debut: "11-01",
+      fin: "03-01",
+      traverse_nouvel_an: true,
+      texte_source: "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+    }
+  }
+]
+
+Mais c'est beaucoup d'échéances pour une seule fiche. Peut-être que je peux regrouper les éclaircies en une seule échéance avec type=paliers?
+
+Mais les intervalles sont différents (12-15, 19-22, etc.), donc ce n'est pas des paliers réguliers.
+
+Je vais garder les échéances séparées.
+
+Maintenant, pour TU2 :
+- debut: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+- fin_exclusive: "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+- lib_thema: "C1.1.a"
+- objectif_long_terme: "A"
+- objectif_operationnel: "a"
+- ug_ids: ["UG3"]
+- parcelles: ["330290B314", "330290C1064c", "330290C1076", "330290C912 (en partie)"]
+- cadrage_surfacique: "Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation pour la création de milieux ouverts. Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion pour le maintien de milieux ouverts"
+
+Échéances pour TU2 :
+- Abattage sans dessouchage : ponctuel, ancrage_annee=2022 (ou N)
+- Traitement des souches : ponctuel, ancrage_annee=2022
+
+Donc :
+1. Abattage : ponctuel, ancrage_annee=2022
+2. Traitement souches : ponctuel, ancrage_annee=2022
+
+Fenetre : 11-01 à 03-01
+
+type_metier: abattage et autre?
+
+Pour l'abattage : type_metier="abattage"
+Pour le traitement des souches : type_metier="autre" ou "arrachage_eee"? Non, c'est traitement des souches de Pin, pas EEE.
+
+Donc type_metier="autre" pour le traitement des souches.
+
+Maintenant, je vais essayer de construire le JSON complet. C'est un travail énorme, mais je vais essayer de le faire systématiquement.
+
+Je vais créer une liste de toutes les fiches avec leurs métadonnées, puis pour chaque fiche, ajouter les échéances.
+
+Je vais commencer par lister toutes les fiches avec leurs bornes :
+
+1. TU1
+   - debut: "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+   - fin_exclusive: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+
+2. TU2
+   - debut: "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+   - fin_exclusive: "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+
+3. TU3
+   - debut: "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+   - fin_exclusive: "## TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+
+4. TU4
+   - debut: "## TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+   - fin_exclusive: "## TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles"
+
+5. TU5
+   - debut: "## TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles"
+   - fin_exclusive: "# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers"
+
+6. TU6
+   - debut: "# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers"
+   - fin_exclusive: "### 6.3.2. Travaux d'entretien (TE)"
+
+7. TE1
+   - debut: "### TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+   - fin_exclusive: "## TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+
+8. TE2
+   - debut: "## TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+   - fin_exclusive: "### TE 3 : Lutter contre la Fougère aigle"
+
+9. TE3
+   - debut: "### TE 3 : Lutter contre la Fougère aigle"
+   - fin_exclusive: "### 6.3.3. Suivis et indicateurs de réussite (SE)"
+
+10. SE1
+    - debut: "# SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+    - fin_exclusive: "## SE 2 : Suivi piézométrique"
+
+11. SE2
+    - debut: "## SE 2 : Suivi piézométrique"
+    - fin_exclusive: "### 6.3.4. Mise en œuvre générale du plan de gestion (MG)"
+
+12. MG1
+    - debut: "#### MG 1 : Pilotage et coordination du programme d'actions"
+    - fin_exclusive: "## MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire"
+
+13. MG2
+    - debut: "## MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire"
+    - fin_exclusive: null
+
+Maintenant, je vais créer le JSON pour chaque fiche.
+
+Je vais commencer par TU1, puis continuer avec les autres.
+
+Pour chaque fiche, je dois aussi déterminer la confiance. Comme le texte OCR semble de bonne qualité, je peux mettre confiance=0.95 pour toutes.
+
+Je vais aussi ajouter les champs_a_confirmer si nécessaire.
+
+Commençons :

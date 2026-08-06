@@ -1,0 +1,63 @@
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "autre",
+      "locators": ["p1", "p2", "p3", "p4", "p11", "p12", "p35"],
+      "description": "Pages de garde, tables des matières et figures, animation foncière, sécurisation foncière",
+      "confiance": 0.7
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "diagnostic_ecologique",
+      "locators": ["p9", "p13", "p14", "p15", "p16"],
+      "description": "Synthèse des espaces évités et de compensation, pré-caractérisation des zones",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "fiches_actions",
+      "locators": ["p17", "p26", "p31"],
+      "description": "Introductions des mesures de compensation pour Fauvette pitchou, Fadet des laîches, Chiroptères",
+      "confiance": 0.8
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "carto_ug",
+      "locators": ["p10", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p27", "p28", "p29", "p30", "p32", "p33", "p34"],
+      "description": "Cartographie des espaces et tables de parcelles cadastrales pour les mesures de compensation",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": ["p5", "p6", "p7", "p8", "p36", "p37", "p38", "p39", "p40"],
+      "description": "Contexte de l'étude, présentation du projet, et plan de gestion proprement dit (section VI)",
+      "confiance": 0.95
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.95
+    },
+    {
+      "cle": "maitre_d'ouvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5",
+      "confiance": 0.95
+    },
+    {
+      "cle": "bureau_etudes",
+      "valeur": "ECO-COMPENSATION, SIMETHIS, FAGE",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p2",
+      "confiance": 0.95
+    }
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```

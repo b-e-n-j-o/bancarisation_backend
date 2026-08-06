@@ -138,24 +138,24 @@ def _table_for(kind: CoucheKind) -> str:
     }[kind]
 
 
-def _attrs_properties(gdf: gpd.GeoDataFrame) -> dict[str, Any]:
-    cols = [c for c in gdf.columns if c != "geometry"]
-    if not cols:
-        return {}
-    # Première feature + résumé
-    first = gdf.iloc[0][cols].to_dict()
-    cleaned: dict[str, Any] = {}
-    for k, v in first.items():
-        if hasattr(v, "item"):
-            try:
-                v = v.item()
-            except Exception:
-                v = str(v)
-        if isinstance(v, float) and v != v:  # NaN
-            continue
-        cleaned[str(k)] = v
-    cleaned["_nb_features"] = int(len(gdf))
-    return cleaned
+def _json_safe_value(v: Any) -> Any:
+    if v is None:
+        return None
+    if hasattr(v, "item"):
+        try:
+            v = v.item()
+        except Exception:
+            return str(v)
+    if isinstance(v, float) and v != v:  # NaN
+        return None
+    if hasattr(v, "isoformat"):
+        try:
+            return v.isoformat()
+        except Exception:
+            return str(v)
+    if isinstance(v, (bytes, bytearray)):
+        return v.decode("utf-8", errors="replace")
+    return v
 
 
 def ingest_shapefile_zip(
@@ -190,13 +190,18 @@ def ingest_shapefile_zip(
 
         srid_source = int(gdf.crs.to_epsg() or 0)
         if srid_source == 0:
-            # CRS nommé sans code EPSG — on force via to_crs après WKT
             raise GeometryIngestError(
                 f"CRS source non EPSG ({gdf.crs}). Merci de fournir un .prj EPSG."
             )
 
-        merged = unary_union(gdf.geometry.values)
-        kind = _detect_kind(merged, is_emprise=is_emprise)
+        first_geom = next(
+            (g for g in gdf.geometry.values if g is not None and not g.is_empty),
+            None,
+        )
+        if first_geom is None:
+            raise GeometryIngestError("Le shapefile ne contient aucune géométrie.")
+
+        kind = _detect_kind(first_geom, is_emprise=is_emprise)
 
         if kind != "emprise" and not (ug_id and ug_id.strip()):
             raise GeometryIngestError("ug_id obligatoire pour une unité de gestion.")
@@ -209,73 +214,112 @@ def ingest_shapefile_zip(
         )
         description_clean = (description or "").strip()
 
-        multi_src = _ensure_multi(merged, kind)
         gdf_3857 = gdf.to_crs(epsg=3857)
-        multi_3857 = _ensure_multi(unary_union(gdf_3857.geometry.values), kind)
-
-        props = _attrs_properties(gdf)
+        attr_cols = [c for c in gdf.columns if c != "geometry"]
+        nb_parts = int(len(gdf))
         table = _table_for(kind)
+        row_id = ""
+        last_geom_type = "Unknown"
 
         try:
             with psycopg.connect(get_database_url()) as conn:
                 with conn.cursor() as cur:
-                    if kind == "emprise":
-                        cur.execute(
-                            f"""
-                            INSERT INTO bancarisation.{table}
-                                (projet_id, libelle, description, geom, geom_3857, properties, source_fichier)
-                            VALUES (
-                                %s, %s, %s,
-                                ST_SetSRID(ST_GeomFromText(%s), %s),
-                                ST_SetSRID(ST_GeomFromText(%s), 3857),
-                                %s::jsonb,
-                                %s
-                            )
-                            RETURNING id::text
-                            """,
-                            (
-                                str(projet_id),
-                                libelle_clean,
-                                description_clean,
-                                multi_src.wkt,
-                                srid_source,
-                                multi_3857.wkt,
-                                json.dumps(props, default=str),
-                                file_name,
-                            ),
+                    for i, (_, row) in enumerate(gdf.iterrows()):
+                        geom = row.geometry
+                        if geom is None or geom.is_empty:
+                            continue
+                        feat_kind = (
+                            "emprise"
+                            if kind == "emprise"
+                            else _detect_kind(geom, is_emprise=False)
                         )
-                    else:
-                        cur.execute(
-                            f"""
-                            INSERT INTO bancarisation.{table}
-                                (projet_id, ug_id, libelle, description, geom, geom_3857, properties, source_fichier)
-                            VALUES (
-                                %s, %s, %s, %s,
-                                ST_SetSRID(ST_GeomFromText(%s), %s),
-                                ST_SetSRID(ST_GeomFromText(%s), 3857),
-                                %s::jsonb,
-                                %s
+                        multi_src = _ensure_multi(geom, feat_kind)
+                        geom_3857 = gdf_3857.geometry.iloc[i]
+                        if geom_3857 is None or geom_3857.is_empty:
+                            continue
+                        multi_3857 = _ensure_multi(geom_3857, feat_kind)
+                        last_geom_type = multi_3857.geom_type
+
+                        row_attrs: dict[str, Any] = {}
+                        for k in attr_cols:
+                            v = _json_safe_value(row[k])
+                            if v is not None:
+                                row_attrs[str(k)] = v
+
+                        props = {
+                            "_nb_features": nb_parts,
+                            "index_feature": i,
+                            "nb_parts": nb_parts,
+                        }
+                        attributs = [row_attrs] if row_attrs else []
+                        feat_table = _table_for(feat_kind)
+
+                        if feat_kind == "emprise":
+                            cur.execute(
+                                f"""
+                                INSERT INTO bancarisation.{feat_table}
+                                    (projet_id, libelle, description, geom, geom_3857,
+                                     properties, attributs, source_fichier)
+                                VALUES (
+                                    %s, %s, %s,
+                                    ST_SetSRID(ST_GeomFromText(%s), %s),
+                                    ST_SetSRID(ST_GeomFromText(%s), 3857),
+                                    %s::jsonb, %s::jsonb, %s
+                                )
+                                RETURNING id::text
+                                """,
+                                (
+                                    str(projet_id),
+                                    libelle_clean,
+                                    description_clean,
+                                    multi_src.wkt,
+                                    srid_source,
+                                    multi_3857.wkt,
+                                    json.dumps(props, default=str),
+                                    json.dumps(attributs, default=str),
+                                    file_name,
+                                ),
                             )
-                            RETURNING id::text
-                            """,
-                            (
-                                str(projet_id),
-                                ug_clean,
-                                libelle_clean,
-                                description_clean,
-                                multi_src.wkt,
-                                srid_source,
-                                multi_3857.wkt,
-                                json.dumps(props, default=str),
-                                file_name,
-                            ),
-                        )
-                    row_id = cur.fetchone()[0]
+                        else:
+                            cur.execute(
+                                f"""
+                                INSERT INTO bancarisation.{feat_table}
+                                    (projet_id, ug_id, libelle, description, geom, geom_3857,
+                                     properties, attributs, source_fichier)
+                                VALUES (
+                                    %s, %s, %s, %s,
+                                    ST_SetSRID(ST_GeomFromText(%s), %s),
+                                    ST_SetSRID(ST_GeomFromText(%s), 3857),
+                                    %s::jsonb, %s::jsonb, %s
+                                )
+                                RETURNING id::text
+                                """,
+                                (
+                                    str(projet_id),
+                                    ug_clean,
+                                    libelle_clean,
+                                    description_clean,
+                                    multi_src.wkt,
+                                    srid_source,
+                                    multi_3857.wkt,
+                                    json.dumps(props, default=str),
+                                    json.dumps(attributs, default=str),
+                                    file_name,
+                                ),
+                            )
+                        inserted = cur.fetchone()[0]
+                        if not row_id:
+                            row_id = inserted
+                            table = feat_table
+                            kind = feat_kind
                 conn.commit()
         except GeometryIngestError:
             raise
         except Exception as exc:
             raise GeometryIngestError(f"Erreur base de données: {exc}") from exc
+
+        if not row_id:
+            raise GeometryIngestError("Aucune géométrie valide à persister.")
 
         return IngestResult(
             table=table,
@@ -283,7 +327,140 @@ def ingest_shapefile_zip(
             id=row_id,
             ug_id=ug_clean,
             libelle=libelle_clean,
-            geometry_type=multi_3857.geom_type,
-            nb_features_source=len(gdf),
+            geometry_type=last_geom_type,
+            nb_features_source=nb_parts,
             srid_source=srid_source,
         )
+
+
+def persister_entites_couche(
+    *,
+    projet_id: UUID,
+    gdf: gpd.GeoDataFrame,
+    nom_source: str,
+    categorie_erc: str,
+    cible: str | None,
+    analyse_id: str,
+    source_fichier: str,
+    is_emprise: bool = False,
+) -> list[str]:
+    """Persiste UNE LIGNE PAR FEATURE, rattachée à la même UG (.shp).
+
+    - Même ``ug_id`` / ``libelle`` pour toutes les parcelles du fichier
+      → l'UG reste unique en navigation.
+    - Géométries distinctes cliquables en carto.
+    - ``attributs`` = table attributaire de CETTE feature uniquement.
+    """
+    if gdf.empty or gdf.geometry.isna().all():
+        raise GeometryIngestError(f"Couche vide : {nom_source}")
+
+    try:
+        epsg = int(gdf.crs.to_epsg()) if gdf.crs is not None else None
+    except Exception:  # noqa: BLE001
+        epsg = None
+    if not epsg:
+        raise GeometryIngestError(
+            f"CRS absent pour {nom_source} : impossible d'écrire geom_3857."
+        )
+
+    try:
+        gdf_3857 = gdf.to_crs(epsg=3857)
+    except Exception as exc:  # noqa: BLE001
+        raise GeometryIngestError(
+            f"Reprojection 3857 impossible pour {nom_source}: {exc}"
+        ) from exc
+
+    attr_cols = [c for c in gdf.columns if c != "geometry"]
+    ug_clean = normalize_ug_id(nom_source) or "zone"
+    libelle = nom_source
+    nb_parts = int(len(gdf))
+    ids: list[str] = []
+
+    with psycopg.connect(get_database_url()) as conn:
+        with conn.cursor() as cur:
+            for i, (_, row) in enumerate(gdf.iterrows()):
+                geom = row.geometry
+                if geom is None or geom.is_empty:
+                    continue
+
+                kind: CoucheKind = (
+                    "emprise" if is_emprise else _detect_kind(geom, is_emprise=False)
+                )
+                multi_src = _ensure_multi(geom, kind)
+                geom_3857 = gdf_3857.geometry.iloc[i]
+                if geom_3857 is None or geom_3857.is_empty:
+                    continue
+                multi_3857 = _ensure_multi(geom_3857, kind)
+
+                row_attrs: dict[str, Any] = {}
+                for k in attr_cols:
+                    v = _json_safe_value(row[k])
+                    if v is not None:
+                        row_attrs[str(k)] = v
+                attributs = [row_attrs] if row_attrs else []
+
+                props = {
+                    "_nb_features": nb_parts,
+                    "index_feature": i,
+                    "nb_parts": nb_parts,
+                    "nom_source": nom_source,
+                    "categorie_erc": categorie_erc,
+                    "cible": cible,
+                    "analyse_id": analyse_id,
+                }
+                table = _table_for(kind)
+
+                if kind == "emprise":
+                    cur.execute(
+                        f"""
+                        INSERT INTO bancarisation.{table}
+                            (projet_id, libelle, description, geom, geom_3857,
+                             properties, attributs, source_fichier)
+                        VALUES (
+                            %s, %s, %s,
+                            ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), %s)),
+                            ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), 3857)),
+                            %s::jsonb, %s::jsonb, %s
+                        )
+                        RETURNING id::text
+                        """,
+                        (
+                            str(projet_id), libelle, cible or "",
+                            multi_src.wkt, epsg, multi_3857.wkt,
+                            json.dumps(props, default=str),
+                            json.dumps(attributs, default=str),
+                            source_fichier,
+                        ),
+                    )
+                else:
+                    cur.execute(
+                        f"""
+                        INSERT INTO bancarisation.{table}
+                            (projet_id, ug_id, libelle, description, geom, geom_3857,
+                             properties, attributs, source_fichier)
+                        VALUES (
+                            %s, %s, %s, %s,
+                            ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), %s)),
+                            ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), 3857)),
+                            %s::jsonb, %s::jsonb, %s
+                        )
+                        RETURNING id::text
+                        """,
+                        (
+                            str(projet_id), ug_clean, libelle, cible or "",
+                            multi_src.wkt, epsg, multi_3857.wkt,
+                            json.dumps(props, default=str),
+                            json.dumps(attributs, default=str),
+                            source_fichier,
+                        ),
+                    )
+                ids.append(cur.fetchone()[0])
+        conn.commit()
+
+    if not ids:
+        raise GeometryIngestError(f"Aucune géométrie valide dans : {nom_source}")
+    return ids
+
+
+# Alias demandé par la spec
+persister_ug = persister_entites_couche

@@ -1,0 +1,421 @@
+Je dois cartographier ce dossier de compensation écologique. L'utilisateur me fournit un aperçu d'un document PDF intitulé "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf" avec 102 blocs, mais seulement les 40 premiers sont visibles.
+
+Analysons ce que je vois :
+
+Le document semble être un plan de gestion complet pour la compensation écologique liée à la construction d'un lycée/collège au Barp. D'après les titres et le contenu visible :
+
+- Pages 1-4 : Introduction, table des matières, tables des figures/tableaux
+- Pages 5-10 : Contexte de l'étude, présentation du projet, impacts sur les espèces
+- Pages 11-12 : Animation foncière
+- Pages 13-34 : Pré-caractérisation des zones, mesures de compensation pour différentes espèces (Fauvette pitchou, Fadet des laîches, Chiroptères)
+- Pages 35-36 : Sécurisation foncière
+- Pages 36-40 : Plan de gestion, restauration et entretien
+
+D'après les aperçus, ce document contient clairement :
+1. Un **plan_gestion** complet (c'est son titre principal)
+2. Des **carto_ug** (unités de gestion) - mentionnées dans la section 6.2
+3. Des **fiches_actions** - la section 6.3 décrit des actions (TU 1, etc.)
+4. Possiblement un **calendrier_previsionnel** ou **diagnostic_ecologique** dans les parties non visibles
+
+Mais je dois me baser uniquement sur ce que je vois. Les aperçus montrent :
+
+- **p1** : Titre du plan de gestion (2022-2027)
+- **p5-p10** : Contexte, impacts - cela ressemble à un **diagnostic_ecologique**
+- **p13-p34** : Pré-caractérisation des zones, mesures de compensation - cela fait partie du **plan_gestion**
+- **p36-p40** : Plan de gestion proprement dit avec unités de gestion et actions
+
+Pour les paramètres :
+- **annee_t0** : Le document date de janvier 2022 (20220108 dans le nom de fichier) et le plan couvre 2022-2027. L'année de départ semble être **2022**.
+- **origine_t0** : Le document mentionne "PLAN DE GESTION DES ESPACES DE COMPENSATION ET DES ZONES EVITEES - 2022 - 2027", donc l'origine pourrait être la signature de l'arrêté ou la réception des travaux. Mais je ne vois pas de mention explicite. Le contexte mentionne que c'est pour un projet de lycée/collège, donc probablement lié à l'**autorisation_environnementale**.
+- **duree_ans** : Le plan va de 2022 à 2027, donc **5 ans** ? Mais les compensations écologiques sont souvent sur 30 ans. Cependant, le titre dit explicitement "2022 - 2027", donc 5 ans. Mais c'est peut-être juste la période du plan de gestion, pas la durée totale d'engagement.
+- **maitre_douvrage** : "La Région Nouvelle-Aquitaine est porteuse d’un projet" (p5) et "ECO-COMPENSATION accompagné des experts SIMETHIS et FAGE, a été mandaté par la Région Nouvelle Aquitaine" (p11). Donc le maître d'ouvrage est probablement la **Région Nouvelle-Aquitaine**.
+- **bureau_etudes** : Mentionné "SIMETHIS et FAGE" (p11), et aussi "ECO-COMPENSATION – SIMEHTIS – FAGE" dans plusieurs endroits. Donc les bureaux d'études sont **SIMETHIS et FAGE**.
+
+Pour les rôles :
+- Le document entier semble être un **plan_gestion** (c'est son titre)
+- Les sections sur les mesures de compensation (p17-p34) pourraient être des **fiches_actions** ou faire partie du plan de gestion
+- Les sections sur la pré-caractérisation (p13-p16) pourraient être du **diagnostic_ecologique**
+- La section VI (p36+) est clairement du **plan_gestion**
+- Les tableaux de synthèse (p9, p38) pourraient être des **carto_ug** ou faire partie du plan
+
+Découpage par rôle :
+
+1. **plan_gestion** : Le document entier semble être un plan de gestion. Mais il contient aussi d'autres éléments.
+   - Locators : p1-p40 (et au-delà, mais on ne voit que jusqu'à p40)
+   - Confiance : 0.9 (c'est clairement un plan de gestion)
+
+2. **diagnostic_ecologique** : Les sections sur le contexte, les impacts, la pré-caractérisation.
+   - Locators : p5-p16 (I. CONTEXTE et III. PRE-CARACTERISATION)
+   - Confiance : 0.8
+
+3. **carto_ug** : Les sections sur les unités de gestion.
+   - Locators : p37-p39 (6.2. Mesures de gestion et unités de gestion)
+   - Confiance : 0.8
+
+4. **fiches_actions** : La section 6.3. Description des actions prévues.
+   - Locators : p40 (et au-delà)
+   - Confiance : 0.8
+
+Mais attention, la règle 1 dit : "Un même fichier peut porter PLUSIEURS rôles sur des plages différentes." Donc je dois découper le document en segments avec des rôles différents.
+
+Analysons plus finement :
+
+- **p1-p4** : Tables des matières, figures, tableaux → **autre** ou partie du plan_gestion
+- **p5-p12** : Contexte, présentation du projet, impacts → **diagnostic_ecologique**
+- **p13-p34** : Pré-caractérisation des zones et mesures de compensation → **plan_gestion** (car c'est la description des mesures)
+- **p35** : Sécurisation foncière → pourrait être **convention_ore** ou partie du plan
+- **p36-p40** : Plan de gestion proprement dit → **plan_gestion**
+
+En fait, le document entier est un plan de gestion, mais il contient des sections qui pourraient être extraites comme d'autres rôles. Cependant, la règle dit de découper par rôle.
+
+Je vais essayer de faire un découpage précis :
+
+1. **plan_gestion** : Le cœur du document est le plan de gestion. Les sections VI et suivantes (p36+) sont clairement du plan de gestion. Mais aussi les sections sur les mesures de compensation (p17-p34) font partie du plan.
+   - Locators : p36-p40 (et probablement au-delà) pour la partie "PLAN DE GESTION, DE RESTAURATION ET D'ENTRETIEN"
+
+2. **diagnostic_ecologique** : Les sections I et III (p5-p16) semblent être du diagnostic.
+
+3. **carto_ug** : La section 6.2 (p37-p39) sur les unités de gestion.
+
+4. **fiches_actions** : La section 6.3 (p40+) sur les actions.
+
+Mais le problème, c'est que le document est un plan de gestion complet, donc beaucoup de ces sections font intrinsèquement partie du plan_gestion. La question est : est-ce que je dois extraire ces sous-parties comme des rôles séparés ?
+
+D'après la règle 1 : "Un même fichier peut porter PLUSIEURS rôles sur des plages différentes." et l'exemple donné : "un plan de gestion contient souvent, en annexe, un calendrier récapitulatif (calendrier_previsionnel) et parfois une estimation (estimation_budget)".
+
+Donc oui, je dois découper.
+
+Proposition de découpage :
+
+- **diagnostic_ecologique** : p5-p16 (Contexte et Pré-caractérisation)
+- **plan_gestion** : p36-p40 (et probablement p17-p35 aussi, car les mesures de compensation font partie du plan)
+- **carto_ug** : p37-p39 (unités de gestion)
+- **fiches_actions** : p40+ (description des actions)
+
+Mais p17-p34 (mesures de compensation) font partie du plan de gestion. Donc :
+
+Segment 1 : diagnostic_ecologique
+- doc_id : plan-de-gestion-especes-protegees-lyceec-eff7d2
+- role : diagnostic_ecologique
+- locators : [p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16]
+- confiance : 0.8
+
+Segment 2 : plan_gestion
+- doc_id : plan-de-gestion-especes-protegees-lyceec-eff7d2
+- role : plan_gestion
+- locators : [p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p33, p34, p35, p36, p37, p38, p39, p40]
+- confiance : 0.9
+
+Mais p37-p39 contient les unités de gestion, qui pourraient être aussi carto_ug. Donc je dois peut-être séparer :
+
+Segment 2a : plan_gestion (mesures de compensation)
+- locators : p17-p36
+
+Segment 2b : carto_ug
+- locators : p37-p39
+
+Segment 2c : fiches_actions
+- locators : p40+
+
+Mais p36 est le début du plan de gestion proprement dit ("VI. PLAN DE GESTION..."), donc :
+
+- p17-p35 : mesures de compensation (partie du plan_gestion)
+- p36 : introduction du plan de gestion
+- p37-p39 : unités de gestion (carto_ug ET plan_gestion)
+- p40+ : fiches actions (fiches_actions ET plan_gestion)
+
+C'est compliqué. Peut-être que la meilleure approche est :
+
+1. Le document entier est un **plan_gestion** (confiance 0.9)
+2. Mais il contient aussi :
+   - Un **diagnostic_ecologique** dans p5-p16
+   - Un **carto_ug** dans p37-p39
+   - Des **fiches_actions** dans p40+
+
+C'est acceptable selon la règle 1.
+
+Pour les paramètres :
+
+- **annee_t0** : Le document date de 2022 (20220108 dans le nom, et "2022 - 2027" dans le titre). Donc valeur = "2022", ancre = "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1", confiance = 0.9
+- **origine_t0** : Pas explicite dans les aperçus. Le document mentionne que c'est pour compenser les impacts du lycée. L'origine pourrait être la signature de l'arrêté préfectoral ou l'autorisation environnementale. Mais je ne vois pas de mention. Donc je ne peux pas le mettre.
+- **duree_ans** : Le titre dit "2022 - 2027", donc 5 ans. Mais est-ce la durée du plan ou de l'engagement ? Pas clair. Dans les aperçus, je ne vois pas de mention de 30 ans. Donc je peux mettre durée = "5", ancre = "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1", confiance = 0.7 (car ce n'est peut-être que la durée du plan, pas de l'engagement)
+- **maitre_douvrage** : "La Région Nouvelle-Aquitaine est porteuse d’un projet" (p5). Donc valeur = "Région Nouvelle-Aquitaine", ancre = "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5", confiance = 0.9
+- **bureau_etudes** : "SIMETHIS et FAGE" mentionnés plusieurs fois. Valeur = "SIMETHIS, FAGE", ancre = "plan-de-gestion-especes-protegees-lyceec-eff7d2!p11", confiance = 0.9
+
+Pour les signaux :
+- Aucun doublon visible (un seul document pour l'instant)
+- Aucune contradiction apparente
+- Manque : Je ne vois pas d'arrêté préfectoral, de convention ORE, de calendrier prévisionnel, d'estimation budgétaire. Mais ce n'est qu'un aperçu, il y a peut-être d'autres documents dans le dossier complet. Comme je n'ai qu'un seul document en aperçu, je ne peux pas signaler de manque entre fichiers.
+
+Mais l'utilisateur a dit "Cartographie-le" avec seulement cet aperçu. Donc je dois me baser uniquement sur ce qui est fourni.
+
+Attention : l'utilisateur a dit "les aperçus sont TRONQUÉS : tu vois le début de chaque bloc, pas son contenu complet." et "Un même fichier peut porter PLUSIEURS rôles sur des plages différentes."
+
+Donc pour ce document, je peux identifier plusieurs segments.
+
+Proposition finale :
+
+Segments :
+1. diagnostic_ecologique : p5-p16 (contexte et pré-caractérisation)
+2. plan_gestion : p17-p40 (mesures de compensation et plan de gestion)
+3. carto_ug : p37-p39 (unités de gestion)
+4. fiches_actions : p40 (description des actions)
+
+Mais p40 est seulement le début de la section 6.3, donc je peux mettre p40+ mais comme je ne vois pas au-delà, je peux mettre juste p40 pour l'instant.
+
+Confiance :
+- diagnostic_ecologique : 0.8 (car c'est clairement du diagnostic)
+- plan_gestion : 0.9 (c'est le cœur du document)
+- carto_ug : 0.8 (section dédiée aux unités de gestion)
+- fiches_actions : 0.7 (car on ne voit que le début)
+
+Paramètres :
+- annee_t0 : "2022", ancre "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1", confiance 0.9
+- duree_ans : "5", ancre "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1", confiance 0.7 (car 2022-2027 = 5 ans)
+- maitre_douvrage : "Région Nouvelle-Aquitaine", ancre "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5", confiance 0.9
+- bureau_etudes : "SIMETHIS, FAGE", ancre "plan-de-gestion-especes-protegees-lyceec-eff7d2!p11", confiance 0.9
+
+Signaux : Aucun pour l'instant (un seul document visible)
+
+documents_non_classes : Aucun
+
+Mais attention, la règle 3 : "Si un segment couvre tout le document, laisse locators vide plutôt que de tous les lister."
+
+Dans mon cas, je découpe en plusieurs segments, donc je dois lister les locators.
+
+Format des locators : ce sont les adresses entre ⟦ ⟧, donc pour p5, c'est "p5", pour p17-p19, c'est ["p17", "p18", "p19"]
+
+Mais la règle dit : "N'invente jamais un doc_id ni un locator. Reprends exactement ceux affichés entre ⟦ ⟧."
+
+Donc pour le segment diagnostic_ecologique, locators = ["p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13", "p14", "p15", "p16"]
+
+Pour plan_gestion, locators = ["p17", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p26", "p27", "p28", "p29", "p30", "p31", "p32", "p33", "p34", "p35", "p36", "p37", "p38", "p39", "p40"]
+
+Mais p37-p39 est aussi carto_ug, donc je dois les enlever de plan_gestion ? Ou les laisser car un bloc peut avoir plusieurs rôles ? Non, la règle dit "un segment par rôle", donc un bloc ne peut être que dans un segment.
+
+Donc :
+- carto_ug : locators = ["p37", "p38", "p39"]
+- plan_gestion : locators = ["p17", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p26", "p27", "p28", "p29", "p30", "p31", "p32", "p33", "p34", "p35", "p36", "p40"]
+- fiches_actions : locators = ["p40"] ? Mais p40 est aussi dans plan_gestion. Conflit.
+
+Solution : p40 fait partie à la fois de plan_gestion (car c'est dans la section VI) et de fiches_actions (car c'est le début de la description des actions). Mais un bloc ne peut être que dans un segment.
+
+Je dois choisir. Comme p40 est le début de "6.3. Description des actions prévues", c'est plus spécifique à fiches_actions. Mais c'est aussi partie du plan_gestion.
+
+La règle ne dit pas qu'un bloc ne peut pas être dans plusieurs segments. Elle dit "un segment par rôle, avec ses locators". Donc un locator peut apparaître dans plusieurs segments si le bloc a plusieurs rôles.
+
+Donc :
+- plan_gestion : inclut p40
+- fiches_actions : inclut p40
+
+C'est acceptable.
+
+Mais pour éviter la redondance, peut-être que je dois considérer que fiches_actions est un sous-ensemble de plan_gestion. Mais la règle 1 encourage à découper.
+
+Je vais faire :
+
+Segments :
+1. diagnostic_ecologique : p5-p16
+2. plan_gestion : p17-p40 (tout le reste sauf le diagnostic)
+3. carto_ug : p37-p39 (sous-ensemble de plan_gestion, mais rôle spécifique)
+4. fiches_actions : p40 (sous-ensemble de plan_gestion)
+
+Mais c'est redondant. Peut-être mieux de ne pas mettre plan_gestion comme segment séparé, mais seulement les sous-parties.
+
+Non, le document est avant tout un plan_gestion. Les autres rôles sont des extraits.
+
+Je vais suivre l'exemple de la règle : "un plan de gestion contient souvent, en annexe, un calendrier récapitulatif (calendrier_previsionnel) et parfois une estimation (estimation_budget)".
+
+Donc le document principal est plan_gestion, et il contient des annexes qui ont d'autres rôles.
+
+Dans ce cas, le document entier est plan_gestion, et certaines parties ont des rôles additionnels.
+
+Mais la règle dit "un segment par rôle", donc je dois créer un segment pour chaque rôle, même si les locators se chevauchent.
+
+Donc :
+
+- Segment 1 : role=plan_gestion, locators=[] (car tout le document), confiance=0.9
+- Segment 2 : role=diagnostic_ecologique, locators=["p5","p6","p7","p8","p9","p10","p11","p12","p13","p14","p15","p16"], confiance=0.8
+- Segment 3 : role=carto_ug, locators=["p37","p38","p39"], confiance=0.8
+- Segment 4 : role=fiches_actions, locators=["p40"], confiance=0.7
+
+Mais la règle 3 dit : "Si un segment couvre tout le document, laisse locators vide". Donc pour plan_gestion, locators=[].
+
+Est-ce que le document entier est bien un plan_gestion ? Oui, son titre est "PLAN DE GESTION DES ESPACES DE COMPENSATION ET DES ZONES EVITEES".
+
+Donc :
+
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": [],
+      "description": "Document principal : Plan de gestion des espaces de compensation et des zones évitées pour le lycée/collège du Barp",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "diagnostic_ecologique",
+      "locators": ["p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13", "p14", "p15", "p16"],
+      "description": "Contexte de l'étude et pré-caractérisation des zones évitées et espaces de compensation",
+      "confiance": 0.8
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "carto_ug",
+      "locators": ["p37", "p38", "p39"],
+      "description": "Mesures de gestion et unités de gestion avec tableau de synthèse et localisation",
+      "confiance": 0.8
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "fiches_actions",
+      "locators": ["p40"],
+      "description": "Début de la description des actions prévues (Travaux uniques)",
+      "confiance": 0.7
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.9
+    },
+    {
+      "cle": "duree_ans",
+      "valeur": "5",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.7
+    },
+    {
+      "cle": "maitre_douvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5",
+      "confiance": 0.9
+    },
+    {
+      "cle": "bureau_etudes",
+      "valeur": "SIMETHIS, FAGE",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p11",
+      "confiance": 0.9
+    }
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```
+
+Mais est-ce que la durée est vraiment 5 ans ? Le titre dit "2022 - 2027", mais en compensation écologique, la durée d'engagement est souvent de 30 ans. Cependant, je ne peux pas inventer. Je me base sur ce qui est écrit.
+
+De plus, pour origine_t0, je n'ai pas d'information explicite. Le document ne dit pas ce qui déclenche t0. Donc je ne le mets pas.
+
+Vérification des règles :
+- Règle 1 : Respectée, plusieurs rôles sur des plages différentes
+- Règle 2 : Les locators et doc_id sont repris exactement
+- Règle 3 : plan_gestion a locators vide
+- Règle 4 : Aucun document non classé
+- Règle 5 : Paramètres avec ancres
+- Règle 6 : Aucun signal pour l'instant
+- Règle 7 : Confiances estimées
+- Règle 8 : Format respecté
+
+Je pense que c'est bon. Mais je peux affiner :
+
+- Pour diagnostic_ecologique, p1-p4 (tables des matières) ne sont pas vraiment du diagnostic. Donc je commence à p5.
+- p17-p36 : mesures de compensation, c'est du plan_gestion, mais pas extrait comme autre rôle.
+- p37-p39 : carto_ug, c'est un rôle spécifique
+- p40 : fiches_actions, rôle spécifique
+
+Donc mon découpage semble correct.
+
+Une autre chose : le document mentionne "ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021" dans plusieurs endroits. Le nom du fichier a 20220108, mais le contenu date de décembre 2021. Donc annee_t0 pourrait être 2021 ? Mais le titre du plan est "2022 - 2027". Je vais rester sur 2022 car c'est ce qui est dans le titre du plan.
+
+Pour la durée, si c'est 2022-2027, c'est 5 ans (2022,2023,2024,2025,2026,2027 ? Non, de 2022 à 2027 inclus, c'est 6 ans. Attention !
+
+2022 à 2027 inclus :
+2022, 2023, 2024, 2025, 2026, 2027 → 6 ans.
+
+Donc duree_ans = "6", pas "5".
+
+Correction :
+- duree_ans : "6", ancre "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1", confiance 0.7
+
+De plus, dans p1 : "PLAN DE GESTION DES ESPACES DE COMPENSATION ET DES ZONES EVITEES - 2022 - 2027"
+
+Donc durée = 2027 - 2022 + 1 = 6 ans.
+
+Oui, c'est mieux.
+
+Finalement :
+
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": [],
+      "description": "Plan de gestion complet des espaces de compensation et zones évitées pour le lycée/collège du Barp (2022-2027)",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "diagnostic_ecologique",
+      "locators": ["p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13", "p14", "p15", "p16"],
+      "description": "Contexte de l'étude, présentation du projet, impacts sur les espèces et pré-caractérisation des zones évitées et espaces de compensation",
+      "confiance": 0.85
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "carto_ug",
+      "locators": ["p37", "p38", "p39"],
+      "description": "Mesures de gestion et unités de gestion avec tableau de synthèse et localisation cartographique",
+      "confiance": 0.8
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "fiches_actions",
+      "locators": ["p40"],
+      "description": "Début de la description des actions prévues (section 6.3. Travaux uniques)",
+      "confiance": 0.7
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.9
+    },
+    {
+      "cle": "duree_ans",
+      "valeur": "6",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.8
+    },
+    {
+      "cle": "maitre_douvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5",
+      "confiance": 0.9
+    },
+    {
+      "cle": "bureau_etudes",
+      "valeur": "SIMETHIS, FAGE",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p11",
+      "confiance": 0.9
+    }
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```
+
+J'ai augmenté la confiance pour diagnostic_ecologique à 0.85 car c'est très clair. Pour duree_ans, confiance 0.8 car c'est déduit du titre.
+
+Est-ce que je dois ajouter origine_t0 ? Dans p5 : "La Région Nouvelle-Aquitaine est porteuse d’un projet de lycée / collège sur la commune du Barp". Mais ça ne dit pas ce qui déclenche t0. Dans p8 : "Rappel des impacts sur les espèces animales protégées et des espaces soumis à obligations de résultats". Ça suggère que t0 est lié à l'impact, donc probablement à la réception des travaux ou à l'autorisation. Mais pas explicite. Donc je ne mets pas.
+
+C'est prêt.

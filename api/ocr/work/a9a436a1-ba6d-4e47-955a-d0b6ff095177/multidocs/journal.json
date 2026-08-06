@@ -1,0 +1,19 @@
+{
+  "projet_id": "a9a436a1-ba6d-4e47-955a-d0b6ff095177",
+  "etapes": [
+    {
+      "n": 1,
+      "nom": "Normalisation",
+      "script": "etape1 + utils/pdf → OCR Mistral",
+      "appels_llm": 0,
+      "appels_ocr": 0,
+      "detail_appels": "",
+      "resultat": "aucun document normalisé",
+      "ok": false
+    }
+  ],
+  "ocr_appels": 0,
+  "ocr_pages": 0,
+  "ocr_cache_hits": 0,
+  "llm_appels": 0
+}

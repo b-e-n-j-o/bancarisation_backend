@@ -1,0 +1,1272 @@
+```json
+{
+  "fiches": [
+    {
+      "id": "TU1",
+      "code": "TU1",
+      "categorie": "TU",
+      "titre": "Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "debut": "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "fin_exclusive": "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "lib_thema": "C2.1.e",
+      "objectif_long_terme": "A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": ["UG1"],
+      "zone_source_proposee": null,
+      "parcelles": ["330290B1103", "330290B301", "330290C1064b", "330290C1082", "330290B287", "330290C1076", "330290C252", "330290C974c"],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": "Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune",
+      "periodicite_texte": "cf. tab n°6 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février (sous réserve de la portance de sols)",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "echeances": [
+        {
+          "id": "TU1-eclaircie1",
+          "code_operation": "TU1",
+          "type_operation": "TU",
+          "type_metier": "eclaircie",
+          "libelle": "Première éclaircie (taux 30% max, densité cible ~770 tiges/ha)",
+          "lib_thema": "C2.1.e",
+          "objectif_long_terme": null,
+          "objectif_operationnel": null,
+          "ug_ids": ["UG1"],
+          "zone_source_proposee": null,
+          "parcelles": [],
+          "communes": [],
+          "recurrence": {
+            "type": "paliers",
+            "intervalle_ans": null,
+            "occurrences_par_an": null,
+            "duree_ans": null,
+            "ancrage_annee": 2022,
+            "regle_source": null,
+            "paliers": [
+              {"intervalle_ans": 12, "nombre_occurrences": 1},
+              {"intervalle_ans": 13, "nombre_occurrences": 1},
+              {"intervalle_ans": 14, "nombre_occurrences": 1},
+              {"intervalle_ans": 15, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": false,
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "conditions": ["Hors période de nidification des oiseaux"],
+          "indicateurs": ["Densité du peuplement", "État de conservation des habitats"],
+          "intervenants": ["Opérateur de compensation", "Entreprise de travaux forestiers", "Ecologue"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 41, "extrait": null},
+          "confiance": 0.98,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        },
+        {
+          "id": "TU1-eclaircie2",
+          "code_operation": "TU1",
+          "type_operation": "TU",
+          "type_metier": "eclaircie",
+          "libelle": "Deuxième éclaircie (taux 30% max, densité cible ~540 tiges/ha)",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 19, "nombre_occurrences": 1},
+              {"intervalle_ans": 20, "nombre_occurrences": 1},
+              {"intervalle_ans": 21, "nombre_occurrences": 1},
+              {"intervalle_ans": 22, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "TU1-eclaircie3",
+          "code_operation": "TU1",
+          "type_operation": "TU",
+          "type_metier": "eclaircie",
+          "libelle": "Troisième éclaircie (taux 30% max, densité cible 350-400 tiges/ha)",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 24, "nombre_occurrences": 1},
+              {"intervalle_ans": 25, "nombre_occurrences": 1},
+              {"intervalle_ans": 26, "nombre_occurrences": 1},
+              {"intervalle_ans": 27, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "TU1-eclaircie4",
+          "code_operation": "TU1",
+          "type_operation": "TU",
+          "type_metier": "eclaircie",
+          "libelle": "Quatrième éclaircie (taux 30% max, densité cible 200-250 tiges/ha)",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 29, "nombre_occurrences": 1},
+              {"intervalle_ans": 30, "nombre_occurrences": 1},
+              {"intervalle_ans": 31, "nombre_occurrences": 1},
+              {"intervalle_ans": 32, "nombre_occurrences": 1},
+              {"intervalle_ans": 33, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "TU1-coupe-rase-tranche1",
+          "code_operation": "TU1",
+          "type_operation": "TU",
+          "type_metier": "abattage",
+          "libelle": "Coupe rase définitive tranche N à N+14 (40-45 ans)",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 40, "nombre_occurrences": 1},
+              {"intervalle_ans": 41, "nombre_occurrences": 1},
+              {"intervalle_ans": 42, "nombre_occurrences": 1},
+              {"intervalle_ans": 43, "nombre_occurrences": 1},
+              {"intervalle_ans": 44, "nombre_occurrences": 1},
+              {"intervalle_ans": 45, "nombre_occurrences": 1}
+            ],
+            "regle_source": "en fonction de l'état sanitaire du peuplement, du volume unitaire des arbres et de la densité de la parcelle"
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "confiance": 0.95
+        },
+        {
+          "id": "TU1-plantation-tranche1",
+          "code_operation": "TU1",
+          "type_operation": "TU",
+          "type_metier": "autre",
+          "libelle": "Plantation tranche N à N+14 (1100 tiges/ha, inter-rangs 4m)",
+          "recurrence": {
+            "type": "dependant_evenement",
+            "ancrage_annee": null,
+            "regle_source": "Lancée le plus tard possible pour augmenter le gain écologique (5 ans après la coupe rase au maximum – contrainte régie par le code forestier)"
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux soit entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "confiance": 0.95
+        }
+      ]
+    },
+    {
+      "id": "TU2",
+      "code": "TU2",
+      "categorie": "TU",
+      "titre": "Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "debut": "## TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "fin_exclusive": "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles",
+      "lib_thema": "C1.1.a",
+      "objectif_long_terme": "A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": ["UG3"],
+      "zone_source_proposee": null,
+      "parcelles": ["330290B314", "330290C1064c", "330290C1076", "330290C912"],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": "Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation pour la création de milieux ouverts. Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion pour le maintien de milieux ouverts",
+      "periodicite_texte": null,
+      "confiance": 0.98,
+      "champs_a_confirmer": ["parcelles"],
+      "avertissements": ["Parcelle 330290C912 mentionnée 'en partie'"],
+      "echeances": [
+        {
+          "id": "TU2-abattage-initial",
+          "code_operation": "TU2",
+          "type_operation": "TU",
+          "type_metier": "abattage",
+          "libelle": "Abattage sans dessouchage avec export pour créer des milieux landicoles",
+          "lib_thema": "C1.1.a",
+          "recurrence": {
+            "type": "ponctuel",
+            "ancrage_annee": 2022
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "texte_source": "en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "conditions": ["Traitement des souches à l'aide d'un croque-souche si nécessaire"],
+          "indicateurs": ["Recouvrement de la strate arborée", "État de conservation des habitats", "Nombre de couples nicheurs"],
+          "intervenants": ["Opérateur de compensation", "Entreprise de travaux forestiers", "Ecologue"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 43, "extrait": null},
+          "confiance": 0.98,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        }
+      ]
+    },
+    {
+      "id": "TU3",
+      "code": "TU3",
+      "categorie": "TU",
+      "titre": "Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles",
+      "debut": "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles",
+      "fin_exclusive": "## TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+      "lib_thema": "C2.1.e",
+      "objectif_long_terme": "B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": ["UG2"],
+      "zone_source_proposee": null,
+      "parcelles": ["330290C480a", "330290D2a", "330290C444a", "330290C444c", "330290C480b"],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": "Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune",
+      "periodicite_texte": "cf. tab n°7 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour le Fadet des laîches et les oiseaux landicoles en dehors des périodes sensibles pour l'espèce soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)",
+      "confiance": 0.98,
+      "champs_a_confirmer": ["parcelles"],
+      "avertissements": ["Parcelle 330290C480b mentionnée 'en partie'"],
+      "echeances": [
+        {
+          "id": "TU3-eclaircie1",
+          "code_operation": "TU3",
+          "type_operation": "TU",
+          "type_metier": "eclaircie",
+          "libelle": "Première éclaircie (taux 30% max, densité cible ~770 tiges/ha)",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 12, "nombre_occurrences": 1},
+              {"intervalle_ans": 13, "nombre_occurrences": 1},
+              {"intervalle_ans": 14, "nombre_occurrences": 1},
+              {"intervalle_ans": 15, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "11-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des laîches soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "TU3-eclaircie2",
+          "code_operation": "TU3",
+          "type_operation": "TU",
+          "type_metier": "eclaircie",
+          "libelle": "Deuxième éclaircie (taux 30% max, densité cible ~540 tiges/ha)",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 19, "nombre_occurrences": 1},
+              {"intervalle_ans": 20, "nombre_occurrences": 1},
+              {"intervalle_ans": 21, "nombre_occurrences": 1},
+              {"intervalle_ans": 22, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "11-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des laîches soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "TU3-eclaircie3",
+          "code_operation": "TU3",
+          "type_operation": "TU",
+          "type_metier": "eclaircie",
+          "libelle": "Troisième éclaircie (taux 30% max, densité cible 350-400 tiges/ha)",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 24, "nombre_occurrences": 1},
+              {"intervalle_ans": 25, "nombre_occurrences": 1},
+              {"intervalle_ans": 26, "nombre_occurrences": 1},
+              {"intervalle_ans": 27, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "11-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des laîches soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "TU3-eclaircie4",
+          "code_operation": "TU3",
+          "type_operation": "TU",
+          "type_metier": "eclaircie",
+          "libelle": "Quatrième éclaircie (taux 30% max, densité cible 200-250 tiges/ha)",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 29, "nombre_occurrences": 1},
+              {"intervalle_ans": 30, "nombre_occurrences": 1},
+              {"intervalle_ans": 31, "nombre_occurrences": 1},
+              {"intervalle_ans": 32, "nombre_occurrences": 1},
+              {"intervalle_ans": 33, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "11-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des laîches soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "TU3-coupe-rase-tranche1",
+          "code_operation": "TU3",
+          "type_operation": "TU",
+          "type_metier": "abattage",
+          "libelle": "Coupe rase définitive tranche N à N+14 (40-45 ans)",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 40, "nombre_occurrences": 1},
+              {"intervalle_ans": 41, "nombre_occurrences": 1},
+              {"intervalle_ans": 42, "nombre_occurrences": 1},
+              {"intervalle_ans": 43, "nombre_occurrences": 1},
+              {"intervalle_ans": 44, "nombre_occurrences": 1},
+              {"intervalle_ans": 45, "nombre_occurrences": 1}
+            ],
+            "regle_source": "en fonction de l'état sanitaire du peuplement, du volume unitaire des arbres et de la densité de la parcelle"
+          },
+          "fenetre_intervention": {
+            "debut": "11-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des laîches soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+          },
+          "confiance": 0.95
+        },
+        {
+          "id": "TU3-plantation-tranche1",
+          "code_operation": "TU3",
+          "type_operation": "TU",
+          "type_metier": "autre",
+          "libelle": "Plantation tranche N à N+14 (1100 tiges/ha, inter-rangs 4m)",
+          "recurrence": {
+            "type": "dependant_evenement",
+            "regle_source": "Lancée le plus tard possible pour augmenter le gain écologique (5 ans après la coupe rase au maximum – contrainte régie par le code forestier)"
+          },
+          "fenetre_intervention": {
+            "debut": "09-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des laîches soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+          },
+          "confiance": 0.95
+        }
+      ]
+    },
+    {
+      "id": "TU4",
+      "code": "TU4",
+      "categorie": "TU",
+      "titre": "Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+      "debut": "## TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+      "fin_exclusive": "## TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles",
+      "lib_thema": "C1.1.a",
+      "objectif_long_terme": "B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": ["UG4"],
+      "zone_source_proposee": null,
+      "parcelles": ["330290C444b", "330290C480c", "330290C480b"],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": "Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation pour la création de milieux ouverts. Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion pour le maintien de milieux ouverts",
+      "periodicite_texte": null,
+      "confiance": 0.98,
+      "champs_a_confirmer": ["parcelles"],
+      "avertissements": ["Parcelles 330290C480c et 330290C480b mentionnées 'en partie'"],
+      "echeances": [
+        {
+          "id": "TU4-abattage-initial",
+          "code_operation": "TU4",
+          "type_operation": "TU",
+          "type_metier": "abattage",
+          "libelle": "Abattage sans dessouchage (traitement croque-souche si nécessaire) avec export pour créer des milieux landicoles humides",
+          "lib_thema": "C1.1.a",
+          "recurrence": {
+            "type": "ponctuel",
+            "ancrage_annee": 2022
+          },
+          "fenetre_intervention": {
+            "debut": "11-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "en dehors de la période de nidification et de migration des oiseaux et d'activité du Fadet des laîches soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+          },
+          "conditions": ["Parcelle 330290C444b maintenue sans demande de défrichement (1 ha max d'un seul tenant, 30% max UG)", "Parcelle 330290C480b maintenue sans demande de défrichement (1 ha max d'un seul tenant, 10% max surface peuplement)", "Parcelle 330290C480c référencée PSG comme 'LE' (Lande et Emprise)"],
+          "indicateurs": ["Recouvrement de la strate arborée", "État de conservation des habitats", "Nombre d'imago sur le pic d'émergence"],
+          "intervenants": ["Opérateur de compensation", "Entreprise de travaux forestiers", "Ecologue"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 51, "extrait": null},
+          "confiance": 0.98,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        }
+      ]
+    },
+    {
+      "id": "TU5",
+      "code": "TU5",
+      "categorie": "TU",
+      "titre": "Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles",
+      "debut": "## TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles",
+      "fin_exclusive": "# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers",
+      "lib_thema": "C2.2.e",
+      "objectif_long_terme": "B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": ["UG6"],
+      "zone_source_proposee": null,
+      "parcelles": ["3302940BZ153"],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": null,
+      "periodicite_texte": "cf. tab n°7 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour le Fadet des laîches et les oiseaux landicoles en dehors des périodes sensibles pour l'espèce soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)",
+      "confiance": 0.98,
+      "champs_a_confirmer": ["parcelles"],
+      "avertissements": ["Parcelle 3302940BZ153 mentionnée 'en partie'"],
+      "echeances": [
+        {
+          "id": "TU5-eclaircie-initiale",
+          "code_operation": "TU5",
+          "type_operation": "TU",
+          "type_metier": "eclaircie",
+          "libelle": "Éclaircie initiale à la débroussailleuse à lame des jeunes Pins issus de régénération naturelle",
+          "lib_thema": "C2.2.e",
+          "recurrence": {
+            "type": "ponctuel",
+            "ancrage_annee": 2022,
+            "regle_source": "Dès la première année pour réouvrir et maintenir un milieu attractif (état de futaie clairsemée)"
+          },
+          "fenetre_intervention": {
+            "debut": "11-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des laîches soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+          },
+          "conditions": ["Jeunes Pins laissés en décomposition sur place après éclaircie", "Maintien des Pins maritimes actuels (hors jeunes pins des 10 dernières années)", "Coupe sanitaire en cas de maladie et/ou d'arbres dangereux"],
+          "indicateurs": ["Recouvrement de la strate arborée", "État de conservation des habitats", "Nombre d'imago sur le pic d'émergence"],
+          "intervenants": ["Opérateur de compensation", "Entreprise de travaux forestiers", "Ecologue"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 53, "extrait": null},
+          "confiance": 0.98,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        }
+      ]
+    },
+    {
+      "id": "TU6",
+      "code": "TU6",
+      "categorie": "TU",
+      "titre": "Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers",
+      "debut": "# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers",
+      "fin_exclusive": "# TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "lib_thema": "C3.1.b",
+      "objectif_long_terme": "C - Favoriser et maintenir des îlots de sénescence pour les chauves-souris arboricoles, les insectes saproxylophages et les oiseaux forestiers",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": ["UG5", "UG7"],
+      "zone_source_proposee": null,
+      "parcelles": ["3302940BZ153", "33029C986b", "33029C216", "33029D325"],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": null,
+      "periodicite_texte": null,
+      "confiance": 0.98,
+      "champs_a_confirmer": ["parcelles"],
+      "avertissements": ["Parcelle 3302940BZ153 mentionnée 'en partie'"],
+      "echeances": [
+        {
+          "id": "TU6-cloture-nichoirs",
+          "code_operation": "TU6",
+          "type_operation": "TU",
+          "type_metier": "autre",
+          "libelle": "Pose de clôture (ganivelle 1,5m) et installation de 10 nichoirs à chauves-souris (2 bouquets de 5)",
+          "lib_thema": "C3.1.b",
+          "recurrence": {
+            "type": "ponctuel",
+            "ancrage_annee": 2022,
+            "regle_source": "UG7 : clôture de 400 ml avec portail"
+          },
+          "fenetre_intervention": {
+            "debut": null,
+            "fin": null,
+            "traverse_nouvel_an": false,
+            "texte_source": "En dehors de la période de nidification des oiseaux y compris les pics (mi-février à août)"
+          },
+          "conditions": [
+            "Sélection d'arbres favorables (diamètre, état sanitaire, accessibilité pour grimpeur)",
+            "Fixation ferme des nichoirs (gîtes immobiles)",
+            "Diversification des expositions cardinales (éviter plein soleil)",
+            "Modèles de nichoirs : 1 hibernation + 4 estivaux/élevage par bouquet"
+          ],
+          "indicateurs": ["Pourcentage de bois morts", "État de conservation des habitats", "Suivis faunistiques"],
+          "intervenants": ["Opérateur de compensation", "Entreprise de travaux forestiers", "Ecologue"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 58, "extrait": null},
+          "confiance": 0.98,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        },
+        {
+          "id": "TU6-renouvellement-nichoirs-1",
+          "code_operation": "TU6",
+          "type_operation": "TU",
+          "type_metier": "autre",
+          "libelle": "Renouvellement des nichoirs si nécessaire (1er cycle)",
+          "recurrence": {
+            "type": "ponctuel",
+            "ancrage_annee": 2037,
+            "regle_source": "Un à deux renouvellements des nichoirs à prévoir durant les 50 ans"
+          },
+          "fenetre_intervention": {
+            "debut": null,
+            "fin": null,
+            "texte_source": "En dehors de la période de nidification des oiseaux y compris les pics (mi-février à août)"
+          },
+          "confiance": 0.9
+        },
+        {
+          "id": "TU6-renouvellement-nichoirs-2",
+          "code_operation": "TU6",
+          "type_operation": "TU",
+          "type_metier": "autre",
+          "libelle": "Renouvellement des nichoirs si nécessaire (2e cycle)",
+          "recurrence": {
+            "type": "ponctuel",
+            "ancrage_annee": 2052,
+            "regle_source": "Un à deux renouvellements des nichoirs à prévoir durant les 50 ans"
+          },
+          "fenetre_intervention": {
+            "debut": null,
+            "fin": null,
+            "texte_source": "En dehors de la période de nidification des oiseaux y compris les pics (mi-février à août)"
+          },
+          "confiance": 0.9
+        },
+        {
+          "id": "TU6-abattage-ponctuel",
+          "code_operation": "TU6",
+          "type_operation": "TU",
+          "type_metier": "abattage",
+          "libelle": "Abattage ponctuel pour raisons sanitaires ou de sécurité",
+          "recurrence": {
+            "type": "dependant_evenement",
+            "regle_source": "Uniquement pour des raisons de santé de l'arbre ou de risque mécanique de chute, soumis à validation par l'écologue"
+          },
+          "fenetre_intervention": {
+            "debut": null,
+            "fin": null,
+            "texte_source": "En dehors de la période de nidification des oiseaux y compris les pics (mi-février à août)"
+          },
+          "conditions": ["Conservation des bois morts au sol et sur pied", "Éclaircies ponctuelles des jeunes taillis si jugé nécessaire par l'écologue"],
+          "confiance": 0.95
+        }
+      ]
+    },
+    {
+      "id": "TE1",
+      "code": "TE1",
+      "categorie": "TE",
+      "titre": "Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "debut": "# TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "fin_exclusive": "## TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+      "lib_thema": "C3.2.b",
+      "objectif_long_terme": "A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés",
+      "objectif_operationnel": "b - Préserver les espaces de landes",
+      "ug_ids": ["UG1", "UG3"],
+      "zone_source_proposee": null,
+      "parcelles": ["330290B1103", "330290B301", "330290C1064b", "330290C1082", "330290B287", "330290C1076", "330290C252", "330290C974c", "330290B314", "330290C1064c", "330290C1076", "330290C912"],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": null,
+      "periodicite_texte": "cf. tab n°8 - Planning des entretiens prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février",
+      "confiance": 0.98,
+      "champs_a_confirmer": ["parcelles"],
+      "avertissements": ["Parcelle 330290C912 mentionnée 'en partie'"],
+      "echeances": [
+        {
+          "id": "TE1-gyrobroyage-bandes-paires-TU1",
+          "code_operation": "TE1",
+          "type_operation": "TE",
+          "type_metier": "gyrobroyage",
+          "libelle": "Gyrobroyage différencié (bandes paires) pour parcelles TU1",
+          "lib_thema": "C3.2.b",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 4, "nombre_occurrences": 1},
+              {"intervalle_ans": 9, "nombre_occurrences": 1},
+              {"intervalle_ans": 14, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "texte_source": "en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "conditions": ["Gyrobroyage à 30 cm sans export", "1 bande sur 2 (bande de 4 m)", "Création d'une hétérogénéité dans la lande"],
+          "indicateurs": ["État de conservation des habitats", "Nombre de couples nicheurs"],
+          "intervenants": ["Opérateur de compensation", "Entreprise de travaux forestiers", "Ecologue"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 63, "extrait": null},
+          "confiance": 0.98,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        },
+        {
+          "id": "TE1-gyrobroyage-bandes-impaires-TU1",
+          "code_operation": "TE1",
+          "type_operation": "TE",
+          "type_metier": "gyrobroyage",
+          "libelle": "Gyrobroyage différencié (bandes impaires) pour parcelles TU1",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 7, "nombre_occurrences": 1},
+              {"intervalle_ans": 12, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "texte_source": "en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "TE1-gyrobroyage-landes-TU2",
+          "code_operation": "TE1",
+          "type_operation": "TE",
+          "type_metier": "gyrobroyage",
+          "libelle": "Gyrobroyage des parcelles de landes (TU2) - système de placettes",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 5,
+            "duree_ans": 50,
+            "ancrage_annee": 2022,
+            "regle_source": "Tous les 5 à 8 ans en fonction de la dynamique de fermeture"
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "texte_source": "en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "confiance": 0.95
+        }
+      ]
+    },
+    {
+      "id": "TE2",
+      "code": "TE2",
+      "categorie": "TE",
+      "titre": "Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+      "debut": "## TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+      "fin_exclusive": "### TE 3 : Lutter contre la Fougère aigle",
+      "lib_thema": "C3.2.a",
+      "objectif_long_terme": "B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "b - Préserver les espaces de landes",
+      "ug_ids": ["UG2", "UG4", "UG6"],
+      "zone_source_proposee": null,
+      "parcelles": ["330290C480a", "330290D2a", "330290C444a", "330290C444c", "330290C480b", "330290C444b", "330290C480c", "3302940BZ153"],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": null,
+      "periodicite_texte": "cf. tab n°9 - Planning des entretiens prévus sur les parcelles de compensation retenues pour le Fadet des laîches et les oiseaux landicoles en dehors des périodes sensibles pour l'espèce soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)",
+      "confiance": 0.98,
+      "champs_a_confirmer": ["parcelles"],
+      "avertissements": ["Plusieurs parcelles mentionnées 'en partie'"],
+      "echeances": [
+        {
+          "id": "TE2-gyrobroyage-bandes-paires-TU3",
+          "code_operation": "TE2",
+          "type_operation": "TE",
+          "type_metier": "gyrobroyage",
+          "libelle": "Gyrobroyage différencié (bandes paires) pour parcelles TU3",
+          "lib_thema": "C3.2.a",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 2, "nombre_occurrences": 1},
+              {"intervalle_ans": 5, "nombre_occurrences": 1},
+              {"intervalle_ans": 8, "nombre_occurrences": 1},
+              {"intervalle_ans": 11, "nombre_occurrences": 1},
+              {"intervalle_ans": 14, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "11-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+          },
+          "conditions": ["Gyrobroyage à 30 cm sans export", "1 bande sur 2 (bande de 4 m)", "Création d'une hétérogénéité dans la lande"],
+          "indicateurs": ["État de conservation des habitats", "Nombre d'imago sur le pic d'émergence"],
+          "intervenants": ["Opérateur de compensation", "Entreprise de travaux forestiers", "Ecologue"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 66, "extrait": null},
+          "confiance": 0.98,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        },
+        {
+          "id": "TE2-gyrobroyage-bandes-impaires-TU3",
+          "code_operation": "TE2",
+          "type_operation": "TE",
+          "type_metier": "gyrobroyage",
+          "libelle": "Gyrobroyage différencié (bandes impaires) pour parcelles TU3",
+          "recurrence": {
+            "type": "paliers",
+            "ancrage_annee": 2022,
+            "paliers": [
+              {"intervalle_ans": 4, "nombre_occurrences": 1},
+              {"intervalle_ans": 7, "nombre_occurrences": 1},
+              {"intervalle_ans": 10, "nombre_occurrences": 1},
+              {"intervalle_ans": 13, "nombre_occurrences": 1}
+            ]
+          },
+          "fenetre_intervention": {
+            "debut": "11-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "TE2-gyrobroyage-landes-TU4-TU5",
+          "code_operation": "TE2",
+          "type_operation": "TE",
+          "type_metier": "gyrobroyage",
+          "libelle": "Gyrobroyage des parcelles de landes (TU4, TU5) - système de placettes",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 3,
+            "duree_ans": 50,
+            "ancrage_annee": 2022,
+            "regle_source": "Tous les 3 ans en fonction de la dynamique de fermeture (décalage possible d'un an ou deux si portance des sols ne permet pas l'intervention)"
+          },
+          "fenetre_intervention": {
+            "debut": "11-01",
+            "fin": "02-28",
+            "traverse_nouvel_an": true,
+            "texte_source": "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+          },
+          "confiance": 0.95
+        }
+      ]
+    },
+    {
+      "id": "TE3",
+      "code": "TE3",
+      "categorie": "TE",
+      "titre": "Lutter contre la Fougère aigle",
+      "debut": "### TE 3 : Lutter contre la Fougère aigle",
+      "fin_exclusive": "# SE 1 : Suivi des habitats naturels, de la flore et de la faune",
+      "lib_thema": "C2.1.b",
+      "objectif_long_terme": "B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "b - Préserver les espaces de landes",
+      "ug_ids": ["UG2", "UG4", "UG6"],
+      "zone_source_proposee": null,
+      "parcelles": ["330290C480a", "330290D2a", "330290C444a", "330290C444c", "330290C480b", "330290C444b", "330290C480c", "3302940BZ153"],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": null,
+      "periodicite_texte": null,
+      "confiance": 0.95,
+      "champs_a_confirmer": ["parcelles"],
+      "avertissements": ["Parcelles mentionnées 'en partie'", "Intervention conditionnelle à l'apparition de foyers monospécifiques de Fougère aigle"],
+      "echeances": [
+        {
+          "id": "TE3-broyage-prealable",
+          "code_operation": "TE3",
+          "type_operation": "TE",
+          "type_metier": "autre",
+          "libelle": "Broyage préalable des vieilles souches de Pin et de la végétation existante",
+          "lib_thema": "C2.1.b",
+          "recurrence": {
+            "type": "dependant_evenement",
+            "regle_source": "Préalable à chaque campagne de rouleau brise-fougère"
+          },
+          "fenetre_intervention": {
+            "debut": "10-01",
+            "fin": "02-28",
+            "texte_source": "en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février sous réserve de la portance des sols"
+          },
+          "conditions": ["En cas d'apparition et/ou de repousses abondantes remettant en cause la fonctionnalité de l'habitat pour le Fadet des laîches"],
+          "indicateurs": ["Recouvrement de la Fougère aigle"],
+          "intervenants": ["Opérateur de compensation", "Entreprise de travaux forestiers", "Ecologue"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 69, "extrait": null},
+          "confiance": 0.95,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        },
+        {
+          "id": "TE3-rouleau-juin",
+          "code_operation": "TE3",
+          "type_operation": "TE",
+          "type_metier": "rouleau_brise_fougere",
+          "libelle": "Campagne de rouleau brise-fougère en juin",
+          "recurrence": {
+            "type": "campagnes",
+            "occurrences_par_an": 1,
+            "duree_ans": 4,
+            "ancrage_annee": 2022,
+            "regle_source": "En cas d'apparition et/ou de repousses abondantes remettant en cause la fonctionnalité de l'habitat pour le Fadet des laîches"
+          },
+          "fenetre_intervention": {
+            "debut": "06-01",
+            "fin": "06-30",
+            "texte_source": "juin"
+          },
+          "confiance": 0.9
+        },
+        {
+          "id": "TE3-rouleau-aout",
+          "code_operation": "TE3",
+          "type_operation": "TE",
+          "type_metier": "rouleau_brise_fougere",
+          "libelle": "Campagne de rouleau brise-fougère en août",
+          "recurrence": {
+            "type": "campagnes",
+            "occurrences_par_an": 1,
+            "duree_ans": 4,
+            "ancrage_annee": 2022,
+            "regle_source": "En cas d'apparition et/ou de repousses abondantes remettant en cause la fonctionnalité de l'habitat pour le Fadet des laîches"
+          },
+          "fenetre_intervention": {
+            "debut": "08-01",
+            "fin": "08-31",
+            "texte_source": "août"
+          },
+          "confiance": 0.9
+        }
+      ]
+    },
+    {
+      "id": "SE1",
+      "code": "SE1",
+      "categorie": "SE",
+      "titre": "Suivi des habitats naturels, de la flore et de la faune",
+      "debut": "# SE 1 : Suivi des habitats naturels, de la flore et de la faune",
+      "fin_exclusive": "## SE 2 : Suivi piézométrique",
+      "lib_thema": "autre",
+      "objectif_long_terme": "D - Améliorer les connaissances environnementales sur le site",
+      "objectif_operationnel": "c - Evaluer de la gestion et suivre les espèces faunistiques et floristiques",
+      "ug_ids": ["UG1", "UG2", "UG3", "UG4", "UG5", "UG6", "UG7"],
+      "zone_source_proposee": null,
+      "parcelles": [],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": null,
+      "periodicite_texte": "Un suivi écologique devra être effectué par un écologue confirmé sur les espaces de compensation et les secteurs évités dès 2022 (état zéro) et dès l'année suivant la fin des travaux et la remise en état sur le site projet (année N). Ils seront réalisés de façon annuelle pendant les 5 premières années, à compter de 2022 puis tous les 5 ans jusqu'en 2042 et tous les 10 ans jusqu'en 2072 soit un total de 12 campagnes (état zéro à n+49).",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "echeances": [
+        {
+          "id": "SE1-etat-zero",
+          "code_operation": "SE1",
+          "type_operation": "SE",
+          "type_metier": "suivi_habitats",
+          "libelle": "État zéro - Relevés phytosociologiques, avifaune, rhopalocères, insectes saproxylophages, chiroptères",
+          "lib_thema": "autre",
+          "recurrence": {
+            "type": "ponctuel",
+            "ancrage_annee": 2022
+          },
+          "fenetre_intervention": {
+            "debut": "04-01",
+            "fin": "12-31",
+            "traverse_nouvel_an": true,
+            "texte_source": "Habitats naturels (1 passage Juillet/Août), Avifaune (2 passages Avril/Juin), Rhopalocères (3 passages Avril/Mai pour Damier, 3 passages Juin/Juillet pour Fadet), Insectes saproxylophages (1 passage hiver), Chiroptères (écoute active Juillet, écoute passive Août/Septembre, recherche de gîtes Juin/Août, nettoyage nichoirs Novembre/Décembre)"
+          },
+          "conditions": [],
+          "indicateurs": [
+            "% de recouvrement des espèces indicatrices",
+            "Composition floristique et richesse spécifique",
+            "Présence d'espèces patrimoniales",
+            "Fonctionnalité du site pour les espèces",
+            "Richesse spécifique et présence d'espèces patrimoniales",
+            "Dynamique des populations",
+            "Nombre de couples nicheurs",
+            "Nombre d'imago sur le pic d'émergence",
+            "Pourcentage de bois morts"
+          ],
+          "intervenants": ["Opérateur de compensation", "Ecologue"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 71, "extrait": null},
+          "confiance": 0.98,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        },
+        {
+          "id": "SE1-annuel-5premieres-annees",
+          "code_operation": "SE1",
+          "type_operation": "SE",
+          "type_metier": "suivi_habitats",
+          "libelle": "Suivi annuel pendant les 5 premières années (2022-2026)",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 1,
+            "duree_ans": 5,
+            "ancrage_annee": 2022
+          },
+          "fenetre_intervention": {
+            "debut": "04-01",
+            "fin": "12-31",
+            "traverse_nouvel_an": true,
+            "texte_source": "Mêmes fenêtres que l'état zéro"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "SE1-quinquennal-jusqu-2042",
+          "code_operation": "SE1",
+          "type_operation": "SE",
+          "type_metier": "suivi_habitats",
+          "libelle": "Suivi tous les 5 ans jusqu'en 2042 (2031, 2036, 2041)",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 5,
+            "duree_ans": 20,
+            "ancrage_annee": 2031
+          },
+          "fenetre_intervention": {
+            "debut": "04-01",
+            "fin": "12-31",
+            "traverse_nouvel_an": true,
+            "texte_source": "Mêmes fenêtres que l'état zéro"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "SE1-decennal-jusqu-2072",
+          "code_operation": "SE1",
+          "type_operation": "SE",
+          "type_metier": "suivi_habitats",
+          "libelle": "Suivi tous les 10 ans jusqu'en 2072 (2052, 2062, 2072)",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 10,
+            "duree_ans": 20,
+            "ancrage_annee": 2052
+          },
+          "fenetre_intervention": {
+            "debut": "04-01",
+            "fin": "12-31",
+            "traverse_nouvel_an": true,
+            "texte_source": "Mêmes fenêtres que l'état zéro"
+          },
+          "confiance": 0.98
+        }
+      ]
+    },
+    {
+      "id": "SE2",
+      "code": "SE2",
+      "categorie": "SE",
+      "titre": "Suivi piézométrique",
+      "debut": "## SE 2 : Suivi piézométrique",
+      "fin_exclusive": "#### MG 1 : Pilotage et coordination du programme d'actions",
+      "lib_thema": "autre",
+      "objectif_long_terme": "D - Améliorer les connaissances environnementales sur le site",
+      "objectif_operationnel": "c - Evaluer de la gestion et suivre les espèces faunistiques et floristiques",
+      "ug_ids": ["UG2", "UG4", "UG6"],
+      "zone_source_proposee": null,
+      "parcelles": [],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": null,
+      "periodicite_texte": "Un suivi piézométrique devra être effectué par un hydrogéologue avec un enregistrement annuel en continu sur les espaces de compensation au profit du Fadet des laîches et sur la zone humide évitée.",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "echeances": [
+        {
+          "id": "SE2-suivi-continu-annuel",
+          "code_operation": "SE2",
+          "type_operation": "SE",
+          "type_metier": "suivi_hydraulique",
+          "libelle": "Enregistrement continu via sondes automatiques (5 piézomètres : 3 sur compensation, 2 sur zone évitée)",
+          "lib_thema": "autre",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 1,
+            "duree_ans": 50,
+            "ancrage_annee": 2022
+          },
+          "fenetre_intervention": {
+            "debut": "01-01",
+            "fin": "12-31",
+            "traverse_nouvel_an": true,
+            "texte_source": "Enregistrement continu sur 12 mois"
+          },
+          "indicateurs": ["Niveau de la nappe"],
+          "intervenants": ["Opérateur de compensation", "Hydrogéologue"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 74, "extrait": null},
+          "confiance": 0.98,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        },
+        {
+          "id": "SE2-bilan-5ans-jusqu-2042",
+          "code_operation": "SE2",
+          "type_operation": "SE",
+          "type_metier": "suivi_hydraulique",
+          "libelle": "Bilan piézométrique tous les 5 ans jusqu'en 2042 (2027, 2032, 2037, 2042)",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 5,
+            "duree_ans": 20,
+            "ancrage_annee": 2027
+          },
+          "fenetre_intervention": {
+            "debut": null,
+            "fin": null,
+            "texte_source": "Bilan annuel incluant 2 sondages pédologiques à la tarière par UG (4 sondages total)"
+          },
+          "confiance": 0.98
+        },
+        {
+          "id": "SE2-bilan-10ans-jusqu-2072",
+          "code_operation": "SE2",
+          "type_operation": "SE",
+          "type_metier": "suivi_hydraulique",
+          "libelle": "Bilan piézométrique tous les 10 ans jusqu'en 2072 (2052, 2062)",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 10,
+            "duree_ans": 20,
+            "ancrage_annee": 2052
+          },
+          "fenetre_intervention": {
+            "debut": null,
+            "fin": null,
+            "texte_source": "Bilan annuel incluant 2 sondages pédologiques à la tarière par UG (4 sondages total)"
+          },
+          "confiance": 0.98
+        }
+      ]
+    },
+    {
+      "id": "MG1",
+      "code": "MG1",
+      "categorie": "MG",
+      "titre": "Pilotage et coordination du programme d'actions",
+      "debut": "#### MG 1 : Pilotage et coordination du programme d'actions",
+      "fin_exclusive": "## MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire",
+      "lib_thema": "autre",
+      "objectif_long_terme": "E - Garantir la bonne mise en œuvre du programme d'actions",
+      "objectif_operationnel": "d - Assurer la mise en œuvre du programme d'actions",
+      "ug_ids": ["UG1", "UG2", "UG3", "UG4", "UG5", "UG6", "UG7"],
+      "zone_source_proposee": null,
+      "parcelles": [],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": null,
+      "periodicite_texte": "Reporting annuel en fin d'année sous la forme d'un tableau de bord",
+      "confiance": 0.99,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "echeances": [
+        {
+          "id": "MG1-bilan-annuel",
+          "code_operation": "MG1",
+          "type_operation": "MG",
+          "type_metier": "pilotage",
+          "libelle": "Bilan annuel sous forme de tableau de bord (état d'avancement, actions menées, résultats, difficultés)",
+          "lib_thema": "autre",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 1,
+            "duree_ans": 50,
+            "ancrage_annee": 2022
+          },
+          "fenetre_intervention": {
+            "debut": null,
+            "fin": "12-31",
+            "texte_source": "Fin d'année"
+          },
+          "conditions": ["Intègre résultats des suivis SE1 et SE2", "Intègre comptes rendus des travaux TU et TE"],
+          "indicateurs": ["Remise des bilans annuels aux services de l'État et à la Région Nouvelle-Aquitaine"],
+          "intervenants": ["Opérateur de compensation"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 76, "extrait": null},
+          "confiance": 0.99,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        },
+        {
+          "id": "MG1-depot-donnees-naturalistes",
+          "code_operation": "MG1",
+          "type_operation": "MG",
+          "type_metier": "pilotage",
+          "libelle": "Dépôt des données naturalistes au SINP et à GéoMCE",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 1,
+            "duree_ans": 50,
+            "ancrage_annee": 2022
+          },
+          "fenetre_intervention": {
+            "debut": null,
+            "fin": "12-31",
+            "texte_source": "À chaque fin de campagne"
+          },
+          "confiance": 0.99
+        },
+        {
+          "id": "MG1-comite-annuel-5premieres-annees",
+          "code_operation": "MG1",
+          "type_operation": "MG",
+          "type_metier": "pilotage",
+          "libelle": "Comité de pilotage et de suivi annuel (5 premières années)",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 1,
+            "duree_ans": 5,
+            "ancrage_annee": 2022
+          },
+          "fenetre_intervention": {
+            "debut": null,
+            "fin": null,
+            "texte_source": "À l'initiative du pétitionnaire"
+          },
+          "conditions": ["Réunit DREAL/SPN, DDTM, Région Nouvelle-Aquitaine, Département de la Gironde, écologue, opérateur de compensation, OFB"],
+          "intervenants": ["Opérateur de compensation"],
+          "confiance": 0.99
+        },
+        {
+          "id": "MG1-comite-5ans-jusqu-2042",
+          "code_operation": "MG1",
+          "type_operation": "MG",
+          "type_metier": "pilotage",
+          "libelle": "Comité de pilotage et de suivi tous les 5 ans jusqu'en 2042",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 5,
+            "duree_ans": 20,
+            "ancrage_annee": 2027
+          },
+          "confiance": 0.99
+        },
+        {
+          "id": "MG1-comite-10ans-jusqu-2072",
+          "code_operation": "MG1",
+          "type_operation": "MG",
+          "type_metier": "pilotage",
+          "libelle": "Comité de pilotage et de suivi tous les 10 ans jusqu'en 2072",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 10,
+            "duree_ans": 20,
+            "ancrage_annee": 2042
+          },
+          "confiance": 0.99
+        }
+      ]
+    },
+    {
+      "id": "MG2",
+      "code": "MG2",
+      "categorie": "MG",
+      "titre": "Mise à jour du plan de gestion et bilan de fin de mesure compensatoire",
+      "debut": "## MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire",
+      "fin_exclusive": null,
+      "lib_thema": "autre",
+      "objectif_long_terme": "E - Garantir la bonne mise en œuvre du programme d'actions",
+      "objectif_operationnel": "d - Assurer la mise en œuvre du programme d'actions",
+      "ug_ids": ["UG1", "UG2", "UG3", "UG4", "UG5", "UG6", "UG7"],
+      "zone_source_proposee": null,
+      "parcelles": [],
+      "communes": ["Le Barp"],
+      "cadrage_surfacique": null,
+      "periodicite_texte": "Tous les 5 ans jusqu'en 2042 puis par période de 10 ans jusqu'en 2072",
+      "confiance": 0.99,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "echeances": [
+        {
+          "id": "MG2-mise-a-jour-5ans-jusqu-2042",
+          "code_operation": "MG2",
+          "type_operation": "MG",
+          "type_metier": "pilotage",
+          "libelle": "Mise à jour du plan de gestion tous les 5 ans jusqu'en 2042 (2027, 2032, 2037, 2042)",
+          "lib_thema": "autre",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 5,
+            "duree_ans": 20,
+            "ancrage_annee": 2027
+          },
+          "conditions": ["Basée sur bilans annuels et rapports SE1/SE2", "Intègre points positifs et négatifs du précédent plan", "Proposition de mesures correctives si nécessaire"],
+          "indicateurs": ["Remise du plan de gestion aux services de l'État et à la Région Nouvelle-Aquitaine"],
+          "intervenants": ["Opérateur de compensation", "Ecologue", "Gestionnaire forestier"],
+          "duree_gestion_ans": 50,
+          "source": {"page": 78, "extrait": null},
+          "confiance": 0.99,
+          "champs_a_confirmer": [],
+          "avertissements": []
+        },
+        {
+          "id": "MG2-mise-a-jour-10ans-jusqu-2072",
+          "code_operation": "MG2",
+          "type_operation": "MG",
+          "type_metier": "pilotage",
+          "libelle": "Mise à jour du plan de gestion tous les 10 ans jusqu'en 2072 (2052, 2062)",
+          "recurrence": {
+            "type": "periodique",
+            "intervalle_ans": 10,
+            "duree_ans": 20,
+            "ancrage_annee": 2052
+          },
+          "confiance": 0.99
+        },
+        {
+          "id": "MG2-bilan-final",
+          "code_operation": "MG2",
+          "type_operation": "MG",
+          "type_metier": "bilan",
+          "libelle": "Bilan final de fin de mesure compensatoire (évaluation de l'efficacité sur 50 ans)",
+          "recurrence": {
+            "type": "ponctuel",
+            "ancrage_annee": 2072
+          },
+          "confiance": 0.99
+        }
+      ]
+    }
+  ]
+}
+```

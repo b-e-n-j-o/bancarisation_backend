@@ -39,6 +39,14 @@ AUTRES RÈGLES
 4. FRISE. Si la fiche contient un tableau temporel markdown, recopie-le intégralement \
 dans `frise_markdown` ET dans `contenu_integral`.
 
+4bis. ZONES SIG. Une liste de zones issues du fichier SIG du projet peut t'être \
+fournie en contexte. Quand une action porte manifestement sur l'une de ces zones, \
+renseigne `zone_source_proposee` avec son nom exact tel qu'il figure dans la liste. \
+N'invente jamais de correspondance : si l'action désigne une unité absente de la \
+liste, ou si le rapprochement est incertain, laisse `zone_source_proposee` à null \
+et ajoute `"zone_source_proposee"` dans `champs_a_confirmer`. Les zones marquées \
+« sans gestion active » ne peuvent porter aucune action.
+
 5. ZÉRO INVENTION. Ne complète pas une information absente du texte OCR.
 
 5.2 Ne pas inclure les references aux images du type img-9.jpeg, etc
@@ -70,6 +78,7 @@ SCHÉMA D'UNE ACTION
   "objectif_long_terme": "string|null",
   "objectif_operationnel": "string|null",
   "ug_ids": ["ug1"],
+  "zone_source_proposee": "string|null",
   "parcelles": ["string"],
   "communes": ["string"],
   "cadrage_surfacique": "string|null",

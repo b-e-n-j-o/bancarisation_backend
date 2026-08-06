@@ -259,6 +259,7 @@ async def start_analyse_pdf(
     file: UploadFile = File(...),
     replace: bool = True,
 ) -> dict[str, Any]:
+    """Legacy monodoc — préférer `/analyse-multidocs`."""
     if not file.filename or not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Seuls les fichiers PDF sont acceptés.")
 

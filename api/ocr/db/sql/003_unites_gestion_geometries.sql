@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS bancarisation.unites_de_gestion_surf (
     geom            geometry(MultiPolygon),
     geom_3857       geometry(MultiPolygon, 3857) NOT NULL,
     properties      jsonb NOT NULL DEFAULT '{}'::jsonb,
+    attributs       jsonb NOT NULL DEFAULT '[]'::jsonb,
     source_fichier  text,
     created_at      timestamptz NOT NULL DEFAULT now(),
     updated_at      timestamptz NOT NULL DEFAULT now()
@@ -37,6 +38,7 @@ CREATE TABLE IF NOT EXISTS bancarisation.unites_de_gestion_lin (
     geom            geometry(MultiLineString),
     geom_3857       geometry(MultiLineString, 3857) NOT NULL,
     properties      jsonb NOT NULL DEFAULT '{}'::jsonb,
+    attributs       jsonb NOT NULL DEFAULT '[]'::jsonb,
     source_fichier  text,
     created_at      timestamptz NOT NULL DEFAULT now(),
     updated_at      timestamptz NOT NULL DEFAULT now()
@@ -60,6 +62,7 @@ CREATE TABLE IF NOT EXISTS bancarisation.unites_de_gestion_pct (
     geom            geometry(MultiPoint),
     geom_3857       geometry(MultiPoint, 3857) NOT NULL,
     properties      jsonb NOT NULL DEFAULT '{}'::jsonb,
+    attributs       jsonb NOT NULL DEFAULT '[]'::jsonb,
     source_fichier  text,
     created_at      timestamptz NOT NULL DEFAULT now(),
     updated_at      timestamptz NOT NULL DEFAULT now()
@@ -82,6 +85,7 @@ CREATE TABLE IF NOT EXISTS bancarisation.emprise_projet (
     geom            geometry(MultiPolygon),
     geom_3857       geometry(MultiPolygon, 3857) NOT NULL,
     properties      jsonb NOT NULL DEFAULT '{}'::jsonb,
+    attributs       jsonb NOT NULL DEFAULT '[]'::jsonb,
     source_fichier  text,
     created_at      timestamptz NOT NULL DEFAULT now(),
     updated_at      timestamptz NOT NULL DEFAULT now()

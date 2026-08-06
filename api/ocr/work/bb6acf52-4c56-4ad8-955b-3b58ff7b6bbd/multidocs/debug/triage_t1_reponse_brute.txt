@@ -1,0 +1,16 @@
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": [],
+      "description": "Plan de gestion complet incluant contexte, pré-caractérisation des zones évitées et de compensation, sécurisation foncière, et plan de gestion/restoration/entretien avec mesures détaillées et unités de gestion.",
+      "confiance": 0.95
+    }
+  ],
+  "parametres": [],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```

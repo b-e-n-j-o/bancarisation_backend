@@ -1,0 +1,756 @@
+{
+  "actions": [
+    {
+      "id": "TU1",
+      "code": "TU1",
+      "categorie": "TU",
+      "titre": "Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "lib_thema": "C2.1.e",
+      "objectif_long_terme": "A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": [
+        "ug1"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [
+        "330290B1103",
+        "330290B301",
+        "330290C1064b",
+        "330290C1082",
+        "330290B287",
+        "330290C1076",
+        "330290C252",
+        "330290C974c"
+      ],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": "Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune",
+      "description": "Adapter les pratiques sylvicoles pour favoriser la Fauvette pitchou et les oiseaux landicoles via une gestion en rotation des parcelles, en maintenant des faciès de landes arbustives et en respectant des itinéraires techniques spécifiques.",
+      "engagements": [
+        "Maintenir une bande périmétrale non plantée (7 m) en lande arbustive pour servir de corridor écologique.",
+        "Ne pas utiliser de produits phytosanitaires ni de fertilisants chimiques/organiques.",
+        "Éviter les broyages en plein et les rouleaux landais en plein/inter-rangs.",
+        "Ne pas extraire les souches lors des coupes rases (traitement par croque-souche).",
+        "Respecter une période de travaux entre le 1er novembre et le 1er mars (hors nidification).",
+        "Conventionner les espaces pour une durée de 50 ans."
+      ],
+      "indicateurs": [
+        "Densité du peuplement",
+        "État de conservation des habitats",
+        "Nombre de couples nicheurs"
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Entreprise de travaux forestiers",
+        "Écologue (encadrement écologique)"
+      ],
+      "periodicite_texte": "cf. tab n°6 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février (sous réserve de la portance de sols)",
+      "frise_markdown": null,
+      "contenu_integral": "# Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles\n\n## Objectif à long terme\n- Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés.\n\n## Objectif opérationnel\n- Réorienter les pratiques sylvicoles.\n\n## Unités de gestion et parcelles concernées\n- **Unités de gestion :** UG 1\n- **Parcelles concernées :** 330290B1103, 330290B301, 330290C1064b, 330290C1082, 330290B287, 330290C1076, 330290C252, 330290C974c\n\n## Cadrage surfacique\nDans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha), avec un seuil maximum de 100 ha par propriété et par commune.\n\n## Constat et justification\nBien que le cycle de production du Pin maritime favorise le renouvellement des habitats pour la faune et la flore locale, les travaux forestiers en futaie régulière sont souvent impactants. L'objectif est de mettre en place des itinéraires techniques sylvicoles permettant de concilier préservation de la faune et activité sylvicole. Cet itinéraire technique s'inspire des travaux du groupe de travail « Compensations écologiques en milieu forestier dans les Landes de Gascogne », initié par les services de l'État.\n\n## Description de la mesure\nCette mesure repose sur une compensation en rotation, visant à maintenir l'attractivité du milieu pour la Fauvette pitchou. En effet, au-delà de 15 ans, les peuplements de Pin maritime (>15 ans) ferment le milieu au détriment des landes arbustives, rendant le milieu peu attractif pour l'espèce.\n\nLa stratégie repose sur le travail de deux entités proches (dans un rayon de dispersion de l'espèce, soit environ 3 km) avec des âges de peuplements différents, afin d'effectuer une rotation :\n\n- **Première tranche (N à N+14) :** Mise en œuvre sur une parcelle devant faire l'objet d'un programme de replantation en fin d'année N+5. Le programme de replantation sera lancé au plus tard 5 ans après la coupe rase (contrainte régie par le code forestier) pour maximiser le gain écologique.\n- **Deuxième tranche (N+14 à N+28) :** Mise en œuvre sur une nouvelle parcelle devant faire l'objet d'un nouveau programme de replantation en année N+19.\n- **Troisième tranche (N+29 à N+49) :** Opérée sur les premiers espaces de compensation (tranche N à N+14), avec une physionomie de futaie clairsemée, voire de landes sur les 4 dernières années en cas de coupe rase à la quarantième année.\n\n**Durée de conventionnement :** 50 ans sur l'intégralité des espaces de compensation retenus pour l'espèce.\n\n### Itinéraire technique de plantation\n- **Densité de plantation :** Environ 1 100 tiges/ha (1 arbre tous les 2 mètres), avec des inter-rangs de 4 mètres.\n- **Bande périmétrale non plantée :** Environ 7 mètres (suppression d'une rangée de Pin), maintenue en lande arbustive pour jouer un rôle de corridor écologique.\n\n### Prescriptions pour un gain écologique supplémentaire\n- **Absence de broyage en plein** : Uniquement un broyage lourd sur les lignes de plantation (2 mètres de large), suivi d'un passage au débroussailleur puis d'un labour et tassement (1,4 mètres de large) pour préserver les faciès de landes.\n- **Engagement de non-replantation** sur une bande périmétrale d'environ 7 mètres, maintenue en lande arbustive pendant toute la durée de la compensation écologique.\n- **Absence d'extraction des souches** lors des coupes rases. Le traitement des souches se fera par un croque-souche pour permettre l'entretien de la parcelle sur le long terme.\n\n### Éclaircies\nQuatre éclaircies sont prévues sur la durée d'exploitation de la parcelle :\n\n| Éclaircie | Âge du peuplement | Taux de prélèvement maximal | Densité après éclaircie (tiges/ha) |\n|-----------|-------------------|-----------------------------|-----------------------------------|\n| 1ère      | 12 à 15 ans       | 30 %                        | 770                               |\n| 2ème      | 19 à 22 ans       | 30 %                        | 540                               |\n| 3ème      | 24 à 27 ans       | 30 %                        | 350 à 400                         |\n| 4ème      | 29 à 33 ans       | 30 %                        | 200 à 250                         |\n\n- **Dégagement manuel** : Optionnel sur la ligne de plantation pendant les trois premières années si la concurrence végétale est trop forte. Réalisé à la débroussailleuse à dos, en dehors de la période de nidification (octobre à mars).\n- **Coupe rase définitive :** Ne pourra intervenir avant 40 ans pour la première tranche (N+45), en fonction de l'état sanitaire du peuplement, du volume unitaire des arbres et de la densité. La coupe rase de la deuxième entité (N+14 à N+29) sera déclenchée à N+13 pour maintenir l'attractivité avant la rotation.\n\n### Engagements de base\n- **Période de travaux :** Tous les travaux (coupes, plantation, éclaircies, broyage, labour, etc.) doivent être effectués en dehors des périodes sensibles pour la nidification et la migration des oiseaux, soit entre le 1er novembre et le 1er mars (sous réserve de la portance des sols).\n- **Interdictions :**\n  - Utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc.).\n  - Utilisation de fertilisants chimiques et/ou organiques.\n  - Utilisation de rouleau landais en plein et sur les inter-rangs.\n  - Broyage en plein.\n- **Durée de gestion :** 50 ans.\n\n## Indicateurs de suivi\n- Densité du peuplement.\n- État de conservation des habitats.\n- Nombre de couples nicheurs.\n\n## Périodicité\nVoir le tableau n°6 : Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles, en dehors de la période de nidification et de migration des oiseaux (entre le 1er octobre et le 28 février, sous réserve de la portance des sols).\n\n## Intervenants\n- Opérateur de compensation.\n- Entreprise de travaux forestiers.\n- Écologue (encadrement écologique).",
+      "pages": [
+        41,
+        42,
+        43
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "id": "TU2",
+      "code": "TU2",
+      "categorie": "TU",
+      "titre": "Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "lib_thema": "C1.1.a",
+      "objectif_long_terme": "A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": [
+        "ug3"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [
+        "330290B314",
+        "330290C1064c",
+        "330290C1076",
+        "330290C912"
+      ],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": "Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation pour la création de milieux ouverts. Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion pour le maintien de milieux ouverts",
+      "description": "Création et maintien d'espaces de landes arbustives pour favoriser la Fauvette pitchou et les oiseaux landicoles, sans replantation de Pin maritime, sur une durée de 50 ans.",
+      "engagements": [
+        "Création ou maintien de milieux landicoles ouverts via un engagement de non-replantation.",
+        "Abattage des arbres et arbustes sans dessouchage, avec export des rémanents.",
+        "Traitement des souches si nécessaire.",
+        "Aucun travail sylvicole ou programme de replantation pendant 50 ans.",
+        "Interdiction d'utilisation de produits phytosanitaires et de fertilisants.",
+        "Interdiction d'utilisation de rouleau landais et de broyage en plein.",
+        "Respect des périodes d'intervention (1er octobre - 28 février)."
+      ],
+      "indicateurs": [
+        "Recouvrement de la strate arborée",
+        "État de conservation des habitats",
+        "Nombre de couples nicheurs"
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Entreprise de travaux forestiers",
+        "Écologue (encadrement écologique)"
+      ],
+      "periodicite_texte": null,
+      "frise_markdown": "| Année | Travaux prévus |\n|-------|----------------|\n| 2012  | CP (coupe rase sans dessouchage) sur parcelle 33029B1103 (0,29 ha) |\n| 2020  | CP sur parcelle 33029B301 (2,76 ha) |\n| 2021  | CP sur parcelle 33029C1064b (2,71 ha) |\n| 2022  | CP sur parcelle 33029C1082 (1,38 ha) |\n| 2023  | CP sur parcelle 33029B287 (2 ha) |\n| 2024  | CP sur parcelle 33029C1076 (1,39 ha) |\n| 2025  | CP sur parcelle 33029C252 (1,4 ha) |\n| 2026  | CP sur parcelle 33029C974a (1,81 ha) |\n| 2027  | CP sur parcelle 33029B314 (1,76 ha) |\n| 2028  | CP sur parcelle 33029C1064c (1,58 ha) |\n| 2029  | CP sur parcelle 33029C1076 (1,49 ha) |\n| 2030  | CP sur parcelle 33029C912 (0,55 ha) |\n| 2031  | CP sur parcelle 33029C912 (0,47 ha) |",
+      "contenu_integral": "# TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles\n\n## Objectifs\n\n**Objectif à long terme :**\n- A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés.\n\n**Objectif opérationnel :**\n- a - Réorienter les pratiques sylvicoles.\n\n## Unités de gestion et parcelles concernées\n\n- **Unités de gestion :** UG 3\n- **Parcelles concernées :** 330290B314, 330290C1064c, 330290C1076, 330290C912 (en partie)\n\n## Cadrage surfacique\n\n- **Création de milieux ouverts :**\n  - Limité à 1 ha maximum d'un seul tenant.\n  - Limité à 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation.\n\n- **Maintien de milieux ouverts :**\n  - Limité à 1 ha maximum d'un seul tenant.\n  - Limité à 30 % maximum de la surface de l'unité de gestion.\n\n*Source : Guide technique de la DREAL Nouvelle-Aquitaine, octobre 2020.*\n\n## Constat et justification\n\nBien que le cycle de production du Pin maritime favorise le renouvellement des habitats pour la faune et la flore locale, cette mesure vise à créer et maintenir des espaces landicoles **sans plantation de Pin maritime**. Ces espaces resteront attractifs pendant toute la durée de la mesure compensatoire, soit 50 ans. Cette stratégie s'inscrit dans le cadre du groupe de travail « Compensations écologiques en milieu forestier dans les Landes de Gascogne », porté par les services de l'État.\n\n## Description des travaux et engagements\n\n### Travaux prévus\n\n- **Création ou maintien de milieux landicoles ouverts** via un engagement de non-replantation.\n- **Abattage des arbres et arbustes** présents sur les parcelles, sans dessouchage, avec export des rémanents.\n- **Traitement des souches** si nécessaire, à l'aide d'un croque-souche.\n\n### Conditions de réalisation\n\n- **Période d'intervention :**\n  - Entre le 1er octobre et le 28 février (hors période de nidification et de migration des oiseaux), sous réserve de la portance des sols.\n- **Engagements de base :**\n  - Aucun travail sylvicole ou programme de replantation pendant toute la durée de la mesure compensatoire.\n  - Interdiction d'utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc.).\n  - Interdiction d'utilisation de fertilisants chimiques et/ou organiques.\n  - Interdiction d'utilisation de rouleau landais et de broyage en plein.\n  - **Durée de gestion :** 50 ans.\n\n### Gestion des parcelles\n\nLes parcelles retenues n'ont pas de vocation sylvicole et sont référencées au Plan Simple de Gestion hors régime forestier (en cours d'intégration au régime forestier par la commune) comme « LE » (Lande et Emprise).\n\nLa gestion des parcelles suivantes, actuellement entretenues par RTE, devra être rétrocédée à l'opérateur de compensation assurant la gestion des espaces :\n- 33028B314\n- 33029C1064Cc\n- 33029C1076\n\n## Indicateurs de suivi\n\n- Recouvrement de la strate arborée.\n- État de conservation des habitats.\n- Nombre de couples nicheurs.\n\n## Intervenants\n\n- Opérateur de compensation.\n- Entreprise de travaux forestiers.\n- Écologue (encadrement écologique).\n\n## Frise temporelle des travaux\n\n| Année | Travaux prévus |\n|-------|----------------|\n| 2012  | CP (coupe rase sans dessouchage) sur parcelle 33029B1103 (0,29 ha) |\n| 2020  | CP sur parcelle 33029B301 (2,76 ha) |\n| 2021  | CP sur parcelle 33029C1064b (2,71 ha) |\n| 2022  | CP sur parcelle 33029C1082 (1,38 ha) |\n| 2023  | CP sur parcelle 33029B287 (2 ha) |\n| 2024  | CP sur parcelle 33029C1076 (1,39 ha) |\n| 2025  | CP sur parcelle 33029C252 (1,4 ha) |\n| 2026  | CP sur parcelle 33029C974a (1,81 ha) |\n| 2027  | CP sur parcelle 33029B314 (1,76 ha) |\n| 2028  | CP sur parcelle 33029C1064c (1,58 ha) |\n| 2029  | CP sur parcelle 33029C1076 (1,49 ha) |\n| 2030  | CP sur parcelle 33029C912 (0,55 ha) |\n| 2031  | CP sur parcelle 33029C912 (0,47 ha) |",
+      "pages": [
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "parcelles"
+      ],
+      "avertissements": [
+        "Parcelle 330290C912 mentionnée 'en partie'"
+      ]
+    },
+    {
+      "id": "TU3",
+      "code": "TU3",
+      "categorie": "TU",
+      "titre": "Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles",
+      "lib_thema": "C2.1.e",
+      "objectif_long_terme": "B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": [
+        "ug2"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [
+        "330290C480a",
+        "330290D2a",
+        "330290C444a",
+        "330290C444c",
+        "330290C480b"
+      ],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": "Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha) avec un seuil maximum de 100 ha par propriété et par commune",
+      "description": "Adaptation des itinéraires sylvicoles en rotation pour préserver les landes humides favorables au Fadet des laîches et aux oiseaux landicoles, via des pratiques adaptées (plantations, éclaircies, corridors écologiques) sur une durée de 50 ans.",
+      "engagements": [
+        "Mise en œuvre d’une compensation en rotation sur 50 ans avec deux entités de peuplements d’âges différents.",
+        "Plantation à 1 100 tiges/ha avec bande périmétrale de 7 m maintenue en lande humide (corridor écologique).",
+        "Absence de broyage en plein, traitement des souches par croque-souche.",
+        "Quatre éclaircies espacées selon un taux de prélèvement maximal de 30 %, avec densités cibles après éclaircie.",
+        "Coupe rase définitive après 40 ans (sous conditions), avec déclenchement anticipé pour la deuxième entité.",
+        "Respect des périodes de travaux hors nidification/migration (1ᵉʳ novembre - 1ᵉʳ mars).",
+        "Interdiction des produits phytosanitaires, fertilisants chimiques/organiques, rouleaux landais en plein et broyage en plein.",
+        "Engagement sur une durée de 50 ans."
+      ],
+      "indicateurs": [
+        "Densité du peuplement",
+        "État de conservation des habitats",
+        "Nombre d’imagos sur le pic d’émergence"
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Entreprise de travaux forestiers",
+        "Écologue (encadrement écologique)"
+      ],
+      "periodicite_texte": "cf. tab n°7 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour le Fadet des laîches et les oiseaux landicoles en dehors des périodes sensibles pour l'espèce soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)",
+      "frise_markdown": null,
+      "contenu_integral": "### TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles\n\n**Objectif à long terme :** B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés\n\n**Objectif opérationnel :** a - Réorienter les pratiques sylvicoles\n\n**Unités de gestion concernées :** UG 2\n\n**Parcelles concernées :** 330290C480a, 330290D2a, 330290C444a, 330290C444c, 330290C480b (en partie)\n\n**Cadrage surfacique :** Dans la limite de 30 % maximum de la propriété sous PSG, PSG volontaire ou aménagement forestier (>10 ha), avec un seuil maximum de 100 ha par propriété et par commune.\n\n**Constat et justification :** \nBien que le cycle de production du Pin maritime favorise le renouvellement des habitats pour la faune et la flore locale, les travaux forestiers en futaie régulière sont souvent impactants. L’objectif est de mettre en place des itinéraires techniques sylvicoles permettant de concilier préservation de la faune et activité sylvicole. Cet itinéraire technique s’inspire du groupe de travail « Compensations écologiques en milieu forestier dans les Landes de Gascogne », initié par les services de l’État.\n\n**Description de la mesure :**\nCette mesure repose sur une **compensation en rotation**, visant à maintenir l’attractivité du milieu pour le Fadet des laîches, dont l’habitat devient défavorable au-delà de 15 ans (fermeture du milieu par le Pin maritime). La stratégie consiste à travailler sur deux entités proches (dans un rayon de 250 m, aire de dispersion de l’espèce) avec des âges de peuplements différents, selon un cycle de rotation sur 50 ans.\n\n- **Tranche N à N+14** : Mise en œuvre sur une parcelle devant faire l’objet d’un programme de replantation en fin d’année N+5 (lancement du programme au plus tard 5 ans après la coupe rase, conformément au code forestier).\n- **Tranche N+14 à N+28** : Mise en œuvre sur une nouvelle parcelle, avec replantation en année N+19.\n- **Tranche N+29 à N+49** : Retour sur les premiers espaces de compensation (tranche N+1 à N+15), avec une physionomie de futaie clairsemée, voire de landes sur les 4 dernières années en cas de coupe rase à la 40ᵉ année.\n\n**Itinéraire technique de plantation :**\n- Densité de plantation : environ 1 100 tiges/ha (1 arbre tous les 2 m), avec des inter-rangs de 4 m.\n- **Bande périmétrale non plantée** : Environ 7 m (suppression d’une rangée de Pin), maintenue en lande humide pour servir de corridor écologique.\n\n**Prescriptions pour un gain écologique supplémentaire :**\n- **Absence de broyage en plein** : Un broyage lourd est effectué uniquement sur les lignes de plantation (2 m de large), suivi d’un passage au débroussailleur, labour et tassement (1,4 m de large).\n- **Non-replantation sur une bande périmétrale de 7 m** : Maintenue en landes arbustives pendant toute la durée de la compensation.\n- **Absence d’extraction des souches** : Traitement des souches par croque-souche, conformément à la mesure TE 2.\n\n**Éclaircies :** Quatre éclaircies sont prévues selon les prescriptions suivantes :\n- **1ʳᵉ éclaircie (12-15 ans)** : Taux de prélèvement maximal de 30 %, densité après éclaircie ~770 tiges/ha. Un dégagement manuel peut être effectué sur la ligne de plantation si la concurrence végétale est forte (hors période de nidification, entre le 1ᵉʳ novembre et le 1ᵉʳ mars).\n- **2ᵉ éclaircie (19-22 ans)** : Taux de prélèvement maximal de 30 %, densité après éclaircie ~540 tiges/ha.\n- **3ᵉ éclaircie (24-27 ans)** : Taux de prélèvement maximal de 30 %, densité après éclaircie ~350-400 tiges/ha.\n- **4ᵉ éclaircie (29-33 ans)** : Taux de prélèvement maximal de 30 %, densité après éclaircie ~200-250 tiges/ha.\n\n**Coupe rase :**\n- La coupe rase définitive ne peut intervenir avant 40 ans pour la première tranche (N+45), sous réserve de l’état sanitaire du peuplement, du volume unitaire et de la densité.\n- La coupe rase de la deuxième entité (compensation N+14 à N+28) est déclenchée à N+13 pour maintenir l’attractivité avant la rotation.\n\n**Engagements de base :**\n- Tous les travaux (coupes, plantations, éclaircies, broyage, labour, etc.) doivent être réalisés hors périodes sensibles pour la nidification et la migration des oiseaux et l’activité du Fadet des laîches, soit entre le 1ᵉʳ novembre et le 1ᵉʳ mars (sous réserve de la portance des sols).\n- Interdiction d’utiliser des produits phytosanitaires (herbicides, fongicides, insecticides, etc.).\n- Interdiction d’utiliser des fertilisants chimiques et/ou organiques.\n- Interdiction d’utiliser des rouleaux landais en plein ou sur les inter-rangs.\n- Interdiction de broyage en plein.\n- Engagement sur une durée de 50 ans.\n\n**Périodicité :**\nVoir le tableau n°7 – Planning des coupes et éclaircies prévues sur les parcelles de compensation pour le Fadet des laîches et les oiseaux landicoles, hors périodes sensibles (novembre à février, avec possibilité dès septembre selon la portance des sols).\n\n**Indicateurs de suivi :**\n- Densité du peuplement.\n- État de conservation des habitats.\n- Nombre d’imagos sur le pic d’émergence.\n\n**Intervenants :**\n- Opérateur de compensation.\n- Entreprise de travaux forestiers.\n- Écologue (encadrement écologique).",
+      "pages": [
+        49,
+        50,
+        51
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "parcelles"
+      ],
+      "avertissements": [
+        "Parcelle 330290C480b mentionnée 'en partie'"
+      ]
+    },
+    {
+      "id": "TU4",
+      "code": "TU4",
+      "categorie": "TU",
+      "titre": "Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+      "lib_thema": "C1.1.a",
+      "objectif_long_terme": "B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": [
+        "ug4"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [
+        "330290C444b",
+        "330290C480c",
+        "330290C480b"
+      ],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": "Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation pour la création de milieux ouverts. Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion pour le maintien de milieux ouverts",
+      "description": null,
+      "engagements": [],
+      "indicateurs": [],
+      "intervenants": [],
+      "periodicite_texte": null,
+      "frise_markdown": null,
+      "contenu_integral": "## TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles\n\n**Objectif à long terme :** B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés\n\n**Objectif opérationnel :** a - Réorienter les pratiques sylvicoles\n\n**Unités de gestion :** UG 4\n\n**Parcelles concernées :** 330290C444b, 330290C480c (en partie), 330290C480b (en partie)\n\n**Cadrage surfacique :** Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation pour la création de milieux ouverts. Dans la limite de 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion pour le maintien de milieux ouverts ⁴\n\n**Constat et justification :** Bien que le cycle de production du Pin maritime se traduit par le renouvellement des habitats d'espèces pour la faune et la flore locale, l'objectif sera de créer et maintenir des espaces landicoles sans plantation de Pin maritime. Ces espaces resteront attractifs durant la totalité de la mesure compensatoire soit 50 ans. Cette stratégie est issue du groupe de travail « Compensations écologiques en milieu forestier dans les Landes de Gascogne » initier les services de l'Etat.\n\n**Description de la mesure** Ce type d'itinéraire technique sylvicole consiste à la création ou le maintien de milieux landicoles ouverts **via un engagement de non replantation**. Il permet de maintenir un habitat optimal pour les espèces cibles (Fauvette pitchou et Fadet des Laîches) couplé à une gestion adaptée. Pour rappel, la surface valorisable pour une parcelle forestière est variable selon qu'il s'agisse d'une action de création ou de maintien :\n\n- En cas de création la surface valorisable sans demande de défrichement est limitée à 1 ha maximum d'un seul tenant et dans la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation ;\n- En cas de maintien, la surface valorisable sans demande de défrichement est limitée à 1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion ;\n\n⁴ Cadrage surfacique issue du guide technique de la DREAL Nouvelle Aquitaine d'octobre 2020 « Compensations écologiques en milieu forestier des Landes de Gascogne »\n\nOpération de lycée / collège sur la commune du Barp (33) – Plan de gestion des espaces de compensation et des zones évitées\n\nRégion Nouvelle-Aquitaine\n\n51\n\n⟦p52⟧\nECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021\n\n- En cas de non-respect des seuils une demande de défrichement devra être effectué pour maintenir un état de landes après une coupe rase au-delà de 5 ans.\n\nLa strate arborée présente sur ces parcelles devra faire l'objet d'un abattage sans dessouchage (traitement des souches à l'aide d'un croque souche) avec export afin de créer ou maintenir des milieux landicoles humides herbacés. Il s'agira de la seule intervention en travaux uniques (TU) sur ces parcelles. Ces travaux devront être effectués en dehors de la période de nidification et de migration des oiseaux et d'activité du Fadet des laîches soit entre le 1er novembre et le 1er mars.\n\nA noter que la parcelle 330290C444b actuellement à vocation forestière sera maintenue à l'état de landes sans demande de défrichement (1 ha maximum d'un seul tenant et dans la limite de 30 % maximum de la surface de l'unité de gestion (330290C480a + 330290C444a + 330290D2a = 4.8 ha soit environ 15 % non planté). De même, la parcelle 330290C480b actuellement à vocation forestière sera maintenue à l'état de landes sans demande de défrichement (1 ha maximum d'un seul tenant et la limite de 10 % maximum de la surface effectivement occupée par le peuplement avant exploitation = 4,2 ha soit 10 % non planté). Enfin, la parcelle 330290C480c n'a pas de vocation sylvicole puisqu'elle est référencée au Plan Simple de Gestion hors régime forestier comme « LE » (Lande et Emprise).\n\nDes engagements de base devront également être respectés à savoir :\n\n- Tous les travaux (coupes, plantation, éclaircies, broyage, labour,...) devront être effectués en dehors des périodes sensibles vis à vis de nidification et de migration des oiseaux et de l'activité du Fadet des Laîches soit entre le 1er novembre et le 1er mars sous réserve de la portance des sols.\n- Pas d'utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc) ;\n- Pas d'utilisation de fertilisants chimiques et/ou organiques ;\n- Pas d'utilisation de rouleau landais ;\n- Pas de broyage en plein ;\n- Une gestion sur une durée de 50 ans\n\nIndicateurs de suivi : Recouvrement de la strate arborée / Etat de conservation des habitats / Nombre d'imago sur le pic d'émergence\n\nOpération de lycée / collège sur la commune du Barp (33) – Plan de gestion des espaces de compensation et des zones évitées\nRégion Nouvelle-Aquitaine\n\n52\n\n⟦p53⟧\nECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021\n\n**Périodicité** : cf. tab n °7 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour le Fadet des laîches et les oiseaux landicoles en dehors des périodes sensibles pour l'espèce soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols).\n\n**Intervenants** : Opérateur de compensation / Entreprise de travaux forestiers / Ecologue (encadrement écologique)",
+      "pages": [
+        52,
+        53
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "parcelles"
+      ],
+      "avertissements": [
+        "Parcelles 330290C480c et 330290C480b mentionnées 'en partie'",
+        "scribe: HTTP 429 : {\"object\":\"error\",\"message\":\"Service tier capacity exceeded for this model.\",\"type\":\"request_tier_capacity_exceeded\",\"param\":null,\"code\":\"3505\",\"raw_status_code\":429}"
+      ]
+    },
+    {
+      "id": "TU5",
+      "code": "TU5",
+      "categorie": "TU",
+      "titre": "Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles",
+      "lib_thema": "C2.2.e",
+      "objectif_long_terme": "B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": [
+        "ug6"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [
+        "3302940BZ153"
+      ],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Maintenir et restaurer une zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles sur la commune du Barp (33), via des pratiques sylvicoles adaptées et une gestion sur 50 ans.",
+      "engagements": [
+        "Maintien des Pins maritimes actuels (hors jeunes pins issus de la régénération naturelle des 10 dernières années).",
+        "Coupe sanitaire en cas de maladie ou d’arbres dangereux pour les riverains.",
+        "Éclaircies à la débroussailleuse à lame dès la première année sur les jeunes Pins maritimes issus de la régénération naturelle (sans dessouchage ni export).",
+        "Respect des périodes sensibles pour les travaux (1er novembre au 1er mars, sous réserve de la portance des sols).",
+        "Interdiction d’utiliser des produits phytosanitaires, fertilisants chimiques/organiques, rouleau landais et broyage en plein.",
+        "Gestion sur une durée de 50 ans."
+      ],
+      "indicateurs": [
+        "Recouvrement de la strate arborée",
+        "État de conservation des habitats",
+        "Nombre d’imagos sur le pic d’émergence"
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Entreprise de travaux forestiers",
+        "Écologue (encadrement écologique)"
+      ],
+      "periodicite_texte": "cf. tab n°7 - Planning des coupes et éclaircies prévus sur les parcelles de compensation retenues pour le Fadet des laîches et les oiseaux landicoles en dehors des périodes sensibles pour l'espèce soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)",
+      "frise_markdown": null,
+      "contenu_integral": "# TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles\n\n## Objectifs\n- **Objectif à long terme** : B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés.\n- **Objectif opérationnel** : a - Réorienter les pratiques sylvicoles.\n\n## Contexte et justification\nLa zone humide évitée doit être maintenue et préservée en faveur du Fadet des laîches et des oiseaux landicoles durant l’intégralité de la période de compensation écologique, soit **50 ans**.\n\nCette zone fait déjà partie intégrante du document d’aménagement de la forêt communale du Barp (régime forestier) en tant qu’îlot de vieillissement.\n\n## Unités de gestion et parcelles concernées\n- **Unité de gestion** : UG 6\n- **Parcelles concernées** : 3302940BZ153 (en partie)\n- **Commune** : Le Barp (33)\n\n## Description des travaux et engagements\nLes actions à mener sur cette entité se limitent à :\n\n- **Maintien des Pins maritimes actuels** (hors jeunes pins issus de la régénération naturelle des 10 dernières années).\n- **Coupe sanitaire** en cas de maladie et/ou d’arbres jugés dangereux pour les riverains.\n- **Éclaircies à la débroussailleuse à lame** dès la première année sur les jeunes Pins maritimes issus de la régénération naturelle (sans dessouchage ni export) afin de réouvrir et maintenir un milieu attractif pour le Fadet des laîches (état de futaie clairsemée). Ces jeunes sujets pourront être laissés en décomposition sur place.\n\n### Engagements de base\n- **Période des travaux** : Tous les travaux (coupes, plantations, éclaircies, broyage, labour, etc.) doivent être réalisés en dehors des périodes sensibles pour la nidification, la migration des oiseaux et l’activité du Fadet des laîches, soit entre le **1er novembre et le 1er mars**, sous réserve de la portance des sols.\n- **Interdictions** :\n  - Pas d’utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc.).\n  - Pas d’utilisation de fertilisants chimiques et/ou organiques.\n  - Pas d’utilisation de rouleau landais.\n  - Pas de broyage en plein.\n- **Durée de gestion** : 50 ans.\n\n## Tableau des travaux prévus\n\n| Référence cadastrale | Surface (ha) | Code mesure | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 | 2050 |\n|----------------------|--------------|-------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| 33029 0 C 480 a      | 2,23         | Tc/3        | CR   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 33029 0 D 2 a        | 0,72         | Tc/3        |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 33029 0 C 444 a      | 1,87         | Tc/3        |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 33029 0 C 444 c      | 2,93         | Tc/3        |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 33029 0 C 480 b      | 3,77         | Tc/3        |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 33029 0 C 444 b      | 0,75         | Tc/4        | CR   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 33029 0 C 480 c      | 0,09         | Tc/4        |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 33029 0 C 480 b      | 0,42         | Tc/4        |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 33029 0 NE 255       | 2,1          | Tc/5        | EC   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n\n**Légende** : \n- CR : Coupe rase (sans dessouchage)\n- EC : Éclaircie\n\n## Calendrier et périodicité\nLes travaux de coupes et éclaircies sont planifiés en dehors des périodes sensibles pour l’espèce, soit entre **novembre et février** (avec une possibilité d’intervention dès **septembre** en fonction de la portance des sols).\n\n## Indicateurs de suivi\n- Recouvrement de la strate arborée.\n- État de conservation des habitats.\n- Nombre d’imagos sur le pic d’émergence.\n\n## Intervenants\n- Opérateur de compensation.\n- Entreprise de travaux forestiers.\n- Écologue (encadrement écologique).",
+      "pages": [
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "parcelles"
+      ],
+      "avertissements": [
+        "Parcelle 3302940BZ153 mentionnée 'en partie'"
+      ]
+    },
+    {
+      "id": "TU6",
+      "code": "TU6",
+      "categorie": "TU",
+      "titre": "Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers",
+      "lib_thema": "C3.1.b",
+      "objectif_long_terme": "C - Favoriser et maintenir des îlots de sénescence pour les chauves-souris arboricoles, les insectes saproxylophages et les oiseaux forestiers",
+      "objectif_operationnel": "a - Réorienter les pratiques sylvicoles",
+      "ug_ids": [
+        "ug5",
+        "ug7"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [
+        "3302940BZ153",
+        "33029C986b",
+        "33029C216",
+        "33029D325"
+      ],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Création et maintien d’îlots de sénescence pour favoriser les chauves-souris arboricoles, les insectes saproxylophages et les oiseaux forestiers, via une gestion sylvicole réorientée et l’installation de nichoirs.",
+      "engagements": [
+        "Absence d’exploitation des feuillus et résineux matures pendant 50 ans.",
+        "Mise en défends de l’UG 7 par une ganivelle de 1,5 m minimum.",
+        "Conservation systématique des bois morts (sur pied et au sol).",
+        "Installation de 10 nichoirs à chauves-souris (2 bouquets de 5) sur les parcelles 33029C986b et 33029C216.",
+        "Renouvellement des nichoirs si nécessaire, selon les préconisations techniques."
+      ],
+      "indicateurs": [
+        "Pourcentage de bois morts",
+        "État de conservation des habitats",
+        "Suivis faunistiques"
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Entreprise de travaux forestiers",
+        "Écologue (encadrement écologique)"
+      ],
+      "periodicite_texte": null,
+      "frise_markdown": "| Année       | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 |\n|-------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Étape       | État zéro | N+1  | N+2  | N+3  | N+4  | N+5  | N+6  | N+7  | N+8  | N+9  | N+10 | N+11 | N+12 | N+13 |      |\n\n| Année       | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 | 2050 | 2051 |\n|-------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Étape       | N+14 | N+15 | N+16 | N+17 | N+18 | N+19 | N+20 | N+21 | N+22 | N+23 | N+24 | N+25 | N+26 | N+27 | N+28 |\n|             |      |      |      |      |      | Renouvellement des nichoirs si nécessaire |      |      |      |      |      |      |      |      |\n\n| Année       | 2052 | 2053 | 2054 | 2055 | 2056 | 2057 | 2058 | 2059 | 2060 | 2061 | 2062 | 2063 | 2064 | 2065 | 2066 |\n|-------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Étape       | N+29 | N+30 | N+31 | N+32 | N+33 | N+34 | N+35 | N+36 | N+37 | N+38 | N+39 | N+40 | N+41 | N+42 | N+43 |\n|             |      |      |      |      |      |      |      |      | Renouvellement des nichoirs si nécessaire |      |      |      |      |      |\n\n| Année       | 2067 | 2068 | 2069 | 2070 | 2071 | 2072 |\n|-------------|------|------|------|------|------|------|\n| Étape       | N+44 | N+45 | N+46 | N+47 | N+48 | N+49 |",
+      "contenu_integral": "# TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et des oiseaux forestiers\n\n## Objectif à long terme\nC - Favoriser et maintenir des îlots de sénescence pour les chauves-souris arboricoles, les insectes saproxylophages et les oiseaux forestiers.\n\n## Objectif opérationnel\na - Réorienter les pratiques sylvicoles.\n\n---\n\n## Unités de gestion et parcelles concernées\n- **Unités de gestion** : UG 5 et UG 7\n- **Parcelles concernées** : 3302940BZ153 (en partie), 33029C986b, 33029C216, 33029D325\n\n---\n\n## Constat et justification\nEn France, plus de 90 % de la surface forestière est exploitée pour la production, tandis que seulement 0,2 % est considérée comme à l’état naturel. Dans une forêt exploitée, le cycle des arbres est tronqué et raccourci (source : PNR des Vosges). Si le cycle biologique naturel s’étend sur plusieurs centaines d’années, le cycle sylvicole est souvent court (moins de 50 ans pour le Pin maritime dans le massif forestier des Landes de Gascogne). Les vieux arbres et le bois mort sont donc quasi absents de nos forêts, empêchant le développement d’une partie de la diversité biologique liée à ces stades d’évolution. La création d’îlots de sénescence vise à créer des habitats refuges pour une faune diversifiée et peu commune.\n\n---\n\n## Description de la mesure\nL’objectif de cette action est de mettre en œuvre une gestion favorable aux chauves-souris arboricoles, aux insectes saproxylophages et aux oiseaux forestiers, afin de préserver et maintenir les populations locales existantes. Les parcelles, actuellement dominées par des feuillus (Chêne pédonculé principalement), feront l’objet d’une gestion réorientée selon les prescriptions suivantes :\n\n### Prescriptions sylvicoles\n- **Absence d’exploitation** des feuillus et des résineux matures pendant toute la durée de la mesure de compensation (50 ans).\n- **Mise en défends** de l’UG 7 (environ 400 ml) par la pose d’une ganivelle d’1,5 m de hauteur minimum, incluant un portail pour les interventions.\n- **Abattage limité** aux arbres présentant un risque sanitaire ou mécanique pour le public, en dehors de la période de nidification (mi-février à août), et soumis à validation par l’écologue en charge des suivis.\n- **Conservation systématique** des bois morts, sur pied et au sol.\n- **Éclaircies ponctuelles** des jeunes taillis, si nécessaire pour favoriser la croissance des vieux sujets et limiter la compétitivité entre les arbres. Ces interventions devront également se faire en dehors de la période de nidification (mi-février à août).\n\n### Conservation du bois mort\nPour les pics et les insectes saproxylophages, le bois mort (sur pied ou à terre) sera conservé de manière homogène dans le peuplement, sauf en cas de danger pour les personnes et les biens (à moins de 30 m d’une voirie par exemple).\n\n### Installation de nichoirs à chauves-souris\nDeux bouquets de 5 nichoirs chacun seront installés sur les parcelles 33029C986b et 33029C216 pour augmenter l’attrait de la zone dès les premières années. Les nichoirs devront respecter les préconisations suivantes :\n- **Sélection des arbres** :\n  - Diamètre, état sanitaire et accessibilité adaptés pour le grimpeur.\n  - Hauteur minimale de pose : 3 à 4 mètres.\n  - Arbres non penchés, non inclinés au-dessus de l’eau et sans gros ronciers environnants.\n- **Fixation** : Les gîtes doivent être fermement fixés, seuls les gîtes immobiles étant choisis par les chiroptères.\n- **Exposition** : Recherche de différentes expositions cardinales (Jay et al., 2002 ; Barataud et al., 2009), en évitant les expositions en plein soleil (arbres à houppier peu développé).\n- **Disposition** : Les nichoirs seront posés par bouquets de 5, distants d’environ 10 m. Chaque bouquet pourra comporter 2 ou 3 nichoirs sur le même arbre.\n- **Diversité des modèles** : Un bouquet de 5 nichoirs comprendra un modèle favorable à l’hibernation et 4 modèles favorables au gîte estival et à l’élevage des jeunes. Un à deux renouvellements des nichoirs seront prévus sur les 50 ans.\n\n---\n\n## Calendrier et périodicité\n\n| Année | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Étape | État zéro | N+1 | N+2 | N+3 | N+4 | N+5 | N+6 | N+7 | N+8 | N+9 | N+10 | N+11 | N+12 | N+13 | |\n\n| Année | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 | 2050 | 2051 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Étape | N+14 | N+15 | N+16 | N+17 | N+18 | N+19 | N+20 | N+21 | N+22 | N+23 | N+24 | N+25 | N+26 | N+27 | N+28 |\n|       |      |      |      |      |      | Renouvellement des nichoirs si nécessaire |      |      |      |      |      |      |      |      |\n\n| Année | 2052 | 2053 | 2054 | 2055 | 2056 | 2057 | 2058 | 2059 | 2060 | 2061 | 2062 | 2063 | 2064 | 2065 | 2066 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Étape | N+29 | N+30 | N+31 | N+32 | N+33 | N+34 | N+35 | N+36 | N+37 | N+38 | N+39 | N+40 | N+41 | N+42 | N+43 |\n|       |      |      |      |      |      |      |      |      | Renouvellement des nichoirs si nécessaire |      |      |      |      |      |\n\n| Année | 2067 | 2068 | 2069 | 2070 | 2071 | 2072 |\n|-------|------|------|------|------|------|------|\n| Étape | N+44 | N+45 | N+46 | N+47 | N+48 | N+49 |\n\n---\n\n## Indicateurs de suivi\n- Pourcentage de bois morts.\n- État de conservation des habitats.\n- Suivis faunistiques.\n\n---\n\n## Intervenants\n- Opérateur de compensation.\n- Entreprise de travaux forestiers.\n- Écologue (encadrement écologique).",
+      "pages": [
+        59,
+        60,
+        61,
+        62,
+        63
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "parcelles"
+      ],
+      "avertissements": [
+        "Parcelle 3302940BZ153 mentionnée 'en partie'"
+      ]
+    },
+    {
+      "id": "TE1",
+      "code": "TE1",
+      "categorie": "TE",
+      "titre": "Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+      "lib_thema": "C3.2.b",
+      "objectif_long_terme": "A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés",
+      "objectif_operationnel": "b - Préserver les espaces de landes",
+      "ug_ids": [
+        "ug1",
+        "ug3"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [
+        "330290B1103",
+        "330290B301",
+        "330290C1064b",
+        "330290C1082",
+        "330290B287",
+        "330290C1076",
+        "330290C252",
+        "330290C974c",
+        "330290B314",
+        "330290C1064c",
+        "330290C1076",
+        "330290C912"
+      ],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Gestion extensive des landes arbustives par gyrobroyage différencié pour favoriser la Fauvette pitchou et les oiseaux landicoles, avec un suivi sur 50 ans.",
+      "engagements": [
+        "Gyrobroyage différencié (bandes alternées de 4 m) tous les 5 à 8 ans.",
+        "Interventions réalisées entre le 1er octobre et le 28 février (hors période de nidification).",
+        "Interdiction d'utiliser des produits phytosanitaires, fertilisants chimiques/organiques, rouleau landais et broyage en plein.",
+        "Gestion sur une durée de 50 ans."
+      ],
+      "indicateurs": [
+        "État de conservation des habitats",
+        "Nombre de couples nicheurs"
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Entreprise de travaux forestiers",
+        "Écologue (encadrement écologique)"
+      ],
+      "periodicite_texte": "cf. tab n°8 - Planning des entretiens prévus sur les parcelles de compensation retenues pour la Fauvette pitchou et les oiseaux landicoles en dehors de la période de nidification et de migration des oiseaux à savoir entre le 1er octobre et le 28 février",
+      "frise_markdown": "| Année | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Parcelles |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290B1103 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290B301 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C1064b |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C1082 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290B287 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C1076 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C252 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C974c |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290B314 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C1064c |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C1076 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C912 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C912 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n\n*Les interventions sont planifiées selon un calendrier de 50 ans, avec des travaux de gyrobroyage différencié tous les 5 à 8 ans, adaptés aux dynamiques de fermeture des landes et aux obligations de résultats des parcelles.*",
+      "contenu_integral": "# TE1 – Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles\n\n## Objectifs\n\n**Objectif à long terme :**\n- Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés.\n\n**Objectif opérationnel :**\n- Préserver les espaces de landes.\n\n## Unités et parcelles concernées\n\n- **Unités de gestion :** UG 1 et UG 3\n- **Parcelles concernées :** 330290B1103, 330290B301, 330290C1064b, 330290C1082, 330290B287, 330290C1076, 330290C252, 330290C974c, 330290B314, 330290C1064c, 330290C1076, 330290C912 (en partie).\n\n## Constat et justification\n\nPour éviter que l'évolution naturelle ne dégrade l'état de conservation des espaces de compensation, il est nécessaire d'y appliquer une gestion extensive favorable au maintien de l'état recherché pour la Fauvette pitchou.\n\n## Description des travaux et engagements\n\nL'ensemble des parcelles retenues pour la compensation écologique de la Fauvette pitchou et des oiseaux landicoles associés (TU 1 et TU2) sera soumis aux mêmes modalités de gestion :\n\n- **Gyrobroyage différencié** :\n  - Réalisé à 30 cm sans export, par bandes alternées (1 bande sur 2, d'une largeur de 4 m) afin de créer une hétérogénéité dans la lande.\n  - Fréquence : tous les 5 à 8 ans, selon la dynamique de fermeture.\n  - Pour les parcelles en rotation (TU1) :\n    - Bandes paires : entretien aux années n+4, n+9, n+14.\n    - Bandes impaires : entretien en décalé aux années n+7, n+12.\n  - Les parcelles non soumises aux obligations de résultats sur les 15 premières années ne nécessitent pas d'entretien, et inversement.\n  - *Nota :* Les parcelles non soumises à la production sylvicole (parcelles de landes) peuvent faire l'objet d'un entretien différencié sous forme de placettes, tout en respectant la même temporalité et les mêmes modalités.\n\n- **Période d'intervention** : Les travaux d'entretien doivent être effectués en dehors de la période de nidification et de migration des oiseaux, soit entre le 1er octobre et le 28 février, sous réserve de la portance des sols.\n\n**Engagements de base à respecter :**\n- Tous les travaux (coupes, plantations, éclaircies, broyage, labour, etc.) doivent être réalisés en dehors des périodes sensibles pour la nidification, la migration des oiseaux et l'activité du Fadet des Laïches, soit entre le 1er novembre et le 1er mars, sous réserve de la portance des sols.\n- Interdiction d'utiliser des produits phytosanitaires (herbicides, fongicides, insecticides, etc.).\n- Interdiction d'utiliser des fertilisants chimiques et/ou organiques.\n- Interdiction d'utiliser un rouleau landais.\n- Interdiction de broyage en plein.\n- Engagement de gestion sur une durée de 50 ans.\n\n## Indicateurs de suivi\n\n- État de conservation des habitats.\n- Nombre de couples nicheurs.\n\n## Périodicité et calendrier\n\nLes travaux d'entretien sont planifiés selon un calendrier différencié par parcelle, détaillé dans le tableau ci-dessous. Les interventions sont réalisées en dehors de la période de nidification et de migration des oiseaux (1er octobre au 28 février).\n\n| Parcelle | Surface (ha) | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 |\n|----------|--------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| 330290B1103 | 0,39 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290B301 | 2,76 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C1064b | 2,71 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C1082 | 1,38 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290B287 | 2,00 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C1076 | 1,39 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C252 | 1,40 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C974c | 1,81 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290B314 | 1,76 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C1064c | 1,58 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C1076 | 1,49 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C912 | 0,55 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n| 330290C912 | 0,47 |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |\n\n*Les cases vides indiquent l'absence d'intervention prévue pour l'année concernée.*\n\n## Intervenants\n\n- Opérateur de compensation.\n- Entreprise de travaux forestiers.\n- Écologue (encadrement écologique).\n\n## Frise temporelle\n\nLes travaux de gyrobroyage différencié sont planifiés selon un calendrier de 50 ans, avec des interventions tous les 5 à 8 ans, adaptées aux dynamiques de fermeture des landes et aux obligations de résultats des parcelles.",
+      "pages": [
+        64,
+        65,
+        66
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "parcelles"
+      ],
+      "avertissements": [
+        "Parcelle 330290C912 mentionnée 'en partie'"
+      ]
+    },
+    {
+      "id": "TE2",
+      "code": "TE2",
+      "categorie": "TE",
+      "titre": "Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+      "lib_thema": "C3.2.a",
+      "objectif_long_terme": "B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "b - Préserver les espaces de landes",
+      "ug_ids": [
+        "ug2",
+        "ug4",
+        "ug6"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [
+        "330290C480a",
+        "330290D2a",
+        "330290C444a",
+        "330290C444c",
+        "330290C480b",
+        "330290C444b",
+        "330290C480c",
+        "3302940BZ153"
+      ],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Entretien des landes humides par gyrobroyage différencié (1 bande sur 2) tous les 3 ans, avec gestion extensive sur 50 ans pour favoriser le Fadet des laîches et les oiseaux landicoles.",
+      "engagements": [
+        "Gyrobroyage à 30 cm sans export, différencié (1 bande sur 2 – bande de 4 m) pour créer une hétérogénéité dans la lande.",
+        "Entretien tous les 3 ans, avec décalage possible d'1 à 2 ans selon la portance des sols.",
+        "Respect des périodes d'intervention entre novembre et février (possibilité dès septembre si portance des sols favorable).",
+        "Interdiction d'utiliser des produits phytosanitaires, fertilisants chimiques/organiques, rouleau landais et broyage en plein.",
+        "Gestion sur une durée de 50 ans."
+      ],
+      "indicateurs": [
+        "État de conservation des habitats",
+        "Nombre d'imago sur le pic d'émergence"
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Entreprise de travaux forestiers",
+        "Écologue (encadrement écologique)"
+      ],
+      "periodicite_texte": "cf. tab n°9 - Planning des entretiens prévus sur les parcelles de compensation retenues pour le Fadet des laîches et les oiseaux landicoles en dehors des périodes sensibles pour l'espèce soit entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)",
+      "frise_markdown": "| Parcelle | Surface (ha) | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 | 2050 | 2051 |\n|----------|--------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| 330290C480a | 2,33 |  |  |  | GB bandes paires |  | GB bandes impaires | GB bandes paires |  | GB bandes impaires | GB bandes paires |  | GB bandes impaires | GB bandes paires |  | GB bandes impaires | GB bandes paires |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290D2a | 0,72 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290C444a | 1,87 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290C444c | 2,93 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290C480b | 3,77 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 33029444b | 0,75 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290C480c | 0,09 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290C480b | 0,42 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290BZ153 | 1,10 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n\n*GB : Gyrobroyage*\n\n*Les cases vides indiquent l'absence de travaux prévus pour l'année concernée.*",
+      "contenu_integral": "# TE2 – Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles\n\n**Objectif à long terme** : B – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés.\n\n**Objectif opérationnel** : b – Préserver les espaces de landes.\n\n---\n\n## Unités de gestion et parcelles concernées\n\n- **Unités de gestion** : UG 2, UG 4 et UG 6\n- **Parcelles concernées** :\n  - 330290C480a\n  - 330290D2a\n  - 330290C444a\n  - 330290C444c\n  - 330290C480b (en partie)\n  - 33029444b\n  - 330290C480c (en partie)\n  - 330290BZ153 (en partie)\n\n---\n\n## Constat et justification\n\nPour éviter que l'évolution naturelle ne dégrade l'état de conservation des espaces de compensation, il est nécessaire d'y appliquer une gestion extensive favorable au maintien de l'état recherché pour la Fauvette pitchou.\n\n---\n\n## Description de la mesure\n\nL'ensemble des parcelles retenues pour la compensation écologique du Fadet des laîches et des oiseaux landicoles associés (TU3 et TU4) et de la zone humide évitée (TU 5) sont soumises aux mêmes modalités de gestion :\n\n### Modalités d'entretien\n\n- **Gyrobroyage à 30 cm sans export**, différencié (1 bande sur 2 – bande de 4 m) afin de créer une hétérogénéité dans la lande.\n- **Fréquence** : Tous les 3 ans, en fonction de la dynamique de fermeture (décalage possible d'un à deux ans si la portance des sols ne permet pas l'intervention).\n- **Calendrier pour les parcelles en rotation (TU3)** :\n  - **Bandes paires** : entretien aux années n+2, n+5, n+8, n+11 et n+14.\n  - **Bandes impaires** : entretien aux années n+4, n+7, n+10 et n+13.\n- **Placettes** : Pour les parcelles non soumises à obligations de résultats sur les 15 premières années, un entretien différencié sous forme de placettes peut être appliqué, en respectant la même temporalité et les mêmes modalités.\n\n### Période d'intervention\n\n- **Période principale** : Entre novembre et février.\n- **Possibilité anticipée** : Dès septembre, sous réserve de la portance des sols.\n\n### Engagements de base\n\n- **Périodes sensibles** : Tous les travaux (coupes, plantation, éclaircies, broyage, labour, etc.) doivent être effectués en dehors des périodes sensibles pour la nidification, la migration des oiseaux et l'activité du Fadet des laîches, soit entre le 1er novembre et le 1er mars, sous réserve de la portance des sols.\n- **Interdictions** :\n  - Utilisation de produits phytosanitaires (herbicides, fongicides, insecticides, etc.).\n  - Utilisation de fertilisants chimiques et/ou organiques.\n  - Utilisation de rouleau landais.\n  - Broyage en plein.\n- **Durée de gestion** : 50 ans.\n\n---\n\n## Indicateurs de suivi\n\n- État de conservation des habitats.\n- Nombre d'imago sur le pic d'émergence.\n\n---\n\n## Intervenants\n\n- Opérateur de compensation.\n- Entreprise de travaux forestiers.\n- Écologue (encadrement écologique).\n\n---\n\n## Frise temporelle des travaux d'entretien\n\n| Parcelle | Surface (ha) | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 | 2050 | 2051 |\n|----------|--------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| 330290C480a | 2,33 |  |  |  | GB bandes paires |  | GB bandes impaires | GB bandes paires |  | GB bandes impaires | GB bandes paires |  | GB bandes impaires | GB bandes paires |  | GB bandes impaires | GB bandes paires |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290D2a | 0,72 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290C444a | 1,87 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290C444c | 2,93 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290C480b | 3,77 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 33029444b | 0,75 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290C480c | 0,09 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290C480b | 0,42 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n| 330290BZ153 | 1,10 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n\n*GB : Gyrobroyage*\n\n---\n\n*Nota bene : Les cases vides indiquent l'absence de travaux prévus pour l'année concernée.*",
+      "pages": [
+        67,
+        68,
+        69
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "parcelles"
+      ],
+      "avertissements": [
+        "Plusieurs parcelles mentionnées 'en partie'"
+      ]
+    },
+    {
+      "id": "TE3",
+      "code": "TE3",
+      "categorie": "TE",
+      "titre": "Lutter contre la Fougère aigle",
+      "lib_thema": "C2.1.b",
+      "objectif_long_terme": "B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "b - Préserver les espaces de landes",
+      "ug_ids": [
+        "ug2",
+        "ug4",
+        "ug6"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [
+        "330290C480a",
+        "330290D2a",
+        "330290C444a",
+        "330290C444c",
+        "330290C480b",
+        "330290C444b",
+        "330290C480c",
+        "3302940BZ153"
+      ],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Lutte contre l'expansion de la Fougère aigle dans les landes humides des unités de gestion UG 2, UG 4 et UG 6, afin de préserver les habitats du Fadet des laîches et des oiseaux landicoles associés.",
+      "engagements": [
+        "Mener des actions de lutte contre la Fougère aigle en cas d'apparition ou de repousses abondantes, sur les parcelles concernées.",
+        "Utiliser un rouleau brise-fougère pour fragiliser les rhizomes de la Fougère aigle.",
+        "Réaliser deux campagnes de lutte par an (juin et août) pendant au moins quatre ans.",
+        "Prévoir un broyage préalable des vieilles souches de Pin maritime et de la végétation existante pour permettre le passage du brise-fougère.",
+        "Respecter la période de travaux entre le 1er octobre et le 28 février pour éviter la période de nidification et de migration des oiseaux.",
+        "Renouveler les campagnes de lutte en fonction des résultats des suivis écologiques (action SE1)."
+      ],
+      "indicateurs": [
+        "Recouvrement de la Fougère aigle"
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Entreprise de travaux forestiers",
+        "Écologue (encadrement écologique)"
+      ],
+      "periodicite_texte": null,
+      "frise_markdown": "| Année | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| État  | État zéro | N | N+1 | N+2 | N+3 | N+4 | N+5 | N+6 | N+7 | N+8 | N+9 | N+10 | N+11 | N+12 | N+13 |\n| Action | - | 2 campagnes (juin/août) | 2 campagnes (juin/août) | 2 campagnes (juin/août) | 2 campagnes (juin/août) | 2 campagnes (juin/août) | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation |\n\n| Année | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 | 2050 | 2051 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| État  | N+14 | N+15 | N+16 | N+17 | N+18 | N+19 | N+20 | N+21 | N+22 | N+23 | N+24 | N+25 | N+26 | N+27 | N+28 |\n| Action | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation | Suivi et évaluation |\n\n*En cas d'apparition ou de repousses abondantes de Fougère aigle remettant en cause la fonctionnalité de l'habitat pour le Fadet des laîches, des campagnes de lutte supplémentaires pourront être organisées.*",
+      "contenu_integral": "## TE3 : Lutter contre la Fougère aigle\n\n**Objectif à long terme :** B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés\n\n**Objectif opérationnel :** b - Préserver les espaces de landes\n\n**Unités de gestion concernées :** UG 2, UG 4 et UG 6\n\n**Parcelles concernées :** 330290C480a, 330290D2a, 330290C444a, 330290C444c, 330290C480b (en partie), 33029444b, 330290C480c (en partie), 330290BZ153 (en partie)\n\n**Constat et justification :** \nLa Fougère aigle était autrefois limitée par les cultures et le pâturage. Cependant, avec l'abandon de ces pratiques, son expansion est de plus en plus importante et pose aujourd'hui des problèmes dans la conservation des espaces naturels. Elle se développe souvent sur des sols acides et est indifférente à l'humidité du sol. Ses frondes, visibles de mars à septembre, provoquent la fermeture des milieux, limitant l'expansion d'autres plantes. La Fougère aigle possède également une partie souterraine, le rhizome, un organe de réserve.\n\nUn moyen de lutte efficace consiste à affaiblir ses rhizomes en les forçant à épuiser leurs réserves avec l'utilisation d'un rouleau brise-fougère.\n\n**Description de la mesure :** \nEn cas d'apparition et/ou de repousses abondantes de la Fougère aigle témoignant d'une dégradation des habitats d'espèces du Fadet des laîches sur les espaces de compensation dédiés (UG 2 et UG 4) et sur la zone humide évitée (UG 6) lors des suivis effectués dans le cadre de la mesure SE1, des actions de lutte devront être menées pour endiguer le développement de l'espèce en concertation avec l'écologue.\n\nLa lutte contre la Fougère aigle se fera à l'aide d'un rouleau brise-fougère sur les foyers monospécifiques. Chaque intervention se traduira par deux campagnes par an (juin et août) pendant quatre ans minimum. \n\nAu préalable, l'entreprise de travaux devra prévoir un broyage des vieilles souches de Pin maritime et de la végétation existante pour permettre le passage du brise-fougère. Ces travaux devront être réalisés en dehors de la période de nidification et de migration des oiseaux, à savoir entre le 1er octobre et le 28 février.\n\nLes suivis écologiques engagés conformément à l'action SE1 permettront de statuer sur la nécessité de renouveler ou non une nouvelle campagne de lutte.\n\n\n**Fonctionnement du rouleau brise-fougère :** \nLe rouleau brise-fougère est un rouleau ouvert composé de barres transversales. Il peut être tracté par un tracteur, un quad ou un cheval. Contrairement à la fauche, il ne coupe pas les fougères mais les blesse : il les écrase et les fend sans les sectionner. Les fougères sont alors fragilisées : la sève s'écoule par les contusions, provoquant un épuisement des rhizomes. La plante est affaiblie car elle a alors du mal à absorber ses nutriments. \n\nLa saison suivante, on observe une production accrue de tiges mais une diminution de leur hauteur, signe d'un épuisement des rhizomes. Les plantes herbacées cachées sous les fougères retrouvent alors accès à la lumière et aux ressources en eau et en nutriments. Elles deviennent davantage compétitives par rapport aux fougères aigles. De 3 à 5 saisons de traitement sont nécessaires pour diminuer la hauteur globale des tiges et permettre l'installation durable de la strate herbacée.\n\n\n**Indicateurs de suivi :**\n- Recouvrement de la Fougère aigle\n\n**Périodicité :**\n- Deux campagnes par an (juin et août) si jugé nécessaire par l'écologue, pendant quatre ans minimum.\n\n**Intervenants :**\n- Opérateur de compensation\n- Entreprise de travaux forestiers\n- Écologue (encadrement écologique)\n\n**Budget prévisionnel :** Non concerné en l'état actuel",
+      "pages": [
+        70,
+        71
+      ],
+      "confiance": 0.95,
+      "champs_a_confirmer": [
+        "parcelles"
+      ],
+      "avertissements": [
+        "Parcelles mentionnées 'en partie'",
+        "Intervention conditionnelle à l'apparition de foyers monospécifiques de Fougère aigle"
+      ]
+    },
+    {
+      "id": "SE1",
+      "code": "SE1",
+      "categorie": "SE",
+      "titre": "Suivi des habitats naturels, de la flore et de la faune",
+      "lib_thema": "autre",
+      "objectif_long_terme": "D - Améliorer les connaissances environnementales sur le site",
+      "objectif_operationnel": "c - Evaluer de la gestion et suivre les espèces faunistiques et floristiques",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3",
+        "ug4",
+        "ug5",
+        "ug6",
+        "ug7"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Suivi écologique annuel puis pluriannuel des habitats naturels, de la flore et de la faune sur les espaces de compensation et les zones évitées (zone humide et boisement de feuillus) pour évaluer l'efficacité des actions de gestion et adapter les mesures si nécessaire.",
+      "engagements": [
+        "Réaliser un état zéro dès 2022.",
+        "Effectuer un suivi annuel pendant 5 ans à partir de 2022.",
+        "Poursuivre le suivi tous les 5 ans jusqu'en 2042, puis tous les 10 ans jusqu'en 2072.",
+        "Intégrer les thématiques : formations végétales, avifaune, rhopalocères, insectes saproxylophages et chiroptères.",
+        "Transmettre un rapport aux services de l'État après chaque campagne.",
+        "Adapter les mesures de gestion en cas de résultats insatisfaisants."
+      ],
+      "indicateurs": [
+        "Pourcentage de recouvrement des espèces indicatrices des espèces cibles",
+        "Composition floristique et richesse spécifique",
+        "Présence d'espèces patrimoniales",
+        "Présence/absence d'espèces végétales exotiques envahissantes",
+        "Fonctionnalité du site pour les espèces (reproduction, repos, etc.)",
+        "Richesse spécifique et présence d'espèces patrimoniales",
+        "Dynamique des populations",
+        "Nombre de couples nicheurs",
+        "Nombre d'imagos sur le pic d'émergence",
+        "Pourcentage de bois morts"
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Écologue"
+      ],
+      "periodicite_texte": "Un suivi écologique devra être effectué par un écologue confirmé sur les espaces de compensation et les secteurs évités dès 2022 (état zéro) et dès l'année suivant la fin des travaux et la remise en état sur le site projet (année N). Ils seront réalisés de façon annuelle pendant les 5 premières années, à compter de 2022 puis tous les 5 ans jusqu'en 2042 et tous les 10 ans jusqu'en 2072 soit un total de 12 campagnes (état zéro à n+49).",
+      "frise_markdown": "```\n2022       2023       2024       2025       2026       2027       2028       2029       2030       2031       2032       2033       2034       2035       2036\nEtat zéro  N          N+1        N+2        N+3        N+4        N+5        N+6        N+7        N+8        N+9        N+10       N+11       N+12       N+13\n\n2037       2038       2039       2040       2041       2042       2043       2044       2045       2046       2047       2048       2049       2050       2051\nN+14       N+15       N+16       N+17       N+18       N+19       N+20       N+21       N+22       N+23       N+24       N+25       N+26       N+27       N+28\n\n2052       2053       2054       2055       2056       2057       2058       2059       2060       2061       2062       2063       2064       2065       2066\nN+29       N+30       N+31       N+32       N+33       N+34       N+35       N+36       N+37       N+38       N+39       N+40       N+41       N+42       N+43\n\n2067       2068       2069       2070       2071       2072\nN+44       N+45       N+46       N+47       N+48       N+49\n```",
+      "contenu_integral": "# SE1 : Suivi des habitats naturels, de la flore et de la faune\n\n**Objectif à long terme :** D - Améliorer les connaissances environnementales sur le site\n\n**Objectif opérationnel :** c - Évaluer la gestion et suivre les espèces faunistiques et floristiques\n\n**Constat et justification :** \nLes suivis faune/flore du site de compensation et des zones évitées (zone humide et boisement de feuillus) doivent permettre de mesurer l'évolution des habitats naturels et des espèces animales, dont les espèces cibles objet de la demande de dérogation et leurs habitats. Ils doivent également permettre d'évaluer les bénéfices apportés par les travaux de génie écologique engagés dans le cadre de la compensation et des zones évitées, et de réadapter si besoin les actions de restauration et de gestion, voire la mise en place de mesures correctives en cas de non atteinte des résultats sur le moyen terme.\n\n**Description de la mesure :** \nUn suivi écologique sera réalisé par un écologue confirmé sur les espaces de compensation et les secteurs évités (zone humide et boisement de feuillus). Ce suivi débutera dès 2022 (état zéro) et dès l'année suivant la fin des travaux et la remise en état sur le site projet (année N). Il sera réalisé de façon annuelle pendant les 5 premières années à compter de 2022, puis tous les 5 ans jusqu'en 2042, et tous les 10 ans jusqu'en 2072, soit un total de 12 campagnes (de l'état zéro à n+49).\n\nLes campagnes de suivi porteront sur l'ensemble des secteurs de compensation, y compris la tranche non effective (référence mesures TU1 et TU3), ainsi que sur les espaces évités. Elles intégreront les thématiques suivantes :\n\n- **Formations végétales** :\n  - Réalisation de relevés phytosociologiques (1 passage par campagne en juillet/août).\n  - Évaluation de l'évolution du recouvrement des espèces végétales et de la typicité des formations végétales sous l'effet des opérations de gestion.\n  - Surveillance des espèces exotiques végétales à caractère envahissant.\n\n- **Avifaune nicheuse** :\n  - Détermination de la fonctionnalité des habitats naturels pour les espèces (reproduction, alimentation, etc.).\n  - 2 passages par campagne (avril/juin).\n\n- **Rhopalocères** (papillons de jour et odonates) :\n  - Détermination de la fonctionnalité des habitats naturels pour les espèces (reproduction, alimentation, zone de maturation, etc.).\n  - 3 passages pour le Damier de la Succise (avril/mai) et 3 passages pour le Fadet des laîches (juin/juillet) par campagne, conformément aux préconisations du CEN Aquitaine dans le cadre des suivis sur des espèces de rhopalocères PNA.\n\n- **Insectes saproxylophages** :\n  - Recherche des arbres présentant des indices de présence (1 campagne par an en hiver, après la chute des feuilles).\n\n- **Chiroptères** :\n  - Évaluation de la fonctionnalité des îlots de sénescence pour les espèces, incluant :\n    - Recherche des arbres à gîtes potentiels.\n    - Écoute active en sortie de gîte (juillet) et écoute passive (août/septembre).\n    - Suivi et contrôle sur la période juin/août.\n    - Nettoyage des gîtes artificiels (novembre/décembre).\n\nUn bilan sera réalisé par l'écologue en charge des suivis après chaque campagne, sous forme de rapport transmis aux services de l'État. En cas de résultats positifs (diversité d'espèces, développement de milieux humides, équilibre des milieux), aucune modification ne sera nécessaire. En revanche, en cas de perte d'espèces ou de dégradation des habitats, des ajustements seront apportés aux mesures de gestion en faveur des espèces cibles.\n\n**Unités de gestion concernées :** UG 1, UG 2, UG 3, UG 4, UG 5, UG 6, UG 7\n\n**Périodicité et calendrier :**\n- Suivi annuel pendant 5 ans à partir de 2022.\n- Puis tous les 5 ans jusqu'en 2042.\n- Puis tous les 10 ans jusqu'en 2072.\n- Total : 12 campagnes (de l'état zéro à n+49).\n\n**Indicateurs de suivi :**\n\n**Suivi des formations végétales et de la flore :**\n- Pourcentage de recouvrement des espèces indicatrices des espèces cibles.\n- Composition floristique et richesse spécifique.\n- Présence d'espèces patrimoniales.\n- Présence/absence d'espèces végétales exotiques envahissantes.\n\n**Suivi de la faune :**\n- Fonctionnalité du site pour les espèces (reproduction, repos, etc.).\n- Richesse spécifique et présence d'espèces patrimoniales.\n- Dynamique des populations.\n- Nombre de couples nicheurs.\n- Nombre d'imagos sur le pic d'émergence.\n- Pourcentage de bois morts.\n\n**Tableau des interventions par thématique :**\n\n| Thématique               | Avril       | Mai         | Juin        | Juillet     | Août        | Septembre   | Octobre     | Novembre    | Décembre    | Unités de gestion concernées |\n|--------------------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-----------------------------|\n| Habitats naturels        |             |             |             | 1 passage   |             |             |             |             |             | UG 1, UG 2, UG 3, UG 4, UG 5, UG 6, UG 7 |\n| Rhopalocères             | 3 passages  |             | 3 passages  |             |             |             |             |             |             | UG 2, UG 4, UG 6           |\n| Insectes saproxylophages |             |             |             | 1 passage   |             |             |             |             |             | UG 5, UG 7                 |\n| Avifaune                 | 1 passage   |             | 1 passage   |             |             |             |             |             |             | UG 1, UG 2, UG 3, UG 4, UG 5, UG 6, UG 7 |\n| Chiroptères              |             |             |             | Écoute active | Écoute passive |             | Recherche de gîte |             |             | UG 5, UG 7                 |\n| Gîtes artificiels        |             |             |             | Contrôle    |             |             |             | Nettoyage   |             | UG 5                        |\n\n\n**Frise temporelle des campagnes de suivi :**\n\n```\n2022       2023       2024       2025       2026       2027       2028       2029       2030       2031       2032       2033       2034       2035       2036\nEtat zéro  N          N+1        N+2        N+3        N+4        N+5        N+6        N+7        N+8        N+9        N+10       N+11       N+12       N+13\n\n2037       2038       2039       2040       2041       2042       2043       2044       2045       2046       2047       2048       2049       2050       2051\nN+14       N+15       N+16       N+17       N+18       N+19       N+20       N+21       N+22       N+23       N+24       N+25       N+26       N+27       N+28\n\n2052       2053       2054       2055       2056       2057       2058       2059       2060       2061       2062       2063       2064       2065       2066\nN+29       N+30       N+31       N+32       N+33       N+34       N+35       N+36       N+37       N+38       N+39       N+40       N+41       N+42       N+43\n\n2067       2068       2069       2070       2071       2072\nN+44       N+45       N+46       N+47       N+48       N+49\n```\n\n**Intervenants :** Opérateur de compensation / Écologue\n\n**Conditions :**\n- Le suivi sera réalisé par un écologue confirmé.\n- Un rapport sera transmis aux services de l'État après chaque campagne.\n- En cas de résultats insatisfaisants, les mesures de gestion seront réorientées en faveur des espèces cibles.",
+      "pages": [
+        72,
+        73,
+        74
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "id": "SE2",
+      "code": "SE2",
+      "categorie": "SE",
+      "titre": "Suivi piézométrique",
+      "lib_thema": "autre",
+      "objectif_long_terme": "D - Améliorer les connaissances environnementales sur le site",
+      "objectif_operationnel": "c - Evaluer de la gestion et suivre les espèces faunistiques et floristiques",
+      "ug_ids": [
+        "ug2",
+        "ug4",
+        "ug6"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Mise en place d'un suivi piézométrique annuel pour évaluer les variations de la nappe phréatique sur les espaces de compensation et la zone humide évitée, en lien avec la gestion du Fadet des laîches. Inclut des bilans réguliers et des mesures correctives si nécessaire.",
+      "engagements": [
+        "Réaliser un suivi piézométrique annuel avec enregistrement continu sur 12 mois via 5 piézomètres (3 sur les espaces de compensation, 2 sur la zone humide évitée).",
+        "Établir un état zéro en 2022 sur la zone humide évitée et débuter les mesures sur le site projet l'année suivant la fin des travaux.",
+        "Produire un bilan tous les 5 ans de 2022 à 2042, puis tous les 10 ans jusqu'en 2072 (8 bilans au total).",
+        "Associer à chaque bilan 2 sondages pédologiques à la tarière par unité de gestion (4 sondages au total).",
+        "Transmettre les rapports aux services de l’État.",
+        "Mettre en place des mesures correctives en cas de dégradation des zones humides, en concertation avec l’écologue."
+      ],
+      "indicateurs": [
+        "Niveau de la nappe phréatique"
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Hydrogéologue",
+        "Écologue (pour les mesures correctives)"
+      ],
+      "periodicite_texte": "Un suivi piézométrique devra être effectué par un hydrogéologue avec un enregistrement annuel en continu sur les espaces de compensation au profit du Fadet des laîches et sur la zone humide évitée.",
+      "frise_markdown": "| Année       | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 |\n|-------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| État        | État zéro | N    | N+1  | N+2  | N+3  | N+4  | N+5  | N+6  | N+7  | N+8  | N+9  | N+10 | N+11 | N+12 | N+13 |\n| Bilan       |      |      |      |      |      | Bilan|      |      |      | Bilan|      |      |      |      |      |\n\n| Année       | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 | 2050 | 2051 |\n|-------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| État        | N+14 | N+15 | N+16 | N+17 | N+18 | N+19 | N+20 | N+21 | N+22 | N+23 | N+24 | N+25 | N+26 | N+27 | N+28 |\n| Bilan       | Bilan|      |      |      |      | Bilan|      |      |      |      |      |      |      |      |      |\n\n| Année       | 2052 | 2053 | 2054 | 2055 | 2056 | 2057 | 2058 | 2059 | 2060 | 2061 | 2062 | 2063 | 2064 | 2065 | 2066 |\n|-------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| État        | N+29 | N+30 | N+31 | N+32 | N+33 | N+34 | N+35 | N+36 | N+37 | N+38 | N+39 | N+40 | N+41 | N+42 | N+43 |\n| Bilan       | Bilan|      |      |      |      |      |      |      |      | Bilan|      |      |      |      |      |\n\n| Année       | 2067 | 2068 | 2069 | 2070 | 2071 | 2072 |\n|-------------|------|------|------|------|------|------|\n| État        | N+44 | N+45 | N+46 | N+47 | N+48 | N+49 |\n| Bilan       |      |      |      |      |      | Bilan|",
+      "contenu_integral": "## SE2 : Suivi piézométrique\n\n**Objectif à long terme :** Améliorer les connaissances environnementales sur le site\n\n**Objectif opérationnel :** Évaluer la gestion et suivre les espèces faunistiques et floristiques\n\n**Constat et justification :** \nDans le cadre des actions menées en faveur du Fadet des laîches (espaces de compensation et zone humide évitée), une étude hydrodynamique du site (situation actuelle et future) accompagnée d'un suivi des variations de la nappe phréatique est nécessaire. Le Fadet des laîches, vivant au sein de landes humides ouvertes ou en sous-bois de plantations claires de pins maritimes, dépend d'un niveau suffisamment élevé de la nappe phréatique pour maintenir le caractère humide et fonctionnel de la lande pour l'espèce.\n\n**Description de la mesure :**\nUn suivi piézométrique doit être réalisé par un hydrogéologue sur :\n- Les espaces de compensation dédiés au Fadet des laîches (y compris la tranche non effective en référence aux mesures TU1 et TU3) ;\n- La zone humide évitée (2022 : état zéro).\n\n**Modalités :**\n- Pose de **5 piézomètres** au total :\n  - **3 piézomètres** sur les espaces de compensation ;\n  - **2 piézomètres** sur la zone humide évitée.\n- Enregistrement continu sur **12 mois** par des sondes automatiques, avec reporting annuel.\n- Début des mesures :\n  - **2022** (état zéro) sur la zone humide évitée ;\n  - **Année N+1** (N = année de fin des travaux et remise en état du site projet).\n\n**Bilans et analyses complémentaires :**\n- Réalisation d’un **bilan tous les 5 ans de 2022 à 2042**, puis **tous les 10 ans jusqu’en 2072** (soit **8 bilans** au total).\n- Chaque bilan est couplé à **2 sondages pédologiques à la tarière par unité de gestion** (soit **4 sondages** au total) pour consolider l’interprétation des résultats piézométriques.\n- Transmission des rapports aux services de l’État.\n\n**Mesures correctives :**\nEn cas de dégradation des zones humides (assèchement, faible humidité hivernale, etc.), des mesures correctives pourront être mises en place en concertation avec l’écologue. Ces mesures, fonction des résultats obtenus, visent à réorienter la gestion en faveur des zones humides.\n\n**Indicateurs de suivi :**\n- Niveau de la nappe phréatique.\n\n**Périodicité :**\n- Suivi piézométrique annuel avec enregistrement continu sur 12 mois, réalisé par un hydrogéologue.\n\n**Unités de gestion concernées :**\n- Espaces de compensation dédiés au Fadet des laîches (commune du Barp, 33).\n- Zone humide évitée.\n\n**Intervenants :**\n- Opérateur de compensation ;\n- Hydrogéologue ;\n- Écologue (pour les mesures correctives).\n\n**Frise temporelle :**\n\n| Année | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| État | État zéro | N | N+1 | N+2 | N+3 | N+4 | N+5 | N+6 | N+7 | N+8 | N+9 | N+10 | N+11 | N+12 | N+13 |\n| Bilan |      |    |    |    |    | Bilan |    |    |    | Bilan |    |    |    |    |    |\n\n| Année | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 | 2050 | 2051 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| État | N+14 | N+15 | N+16 | N+17 | N+18 | N+19 | N+20 | N+21 | N+22 | N+23 | N+24 | N+25 | N+26 | N+27 | N+28 |\n| Bilan | Bilan |    |    |    |    | Bilan |    |    |    |    |    |    |    |    |    |\n\n| Année | 2052 | 2053 | 2054 | 2055 | 2056 | 2057 | 2058 | 2059 | 2060 | 2061 | 2062 | 2063 | 2064 | 2065 | 2066 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| État | N+29 | N+30 | N+31 | N+32 | N+33 | N+34 | N+35 | N+36 | N+37 | N+38 | N+39 | N+40 | N+41 | N+42 | N+43 |\n| Bilan | Bilan |    |    |    |    |    |    |    |    | Bilan |    |    |    |    |    |\n\n| Année | 2067 | 2068 | 2069 | 2070 | 2071 | 2072 |\n|-------|------|------|------|------|------|------|\n| État | N+44 | N+45 | N+46 | N+47 | N+48 | N+49 |\n| Bilan |      |    |    |    |    | Bilan |",
+      "pages": [
+        75,
+        76
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "id": "MG1",
+      "code": "MG1",
+      "categorie": "MG",
+      "titre": "Pilotage et coordination du programme d'actions",
+      "lib_thema": "autre",
+      "objectif_long_terme": "E - Garantir la bonne mise en œuvre du programme d'actions",
+      "objectif_operationnel": "d - Assurer la mise en œuvre du programme d'actions",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3",
+        "ug4",
+        "ug5",
+        "ug6",
+        "ug7"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Coordination et pilotage du programme d'actions de compensation écologique pour la région Nouvelle-Aquitaine, incluant bilans annuels, comités de suivi et mise à jour du plan de gestion sur 50 ans.",
+      "engagements": [
+        "Assurer le rôle d'AMO pour la Région Nouvelle-Aquitaine dans le cadre du plan de gestion.",
+        "Produire un bilan annuel (tableau de bord) pendant 50 ans sur l'état d'avancement du plan de gestion.",
+        "Transmettre les bilans annuels aux services de l'État et aux pétitionnaires.",
+        "Mettre à jour le plan de gestion tous les 5 ans jusqu'en 2042, puis tous les 10 ans jusqu'en 2072.",
+        "Transmettre les données naturalistes au SINP et à l'outil GéoMCE.",
+        "Organiser des comités de pilotage et de suivi selon le calendrier défini."
+      ],
+      "indicateurs": [
+        "Remise des bilans annuels aux services de l'État et à la Région Nouvelle-Aquitaine."
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "DREAL (Service Patrimoine Naturel)",
+        "DDTM",
+        "Région Nouvelle-Aquitaine",
+        "Département de la Gironde",
+        "Écologue en charge du suivi du chantier et/ou du suivi écologique",
+        "OFB"
+      ],
+      "periodicite_texte": "Reporting annuel en fin d'année sous la forme d'un tableau de bord",
+      "frise_markdown": "| Année | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Type  | État zéro | CPS / DN | CPS / DN | CPS / DN | CPS / DN | CPS / DN |  |  |  |  | CPS / DN |  |  |  |  |\n\n| Année | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 | 2050 | 2051 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Type  | CPS / DN |  |  |  |  | CPS / DN |  |  |  |  |  |  |  |  |  |\n\n| Année | 2052 | 2053 | 2054 | 2055 | 2056 | 2057 | 2058 | 2059 | 2060 | 2061 | 2062 | 2063 | 2064 | 2065 | 2066 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Type  | CPS / DN |  |  |  |  |  |  |  |  |  | CPS / DN |  |  |  |  |\n\n| Année | 2067 | 2068 | 2069 | 2070 | 2071 | 2072 |\n|-------|------|------|------|------|------|------|\n| Type  |  |  |  |  |  | CPS / DN |\n\n*CPS : Comité de pilotage et suivi / DN : Dépôt des données naturalistes*",
+      "contenu_integral": "# MG 1 : Pilotage et coordination du programme d'actions\n\n**Objectif à long terme :** Garantir la bonne mise en œuvre du programme d'actions.\n\n**Objectif opérationnel :** Assurer la mise en œuvre du programme d'actions.\n\n## Constat et justification\nL'opérateur de compensation assurera un rôle de coordonnateur de l'équipe projet nécessaire à la mise en œuvre d'un plan de gestion pendant toute la durée des engagements de la région Nouvelle-Aquitaine. Il effectuera un bilan annuel (sous la forme d'un tableau de bord) pendant 50 ans sur l'état d'avancement du plan de gestion, transmis aux services de l'État et aux pétitionnaires, en complément des suivis écologiques et hydrauliques.\n\n## Description de la mesure\nL'opérateur de compensation assurera, pour le compte de la Région Nouvelle-Aquitaine, le rôle d'opérateur de compensation avec les missions suivantes :\n\n- **Pilotage et coordination des travaux de génie écologique et des suivis** :\n  - Jouer le rôle d'AMO (Assistant à Maîtrise d'Ouvrage) pour le compte de la Région Nouvelle-Aquitaine.\n  - Piloter l'équipe projet de la phase d'avant-projet (rédaction des cahiers des charges, analyses des offres, réunions d'avant-chantier, etc.) jusqu'à la mise en œuvre des travaux de génie écologique (réunions de chantier, encadrement écologique, etc.) et aux suivis (contrôle qualité des livrables produits).\n\n- **Bilan annuel** :\n  - Une synthèse annuelle de l'état d'avancement (actions menées, résultats obtenus, difficultés rencontrées, etc.) sera produite sous forme de tableau de bord et transmise chaque fin d'année aux services de l'État et aux membres du comité de suivi.\n  - Le bilan permettra de suivre le bon déroulement de la mise en œuvre du plan de gestion.\n  - Il intégrera les résultats des suivis écologiques et piézométriques menés par les experts (conformément aux mesures SE1 et SE2) ainsi que les comptes-rendus des travaux d'unique et d'entretien.\n  - Selon l'évolution des indicateurs, un ajustement du plan de gestion pourra être envisagé et présenté dans ces synthèses.\n  - Le plan de gestion fera l'objet d'une mise à jour tous les 5 ans jusqu'en 2042, puis par période de 10 ans jusqu'en 2072, en concertation avec l'équipe projet et soumis à validation des services de l'État.\n\n- **Dépôt des données naturalistes** :\n  - Toutes les données naturalistes récoltées dans le cadre des suivis sont transmises au SINP à chaque fin de campagne.\n  - En complément, il devra également être fourni toutes les informations nécessaires à la bonne tenue de l'outil national de géolocalisation des mesures de compensation des atteintes à la biodiversité (GéoMCE).\n\n- **Comité de pilotage et de suivi** :\n  - Des comités de pilotage et de suivi seront mis en place pour suivre le bon déroulement des opérations sur le long terme.\n  - À l'initiative du pétitionnaire, ces comités pourront se réunir annuellement les 5 premières années à compter de 2022, puis tous les 5 ans jusqu'en 2042 et tous les 10 ans jusqu'en 2072.\n  - Ils réuniront à minima :\n    - DREAL (Service Patrimoine Naturel),\n    - DDTM,\n    - Région Nouvelle-Aquitaine,\n    - Département de la Gironde,\n    - Écologue en charge du suivi du chantier et/ou du suivi écologique,\n    - Opérateur de compensation,\n    - OFB.\n\n## Frise temporelle du comité de pilotage et suivi\n\n| Année | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Type  | État zéro | CPS / DN | CPS / DN | CPS / DN | CPS / DN | CPS / DN |  |  |  |  | CPS / DN |  |  |  |  |\n\n| Année | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 | 2049 | 2050 | 2051 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Type  | CPS / DN |  |  |  |  | CPS / DN |  |  |  |  |  |  |  |  |  |\n\n| Année | 2052 | 2053 | 2054 | 2055 | 2056 | 2057 | 2058 | 2059 | 2060 | 2061 | 2062 | 2063 | 2064 | 2065 | 2066 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Type  | CPS / DN |  |  |  |  |  |  |  |  |  | CPS / DN |  |  |  |  |\n\n| Année | 2067 | 2068 | 2069 | 2070 | 2071 | 2072 |\n|-------|------|------|------|------|------|------|\n| Type  |  |  |  |  |  | CPS / DN |\n\n*CPS : Comité de pilotage et suivi / DN : Dépôt des données naturalistes*",
+      "pages": [
+        77,
+        78
+      ],
+      "confiance": 0.99,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "id": "MG2",
+      "code": "MG2",
+      "categorie": "MG",
+      "titre": "Mise à jour du plan de gestion et bilan de fin de mesure compensatoire",
+      "lib_thema": "autre",
+      "objectif_long_terme": "E - Garantir la bonne mise en œuvre du programme d'actions",
+      "objectif_operationnel": "d - Assurer la mise en œuvre du programme d'actions",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3",
+        "ug4",
+        "ug5",
+        "ug6",
+        "ug7"
+      ],
+      "zone_source_proposee": null,
+      "parcelles": [],
+      "communes": [
+        "Le Barp"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Mise à jour périodique du plan de gestion des espaces de compensation écologique et bilan final des mesures compensatoires après 72 ans, incluant des ajustements en fonction des suivis écologiques et piézométriques.",
+      "engagements": [
+        "Mettre à jour le plan de gestion tous les 5 ans jusqu'en 2042, puis tous les 10 ans jusqu'en 2072.",
+        "Intégrer un bilan du précédent plan de gestion pour ajuster, réorienter ou corriger les actions.",
+        "Mettre en place des mesures correctives si nécessaire (ex. : batardeaux, lutte contre les espèces exotiques envahissantes).",
+        "Transmettre les nouveaux plans de gestion aux services de l'État et au pétitionnaire pour validation.",
+        "Réaliser un bilan final des mesures compensatoires à N+72 pour évaluer leur efficacité."
+      ],
+      "indicateurs": [
+        "Remise du plan de gestion aux services de l'État et à la Région Nouvelle-Aquitaine."
+      ],
+      "intervenants": [
+        "Opérateur de compensation",
+        "Écologue",
+        "Gestionnaire forestier"
+      ],
+      "periodicite_texte": "Tous les 5 ans jusqu'en 2042 puis par période de 10 ans jusqu'en 2072",
+      "frise_markdown": "| Année | Événement |\n|-------|-----------|\n| 2022 | État zéro |\n| N | Début des mesures compensatoires |\n| N+1 | Suivi annuel |\n| N+2 | Suivi annuel |\n| N+3 | Suivi annuel |\n| N+4 | Suivi annuel |\n| N+5 | Mise à jour du plan de gestion (5 ans) |\n| N+6 | Suivi annuel |\n| N+7 | Suivi annuel |\n| N+8 | Suivi annuel |\n| N+9 | Suivi annuel |\n| N+10 | Mise à jour du plan de gestion (10 ans) |\n| N+11 | Suivi annuel |\n| N+12 | Suivi annuel |\n| N+13 | Suivi annuel |\n| ... | ... |\n| N+44 | Suivi annuel |\n| N+45 | Suivi annuel |\n| N+46 | Mise à jour du plan de gestion (50 ans) |\n| N+47 | Bilan final des mesures compensatoires |\n\n*Nota : N correspond à l'année de début des mesures compensatoires.*",
+      "contenu_integral": "# MG2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire\n\n## Objectifs\n\n### Objectif à long terme\n- **E** : Garantir la bonne mise en œuvre du programme d'actions.\n\n### Objectif opérationnel\n- **d** : Assurer la mise en œuvre du programme d'actions.\n\n## Constat et justification\n\nSelon les résultats des suivis écologiques et piézométriques obtenus, des ajustements au plan de gestion pourront être envisagés. Celui-ci fera notamment l'objet d'une mise à jour tous les 5 ans jusqu'en 2042, puis par période de 10 ans jusqu'en 2072, en concertation avec l'équipe projet.\n\n## Description de la mesure\n\nSur la base des bilans annuels et/ou des rapports des suivis écologiques et piézométriques (cf. fiches actions SE1 et SE2), une mise à jour du plan de gestion sera effectuée tous les 5 ans jusqu'en 2042, puis par période de 10 ans jusqu'en 2072. Celui-ci intégrera notamment un bilan du précédent plan de gestion en ciblant les points positifs et négatifs. Ce préambule servira de support pour ajuster, réorienter ou corriger les actions définies dans l'ancien plan de gestion, en concertation avec l'équipe projet.\n\nDes mesures correctives pourront être mises en place, telles que :\n- la mise en place de batardeaux pour renforcer l'hygrométrie des parcelles ;\n- une lutte contre d'éventuels foyers d'espèces exotiques envahissantes venant perturber le maintien des espèces cibles.\n\nLe plan de gestion prendra également en compte, si nécessaire, une réactualisation des coûts (ajout d'une mesure corrective, changement d'entreprise travaux, indexation du cours de la vie, etc.).\n\nLes nouveaux plans de gestion seront transmis au pétitionnaire et aux services de l'État pour validation avant mise en œuvre.\n\nEn fin de mesure compensatoire (soit à N+72), l'opérateur de compensation, accompagné des experts, dressera un bilan final des mesures compensatoires sur toute leur temporalité. Ce bilan aura pour objectif de conclure sur l'efficacité des mesures réalisées et les résultats obtenus, à partir des différents indicateurs de gestion retenus.\n\n## Indicateurs de suivi\n- Remise du plan de gestion aux services de l'État et à la Région Nouvelle-Aquitaine.\n\n## Périodicité\n- Tous les 5 ans jusqu'en 2042, puis par période de 10 ans jusqu'en 2072.\n\n## Unités de gestion\n- Opération de lycée/collège sur la commune du Barp (33).\n\n## Intervenants\n- Opérateur de compensation\n- Écologue\n- Gestionnaire forestier\n\n## Frise temporelle\n\n| Année | Événement |\n|-------|-----------|\n| 2022 | État zéro |\n| N | Début des mesures compensatoires |\n| N+1 | Suivi annuel |\n| N+2 | Suivi annuel |\n| N+3 | Suivi annuel |\n| N+4 | Suivi annuel |\n| N+5 | Mise à jour du plan de gestion (5 ans) |\n| N+6 | Suivi annuel |\n| N+7 | Suivi annuel |\n| N+8 | Suivi annuel |\n| N+9 | Suivi annuel |\n| N+10 | Mise à jour du plan de gestion (10 ans) |\n| N+11 | Suivi annuel |\n| N+12 | Suivi annuel |\n| N+13 | Suivi annuel |\n| ... | ... |\n| N+44 | Suivi annuel |\n| N+45 | Suivi annuel |\n| N+46 | Mise à jour du plan de gestion (50 ans) |\n| N+47 | Bilan final des mesures compensatoires |\n\n*Nota : N correspond à l'année de début des mesures compensatoires.*",
+      "pages": [
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102
+      ],
+      "confiance": 0.99,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    }
+  ]
+}

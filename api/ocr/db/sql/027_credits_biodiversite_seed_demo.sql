@@ -1,0 +1,47 @@
+-- =============================================================================
+-- Seed démo (optionnel) — peupler un projet site_credits pour la présentation
+-- =============================================================================
+-- Remplacer :projet_id par l'UUID du projet créé avec type_dispositif = 'site_credits'.
+-- Exemple d'usage :
+--   \set projet_id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+--   puis exécuter ce script.
+-- =============================================================================
+
+-- BEGIN;
+--
+-- INSERT INTO bancarisation.site_agrement (
+--   projet_id, numero_agrement, prefet_region, surface_totale_ha,
+--   surface_concernee_ha, avis_instance, statut
+-- ) VALUES (
+--   :'projet_id',
+--   'AG-NA-2024-042',
+--   'Préfet de la région Nouvelle-Aquitaine',
+--   48.5,
+--   32.0,
+--   'CSRPN',
+--   'agree'
+-- )
+-- ON CONFLICT (projet_id) DO UPDATE SET
+--   numero_agrement = EXCLUDED.numero_agrement,
+--   prefet_region = EXCLUDED.prefet_region,
+--   statut = EXCLUDED.statut;
+--
+-- WITH sa AS (
+--   SELECT id FROM bancarisation.site_agrement WHERE projet_id = :'projet_id'
+-- )
+-- INSERT INTO bancarisation.credit_lot (
+--   site_agrement_id, libelle, composante_milieu, methode_calcul,
+--   unite, quantite_emise, date_emission, ug_codes
+-- )
+-- SELECT sa.id, 'Lot zones humides', 'Zones humides', 'Méthode nationale ZH',
+--        'UCRR', 120, '2024-06-15', ARRAY['UG1','UG2']
+-- FROM sa
+-- UNION ALL
+-- SELECT sa.id, 'Lot pelouses sèes', 'Pelouses sèes', 'Référentiel local',
+--        'UCRR', 80, '2024-09-01', ARRAY['UG3']
+-- FROM sa;
+--
+-- -- Ventes (adapter lot_id après insert)
+-- -- INSERT INTO bancarisation.credit_vente (...)
+--
+-- COMMIT;

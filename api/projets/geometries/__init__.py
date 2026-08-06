@@ -1,3 +1,3 @@
-from .router import router
+"""Package géométries projet (liste, ingestion, analyse SIG)."""
 
-__all__ = ["router"]
+__all__: list[str] = []

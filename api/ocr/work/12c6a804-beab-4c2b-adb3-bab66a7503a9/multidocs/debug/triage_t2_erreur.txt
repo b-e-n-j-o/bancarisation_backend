@@ -1,0 +1,19 @@
+6 validation errors for CarteDossier
+signaux.0.type
+  Field required [type=missing, input_value={'message': "Durée d'eng...0 ans non confirmée)."}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+signaux.0.description
+  Field required [type=missing, input_value={'message': "Durée d'eng...0 ans non confirmée)."}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+signaux.1.type
+  Field required [type=missing, input_value={'message': 'Origine du d...cé dans les aperçus.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+signaux.1.description
+  Field required [type=missing, input_value={'message': 'Origine du d...cé dans les aperçus.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+signaux.2.type
+  Field required [type=missing, input_value={'message': 'Absence de c...néralement en annexe.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+signaux.2.description
+  Field required [type=missing, input_value={'message': 'Absence de c...néralement en annexe.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing

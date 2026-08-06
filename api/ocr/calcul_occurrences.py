@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -58,6 +59,7 @@ def annee_fin_suggeree(echeances: list[Echeance]) -> int:
     """Horizon déduit des ancrages et de la durée globale du plan."""
     candidats = [date.today().year]
     ancrages = [e.recurrence.ancrage_annee for e in echeances if e.recurrence.ancrage_annee]
+    fins = [e.recurrence.annee_fin for e in echeances if e.recurrence.annee_fin]
     durees = [e.duree_gestion_ans for e in echeances if e.duree_gestion_ans]
 
     if ancrages:
@@ -65,8 +67,65 @@ def annee_fin_suggeree(echeances: list[Echeance]) -> int:
         if durees:
             # Durée globale : début le plus ancien + horizon du plan − 1.
             candidats.append(min(ancrages) + max(durees) - 1)
+    if fins:
+        candidats.append(max(fins))
     return max(candidats)
 
+
+_RE_JUSQU_EN = re.compile(
+    r"jusqu['\u2019]?\s*en\s+(\d{4})",
+    re.IGNORECASE,
+)
+
+
+def _annee_fin_depuis_texte(*textes: str | None) -> int | None:
+    """Extrait « jusqu'en 2042 » du libellé / règle source (filet pour claims déjà extraits)."""
+    for t in textes:
+        if not t:
+            continue
+        m = _RE_JUSQU_EN.search(t)
+        if m:
+            return int(m.group(1))
+    return None
+
+
+def horizon_serie(e: Echeance, annee_fin_globale: int) -> int:
+    """
+    Borne inclusive de génération pour CETTE échéance.
+
+    Priorité (première valeur trouvée, pas le min de tout) :
+      1. recurrence.annee_fin (explicite LLM)
+      2. « jusqu'en YYYY » dans libellé / regle_source
+      3. ancrage + duree_ans − 1 (ex. 5 premières années)
+      4. horizon global du dossier
+
+    ⚠️ Ne pas prendre le min de (2) et (3) : le LLM met souvent duree_ans=20/50
+    en parallèle d'un « jusqu'en 2072 » dans le libellé — le texte prime.
+    """
+    r = e.recurrence
+    fin: int | None = None
+
+    if r.annee_fin is not None:
+        fin = r.annee_fin
+    else:
+        parse = _annee_fin_depuis_texte(r.regle_source, e.libelle)
+        if parse is not None:
+            fin = parse
+        elif r.ancrage_annee is not None and r.duree_ans is not None and r.duree_ans > 0:
+            # « pendant M ans à partir de A » → A … A+M-1
+            # Ignore duree_ans gonflé (= durée du plan) si ≥ horizon global :
+            # ce n'est pas une borne de série, c'est l'horizon dossier.
+            fin_duree = r.ancrage_annee + int(r.duree_ans) - 1
+            if int(r.duree_ans) < (annee_fin_globale - (r.ancrage_annee or 0) + 1):
+                fin = fin_duree
+
+    if fin is None:
+        return annee_fin_globale
+
+    fin = min(fin, annee_fin_globale)
+    if r.ancrage_annee is not None and fin < r.ancrage_annee:
+        return r.ancrage_annee
+    return fin
 
 def annees_paliers(r: Recurrence, annee_fin: int) -> list[int]:
     """
@@ -105,25 +164,28 @@ def annees_occurrences(e: Echeance, annee_fin: int) -> list[int]:
     if debut is None:
         return []
 
+    fin = horizon_serie(e, annee_fin)
+    if debut > fin:
+        return []
+
     if r.type in (TypeRecurrence.ponctuel, TypeRecurrence.dependant_evenement):
-        return [debut] if debut <= annee_fin else []
+        return [debut] if debut <= fin else []
 
     if r.type == TypeRecurrence.periodique:
         pas = max(1, round(r.intervalle_ans or 1))
-        return list(range(debut, annee_fin + 1, pas))
+        return list(range(debut, fin + 1, pas))
 
     if r.type == TypeRecurrence.campagnes:
         # K passages/an pendant M ans : une occurrence par ANNÉE de campagne.
         # Le nombre de passages est porté dans le titre (pas de granularité
         # infra-annuelle dans le calendrier actuel).
         duree = max(1, r.duree_ans or 1)
-        return [a for a in range(debut, debut + duree) if a <= annee_fin]
+        return [a for a in range(debut, debut + duree) if a <= fin]
 
     if r.type == TypeRecurrence.paliers:
-        return annees_paliers(r, annee_fin)
+        return annees_paliers(r, fin)
 
     return []
-
 
 def statut_initial(annee: int, e: Echeance, annee_courante: int) -> str:
     """

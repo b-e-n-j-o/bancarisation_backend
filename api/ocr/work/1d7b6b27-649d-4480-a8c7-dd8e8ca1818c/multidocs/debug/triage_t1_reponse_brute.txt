@@ -1,0 +1,19 @@
+```json
+{
+  "segments": [
+    {"doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2", "role": "plan_gestion", "locators": [], "description": "Plan de gestion des espaces de compensation et des zones évitées pour le projet de lycée/collège du Barp (2022-2027). Contient contexte, pré-caractérisation des zones, mesures de compensation (Fauvette pitchou, Fadet des laîches, Chiroptères, etc.), sécurisation foncière et plan de gestion/restoration/entretien.", "confiance": 0.98},
+    {"doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2", "role": "diagnostic_ecologique", "locators": ["⟦p13⟧", "⟦p14⟧"], "description": "Pré-caractérisation des zones évitées et des espaces de compensation : description des habitats (chênaie acidiphile, landes humides, boisement mixte) et cartographies associées.", "confiance": 0.95},
+    {"doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2", "role": "carto_ug", "locators": ["⟦p39⟧"], "description": "Localisation des unités de gestion (UG) définies pour le plan de gestion des espaces de compensation.", "confiance": 0.9},
+    {"doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2", "role": "fiches_actions", "locators": ["⟦p36⟧", "⟦p37⟧", "⟦p38⟧", "⟦p40⟧"], "description": "Fiches-actions détaillées (TU 1, TU 2, etc.) avec objectifs, opérations, unités de gestion et modalités d'intervention pour les mesures de compensation (Fauvette pitchou, Fadet des laîches, Chiroptères, etc.).", "confiance": 0.97}
+  ],
+  "parametres": [
+    {"cle": "annee_t0", "valeur": "2022", "ancre": "⟦p1⟧", "confiance": 0.99},
+    {"cle": "origine_t0", "valeur": "Plan de gestion 2022-2027 (mentionné en page 1)", "ancre": "⟦p1⟧", "confiance": 0.95},
+    {"cle": "duree_ans", "valeur": "30", "ancre": "⟦p36⟧ (objectifs à long terme)", "confiance": 0.9},
+    {"cle": "maitre_d_ouvrage", "valeur": "Région Nouvelle-Aquitaine (porteuse du projet de lycée/collège)", "ancre": "⟦p5⟧", "confiance": 0.98},
+    {"cle": "bureau_d_etudes", "valeur": "SIMEHTIS et FAGE (mandatés pour le plan de gestion)", "ancre": "⟦p11⟧", "confiance": 0.99}
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```

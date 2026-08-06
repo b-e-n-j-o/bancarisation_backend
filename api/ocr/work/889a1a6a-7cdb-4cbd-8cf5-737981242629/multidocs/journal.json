@@ -1,0 +1,49 @@
+{
+  "projet_id": "889a1a6a-7cdb-4cbd-8cf5-737981242629",
+  "etapes": [
+    {
+      "n": 1,
+      "nom": "Normalisation",
+      "script": "etape1 + utils/pdf → OCR Mistral",
+      "appels_llm": 0,
+      "appels_ocr": 1,
+      "detail_appels": "1 API",
+      "resultat": "1 doc(s), 102 bloc(s)",
+      "ok": true
+    },
+    {
+      "n": 2,
+      "nom": "Triage",
+      "script": "etape2_triage.cartographier",
+      "appels_llm": 1,
+      "appels_ocr": 0,
+      "detail_appels": "1 chat (retries inclus)",
+      "resultat": "3 segment(s) · rôles : carto_ug, diagnostic_ecologique, plan_gestion · 4 param. · 0 signal(aux)",
+      "ok": true
+    },
+    {
+      "n": 3,
+      "nom": "Plan",
+      "script": "etape3_planification (déterministe)",
+      "appels_llm": 0,
+      "appels_ocr": 0,
+      "detail_appels": "0 (pas de LLM)",
+      "resultat": "1 job(s) · plan_gestion",
+      "ok": true
+    },
+    {
+      "n": 4,
+      "nom": "Extraction",
+      "script": "etape4 → extracteurs (plan_gestion…)",
+      "appels_llm": 13,
+      "appels_ocr": 0,
+      "detail_appels": "13 chat",
+      "resultat": "56 claim(s) · action=12, echeance_regle=44",
+      "ok": true
+    }
+  ],
+  "ocr_appels": 1,
+  "ocr_pages": 102,
+  "ocr_cache_hits": 0,
+  "llm_appels": 14
+}

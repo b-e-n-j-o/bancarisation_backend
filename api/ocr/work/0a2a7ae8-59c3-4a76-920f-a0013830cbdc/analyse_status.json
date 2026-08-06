@@ -1,0 +1,24 @@
+{
+  "projet_id": "0a2a7ae8-59c3-4a76-920f-a0013830cbdc",
+  "status": "error",
+  "etape": "erreur",
+  "fichier": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+  "fichiers": [
+    {
+      "nom": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "statut": "done",
+      "pages": 102,
+      "format": "pdf",
+      "blocs": 102
+    }
+  ],
+  "detail": "Cartographie des rôles documentaires…",
+  "message_user": "Triage : aucun segment cartographié. Relancer l'analyse (le modèle a renvoyé une carte vide ou un schéma incorrect).",
+  "progression": 30,
+  "pages_totales": 102,
+  "erreur": "Triage : aucun segment cartographié. Relancer l'analyse (le modèle a renvoyé une carte vide ou un schéma incorrect).",
+  "recap": null,
+  "started_at": "2026-08-04T16:22:31.100886+00:00",
+  "updated_at": "2026-08-04T16:23:06.340682+00:00"
+}

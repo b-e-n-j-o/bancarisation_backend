@@ -17,6 +17,7 @@ from api.documents.route import router as documents_router
 from api.ocr.router import router as ocr_router
 from api.ocr.arrete.router import router as ocr_arrete_router
 from api.ocr.match_prescriptions.router import router as match_prescriptions_router
+from api.ocr.multidocs.router import router as multidocs_router
 from api.geomce.router import router as geomce_router
 from api.geomce.router import router_exports as geomce_exports_router
 from api.parc.router import router as parc_router
@@ -25,7 +26,9 @@ from api.planning.router import router as planning_router
 from api.prestataires.router import router as prestataires_router
 from api.projets.geometries.router import router as geometries_router
 from api.projets.router import router as projets_router
+from api.cadastre.router import router as cadastre_router
 from api.satellite.router import router as satellite_router
+from api.annotations.router import router as annotations_router
 
 app = FastAPI(
     title="Bancarisation API",
@@ -54,12 +57,14 @@ def healthcheck() -> dict[str, bool]:
 
 app.include_router(projets_router, prefix="/api", tags=["projets"])
 app.include_router(geometries_router, prefix="/api", tags=["geometries"])
+app.include_router(cadastre_router, prefix="/api", tags=["cadastre"])
 app.include_router(budget_router, prefix="/api", tags=["budget"])
 app.include_router(bilan_suivi_router, prefix="/api", tags=["bilan-suivi"])
 app.include_router(prestataires_router, prefix="/api", tags=["prestataires"])
 app.include_router(documents_router, prefix="/api", tags=["documents"])
 app.include_router(planning_router, prefix="/api", tags=["planning"])
 app.include_router(ocr_router, prefix="/api", tags=["ocr"])
+app.include_router(multidocs_router, prefix="/api", tags=["ocr-multidocs"])
 app.include_router(ocr_arrete_router, prefix="/api", tags=["ocr-arrete"])
 app.include_router(match_prescriptions_router, prefix="/api", tags=["match-prescriptions"])
 app.include_router(parc_router, prefix="/api", tags=["parc"])
@@ -68,3 +73,4 @@ app.include_router(dialogue_router, prefix="/api", tags=["dialogue"])
 app.include_router(geomce_router, prefix="/api", tags=["geomce"])
 app.include_router(geomce_exports_router, prefix="/api", tags=["geomce"])
 app.include_router(satellite_router, prefix="/api", tags=["satellite"])
+app.include_router(annotations_router, prefix="/api", tags=["annotations"])

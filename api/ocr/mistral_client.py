@@ -29,6 +29,7 @@ MAX_TENTATIVES = 3
 
 PRIX = {
     "mistral-medium-3-5": (1.50, 7.50),
+    "mistral-small-2603": (0.15, 0.60),
     "mistral-small-latest": (0.15, 0.60),
     "mistral-large-latest": (0.50, 1.50),
 }
@@ -129,52 +130,137 @@ def dump_debug(
 
 # --- Compteur ---------------------------------------------------------------
 
+def prix_modele(model: str) -> tuple[float, float]:
+    """Retourne (prix_in, prix_out) USD / M tokens pour un modèle Mistral."""
+    return PRIX.get(model, PRIX_DEFAUT)
+
+
 class Compteur:
-    def __init__(self, model: str, prix_in: float, prix_out: float):
+    """Compte tokens + coût, par opération et par modèle (tarifs PRIX)."""
+
+    def __init__(
+        self,
+        model: str = DEFAULT_MODEL,
+        prix_in: float | None = None,
+        prix_out: float | None = None,
+    ):
         self.model = model
-        self.prix_in = prix_in
-        self.prix_out = prix_out
+        if prix_in is None or prix_out is None:
+            pi, po = prix_modele(model)
+            self.prix_in = pi if prix_in is None else prix_in
+            self.prix_out = po if prix_out is None else prix_out
+        else:
+            self.prix_in = prix_in
+            self.prix_out = prix_out
         self.appels = 0
         self.tok_in = 0
         self.tok_out = 0
         self.car_reflexion = 0
         self.car_reponse = 0
         self.usages_bruts: list[dict] = []
+        # Historique détaillé : une entrée par appel API réussi
+        self.operations: list[dict] = []
 
-    def ajouter(self, usage: dict, reflexion: str, reponse: str) -> None:
+    def ajouter(
+        self,
+        usage: dict,
+        reflexion: str,
+        reponse: str,
+        *,
+        model: str | None = None,
+        operation: str | None = None,
+    ) -> float:
+        """Enregistre un appel. Retourne le coût USD de CET appel."""
+        modele = model or self.model
+        op = operation or modele
+        pi, po = prix_modele(modele)
+        tin = int(usage.get("prompt_tokens", 0) or 0)
+        tout = int(usage.get("completion_tokens", 0) or 0)
+        cout = tin / 1e6 * pi + tout / 1e6 * po
+
         self.appels += 1
-        self.usages_bruts.append(usage)
-        self.tok_in += usage.get("prompt_tokens", 0)
-        self.tok_out += usage.get("completion_tokens", 0)
+        self.usages_bruts.append({**usage, "model": modele, "operation": op})
+        self.tok_in += tin
+        self.tok_out += tout
         self.car_reflexion += len(reflexion)
         self.car_reponse += len(reponse)
+        self.operations.append({
+            "operation": op,
+            "model": modele,
+            "tok_in": tin,
+            "tok_out": tout,
+            "cout_usd": round(cout, 6),
+            "car_reflexion": len(reflexion),
+            "car_reponse": len(reponse),
+        })
+        return cout
 
     @property
     def cout(self) -> float:
-        return self.tok_in / 1e6 * self.prix_in + self.tok_out / 1e6 * self.prix_out
+        """Coût total au tarif réel de chaque modèle (pas le tarif du constructeur)."""
+        return sum(op["cout_usd"] for op in self.operations)
 
     def tok_reflexion_estime(self) -> int:
         total = self.car_reflexion + self.car_reponse
         return round(self.tok_out * self.car_reflexion / total) if total else 0
 
     def rapport(self) -> str:
+        lignes = [
+            "",
+            "─" * 68,
+            "  COÛT PIPELINE MISTRAL",
+            "─" * 68,
+        ]
+
+        # Détail par opération (ordre chronologique)
+        if self.operations:
+            lignes.append("  Par opération")
+            for i, op in enumerate(self.operations, 1):
+                lignes.append(
+                    f"    {i:>2}. {op['operation']:<22} {op['model']:<22} "
+                    f"in={op['tok_in']:>7,} out={op['tok_out']:>7,}  "
+                    f"${op['cout_usd']:.4f}"
+                )
+            lignes.append("")
+
+        # Agrégat par modèle
+        par_modele: dict[str, dict] = {}
+        for op in self.operations:
+            m = op["model"]
+            slot = par_modele.setdefault(
+                m, {"appels": 0, "tok_in": 0, "tok_out": 0, "cout": 0.0}
+            )
+            slot["appels"] += 1
+            slot["tok_in"] += op["tok_in"]
+            slot["tok_out"] += op["tok_out"]
+            slot["cout"] += op["cout_usd"]
+
+        if par_modele:
+            lignes.append("  Par modèle")
+            for m, s in sorted(par_modele.items()):
+                pi, po = prix_modele(m)
+                lignes.append(
+                    f"    {m:<28} {s['appels']:>3} appel(s)  "
+                    f"in={s['tok_in']:>8,} (${s['tok_in']/1e6*pi:.4f})  "
+                    f"out={s['tok_out']:>8,} (${s['tok_out']/1e6*po:.4f})  "
+                    f"→ ${s['cout']:.4f}"
+                )
+            lignes.append("")
+
         refl = self.tok_reflexion_estime()
         part = (refl / self.tok_out * 100) if self.tok_out else 0
-        return "\n".join([
-            "",
-            "─" * 62,
-            f"  COÛT — {self.model}",
-            "─" * 62,
+        total = self.cout
+        lignes.extend([
             f"  Appels API                 {self.appels}",
-            f"  Tokens input               {self.tok_in:>10,}   ${self.tok_in/1e6*self.prix_in:.4f}",
-            f"  Tokens output (total)      {self.tok_out:>10,}   ${self.tok_out/1e6*self.prix_out:.4f}",
-            f"    ├─ réflexion (estimé)    {refl:>10,}   ${refl/1e6*self.prix_out:.4f}  ({part:.0f}% de l'output)",
+            f"  Tokens input               {self.tok_in:>10,}",
+            f"  Tokens output (total)      {self.tok_out:>10,}",
+            f"    ├─ réflexion (estimé)    {refl:>10,}  ({part:.0f}% de l'output)",
             f"    └─ réponse JSON          {self.tok_out - refl:>10,}",
-            "─" * 62,
-            f"  TOTAL                                    ${self.cout:.4f}  (~{self.cout*0.92:.4f} €)",
-            "─" * 62,
+            "─" * 68,
+            f"  TOTAL                                    ${total:.4f}  (~{total * 0.92:.4f} €)",
+            "─" * 68,
         ])
-
+        return "\n".join(lignes)
 
 # --- Streaming --------------------------------------------------------------
 
@@ -335,12 +421,39 @@ def extraire_structure(
                     },
                 }
 
-            reflexion, reponse, usage, finish = appel_streame(
-                client, api_key, payload, etiquettes=etiquettes,
-            )
+            try:
+                reflexion, reponse, usage, finish = appel_streame(
+                    client, api_key, payload, etiquettes=etiquettes,
+                )
+            except RuntimeError as err:
+                msg = str(err)
+                rate_limited = any(
+                    s in msg.lower()
+                    for s in ("429", "rate_limit", "rate limit", "capacity exceeded", "tier_capacity")
+                )
+                if rate_limited and tentative < MAX_TENTATIVES:
+                    wait_s = min(60, 5 * (2 ** (tentative - 1)))  # 5s, 10s, 20s…
+                    print(
+                        f"   ⏳ [{etiquettes}] rate limit / capacité — "
+                        f"pause {wait_s}s puis retry {tentative + 1}/{MAX_TENTATIVES}",
+                        flush=True,
+                    )
+                    log.warning("%s rate limit, sleep %ss", etiquettes, wait_s)
+                    time.sleep(wait_s)
+                    continue
+                raise
 
             if compteur:
-                compteur.ajouter(usage, reflexion, reponse)
+                cout_appel = compteur.ajouter(
+                    usage, reflexion, reponse, model=model, operation=etiquettes,
+                )
+                print(
+                    f"   💵 [{etiquettes}] {model} · "
+                    f"in={usage.get('prompt_tokens', 0):,} "
+                    f"out={usage.get('completion_tokens', 0):,} "
+                    f"· ${cout_appel:.4f}",
+                    flush=True,
+                )
 
             print(
                 f"   in={usage.get('prompt_tokens', 0):,} "
@@ -359,6 +472,7 @@ def extraire_structure(
                 resultat = result_type.model_validate_json(extraire_json(reponse))
                 dump_debug(debug_dir, debug_prefixe, tentative, reflexion, reponse, None)
                 log.info("%s validation OK", etiquettes)
+                print(f"   ✅ [{etiquettes}] validation OK (tentative {tentative})", flush=True)
                 return resultat
             except (ValidationError, json.JSONDecodeError) as err:
                 derniere_erreur = err
@@ -381,10 +495,9 @@ def extraire_structure(
                         )},
                     ]
 
-    raise SystemExit(
-        f"\n❌ [{etiquettes}] invalide après {MAX_TENTATIVES} tentatives.\n"
-        f"   Dernière erreur : {derniere_erreur}\n"
-        f"   Dumps : {debug_dir}/"
+    raise RuntimeError(
+        f"[{etiquettes}] invalide après {MAX_TENTATIVES} tentatives. "
+        f"Dernière erreur : {derniere_erreur}. Dumps : {debug_dir}/"
     )
 
 

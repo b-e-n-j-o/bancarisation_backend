@@ -1,0 +1,100 @@
+{
+  "projet_id": "889a1a6a-7cdb-4cbd-8cf5-737981242629",
+  "status": "done",
+  "etape": "termine",
+  "fichier": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+  "fichiers": [
+    {
+      "nom": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "statut": "done",
+      "pages": 102,
+      "format": "pdf",
+      "blocs": 102
+    }
+  ],
+  "detail": "Job 1/1 · plan_gestion",
+  "message_user": "Analyse terminée",
+  "progression": 100,
+  "pages_totales": 102,
+  "erreur": null,
+  "recap": {
+    "pipeline": "multidocs",
+    "docs": 1,
+    "blocs": 102,
+    "segments": 3,
+    "jobs": 1,
+    "claims": 56,
+    "par_kind": {
+      "action": 12,
+      "echeance_regle": 44
+    },
+    "zones_sig": 6,
+    "laisses": [],
+    "non_couvert": [
+      "plan-de-gestion-especes-protegees-lyceec-eff7d2 (pdf) / carto_ug : aucun extracteur — Localisation des unités de gestion (carte Fig. 17).",
+      "plan-de-gestion-especes-protegees-lyceec-eff7d2 (pdf) / diagnostic_ecologique : aucun extracteur — Pré-caractérisation des zones évitées et de compensation : habitats naturels, état initial des parcelles (Fauvette pitchou, Fadet des laîches, chiroptères, etc.)."
+    ],
+    "avertissements": [],
+    "sortie": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/work/889a1a6a-7cdb-4cbd-8cf5-737981242629/multidocs",
+    "journal": {
+      "projet_id": "889a1a6a-7cdb-4cbd-8cf5-737981242629",
+      "etapes": [
+        {
+          "n": 1,
+          "nom": "Normalisation",
+          "script": "etape1 + utils/pdf → OCR Mistral",
+          "appels_llm": 0,
+          "appels_ocr": 1,
+          "detail_appels": "1 API",
+          "resultat": "1 doc(s), 102 bloc(s)",
+          "ok": true
+        },
+        {
+          "n": 2,
+          "nom": "Triage",
+          "script": "etape2_triage.cartographier",
+          "appels_llm": 1,
+          "appels_ocr": 0,
+          "detail_appels": "1 chat (retries inclus)",
+          "resultat": "3 segment(s) · rôles : carto_ug, diagnostic_ecologique, plan_gestion · 4 param. · 0 signal(aux)",
+          "ok": true
+        },
+        {
+          "n": 3,
+          "nom": "Plan",
+          "script": "etape3_planification (déterministe)",
+          "appels_llm": 0,
+          "appels_ocr": 0,
+          "detail_appels": "0 (pas de LLM)",
+          "resultat": "1 job(s) · plan_gestion",
+          "ok": true
+        },
+        {
+          "n": 4,
+          "nom": "Extraction",
+          "script": "etape4 → extracteurs (plan_gestion…)",
+          "appels_llm": 13,
+          "appels_ocr": 0,
+          "detail_appels": "13 chat",
+          "resultat": "56 claim(s) · action=12, echeance_regle=44",
+          "ok": true
+        }
+      ],
+      "ocr_appels": 1,
+      "ocr_pages": 102,
+      "ocr_cache_hits": 0,
+      "llm_appels": 14
+    },
+    "llm_appels": 14,
+    "ocr_appels": 1,
+    "stats": {
+      "actions": 12,
+      "echeances": 44,
+      "occurrences": 0,
+      "horizon": 0
+    }
+  },
+  "started_at": "2026-08-05T08:19:09.912781+00:00",
+  "updated_at": "2026-08-05T08:25:57.050776+00:00"
+}

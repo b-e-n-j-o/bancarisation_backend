@@ -17,12 +17,13 @@ ORGANISATION_ID_V0 = "a1000000-0000-0000-0000-000000000001"
 @dataclass
 class CreateProjetPayload:
     nom: str
-    reference_interne: str
+    reference_interne: Optional[str] = None
     commune: Optional[str] = None
     departement: Optional[str] = None
     date_decision: Optional[date] = None
     duree_annees: Optional[int] = None
     type_procedure: Optional[str] = None
+    type_dispositif: str = "obligation"
 
 
 class ProjetCrudError(Exception):
@@ -44,17 +45,24 @@ def _get_supabase_client() -> Client:
 def creer_projet(payload: CreateProjetPayload) -> UUID:
     client = _get_supabase_client()
 
-    insert_payload = {
+    insert_payload: dict[str, Any] = {
         "nom": payload.nom.strip(),
-        "reference_interne": payload.reference_interne.strip(),
-        "commune": payload.commune,
-        "departement": payload.departement,
-        "date_decision": payload.date_decision.isoformat() if payload.date_decision else None,
-        "duree_annees": payload.duree_annees,
-        "type_procedure": payload.type_procedure,
         "organisation_id": ORGANISATION_ID_V0,
         "statut": "en_instruction",
+        "type_dispositif": payload.type_dispositif or "obligation",
     }
+    if payload.reference_interne and payload.reference_interne.strip():
+        insert_payload["reference_interne"] = payload.reference_interne.strip()
+    if payload.commune:
+        insert_payload["commune"] = payload.commune
+    if payload.departement:
+        insert_payload["departement"] = payload.departement
+    if payload.date_decision:
+        insert_payload["date_decision"] = payload.date_decision.isoformat()
+    if payload.duree_annees is not None:
+        insert_payload["duree_annees"] = payload.duree_annees
+    if payload.type_procedure:
+        insert_payload["type_procedure"] = payload.type_procedure
 
     try:
         response = (
@@ -84,6 +92,7 @@ class UpdateProjetPayload:
     date_decision: Optional[date] = None
     duree_annees: Optional[int] = None
     type_procedure: Optional[str] = None
+    type_dispositif: Optional[str] = None
     partager_budget_dreal: Optional[bool] = None
 
 
@@ -101,10 +110,10 @@ def lire_projet(projet_id: UUID) -> dict[str, Any]:
     except Exception as exc:  # pragma: no cover
         raise ProjetCrudError(f"Erreur Supabase: {exc}") from exc
 
-    row = response.data
-    if not row:
+    # maybe_single() peut renvoyer None (HTTP 406/404 PostgREST) si aucune ligne
+    if response is None or not response.data:
         raise ProjetCrudError("Projet introuvable.")
-    return row
+    return response.data
 
 
 def lister_projets(limit: int = 100, offset: int = 0) -> list[dict[str, Any]]:
@@ -160,6 +169,8 @@ def mettre_a_jour_projet(projet_id: UUID, payload: UpdateProjetPayload) -> dict[
         updates["duree_annees"] = payload.duree_annees
     if payload.type_procedure is not None:
         updates["type_procedure"] = payload.type_procedure
+    if payload.type_dispositif is not None:
+        updates["type_dispositif"] = payload.type_dispositif
     if payload.partager_budget_dreal is not None:
         updates["partager_budget_dreal"] = bool(payload.partager_budget_dreal)
 

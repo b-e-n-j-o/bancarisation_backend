@@ -1,0 +1,24 @@
+{
+  "projet_id": "506b9925-ac4b-4ea6-888a-82538fe43433",
+  "status": "running",
+  "etape": "extraction",
+  "fichier": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+  "fichiers": [
+    {
+      "nom": "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf",
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "statut": "running",
+      "pages": 102,
+      "format": "pdf",
+      "blocs": 102
+    }
+  ],
+  "detail": "Job 2/2 · echeances_plan_gestion",
+  "message_user": "Analyse des pages en cours (102 pages)…",
+  "progression": 72,
+  "pages_totales": 102,
+  "erreur": null,
+  "recap": null,
+  "started_at": "2026-08-04T14:44:07.252928+00:00",
+  "updated_at": "2026-08-04T14:48:58.078840+00:00"
+}

@@ -32,6 +32,14 @@ unités de gestion avec un régime différent, produis une échéance par régim
 régime est identique, garde une seule échéance avec plusieurs entrées dans `communes` \
 et `ug_ids`.
 
+2bis. ZONES SIG. Une liste de zones issues du fichier SIG du projet peut t'être \
+fournie en contexte. Quand une échéance porte manifestement sur l'une de ces zones, \
+renseigne `zone_source_proposee` avec son nom exact tel qu'il figure dans la liste. \
+N'invente jamais de correspondance : si le rapprochement est incertain, laisse \
+`zone_source_proposee` à null et ajoute `"zone_source_proposee"` dans \
+`champs_a_confirmer`. Les zones marquées « sans gestion active » ne peuvent porter \
+aucune échéance.
+
 3. RÉCURRENCE. Normalise le rythme dans l'objet `recurrence` :
    - action unique → type "ponctuel"
    - "tous les N ans" → type "periodique", intervalle_ans = N
@@ -43,7 +51,11 @@ et `ug_ids`.
      ordonnée de {{intervalle_ans, nombre_occurrences}}. Chaque palier enchaîne depuis \
      la DERNIÈRE occurrence émise (pas le début du segment). Exemple SE1 validé : \
      ancrage 2019, paliers [{{1,4}},{{3,5}}] → 2019, 2020…2023, 2026, 2029, 2032, 2035, 2038.
-
+   - Pour une mission à phases (annuel 5 ans, puis tous les 5 ans jusqu'en 2042, \
+     puis tous les 10 ans) : PRÉFÉRER UN seul objet en paliers, plutôt que trois \
+     périodiques qui se chevauchent sur le calendrier.
+   - BORNE DE FIN : "jusqu'en 2042" → `annee_fin` = 2042. "5 premières années" → \
+     `duree_ans` = 5. Sans borne, le semoir déroule jusqu'à l'horizon du dossier.
 4. ANCRAGE. Renseigne `ancrage_annee` si l'année de départ est déterminable, y compris \
 depuis les FRISES temporelles (tableaux à deux lignes années/actions). Si l'ancrage \
 vient de la frise et non du texte rédigé, ajoute "ancrage_annee" à `champs_a_confirmer` \
@@ -96,6 +108,7 @@ SCHÉMA D'UNE ÉCHÉANCE
   "objectif_long_terme": "string|null",
   "objectif_operationnel": "string|null",
   "ug_ids": ["ug1"],
+  "zone_source_proposee": "string|null",
   "parcelles": ["string"],
   "communes": ["string"],
   "recurrence": {{
@@ -104,6 +117,7 @@ SCHÉMA D'UNE ÉCHÉANCE
     "occurrences_par_an": "int|null",
     "duree_ans": "int|null",
     "ancrage_annee": "int|null",
+    "annee_fin": "int|null",
     "regle_source": "string|null",
     "paliers": [{{"intervalle_ans": "number", "nombre_occurrences": "int"}}]
   }},

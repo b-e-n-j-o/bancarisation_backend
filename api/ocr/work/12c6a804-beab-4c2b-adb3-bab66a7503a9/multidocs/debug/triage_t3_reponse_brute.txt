@@ -1,0 +1,63 @@
+{
+  "documents": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "segments": [
+        {
+          "role": "plan_gestion",
+          "locators": [],
+          "confiance": 0.95
+        },
+        {
+          "role": "diagnostic_ecologique",
+          "locators": ["p13", "p14", "p15", "p16"],
+          "confiance": 0.9
+        },
+        {
+          "role": "carto_ug",
+          "locators": [
+            "p9", "p10", "p12", "p15", "p16",
+            "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25",
+            "p27", "p28", "p29", "p30", "p32", "p33", "p34", "p39"
+          ],
+          "confiance": 0.85
+        }
+      ]
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "p1",
+      "confiance": 0.8
+    },
+    {
+      "cle": "maitre_d'ouvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "p5",
+      "confiance": 0.95
+    },
+    {
+      "cle": "bureau_etudes",
+      "valeur": "SIMEHTIS, FAGE",
+      "ancre": "p2",
+      "confiance": 0.95
+    }
+  ],
+  "signaux": [
+    {
+      "type": "manque",
+      "description": "Durée d'engagement non explicite dans le document (seule la période du plan 2022-2027 est mentionnée, durée classique de 30 ans non confirmée)."
+    },
+    {
+      "type": "manque",
+      "description": "Origine du déclenchement (t0) non identifiée : aucun arrêté préfectoral, date de début de travaux ou état initial référencé dans les aperçus."
+    },
+    {
+      "type": "manque",
+      "description": "Absence de calendrier prévisionnel (actions × années) et de budget dans les aperçus visibles, alors que le plan de gestion en contient généralement en annexe."
+    }
+  ],
+  "documents_non_classes": []
+}

@@ -1,0 +1,52 @@
+Je dois corriger les erreurs de validation du JSON selon le schéma attendu.
+
+Erreurs identifiées :
+1. Dans `parametres`, chaque élément doit avoir un champ `cle` (obligatoire) qui manque
+2. La valeur de `valeur` doit être une string, pas un integer (2022) ou une liste
+3. Dans `signaux`, chaque élément doit être un objet, pas une string
+
+Analyse du schéma attendu (d'après les erreurs) :
+- `parametres` : tableau d'objets avec champs `cle`, `valeur`, `ancre`, `confiance`
+- `signaux` : tableau d'objets (pas de détails sur les champs, mais doit être des objets)
+
+Corrections nécessaires :
+1. Pour chaque paramètre, ajouter le champ `cle` qui semble être le nom du paramètre
+2. Convertir toutes les valeurs en string :
+   - 2022 → "2022"
+   - ["SIMEHTIS", "FAGE"] → "SIMEHTIS, FAGE" (ou autre format string)
+3. Pour les signaux, transformer les strings en objets. Comme le schéma n'est pas précisé, je vais supposer qu'un signal a au moins un champ `description` ou similaire. D'après le contexte, je vais utiliser un format simple avec un champ `message`.
+
+Structure corrigée :
+```json
+{
+  "documents": [...],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "p1",
+      "confiance": 0.8
+    },
+    {
+      "cle": "maitre_d'ouvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "p5",
+      "confiance": 0.95
+    },
+    {
+      "cle": "bureau_etudes",
+      "valeur": "SIMEHTIS, FAGE",
+      "ancre": "p2",
+      "confiance": 0.95
+    }
+  ],
+  "signaux": [
+    {"message": "Durée d'engagement non explicite..."},
+    {"message": "Origine du déclenchement..."},
+    {"message": "Absence de calendrier prévisionnel..."}
+  ],
+  "documents_non_classes": []
+}
+```
+
+Je vais maintenant générer le JSON complet corrigé en respectant toutes ces contraintes.

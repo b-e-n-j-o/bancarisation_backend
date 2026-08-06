@@ -1,0 +1,862 @@
+Je dois cartographier ce dossier de compensation écologique. Je vois un seul fichier : "plan-de-gestion-especes-protegees-lyceec-eff7d2" qui est un PDF de 102 blocs.
+
+Commençons par analyser la structure du document :
+
+Le titre est "PLAN DE GESTION DES ESPACES DE COMPENSATION ET DES ZONES EVITEES - 2022 - 2027". C'est clairement un plan de gestion.
+
+Le document contient :
+- Une table des matières
+- Un contexte de l'étude
+- Une animation foncière
+- Une pré-caractérisation des zones évitées et des espaces de compensation
+- Des mesures de compensation pour différentes espèces (Fauvette pitchou, Fadet des laîches, Chiroptères, etc.)
+- Une sécurisation foncière
+- Un plan de gestion, de restauration et d'entretien
+
+En regardant les sections :
+- p1 : Titre du plan de gestion
+- p5-p40 : Contenu principal avec des sections sur le contexte, les mesures de compensation, le plan de gestion
+
+Le document semble être un plan de gestion complet. Je vois des sections qui correspondent à :
+- diagnostic_ecologique (pré-caractérisation des zones)
+- carto_ug (cartographie des unités de gestion)
+- plan_gestion (le plan lui-même)
+
+Mais selon les règles, un même fichier peut porter PLUSIEURS rôles sur des plages différentes.
+
+Analysons plus en détail :
+
+1. **plan_gestion** : Le document entier semble être un plan de gestion. Les sections VI. PLAN DE GESTION, DE RESTAURATION ET D'ENTRETIEN (p36) et suivantes confirment cela. La table des matières (p2) montre que c'est un document complet.
+
+2. **diagnostic_ecologique** : La section III. PRE-CARACTERISATION DES ZONES EVITEES ET DES ESPACES DE COMPENSATION (p13-p34) semble être un diagnostic écologique avec description des habitats.
+
+3. **carto_ug** : Les figures comme Fig. 17. Localisation des unités de gestion (p39) et les tables de parcelles cadastrales (p18-p21, p27-p28, p32) pourraient correspondre à carto_ug.
+
+4. **glossaire_codes** : Je ne vois pas explicitement de glossaire, mais il pourrait y avoir des codes mesure.
+
+5. **calendrier_previsionnel** : Pas évident dans ce qui est montré.
+
+Cependant, le document semble principalement être un **plan_gestion**. Les autres éléments (diagnostic, carto) pourraient être des sous-parties de ce plan.
+
+Mais la règle 1 dit : "Un même fichier peut porter PLUSIEURS rôles sur des plages différentes."
+
+Donc je dois identifier les différentes sections avec leurs rôles.
+
+Analysons les blocs :
+
+- p1-p4 : Introduction, tables des matières et figures - pas de rôle spécifique
+- p5-p8 : Contexte de l'étude - pourrait faire partie de plan_gestion ou diagnostic_ecologique
+- p9-p10 : Synthèse des espaces évités et de compensation - diagnostic_ecologique?
+- p11-p12 : Animation foncière - pourrait être autre ou partie de plan_gestion
+- p13-p16 : Pré-caractérisation des zones - diagnostic_ecologique
+- p17-p25 : Mesure de compensation C-1 - Fauvette pitchou - fiches_actions ou plan_gestion
+- p26-p30 : Mesure de compensation C-1 - Fadet des laîches - fiches_actions ou plan_gestion
+- p31-p34 : Mesure de compensation C-1 - Chiroptères - fiches_actions ou plan_gestion
+- p35 : Sécurisation foncière - autre ou plan_gestion
+- p36-p40 : Plan de gestion proprement dit - plan_gestion
+
+La section VI (p36) est explicitement "PLAN DE GESTION, DE RESTAURATION ET D'ENTRETIEN", donc c'est clairement plan_gestion.
+
+Les sections III (p13-p16) semblent être un diagnostic écologique.
+
+Les sections sur les mesures de compensation (p17-p34) pourraient être des fiches_actions.
+
+La section sur les unités de gestion (p37-p39) pourrait être carto_ug.
+
+Mais je dois être prudent. Le document semble être un plan de gestion complet qui intègre :
+- Un diagnostic (section III)
+- Des fiches actions (sections 3.2, 3.3, 3.4)
+- Un plan de gestion (section VI)
+- Une cartographie (figures)
+
+Donc je peux découper le document en plusieurs segments avec différents rôles :
+
+1. **diagnostic_ecologique** : p9-p16 (pré-caractérisation et synthèse des espaces)
+2. **fiches_actions** : p17-p34 (mesures de compensation détaillées)
+3. **carto_ug** : p18-p21, p27-p28, p32, p39 (tables de parcelles et localisation des unités)
+4. **plan_gestion** : p36-p40 (et probablement au-delà, mais on ne voit que jusqu'à p40)
+
+Attendez, mais p36 est le début de la section VI qui est le plan de gestion. Donc plan_gestion pourrait être p36 et au-delà.
+
+Mais le document a 102 blocs, et on n'en voit que 40. Je dois me baser sur ce qui est visible.
+
+Reprenons :
+
+- p1 : Titre - pas de rôle
+- p2-p4 : Tables - pas de rôle
+- p5-p8 : Contexte - pourrait être plan_gestion (contexte fait partie du plan)
+- p9-p16 : Pré-caractérisation et synthèse - diagnostic_ecologique
+- p17-p34 : Mesures de compensation - fiches_actions
+- p35 : Sécurisation foncière - autre?
+- p36-p40 : Plan de gestion - plan_gestion
+
+Mais la section VI (p36) est explicitement "PLAN DE GESTION, DE RESTAURATION ET D'ENTRETIEN", donc c'est le cœur du plan_gestion.
+
+Les mesures de compensation (p17-p34) pourraient être des fiches_actions, mais elles pourraient aussi faire partie du plan_gestion.
+
+La règle dit : "fiches_actions : Fiches-actions isolées (hors plan de gestion complet) décrivant une opération, sa fréquence, ses UG."
+
+Dans ce cas, les mesures de compensation semblent faire partie du plan de gestion complet, donc peut-être que tout est plan_gestion.
+
+Mais la section III (pré-caractérisation) semble être un diagnostic séparé.
+
+Je pense que la meilleure approche est :
+
+1. **diagnostic_ecologique** : p9-p16 (section III et tabl. 1, fig. 2-7)
+2. **carto_ug** : p18-p21, p27-p28, p32, p39 (tables de parcelles et fig. 17)
+3. **fiches_actions** : p17-p17 (intro), p18-p25 (Fauvette pitchou), p26-p30 (Fadet des laîches), p31-p34 (Chiroptères)
+   Mais p18-p25 contiennent aussi des tables qui pourraient être carto_ug
+4. **plan_gestion** : p36-p40 (section VI)
+
+Attendez, p37-p39 semblent être "6.2. Mesures de gestion et unités de gestion" qui fait partie du plan de gestion.
+
+Donc peut-être :
+- plan_gestion : p36-p40 (et probablement au-delà)
+- diagnostic_ecologique : p9-p16
+- carto_ug : p18-p21, p27-p28, p32, p39
+- fiches_actions : p17, p26, p31 (les introductions des mesures)
+
+Mais c'est compliqué. Peut-être que tout le document est un plan_gestion, et les autres éléments sont des sous-parties.
+
+La règle 3 dit : "Si un segment couvre tout le document, laisse locators vide plutôt que de tous les lister."
+
+Mais ici, le document semble être principalement un plan de gestion, avec des sections qui pourraient avoir d'autres rôles.
+
+Je vais essayer une approche différente. Je vais identifier les rôles principaux :
+
+1. **plan_gestion** : Le document entier semble être un plan de gestion. Le titre est "PLAN DE GESTION DES ESPACES DE COMPENSATION ET DES ZONES EVITEES". La section VI est explicitement le plan de gestion. Donc tout le document pourrait être plan_gestion.
+
+Mais la règle 1 permet d'avoir plusieurs rôles. Et les sections comme la pré-caractérisation pourraient être diagnostic_ecologique.
+
+Je pense que je dois être plus précis. Regardons les aperçus :
+
+- p9 : "1.2.3. Rappel des impacts... Tabl. 1. Synthèse des espaces évités et de compensation" → diagnostic_ecologique
+- p10 : Fig. 2. Localisation des espaces d'évitement et de compensation → diagnostic_ecologique ou carto_ug
+- p13-p16 : Pré-caractérisation des zones → diagnostic_ecologique
+- p17-p25 : Mesure de compensation C-1 - Fauvette pitchou → fiches_actions
+- p26-p30 : Mesure de compensation C-1 - Fadet des laîches → fiches_actions
+- p31-p34 : Mesure de compensation C-1 - Chiroptères → fiches_actions
+- p36-p40 : Plan de gestion → plan_gestion
+- p37-p39 : Mesures de gestion et unités de gestion → plan_gestion
+- p39 : Fig. 17. Localisation des unités de gestion → carto_ug
+
+Donc je peux avoir :
+
+1. diagnostic_ecologique : p9-p16
+2. fiches_actions : p17-p34
+3. carto_ug : p10, p18-p21, p27-p28, p32, p39
+4. plan_gestion : p36-p40
+
+Mais p10 est une figure de localisation, p18-p21 sont des tables de parcelles pour Fauvette pitchou, p27-p28 pour Fadet des laîches, p32 pour Chiroptères, p39 pour unités de gestion.
+
+Donc carto_ug pourrait être : p10, p18-p21, p27-p28, p32, p39
+
+fiches_actions : p17-p17 (intro), p22-p25 (figures pour Fauvette), p26-p26 (intro), p29-p30 (figures pour Fadet), p31-p31 (intro), p33-p34 (figures pour Chiroptères)
+
+Mais c'est très fragmenté. Peut-être que fiches_actions couvre p17-p34, et carto_ug est inclus dans fiches_actions?
+
+Non, la règle dit de découper par rôle. Si une section a plusieurs rôles, il faut créer plusieurs segments.
+
+Par exemple, p18-p21 : c'est à la fois fiches_actions (description de la mesure) et carto_ug (tables de parcelles). Donc je pourrais avoir :
+- fiches_actions : p17-p34
+- carto_ug : p18-p21, p27-p28, p32, p39
+
+Mais p10 est aussi une cartographie, donc carto_ug : p10, p18-p21, p27-p28, p32, p39
+
+Et diagnostic_ecologique : p9, p13-p16
+
+plan_gestion : p36-p40
+
+Qu'en est-il de p5-p8? C'est le contexte. Ça pourrait faire partie de plan_gestion.
+
+p11-p12 : Animation foncière. Ça pourrait être autre ou partie de plan_gestion.
+
+p35 : Sécurisation foncière. Ça pourrait être autre.
+
+Je vais essayer de structurer :
+
+**Segments :**
+
+1. diagnostic_ecologique :
+   - locators : p9, p13-p16
+   - description : "Pré-caractérisation des zones évitées et espaces de compensation, synthèse des espaces"
+
+2. carto_ug :
+   - locators : p10, p18-p21, p27-p28, p32, p39
+   - description : "Cartographie des espaces d'évitement et de compensation, tables de parcelles cadastrales, localisation des unités de gestion"
+
+3. fiches_actions :
+   - locators : p17, p22-p25, p26, p29-p30, p31, p33-p34
+   - description : "Mesures de compensation pour Fauvette pitchou, Fadet des laîches, Chiroptères"
+
+4. plan_gestion :
+   - locators : p36-p40
+   - description : "Plan de gestion, de restauration et d'entretien des zones évitées et espaces de compensation"
+
+Mais p5-p8, p11-p12, p35 ne sont pas couverts. Ils pourraient être :
+- p5-p8 : Contexte - pourrait être plan_gestion
+- p11-p12 : Animation foncière - autre
+- p35 : Sécurisation foncière - autre
+
+Je vais ajouter :
+
+5. plan_gestion :
+   - locators : p5-p8, p36-p40
+   - Mais p36-p40 est déjà dans plan_gestion. Je peux fusionner.
+
+En fait, p5-p8 est "I. CONTEXTE DE L'ETUDE" et "1.2. Présentation du projet". Ça fait partie du plan de gestion.
+
+p11-p12 est "II. ANIMATION FONCIERE". Ça pourrait être autre ou partie de plan_gestion.
+
+p35 est "IV. SECURISATION FONCIERE". Ça pourrait être autre.
+
+Je vais considérer que :
+- p1-p4 : Pas de rôle (tables)
+- p5-p8 : plan_gestion (contexte)
+- p9-p16 : diagnostic_ecologique
+- p17-p34 : fiches_actions
+- p35 : autre
+- p36-p40 : plan_gestion
+
+Mais p11-p12 (Animation foncière) est entre p9-p16 et p17-p34. Donc :
+- p5-p8 : plan_gestion
+- p9-p10 : diagnostic_ecologique
+- p11-p12 : autre
+- p13-p16 : diagnostic_ecologique
+- p17-p34 : fiches_actions
+- p35 : autre
+- p36-p40 : plan_gestion
+
+Et carto_ug :
+- p10 : Fig. 2
+- p18-p21 : tables Fauvette
+- p27-p28 : tables Fadet
+- p32 : table Chiroptères
+- p39 : Fig. 17
+
+Donc carto_ug : p10, p18-p21, p27-p28, p32, p39
+
+Maintenant, pour les paramètres :
+
+- annee_t0 : Le titre dit "2022 - 2027" et le document est daté de "Décembre 2021". Mais le plan est pour 2022-2027. L'année de départ pourrait être 2022. Ancre : p1 (titre du plan)
+- origine_t0 : Le document est un plan de gestion, donc l'origine pourrait être la signature de l'arrêté ou la réception des travaux. Mais ce n'est pas explicite dans les aperçus. Je ne peux pas deviner.
+- duree_ans : 2022-2027 = 5 ans? Mais c'est un plan de gestion, pas la durée d'engagement de compensation. La compensation est souvent 30 ans. Pas explicite.
+- maître d'ouvrage : "La Région Nouvelle-Aquitaine" (p5, p11)
+- bureau d'études : "ECO-COMPENSATION – SIMETHIS – FAGE" (p2, p5, etc.)
+
+Donc :
+- annee_t0 : "2022", ancre : "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1", confiance : 0.9 (le titre indique 2022-2027)
+- origine_t0 : pas explicite, je ne peux pas mettre
+- duree_ans : pas explicite (2022-2027 est 5 ans, mais est-ce la durée d'engagement? Pas sûr)
+- maître_d'ouvrage : "Région Nouvelle-Aquitaine", ancre : "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5", confiance : 0.9
+- bureau_etudes : "ECO-COMPENSATION – SIMETHIS – FAGE", ancre : "plan-de-gestion-especes-protegees-lyceec-eff7d2!p2", confiance : 0.9
+
+Attendez, p11 dit : "ECO-COMPENSATION accompagné des experts SIMETHIS et FAGE, a été mandaté par la Région Nouvelle Aquitaine". Donc le bureau d'études est ECO-COMPENSATION, SIMETHIS et FAGE.
+
+Mais le document est produit par "ECO-COMPENSATION – SIMETHIS – FAGE" (p2, p5).
+
+Donc bureau_etudes : "ECO-COMPENSATION, SIMETHIS, FAGE"
+
+Maître d'ouvrage : "Région Nouvelle-Aquitaine"
+
+Pour annee_t0, le titre du plan est "2022 - 2027", donc l'année de départ est 2022.
+
+Pour duree_ans, si c'est 2022-2027, ça fait 5 ans, mais c'est la période du plan de gestion, pas nécessairement la durée d'engagement de compensation. La compensation écologique a souvent une durée de 30 ans. Mais ce n'est pas explicite. Je ne peux pas deviner.
+
+Donc je ne mets pas duree_ans.
+
+Signaux : 
+- Je ne vois pas de doublons
+- Pas de contradictions apparentes
+- Pas de manques évidents (mais je n'ai qu'un aperçu)
+
+Documents non classés : Aucun, car j'ai classé tout le document.
+
+Maintenant, je dois vérifier les locators. Les locators doivent être exactement ceux affichés entre ⟦ ⟧.
+
+Dans le dossier, les blocs sont adressés comme ⟦p1⟧, ⟦p2⟧, etc.
+
+Donc pour les segments, je dois utiliser ces adresses.
+
+Je vais structurer la réponse :
+
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": ["p5", "p6", "p7", "p8", "p36", "p37", "p38", "p39", "p40"],
+      "description": "Contexte de l'étude, présentation du projet, et plan de gestion proprement dit (section VI)",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "diagnostic_ecologique",
+      "locators": ["p9", "p10", "p13", "p14", "p15", "p16"],
+      "description": "Synthèse des espaces évités et de compensation, pré-caractérisation des zones",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "fiches_actions",
+      "locators": ["p17", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p26", "p27", "p28", "p29", "p30", "p31", "p32", "p33", "p34"],
+      "description": "Mesures de compensation détaillées pour Fauvette pitchou, Fadet des laîches, Chiroptères",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "carto_ug",
+      "locators": ["p10", "p18", "p19", "p20", "p21", "p27", "p28", "p32", "p39"],
+      "description": "Cartographie des espaces et tables de parcelles cadastrales, localisation des unités de gestion",
+      "confiance": 0.8
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "autre",
+      "locators": ["p11", "p12", "p35"],
+      "description": "Animation foncière et sécurisation foncière",
+      "confiance": 0.7
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.9
+    },
+    {
+      "cle": "maitre_d'ouvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5",
+      "confiance": 0.9
+    },
+    {
+      "cle": "bureau_etudes",
+      "valeur": "ECO-COMPENSATION, SIMETHIS, FAGE",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p2",
+      "confiance": 0.9
+    }
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```
+
+Mais il y a des chevauchements :
+- p10 est dans diagnostic_ecologique et carto_ug
+- p18-p21 sont dans fiches_actions et carto_ug
+- p27-p28 sont dans fiches_actions et carto_ug
+- p32 est dans fiches_actions et carto_ug
+- p39 est dans fiches_actions et carto_ug? Attendez, p39 est dans plan_gestion (p36-p40) et carto_ug.
+
+C'est un problème. Un bloc ne peut pas avoir deux rôles dans des segments différents.
+
+Je dois donc choisir : soit un bloc a un rôle, soit il est partagé entre plusieurs segments avec des locators qui se chevauchent.
+
+La règle ne dit pas que les locators doivent être exclusifs. Donc c'est possible qu'un bloc ait plusieurs rôles.
+
+Mais c'est mieux d'éviter les chevauchements si possible.
+
+Je peux regrouper :
+
+- carto_ug : p10, p18-p21, p27-p28, p32, p39
+- fiches_actions : p17, p22-p26, p29-p34
+- diagnostic_ecologique : p9, p13-p16
+- plan_gestion : p5-p8, p36-p40
+- autre : p11-p12, p35
+
+Comme ça, pas de chevauchement.
+
+Vérifions :
+- p9 : diagnostic_ecologique
+- p10 : carto_ug
+- p11-p12 : autre
+- p13-p16 : diagnostic_ecologique
+- p17 : fiches_actions
+- p18-p21 : carto_ug
+- p22-p26 : fiches_actions
+- p27-p28 : carto_ug
+- p29-p30 : fiches_actions? Attendez, p29-p30 sont des figures pour Fadet des laîches. Ce pourrait être carto_ug aussi.
+- p31-p34 : fiches_actions
+- p35 : autre
+- p36-p40 : plan_gestion
+
+Donc p29-p30 : si ce sont des figures de cartographie, ça pourrait être carto_ug.
+
+p29 : "Fig. 12. Localisation des parcelles retenues pour la compensation Fadet des Laîches"
+p30 : "Fig. 13. Cartographie et prises de vue des habitats naturels des espaces de compensation dédiés au Fadet des Laïches"
+
+Donc p29-p30 devraient être carto_ug.
+
+De même, p22-p25 :
+- p22 : Fig. 8. Localisation des parcelles retenues pour la compensation Fauvette pitchou
+- p23 : Fig. 9. Localisation des parcelles retenues pour la compensation Fauvette pitchou – secteur 2
+- p24 : Fig. 10. Cartographie et prises de vue des habitats naturels des espaces de compensation dédiés à la Fauvette pitchou – secteur 1
+- p25 : Fig. 11. Cartographie et prises de vue des habitats naturels des espaces de compensation dédiés à la Fauvette pitchou – secteur 2
+
+Donc p22-p25 devraient être carto_ug.
+
+p33-p34 :
+- p33 : Parcelles cadastrales (image)
+- p34 : Fig. 15. Cartographie et prises de vue des habitats naturels des espaces de compensation dédiés aux chiroptères
+
+Donc p33-p34 devraient être carto_ug.
+
+Donc carto_ug : p10, p18-p21, p22-p25, p27-p30, p32, p33-p34, p39
+
+fiches_actions : p17, p26, p31
+
+p17 : "3.2. Mesure de compensation C-1 - Fauvette pitchou et oiseaux landicoles" (introduction)
+p26 : "3.3. Mesure de compensation C-1 - Fadet des laîches et oiseaux landicoles" (introduction)
+p31 : "3.4. Mesure de compensation C-1 - Chiroptères arboricoles, insectes saproxylophages et oiseaux forestiers" (introduction)
+
+Les tables (p18-p21, p27-p28, p32) pourraient être fiches_actions aussi, mais ce sont des tables de parcelles, donc carto_ug semble plus approprié.
+
+Donc :
+
+**carto_ug** :
+- locators : p10, p18-p21, p22-p25, p27-p30, p32, p33-p34, p39
+- description : "Cartographie des espaces d'évitement et de compensation, tables de parcelles cadastrales, localisation et prises de vue des habitats"
+
+**fiches_actions** :
+- locators : p17, p26, p31
+- description : "Introductions des mesures de compensation pour chaque espèce"
+
+Mais p17-p17 est juste l'introduction de la mesure C-1 pour Fauvette pitchou. p26 est l'introduction pour Fadet, p31 pour Chiroptères.
+
+C'est très minimal pour fiches_actions. Peut-être que les sections complètes (p17-p25 pour Fauvette, p26-p30 pour Fadet, p31-p34 pour Chiroptères) sont fiches_actions, et les figures/tables sont aussi fiches_actions.
+
+Mais alors carto_ug serait inclus dans fiches_actions.
+
+La règle dit : "fiches_actions : Fiches-actions isolées (hors plan de gestion complet) décrivant une opération, sa fréquence, ses UG."
+
+Les mesures de compensation (p17-p34) semblent être des fiches-actions. Les cartographies et tables font partie de ces fiches.
+
+Donc peut-être que :
+- fiches_actions : p17-p34
+- carto_ug : p10, p39 (les figures qui ne sont pas dans les sections de mesures)
+
+p10 : Fig. 2. Localisation des espaces d'évitement et de compensation (hors des sections de mesures)
+p39 : Fig. 17. Localisation des unités de gestion (dans la section plan de gestion)
+
+p39 est dans la section 6.2. Mesures de gestion et unités de gestion, qui fait partie du plan de gestion.
+
+Donc :
+- carto_ug : p10 (Fig. 2)
+- plan_gestion : p36-p40 (y compris p39)
+- fiches_actions : p17-p34
+
+Mais p18-p21, p27-p28, p32 sont des tables de parcelles dans les sections de mesures, donc fiches_actions.
+
+p22-p25, p29-p30, p33-p34 sont des figures dans les sections de mesures, donc fiches_actions.
+
+Donc fiches_actions : p17-p34
+
+carto_ug : p10 (et peut-être p39, mais p39 est dans plan_gestion)
+
+p39 : "Fig. 17. Localisation des unités de gestion" dans la section 6.2 qui est "Mesures de gestion et unités de gestion" du plan de gestion. Donc p39 fait partie de plan_gestion.
+
+Donc carto_ug : p10 seulement? Mais p10 est "Fig. 2. Localisation des espaces d'évitement et de compensation" qui est dans la section 1.2.3.
+
+Je pense que la meilleure approche est :
+
+1. **plan_gestion** : p1-p4 (titre, tables), p5-p8 (contexte), p35 (sécurisation foncière), p36-p40 (plan de gestion)
+   Mais p35 est "IV. SECURISATION FONCIERE" qui pourrait être autre.
+
+2. **diagnostic_ecologique** : p9-p16 (synthèse et pré-caractérisation)
+
+3. **fiches_actions** : p17-p34 (mesures de compensation)
+
+4. **carto_ug** : p10, p18-p21, p22-p25, p27-p30, p32, p33-p34, p39
+
+Mais il y a des chevauchements entre fiches_actions et carto_ug.
+
+Je vais accepter les chevauchements, car un bloc peut avoir plusieurs rôles.
+
+Donc :
+
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p35", "p36", "p37", "p38", "p39", "p40"],
+      "description": "Titre, tables, contexte de l'étude, sécurisation foncière, et plan de gestion proprement dit (section VI)",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "diagnostic_ecologique",
+      "locators": ["p9", "p10", "p13", "p14", "p15", "p16"],
+      "description": "Synthèse des espaces évités et de compensation, pré-caractérisation des zones",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "fiches_actions",
+      "locators": ["p17", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p26", "p27", "p28", "p29", "p30", "p31", "p32", "p33", "p34"],
+      "description": "Mesures de compensation détaillées pour Fauvette pitchou, Fadet des laîches, Chiroptères",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "carto_ug",
+      "locators": ["p10", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p27", "p28", "p29", "p30", "p32", "p33", "p34", "p39"],
+      "description": "Cartographie des espaces et tables de parcelles cadastrales, localisation des unités de gestion",
+      "confiance": 0.8
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.9
+    },
+    {
+      "cle": "maitre_d'ouvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5",
+      "confiance": 0.9
+    },
+    {
+      "cle": "bureau_etudes",
+      "valeur": "ECO-COMPENSATION, SIMETHIS, FAGE",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p2",
+      "confiance": 0.9
+    }
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```
+
+Mais p1-p4 (tables) ne sont pas vraiment du plan_gestion. Ce sont des tables des matières et figures. Je peux les mettre dans autre ou les exclure.
+
+Je vais les exclure des segments ou les mettre dans autre.
+
+Je vais créer un segment autre pour p1-p4, p11-p12 :
+
+```json
+{
+  "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+  "role": "autre",
+  "locators": ["p1", "p2", "p3", "p4", "p11", "p12"],
+  "description": "Pages de garde, tables des matières et figures, animation foncière",
+  "confiance": 0.7
+}
+```
+
+Et puis :
+- plan_gestion : p5-p8, p35-p40
+- diagnostic_ecologique : p9-p10, p13-p16
+- fiches_actions : p17-p34
+- carto_ug : p10, p18-p25, p27-p30, p32-p34, p39
+
+Mais p10 est dans diagnostic_ecologique et carto_ug.
+
+Je vais garder les chevauchements.
+
+Finalement, je vais proposer :
+
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": ["p5", "p6", "p7", "p8", "p36", "p37", "p38", "p39", "p40"],
+      "description": "Contexte de l'étude, présentation du projet, et plan de gestion (section VI)",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "diagnostic_ecologique",
+      "locators": ["p9", "p13", "p14", "p15", "p16"],
+      "description": "Synthèse des espaces évités et de compensation, pré-caractérisation des zones",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "fiches_actions",
+      "locators": ["p17", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p26", "p27", "p28", "p29", "p30", "p31", "p32", "p33", "p34"],
+      "description": "Mesures de compensation détaillées pour Fauvette pitchou, Fadet des laîches, Chiroptères",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "carto_ug",
+      "locators": ["p10", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p27", "p28", "p29", "p30", "p32", "p33", "p34", "p39"],
+      "description": "Cartographie des espaces d'évitement et de compensation, tables de parcelles cadastrales, localisation des unités de gestion",
+      "confiance": 0.8
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "autre",
+      "locators": ["p1", "p2", "p3", "p4", "p10", "p11", "p12", "p35"],
+      "description": "Pages de garde, tables, animation foncière, sécurisation foncière, et figure de localisation générale",
+      "confiance": 0.7
+    }
+  ],
+  ...
+}
+```
+
+Mais p10 est dans diagnostic_ecologique, fiches_actions (p18-p21 incluent p10? Non, p10 est séparé), carto_ug, et autre. C'est trop.
+
+Je vais simplifier et éviter les chevauchements :
+
+- autre : p1-p4, p11-p12, p35
+- diagnostic_ecologique : p9-p10, p13-p16
+- fiches_actions : p17-p34
+- carto_ug : p18-p21, p22-p25, p27-p30, p32-p34, p39
+- plan_gestion : p5-p8, p36-p40
+
+Comme ça, pas de chevauchement :
+- p5-p8 : plan_gestion
+- p9-p10 : diagnostic_ecologique
+- p11-p12 : autre
+- p13-p16 : diagnostic_ecologique
+- p17 : fiches_actions
+- p18-p21 : carto_ug
+- p22-p25 : carto_ug
+- p26 : fiches_actions
+- p27-p30 : carto_ug
+- p31 : fiches_actions
+- p32-p34 : carto_ug
+- p35 : autre
+- p36-p40 : plan_gestion
+- p39 : carto_ug (mais p39 est dans p36-p40)
+
+Ah, p39 est dans p36-p40 (plan_gestion) et aussi dans carto_ug. Chevauchement.
+
+p39 est dans la section VI (plan de gestion) et c'est une figure de localisation des unités de gestion. Donc c'est à la fois plan_gestion et carto_ug.
+
+Je vais accepter ce chevauchement.
+
+Donc :
+
+**autre** : p1-p4, p11-p12, p35
+**diagnostic_ecologique** : p9-p10, p13-p16
+**fiches_actions** : p17, p26, p31
+**carto_ug** : p10, p18-p21, p22-p25, p27-p30, p32-p34, p39
+**plan_gestion** : p5-p8, p36-p40
+
+Mais p10 est dans diagnostic_ecologique et carto_ug.
+
+Je vais laisser p10 dans carto_ug seulement, et diagnostic_ecologique : p9, p13-p16.
+
+p9 : "Tabl. 1. Synthèse des espaces évités et de compensation" → diagnostic_ecologique
+p10 : "Fig. 2. Localisation des espaces d'évitement et de compensation" → carto_ug
+
+Donc :
+
+- diagnostic_ecologique : p9, p13-p16
+- carto_ug : p10, p18-p21, p22-p25, p27-p30, p32-p34, p39
+- fiches_actions : p17, p26, p31
+- plan_gestion : p5-p8, p36-p40
+- autre : p1-p4, p11-p12, p35
+
+C'est propre, sans chevauchement.
+
+Vérifions ce qui reste :
+- p17 : intro Fauvette → fiches_actions
+- p18-p21 : tables Fauvette → carto_ug
+- p22-p25 : figures Fauvette → carto_ug
+- p26 : intro Fadet → fiches_actions
+- p27-p28 : tables Fadet → carto_ug
+- p29-p30 : figures Fadet → carto_ug
+- p31 : intro Chiroptères → fiches_actions
+- p32 : table Chiroptères → carto_ug
+- p33-p34 : figures Chiroptères → carto_ug
+
+Oui, ça semble cohérent.
+
+Pour les paramètres, je garde :
+- annee_t0 : 2022 (p1)
+- maître_d'ouvrage : Région Nouvelle-Aquitaine (p5 ou p11)
+- bureau_etudes : ECO-COMPENSATION, SIMETHIS, FAGE (p2)
+
+p11 dit : "ECO-COMPENSATION accompagné des experts SIMETHIS et FAGE, a été mandaté par la Région Nouvelle Aquitaine". Donc maître_d'ouvrage : Région Nouvelle-Aquitaine, ancre p11.
+
+p5 : "La Région Nouvelle-Aquitaine est porteuse d’un projet" → aussi maître_d'ouvrage.
+
+Je vais prendre p5 pour maître_d'ouvrage.
+
+bureau_etudes : p2 a "ECO-COMPENSATION – SIMETHIS – FAGE – Décembre 2021"
+
+Donc :
+
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "autre",
+      "locators": ["p1", "p2", "p3", "p4", "p11", "p12", "p35"],
+      "description": "Pages de garde, tables des matières et figures, animation foncière, sécurisation foncière",
+      "confiance": 0.7
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "diagnostic_ecologique",
+      "locators": ["p9", "p13", "p14", "p15", "p16"],
+      "description": "Synthèse des espaces évités et de compensation, pré-caractérisation des zones",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "fiches_actions",
+      "locators": ["p17", "p26", "p31"],
+      "description": "Introductions des mesures de compensation pour Fauvette pitchou, Fadet des laîches, Chiroptères",
+      "confiance": 0.8
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "carto_ug",
+      "locators": ["p10", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p27", "p28", "p29", "p30", "p32", "p33", "p34", "p39"],
+      "description": "Cartographie des espaces et tables de parcelles cadastrales, localisation des unités de gestion",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": ["p5", "p6", "p7", "p8", "p36", "p37", "p38", "p39", "p40"],
+      "description": "Contexte de l'étude, présentation du projet, et plan de gestion proprement dit (section VI)",
+      "confiance": 0.9
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.9
+    },
+    {
+      "cle": "maitre_d'ouvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5",
+      "confiance": 0.9
+    },
+    {
+      "cle": "bureau_etudes",
+      "valeur": "ECO-COMPENSATION, SIMETHIS, FAGE",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p2",
+      "confiance": 0.9
+    }
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```
+
+Mais p39 est dans carto_ug et plan_gestion. C'est un chevauchement. Je vais laisser p39 dans plan_gestion seulement, car c'est dans la section VI.
+
+Donc carto_ug : p10, p18-p21, p22-p25, p27-p30, p32-p34
+
+plan_gestion : p5-p8, p36-p40
+
+Comme ça, pas de chevauchement.
+
+Vérifions p39 : c'est dans p36-p40, donc plan_gestion.
+
+p39 est "Fig. 17. Localisation des unités de gestion" dans la section 6.2. Donc c'est bien dans plan_gestion.
+
+Donc je retire p39 de carto_ug.
+
+Finalement :
+
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "autre",
+      "locators": ["p1", "p2", "p3", "p4", "p11", "p12", "p35"],
+      "description": "Pages de garde, tables des matières et figures, animation foncière, sécurisation foncière",
+      "confiance": 0.7
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "diagnostic_ecologique",
+      "locators": ["p9", "p13", "p14", "p15", "p16"],
+      "description": "Synthèse des espaces évités et de compensation, pré-caractérisation des zones",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "fiches_actions",
+      "locators": ["p17", "p26", "p31"],
+      "description": "Introductions des mesures de compensation pour Fauvette pitchou, Fadet des laîches, Chiroptères",
+      "confiance": 0.8
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "carto_ug",
+      "locators": ["p10", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p27", "p28", "p29", "p30", "p32", "p33", "p34"],
+      "description": "Cartographie des espaces et tables de parcelles cadastrales",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": ["p5", "p6", "p7", "p8", "p36", "p37", "p38", "p39", "p40"],
+      "description": "Contexte de l'étude, présentation du projet, et plan de gestion proprement dit (section VI)",
+      "confiance": 0.9
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.9
+    },
+    {
+      "cle": "maitre_d'ouvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5",
+      "confiance": 0.9
+    },
+    {
+      "cle": "bureau_etudes",
+      "valeur": "ECO-COMPENSATION, SIMETHIS, FAGE",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p2",
+      "confiance": 0.9
+    }
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```
+
+Cela semble cohérent. Tous les blocs de p1 à p40 sont couverts, sans chevauchement.
+
+Je vais vérifier :
+- p1-p4 : autre
+- p5-p8 : plan_gestion
+- p9 : diagnostic_ecologique
+- p10 : carto_ug
+- p11-p12 : autre
+- p13-p16 : diagnostic_ecologique
+- p17 : fiches_actions
+- p18-p21 : carto_ug
+- p22-p25 : carto_ug
+- p26 : fiches_actions
+- p27-p30 : carto_ug
+- p31 : fiches_actions
+- p32-p34 : carto_ug
+- p35 : autre
+- p36-p40 : plan_gestion
+
+Oui, tous les blocs sont couverts, pas de chevauchement.
+
+Pour les paramètres, c'est bon.
+
+Signaux : Aucun signal de doublon, contradiction ou manque évident dans ce seul document.
+
+Donc la réponse finale est ce JSON.

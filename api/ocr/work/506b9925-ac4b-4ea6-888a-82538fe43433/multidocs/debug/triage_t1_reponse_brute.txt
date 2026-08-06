@@ -1,0 +1,62 @@
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "plan_gestion",
+      "locators": [],
+      "description": "Plan de gestion complet des espaces de compensation et zones évitées pour le lycée/collège du Barp (2022-2027)",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "diagnostic_ecologique",
+      "locators": ["p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13", "p14", "p15", "p16"],
+      "description": "Contexte de l'étude, présentation du projet, impacts sur les espèces protégées et pré-caractérisation des zones évitées et espaces de compensation",
+      "confiance": 0.85
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "carto_ug",
+      "locators": ["p37", "p38", "p39"],
+      "description": "Définition des unités de gestion avec tableau de synthèse des mesures et localisation cartographique (Fig. 17)",
+      "confiance": 0.8
+    },
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "role": "fiches_actions",
+      "locators": ["p40"],
+      "description": "Début de la section 6.3 : description des actions prévues (Travaux uniques TU 1, etc.)",
+      "confiance": 0.7
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2022",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.9
+    },
+    {
+      "cle": "duree_ans",
+      "valeur": "6",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p1",
+      "confiance": 0.8
+    },
+    {
+      "cle": "maitre_douvrage",
+      "valeur": "Région Nouvelle-Aquitaine",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p5",
+      "confiance": 0.9
+    },
+    {
+      "cle": "bureau_etudes",
+      "valeur": "SIMETHIS, FAGE",
+      "ancre": "plan-de-gestion-especes-protegees-lyceec-eff7d2!p11",
+      "confiance": 0.9
+    }
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```

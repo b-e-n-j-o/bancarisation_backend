@@ -1,0 +1,448 @@
+Je dois cartographier ce dossier de compensation écologique. Commençons par analyser le document principal : "plan-de-gestion-especes-protegees-lyceec-eff7d2".
+
+C'est un PDF de 102 blocs, mais on ne voit que les 40 premiers. Le titre est clair : "PLAN DE GESTION DES ESPACES DE COMPENSATION ET DES ZONES EVITEES - 2022 - 2027". Déjà, ça me donne des indices sur la période.
+
+En regardant les aperçus :
+- p1 : titre et logos (Nouvelle-Aquitaine, Val de l'Eyre)
+- p2-4 : tables des matières, figures, tableaux
+- p5-10 : contexte, présentation du projet, impacts sur les espèces
+- p11-12 : animation foncière
+- p13-16 : pré-caractérisation des zones
+- p17-34 : mesures de compensation pour différentes espèces (Fauvette pitchou, Fadet des laîches, Chiroptères...)
+- p35 : sécurisation foncière
+- p36-39 : plan de gestion proprement dit, avec mesures, unités de gestion, tableau de synthèse
+
+Donc ce document contient clairement un **plan_gestion**. La période 2022-2027 est mentionnée en titre, mais c'est peut-être la période du plan, pas forcément la durée de compensation.
+
+Je vois aussi :
+- Des tableaux de synthèse des espaces (p4, p9)
+- Des cartes (p10, p12, p15, p16, etc.)
+- Des descriptions d'unités de gestion (p37-39)
+
+Maintenant, est-ce qu'il y a d'autres rôles dans ce document ?
+- p36-39 : "PLAN DE GESTION, DE RESTAURATION ET D'ENTRETIEN" → c'est bien du plan_gestion
+- p38 : "Tableau de synthèse du programme d'actions" → ça pourrait être un calendrier_previsionnel si c'est un tableau actions × années, mais ici c'est plutôt une synthèse des actions par objectif
+- p39 : carte des unités de gestion → ça pourrait être carto_ug
+
+Attends, je vois que p39 mentionne "Fig. 17. Localisation des unités de gestion". Donc il y a probablement une section carto_ug.
+
+Mais pour l'instant, avec les aperçus limités, je peux identifier :
+- plan_gestion : toute la partie VI (p36 et suivantes)
+- diagnostic_ecologique : les parties III (pré-caractérisation) et peut-être II (animation foncière ? non)
+- carto_ug : p39 et peut-être d'autres pages avec des cartes
+
+En fait, la partie III "PRE-CARACTERISATION DES ZONES EVITEES ET DES ESPACES DE COMPENSATION" (p13-16) semble être du diagnostic_ecologique.
+
+Et la partie VI est clairement du plan_gestion.
+
+Pour les paramètres :
+- annee_t0 : le titre dit 2022-2027, mais c'est peut-être la période du plan. Le document est daté de décembre 2021 (p2, p5... mentionnent "Décembre 2021"). La compensation pourrait démarrer en 2022.
+- origine_t0 : le projet est porté par la Région Nouvelle-Aquitaine, avec SIMEHTIS et FAGE comme bureaux d'études. Le déclencheur semble être le projet de lycée/college.
+- duree_ans : 2022-2027 = 5 ans ? Mais les compensations écologiques sont souvent sur 30 ans. Peut-être que 2022-2027 est la période du plan, mais la compensation elle-même est plus longue.
+- maître d'ouvrage : Région Nouvelle-Aquitaine (mentionnée p5, p11)
+- bureau d'études : SIMEHTIS et FAGE (mentionnés partout)
+
+Mais je ne suis pas sûr pour la durée. Il faut chercher des indices.
+
+Je vois que le document est un "Plan de gestion", donc il décrit les actions à mener. La durée de 30 ans est classique pour les compensations, mais ici le plan est sur 2022-2027 (5 ans). Peut-être que c'est un plan initial, et il y a un engagement plus long.
+
+Pour les rôles :
+1. plan_gestion : la partie VI (p36 à la fin) est clairement le plan de gestion. Mais aussi, les mesures de compensation (p17-34) font partie du plan de gestion. En fait, tout le document semble être un plan de gestion complet.
+
+Attends, la structure :
+- I. Contexte
+- II. Animation foncière
+- III. Pré-caractérisation → diagnostic_ecologique
+- IV. Sécurisation foncière
+- V. ? (pas vu)
+- VI. Plan de gestion...
+
+Donc :
+- p1-16 : contexte, présentation, diagnostic → diagnostic_ecologique et peut-être autre
+- p17-35 : mesures de compensation, sécurisation foncière → partie du plan_gestion ?
+- p36+ : plan de gestion explicite
+
+En fait, un plan de gestion complet contient souvent :
+- diagnostic
+- objectifs
+- actions
+- suivi
+
+Donc peut-être que tout le document est plan_gestion, mais avec des sections qui pourraient avoir d'autres rôles.
+
+Mais la règle 1 dit : "Un même fichier peut porter PLUSIEURS rôles sur des plages différentes."
+
+Donc je peux découper :
+- diagnostic_ecologique : p13-16 (pré-caractérisation)
+- carto_ug : p39 (localisation des unités de gestion), et peut-être d'autres pages avec des cartes
+- plan_gestion : p36-... (la partie explicite "PLAN DE GESTION")
+
+Mais p17-34 décrivent les mesures de compensation, qui font partie du plan de gestion. Donc peut-être que plan_gestion couvre p17 à la fin.
+
+En fait, p36 dit "VI. PLAN DE GESTION, DE RESTAURATION ET D'ENTRETIEN", donc c'est la section principale du plan de gestion. Mais les mesures de compensation (p17-34) sont probablement des annexes ou des détails du plan.
+
+Pour simplifier, je peux dire :
+- plan_gestion : p36 à p102 (tout le plan de gestion)
+- diagnostic_ecologique : p13-16 (pré-caractérisation)
+- carto_ug : p39 (et peut-être d'autres pages avec des cartes d'UG)
+
+Mais p39 est dans la section VI, donc peut-être que carto_ug est inclus dans plan_gestion.
+
+La règle dit : "Découpe : un segment par rôle, avec ses locators."
+
+Donc je peux avoir :
+1. diagnostic_ecologique : p13-16
+2. plan_gestion : p36-102 (ou p17-102 ?)
+3. carto_ug : p39
+
+Mais p17-34 décrivent les mesures de compensation, qui sont des actions du plan de gestion. Donc plan_gestion devrait inclure ces pages.
+
+En fait, la table des matières (p2) montre que le document est structuré comme un plan de gestion complet. Donc probablement tout le document est plan_gestion, mais avec des sections qui ont d'autres rôles.
+
+Mais la règle 3 dit : "Si un segment couvre tout le document, laisse locators vide plutôt que de tous les lister."
+
+Donc si plan_gestion couvre tout, je peux mettre locators: [].
+
+Mais est-ce que tout est plan_gestion ? La pré-caractérisation (p13-16) est plutôt du diagnostic.
+
+Je pense que la bonne approche est :
+- diagnostic_ecologique : p13-16 (et peut-être p9-10 qui parlent d'impacts)
+- carto_ug : p39 (Fig. 17), et peut-être p10, p12, p15, p16, p22-25, p29-30, p33-34 qui sont des cartes
+- plan_gestion : le reste, ou au moins p36+
+
+Mais les cartes sont réparties dans tout le document. Par exemple :
+- p10 : Fig. 2. Localisation des espaces d'évitement et de compensation
+- p12 : Fig. 3. Cartographie du foncier communal
+- p15 : Fig. 6. Cartographie des zones d'évitement
+- p16 : Fig. 7. Cartographie et prises de vue des habitats naturels des zones d'évitement
+- p22-25 : cartes pour Fauvette pitchou
+- p29-30 : cartes pour Fadet des laîches
+- p33-34 : cartes pour chiroptères
+- p39 : Fig. 17. Localisation des unités de gestion
+
+Donc carto_ug pourrait être toutes ces pages avec des cartes. Mais est-ce que toutes ces cartes sont des "unités de gestion" ? La Fig. 17 est explicitement "Localisation des unités de gestion", donc c'est sûr. Les autres sont des cartes de localisation des parcelles, des habitats, etc.
+
+La définition de carto_ug : "Description ou table des unités de gestion (surfaces, identifiants, parcelles)."
+
+Donc :
+- p39 : Fig. 17. Localisation des unités de gestion → carto_ug
+- p18-21 : tableaux avec des références cadastrales, surfaces, etc. → ça pourrait être carto_ug aussi
+
+p18-21 : "Référence cadastrale | Surface en ha | Etat initial | ..." → c'est une table des parcelles, donc carto_ug.
+
+De même, p27-28 pour Fadet des laîches, p32 pour chiroptères.
+
+Donc je peux regrouper toutes les pages avec des tableaux de parcelles ou des cartes d'UG comme carto_ug.
+
+Mais la règle dit de ne pas forcer. Si une page a un tableau de parcelles, c'est carto_ug.
+
+Donc pour ce document :
+- diagnostic_ecologique : p13-16 (pré-caractérisation des zones)
+- carto_ug : p9 (Tabl. 1. Synthèse des espaces), p10 (Fig. 2), p12 (Fig. 3), p15 (Fig. 6), p16 (Fig. 7), p18-21 (tableaux parcelles Fauvette), p22-25 (cartes Fauvette), p27-28 (tableaux Fadet), p29-30 (cartes Fadet), p32 (tableau chiroptères), p33-34 (cartes chiroptères), p39 (Fig. 17)
+- plan_gestion : p36-... (la section VI et peut-être p17-35 aussi)
+
+Mais p17-35 décrivent les mesures de compensation, qui sont des actions du plan de gestion. Donc plan_gestion devrait inclure p17 à la fin.
+
+En fait, la section VI commence à p36, mais les mesures de compensation (p17-34) sont probablement des annexes du plan de gestion.
+
+Je pense que plan_gestion couvre p17 à p102, car c'est là que sont décrites les actions.
+
+Mais p1-12 sont le contexte et la présentation, qui font partie du plan de gestion aussi, car un plan de gestion inclut le contexte.
+
+Donc peut-être que tout le document est plan_gestion, et les autres rôles sont des sous-parties.
+
+Mais la règle encourage à découper en plusieurs rôles si possible.
+
+Je vais essayer de faire :
+1. plan_gestion : tout le document, car c'est un plan de gestion complet
+   - locators: [] (car tout le document)
+   - confiance: 0.9 (car le titre et la structure le confirment)
+
+Mais alors je rate les autres rôles comme diagnostic_ecologique et carto_ug.
+
+La règle 1 dit explicitement qu'un fichier peut avoir plusieurs rôles sur des plages différentes.
+
+Donc je dois découper.
+
+Proposition :
+- diagnostic_ecologique : p13-16 (pré-caractérisation des zones)
+  - locators: ["p13", "p14", "p15", "p16"]
+  - confiance: 0.8 (car c'est clairement une caractérisation écologique)
+
+- carto_ug : p9, p10, p12, p15, p16, p18-21, p22-25, p27-28, p29-30, p32, p33-34, p39
+  - Mais c'est beaucoup. Je peux regrouper :
+    - p9 : Tabl. 1. Synthèse des espaces → carto_ug
+    - p10 : Fig. 2. Localisation → carto_ug
+    - p12 : Fig. 3. Cartographie foncier → carto_ug
+    - p15-16 : cartes zones évitement → carto_ug
+    - p18-21 : tableaux parcelles Fauvette → carto_ug
+    - p22-25 : cartes Fauvette → carto_ug
+    - p27-28 : tableaux Fadet → carto_ug
+    - p29-30 : cartes Fadet → carto_ug
+    - p32 : tableau chiroptères → carto_ug
+    - p33-34 : cartes chiroptères → carto_ug
+    - p39 : Fig. 17. Localisation UG → carto_ug
+
+  - locators: ["p9", "p10", "p12", "p15", "p16", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p27", "p28", "p29", "p30", "p32", "p33", "p34", "p39"]
+  - confiance: 0.8
+
+- plan_gestion : le reste, mais en fait les pages non couvertes par les autres rôles sont p1-8, p11-12, p13-14 (mais p13-16 sont diagnostic), p17 (mesure C-1 intro), p26 (mesure C-1 Fadet intro), p31 (mesure C-1 chiroptères intro), p35-38, p40+
+
+C'est compliqué. Peut-être que plan_gestion couvre p36 à p102, et les mesures de compensation (p17-34) sont aussi plan_gestion.
+
+En fait, la section VI est "PLAN DE GESTION, DE RESTAURATION ET D'ENTRETIEN", donc p36+ est plan_gestion.
+
+Mais les mesures de compensation (p17-34) sont des éléments du plan de gestion.
+
+Je pense que la meilleure approche est :
+- plan_gestion : p17-102 (toutes les parties qui décrivent les mesures et le plan)
+- diagnostic_ecologique : p13-16
+- carto_ug : p9, p10, p12, p15, p16, p18-21, p22-25, p27-28, p29-30, p32, p33-34, p39
+
+Mais p17-34 sont inclus dans plan_gestion, et certaines de ces pages sont aussi dans carto_ug. C'est OK, un bloc peut avoir plusieurs rôles ? Non, la règle dit "un segment par rôle", donc un bloc peut être dans plusieurs segments si il a plusieurs rôles.
+
+Mais pour simplifier, je peux avoir des chevauchements.
+
+Pour les paramètres :
+- annee_t0 : le titre dit 2022-2027, et le document est de décembre 2021. La compensation démarre probablement en 2022.
+  - ancre: p1 ("2022 - 2027")
+  - valeur: 2022
+  - confiance: 0.7 (car c'est implicite)
+
+- origine_t0 : le projet de lycée/college. Le déclencheur est probablement la signature de l'arrêté ou le début des travaux. Mais le document ne le dit pas explicitement. On voit que le bureau d'études a été mandaté par la Région (p11). Peut-être que l'origine est la réception des travaux ou l'état initial.
+  - Je ne vois pas de mention explicite. Dans p5 : "La Région Nouvelle-Aquitaine est porteuse d’un projet de lycée / collège". Dans p8 : impacts sur les espèces.
+  - Pas de date précise. Je ne peux pas deviner.
+
+- duree_ans : 2022-2027 = 5 ans, mais c'est peut-être la durée du plan, pas de la compensation. Les compensations sont souvent 30 ans. Je ne vois pas de mention de 30 ans dans les aperçus.
+  - Dans p36 : "PLAN DE GESTION... 2022-2027" → durée 5 ans pour le plan.
+  - Mais la compensation elle-même pourrait être plus longue. Sans info, je ne peux pas mettre 30.
+
+- maître d'ouvrage : Région Nouvelle-Aquitaine (mentionnée p5, p11)
+  - ancre: p5 ("La Région Nouvelle-Aquitaine est porteuse d’un projet")
+  - valeur: "Région Nouvelle-Aquitaine"
+  - confiance: 0.9
+
+- bureau d'études : SIMEHTIS et FAGE (mentionnés partout, p2, p5, etc.)
+  - ancre: p2 ("ECO-COMPENSATION – SIMEHTIS – FAGE")
+  - valeur: ["SIMEHTIS", "FAGE"]
+  - confiance: 0.9
+
+Pour les signaux :
+- Je vois que le document est daté de décembre 2021, mais le plan est pour 2022-2027. C'est cohérent.
+- Pas de doublon évident dans ce seul document.
+- Pas de contradiction apparente.
+
+Maintenant, pour les autres documents du dossier, mais dans l'input, il n'y a qu'un seul document montré. Le dossier contient peut-être d'autres fichiers, mais dans l'aperçu, on ne voit que celui-là.
+
+L'input dit "<dossier>" et puis ce document. Peut-être qu'il y a d'autres documents, mais ils ne sont pas affichés. Je dois travailler avec ce qui est donné.
+
+Dans ce cas, je cartographie seulement ce document.
+
+Donc pour "plan-de-gestion-especes-protegees-lyceec-eff7d2" :
+
+Segments :
+1. diagnostic_ecologique :
+   - locators: ["p13", "p14", "p15", "p16"]
+   - confiance: 0.85
+
+2. carto_ug :
+   - locators: ["p9", "p10", "p12", "p15", "p16", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p27", "p28", "p29", "p30", "p32", "p33", "p34", "p39"]
+   - confiance: 0.8
+
+3. plan_gestion :
+   - locators: []  // car il couvre tout le document ? Mais non, car j'ai déjà extrait diagnostic et carto.
+   - En fait, plan_gestion devrait couvrir les parties qui ne sont pas diagnostic ou carto, mais aussi peut-être les chevaucher.
+
+C'est trop compliqué. Peut-être que plan_gestion couvre tout le document, et je signale que certaines parties ont aussi d'autres rôles.
+
+Mais la règle 1 encourage à découper.
+
+Alternative : ne pas découper plan_gestion, et seulement extraire les rôles secondaires.
+
+Donc :
+- plan_gestion : locators: [] (tout le document), confiance: 0.9
+- diagnostic_ecologique : p13-16, confiance: 0.85
+- carto_ug : p9,10,12,15,16,18-21,22-25,27-28,29-30,32,33-34,39, confiance: 0.8
+
+Mais alors plan_gestion et diagnostic_ecologique se chevauchent sur p13-16. C'est acceptable, car un bloc peut avoir plusieurs rôles.
+
+De même, plan_gestion et carto_ug se chevauchent sur plusieurs pages.
+
+Je pense que c'est la bonne approche.
+
+Pour les paramètres :
+- annee_t0 : 2022, ancre: p1, confiance: 0.7
+- origine_t0 : non trouvé (je ne vois pas de mention explicite du déclencheur)
+- duree_ans : non trouvé (2022-2027 = 5 ans, mais est-ce la durée de compensation ?)
+- maître d'ouvrage : "Région Nouvelle-Aquitaine", ancre: p5, confiance: 0.9
+- bureau d'études : ["SIMEHTIS", "FAGE"], ancre: p2, confiance: 0.9
+
+Mais pour duree_ans, dans p36 : "PLAN DE GESTION... 2022-2027", donc durée du plan est 5 ans. Mais la compensation pourrait être plus longue. Sans info, je ne mets pas.
+
+Pour origine_t0, peut-être que c'est lié à l'arrêté. Mais je ne vois pas d'arrêté dans ce document.
+
+Je vais laisser origine_t0 et duree_ans non renseignés.
+
+Signaux :
+- Le document semble complet pour un plan de gestion, mais il manque peut-être l'arrêté ou la convention qui déclenche la compensation.
+
+Maintenant, format de sortie.
+
+La sortie doit être un JSON avec :
+- documents : liste des documents cartographiés
+  - doc_id
+  - segments : liste de {role, locators, confiance}
+- parametres : liste de {nom, valeur, ancre, confiance}
+- signaux : liste de strings
+
+Pour ce dossier, un seul document visible.
+
+doc_id : "plan-de-gestion-especes-protegees-lyceec-eff7d2"
+
+Segments :
+1. role: plan_gestion, locators: [], confiance: 0.9
+2. role: diagnostic_ecologique, locators: ["p13", "p14", "p15", "p16"], confiance: 0.85
+3. role: carto_ug, locators: ["p9", "p10", "p12", "p15", "p16", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p27", "p28", "p29", "p30", "p32", "p33", "p34", "p39"], confiance: 0.8
+
+Mais p15 et p16 sont dans diagnostic_ecologique et carto_ug. C'est OK.
+
+Paramètres :
+- annee_t0: {nom: "annee_t0", valeur: 2022, ancre: "p1", confiance: 0.7}
+- maître d'ouvrage: {nom: "maître_d'ouvrage", valeur: "Région Nouvelle-Aquitaine", ancre: "p5", confiance: 0.9}
+- bureau_etudes: {nom: "bureau_etudes", valeur: ["SIMEHTIS", "FAGE"], ancre: "p2", confiance: 0.9}
+
+Signaux :
+- "Le document semble être un plan de gestion complet, mais aucune mention explicite de la durée de compensation (30 ans classique non confirmée)."
+- "Aucun arrêté ou convention visible dans ce document pour confirmer l'origine_t0."
+
+Mais la règle 6 dit de signaler les doublons, contradictions, manques. Ici, manque d'info sur durée et origine.
+
+Je vais formuler :
+- "Durée d'engagement non explicite (seul le plan 2022-2027 est mentionné, durée classique de 30 ans non confirmée)."
+- "Origine du t0 non identifiée dans le document (pas de mention d'arrêté ou de date de déclenchement)."
+
+Maintenant, est-ce que je dois inclure d'autres rôles ?
+
+Je vois que p38 : "Tabl. 5. Tableau de synthèse du programme d'actions" → ça pourrait être calendrier_previsionnel si c'est un tableau actions × années.
+
+Mais dans l'aperçu, on voit : "| Objectifs à long terme | Objectifs opérationnels | Opérations du plan de travail | Numéro de la mesure | Unité de gestion | Espèce"
+
+C'est plutôt une synthèse des actions, pas un calendrier. Donc probablement pas calendrier_previsionnel.
+
+De même, pas de budget visible.
+
+Donc je me limite à plan_gestion, diagnostic_ecologique, carto_ug.
+
+Confiance pour plan_gestion : 0.9 car c'est un plan de gestion évidement.
+
+Pour diagnostic_ecologique : 0.85 car la section III est clairement une pré-caractérisation.
+
+Pour carto_ug : 0.8 car les tableaux et cartes correspondent à la description des UG.
+
+Maintenant, pour les locators de carto_ug, j'ai inclus p15 et p16 qui sont aussi dans diagnostic_ecologique. C'est acceptable.
+
+Je vais aussi ajouter p4 : "TABLE DES TABLEAUX" mentionne "TABL. 1. SYNTHESE DES ESPACES EVITES ET DE COMPENSATION" qui est sur p9. p4 lui-même n'est pas une carte, donc je ne l'inclus pas.
+
+De même, p3 : TABLE DES FIGURES, pas inclus.
+
+p7-8 : description du programme, pas carto.
+
+p11-12 : animation foncière, pas carto.
+
+p35 : sécurisation foncière, pas carto.
+
+p36-38 : plan de gestion, pas carto (sauf p39).
+
+p40 : description des actions, pas carto.
+
+Donc ma liste semble bonne.
+
+Pour p17 : "3.2. Mesure de compensation C-1 - Fauvette pitchou..." → c'est une description de mesure, donc plan_gestion, pas carto.
+
+De même p26, p31 sont des intros de mesures.
+
+Donc je retire p17, p26, p31 de carto_ug.
+
+Ma liste carto_ug : p9 (tableau), p10 (carte), p12 (carte), p15-16 (cartes), p18-21 (tableaux), p22-25 (cartes), p27-28 (tableaux), p29-30 (cartes), p32 (tableau), p33-34 (cartes), p39 (carte UG).
+
+Oui.
+
+Maintenant, je vais écrire la sortie.
+
+Note : le doc_id dans l'input est "plan-de-gestion-especes-protegees-lyceec-eff7d2", mais le nom du fichier est "Plan de gestion_espèces_protégées_LycéeCollège_Le_Barp_20220108.pdf". Je prends le doc_id donné.
+
+Format :
+
+{
+  "documents": [
+    {
+      "doc_id": "plan-de-gestion-especes-protegees-lyceec-eff7d2",
+      "segments": [
+        {"role": "plan_gestion", "locators": [], "confiance": 0.9},
+        {"role": "diagnostic_ecologique", "locators": ["p13", "p14", "p15", "p16"], "confiance": 0.85},
+        {"role": "carto_ug", "locators": ["p9", "p10", "p12", "p15", "p16", "p18", "p19", "p20", "p21", "p22", "p23", "p24", "p25", "p27", "p28", "p29", "p30", "p32", "p33", "p34", "p39"], "confiance": 0.8}
+      ]
+    }
+  ],
+  "parametres": [
+    {"nom": "annee_t0", "valeur": 2022, "ancre": "p1", "confiance": 0.7},
+    {"nom": "maître_d'ouvrage", "valeur": "Région Nouvelle-Aquitaine", "ancre": "p5", "confiance": 0.9},
+    {"nom": "bureau_etudes", "valeur": ["SIMEHTIS", "FAGE"], "ancre": "p2", "confiance": 0.9}
+  ],
+  "signaux": [
+    "Durée d'engagement non explicite dans le document (seule la période du plan 2022-2027 est mentionnée).",
+    "Origine du déclenchement (t0) non identifiée (pas de mention d'arrêté préfectoral ou de date de début des travaux)."
+  ],
+  "documents_non_classes": []
+}
+
+Mais pour bureau_etudes, la valeur est une liste. Est-ce que c'est autorisé ? La règle ne dit pas, mais je pense que oui.
+
+Pour annee_t0, confiance 0.7 car c'est déduit du titre.
+
+Est-ce que je dois ajouter duree_ans ? Non, car pas trouvé.
+
+Est-ce que je dois ajouter origine_t0 ? Non, car pas trouvé.
+
+Maintenant, vérification :
+- p1 : titre avec 2022-2027 → annee_t0=2022
+- p5 : "La Région Nouvelle-Aquitaine est porteuse d’un projet" → maître d'ouvrage
+- p2 : "ECO-COMPENSATION – SIMEHTIS – FAGE" → bureau d'études
+
+OK.
+
+Pour les signaux, je peux aussi mentionner que le document semble complet pour un plan de gestion, mais il manque peut-être des éléments administratifs.
+
+Je vais garder les deux signaux.
+
+Une autre chose : dans p36, il y a "VI. PLAN DE GESTION, DE RESTAURATION ET D'ENTRETIEN DES ZONES EVITEES ET DES ESPACES DE COMPENSATION", donc c'est bien un plan_gestion.
+
+Je pense que c'est bon.
+
+Je vais aussi vérifier si p38 pourrait être calendrier_previsionnel. L'aperçu dit : "Tabl. 5. Tableau de synthèse du programme d'actions" avec des colonnes comme "Objectifs à long terme", "Objectifs opérationnels", etc. Ce n'est pas un calendrier actions × années, donc pas calendrier_previsionnel.
+
+De même, pas de budget.
+
+Donc je reste avec ça.
+
+Maintenant, pour les locators de carto_ug, j'ai inclus p15 et p16 qui sont aussi dans diagnostic_ecologique. C'est acceptable, car un bloc peut avoir plusieurs rôles.
+
+De même, p9 est un tableau de synthèse des espaces, qui est à la fois diagnostic et carto.
+
+C'est cohérent.
+
+Je vais aussi ajouter p4 ? Non, p4 est la table des tableaux, pas une carte ou tableau de données.
+
+p7-8 : description du programme, pas carto.
+
+p11-12 : animation foncière, pas carto.
+
+p35 : sécurisation foncière, pas carto.
+
+p36-38 : plan de gestion, pas carto (sauf p39).
+
+p40+ : pas vu, mais probablement pas carto.
+
+Donc ma liste est bonne.
+
+Je vais écrire la réponse.
