@@ -1,0 +1,59 @@
+{
+  "projet_id": "6236db64-ba5f-44c0-8cf8-2eceaddd6f09",
+  "etapes": [
+    {
+      "n": 1,
+      "nom": "Normalisation",
+      "script": "etape1 + utils/pdf → OCR Mistral",
+      "appels_llm": 0,
+      "appels_ocr": 1,
+      "detail_appels": "1 API",
+      "resultat": "1 doc(s), 75 bloc(s)",
+      "ok": true
+    },
+    {
+      "n": 2,
+      "nom": "Triage",
+      "script": "etape2_triage.cartographier",
+      "appels_llm": 1,
+      "appels_ocr": 0,
+      "detail_appels": "1 chat (retries inclus)",
+      "resultat": "3 segment(s) · rôles : calendrier_previsionnel, compte_rendu_suivi, plan_gestion · 5 param. · 0 signal(aux)",
+      "ok": true
+    },
+    {
+      "n": 3,
+      "nom": "Plan",
+      "script": "etape3_planification (déterministe)",
+      "appels_llm": 0,
+      "appels_ocr": 0,
+      "detail_appels": "0 (pas de LLM)",
+      "resultat": "1 job(s) · plan_gestion",
+      "ok": true
+    },
+    {
+      "n": 4,
+      "nom": "Extraction",
+      "script": "etape4 → extracteurs (plan_gestion…)",
+      "appels_llm": 5,
+      "appels_ocr": 0,
+      "detail_appels": "5 chat",
+      "resultat": "24 claim(s) · action=4, echeance_regle=20",
+      "ok": true
+    },
+    {
+      "n": 5,
+      "nom": "Calendrier",
+      "script": "claims → semoir → ingestion",
+      "appels_llm": 0,
+      "appels_ocr": 0,
+      "detail_appels": "",
+      "resultat": "échec : connection failed: connection to server at \"127.0.0.1\", port 5432 failed: could not receive data from server: Connection refused",
+      "ok": false
+    }
+  ],
+  "ocr_appels": 1,
+  "ocr_pages": 75,
+  "ocr_cache_hits": 0,
+  "llm_appels": 6
+}

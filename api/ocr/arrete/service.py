@@ -11,7 +11,7 @@ from uuid import UUID
 
 from api.controle import crud
 from api.controle.schemas import ArreteOut
-from api.ocr.arrete.extraction_arrete import extract_arrete, to_db_rows
+from api.ocr.extractions.extract_arrete import extraire_depuis_markdown, vers_lignes_db
 from api.ocr.ocr_mistral import pdf_vers_markdown
 
 logger = logging.getLogger("arrete.service")
@@ -26,11 +26,6 @@ def ocr_pdf_vers_markdown(pdf_bytes: bytes, filename: str = "arrete.pdf") -> str
         return md_path.read_text(encoding="utf-8")
 
 
-def extraire_depuis_markdown(markdown: str) -> tuple[Any, dict]:
-    """Appel LLM d'extraction structurée."""
-    return extract_arrete(markdown)
-
-
 def extraire_et_persister(
     *,
     pdf_bytes: bytes,
@@ -43,19 +38,17 @@ def extraire_et_persister(
     filename: str = "arrete.pdf",
 ) -> ArreteOut:
     """
-    OCR → extraction LLM → UPDATE `arrete` + INSERT `arrete_prescription`.
+    OCR → extraction LLM (contrat riche) → UPDATE `arrete` + INSERT prescriptions.
     Les valeurs formulaire (type / référence / date notif) priment si renseignées.
     """
     markdown = ocr_pdf_vers_markdown(pdf_bytes, filename)
-    extraction, usage = extraire_depuis_markdown(markdown)
-    arrete_row, presc_rows = to_db_rows(
+    extraction = extraire_depuis_markdown(markdown)
+    arrete_row, presc_rows = vers_lignes_db(
         extraction,
-        str(projet_id),
-        str(document_id) if document_id else None,
-        usage,
+        projet_id=str(projet_id),
+        document_id=str(document_id) if document_id else None,
     )
 
-    # Priorité formulaire sur les champs saisis à l'upload
     if type_form:
         arrete_row["type"] = type_form
     if reference_form and reference_form.strip():
@@ -73,8 +66,8 @@ def extraire_et_persister(
 def extraire_fichier_seul(pdf_bytes: bytes, filename: str = "arrete.pdf") -> dict:
     """Endpoint debug : OCR + extraction sans persistance."""
     markdown = ocr_pdf_vers_markdown(pdf_bytes, filename)
-    extraction, usage = extraire_depuis_markdown(markdown)
+    extraction = extraire_depuis_markdown(markdown)
     return {
-        "extraction": extraction.model_dump(),
-        "usage": usage,
+        "extraction": extraction.model_dump(mode="json"),
+        "usage": {},
     }

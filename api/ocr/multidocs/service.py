@@ -424,7 +424,45 @@ def lancer_analyse_multidocs(
             ok=True,
         )
 
-        # --- 5. Semoir + ingestion (0 LLM) ------------------------------------
+        # --- 5. Superviseur borné (trous UG / fiches / T0) --------------------
+        recap_sup: dict[str, Any] = {}
+        journal.debut(5, "Rattrapage", "superviseur.rattraper (borné)")
+        avancer(
+            projet_id, "rattrapage",
+            "Complétion des trous (UG, fiches, T0)…",
+            message_user="Vérification des extraits manquants…",
+            fichiers=fichiers_suivi,
+            pages_totales=pages_totales or None,
+            progression=88,
+        )
+        llm_avant = compteur.appels
+        try:
+            from .superviseur import rattraper
+
+            claims, recap_sup = rattraper(
+                claims, corpus, carte,
+                zones_sig=zones,
+                compteur=compteur,
+                debug_dir=debug_dir,
+                sortie=sortie,
+            )
+        except Exception as err:  # noqa: BLE001
+            recap_sup = {"erreur": str(err)}
+            print(f"  ⚠️  Superviseur échoué (claims conservés) : {err}", flush=True)
+        llm_sup = compteur.appels - llm_avant
+        par_kind = {}
+        for c in claims:
+            par_kind[c.kind.value] = par_kind.get(c.kind.value, 0) + 1
+        n_restants = len(recap_sup.get("trous_restants") or [])
+        n_corr = len(recap_sup.get("corrections") or [])
+        journal.fin(
+            f"{n_corr} correction(s) · {n_restants} trou(s) restant(s)",
+            appels_llm=llm_sup,
+            detail_appels=f"{llm_sup} chat" if llm_sup else "0 (déterministe)",
+            ok="erreur" not in recap_sup,
+        )
+
+        # --- 6. Semoir + ingestion (0 LLM) ------------------------------------
         n_actions = par_kind.get("action", 0)
         n_echeances = par_kind.get("echeance_regle", 0)
         n_occurrences = 0
@@ -433,7 +471,7 @@ def lancer_analyse_multidocs(
         avert_semoir: list[str] = []
 
         claims_path = sortie / "claims.jsonl"
-        journal.debut(5, "Calendrier", "claims → semoir → ingestion")
+        journal.debut(6, "Calendrier", "claims → semoir → ingestion")
         avancer(
             projet_id, "occurrences",
             "Génération du calendrier…",
@@ -477,6 +515,41 @@ def lancer_analyse_multidocs(
         else:
             journal.fin("aucune échéance — semoir sauté", ok=True)
 
+        # --- 7. Arrêtés (famille obligations, 0 LLM) --------------------------
+        n_prescriptions = par_kind.get("prescription", 0)
+        n_arretes = 0
+        avert_arrete: list[str] = []
+        journal.debut(7, "Arrêtés", "claims → arrete_prescription")
+        avancer(
+            projet_id, "ingestion",
+            "Enregistrement des obligations de l'arrêté…",
+            message_user="Enregistrement des prescriptions…",
+            fichiers=fichiers_suivi,
+            pages_totales=pages_totales or None,
+            progression=96,
+        )
+        if n_prescriptions > 0 and claims_path.is_file():
+            try:
+                from ..claims_vers_arrete import executer as ingerer_arretes
+
+                recap_arr = ingerer_arretes(projet_id, claims_path, replace=True)
+                n_arretes = int(recap_arr.get("arretes") or 0)
+                n_prescriptions = int(recap_arr.get("prescriptions") or n_prescriptions)
+                for a in recap_arr.get("avertissements") or []:
+                    avert_arrete.append(str(a))
+                journal.fin(
+                    f"{n_arretes} arrêté(s) · {n_prescriptions} prescription(s)",
+                    appels_llm=0,
+                    detail_appels="0 (déterministe)",
+                    ok=True,
+                )
+            except Exception as err:  # noqa: BLE001
+                avert_arrete.append(f"Ingestion arrêté : {err}")
+                journal.fin(f"échec : {err}", ok=False)
+                print(f"  ⚠️  Ingestion arrêté échouée (claims conservés) : {err}", flush=True)
+        else:
+            journal.fin("aucune prescription — ingestion arrêté sautée", ok=True)
+
         recap: dict[str, Any] = {
             "pipeline": "multidocs",
             "docs": n_docs,
@@ -488,7 +561,8 @@ def lancer_analyse_multidocs(
             "zones_sig": len(zones),
             "laisses": laisses,
             "non_couvert": plan.non_couvert,
-            "avertissements": list(plan.avertissements) + avert_semoir,
+            "avertissements": list(plan.avertissements) + avert_semoir + avert_arrete,
+            "superviseur": recap_sup,
             "sortie": str(sortie),
             "journal": journal.to_dict(),
             "llm_appels": compteur.appels,
@@ -500,6 +574,8 @@ def lancer_analyse_multidocs(
                 "occurrences": n_occurrences,
                 "non_placables": n_non_placables,
                 "horizon": horizon,
+                "arretes": n_arretes,
+                "prescriptions": n_prescriptions,
             },
         }
         (sortie / "journal.json").write_text(
@@ -512,7 +588,8 @@ def lancer_analyse_multidocs(
         msg_fin = (
             f"Analyse terminée — {n_actions} mesure(s), {n_echeances} échéance(s), "
             f"{n_occurrences} occurrence(s)"
-            if n_occurrences
+            + (f", {n_prescriptions} prescription(s)" if n_prescriptions else "")
+            if n_occurrences or n_prescriptions
             else "Analyse terminée"
         )
         terminer(

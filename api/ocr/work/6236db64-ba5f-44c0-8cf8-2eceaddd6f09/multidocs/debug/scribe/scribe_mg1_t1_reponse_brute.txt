@@ -1,0 +1,23 @@
+```json
+{
+  "contenu_propre": "## MG1 – Pilotage et coordination à la mise en œuvre du programme d'actions\n\n**Objectif à long terme :** D – Coordination de la gestion\n\n**Objectif opérationnel :** D1 – Assurer la mise en œuvre du programme d'actions\n\n### Parcelles concernées\n- 33284D1055 (en partie) – commune de Mios\n- 33555C4577 – commune de Marcheprime\n\n### Description de la mesure\nÀ compter de 2023 (sous réserve d'un renouvellement de contrat tous les 5 ans), **Eco-compensation** assure, pour le compte de la **SARL PROMOBAT**, le rôle d’opérateur de compensation. Ses missions incluent :\n\n- **Pilotage et coordination des travaux de génie écologique et des suivis** :\n  - Rôle d’Assistant à Maîtrise d’Ouvrage (AMO) pour la SARL PROMOBAT.\n  - Pilotage de l’équipe projet depuis la phase d’avant-projet (rédaction des cahiers des charges, analyses des offres, réunions d’avant-chantier, etc.) jusqu’à la mise en œuvre des travaux de génie écologique (réunions de chantier, encadrement écologique, etc.) et aux suivis (contrôle qualité des livrables).\n\n- **Bilan annuel** :\n  - Une synthèse annuelle de l’état d’avancement (actions menées, résultats obtenus, difficultés rencontrées, etc.) est produite sous forme de tableau de bord chaque fin d’année.\n  - Ces bilans permettent de suivre le bon déroulement de la mise en œuvre du plan de gestion et intègrent les résultats des suivis écologiques réalisés par **Simethis**.\n  - Selon l’évolution des indicateurs, un ajustement du plan de gestion peut être envisagé et présenté dans ces synthèses.\n  - Le plan de gestion fera l’objet d’une mise à jour tous les 5 ans, si nécessaire, en concertation avec l’équipe projet (Eco-compensation, Simethis, entreprise travaux) et sera soumis à validation des services de l’État.\n\n- **Dépôt des données naturalistes** :\n  - Transmission des données naturalistes récoltées dans le cadre des suivis au **SINP** à chaque fin de campagne.\n  - Fourniture des informations nécessaires à la tenue de l’outil national de géolocalisation des mesures de compensation des atteintes à la biodiversité (**GéoMCE**).\n\n- **Comité de pilotage et de suivi** :\n  - Aucun comité de pilotage ou de suivi n’est requis pour ce dossier, conformément à l’arrêté DDEP n°2022/05/12-062 du 28 janvier 2019.\n\n### Périodicité\n- **Reporting annuel** : Production d’un tableau de bord en fin d’année.\n\n### Indicateurs de suivi\n- Remise des reportings aux services de l’État et à la SARL PROMOBAT.\n- Certificat de dépôt des données biodiversité.\n\n### Intervenants\n- Eco-compensation\n- SARL PROMOBAT\n- Simethis",
+  "description": "Pilotage et coordination de la mise en œuvre du programme d'actions de compensation écologique pour les parcelles de Mios et Marcheprime, incluant le suivi des travaux, les bilans annuels et la transmission des données naturalistes.",
+  "engagements": [
+    "Assurer le rôle d’opérateur de compensation pour la SARL PROMOBAT à partir de 2023.",
+    "Piloter et coordonner les travaux de génie écologique et les suivis.",
+    "Produire un bilan annuel sous forme de tableau de bord.",
+    "Mettre à jour le plan de gestion tous les 5 ans si nécessaire.",
+    "Transmettre les données naturalistes au SINP et fournir les informations nécessaires à GéoMCE."
+  ],
+  "indicateurs": [
+    "Remise des reportings aux services de l’État et à la SARL PROMOBAT",
+    "Certificat de dépôt des données biodiversité"
+  ],
+  "intervenants": [
+    "Eco-compensation",
+    "SARL PROMOBAT",
+    "Simethis"
+  ],
+  "frise_markdown": null
+}
+```

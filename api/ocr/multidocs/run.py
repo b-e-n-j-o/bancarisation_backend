@@ -10,6 +10,7 @@ run.py — Orchestrateur de la chaîne d'analyse d'un dossier BE.
     2. triage         → carte.json
     3. plan           → plan.json
     4. extraction     → claims.jsonl
+    5. rattrapage     → superviseur.json + dossier.json (horizon T0)
 """
 
 from __future__ import annotations
@@ -21,8 +22,9 @@ from .etape1_normalisation import normaliser_dossier
 from .etape2_triage import cartographier
 from .etape3_planification import planifier, resume
 from .etape4_extraction import catalogue, executer
+from .superviseur import rattraper
 
-ETAPES = ("normalisation", "triage", "plan", "extraction")
+ETAPES = ("normalisation", "triage", "plan", "extraction", "rattrapage")
 
 
 def main() -> None:
@@ -30,7 +32,7 @@ def main() -> None:
     p.add_argument("dossier")
     p.add_argument("--out", default="analyse_out")
     p.add_argument("--jusqu-a", default="plan", choices=ETAPES)
-    p.add_argument("--executer", action="store_true", help="équivaut à --jusqu-a extraction")
+    p.add_argument("--executer", action="store_true", help="équivaut à --jusqu-a rattrapage")
     p.add_argument("--cache-ocr", default=None, help="dossier de cache OCR (fortement conseillé)")
     p.add_argument("--catalogue", action="store_true", help="affiche le registre et sort")
     args = p.parse_args()
@@ -41,7 +43,7 @@ def main() -> None:
         print(catalogue())
         return
 
-    jusqu_a = "extraction" if args.executer else args.jusqu_a
+    jusqu_a = "rattrapage" if args.executer else args.jusqu_a
     sortie = Path(args.out)
     sortie.mkdir(parents=True, exist_ok=True)
     debug_dir = sortie / "debug"
@@ -83,6 +85,19 @@ def main() -> None:
     for c in claims:
         par_kind[c.kind.value] = par_kind.get(c.kind.value, 0) + 1
     print(f"\n✅ {len(claims)} claim(s) → {sortie / 'claims.jsonl'}")
+    for k, n in sorted(par_kind.items()):
+        print(f"   {k:<22} {n}")
+    if jusqu_a == "extraction":
+        return
+
+    # --- 5. rattrapage -----------------------------------------------------
+    claims, recap_sup = rattraper(claims, corpus, carte, debug_dir=debug_dir, sortie=sortie)
+    n_corr = len(recap_sup.get("corrections") or [])
+    n_rest = len(recap_sup.get("trous_restants") or [])
+    print(f"\n🔧 superviseur : {n_corr} correction(s), {n_rest} trou(s) restant(s)")
+    par_kind = {}
+    for c in claims:
+        par_kind[c.kind.value] = par_kind.get(c.kind.value, 0) + 1
     for k, n in sorted(par_kind.items()):
         print(f"   {k:<22} {n}")
 

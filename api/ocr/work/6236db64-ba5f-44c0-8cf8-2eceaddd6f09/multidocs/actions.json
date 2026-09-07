@@ -1,0 +1,256 @@
+{
+  "actions": [
+    {
+      "id": "TE1",
+      "code": "TE1",
+      "categorie": "TE",
+      "titre": "Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+      "lib_thema": "C3.2.a",
+      "objectif_long_terme": "Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "Préserver et entretenir les espaces de landes",
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "zone_source_proposee": "Zones de compensation Marcheprime et Mios",
+      "parcelles": [],
+      "communes": [
+        "Marcheprime",
+        "Mios"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Entretien des landes humides par gyrobroyage tardif et utilisation de rouleau brise-fougère pour favoriser l'hétérogénéité des habitats et soutenir les populations de Fadet des laîches et d'oiseaux landicoles.",
+      "engagements": [
+        "Gyrobroyage tardif à 30 cm sans export tous les 4 ans (ajustable selon la dynamique de fermeture et la portance des sols).",
+        "Interventions entre novembre et février (possibilité dès septembre selon la portance des sols).",
+        "Utilisation de rouleau brise-fougère sur le secteur de Marcheprime : deux campagnes par an pendant trois ans à partir de 2023 (prolongement possible selon résultats).",
+        "Respect des périodes sensibles pour la nidification, la migration et l'activité du Fadet des laïches (1er novembre au 1er mars).",
+        "Interdiction d'utiliser des produits phytosanitaires, fertilisants chimiques ou organiques, rouleau landais et broyage en plein.",
+        "Gestion sur une durée de 30 ans."
+      ],
+      "indicateurs": [
+        "État de conservation des habitats.",
+        "Nombre d'imagos (Fadet des laïches) sur le pic d'émergence."
+      ],
+      "intervenants": [
+        "2019 à 2022 : ESPACE MORLIER SERVICES, ALLIANCE FORETS BOIS (travaux forestiers), CERAG (encadrement écologique).",
+        "2023 à 2048 : LUCANE, ALLIANCE FORETS BOIS (travaux forestiers), ECO-COMPENSATION (encadrement écologique)."
+      ],
+      "periodicite_texte": "Gyrobroyage tardif à 30 cm sans export tous les 4 ans (décalage possible d'1-2 ans). Rouleau brise-fougère : 2 campagnes/an pendant 3 ans (2023-2025) sur Marcheprime.",
+      "frise_markdown": "| Année | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| **Commune** |      |      |      |      | Marcheprime | Mios |      |      | Marcheprime | Mios |      |      | Marcheprime | Mios |      |\n\n| Année | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| **Commune** |      | Marcheprime | Mios |      |      | Marcheprime | Mios |      | Marcheprime | Mios |      |      | Marcheprime | Mios |      |",
+      "contenu_integral": "# TE1 – Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles\n\n**Objectif à long terme** : Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés.\n\n**Objectif opérationnel** : Préserver et entretenir les espaces de landes.\n\n**Unités de gestion concernées** : UG 1 et UG 2.\n\n---\n\n## Description de la mesure\n\nL’ensemble des parcelles retenues pour la compensation écologique du Fadet des laîches et des oiseaux landicoles fait l’objet des mêmes modalités d’entretien, détaillées ci-dessous.\n\n### Modalités d’entretien\n\n- **Gyrobroyage tardif** :\n  - Hauteur de coupe : 30 cm.\n  - Sans export des matériaux broyés, afin de favoriser l’hétérogénéité de la lande.\n  - Fréquence : tous les 4 ans, ajustable en fonction de la dynamique de fermeture de la végétation (décalage possible d’un à deux ans si la portance des sols ne permet pas l’intervention).\n  - Période d’intervention : entre novembre et février (possibilité dès septembre selon la portance des sols).\n\n- **Secteur de Marcheprime** :\n  - Utilisation d’un **rouleau brise-fougère** sur les secteurs traités.\n  - Fréquence : deux campagnes par an pendant trois ans, à partir de 2023.\n  - Prolongement possible en fonction des résultats des campagnes complémentaires.\n\n> **Note sur le rouleau brise-fougère** :\n> Cet outil, tractable par tracteur, quad ou cheval, écrase les fougères sans les sectionner. Il fragilise les rhizomes en provoquant une perte de sève, affaiblissant ainsi les fougères. Sur 3 à 5 saisons de traitement, cela permet une réduction de la hauteur des tiges et favorise l’installation durable de la strate herbacée.\n\n### Engagements de base\n\n- **Période d’intervention** : Tous les travaux (coupes, plantations, éclaircies, broyage, labour, etc.) doivent être réalisés hors des périodes sensibles de nidification, de migration des oiseaux et d’activité du Fadet des laîches, soit entre le **1er novembre et le 1er mars**, sous réserve de la portance des sols.\n- **Interdictions** :\n  - Aucun produit phytosanitaire (herbicides, fongicides, insecticides, etc.).\n  - Aucun fertilisant chimique ou organique.\n  - Aucun rouleau landais.\n  - Aucun broyage en plein.\n- **Durée de gestion** : 30 ans.\n\n---\n\n## Indicateurs de suivi\n\n- État de conservation des habitats.\n- Nombre d’imagos (Fadet des laîches) sur le pic d’émergence.\n\n---\n\n## Frise temporelle des interventions\n\n| Année | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|-----\n| **Commune** |      |      |      |      | Marcheprime | Mios |      |      | Marcheprime | Mios |      |      | Marcheprime | Mios |      |\n\n| Année | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| **Commune** |      | Marcheprime | Mios |      |      | Marcheprime | Mios |      | Marcheprime | Mios |      |      | Marcheprime | Mios |      |\n\n---\n\n## Intervenants\n\n- **2019 à 2022** :\n  - ESPACE MORLIER SERVICES\n  - ALLIANCE FORETS BOIS (travaux forestiers)\n  - CERAG (encadrement écologique)\n\n- **2023 à 2048** :\n  - LUCANE\n  - ALLIANCE FORETS BOIS (travaux forestiers)\n  - ECO-COMPENSATION (encadrement écologique)",
+      "pages": [
+        25,
+        26
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "id": "SE1",
+      "code": "SE1",
+      "categorie": "SE",
+      "titre": "Suivi des habitats naturels, de la flore et de la faune",
+      "lib_thema": "autre",
+      "objectif_long_terme": "Garantir la pérennité des espaces de compensation et des zones évitées",
+      "objectif_operationnel": "Évaluer l'efficacité des actions mises en œuvre",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "zone_source_proposee": "Zones de compensation Marcheprime et Mios + mesure corrective",
+      "parcelles": [
+        "33284D1055 (en partie)",
+        "33555C4577"
+      ],
+      "communes": [
+        "Mios",
+        "Marcheprime"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Suivi écologique annuel puis triennal et quinquennal des habitats naturels, de la flore et de la faune sur les espaces de compensation et zones évitées des parcelles 33284D1055 (Mios) et 33555C4577 (Marcheprime), incluant des relevés phytosociologiques, le suivi des rhopalocères et de l'avifaune nicheuse.",
+      "engagements": [
+        "Réaliser un état initial de référence en 2019 avant tout travaux.",
+        "Effectuer une campagne de suivi annuelle pendant 4 ans après la fin des travaux.",
+        "Poursuivre avec des campagnes triennales pendant 15 ans, puis quinquennales pendant 12 ans.",
+        "Produire un rapport de bilan après chaque campagne et le transmettre aux services de l'État.",
+        "Adapter les mesures de gestion en cas de perte d'espèces ou de faible diversité floristique."
+      ],
+      "indicateurs": [
+        "Pourcentage de recouvrement des espèces végétales",
+        "Composition floristique et richesse spécifique",
+        "Présence d'espèces patrimoniales",
+        "Présence/absence d'espèces végétales exotiques envahissantes",
+        "Fonctionnalité du site pour les rhopalocères (reproduction, repos, etc.)",
+        "Richesse spécifique et présence d'espèces patrimoniales chez les rhopalocères",
+        "Dynamique des populations de rhopalocères",
+        "Fonctionnalité du site pour l'avifaune nicheuse (reproduction, alimentation, etc.)"
+      ],
+      "intervenants": [
+        "ECO-COMPENSATION",
+        "SIMETHIS"
+      ],
+      "periodicite_texte": "1 campagne/an les 5 premières années (2019-2023), puis tous les 3 ans les 15 années suivantes (2026-2040), puis tous les 5 ans les 10 dernières années (2043-2048). Total : 10 campagnes.",
+      "frise_markdown": "| Année | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Campagne | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |   | ✓ |   | ✓ |   | ✓ |   | ✓ |   |\n\n| Année | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Campagne |   | ✓ |   | ✓ |   | ✓ |   | ✓ |   | ✓ |   | ✓ |   | ✓ |   |",
+      "contenu_integral": "# SE1 : Suivi des habitats naturels, de la flore et de la faune\n\n**Objectif à long terme :** C – Garantir la pérennité des espaces de compensation et des zones évitées\n\n**Objectif opérationnel :** C1 - Évaluer l'efficacité des actions mises en œuvre\n\n**Parcelles concernées :**\n- 33284D1055 (en partie) – commune de Mios\n- 33555C4577 – commune de Marcheprime\n\n**Description de la mesure :**\nUn suivi écologique doit être réalisé par un écologue confirmé sur les espaces de compensation et zones évitées dès 2019 (état zéro – année n) et dès l'année suivant la fin des travaux de génie écologique. La périodicité est la suivante :\n- Une campagne annuelle pendant les 4 premières années,\n- Puis une campagne tous les 3 ans pendant les 15 années suivantes,\n- Puis une campagne tous les 5 ans pendant les 12 dernières années,\nsoit un total de 10 campagnes sur 29 ans (de n à n+29).\n\nCe suivi porte sur les thématiques suivantes :\n\n- **Formations végétales** :\n  - Réalisation de relevés phytosociologiques (2 passages par campagne : avril/mai et juin/juillet).\n  - Objectifs : évaluer l'évolution du recouvrement des espèces végétales, la typicité des formations végétales sous l'effet des opérations de gestion, et détecter la présence d'espèces exotiques envahissantes (notamment l'Aronie à feuilles d'Arbousier sur la zone de compensation de Marcheprime).\n\n- **Rhopalocères** :\n  - Détermination de la fonctionnalité des habitats naturels pour les espèces (reproduction, alimentation, zone de maturation, etc.).\n  - Réalisation de 2 passages par campagne sur la période avril à juillet, avec recherche spécifique du Damier de la Succise (avril/mai) et du Fadet des laîches (juin/juillet).\n\n- **Avifaune nicheuse** :\n  - Détermination de la fonctionnalité des habitats naturels pour les espèces (reproduction, alimentation, etc.).\n  - Réalisation de 2 passages par campagne (avril/juin).\n\nUn bilan est réalisé par l'écologue après chaque campagne sous forme de rapport transmis aux services de l'État. En cas de résultats positifs (diversité d'espèces, développement de milieux humides, équilibre des milieux), aucune modification n'est nécessaire. En revanche, si une perte d'espèces ou une faible diversité floristique est constatée, des mesures correctives seront mises en place en accord avec l'écologue, visant à réorienter les actions de gestion en faveur de la zone humide.\n\n*Nota bene :* Une mesure corrective a été mise en place sur la parcelle 33284D1055 (en partie) en raison d'un non-respect du calendrier des travaux ayant impacté l'avifaune nicheuse. Cette thématique a donc été ajoutée aux zones à investiguer au minimum jusqu'en 2024.\n\n**Indicateurs de suivi :**\n\n- **Formations végétales et flore :**\n  - Pourcentage de recouvrement des espèces végétales\n  - Composition floristique et richesse spécifique\n  - Présence d'espèces patrimoniales\n  - Présence/absence d'espèces végétales exotiques envahissantes\n\n- **Rhopalocères :**\n  - Fonctionnalité du site pour les espèces (reproduction, repos, etc.)\n  - Richesse spécifique et présence d'espèces patrimoniales\n  - Dynamique des populations\n\n**Intervenants :** ECO-COMPENSATION / SIMETHIS\n\n**Frise temporelle des campagnes de suivi :**\n\n| Année | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Campagne | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |   | ✓ |   | ✓ |   | ✓ |   | ✓ |   |\n\n| Année | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 |\n|-------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n| Campagne |   | ✓ |   | ✓ |   | ✓ |   | ✓ |   | ✓ |   | ✓ |   | ✓ |   |",
+      "pages": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "periodicite_texte"
+      ],
+      "avertissements": [
+        "Mesure corrective incluse dans les zones à investiguer jusqu'en 2024"
+      ]
+    },
+    {
+      "id": "MG1",
+      "code": "MG1",
+      "categorie": "MG",
+      "titre": "Pilotage et coordination à la mise en œuvre du programme d'actions",
+      "lib_thema": "autre",
+      "objectif_long_terme": "Coordination de la gestion",
+      "objectif_operationnel": "Assurer la mise en œuvre du programme d'actions",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "zone_source_proposee": "Zones de compensation Marcheprime et Mios",
+      "parcelles": [
+        "33284D1055 (en partie)",
+        "33555C4577"
+      ],
+      "communes": [
+        "Mios",
+        "Marcheprime"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Pilotage et coordination de la mise en œuvre du programme d'actions de compensation écologique pour les parcelles de Mios et Marcheprime, incluant le suivi des travaux, les bilans annuels et la transmission des données naturalistes.",
+      "engagements": [
+        "Assurer le rôle d’opérateur de compensation pour la SARL PROMOBAT à partir de 2023.",
+        "Piloter et coordonner les travaux de génie écologique et les suivis.",
+        "Produire un bilan annuel sous forme de tableau de bord.",
+        "Mettre à jour le plan de gestion tous les 5 ans si nécessaire.",
+        "Transmettre les données naturalistes au SINP et fournir les informations nécessaires à GéoMCE."
+      ],
+      "indicateurs": [
+        "Remise des reportings aux services de l’État et à la SARL PROMOBAT",
+        "Certificat de dépôt des données biodiversité"
+      ],
+      "intervenants": [
+        "Eco-compensation",
+        "SARL PROMOBAT",
+        "Simethis"
+      ],
+      "periodicite_texte": "Reporting annuel en fin d'année sous la forme d'un tableau de bord",
+      "frise_markdown": null,
+      "contenu_integral": "## MG1 – Pilotage et coordination à la mise en œuvre du programme d'actions\n\n**Objectif à long terme :** D – Coordination de la gestion\n\n**Objectif opérationnel :** D1 – Assurer la mise en œuvre du programme d'actions\n\n### Parcelles concernées\n- 33284D1055 (en partie) – commune de Mios\n- 33555C4577 – commune de Marcheprime\n\n### Description de la mesure\nÀ compter de 2023 (sous réserve d'un renouvellement de contrat tous les 5 ans), **Eco-compensation** assure, pour le compte de la **SARL PROMOBAT**, le rôle d’opérateur de compensation. Ses missions incluent :\n\n- **Pilotage et coordination des travaux de génie écologique et des suivis** :\n  - Rôle d’Assistant à Maîtrise d’Ouvrage (AMO) pour la SARL PROMOBAT.\n  - Pilotage de l’équipe projet depuis la phase d’avant-projet (rédaction des cahiers des charges, analyses des offres, réunions d’avant-chantier, etc.) jusqu’à la mise en œuvre des travaux de génie écologique (réunions de chantier, encadrement écologique, etc.) et aux suivis (contrôle qualité des livrables).\n\n- **Bilan annuel** :\n  - Une synthèse annuelle de l’état d’avancement (actions menées, résultats obtenus, difficultés rencontrées, etc.) est produite sous forme de tableau de bord chaque fin d’année.\n  - Ces bilans permettent de suivre le bon déroulement de la mise en œuvre du plan de gestion et intègrent les résultats des suivis écologiques réalisés par **Simethis**.\n  - Selon l’évolution des indicateurs, un ajustement du plan de gestion peut être envisagé et présenté dans ces synthèses.\n  - Le plan de gestion fera l’objet d’une mise à jour tous les 5 ans, si nécessaire, en concertation avec l’équipe projet (Eco-compensation, Simethis, entreprise travaux) et sera soumis à validation des services de l’État.\n\n- **Dépôt des données naturalistes** :\n  - Transmission des données naturalistes récoltées dans le cadre des suivis au **SINP** à chaque fin de campagne.\n  - Fourniture des informations nécessaires à la tenue de l’outil national de géolocalisation des mesures de compensation des atteintes à la biodiversité (**GéoMCE**).\n\n- **Comité de pilotage et de suivi** :\n  - Aucun comité de pilotage ou de suivi n’est requis pour ce dossier, conformément à l’arrêté DDEP n°2022/05/12-062 du 28 janvier 2019.\n\n### Périodicité\n- **Reporting annuel** : Production d’un tableau de bord en fin d’année.\n\n### Indicateurs de suivi\n- Remise des reportings aux services de l’État et à la SARL PROMOBAT.\n- Certificat de dépôt des données biodiversité.\n\n### Intervenants\n- Eco-compensation\n- SARL PROMOBAT\n- Simethis",
+      "pages": [
+        31,
+        32
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "id": "MG2",
+      "code": "MG2",
+      "categorie": "MG",
+      "titre": "Mises à jour du plan de gestion et bilan de fin de mesure compensatoire",
+      "lib_thema": "autre",
+      "objectif_long_terme": "Coordination de la gestion",
+      "objectif_operationnel": "Assurer la mise en œuvre du programme d'actions",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "zone_source_proposee": "Zones de compensation Marcheprime et Mios",
+      "parcelles": [
+        "33284D1055 (en partie)",
+        "33555C4577"
+      ],
+      "communes": [
+        "Mios",
+        "Marcheprime"
+      ],
+      "cadrage_surfacique": null,
+      "description": "Mise à jour périodique du plan de gestion des espaces de compensation écologique et réalisation d'un bilan final en fin de mesure compensatoire pour évaluer l'efficacité des actions menées.",
+      "engagements": [
+        "Réaliser une mise à jour du plan de gestion tous les 5 ans si nécessaire, intégrant un bilan des actions précédentes et une réactualisation des coûts.",
+        "Transmettre les nouveaux plans de gestion à la SARL PROMOBAT et aux services de l'État pour validation avant mise en œuvre.",
+        "Réaliser un bilan final de la mesure compensatoire à N+29, en collaboration avec SIMETHIS, pour évaluer l'efficacité globale des mesures et des suivis écologiques."
+      ],
+      "indicateurs": [
+        "Remise du plan de gestion mis à jour aux services de l'État et à la SARL PROMOBAT.",
+        "Remise du bilan final de la mesure compensatoire aux services de l'État et à la SARL PROMOBAT."
+      ],
+      "intervenants": [
+        "ECO-COMPENSATION",
+        "SIMETHIS",
+        "SARL PROMOBAT"
+      ],
+      "periodicite_texte": "Tous les 5 ans si jugé nécessaire jusqu'en 2058. Bilan final à N+29 (2048).",
+      "frise_markdown": null,
+      "contenu_integral": "# MG2 : Mises à jour du plan de gestion et bilan de fin de mesure compensatoire\n\n## Objectif à long terme\n- **D** : Coordination de la gestion\n\n## Objectif opérationnel\n- **D1** : Assurer la mise en œuvre du programme d'actions\n\n## Description de la mesure\n\nSur la base des bilans annuels et/ou des rapports des suivis écologiques, une mise à jour du plan de gestion sera effectuée **tous les 5 ans si jugé nécessaire**. Celui-ci intégrera notamment un bilan du précédent plan de gestion en ciblant les points positifs et négatifs. Ce préambule servira de support pour ajuster, réorienter ou corriger les actions définies dans l'ancien plan de gestion en concertation avec l'équipe projet. Il intégrera notamment une réactualisation des coûts si nécessaire (ajout d'une mesure corrective, changement d'entreprise travaux, variation des coûts, etc.). Les nouveaux plans de gestion seront transmis à la SARL PROMOBAT et aux services de l'État pour validation avant mise en œuvre.\n\nEn fin de mesure compensatoire (soit à N+29), **Eco-compensation, accompagné du bureau d'études SIMETHIS**, réalisera un bilan final de la mesure compensatoire sur toute sa temporalité. Il aura pour objectif de conclure sur l'efficacité des mesures réalisées et les résultats obtenus par le biais des suivis pluriannuels des différents indicateurs de gestion retenus.\n\n## Indicateurs de suivi\n- Remise du plan de gestion et du bilan de fin de mesure compensatoire aux services de l'État et à la SARL PROMOBAT.\n\n## Périodicité\n- Tous les 5 ans si jugé nécessaire jusqu'en 2058.\n\n## Intervenants\n- ECO-COMPENSATION\n- SIMETHIS\n- SARL PROMOBAT\n\n---\n\n### Frise temporelle des mises à jour du plan de gestion\n\n| 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 |\n|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n|      |      |      |      |      |      |      | Si nécessaire |      |      |      |      |      |      | Si nécessaire |\n\n| 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 |\n|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n|      |      |      |      | Si nécessaire |      |      |      |      | Si nécessaire |      |      |      |      |      |",
+      "pages": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ],
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "periodicite_texte"
+      ],
+      "avertissements": []
+    }
+  ]
+}

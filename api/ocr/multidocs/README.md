@@ -2,14 +2,17 @@
 
 Analyse d'un dossier de compensation écologique déposé par un bureau d'études :
 plusieurs fichiers hétérogènes (PDF, XLSX, DOCX…) → **claims** typés, ancrés,
-jamais réconciliés. La réconciliation, la génération de calendrier, le patch et
-le rejeu du réalisé sont des étages **à venir**, hors de ce package pour l'instant.
+puis **superviseur borné** (trous UG / fiches / T0) et **semoir** Python
+(occurrences datées, 0 LLM).
+
+Le dessin actuel (DAG, doc-par-doc, ce que le LLM n’a pas le droit d’écrire)
+est détaillé dans **[ARCHITECTURE_PIPELINE.md](./ARCHITECTURE_PIPELINE.md)**.
 
 ```bash
 # depuis backend/
 python3 -m api.ocr.multidocs.run dossier_BE/ --jusqu-a triage      # cartographie seule
 python3 -m api.ocr.multidocs.run dossier_BE/ --out analyse_out/    # + plan
-python3 -m api.ocr.multidocs.run dossier_BE/ --executer            # + claims
+python3 -m api.ocr.multidocs.run dossier_BE/ --executer            # + claims + rattrapage
 python3 -m api.ocr.multidocs.run dossier_BE/ --catalogue           # registre
 ```
 
@@ -58,32 +61,18 @@ dossier BE
     │
     ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  0 · Normalisation          ✅ implémenté                   │
-│      fichier → blocs markdown + ancres adressables          │
-├─────────────────────────────────────────────────────────────┤
-│  1 · Triage                 ✅ implémenté                   │
-│      LLM : rôles × plages, paramètres (T0…), signaux        │
-├─────────────────────────────────────────────────────────────┤
-│  2 · Plan d'extraction      ✅ implémenté                   │
-│      déterministe : carte + registre → jobs ordonnés        │
-├─────────────────────────────────────────────────────────────┤
-│  3 · Extraction → claims    ✅ implémenté (partiel)         │
-│      extracteurs versionnés, affirmations ancrées           │
-├─────────────────────────────────────────────────────────────┤
-│  4 · Réconciliation         ❌ à venir                      │
-│      blocking déterministe + arbitre LLM sur ambiguïtés     │
-├─────────────────────────────────────────────────────────────┤
-│  5 · Génération (semoir)    ❌ à venir (déjà partiel hors   │
-│      occurrences.py = seul à matérialiser des dates           │
-│      package)                                               │
-├─────────────────────────────────────────────────────────────┤
-│  6 · Patcheur / rejoueur    ❌ à venir                      │
-│      ops typées sur règles ≠ rejeu de réalisé               │
-├─────────────────────────────────────────────────────────────┤
-│  7 · Audit de couverture    ❌ à venir                      │
-│      résidu non expliqué → passe LLM ciblée                 │
+│  0 · Normalisation          ✅                              │
+│  1 · Triage doc-par-doc     ✅                              │
+│  2 · Plan d'extraction      ✅  (0 LLM)                     │
+│  3 · Extraction → claims    ✅  (plan_gestion v2)           │
+│  4 · Superviseur borné      ✅  (trous UG / fiches / T0)    │
+│  5 · Semoir + ingestion     ✅  (0 LLM, API)                │
+│  6 · Réconciliation n:n     ❌  claims restent distincts    │
+│  7 · Patcheur / rejoueur    ❌  facture ≠ récurrence        │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+Détail des contrats, bornes et artefacts : [ARCHITECTURE_PIPELINE.md](./ARCHITECTURE_PIPELINE.md).
 
 Principe transversal, généralisé depuis le prompt budget
 (« NE RÉCONCILIE JAMAIS LES TABLES ENTRE ELLES ») :

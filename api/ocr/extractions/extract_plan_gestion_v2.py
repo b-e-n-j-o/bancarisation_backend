@@ -3,9 +3,10 @@ extract_plan_gestion_v2.py — Distributeur (lourd) + slice Python + scribes (l�
 
 Flux :
   1. LLM medium/high → JSON fiches {bornes + échéances} (pas de contenu intégral)
-  2. Python valide les citations et coupe le markdown OCR
-  3. LLM small/none × N → contenu_propre de chaque chunk
-  4. Retourne (actions: list[ActionFiche], echeances: list[Echeance])
+  2. Python coupe le markdown (bornes, sinon titre au code TU2 / SE1…)
+  3. LLM small/none × N → contenu_propre si un chunk OCR a été trouvé
+  4. Les échéances (calendrier) sont TOUJOURS émises, même sans texte de fiche
+  5. Retourne (actions: list[ActionFiche], echeances: list[Echeance])
 """
 
 from __future__ import annotations
@@ -49,31 +50,51 @@ _RE_PAGE_MD = re.compile(
     r"⟦p(\d+)⟧",
     re.IGNORECASE,
 )
+_RE_HASHES = re.compile(r"^#{1,6}\s*")
+_RE_TITRE_FICHE = re.compile(
+    r"^#{1,6}\s*([A-Z]{2,3})\s*(\d{1,2})\b",
+    re.MULTILINE,
+)
+_APOS = str.maketrans({"’": "'", "‘": "'", "ʼ": "'", "´": "'"})
+
+
+def _normaliser_citation(s: str) -> str:
+    t = (s or "").translate(_APOS)
+    t = _RE_HASHES.sub("", t.strip())
+    return re.sub(r"\s+", " ", t)
 
 
 # --- Bornes OCR -------------------------------------------------------------
 
 def trouver_ancre(haystack: str, needle: str, *, start: int = 0) -> Optional[int]:
-    """Localise une citation LLM dans l'OCR (exact, puis préfixe, puis whitespace)."""
+    """Localise une citation LLM dans l'OCR (exact, hashes markdown, préfixe)."""
     if not needle or not needle.strip():
         return None
 
-    idx = haystack.find(needle, start)
+    zone = haystack[start:]
+    idx = zone.find(needle)
     if idx >= 0:
-        return idx
+        return start + idx
+
+    nu = _normaliser_citation(needle)
+    if nu and nu != needle:
+        idx = zone.find(nu)
+        if idx >= 0:
+            return start + idx
 
     for n in (120, 80, 60, 40):
-        if len(needle) < n:
-            continue
-        idx = haystack.find(needle[:n], start)
-        if idx >= 0:
-            return idx
+        for cand in (needle, nu):
+            if not cand or len(cand) < n:
+                continue
+            idx = zone.find(cand[:n])
+            if idx >= 0:
+                return start + idx
 
-    compact = re.sub(r"\s+", " ", needle.strip())
+    compact = nu or re.sub(r"\s+", " ", needle.strip())
     if len(compact) < 12:
         return None
     pat = re.escape(compact).replace(r"\ ", r"\s+")
-    m = re.search(pat, haystack[start:], flags=re.MULTILINE)
+    m = re.search(pat, zone, flags=re.MULTILINE)
     if m:
         return start + m.start()
     return None
@@ -104,6 +125,47 @@ def couper_par_bornes(
     if len(chunk) < 20:
         raise ValueError(f"Chunk trop court ({len(chunk)} car.) pour début={debut[:60]!r}")
     return chunk
+
+
+def indices_titres_fiches(markdown: str) -> list[tuple[int, str]]:
+    """Offsets des titres de fiche-action (code normalisé TU1, SE1…)."""
+    out: list[tuple[int, str]] = []
+    vus: set[str] = set()
+    for m in _RE_TITRE_FICHE.finditer(markdown):
+        code = f"{m.group(1)}{m.group(2)}".upper()
+        if code in vus:
+            continue
+        vus.add(code)
+        out.append((m.start(), code))
+    return out
+
+
+def couper_par_code(markdown: str, code: str) -> Optional[str]:
+    """Découpe [titre de `code`, titre de la fiche suivante[ — indépendant des citations LLM."""
+    cible = (code or "").replace(" ", "").strip().upper()
+    if not cible:
+        return None
+    titres = indices_titres_fiches(markdown)
+    for i, (off, c) in enumerate(titres):
+        if c != cible:
+            continue
+        fin = titres[i + 1][0] if i + 1 < len(titres) else len(markdown)
+        chunk = markdown[off:fin].strip()
+        if len(chunk) >= 20:
+            return chunk
+    return None
+
+
+def couper_fiche(markdown: str, fiche: FicheBorne) -> tuple[str, str]:
+    """Essaie les bornes LLM, puis le titre au code. Retourne (chunk, methode)."""
+    try:
+        return couper_par_bornes(markdown, fiche.debut, fiche.fin_exclusive), "bornes"
+    except ValueError:
+        pass
+    par_code = couper_par_code(markdown, fiche.code or fiche.id)
+    if par_code:
+        return par_code, "code"
+    return "", "vide"
 
 
 def pages_du_chunk(chunk: str) -> list[int]:
@@ -194,12 +256,32 @@ def scribe_action(
     )
 
 
+def _contenu_fallback(fiche: FicheBorne, chunk: str) -> str:
+    if chunk.strip():
+        return chunk.strip()
+    parts = [f"# {fiche.code} — {fiche.titre}"]
+    if fiche.objectif_long_terme:
+        parts.append(f"**Objectif long terme** : {fiche.objectif_long_terme}")
+    if fiche.objectif_operationnel:
+        parts.append(f"**Objectif opérationnel** : {fiche.objectif_operationnel}")
+    if fiche.periodicite_texte:
+        parts.append(f"**Périodicité** : {fiche.periodicite_texte}")
+    parts.append(
+        "_Texte OCR non localisé (bornes et titre de fiche introuvables). "
+        "Les échéances restent valides pour le calendrier._"
+    )
+    return "\n\n".join(parts)
+
+
 def _action_depuis(
     fiche: FicheBorne,
     chunk: str,
     scribe: ScribeActionResult | None,
 ) -> ActionFiche:
-    contenu = (scribe.contenu_propre.strip() if scribe and scribe.contenu_propre else "") or chunk
+    contenu = (scribe.contenu_propre.strip() if scribe and scribe.contenu_propre else "") or _contenu_fallback(
+        fiche, chunk
+    )
+    pages = pages_du_chunk(chunk) if chunk else []
     return ActionFiche(
         id=fiche.id,
         code=fiche.code,
@@ -220,8 +302,8 @@ def _action_depuis(
         periodicite_texte=fiche.periodicite_texte,
         frise_markdown=scribe.frise_markdown if scribe else None,
         contenu_integral=contenu,
-        pages=pages_du_chunk(chunk),
-        confiance=fiche.confiance,
+        pages=pages,
+        confiance=fiche.confiance if chunk else min(fiche.confiance, 0.55),
         champs_a_confirmer=list(fiche.champs_a_confirmer),
         avertissements=list(fiche.avertissements),
     )
@@ -352,38 +434,69 @@ def extraire(
             f"   ✂ {fiche.id} · bornes… · ug={fiche.ug_ids or ['—']}",
             flush=True,
         )
-        try:
-            chunk = couper_par_bornes(markdown, fiche.debut, fiche.fin_exclusive)
-        except ValueError as err:
-            log.warning("Slice %s échoué : %s", fiche.id, err)
-            print(f"   ⚠️  {fiche.id} : bornes invalides — {err}", flush=True)
-            fiche.avertissements = list(fiche.avertissements) + [f"bornes: {err}"]
-            # On conserve quand même les échéances (calendrier indépendant du texte propre)
-            echeances.extend(_propager_lib_thema(fiche, list(fiche.echeances)))
-            continue
-
-        print(
-            f"   ✍️  {fiche.id} · scribe ({model_scribe}, effort={effort_scribe}) "
-            f"· {len(chunk):,} car. OCR",
-            flush=True,
-        )
-        scribe: ScribeActionResult | None = None
-        try:
-            scribe = scribe_action(
-                chunk,
-                fiche,
-                model=model_scribe,
-                effort=effort_scribe,
-                compteur=compteur,
-                debug_dir=debug_scribe,
+        chunk, methode = couper_fiche(markdown, fiche)
+        if methode != "bornes":
+            msg = (
+                f"bornes invalides → découpe par code {fiche.code}"
+                if methode == "code"
+                else "bornes et titre introuvables — action minimale, échéances conservées"
             )
-        except Exception as err:  # noqa: BLE001
-            log.warning("Scribe %s échoué : %s — fallback chunk OCR", fiche.id, err)
-            print(f"   ⚠️  scribe {fiche.id} échoué ({err}) — stocke le chunk brut", flush=True)
-            fiche.avertissements = list(fiche.avertissements) + [f"scribe: {err}"]
+            log.warning("Slice %s : %s", fiche.id, msg)
+            print(f"   ⚠️  {fiche.id} : {msg}", flush=True)
+            fiche.avertissements = list(fiche.avertissements) + [f"decoupe: {methode}"]
+
+        scribe: ScribeActionResult | None = None
+        if len(chunk) >= 80:
+            print(
+                f"   ✍️  {fiche.id} · scribe ({model_scribe}, effort={effort_scribe}) "
+                f"· {len(chunk):,} car. OCR ({methode})",
+                flush=True,
+            )
+            try:
+                scribe = scribe_action(
+                    chunk,
+                    fiche,
+                    model=model_scribe,
+                    effort=effort_scribe,
+                    compteur=compteur,
+                    debug_dir=debug_scribe,
+                )
+            except Exception as err:  # noqa: BLE001
+                log.warning("Scribe %s échoué : %s — fallback chunk OCR", fiche.id, err)
+                print(f"   ⚠️  scribe {fiche.id} échoué ({err}) — stocke le chunk brut", flush=True)
+                fiche.avertissements = list(fiche.avertissements) + [f"scribe: {err}"]
+        else:
+            print(f"   📎 {fiche.id} · pas de scribe (chunk {len(chunk)} car.)", flush=True)
 
         actions.append(_action_depuis(fiche, chunk, scribe))
         echeances.extend(_propager_lib_thema(fiche, list(fiche.echeances)))
+
+    codes_actions = {a.code for a in actions} | {a.id for a in actions}
+    for e in echeances:
+        code = (e.code_operation or "").replace(" ", "").upper()
+        if code and code not in codes_actions:
+            stub = ActionFiche(
+                id=code,
+                code=code,
+                categorie=e.type_operation,
+                titre=e.libelle or code,
+                lib_thema=e.lib_thema,
+                objectif_long_terme=e.objectif_long_terme,
+                objectif_operationnel=e.objectif_operationnel,
+                ug_ids=list(e.ug_ids),
+                zone_source_proposee=e.zone_source_proposee,
+                parcelles=list(e.parcelles),
+                communes=list(e.communes),
+                contenu_integral=(
+                    f"# {code} — {e.libelle or code}\n\n"
+                    "_Fiche reconstituée depuis les échéances (absent du catalogue distributeur)._"
+                ),
+                confiance=min(e.confiance, 0.5),
+                avertissements=["stub: créée depuis les échéances pour le calendrier"],
+            )
+            actions.append(stub)
+            codes_actions.add(code)
+            print(f"   🧩 action stub {code} (échéances orphelines)", flush=True)
 
     print(
         f"   ✅ plan_gestion v2 : {len(actions)} action(s), {len(echeances)} échéance(s)",

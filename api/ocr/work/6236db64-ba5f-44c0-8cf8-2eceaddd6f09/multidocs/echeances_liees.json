@@ -1,0 +1,1198 @@
+{
+  "echeances": [
+    {
+      "id": "TU1-replant-2021",
+      "code_operation": "TU1",
+      "type_operation": "TU",
+      "type_metier": "replantation",
+      "libelle": "Travaux de replantation adaptée (1 100 tiges/ha, inter-rangs 5 m)",
+      "lib_thema": "autre",
+      "objectif_long_terme": "Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés",
+      "objectif_operationnel": "Réorienter les pratiques sylvicoles",
+      "ug_ids": [
+        "ug1"
+      ],
+      "zone_source_proposee": "Zone n°2 – Mios",
+      "parcelles": [
+        "33284D1055 (en partie)"
+      ],
+      "communes": [
+        "Mios"
+      ],
+      "recurrence": {
+        "type": "ponctuel",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2021,
+        "annee_fin": null,
+        "regle_source": "Programme de replantation par ALLIANCE FORETS BOIS en 2021",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "03-01",
+        "traverse_nouvel_an": true,
+        "texte_source": "entre le 1er novembre et le 1er mars sous réserve de la portance des sols (possibilité d'intervention dès septembre)"
+      },
+      "conditions": [
+        "Absence de broyage en plein au moment de la plantation",
+        "Broyage lourd uniquement sur les lignes de plantation (2 m de large)",
+        "Pas d'utilisation de produits phytosanitaires, fertilisants chimiques/organiques",
+        "Pas d'utilisation de rouleau landais en plein et sur les inter-rangs",
+        "Pas de broyage en plein"
+      ],
+      "indicateurs": [
+        "Densité du peuplement",
+        "Etat de conservation des habitats",
+        "Nombre d'imago sur le pic d'émergence"
+      ],
+      "intervenants": [
+        "ALLIANCE FORETS BOIS (2019-2022)",
+        "ALLIANCE FORETS BOIS / ECO-COMPENSATION (2023-2048)"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 15,
+        "extrait": "TU 1 : Adapter les itinéraires techniques sylvicoles"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Mesure corrective : report replantation à 2024 sur partie de la parcelle"
+      ],
+      "action_id": null
+    },
+    {
+      "id": "TU1-eclaircie1",
+      "code_operation": "TU1",
+      "type_operation": "TU",
+      "type_metier": "eclaircie",
+      "libelle": "Première éclaircie",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1"
+      ],
+      "zone_source_proposee": "Zone n°2 – Mios",
+      "parcelles": [
+        "33284D1055 (en partie)"
+      ],
+      "communes": [
+        "Mios"
+      ],
+      "recurrence": {
+        "type": "dependant_evenement",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": null,
+        "annee_fin": null,
+        "regle_source": "entre 12 et 15 ans après plantation (2021)",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "03-01",
+        "traverse_nouvel_an": true,
+        "texte_source": "entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+      },
+      "conditions": [
+        "Taux de prélèvement maximal de 30 %",
+        "Dégagement manuel sur la ligne de plantation possible au cours des 3 premières années (débroussailleuse à dos)",
+        "En dehors de la période de nidification"
+      ],
+      "indicateurs": [
+        "Densité du peuplement",
+        "Etat de conservation des habitats"
+      ],
+      "intervenants": [
+        "ALLIANCE FORETS BOIS / ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 16,
+        "extrait": "1ère éclaircie entre 12 et 15 ans"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": [],
+      "action_id": null
+    },
+    {
+      "id": "TU1-eclaircie2",
+      "code_operation": "TU1",
+      "type_operation": "TU",
+      "type_metier": "eclaircie",
+      "libelle": "Deuxième éclaircie",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1"
+      ],
+      "zone_source_proposee": "Zone n°2 – Mios",
+      "parcelles": [
+        "33284D1055 (en partie)"
+      ],
+      "communes": [
+        "Mios"
+      ],
+      "recurrence": {
+        "type": "dependant_evenement",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": null,
+        "annee_fin": null,
+        "regle_source": "6 ans minimum après la première éclaircie",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "03-01",
+        "traverse_nouvel_an": true,
+        "texte_source": "entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+      },
+      "conditions": [
+        "Taux de prélèvement maximal de 25 %"
+      ],
+      "indicateurs": [
+        "Densité du peuplement"
+      ],
+      "intervenants": [
+        "ALLIANCE FORETS BOIS / ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 16,
+        "extrait": "2ème éclaircie à réaliser 6 ans minimum après la première"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": [],
+      "action_id": null
+    },
+    {
+      "id": "TU1-eclaircie3",
+      "code_operation": "TU1",
+      "type_operation": "TU",
+      "type_metier": "eclaircie",
+      "libelle": "Troisième éclaircie",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1"
+      ],
+      "zone_source_proposee": "Zone n°2 – Mios",
+      "parcelles": [
+        "33284D1055 (en partie)"
+      ],
+      "communes": [
+        "Mios"
+      ],
+      "recurrence": {
+        "type": "dependant_evenement",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": null,
+        "annee_fin": null,
+        "regle_source": "6 ans minimum après la deuxième éclaircie",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "03-01",
+        "traverse_nouvel_an": true,
+        "texte_source": "entre le 1er novembre et le 1er mars sous réserve de la portance des sols"
+      },
+      "conditions": [
+        "Taux de prélèvement maximal de 25 %"
+      ],
+      "indicateurs": [
+        "Densité du peuplement"
+      ],
+      "intervenants": [
+        "ALLIANCE FORETS BOIS / ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 16,
+        "extrait": "3ème éclaircie à réaliser 6 ans minimum après la deuxième"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": [],
+      "action_id": null
+    },
+    {
+      "id": "TU2-exploit-2019",
+      "code_operation": "TU2",
+      "type_operation": "TU",
+      "type_metier": "abattage",
+      "libelle": "Exploitation des résineux",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug2"
+      ],
+      "zone_source_proposee": "Zone n°1 – Marcheprime",
+      "parcelles": [
+        "33555C4577"
+      ],
+      "communes": [
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "ponctuel",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2019,
+        "annee_fin": null,
+        "regle_source": "Abattage en 2019 des résineux",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "03-01",
+        "traverse_nouvel_an": true,
+        "texte_source": "entre le 1er septembre et le 1er mars sous réserve de la portance des sols"
+      },
+      "conditions": [
+        "Tous les travaux de coupes en dehors des périodes sensibles vis-à-vis de la nidification des oiseaux",
+        "Pas d'utilisation de produits phytosanitaires, fertilisants chimiques/organiques",
+        "Pas d'utilisation de rouleau landais",
+        "Pas de broyage en plein"
+      ],
+      "indicateurs": [
+        "Recouvrement de la strate arborée",
+        "Etat de conservation des habitats",
+        "Nombre d'imago sur le pic d'émergence"
+      ],
+      "intervenants": [
+        "ESPACE MORLIER SERVICES (2019-2022)",
+        "LUCANE / ECO-COMPENSATION (2023-2048)"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 18,
+        "extrait": "Exploitation des résineux en 2019"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": null
+    },
+    {
+      "id": "TU2-eclaircie-eee-2023",
+      "code_operation": "TU2",
+      "type_operation": "TU",
+      "type_metier": "abattage",
+      "libelle": "Éclaircie sélective des feuillus + arrachage manuel des EEE (Aronie à feuilles d'Arbousier)",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug2"
+      ],
+      "zone_source_proposee": "Zone n°1 – Marcheprime",
+      "parcelles": [
+        "33555C4577"
+      ],
+      "communes": [
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "ponctuel",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2023,
+        "annee_fin": null,
+        "regle_source": "Éclaircie sélective en septembre 2023 + 2 campagnes d'arrachage EEE (mai et septembre 2023)",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "03-01",
+        "traverse_nouvel_an": true,
+        "texte_source": "entre le 1er septembre et le 1er mars sous réserve de la portance des sols"
+      },
+      "conditions": [
+        "Résidus de coupe entreposés sur site sous forme d'andain (décomposition naturelle)",
+        "Arrachage manuel avec export en déchèterie"
+      ],
+      "indicateurs": [
+        "Recouvrement de la strate arborée",
+        "Etat de conservation des habitats",
+        "Nombre d'imago sur le pic d'émergence"
+      ],
+      "intervenants": [
+        "LUCANE / ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 19,
+        "extrait": "Éclaircie sélective + Arrachage des EEE en 2023"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": null
+    },
+    {
+      "id": "TU2-eclaircie-supp",
+      "code_operation": "TU2",
+      "type_operation": "TU",
+      "type_metier": "eclaircie",
+      "libelle": "Nouvelles éclaircies sélectives si nécessaire",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug2"
+      ],
+      "zone_source_proposee": "Zone n°1 – Marcheprime",
+      "parcelles": [
+        "33555C4577"
+      ],
+      "communes": [
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "dependant_evenement",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2023,
+        "annee_fin": null,
+        "regle_source": "Si jugé nécessaire par l'écologue au cours des 25 prochaines années",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "03-01",
+        "traverse_nouvel_an": true,
+        "texte_source": "entre le 1er septembre et le 1er mars sous réserve de la portance des sols"
+      },
+      "conditions": [
+        "Sous visa préalable de l'écologue"
+      ],
+      "indicateurs": [
+        "Recouvrement de la strate arborée"
+      ],
+      "intervenants": [
+        "LUCANE / ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 25,
+      "source": {
+        "page": 19,
+        "extrait": "Si besoin et sous visa préalable de l'écologue, des nouvelles éclaircies sélectives pourront avoir lieu"
+      },
+      "confiance": 0.95,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": [],
+      "action_id": null
+    },
+    {
+      "id": "TU2-arrachage-eee-supp",
+      "code_operation": "TU2",
+      "type_operation": "TU",
+      "type_metier": "arrachage_eee",
+      "libelle": "Campagnes d'arrachage des EEE (Aronie) si nécessaire",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug2"
+      ],
+      "zone_source_proposee": "Zone n°1 – Marcheprime",
+      "parcelles": [
+        "33555C4577"
+      ],
+      "communes": [
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "dependant_evenement",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2023,
+        "annee_fin": null,
+        "regle_source": "Si jugé nécessaire par l'écologue au cours des 25 prochaines années",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "05-01",
+        "fin": "09-30",
+        "traverse_nouvel_an": false,
+        "texte_source": "campagnes en mai et septembre (exemple 2023)"
+      },
+      "conditions": [
+        "Arrachage manuel avec export en déchèterie"
+      ],
+      "indicateurs": [
+        "Présence / absence d'espèce végétales exotiques envahissante"
+      ],
+      "intervenants": [
+        "LUCANE / ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 25,
+      "source": {
+        "page": 19,
+        "extrait": "Si jugé nécessaire par l'écologue des nouvelles campagnes pourront être réalisées"
+      },
+      "confiance": 0.95,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": [],
+      "action_id": null
+    },
+    {
+      "id": "TU3-creation-2021",
+      "code_operation": "TU3",
+      "type_operation": "TU",
+      "type_metier": "etrepage",
+      "libelle": "Création de deux placettes d'étrépage (~60 m² chacune)",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug3"
+      ],
+      "zone_source_proposee": "Zone n°2 – Mios (limite Sud de la parcelle 33284D1055)",
+      "parcelles": [
+        "33284D1055 (en partie)"
+      ],
+      "communes": [
+        "Mios"
+      ],
+      "recurrence": {
+        "type": "ponctuel",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2021,
+        "annee_fin": null,
+        "regle_source": "Deux placettes créées par ALLIANCE FORETS BOIS à l'automne 2021",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "03-01",
+        "traverse_nouvel_an": true,
+        "texte_source": "en dehors des périodes sensibles vis-à-vis de la nidification des oiseaux soit entre le 1er septembre et le 1er mars sous réserve de la portance des sols"
+      },
+      "conditions": [
+        "Étrépage < 30 cm",
+        "Suppression de la végétation en place sur 10 à 30 cm de l’horizon humifère superficiel",
+        "Berges peu travaillées"
+      ],
+      "indicateurs": [
+        "Suivi des stations de Rossolis intermédiaire",
+        "Etat de conservation des habitats"
+      ],
+      "intervenants": [
+        "ALLIANCE FORETS BOIS (2019-2022)",
+        "ALLIANCE FORETS BOIS / ECO-COMPENSATION (2023-2048)"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 22,
+        "extrait": "Création des placettes en automne 2021"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": null
+    },
+    {
+      "id": "TU3-entretien-3ans",
+      "code_operation": "TU3",
+      "type_operation": "TU",
+      "type_metier": "rotobroyage",
+      "libelle": "Entretien des placettes (rotobroyage + griffage)",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug3"
+      ],
+      "zone_source_proposee": "Zone n°2 – Mios",
+      "parcelles": [
+        "33284D1055 (en partie)"
+      ],
+      "communes": [
+        "Mios"
+      ],
+      "recurrence": {
+        "type": "periodique",
+        "intervalle_ans": 3.0,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2024,
+        "annee_fin": null,
+        "regle_source": "tous les 3 ans en fonction de la dynamique de fermeture du milieu",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "03-01",
+        "traverse_nouvel_an": true,
+        "texte_source": "en dehors des périodes sensibles vis-à-vis de la nidification des oiseaux soit entre le 1er septembre et le 1er mars sous réserve de la portance des sols"
+      },
+      "conditions": [
+        "Périodicité réajustable selon la dynamique de fermeture du milieu"
+      ],
+      "indicateurs": [
+        "Etat de conservation des habitats"
+      ],
+      "intervenants": [
+        "ALLIANCE FORETS BOIS / ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 22,
+        "extrait": "rotobroyage et griffage tous les 3 ans"
+      },
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": null
+    },
+    {
+      "id": "TU3-renouvellement",
+      "code_operation": "TU3",
+      "type_operation": "TU",
+      "type_metier": "etrepage",
+      "libelle": "Renouvellement des placettes d'étrépage si nécessaire",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug3"
+      ],
+      "zone_source_proposee": "Zone n°2 – Mios",
+      "parcelles": [
+        "33284D1055 (en partie)"
+      ],
+      "communes": [
+        "Mios"
+      ],
+      "recurrence": {
+        "type": "dependant_evenement",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2025,
+        "annee_fin": null,
+        "regle_source": "Renouvellement des placettes si nécessaire en fonction de la dynamique de fermeture",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "03-01",
+        "traverse_nouvel_an": true,
+        "texte_source": "en dehors des périodes sensibles vis-à-vis de la nidification des oiseaux"
+      },
+      "conditions": [],
+      "indicateurs": [
+        "Suivi des stations de Rossolis intermédiaire"
+      ],
+      "intervenants": [
+        "ALLIANCE FORETS BOIS / ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 22,
+        "extrait": "Renouvellement des placettes si nécessaire"
+      },
+      "confiance": 0.9,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": [],
+      "action_id": null
+    },
+    {
+      "id": "TE1-gyrobroyage-4ans",
+      "code_operation": "TE1",
+      "type_operation": "TE",
+      "type_metier": "gyrobroyage",
+      "libelle": "Gyrobroyage tardif à 30 cm sans export",
+      "lib_thema": "C3.2.a",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "zone_source_proposee": "UG 1 (Mios) et UG 2 (Marcheprime)",
+      "parcelles": [],
+      "communes": [
+        "Marcheprime",
+        "Mios"
+      ],
+      "recurrence": {
+        "type": "periodique",
+        "intervalle_ans": 4.0,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2023,
+        "annee_fin": null,
+        "regle_source": "tous les 4 ans en fonction de la dynamique de fermeture (décalage possible d'un an ou deux si portance des sols ne permet pas l'intervention)",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "09-01",
+        "fin": "02-28",
+        "traverse_nouvel_an": true,
+        "texte_source": "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+      },
+      "conditions": [
+        "Créer une hétérogénéité dans la lande",
+        "Tous les travaux en dehors des périodes sensibles vis-à-vis de la nidification et de l'activité du Fadet des laîches",
+        "Pas d'utilisation de produits phytosanitaires, fertilisants chimiques/organiques",
+        "Pas d'utilisation de rouleau landais",
+        "Pas de broyage en plein"
+      ],
+      "indicateurs": [
+        "Etat de conservation des habitats",
+        "Nombre d'imago sur le pic d'émergence"
+      ],
+      "intervenants": [
+        "ESPACE MORLIER SERVICES / ALLIANCE FORETS BOIS (2019-2022)",
+        "LUCANE / ALLIANCE FORETS BOIS / ECO-COMPENSATION (2023-2048)"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 24,
+        "extrait": "Gyrobroyage tardif à 30 cm sans export tous les 4 ans"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": "TE1"
+    },
+    {
+      "id": "TE1-rouleau-fougere-3ans",
+      "code_operation": "TE1",
+      "type_operation": "TE",
+      "type_metier": "rouleau_brise_fougere",
+      "libelle": "Passage du rouleau brise-fougère sur les secteurs à traiter",
+      "lib_thema": "C3.2.a",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug2"
+      ],
+      "zone_source_proposee": "UG 2 – Marcheprime",
+      "parcelles": [],
+      "communes": [
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "campagnes",
+        "intervalle_ans": null,
+        "occurrences_par_an": 2,
+        "duree_ans": 3,
+        "ancrage_annee": 2023,
+        "annee_fin": null,
+        "regle_source": "2 campagnes par an pendant trois ans à partir de 2023",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "05-01",
+        "fin": "06-30",
+        "traverse_nouvel_an": false,
+        "texte_source": "deux campagnes par an (Mai et Juin 2023)"
+      },
+      "conditions": [
+        "Affaiblissement des rhizomes de Fougère aigle par écrasement",
+        "3 à 5 saisons de traitement pour une installation durable de la strate herbacée"
+      ],
+      "indicateurs": [
+        "Etat de conservation des habitats"
+      ],
+      "intervenants": [
+        "LUCANE / ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 3,
+      "source": {
+        "page": 24,
+        "extrait": "Passage du rouleau brise fougère à raison de deux campagnes par an pendant trois ans à partir de 2023"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": "TE1"
+    },
+    {
+      "id": "SE1-suivi-annuel-5ans",
+      "code_operation": "SE1",
+      "type_operation": "SE",
+      "type_metier": "suivi_habitats",
+      "libelle": "Campagnes de suivi annuel (état initial + 4 premières années)",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "zone_source_proposee": "UG 1, UG 2, UG 3 + mesure corrective",
+      "parcelles": [
+        "33284D1055 (en partie)",
+        "33555C4577"
+      ],
+      "communes": [
+        "Mios",
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "campagnes",
+        "intervalle_ans": null,
+        "occurrences_par_an": 1,
+        "duree_ans": 5,
+        "ancrage_annee": 2019,
+        "annee_fin": null,
+        "regle_source": "une campagne par an sur les 5 premières années (2019 à 2023)",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "04-01",
+        "fin": "07-31",
+        "traverse_nouvel_an": false,
+        "texte_source": "Avifaune : 2 passages Avril/Juin ; Flore : 2 passages Avril/Mai et Juin/Juillet ; Rhopalocères : 2 passages Avril/Juillet"
+      },
+      "conditions": [
+        "Conditions météo : couverture nuageuse ≤ 75 %, sans pluie, vent < 30 km/h, température ≥ 13°C (ensoleillé) ou ≥ 17°C (nuageux)",
+        "Transects de 50 m (Marcheprime) et 150 m (Mios) pour rhopalocères",
+        "Points d'écoute de 5 min (STOC-EPS) pour avifaune"
+      ],
+      "indicateurs": [
+        "% de recouvrement des espèces végétales",
+        "Composition floristique et richesse spécifique",
+        "Présence d'espèce patrimoniale",
+        "Présence/absence d'espèces végétales exotiques envahissantes",
+        "Fonctionnalité du site pour les espèces (reproduction, repos, alimentation)",
+        "Richesse spécifique et présence d'espèce patrimoniale (rhopalocères)",
+        "Dynamique des populations (rhopalocères)",
+        "Nombre de couples nicheurs (avifaune)"
+      ],
+      "intervenants": [
+        "ECO-COMPENSATION / SIMETHIS"
+      ],
+      "duree_gestion_ans": 5,
+      "source": {
+        "page": 26,
+        "extrait": "Suivi annuel les 5 premières années"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": "SE1"
+    },
+    {
+      "id": "SE1-suivi-3ans",
+      "code_operation": "SE1",
+      "type_operation": "SE",
+      "type_metier": "suivi_habitats",
+      "libelle": "Campagnes de suivi tous les 3 ans",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "zone_source_proposee": "UG 1, UG 2, UG 3",
+      "parcelles": [
+        "33284D1055 (en partie)",
+        "33555C4577"
+      ],
+      "communes": [
+        "Mios",
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "periodique",
+        "intervalle_ans": 3.0,
+        "occurrences_par_an": null,
+        "duree_ans": 15,
+        "ancrage_annee": 2026,
+        "annee_fin": 2040,
+        "regle_source": "tous les 3 ans les quinze années suivantes (2026 à 2040)",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "04-01",
+        "fin": "07-31",
+        "traverse_nouvel_an": false,
+        "texte_source": "Avifaune : 2 passages Avril/Juin ; Flore : 2 passages Avril/Mai et Juin/Juillet ; Rhopalocères : 2 passages Avril/Juillet"
+      },
+      "conditions": [],
+      "indicateurs": [
+        "% de recouvrement des espèces végétales",
+        "Composition floristique et richesse spécifique",
+        "Présence d'espèce patrimoniale",
+        "Fonctionnalité du site pour les espèces",
+        "Richesse spécifique et présence d'espèce patrimoniale (rhopalocères)",
+        "Dynamique des populations (rhopalocères)"
+      ],
+      "intervenants": [
+        "ECO-COMPENSATION / SIMETHIS"
+      ],
+      "duree_gestion_ans": 15,
+      "source": {
+        "page": 29,
+        "extrait": "tous les 3 ans les quinze années suivantes"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": "SE1"
+    },
+    {
+      "id": "SE1-suivi-5ans",
+      "code_operation": "SE1",
+      "type_operation": "SE",
+      "type_metier": "suivi_habitats",
+      "libelle": "Campagnes de suivi tous les 5 ans",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "zone_source_proposee": "UG 1, UG 2, UG 3",
+      "parcelles": [
+        "33284D1055 (en partie)",
+        "33555C4577"
+      ],
+      "communes": [
+        "Mios",
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "periodique",
+        "intervalle_ans": 5.0,
+        "occurrences_par_an": null,
+        "duree_ans": 10,
+        "ancrage_annee": 2043,
+        "annee_fin": 2048,
+        "regle_source": "un suivi tous les 5 ans les dix dernières années (2043 et 2048)",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": "04-01",
+        "fin": "07-31",
+        "traverse_nouvel_an": false,
+        "texte_source": "Avifaune : 2 passages Avril/Juin ; Flore : 2 passages Avril/Mai et Juin/Juillet ; Rhopalocères : 2 passages Avril/Juillet"
+      },
+      "conditions": [],
+      "indicateurs": [
+        "% de recouvrement des espèces végétales",
+        "Composition floristique et richesse spécifique",
+        "Présence d'espèce patrimoniale",
+        "Fonctionnalité du site pour les espèces"
+      ],
+      "intervenants": [
+        "ECO-COMPENSATION / SIMETHIS"
+      ],
+      "duree_gestion_ans": 10,
+      "source": {
+        "page": 29,
+        "extrait": "un suivi tous les 5 ans les dix dernières années"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": "SE1"
+    },
+    {
+      "id": "MG1-pilotage-annuel",
+      "code_operation": "MG1",
+      "type_operation": "MG",
+      "type_metier": "pilotage",
+      "libelle": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "zone_source_proposee": "UG 1, UG 2, UG 3",
+      "parcelles": [
+        "33284D1055 (en partie)",
+        "33555C4577"
+      ],
+      "communes": [
+        "Mios",
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "periodique",
+        "intervalle_ans": 1.0,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2023,
+        "annee_fin": null,
+        "regle_source": "Reporting annuel en fin d'année",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": null,
+        "fin": null,
+        "traverse_nouvel_an": false,
+        "texte_source": null
+      },
+      "conditions": [
+        "Rôle d'AMO pour le compte de la SARL PROMOBAT",
+        "Encadrement écologique des entreprises travaux",
+        "Contrôle qualité des livrables produits"
+      ],
+      "indicateurs": [
+        "Remise des reportings aux services de l'État et à la SARL PROMOBAT",
+        "Certificat de dépôts des données biodiversité"
+      ],
+      "intervenants": [
+        "ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 30,
+        "extrait": "Reporting annuel en fin d'année sous la forme d'un tableau de bord"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": "MG1"
+    },
+    {
+      "id": "MG1-depot-donnees",
+      "code_operation": "MG1",
+      "type_operation": "MG",
+      "type_metier": "pilotage",
+      "libelle": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "zone_source_proposee": "UG 1, UG 2, UG 3",
+      "parcelles": [
+        "33284D1055 (en partie)",
+        "33555C4577"
+      ],
+      "communes": [
+        "Mios",
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "periodique",
+        "intervalle_ans": 1.0,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2023,
+        "annee_fin": null,
+        "regle_source": "Toutes les données naturalistes récoltées transmises au SINP à chaque fin de campagne",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": null,
+        "fin": null,
+        "traverse_nouvel_an": false,
+        "texte_source": null
+      },
+      "conditions": [
+        "Fournir toutes les informations nécessaires à la bonne tenue de GéoMCE"
+      ],
+      "indicateurs": [
+        "Certificat de dépôts des données biodiversité"
+      ],
+      "intervenants": [
+        "ECO-COMPENSATION"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 30,
+        "extrait": "Dépôt des données naturalistes au SINP et GéoMCE"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": "MG1"
+    },
+    {
+      "id": "MG2-mise-a-jour-5ans",
+      "code_operation": "MG2",
+      "type_operation": "MG",
+      "type_metier": "bilan",
+      "libelle": "Mise à jour du plan de gestion",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "zone_source_proposee": "UG 1, UG 2, UG 3",
+      "parcelles": [
+        "33284D1055 (en partie)",
+        "33555C4577"
+      ],
+      "communes": [
+        "Mios",
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "periodique",
+        "intervalle_ans": 5.0,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2028,
+        "annee_fin": 2058,
+        "regle_source": "Tous les 5 ans si jugé nécessaire jusqu'en 2058",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": null,
+        "fin": null,
+        "traverse_nouvel_an": false,
+        "texte_source": null
+      },
+      "conditions": [
+        "Sur la base des bilans annuels et/ou des rapports des suivis écologiques",
+        "Intègre un bilan du précédent plan de gestion (points positifs et négatifs)",
+        "Réactualisation des coûts si nécessaire",
+        "Transmission à la SARL PROMOBAT et aux services de l'État pour validation"
+      ],
+      "indicateurs": [
+        "Remise du plan de gestion mis à jour aux services de l'État et à la SARL PROMOBAT"
+      ],
+      "intervenants": [
+        "ECO-COMPENSATION / SIMETHIS"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 32,
+        "extrait": "Mise à jour du plan de gestion tous les 5 ans si jugé nécessaire"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": [],
+      "action_id": "MG2"
+    },
+    {
+      "id": "MG2-bilan-final-2048",
+      "code_operation": "MG2",
+      "type_operation": "MG",
+      "type_metier": "bilan",
+      "libelle": "Bilan final de la mesure compensatoire",
+      "lib_thema": "autre",
+      "objectif_long_terme": null,
+      "objectif_operationnel": null,
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "zone_source_proposee": "UG 1, UG 2, UG 3",
+      "parcelles": [
+        "33284D1055 (en partie)",
+        "33555C4577"
+      ],
+      "communes": [
+        "Mios",
+        "Marcheprime"
+      ],
+      "recurrence": {
+        "type": "ponctuel",
+        "intervalle_ans": null,
+        "occurrences_par_an": null,
+        "duree_ans": null,
+        "ancrage_annee": 2048,
+        "annee_fin": null,
+        "regle_source": "En fin de mesure compensatoire (soit à N+29)",
+        "paliers": []
+      },
+      "fenetre_intervention": {
+        "debut": null,
+        "fin": null,
+        "traverse_nouvel_an": false,
+        "texte_source": null
+      },
+      "conditions": [
+        "Accompagné du bureau d'études SIMETHIS",
+        "Conclusion sur l'efficacité des mesures réalisées et les résultats obtenus via les suivis pluriannuels"
+      ],
+      "indicateurs": [
+        "Remise du bilan de fin de mesure compensatoire aux services de l'État et à la SARL PROMOBAT"
+      ],
+      "intervenants": [
+        "ECO-COMPENSATION / SIMETHIS"
+      ],
+      "duree_gestion_ans": 30,
+      "source": {
+        "page": 32,
+        "extrait": "Bilan final de la mesure compensatoire à N+29 (2048)"
+      },
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [],
+      "action_id": "MG2"
+    }
+  ],
+  "liaisons": {
+    "TE1-gyrobroyage-4ans": "TE1",
+    "TE1-rouleau-fougere-3ans": "TE1",
+    "SE1-suivi-annuel-5ans": "SE1",
+    "SE1-suivi-3ans": "SE1",
+    "SE1-suivi-5ans": "SE1",
+    "MG1-pilotage-annuel": "MG1",
+    "MG1-depot-donnees": "MG1",
+    "MG2-mise-a-jour-5ans": "MG2",
+    "MG2-bilan-final-2048": "MG2"
+  },
+  "orphelines": [
+    "TU1-replant-2021",
+    "TU1-eclaircie1",
+    "TU1-eclaircie2",
+    "TU1-eclaircie3",
+    "TU2-exploit-2019",
+    "TU2-eclaircie-eee-2023",
+    "TU2-eclaircie-supp",
+    "TU2-arrachage-eee-supp",
+    "TU3-creation-2021",
+    "TU3-entretien-3ans",
+    "TU3-renouvellement"
+  ]
+}

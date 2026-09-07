@@ -1,8 +1,8 @@
 """Historique budgétaire : contexte de session + lecture.
 
-Le trigger bancarisation.log_budget_mouvement (migration 011 / SQL déjà run)
-enregistre automatiquement tout changement de montant/statut/année sur
-occurrence. Il lit le motif et l'auteur dans deux réglages de session que
+Le trigger bancarisation.log_budget_mouvement (migration 011, étendu en 029)
+enregistre automatiquement tout changement de montant / statut / année / mois
+sur occurrence. Il lit le motif et l'auteur dans deux réglages de session que
 l'appli doit poser AVANT l'UPDATE, DANS LA MÊME TRANSACTION.
 
 Important — PATCH occurrence actuel (api/ocr) passe par Supabase REST :
@@ -26,6 +26,7 @@ from api.ocr.domain.ug_ids import normalize_ug_ids
 
 # Colonnes occurrence que le trigger surveille + autres champs PATCH utiles
 # via le chemin psycopg (quand un motif est fourni).
+# Le trigger journalise : montants, statut, annee, mois_debut, mois_fin.
 _CHAMPS_PG = frozenset(
     {
         "annee",
@@ -39,6 +40,8 @@ _CHAMPS_PG = frozenset(
         "mois_fin",
         "traverse_nouvel_an",
         "date_realisation",
+        "date_realisation_fin",
+        "surface_m2",
         "commentaire",
         "montant_ht",
         "montant_ttc",
@@ -194,7 +197,7 @@ def justifier_ecart_occurrence(
     if not texte:
         raise ValueError("Motif / justification vide.")
 
-    for champ in ("montant_ht", "annee", "montant_engage", "montant_realise", "statut"):
+    for champ in ("montant_ht", "annee", "mois_debut", "mois_fin", "montant_engage", "montant_realise", "statut"):
         row = etiqueter_dernier_mouvement(occurrence_id, champ, texte)
         if row is not None:
             journaliser(

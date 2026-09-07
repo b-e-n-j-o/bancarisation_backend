@@ -1,0 +1,594 @@
+L'utilisateur me demande de cartographier un plan de gestion environnemental français en extrayant les fiches-actions avec leurs bornes OCR exactes et leurs échéances. Le document est très long et contient de nombreuses sections.
+
+Je dois :
+1. Identifier toutes les fiches-actions (TU, TE, SE, MG, EP)
+2. Pour chaque fiche, extraire :
+   - Son identité (id, code, titre, catégorie)
+   - Ses bornes textuelles exactes dans l'OCR (`debut` / `fin_exclusive`)
+   - Ses échéances calendaires (récurrence)
+
+Le document mentionne explicitement :
+- TU 1 : Adapter les itinéraires techniques sylvicoles...
+- TU 2 : Créer et maintenir des espaces de landes...
+- TU 3 : Création des zones d'étrépage
+- TE 1 : Entretenir les landes humides...
+- SE 1 : Suivi des habitats naturels, de la flore et de la faune
+- MG 1 : Pilotage et coordination...
+- MG 2 : Mises à jour du plan de gestion...
+
+Je vais commencer par identifier les bornes exactes de chaque fiche dans le texte OCR.
+
+Pour TU 1 :
+- Début : "## TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+- Fin exclusive : le début de TU 2 : "## TU 2 : Créer et maintenir des espaces de landes en faveur du Fadet des laïches et des oiseaux landicoles"
+
+Pour TU 2 :
+- Début : "## TU 2 : Créer et maintenir des espaces de landes en faveur du Fadet des laïches et des oiseaux landicoles"
+- Fin exclusive : le début de TU 3 : "## TU 3 : Création des zones d’étrépage"
+
+Pour TU 3 :
+- Début : "## TU 3 : Création des zones d’étrépage"
+- Fin exclusive : le début de TE 1 : "## TE 1 : Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+
+Pour TE 1 :
+- Début : "## TE 1 : Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+- Fin exclusive : le début de SE 1 : "## SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+
+Pour SE 1 :
+- Début : "## SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+- Fin exclusive : le début de MG 1 : "#### MG 1 : Pilotage et coordination à la mise en œuvre du programme d'actions"
+
+Pour MG 1 :
+- Début : "#### MG 1 : Pilotage et coordination à la mise en œuvre du programme d'actions"
+- Fin exclusive : le début de MG 2 : "## MG 2 : Mises à jour du plan de gestion et bilan de fin de mesure compensatoire"
+
+Pour MG 2 :
+- Début : "## MG 2 : Mises à jour du plan de gestion et bilan de fin de mesure compensatoire"
+- Fin exclusive : null (dernière fiche)
+
+Maintenant, je dois extraire les échéances pour chaque fiche.
+
+**TU 1** :
+- Travaux de replantation en 2021
+- 1ère éclaircie entre 12 et 15 ans (2034-2037)
+- 2ème éclaircie 6 ans après la 1ère (2040-2043)
+- 3ème éclaircie 6 ans après la 2ème (2046-2049)
+- Fenêtre : entre le 1er novembre et le 1er mars (ou septembre si portance des sols)
+- UG : UG 1 (parcelle 33284D1055 à Mios)
+
+**TU 2** :
+- Exploitation des résineux en 2019
+- Éclaircie sélective + arrachage EEE en 2023
+- Fenêtre : entre le 1er septembre et le 1er mars
+- UG : UG 2 (parcelle 33555C4577 à Marcheprime)
+
+**TU 3** :
+- Création des placettes en 2021
+- Entretien : rotobroyage et griffage tous les 3 ans
+- Fenêtre : entre le 1er septembre et le 1er mars
+- UG : UG 3 (parcelle 33284D1055 à Mios)
+
+**TE 1** :
+- Gyrobroyage tardif à 30 cm sans export tous les 4 ans
+- Passage du rouleau brise fougère : 2 campagnes par an pendant 3 ans à partir de 2023
+- Fenêtre : entre novembre et février (ou septembre)
+- UG : UG 1 et UG 2
+
+**SE 1** :
+- Campagnes de suivi :
+  - 1 campagne par an sur les 4 premières années (2019-2022)
+  - Tous les 3 ans les 15 années suivantes (2025, 2028, 2031, 2034, 2037, 2040, 2043, 2046)
+  - Tous les 5 ans les 10 dernières années (2049, 2054)
+- Mais le document dit : "un suivi annuel les 5 premières années, puis tous les 3 ans les quinze années suivantes et un suivi tous les 5 ans les dix dernières années"
+- Donc : 2019-2023 (5 ans), puis 2026, 2029, 2032, 2035, 2038, 2041, 2044, 2047, puis 2052, 2057
+- UG : UG 1, UG 2, UG 3
+
+**MG 1** :
+- Reporting annuel en fin d'année
+- UG : UG 1, UG 2, UG 3
+
+**MG 2** :
+- Mise à jour du plan de gestion tous les 5 ans si jugé nécessaire jusqu'en 2058
+- Bilan final à N+29 (2048)
+- UG : UG 1, UG 2, UG 3
+
+Maintenant, je dois structurer tout cela en JSON selon le format demandé.
+
+Je vais créer un objet JSON avec une liste de fiches. Chaque fiche a :
+- id, code, categorie, titre
+- debut, fin_exclusive
+- lib_thema (à déterminer)
+- ug_ids (à déterminer)
+- parcelles, communes
+- periodicite_texte
+- echeances (liste)
+
+Pour les ug_ids, je dois matcher les descriptions du plan avec le référentiel SIG. Le document mentionne :
+- UG 1 : Parcelle 33284D1055 (Mios) - compensation Fadet des laîches
+- UG 2 : Parcelle 33555C4577 (Marcheprime) - compensation Fadet des laîches
+- UG 3 : Parcelle 33284D1055 (Mios) - compensation Rossolis intermédiaire
+
+Donc :
+- TU 1 : UG 1
+- TU 2 : UG 2
+- TU 3 : UG 3
+- TE 1 : UG 1 et UG 2
+- SE 1 : UG 1, UG 2, UG 3
+- MG 1 : UG 1, UG 2, UG 3
+- MG 2 : UG 1, UG 2, UG 3
+
+Pour les communes :
+- UG 1 : Mios
+- UG 2 : Marcheprime
+- UG 3 : Mios
+
+Pour les parcelles :
+- TU 1 : 33284D1055 (en partie)
+- TU 2 : 33555C4577
+- TU 3 : 33284D1055 (en partie)
+- SE 1 : 33284D1055 (en partie) + 33555C4577
+- MG 1 : 33284D1055 (en partie) + 33555C4577
+- MG 2 : 33284D1055 (en partie) + 33555C4577
+
+Pour lib_thema, je dois utiliser le catalogue fourni :
+- TU 1 : C2.1.a (Enlèvement dispositifs antérieurs) ? Non, c'est plutôt C2.1.d (Réensemencement / replantation / haies) ou C2.1.g (Aménagement ponctuel complémentaire C2). En fait, c'est plutôt C2.1.a (Enlèvement dispositifs antérieurs) n'est pas adapté. TU 1 est sur la réorientation des pratiques sylvicoles. Dans le catalogue, je vois :
+  - C2.1.a : Enlèvement dispositifs antérieurs (déconstruction)
+  - C2.1.d : Réensemencement / replantation / haies
+  - C2.1.e : Réouverture du milieu (débroussaillage, abattage)
+  - C2.1.f : Restauration de corridor écologique
+  - C2.1.g : Aménagement ponctuel (abris/gîtes) complémentaire C2
+
+TU 1 : Adapter les itinéraires techniques sylvicoles → C2.1.e (Réouverture du milieu) ou C2.1.d (Réensemencement / replantation / haies). En fait, c'est plutôt C2.1.d car il y a replantation.
+
+TU 2 : Créer et maintenir des espaces de landes → C2.1.e (Réouverture du milieu)
+
+TU 3 : Création des zones d'étrépage → C1.1.a (Création/renaturation d'habitats)
+
+TE 1 : Entretenir les landes humides → C3.2.a (Fauche / pâturage / niveaux d'eau) ou C2.1.e (Réouverture du milieu). En fait, c'est plutôt C3.2.a.
+
+SE 1 : Suivi des habitats → autre (pas dans le catalogue)
+
+MG 1 : Pilotage → autre
+
+MG 2 : Mises à jour → autre
+
+Je vais utiliser les codes les plus appropriés.
+
+Pour les échéances, je dois être précis.
+
+**TU 1** :
+- Échéance 1 : Travaux de replantation (2021) - ponctuel
+- Échéance 2 : 1ère éclaircie (2034-2037) - ponctuel (mais avec une plage)
+- Échéance 3 : 2ème éclaircie (2040-2043) - ponctuel
+- Échéance 4 : 3ème éclaircie (2046-2049) - ponctuel
+- Fenêtre : 11-01 à 03-01 (ou 09-01 si portance)
+
+Mais le document dit : "entre le 1er novembre et le 1er mars sous réserve de la portance des sols" et aussi "avec une possibilité d'intervention dès septembre en fonction de la portance des sols".
+
+Donc fenetre_intervention : debut = "09-01", fin = "03-01", traverse_nouvel_an = true, texte_source = "entre le 1er novembre et le 1er mars sous réserve de la portance des sols (possibilité dès septembre)"
+
+**TU 2** :
+- Échéance 1 : Exploitation des résineux (2019) - ponctuel
+- Échéance 2 : Éclaircie sélective + arrachage EEE (2023) - ponctuel
+- Échéance 3 : Nouvelles éclaircies sélectives si nécessaire (2023-2048) - dépendant_evenement
+- Fenêtre : 09-01 à 03-01
+
+**TU 3** :
+- Échéance 1 : Création des placettes (2021) - ponctuel
+- Échéance 2 : Entretien (rotobroyage et griffage) tous les 3 ans (2024, 2027, 2030, ...) - periodique
+- Fenêtre : 09-01 à 03-01
+
+**TE 1** :
+- Échéance 1 : Gyrobroyage tous les 4 ans (2023, 2027, 2031, ...) - periodique
+- Échéance 2 : Rouleau brise fougère 2 campagnes/an pendant 3 ans (2023-2025) - campagnes
+- Fenêtre : 11-01 à 02-28 (ou 09-01)
+
+Le document dit : "entre novembre et février (avec une possibilité d'intervention dès septembre en fonction de la portance des sols)"
+
+Donc fenetre_intervention : debut = "09-01", fin = "02-28", traverse_nouvel_an = true
+
+**SE 1** :
+- Échéance 1 : Suivi annuel 2019-2023 - campagnes (1 fois/an pendant 5 ans)
+- Échéance 2 : Suivi tous les 3 ans 2026-2041 - periodique (intervalle_ans=3, duree_ans=16)
+- Échéance 3 : Suivi tous les 5 ans 2044-2048 - periodique (intervalle_ans=5, duree_ans=5)
+- Fenêtre : Avril/Juin pour l'avifaune, Avril/Juillet pour la flore et rhopalocères
+
+Mais le document dit : "à raison d'une campagne tous les ans sur les 4 premières années puis tous les 5 ans les 25 ans dernières années" (attention, il y a une contradiction dans le document). En fait, dans la section 4.3.3, il dit : "à raison d'une campagne tous les ans sur les 4 premières années puis tous les 3 ans les 15 années suivantes et une campagne tous les 5 ans les 10 dernières années".
+
+Donc :
+- 2019-2022 : 1 fois/an (4 ans)
+- 2025-2039 : tous les 3 ans (15 ans)
+- 2044-2048 : tous les 5 ans (5 ans)
+
+Mais le document dit aussi "soit un total de 10 campagnes (n à n+29)". Donc 2019 (n), 2020, 2021, 2022, 2023 (5 premières années), puis 2026, 2029, 2032, 2035, 2038, 2041, 2044, 2047 (10 campagnes).
+
+Donc :
+- 2019-2023 : annuel (5 ans)
+- 2026-2041 : tous les 3 ans (6 campagnes)
+- 2044-2048 : tous les 5 ans (2 campagnes) ? Non, 2044, 2049.
+
+En fait, le document dit : "un suivi annuel les 5 premières années, puis tous les 3 ans les quinze années suivantes et un suivi tous les 5 ans les dix dernières années".
+
+Donc :
+- 2019-2023 : annuel (5 ans)
+- 2026-2040 : tous les 3 ans (5 campagnes : 2026, 2029, 2032, 2035, 2038)
+- 2043-2048 : tous les 5 ans (2 campagnes : 2043, 2048)
+
+Total : 5 + 5 + 2 = 12 campagnes. Mais le document dit 10 campagnes. Il y a une incohérence.
+
+Je vais suivre la description textuelle : "à raison d'une campagne tous les ans sur les 4 premières années puis tous les 3 ans les 15 années suivantes et une campagne tous les 5 ans les 10 dernières années".
+
+Donc :
+- 2019-2022 : annuel (4 ans)
+- 2025-2039 : tous les 3 ans (5 campagnes : 2025, 2028, 2031, 2034, 2037)
+- 2042-2048 : tous les 5 ans (2 campagnes : 2042, 2047)
+
+Total : 4 + 5 + 2 = 11 campagnes. Toujours pas 10.
+
+Le document dit aussi : "soit un total de 10 campagnes (n à n+29)". n=2019, n+29=2048. Donc 10 campagnes entre 2019 et 2048.
+
+Si on fait :
+- 2019, 2020, 2021, 2022, 2023 (5 ans)
+- 2026, 2029, 2032, 2035, 2038 (5 ans)
+- 2043, 2048 (2 ans)
+
+Total : 12 campagnes.
+
+Je pense qu'il y a une erreur dans le document. Je vais suivre la description la plus détaillée : "un suivi annuel les 5 premières années, puis tous les 3 ans les quinze années suivantes et un suivi tous les 5 ans les dix dernières années".
+
+Donc :
+- 2019-2023 : annuel (5 ans)
+- 2026-2040 : tous les 3 ans (5 campagnes : 2026, 2029, 2032, 2035, 2038)
+- 2043-2048 : tous les 5 ans (2 campagnes : 2043, 2048)
+
+Total : 12 campagnes. Je vais utiliser cette version.
+
+**MG 1** :
+- Échéance 1 : Reporting annuel - periodique (intervalle_ans=1)
+
+**MG 2** :
+- Échéance 1 : Mise à jour du plan de gestion tous les 5 ans - periodique (intervalle_ans=5, duree_ans=30)
+- Échéance 2 : Bilan final à N+29 (2048) - ponctuel
+
+Maintenant, je dois structurer tout cela en JSON.
+
+Je vais commencer par TU 1.
+
+**TU 1** :
+- id: TU1
+- code: TU1
+- categorie: TU
+- titre: "Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+- debut: "## TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+- fin_exclusive: "## TU 2 : Créer et maintenir des espaces de landes en faveur du Fadet des laïches et des oiseaux landicoles"
+- lib_thema: "C2.1.d" (Réensemencement / replantation / haies)
+- ug_ids: ["ug1"]
+- parcelles: ["33284D1055 (en partie)"]
+- communes: ["Mios"]
+- periodicite_texte: "Travaux de replantation en 2021, éclaircies à 12-15 ans, 6 ans après, 6 ans après"
+- echeances:
+  - Echéance 1 : Travaux de replantation
+    - id: TU1-replant-2021
+    - code_operation: TU1
+    - type_operation: TU
+    - type_metier: autre (replantation)
+    - libelle: "Travaux de replantation"
+    - lib_thema: "C2.1.d"
+    - ug_ids: ["ug1"]
+    - recurrence: {type: "ponctuel", ancrage_annee: 2021}
+    - fenetre_intervention: {debut: "09-01", fin: "03-01", traverse_nouvel_an: true, texte_source: "entre le 1er novembre et le 1er mars sous réserve de la portance des sols (possibilité dès septembre)"}
+  - Echéance 2 : 1ère éclaircie
+    - id: TU1-eclaircie1
+    - recurrence: {type: "ponctuel", ancrage_annee: 2034, regle_source: "entre 12 et 15 ans après plantation (2021)"}
+    - fenetre_intervention: same as above
+  - Echéance 3 : 2ème éclaircie
+    - id: TU1-eclaircie2
+    - recurrence: {type: "dependant_evenement", regle_source: "6 ans minimum après la première éclaircie", ancrage_annee: null}
+    - fenetre_intervention: same as above
+  - Echéance 4 : 3ème éclaircie
+    - id: TU1-eclaircie3
+    - recurrence: {type: "dependant_evenement", regle_source: "6 ans minimum après la deuxième éclaircie", ancrage_annee: null}
+    - fenetre_intervention: same as above
+
+Mais le document dit que les éclaircies sont à des intervalles fixes (12-15 ans, puis 6 ans, puis 6 ans). Donc on peut calculer les années :
+- 1ère éclaircie : 2021 + 12-15 = 2033-2036
+- 2ème éclaircie : 2033-2036 + 6 = 2039-2042
+- 3ème éclaircie : 2039-2042 + 6 = 2045-2048
+
+Je vais utiliser des échéances ponctuelles avec ancrage_annee.
+
+**TU 1 - Échéances** :
+1. Replantation : 2021 (ponctuel)
+2. 1ère éclaircie : 2034 (ancrage_annee: 2034) - je prends le milieu de la plage
+3. 2ème éclaircie : 2040 (ancrage_annee: 2040)
+4. 3ème éclaircie : 2046 (ancrage_annee: 2046)
+
+Mais le document dit "entre 12 et 15 ans", donc je peux pas mettre une année fixe. Je vais mettre type: "dependant_evenement" avec regle_source.
+
+Je vais suivre les instructions : "N ans après <autre action>" → type "dependant_evenement", RECOPIE la formulation dans regle_source.
+
+Donc :
+- 1ère éclaircie : type: "dependant_evenement", regle_source: "entre 12 et 15 ans après plantation (2021)"
+- 2ème éclaircie : type: "dependant_evenement", regle_source: "6 ans minimum après la première éclaircie"
+- 3ème éclaircie : type: "dependant_evenement", regle_source: "6 ans minimum après la deuxième éclaircie"
+
+Pour la replantation, c'est ponctuel en 2021.
+
+**TU 2** :
+- Échéance 1 : Exploitation des résineux (2019) - ponctuel
+- Échéance 2 : Éclaircie sélective + arrachage EEE (2023) - ponctuel
+- Échéance 3 : Nouvelles éclaircies sélectives si nécessaire (2023-2048) - dependant_evenement
+- Échéance 4 : Arrachage EEE si nécessaire (2023-2048) - dependant_evenement
+
+**TU 3** :
+- Échéance 1 : Création des placettes (2021) - ponctuel
+- Échéance 2 : Entretien (rotobroyage et griffage) tous les 3 ans (2024, 2027, ...) - periodique
+
+**TE 1** :
+- Échéance 1 : Gyrobroyage tous les 4 ans (2023, 2027, 2031, ...) - periodique
+- Échéance 2 : Rouleau brise fougère 2 campagnes/an pendant 3 ans (2023-2025) - campagnes
+
+**SE 1** :
+- Échéance 1 : Suivi annuel 2019-2023 - campagnes (occurrences_par_an: 1, duree_ans: 5)
+- Échéance 2 : Suivi tous les 3 ans 2026-2040 - periodique (intervalle_ans: 3, duree_ans: 15)
+- Échéance 3 : Suivi tous les 5 ans 2043-2048 - periodique (intervalle_ans: 5, duree_ans: 5)
+
+**MG 1** :
+- Échéance 1 : Reporting annuel - periodique (intervalle_ans: 1)
+
+**MG 2** :
+- Échéance 1 : Mise à jour du plan de gestion tous les 5 ans - periodique (intervalle_ans: 5, duree_ans: 30)
+- Échéance 2 : Bilan final à N+29 (2048) - ponctuel
+
+Maintenant, je vais structurer le JSON complet.
+
+Je vais commencer par les fiches dans l'ordre : TU1, TU2, TU3, TE1, SE1, MG1, MG2.
+
+Pour chaque fiche, je dois extraire les informations du texte.
+
+**TU 1** :
+- debut: "## TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+- fin_exclusive: "## TU 2 : Créer et maintenir des espaces de landes en faveur du Fadet des laïches et des oiseaux landicoles"
+- ug_ids: ["ug1"]
+- parcelles: ["33284D1055 (en partie)"]
+- communes: ["Mios"]
+- lib_thema: "C2.1.d" (Réensemencement / replantation / haies)
+- periodicite_texte: "Travaux de replantation en 2021, éclaircies à 12-15 ans, puis 6 ans après, puis 6 ans après"
+
+**TU 2** :
+- debut: "## TU 2 : Créer et maintenir des espaces de landes en faveur du Fadet des laïches et des oiseaux landicoles"
+- fin_exclusive: "## TU 3 : Création des zones d’étrépage"
+- ug_ids: ["ug2"]
+- parcelles: ["33555C4577"]
+- communes: ["Marcheprime"]
+- lib_thema: "C2.1.e" (Réouverture du milieu)
+
+**TU 3** :
+- debut: "## TU 3 : Création des zones d’étrépage"
+- fin_exclusive: "## TE 1 : Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+- ug_ids: ["ug3"]
+- parcelles: ["33284D1055 (en partie)"]
+- communes: ["Mios"]
+- lib_thema: "C1.1.a" (Création/renaturation d'habitats)
+
+**TE 1** :
+- debut: "## TE 1 : Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+- fin_exclusive: "## SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+- ug_ids: ["ug1", "ug2"]
+- parcelles: [] (non spécifié dans le titre, mais dans la description : "L'ensemble des parcelles retenues")
+- communes: [] (non spécifié)
+- lib_thema: "C3.2.a" (Fauche / pâturage / niveaux d'eau)
+
+**SE 1** :
+- debut: "## SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+- fin_exclusive: "#### MG 1 : Pilotage et coordination à la mise en œuvre du programme d'actions"
+- ug_ids: ["ug1", "ug2", "ug3"]
+- parcelles: ["33284D1055 (en partie)", "33555C4577"]
+- communes: ["Mios", "Marcheprime"]
+- lib_thema: "autre" (pas dans le catalogue)
+
+**MG 1** :
+- debut: "#### MG 1 : Pilotage et coordination à la mise en œuvre du programme d'actions"
+- fin_exclusive: "## MG 2 : Mises à jour du plan de gestion et bilan de fin de mesure compensatoire"
+- ug_ids: ["ug1", "ug2", "ug3"]
+- parcelles: ["33284D1055 (en partie)", "33555C4577"]
+- communes: ["Mios", "Marcheprime"]
+- lib_thema: "autre"
+
+**MG 2** :
+- debut: "## MG 2 : Mises à jour du plan de gestion et bilan de fin de mesure compensatoire"
+- fin_exclusive: null
+- ug_ids: ["ug1", "ug2", "ug3"]
+- parcelles: ["33284D1055 (en partie)", "33555C4577"]
+- communes: ["Mios", "Marcheprime"]
+- lib_thema: "autre"
+
+Maintenant, les échéances.
+
+**TU 1 - Échéances** :
+1. Replantation (2021)
+   - id: TU1-replant-2021
+   - code_operation: TU1
+   - type_operation: TU
+   - type_metier: autre
+   - libelle: "Travaux de replantation"
+   - lib_thema: "C2.1.d"
+   - ug_ids: ["ug1"]
+   - recurrence: {type: "ponctuel", ancrage_annee: 2021}
+   - fenetre_intervention: {debut: "09-01", fin: "03-01", traverse_nouvel_an: true, texte_source: "entre le 1er novembre et le 1er mars sous réserve de la portance des sols (possibilité dès septembre)"}
+
+2. 1ère éclaircie
+   - id: TU1-eclaircie1
+   - recurrence: {type: "dependant_evenement", regle_source: "entre 12 et 15 ans après plantation (2021)", ancrage_annee: null}
+   - fenetre_intervention: same as above
+
+3. 2ème éclaircie
+   - id: TU1-eclaircie2
+   - recurrence: {type: "dependant_evenement", regle_source: "6 ans minimum après la première éclaircie", ancrage_annee: null}
+   - fenetre_intervention: same as above
+
+4. 3ème éclaircie
+   - id: TU1-eclaircie3
+   - recurrence: {type: "dependant_evenement", regle_source: "6 ans minimum après la deuxième éclaircie", ancrage_annee: null}
+   - fenetre_intervention: same as above
+
+**TU 2 - Échéances** :
+1. Exploitation des résineux (2019)
+   - id: TU2-exploit-2019
+   - recurrence: {type: "ponctuel", ancrage_annee: 2019}
+   - fenetre_intervention: {debut: "09-01", fin: "03-01", traverse_nouvel_an: true, texte_source: "entre le 1er septembre et le 1er mars sous réserve de la portance des sols"}
+
+2. Éclaircie sélective + arrachage EEE (2023)
+   - id: TU2-eclaircie-eee-2023
+   - recurrence: {type: "ponctuel", ancrage_annee: 2023}
+   - fenetre_intervention: same as above
+
+3. Nouvelles éclaircies sélectives si nécessaire
+   - id: TU2-eclaircie-supp
+   - recurrence: {type: "dependant_evenement", regle_source: "si jugé nécessaire par l'écologue au cours des 25 prochaines années", duree_gestion_ans: 25}
+   - fenetre_intervention: same as above
+
+4. Arrachage EEE si nécessaire
+   - id: TU2-arrachage-eee
+   - recurrence: {type: "dependant_evenement", regle_source: "si jugé nécessaire par l'écologue au cours des 25 prochaines années", duree_gestion_ans: 25}
+   - fenetre_intervention: {debut: "05-01", fin: "09-30", texte_source: "campagnes en mai et septembre 2023"} (mais c'est dépendant, donc je mets la fenêtre générale)
+
+**TU 3 - Échéances** :
+1. Création des placettes (2021)
+   - id: TU3-creation-2021
+   - recurrence: {type: "ponctuel", ancrage_annee: 2021}
+   - fenetre_intervention: {debut: "09-01", fin: "03-01", traverse_nouvel_an: true, texte_source: "entre le 1er septembre et le 1er mars sous réserve de la portance des sols"}
+
+2. Entretien (rotobroyage et griffage) tous les 3 ans
+   - id: TU3-entretien-3ans
+   - recurrence: {type: "periodique", intervalle_ans: 3, ancrage_annee: 2024}
+   - fenetre_intervention: same as above
+
+**TE 1 - Échéances** :
+1. Gyrobroyage tous les 4 ans
+   - id: TE1-gyrobroyage-4ans
+   - recurrence: {type: "periodique", intervalle_ans: 4, ancrage_annee: 2023}
+   - fenetre_intervention: {debut: "09-01", fin: "02-28", traverse_nouvel_an: true, texte_source: "entre novembre et février (possibilité dès septembre)"}
+
+2. Rouleau brise fougère 2 campagnes/an pendant 3 ans
+   - id: TE1-rouleau-fougere-3ans
+   - recurrence: {type: "campagnes", occurrences_par_an: 2, duree_ans: 3, ancrage_annee: 2023}
+   - fenetre_intervention: {debut: "05-01", fin: "06-30", texte_source: "deux campagnes par an (Mai et Juin)"}
+
+**SE 1 - Échéances** :
+1. Suivi annuel 2019-2023
+   - id: SE1-suivi-annuel-5ans
+   - recurrence: {type: "campagnes", occurrences_par_an: 1, duree_ans: 5, ancrage_annee: 2019}
+   - fenetre_intervention: {debut: "04-01", fin: "07-31", texte_source: "deux passages par campagne (Avril/Mai et Juin/Juillet)"}
+
+2. Suivi tous les 3 ans 2026-2040
+   - id: SE1-suivi-3ans
+   - recurrence: {type: "periodique", intervalle_ans: 3, duree_ans: 15, ancrage_annee: 2026}
+   - fenetre_intervention: same as above
+
+3. Suivi tous les 5 ans 2043-2048
+   - id: SE1-suivi-5ans
+   - recurrence: {type: "periodique", intervalle_ans: 5, duree_ans: 5, ancrage_annee: 2043}
+   - fenetre_intervention: same as above
+
+**MG 1 - Échéances** :
+1. Reporting annuel
+   - id: MG1-reporting-annuel
+   - recurrence: {type: "periodique", intervalle_ans: 1, ancrage_annee: 2023}
+   - fenetre_intervention: null (pas de fenêtre spécifique)
+
+**MG 2 - Échéances** :
+1. Mise à jour du plan de gestion tous les 5 ans
+   - id: MG2-mise-a-jour-5ans
+   - recurrence: {type: "periodique", intervalle_ans: 5, duree_ans: 30, ancrage_annee: 2028, annee_fin: 2058}
+   - fenetre_intervention: null
+
+2. Bilan final à N+29 (2048)
+   - id: MG2-bilan-final-2048
+   - recurrence: {type: "ponctuel", ancrage_annee: 2048}
+   - fenetre_intervention: null
+
+Maintenant, je vais générer le JSON complet. Je dois faire attention aux bornes exactes.
+
+Pour TU 1, le debut est :
+"#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+
+Attention, dans le document, c'est "## TU 1" pas "####". Je dois vérifier.
+
+Dans le document :
+```
+## 4.3.1. Travaux uniques (TU)
+
+#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles
+```
+
+Donc le debut est : "#### TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+
+fin_exclusive pour TU 1 : "#### TU 2 : Créer et maintenir des espaces de landes en faveur du Fadet des laïches et des oiseaux landicoles"
+
+Pour TU 2 :
+debut: "#### TU 2 : Créer et maintenir des espaces de landes en faveur du Fadet des laïches et des oiseaux landicoles"
+fin_exclusive: "#### TU 3 : Création des zones d’étrépage"
+
+Pour TU 3 :
+debut: "#### TU 3 : Création des zones d’étrépage"
+fin_exclusive: "## TE 1 : Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+
+Attention, pour TE 1, c'est "## TE 1" pas "####".
+
+Dans le document :
+```
+### 4.3.2. Travaux d'entretien (TE)
+
+# TE 1 : Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles
+```
+
+Donc :
+- TE 1 debut: "# TE 1 : Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+- fin_exclusive: "# SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+
+Pour SE 1 :
+- debut: "# SE 1 : Suivi des habitats naturels, de la flore et de la faune"
+- fin_exclusive: "#### MG 1 : Pilotage et coordination à la mise en œuvre du programme d'actions"
+
+Pour MG 1 :
+- debut: "#### MG 1 : Pilotage et coordination à la mise en œuvre du programme d'actions"
+- fin_exclusive: "## MG 2 : Mises à jour du plan de gestion et bilan de fin de mesure compensatoire"
+
+Pour MG 2 :
+- debut: "## MG 2 : Mises à jour du plan de gestion et bilan de fin de mesure compensatoire"
+- fin_exclusive: null
+
+Maintenant, je vais générer le JSON.
+
+Je vais aussi ajouter les champs optionnels comme objectif_long_terme, objectif_operationnel, etc.
+
+Pour TU 1 :
+- objectif_long_terme: "A – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés"
+- objectif_operationnel: "A1 - Réorienter les pratiques sylvicoles"
+
+Pour TU 2 :
+- objectif_long_terme: "A – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés"
+- objectif_operationnel: "A2 - Réorienter les pratiques sylvicoles"
+
+Pour TU 3 :
+- objectif_long_terme: "B – Favoriser l’apparition du Rossolis intermédiaire"
+- objectif_operationnel: "B1 – Créer et préserver des zones d’étrépage"
+
+Pour TE 1 :
+- objectif_long_terme: "A – Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés"
+- objectif_operationnel: "A2 – Préserver et entretenir les espaces de landes"
+
+Pour SE 1 :
+- objectif_long_terme: "C – Garantir la pérennité des espaces de compensation et des zones évitées"
+- objectif_operationnel: "C1 - Évaluer l'efficacité des actions mises en œuvre"
+
+Pour MG 1 :
+- objectif_long_terme: "D - Coordination de la gestion"
+- objectif_operationnel: "D1 - Assurer la mise en œuvre du programme d'actions"
+
+Pour MG 2 :
+- objectif_long_terme: "D - Coordination de la gestion"
+- objectif_operationnel: "D1 - Assurer la mise en œuvre du programme d'actions"
+
+Je vais maintenant générer le JSON complet.

@@ -7,8 +7,10 @@ Expose api.ocr.db.crud sous /api/projets/{id}/…
 from typing import Any, Optional
 from uuid import UUID
 
-from fastapi import APIRouter, BackgroundTasks, File, HTTPException, Response, UploadFile, status
+from fastapi import APIRouter, BackgroundTasks, Depends, File, HTTPException, Response, UploadFile, status
 from pydantic import BaseModel, Field
+
+from api.journal_actions.acteur import acteur_depuis_headers
 
 from .db import crud
 from .analyse_jobs import lire_status
@@ -62,6 +64,8 @@ class OccurrenceUpdateRequest(BaseModel):
     mois_fin: Optional[int] = None
     traverse_nouvel_an: Optional[bool] = None
     date_realisation: Optional[str] = None
+    date_realisation_fin: Optional[str] = None
+    surface_m2: Optional[float] = None
     commentaire: Optional[str] = None
     montant_ht: Optional[float] = None
     montant_ttc: Optional[float] = None
@@ -187,7 +191,11 @@ def create_occurrence(projet_id: UUID, payload: OccurrenceCreateRequest) -> dict
 
 
 @router.patch("/occurrences/{occurrence_id}")
-def update_occurrence(occurrence_id: UUID, payload: OccurrenceUpdateRequest) -> dict[str, Any]:
+def update_occurrence(
+    occurrence_id: UUID,
+    payload: OccurrenceUpdateRequest,
+    acteur: str | None = Depends(acteur_depuis_headers),
+) -> dict[str, Any]:
     # exclude_unset : conserve les null explicites (ex. effacer montant_ht / prestataire).
     champs = payload.model_dump(exclude_unset=True)
     motif = champs.pop("motif", None)
@@ -198,23 +206,23 @@ def update_occurrence(occurrence_id: UUID, payload: OccurrenceUpdateRequest) -> 
     if not champs:
         raise HTTPException(status_code=400, detail="Aucun champ à modifier.")
     try:
-        # Motif fourni → UPDATE psycopg + SET LOCAL (même transaction que le trigger).
-        # Sinon → Supabase REST : le trigger logue quand même, motif NULL.
-        if motif is not None:
+        # Motif fourni ou auteur connu → UPDATE psycopg + SET LOCAL (trigger).
+        # Sinon → Supabase REST : le trigger logue quand même, motif / acteur NULL.
+        if motif is not None or acteur:
             from api.budget.mouvements import modifier_occurrence_avec_contexte
 
             row = modifier_occurrence_avec_contexte(
                 occurrence_id,
                 champs,
                 motif=motif,
-                modifie_par=None,
+                modifie_par=acteur,
             )
         else:
             row = crud.modifier_occurrence(occurrence_id, **champs)
     except (RuntimeError, ValueError) as exc:
         raise _db_error(exc) from exc
     except Exception as exc:  # noqa: BLE001 — erreurs tunnel / psycopg
-        if motif is not None:
+        if motif is not None or acteur:
             raise _server_error(exc) from exc
         raise _db_error(exc) from exc
     if not row:

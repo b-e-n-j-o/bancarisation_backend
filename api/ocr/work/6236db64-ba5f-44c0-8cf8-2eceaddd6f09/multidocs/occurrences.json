@@ -1,0 +1,2558 @@
+{
+  "occurrences": [
+    {
+      "echeance_cle": "TU1-replant-2021",
+      "annee": 2021,
+      "code": "TU 1",
+      "titre": "Travaux de replantation adaptée (1 100 tiges/ha, inter-rangs 5 m)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": [
+        "Mesure corrective : report replantation à 2024 sur partie de la parcelle"
+      ]
+    },
+    {
+      "echeance_cle": "TU2-exploit-2019",
+      "annee": 2019,
+      "code": "TU 2",
+      "titre": "Exploitation des résineux",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU2-eclaircie-eee-2023",
+      "annee": 2023,
+      "code": "TU 2",
+      "titre": "Éclaircie sélective des feuillus + arrachage manuel des EEE (Aronie à feuilles d'Arbousier)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU2-eclaircie-supp",
+      "annee": 2023,
+      "code": "TU 2",
+      "titre": "Nouvelles éclaircies sélectives si nécessaire",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU2-arrachage-eee-supp",
+      "annee": 2023,
+      "code": "TU 2",
+      "titre": "Campagnes d'arrachage des EEE (Aronie) si nécessaire",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug2"
+      ],
+      "mois_debut": 5,
+      "mois_fin": 9,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-creation-2021",
+      "annee": 2021,
+      "code": "TU 3",
+      "titre": "Création de deux placettes d'étrépage (~60 m² chacune)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2024,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2027,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2030,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2033,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2036,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2039,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2042,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2045,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2048,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2051,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2054,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-entretien-3ans",
+      "annee": 2057,
+      "code": "TU 3",
+      "titre": "Entretien des placettes (rotobroyage + griffage)",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.95,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TU3-renouvellement",
+      "annee": 2025,
+      "code": "TU 3",
+      "titre": "Renouvellement des placettes d'étrépage si nécessaire",
+      "categorie": "TU",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug3"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 3,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.9,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-4ans",
+      "annee": 2023,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-4ans",
+      "annee": 2027,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-4ans",
+      "annee": 2031,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-4ans",
+      "annee": 2035,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-4ans",
+      "annee": 2039,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-4ans",
+      "annee": 2043,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-4ans",
+      "annee": 2047,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-4ans",
+      "annee": 2051,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-gyrobroyage-4ans",
+      "annee": 2055,
+      "code": "TE 1",
+      "titre": "Gyrobroyage tardif à 30 cm sans export",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2"
+      ],
+      "mois_debut": 9,
+      "mois_fin": 2,
+      "traverse_nouvel_an": true,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-rouleau-fougere-3ans",
+      "annee": 2023,
+      "code": "TE 1",
+      "titre": "Passage du rouleau brise-fougère sur les secteurs à traiter (×2/an)",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug2"
+      ],
+      "mois_debut": 5,
+      "mois_fin": 6,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-rouleau-fougere-3ans",
+      "annee": 2024,
+      "code": "TE 1",
+      "titre": "Passage du rouleau brise-fougère sur les secteurs à traiter (×2/an)",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug2"
+      ],
+      "mois_debut": 5,
+      "mois_fin": 6,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "TE1-rouleau-fougere-3ans",
+      "annee": 2025,
+      "code": "TE 1",
+      "titre": "Passage du rouleau brise-fougère sur les secteurs à traiter (×2/an)",
+      "categorie": "TE",
+      "lib_thema": "C3.2.a",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug2"
+      ],
+      "mois_debut": 5,
+      "mois_fin": 6,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-annuel-5ans",
+      "annee": 2019,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi annuel (état initial + 4 premières années) (×1/an)",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-annuel-5ans",
+      "annee": 2020,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi annuel (état initial + 4 premières années) (×1/an)",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-annuel-5ans",
+      "annee": 2021,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi annuel (état initial + 4 premières années) (×1/an)",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-annuel-5ans",
+      "annee": 2022,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi annuel (état initial + 4 premières années) (×1/an)",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-annuel-5ans",
+      "annee": 2023,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi annuel (état initial + 4 premières années) (×1/an)",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-3ans",
+      "annee": 2026,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi tous les 3 ans",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-3ans",
+      "annee": 2029,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi tous les 3 ans",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-3ans",
+      "annee": 2032,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi tous les 3 ans",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-3ans",
+      "annee": 2035,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi tous les 3 ans",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-3ans",
+      "annee": 2038,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi tous les 3 ans",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-5ans",
+      "annee": 2043,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi tous les 5 ans",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "SE1-suivi-5ans",
+      "annee": 2048,
+      "code": "SE 1",
+      "titre": "Campagnes de suivi tous les 5 ans",
+      "categorie": "SE",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": 4,
+      "mois_fin": 7,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2023,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2024,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2025,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2026,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2027,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2028,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2029,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2030,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2031,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2032,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2033,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2034,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2035,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2036,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2037,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2038,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2039,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2040,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2041,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2042,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2043,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2044,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2045,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2046,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2047,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2048,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2049,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2050,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2051,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2052,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2053,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2054,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2055,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2056,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2057,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-pilotage-annuel",
+      "annee": 2058,
+      "code": "MG 1",
+      "titre": "Pilotage et coordination des travaux de génie écologique et des suivis",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2023,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2024,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2025,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2026,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2027,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2028,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2029,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2030,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2031,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2032,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2033,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2034,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2035,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2036,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2037,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2038,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2039,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2040,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2041,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2042,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2043,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2044,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2045,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2046,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2047,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2048,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2049,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2050,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2051,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2052,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2053,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2054,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2055,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2056,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2057,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG1-depot-donnees",
+      "annee": 2058,
+      "code": "MG 1",
+      "titre": "Dépôt des données naturalistes au SINP et à GéoMCE",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-5ans",
+      "annee": 2028,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-5ans",
+      "annee": 2033,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-5ans",
+      "annee": 2038,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-5ans",
+      "annee": 2043,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-5ans",
+      "annee": 2048,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-5ans",
+      "annee": 2053,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG2-mise-a-jour-5ans",
+      "annee": 2058,
+      "code": "MG 2",
+      "titre": "Mise à jour du plan de gestion",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "a_confirmer",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [
+        "ancrage_annee"
+      ],
+      "avertissements": []
+    },
+    {
+      "echeance_cle": "MG2-bilan-final-2048",
+      "annee": 2048,
+      "code": "MG 2",
+      "titre": "Bilan final de la mesure compensatoire",
+      "categorie": "MG",
+      "lib_thema": "autre",
+      "statut": "planifie",
+      "ug_ids": [
+        "ug1",
+        "ug2",
+        "ug3"
+      ],
+      "mois_debut": null,
+      "mois_fin": null,
+      "traverse_nouvel_an": false,
+      "origine": "ia",
+      "confiance": 0.98,
+      "champs_a_confirmer": [],
+      "avertissements": []
+    }
+  ],
+  "nb_non_placables": 3,
+  "annee_fin": 2058
+}

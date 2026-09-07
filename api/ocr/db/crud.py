@@ -16,7 +16,7 @@ from api.ocr.domain.ug_ids import normalize_ug_id, normalize_ug_ids
 _CHAMPS_MODIFIABLES = {
     "annee", "code", "titre", "categorie", "lib_thema", "statut", "ug_ids",
     "mois_debut", "mois_fin", "traverse_nouvel_an",
-    "date_realisation", "commentaire",
+    "date_realisation", "date_realisation_fin", "surface_m2", "commentaire",
     "montant_ht", "montant_ttc", "taux_tva", "prestataire", "prestataire_id",
     "ligne_budget_id",
     "montant_engage", "montant_realise",

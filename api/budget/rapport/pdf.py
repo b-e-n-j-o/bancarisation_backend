@@ -41,6 +41,8 @@ CHAMP_LABELS = {
     "montant_realise": "Réalisé",
     "statut": "Statut",
     "annee": "Exercice",
+    "mois_debut": "Mois début",
+    "mois_fin": "Mois fin",
 }
 
 INDIC_LABELS = {
@@ -158,6 +160,14 @@ def _phrase_synthese(d: dict, s: dict, ecarts: dict) -> str:
     if s.get("taux_engagement") is not None:
         parts.append(f"{f_pct(s['taux_engagement'])} a été contractualisé")
     phrase = ", ".join(parts) + "."
+
+    delta = s.get("delta_prevu_initial")
+    if delta is not None:
+        phrase += (
+            f" L'écart de {f_eur(delta, signe=True)} compare le prévu actualisé "
+            f"({f_eur(s.get('prevu'))}) au budget initial figé "
+            f"({f_eur(s.get('initial'))}) — pas à l'engagé ni au réalisé."
+        )
 
     suites = []
     if (ecarts.get("glisse_sortant") or 0) >= 1:

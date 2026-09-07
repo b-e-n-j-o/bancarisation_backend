@@ -29,10 +29,40 @@ from api.db.env import get_database_url
 from api.ocr.domain.ug_ids import normalize_ug_id
 
 CoucheKind = Literal["surf", "lin", "pct", "emprise"]
+CONNECT_TIMEOUT_S = 8
 
 
 class GeometryIngestError(Exception):
     pass
+
+
+def est_erreur_connexion(exc: BaseException) -> bool:
+    msg = str(exc).lower()
+    return any(
+        x in msg
+        for x in (
+            "connection refused",
+            "could not connect",
+            "connection failed",
+            "injoignable",
+            "timeout expired",
+            "could not receive data from server",
+        )
+    )
+
+
+def _connect():
+    """Connexion PostGIS courte : évite d'attendre 60 s sur un localhost down."""
+    try:
+        return psycopg.connect(get_database_url(), connect_timeout=CONNECT_TIMEOUT_S)
+    except GeometryIngestError:
+        raise
+    except Exception as exc:
+        raise GeometryIngestError(
+            "Postgres injoignable — les géométries ne peuvent pas être "
+            "enregistrées (SUPABASE_HOST / DATABASE_URL). "
+            f"Détail : {exc}"
+        ) from exc
 
 
 @dataclass
@@ -222,7 +252,7 @@ def ingest_shapefile_zip(
         last_geom_type = "Unknown"
 
         try:
-            with psycopg.connect(get_database_url()) as conn:
+            with _connect() as conn:
                 with conn.cursor() as cur:
                     for i, (_, row) in enumerate(gdf.iterrows()):
                         geom = row.geometry
@@ -376,86 +406,91 @@ def persister_entites_couche(
     nb_parts = int(len(gdf))
     ids: list[str] = []
 
-    with psycopg.connect(get_database_url()) as conn:
-        with conn.cursor() as cur:
-            for i, (_, row) in enumerate(gdf.iterrows()):
-                geom = row.geometry
-                if geom is None or geom.is_empty:
-                    continue
+    try:
+        with _connect() as conn:
+            with conn.cursor() as cur:
+                for i, (_, row) in enumerate(gdf.iterrows()):
+                    geom = row.geometry
+                    if geom is None or geom.is_empty:
+                        continue
 
-                kind: CoucheKind = (
-                    "emprise" if is_emprise else _detect_kind(geom, is_emprise=False)
-                )
-                multi_src = _ensure_multi(geom, kind)
-                geom_3857 = gdf_3857.geometry.iloc[i]
-                if geom_3857 is None or geom_3857.is_empty:
-                    continue
-                multi_3857 = _ensure_multi(geom_3857, kind)
-
-                row_attrs: dict[str, Any] = {}
-                for k in attr_cols:
-                    v = _json_safe_value(row[k])
-                    if v is not None:
-                        row_attrs[str(k)] = v
-                attributs = [row_attrs] if row_attrs else []
-
-                props = {
-                    "_nb_features": nb_parts,
-                    "index_feature": i,
-                    "nb_parts": nb_parts,
-                    "nom_source": nom_source,
-                    "categorie_erc": categorie_erc,
-                    "cible": cible,
-                    "analyse_id": analyse_id,
-                }
-                table = _table_for(kind)
-
-                if kind == "emprise":
-                    cur.execute(
-                        f"""
-                        INSERT INTO bancarisation.{table}
-                            (projet_id, libelle, description, geom, geom_3857,
-                             properties, attributs, source_fichier)
-                        VALUES (
-                            %s, %s, %s,
-                            ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), %s)),
-                            ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), 3857)),
-                            %s::jsonb, %s::jsonb, %s
-                        )
-                        RETURNING id::text
-                        """,
-                        (
-                            str(projet_id), libelle, cible or "",
-                            multi_src.wkt, epsg, multi_3857.wkt,
-                            json.dumps(props, default=str),
-                            json.dumps(attributs, default=str),
-                            source_fichier,
-                        ),
+                    kind: CoucheKind = (
+                        "emprise" if is_emprise else _detect_kind(geom, is_emprise=False)
                     )
-                else:
-                    cur.execute(
-                        f"""
-                        INSERT INTO bancarisation.{table}
-                            (projet_id, ug_id, libelle, description, geom, geom_3857,
-                             properties, attributs, source_fichier)
-                        VALUES (
-                            %s, %s, %s, %s,
-                            ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), %s)),
-                            ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), 3857)),
-                            %s::jsonb, %s::jsonb, %s
+                    multi_src = _ensure_multi(geom, kind)
+                    geom_3857 = gdf_3857.geometry.iloc[i]
+                    if geom_3857 is None or geom_3857.is_empty:
+                        continue
+                    multi_3857 = _ensure_multi(geom_3857, kind)
+
+                    row_attrs: dict[str, Any] = {}
+                    for k in attr_cols:
+                        v = _json_safe_value(row[k])
+                        if v is not None:
+                            row_attrs[str(k)] = v
+                    attributs = [row_attrs] if row_attrs else []
+
+                    props = {
+                        "_nb_features": nb_parts,
+                        "index_feature": i,
+                        "nb_parts": nb_parts,
+                        "nom_source": nom_source,
+                        "categorie_erc": categorie_erc,
+                        "cible": cible,
+                        "analyse_id": analyse_id,
+                    }
+                    table = _table_for(kind)
+
+                    if kind == "emprise":
+                        cur.execute(
+                            f"""
+                            INSERT INTO bancarisation.{table}
+                                (projet_id, libelle, description, geom, geom_3857,
+                                 properties, attributs, source_fichier)
+                            VALUES (
+                                %s, %s, %s,
+                                ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), %s)),
+                                ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), 3857)),
+                                %s::jsonb, %s::jsonb, %s
+                            )
+                            RETURNING id::text
+                            """,
+                            (
+                                str(projet_id), libelle, cible or "",
+                                multi_src.wkt, epsg, multi_3857.wkt,
+                                json.dumps(props, default=str),
+                                json.dumps(attributs, default=str),
+                                source_fichier,
+                            ),
                         )
-                        RETURNING id::text
-                        """,
-                        (
-                            str(projet_id), ug_clean, libelle, cible or "",
-                            multi_src.wkt, epsg, multi_3857.wkt,
-                            json.dumps(props, default=str),
-                            json.dumps(attributs, default=str),
-                            source_fichier,
-                        ),
-                    )
-                ids.append(cur.fetchone()[0])
-        conn.commit()
+                    else:
+                        cur.execute(
+                            f"""
+                            INSERT INTO bancarisation.{table}
+                                (projet_id, ug_id, libelle, description, geom, geom_3857,
+                                 properties, attributs, source_fichier)
+                            VALUES (
+                                %s, %s, %s, %s,
+                                ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), %s)),
+                                ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), 3857)),
+                                %s::jsonb, %s::jsonb, %s
+                            )
+                            RETURNING id::text
+                            """,
+                            (
+                                str(projet_id), ug_clean, libelle, cible or "",
+                                multi_src.wkt, epsg, multi_3857.wkt,
+                                json.dumps(props, default=str),
+                                json.dumps(attributs, default=str),
+                                source_fichier,
+                            ),
+                        )
+                    ids.append(cur.fetchone()[0])
+            conn.commit()
+    except GeometryIngestError:
+        raise
+    except Exception as exc:
+        raise GeometryIngestError(f"Erreur base de données ({nom_source}): {exc}") from exc
 
     if not ids:
         raise GeometryIngestError(f"Aucune géométrie valide dans : {nom_source}")

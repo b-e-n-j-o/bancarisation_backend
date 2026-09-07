@@ -5,8 +5,8 @@ from __future__ import annotations
 from typing import Any
 from uuid import UUID
 
-from fastapi import APIRouter, HTTPException, Query, Response, status
-from pydantic import BaseModel, Field
+from fastapi import APIRouter, File, HTTPException, Query, Response, UploadFile, status
+from pydantic import BaseModel, Field, model_validator
 
 from . import crud
 
@@ -14,13 +14,33 @@ router = APIRouter()
 
 
 class AnnotationCreate(BaseModel):
-    lng: float = Field(..., ge=-180, le=180)
-    lat: float = Field(..., ge=-90, le=90)
+    """Géométrie GeoJSON, ou lng/lat pour un point (rétrocompat)."""
+
+    geometry: dict[str, Any] | None = None
+    lng: float | None = Field(default=None, ge=-180, le=180)
+    lat: float | None = Field(default=None, ge=-90, le=90)
     note: str = ""
     titre: str | None = None
     ug_id: str | None = None
     auteur: str | None = None
     document_ids: list[UUID] = Field(default_factory=list)
+    source_kind: str = "draw"
+    source_geom_key: str | None = None
+    source_annotation_id: UUID | None = None
+    source_ug_geom_id: str | None = None
+    observed_at: str | None = None
+
+    @model_validator(mode="after")
+    def _require_geom(self) -> AnnotationCreate:
+        if self.geometry is None and (self.lng is None or self.lat is None):
+            raise ValueError("Fournir geometry (GeoJSON) ou lng/lat.")
+        return self
+
+    def resolved_geometry(self) -> dict[str, Any]:
+        if self.geometry:
+            return self.geometry
+        assert self.lng is not None and self.lat is not None
+        return {"type": "Point", "coordinates": [self.lng, self.lat]}
 
 
 class AnnotationUpdate(BaseModel):
@@ -29,8 +49,17 @@ class AnnotationUpdate(BaseModel):
     ug_id: str | None = None
     auteur: str | None = None
     document_ids: list[UUID] | None = None
+    geometry: dict[str, Any] | None = None
     lng: float | None = Field(default=None, ge=-180, le=180)
     lat: float | None = Field(default=None, ge=-90, le=90)
+    observed_at: str | None = None
+
+    def resolved_geometry(self) -> dict[str, Any] | None:
+        if self.geometry:
+            return self.geometry
+        if self.lng is not None and self.lat is not None:
+            return {"type": "Point", "coordinates": [self.lng, self.lat]}
+        return None
 
 
 def _err(exc: crud.AnnotationError, code: int = status.HTTP_400_BAD_REQUEST):
@@ -79,13 +108,17 @@ def creer_route(projet_id: UUID, payload: AnnotationCreate) -> dict[str, Any]:
     try:
         return crud.creer(
             projet_id,
-            lng=payload.lng,
-            lat=payload.lat,
+            geometry=payload.resolved_geometry(),
             note=payload.note,
             titre=payload.titre,
             ug_id=payload.ug_id,
             auteur=payload.auteur,
             document_ids=payload.document_ids,
+            source_kind=payload.source_kind,
+            source_geom_key=payload.source_geom_key,
+            source_annotation_id=payload.source_annotation_id,
+            source_ug_geom_id=payload.source_ug_geom_id,
+            observed_at=payload.observed_at,
         )
     except crud.AnnotationError as exc:
         raise _err(exc) from exc
@@ -93,6 +126,31 @@ def creer_route(projet_id: UUID, payload: AnnotationCreate) -> dict[str, Any]:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(exc),
+        ) from exc
+
+
+@router.post("/projets/{projet_id}/annotations/import-geom")
+async def import_geom_route(
+    projet_id: UUID,
+    files: list[UploadFile] = File(...),
+) -> dict[str, Any]:
+    """Importe SHP (ZIP ou sidecars), GeoPackage, GeoJSON → géométrie 4326."""
+    del projet_id  # réservé au scoping URL / droits futurs
+    from .import_geom import ImportGeomError, geometry_from_files
+
+    payloads: list[tuple[str, bytes]] = []
+    for up in files:
+        name = up.filename or "fichier"
+        data = await up.read()
+        payloads.append((name, data))
+    try:
+        return geometry_from_files(payloads)
+    except ImportGeomError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Import impossible : {exc}",
         ) from exc
 
 
@@ -114,8 +172,8 @@ def modifier_route(annotation_id: UUID, payload: AnnotationUpdate) -> dict[str, 
             ug_id=payload.ug_id,
             auteur=payload.auteur,
             document_ids=payload.document_ids,
-            lng=payload.lng,
-            lat=payload.lat,
+            geometry=payload.resolved_geometry(),
+            observed_at=payload.observed_at,
         )
     except crud.AnnotationError as exc:
         raise _err(exc) from exc

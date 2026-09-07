@@ -1,0 +1,21 @@
+```json
+{
+  "contenu_propre": "# MG2 : Mises à jour du plan de gestion et bilan de fin de mesure compensatoire\n\n## Objectif à long terme\n- **D** : Coordination de la gestion\n\n## Objectif opérationnel\n- **D1** : Assurer la mise en œuvre du programme d'actions\n\n## Description de la mesure\n\nSur la base des bilans annuels et/ou des rapports des suivis écologiques, une mise à jour du plan de gestion sera effectuée **tous les 5 ans si jugé nécessaire**. Celui-ci intégrera notamment un bilan du précédent plan de gestion en ciblant les points positifs et négatifs. Ce préambule servira de support pour ajuster, réorienter ou corriger les actions définies dans l'ancien plan de gestion en concertation avec l'équipe projet. Il intégrera notamment une réactualisation des coûts si nécessaire (ajout d'une mesure corrective, changement d'entreprise travaux, variation des coûts, etc.). Les nouveaux plans de gestion seront transmis à la SARL PROMOBAT et aux services de l'État pour validation avant mise en œuvre.\n\nEn fin de mesure compensatoire (soit à N+29), **Eco-compensation, accompagné du bureau d'études SIMETHIS**, réalisera un bilan final de la mesure compensatoire sur toute sa temporalité. Il aura pour objectif de conclure sur l'efficacité des mesures réalisées et les résultats obtenus par le biais des suivis pluriannuels des différents indicateurs de gestion retenus.\n\n## Indicateurs de suivi\n- Remise du plan de gestion et du bilan de fin de mesure compensatoire aux services de l'État et à la SARL PROMOBAT.\n\n## Périodicité\n- Tous les 5 ans si jugé nécessaire jusqu'en 2058.\n\n## Intervenants\n- ECO-COMPENSATION\n- SIMETHIS\n- SARL PROMOBAT\n\n---\n\n### Frise temporelle des mises à jour du plan de gestion\n\n| 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 |\n|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n|      |      |      |      |      |      |      | Si nécessaire |      |      |      |      |      |      | Si nécessaire |\n\n| 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2041 | 2042 | 2043 | 2044 | 2045 | 2046 | 2047 | 2048 |\n|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|\n|      |      |      |      | Si nécessaire |      |      |      |      | Si nécessaire |      |      |      |      |      |",
+  "description": "Mise à jour périodique du plan de gestion des espaces de compensation écologique et réalisation d'un bilan final en fin de mesure compensatoire pour évaluer l'efficacité des actions menées.",
+  "engagements": [
+    "Réaliser une mise à jour du plan de gestion tous les 5 ans si nécessaire, intégrant un bilan des actions précédentes et une réactualisation des coûts.",
+    "Transmettre les nouveaux plans de gestion à la SARL PROMOBAT et aux services de l'État pour validation avant mise en œuvre.",
+    "Réaliser un bilan final de la mesure compensatoire à N+29, en collaboration avec SIMETHIS, pour évaluer l'efficacité globale des mesures et des suivis écologiques."
+  ],
+  "indicateurs": [
+    "Remise du plan de gestion mis à jour aux services de l'État et à la SARL PROMOBAT.",
+    "Remise du bilan final de la mesure compensatoire aux services de l'État et à la SARL PROMOBAT."
+  ],
+  "intervenants": [
+    "ECO-COMPENSATION",
+    "SIMETHIS",
+    "SARL PROMOBAT"
+  ],
+  "frise_markdown": null
+}
+```

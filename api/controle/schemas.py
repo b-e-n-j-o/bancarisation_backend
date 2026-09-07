@@ -49,6 +49,16 @@ class ArretePrescriptionOut(BaseModel):
     page_source: int | None = None
     texte_source: str | None = None
     confiance: float | None = None
+    code: str | None = None
+    opposable: bool = True
+    phase: str | None = None
+    destinataire: str | None = None
+    livrable: str | None = None
+    indicateur: str | None = None
+    obligation_de_resultat: bool = False
+    temporalite: dict[str, Any] | None = None
+    autorite_destinataire: list[str] = Field(default_factory=list)
+    remarque: str | None = None
 
 
 class ArreteOut(BaseModel):
@@ -66,6 +76,12 @@ class ArreteOut(BaseModel):
     extraction_modele: str | None = None
     rubriques: list[str] = Field(default_factory=list)
     prescriptions: list[ArretePrescriptionOut] = Field(default_factory=list)
+    service_instructeur: str | None = None
+    fondement: list[str] = Field(default_factory=list)
+    projet_nom: str | None = None
+    duree_suivi_annees: int | None = None
+    avertissements: list[str] = Field(default_factory=list)
+    site_compensation: dict[str, Any] | None = None
 
 
 class LigneConformiteOut(BaseModel):

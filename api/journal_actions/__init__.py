@@ -17,6 +17,12 @@ Table SQL : bancarisation.journal_actions (voir sql/001_journal_actions.sql
 ou ocr/db/sql/015_journal_actions.sql).
 """
 
-from .service import journaliser, lister_actions
+from .acteur import acteur_depuis_headers
+from .service import journaliser, lister_actions, lister_journal_projet
 
-__all__ = ["journaliser", "lister_actions"]
+__all__ = [
+    "acteur_depuis_headers",
+    "journaliser",
+    "lister_actions",
+    "lister_journal_projet",
+]

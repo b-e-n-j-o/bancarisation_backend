@@ -5,8 +5,11 @@ from pathlib import Path
 from typing import Any, Optional
 from uuid import UUID
 
+import psycopg
 from dotenv import load_dotenv
 from supabase import Client, create_client
+
+from api.db.env import get_database_url
 
 _BACKEND_DIR = Path(__file__).resolve().parents[1]
 load_dotenv(_BACKEND_DIR / ".env")
@@ -231,6 +234,56 @@ def lister_geometries_projet(projet_id: UUID) -> list[dict[str, Any]]:
 
     data = response.data or []
     return data if isinstance(data, list) else [data]
+
+
+def lire_organisation(organisation_id: UUID) -> dict[str, Any] | None:
+    """Lit une organisation par id (nom affiché en session)."""
+    try:
+        with psycopg.connect(get_database_url()) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT id::text, nom
+                    FROM bancarisation.organisations
+                    WHERE id = %s
+                    """,
+                    (str(organisation_id),),
+                )
+                row = cur.fetchone()
+    except Exception as exc:  # pragma: no cover
+        raise ProjetCrudError(f"Erreur lecture organisation: {exc}") from exc
+
+    if not row:
+        return None
+    return {"id": row[0], "nom": row[1]}
+
+
+def compter_catalogue() -> dict[str, int]:
+    """Décompte total des entités : projets utilisateur + dossiers GEOMCE."""
+    utilisateur = 0
+    geomce = 0
+    try:
+        with psycopg.connect(get_database_url()) as conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT count(*)::int FROM bancarisation.projets")
+                utilisateur = int((cur.fetchone() or [0])[0] or 0)
+                try:
+                    cur.execute(
+                        """
+                        SELECT count(DISTINCT dossier_no)::int
+                        FROM bancarisation.v_frontend_mesures_projets
+                        WHERE dossier_no IS NOT NULL
+                          AND btrim(dossier_no) <> ''
+                        """
+                    )
+                    geomce = int((cur.fetchone() or [0])[0] or 0)
+                except Exception:
+                    conn.rollback()
+                    geomce = 0
+    except Exception as exc:  # pragma: no cover
+        raise ProjetCrudError(f"Erreur décompte catalogue: {exc}") from exc
+
+    return {"utilisateur": utilisateur, "geomce": geomce}
 
 
 # Alias de compatibilité avec les imports existants

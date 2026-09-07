@@ -1,15 +1,22 @@
 from datetime import date
-from typing import Any, Literal, Optional
+from typing import Annotated, Any, Literal, Optional
 from uuid import UUID
 
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, Field, field_validator
 
+from api.parc.deps import MembreContext, get_membre_context
+from api.controle.crud import lister_arretes_projet
+from api.controle.schemas import ArreteOut
+
 from .crud_projet import (
+    ORGANISATION_ID_V0,
     CreateProjetPayload,
     ProjetCrudError,
     UpdateProjetPayload,
+    compter_catalogue,
     creer_projet,
+    lire_organisation,
     lire_projet,
     lister_projets,
     mettre_a_jour_projet,
@@ -101,6 +108,67 @@ class ProjetUpdateRequest(BaseModel):
         return cleaned
 
 
+class SessionResponse(BaseModel):
+    user_id: UUID | None = None
+    role: str
+    organisation_id: UUID | None = None
+    organisation_nom: str | None = None
+
+
+class CatalogueCountsResponse(BaseModel):
+    utilisateur: int
+    geomce: int
+
+
+@router.get("/session", response_model=SessionResponse)
+def session_route(
+    membre: Annotated[MembreContext, Depends(get_membre_context)],
+) -> SessionResponse:
+    """Identité courante (header X-User-Id) + organisation rattachée.
+
+    Sans auth JWT : opérateur → son org ; contrôleur démo → org V0 si présente.
+    """
+    org_id = membre.organisation_id
+    org_nom = membre.organisation_nom
+    if org_id is None:
+        try:
+            fallback = lire_organisation(UUID(ORGANISATION_ID_V0))
+        except ProjetCrudError:
+            fallback = None
+        if fallback:
+            org_id = UUID(str(fallback["id"]))
+            org_nom = str(fallback["nom"])
+    elif not org_nom:
+        try:
+            org = lire_organisation(org_id)
+        except ProjetCrudError:
+            org = None
+        if org:
+            org_nom = str(org["nom"])
+
+    return SessionResponse(
+        user_id=membre.user_id,
+        role=membre.role,
+        organisation_id=org_id,
+        organisation_nom=org_nom,
+    )
+
+
+@router.get("/projets/catalogue-counts", response_model=CatalogueCountsResponse)
+def catalogue_counts_route() -> CatalogueCountsResponse:
+    try:
+        counts = compter_catalogue()
+    except ProjetCrudError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(exc),
+        ) from exc
+    return CatalogueCountsResponse(
+        utilisateur=counts["utilisateur"],
+        geomce=counts["geomce"],
+    )
+
+
 @router.post(
     "/projets",
     response_model=ProjetCreateResponse,
@@ -144,6 +212,18 @@ def get_projet_route(projet_id: UUID) -> ProjetResponse:
     except ProjetCrudError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
     return ProjetResponse(data=data)
+
+
+@router.get("/projets/{projet_id}/arretes", response_model=list[ArreteOut])
+def get_arretes_projet(projet_id: UUID) -> list[ArreteOut]:
+    """Obligations extraites des arrêtés — accessible au BE (pas de gate DREAL)."""
+    try:
+        return lister_arretes_projet(projet_id)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Lecture des arrêtés impossible : {exc}",
+        ) from exc
 
 
 @router.patch("/projets/{projet_id}", response_model=ProjetResponse)

@@ -189,14 +189,70 @@ def cartographier(
     debug_dir=None,
     max_tokens: int = 8000,
 ) -> CarteDossier:
-    """Appel LLM de triage, puis validation déterministe des adresses.
+    """Triage doc-par-doc (1 appel small / fichier), puis fusion + validation.
 
-    Classification de rôles documentaires : modèle petit + effort none
-    (mistral-small-2603 n'accepte que none|high).
+    Un seul document : un appel (comportement historique). Plusieurs fichiers :
+    chaque aperçu est classé isolément — un rôle faux ne contamine pas les autres.
     """
+    if len(corpus.documents) <= 1:
+        return _cartographier_lot(
+            corpus,
+            model=model,
+            effort=effort,
+            compteur=compteur,
+            debug_dir=debug_dir,
+            max_tokens=max_tokens,
+            prefixe="triage",
+        )
+
+    cartes: list[CarteDossier] = []
+    for doc in corpus.documents:
+        sous = Corpus(racine=corpus.racine, documents=[doc])
+        try:
+            cartes.append(
+                _cartographier_lot(
+                    sous,
+                    model=model,
+                    effort=effort,
+                    compteur=compteur,
+                    debug_dir=debug_dir,
+                    max_tokens=max_tokens,
+                    prefixe=f"triage_{doc.doc_id}",
+                    exigence_segments=False,
+                )
+            )
+            print(
+                f"   🗺  {doc.nom_fichier} → "
+                f"{len(cartes[-1].segments)} rôle(s)",
+                flush=True,
+            )
+        except Exception as err:  # noqa: BLE001
+            print(f"   ⚠️  triage {doc.nom_fichier} échoué ({err})", flush=True)
+            cartes.append(CarteDossier(documents_non_classes=[doc.doc_id]))
+
+    fusion = _fusionner_cartes(cartes)
+    fusion = valider_carte(fusion, corpus)
+    if corpus.documents and not fusion.segments:
+        raise ValueError(
+            "Triage : aucun segment cartographié. Relancer l'analyse "
+            "(le modèle a renvoyé une carte vide ou un schéma incorrect)."
+        )
+    return fusion
+
+
+def _cartographier_lot(
+    corpus: Corpus,
+    *,
+    model: Optional[str] = None,
+    effort: str = "none",
+    compteur=None,
+    debug_dir=None,
+    max_tokens: int = 8000,
+    prefixe: str = "triage",
+    exigence_segments: bool = True,
+) -> CarteDossier:
     from ..mistral_client import extraire_structure
 
-    # mistral-small-2603 (Small 4) — assez pour segmenter / typer les docs
     modele_triage = model or "mistral-small-2603"
 
     carte: CarteDossier = extraire_structure(
@@ -205,7 +261,7 @@ def cartographier(
         result_type=CarteDossier,
         etiquettes="TRIAGE",
         debug_dir=debug_dir,
-        debug_prefixe="triage",
+        debug_prefixe=prefixe,
         model=modele_triage,
         effort=effort,
         max_tokens=max_tokens,
@@ -214,12 +270,35 @@ def cartographier(
         schema_name="carte_dossier",
     )
     carte = valider_carte(carte, corpus)
-    if corpus.documents and not carte.segments:
+    if exigence_segments and corpus.documents and not carte.segments:
         raise ValueError(
             "Triage : aucun segment cartographié. Relancer l'analyse "
             "(le modèle a renvoyé une carte vide ou un schéma incorrect)."
         )
     return carte
+
+
+def _fusionner_cartes(cartes: list[CarteDossier]) -> CarteDossier:
+    segs: list[SegmentRole] = []
+    params: list[ParametreDetecte] = []
+    signaux: list[SignalCorpus] = []
+    non_classes: list[str] = []
+    vus_params: dict[str, ParametreDetecte] = {}
+    for c in cartes:
+        segs.extend(c.segments)
+        signaux.extend(c.signaux)
+        non_classes.extend(c.documents_non_classes)
+        for p in c.parametres:
+            ancien = vus_params.get(p.cle)
+            if ancien is None or p.confiance > ancien.confiance:
+                vus_params[p.cle] = p
+    params = list(vus_params.values())
+    return CarteDossier(
+        segments=segs,
+        parametres=params,
+        signaux=signaux,
+        documents_non_classes=sorted(set(non_classes)),
+    )
 
 
 def _normaliser_locator(loc: str) -> str:

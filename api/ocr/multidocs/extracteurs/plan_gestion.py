@@ -23,7 +23,7 @@ from ..utils.registre import extracteur
 if TYPE_CHECKING:
     from ..utils.plan import Contexte, Job
 
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 RE_CODE = re.compile(r"\b([A-Z]{2,3})\s?(\d{1,2})\b")
 
 
@@ -142,8 +142,8 @@ def _ancres_pages(objet, ctx) -> list[str]:
 def segmenter_fiches(ctx: "Contexte", job: "Job") -> list[list[str]]:
     """Regroupe les blocs de page en fiches-actions via titres à code mesure.
 
-    Conservé pour debug / fallback éventuel — le flux prod utilise les bornes
-    LLM + slice Python (`extract_plan_gestion_v2.couper_par_bornes`).
+    Conservé pour debug / fallback éventuel — le flux prod utilise
+    `extract_plan_gestion_v2.couper_fiche` (bornes puis code).
     """
     segments: list[list[str]] = []
     courant: list[str] = []

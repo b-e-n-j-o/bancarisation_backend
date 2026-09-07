@@ -82,11 +82,57 @@
   .badge-open { background: #eff6ff; color: #1d4ed8; }
   .badge-rep { background: #f3f4f6; color: #4b5563; }
 
+  a { color: #1d4ed8; text-decoration: none; }
+  a.ref-photo, a.ref-doc { font-weight: 700; }
+
   .occ { margin: 0 0 10pt; padding: 7pt 8pt; border: 0.5pt solid #e5e7eb; border-radius: 3pt; page-break-inside: avoid; }
   .occ .titre { font-weight: 700; font-size: 8.5pt; }
   .occ .meta { color: #6b7280; font-size: 7pt; margin-top: 2pt; }
   .occ .com { margin-top: 5pt; font-size: 8pt; }
   .occ ul { margin: 3pt 0 0 14pt; padding: 0; font-size: 7.5pt; }
+
+  .annexe { page-break-before: always; }
+  .annexe-occ { margin-top: 12pt; page-break-after: avoid; }
+  .photo-bloc { margin: 0 0 14pt; page-break-inside: avoid; }
+  .photo-bloc img { max-width: 100%; max-height: 170mm; display: block; }
+  .photo-ref {
+    font-size: 8pt; font-weight: 700; color: #1d4ed8;
+    margin-bottom: 4pt;
+  }
+  .photo-caption { font-size: 7.5pt; color: #4b5563; margin: 4pt 0 0; }
+  .photo-manquante {
+    border: 0.75pt dashed #9ca3af; background: #f9fafb;
+    padding: 22pt 12pt; text-align: center; color: #6b7280; font-size: 8pt;
+  }
+  .pdf-intercalaire {
+    page-break-before: always;
+    page-break-inside: avoid;
+    padding: 18pt 12pt;
+    border: 0.75pt solid #d1d5db;
+    border-radius: 3pt;
+    min-height: 40mm;
+  }
+  .pdf-intercalaire .titre-doc { font-size: 12pt; font-weight: 700; margin: 6pt 0 8pt; }
+
+  .occ { margin: 0 0 10pt; padding: 7pt 8pt; border: 0.5pt solid #e5e7eb; border-radius: 3pt; page-break-inside: avoid; }
+  .occ .titre { font-weight: 700; font-size: 8.5pt; }
+  .occ .meta { color: #6b7280; font-size: 7pt; margin-top: 2pt; }
+  .occ .com { margin-top: 5pt; font-size: 8pt; }
+  .occ ul { margin: 3pt 0 0 14pt; padding: 0; font-size: 7.5pt; }
+
+  .annexe { page-break-before: always; }
+  .annexe-occ { margin-top: 12pt; page-break-after: avoid; }
+  .photo-bloc { margin: 0 0 14pt; page-break-inside: avoid; }
+  .photo-bloc img { max-width: 100%; max-height: 170mm; display: block; }
+  .photo-ref {
+    font-size: 8pt; font-weight: 700; color: #1d4ed8;
+    margin-bottom: 4pt;
+  }
+  .photo-caption { font-size: 7.5pt; color: #4b5563; margin: 4pt 0 0; }
+  .photo-manquante {
+    border: 0.75pt dashed #9ca3af; background: #f9fafb;
+    padding: 22pt 12pt; text-align: center; color: #6b7280; font-size: 8pt;
+  }
 
   .ctrl { margin: 0 0 6pt; padding: 6pt 8pt; border-radius: 3pt; font-size: 8pt; }
   .ctrl-b { background: #fef2f2; border: 0.5pt solid #fecaca; }
@@ -110,6 +156,12 @@
       <tr><td>Généré le</td><td>{{ d.genere_le | dt(true) }}{% if meta.genere_par %} · {{ meta.genere_par }}{% endif %}</td></tr>
       <tr><td>Déposé pour instruction</td><td>{{ meta.depose_le | dt(true) if meta.depose_le else '—' }}</td></tr>
       <tr><td>Statut archivage</td><td>{{ meta.statut }}</td></tr>
+      {% if nb_photos %}
+      <tr><td>Annexe photographique</td><td><a href="#annexe-photos">{{ nb_photos }} cliché{{ 's' if nb_photos > 1 else '' }}</a></td></tr>
+      {% endif %}
+      {% if nb_pdfs %}
+      <tr><td>Annexe pièces PDF</td><td><a href="#annexe-pieces">{{ nb_pdfs }} document{{ 's' if nb_pdfs > 1 else '' }}</a></td></tr>
+      {% endif %}
     </table>
   </div>
 </section>
@@ -126,16 +178,16 @@
     <div class="val">{{ s.nb_realisees or 0 }}</div>
   </div>
   <div class="cartouche">
-    <div class="lbl">Avec preuve</div>
-    <div class="val">{{ s.nb_avec_preuve or 0 }}</div>
+    <div class="lbl">Non réalisées</div>
+    <div class="val">{{ s.nb_non_realisees or 0 }}</div>
   </div>
   <div class="cartouche">
-    <div class="lbl">Taux preuve</div>
-    <div class="val">{{ s.taux_preuve | pct }}</div>
+    <div class="lbl">Reprogrammées</div>
+    <div class="val">{{ s.nb_reprogrammees or 0 }}</div>
   </div>
   <div class="cartouche">
-    <div class="lbl">Reportées</div>
-    <div class="val">{{ s.nb_reportees or 0 }}</div>
+    <div class="lbl">Prévisionnel {{ d.annee + 1 }}</div>
+    <div class="val">{{ s.nb_prevu_n1 or (lignes_n1|length) }}</div>
   </div>
 </div>
 
@@ -154,12 +206,9 @@
 {% endfor %}
 {% endif %}
 
-{# ---------- Détail par catégorie ---------- #}
-<h2>2. Occurrences de l'exercice</h2>
-{% for cat_label, items in lignes_par_categorie %}
-<h3>{{ cat_label }} ({{ items|length }})</h3>
-{% for l in items %}
-<div class="occ">
+{# ---------- Détail par volet ---------- #}
+{% macro occ_card(l) %}
+<div class="occ" id="occ-{{ l.id }}">
   <div class="titre">
     {% if l.code %}<span class="muted">{{ l.code }}</span> — {% endif %}{{ l.titre or 'Sans titre' }}
     {% set st = l.statut or '' %}
@@ -167,18 +216,22 @@
     {% elif st == 'repousse' %}<span class="badge badge-rep">{{ st | statut_label }}</span>
     {% elif st in ('planifie', 'en_cours', 'a_confirmer') %}<span class="badge badge-open">{{ st | statut_label }}</span>
     {% else %}<span class="badge badge-rep">{{ st | statut_label }}</span>{% endif %}
+    {% if l.sortie_exercice %}<span class="badge badge-rep">Reprogrammée → {{ l.annee }}</span>
+    {% elif l.reportee_exercice %}<span class="badge badge-rep">Reportée{% if l.nb_reports and l.nb_reports > 1 %} {{ l.nb_reports }}×{% endif %}</span>
+    {% endif %}
   </div>
   <div class="meta">
-    {% if l.mois_debut or l.mois_fin %}
-    Période :
-    {% if l.mois_debut %}{{ l.mois_debut }}{% else %}?{% endif %}
-    – {% if l.mois_fin %}{{ l.mois_fin }}{% else %}?{% endif %}
-    / {{ l.annee }}
-    ·
+    Période prévue : {{ l | periode_occ }}
+    {% if l.libelle_realisation %}
+    · Réalisée {{ l.libelle_realisation }}
+    {% elif l.date_realisation %}
+    · Réalisée le {{ l.date_realisation | dt }}
     {% endif %}
-    {% if l.date_realisation %}Réalisée le {{ l.date_realisation | dt }} · {% endif %}
-    {% if l.prestataire %}{{ l.prestataire }} · {% endif %}
-    {{ l.nb_documents or 0 }} pièce(s)
+    {% if l.prestataire %} · {{ l.prestataire }}{% endif %}
+    {% if l.libelle_surface %}
+    · Surface {{ l.libelle_surface }}{% if l.surface_source == 'saisie' %} (saisie){% else %} (UG){% endif %}
+    {% endif %}
+    · {{ l.nb_documents or 0 }} pièce(s)
     {% if l.annee_initiale and l.annee_initiale != l.annee %}
     · Exercice initial {{ l.annee_initiale }}
     {% endif %}
@@ -188,17 +241,42 @@
   <div class="com"><strong>Précision BE :</strong> {{ l.commentaire_be }}</div>
   {% endif %}
 
-  {% if l.documents %}
+  {% if l.photos %}
+  <p class="small" style="margin-top:5pt"><strong>Photos :</strong>
+    {% for p in l.photos %}
+    <a class="ref-photo" href="#annexe-photo-{{ p.id }}">{{ p.ref }}</a>{% if not loop.last %}, {% endif %}
+    {% endfor %}
+    <span class="muted"> — clic pour ouvrir l'annexe</span>
+  </p>
+  {% endif %}
+  {% if l.pdfs %}
+  <p class="small" style="margin-top:3pt"><strong>Pièces PDF :</strong>
+    {% for p in l.pdfs %}
+    <a class="ref-doc" href="#annexe-doc-{{ p.id }}">{{ p.ref }}</a>{% if not loop.last %}, {% endif %}
+    {% endfor %}
+    <span class="muted"> — clic pour ouvrir l'annexe</span>
+  </p>
+  {% endif %}
+  {% if l.docs_autres %}
   <ul>
-    {% for doc in l.documents %}
-    <li>{{ doc.nom }}{% if doc.categorie %} <span class="muted">({{ doc.categorie }})</span>{% endif %}</li>
+    {% for doc in l.docs_autres %}
+    <li>{{ doc.nom }}{% if doc.categorie %} <span class="muted">({{ doc.categorie }})</span>{% endif %}
+      <span class="muted"> — cité, non joint au PDF</span>
+    </li>
     {% endfor %}
   </ul>
-  {% elif l.statut == 'realise' %}
+  {% elif not l.photos and not l.pdfs and l.statut == 'realise' %}
   <p class="small muted" style="margin-top:4pt">Aucune pièce jointe rattachée.</p>
   {% endif %}
 
-  {% if l.changements_annee %}
+  {% if l.changements_periode %}
+  <p class="small" style="margin-top:4pt"><strong>Historique des reports :</strong>
+    {% for m in l.changements_periode %}
+      {% if m.champ == 'annee' %}exercice{% elif m.champ == 'mois_debut' %}début{% elif m.champ == 'mois_fin' %}fin{% else %}{{ m.champ }}{% endif %}
+      {{ m.ancienne_val }} → {{ m.nouvelle_val }}{% if m.motif %} ({{ m.motif }}){% endif %}{% if not loop.last %} ; {% endif %}
+    {% endfor %}
+  </p>
+  {% elif l.changements_annee %}
   <p class="small" style="margin-top:4pt"><strong>Glissement d'exercice :</strong>
     {% for m in l.changements_annee %}
       {{ m.ancienne_val }} → {{ m.nouvelle_val }}{% if m.motif %} ({{ m.motif }}){% endif %}{% if not loop.last %} ; {% endif %}
@@ -206,14 +284,66 @@
   </p>
   {% endif %}
 </div>
-{% endfor %}
+{% endmacro %}
+
+<h2>2. Occurrences de l'exercice {{ d.annee }}</h2>
+
+<h3>2.1 Réalisées ({{ volets.realisees|length }})</h3>
+{% if volets.realisees %}
+  {% for l in volets.realisees %}{{ occ_card(l) }}{% endfor %}
 {% else %}
-<p class="muted">Aucune occurrence pour cet exercice.</p>
-{% endfor %}
+<p class="muted">Aucune action réalisée sur cet exercice.</p>
+{% endif %}
+
+<h3>2.2 Prévues et non réalisées ({{ volets.non_realisees|length }})</h3>
+<p class="small muted">Actions encore au calendrier de {{ d.annee }} (planifiées, en cours ou à confirmer) — y compris celles décalées dans l'année.</p>
+{% if volets.non_realisees %}
+  {% for l in volets.non_realisees %}{{ occ_card(l) }}{% endfor %}
+{% else %}
+<p class="muted">Aucune action de {{ d.annee }} restée non réalisée.</p>
+{% endif %}
+
+<h3>2.3 Reprogrammées ({{ volets.reprogrammees|length }})</h3>
+<p class="small muted">Actions initialement prévues sur {{ d.annee }} et reportées à un exercice ultérieur, ou marquées reportées.</p>
+{% if volets.reprogrammees %}
+  {% for l in volets.reprogrammees %}{{ occ_card(l) }}{% endfor %}
+{% else %}
+<p class="muted">Aucune action reprogrammée hors de {{ d.annee }}.</p>
+{% endif %}
+
+{# ---------- Prévisionnel N+1 ---------- #}
+<h2>3. Prévisionnel {{ d.annee + 1 }}</h2>
+<p class="small muted">Actions déjà inscrites au calendrier de l'année suivante.</p>
+{% if lignes_n1 %}
+<table class="data">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Action</th>
+      <th>Période prévue</th>
+      <th>Statut</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for l in lignes_n1 %}
+    <tr>
+      <td>{{ l.code or '—' }}</td>
+      <td>{{ l.titre or 'Sans titre' }}</td>
+      <td>{{ l | periode_occ }}</td>
+      <td>{{ l.statut | statut_label }}</td>
+      <td>{% if l.reprogrammee_depuis_n %}Reportée depuis {{ d.annee }}{% else %}—{% endif %}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="muted">Aucune occurrence planifiée pour {{ d.annee + 1 }}.</p>
+{% endif %}
 
 {# ---------- Journal ---------- #}
 {% if journal %}
-<h2>3. Journal des changements (année / statut)</h2>
+<h2>4. Journal des changements (année / période / statut)</h2>
 <table class="data">
   <thead>
     <tr>
@@ -243,6 +373,87 @@
   {{ d.annee }}, destiné à l'instruction du service (DREAL). Un volet budgétaire
   et des indicateurs externes (ex. satellite) pourront compléter les versions ultérieures.
 </p>
+
+{# ---------- Annexe photographique ---------- #}
+{% if annexe_photos %}
+<section class="annexe" id="annexe-photos">
+  <h2>{{ num_annexe_photos }}. Annexe — Photographies</h2>
+  <p class="small muted">
+    {{ nb_photos }} cliché{{ 's' if nb_photos > 1 else '' }} rattaché{{ 's' if nb_photos > 1 else '' }}
+    aux actions de l'exercice. Un clic sur la référence (P-n) dans une fiche d'action
+    ouvre la photo correspondante ; le titre ci-dessous ramène à la fiche.
+  </p>
+  {% for g in annexe_photos %}
+  <h3 class="annexe-occ">
+    <a href="#occ-{{ g.occurrence_id }}">{% if g.code %}{{ g.code }} — {% endif %}{{ g.titre }}</a>
+    <span class="muted"> · {{ g.photos|length }} photo{{ 's' if g.photos|length > 1 else '' }}</span>
+  </h3>
+  {% for p in g.photos %}
+  <div class="photo-bloc" id="annexe-photo-{{ p.id }}">
+    <div class="photo-ref">{{ p.ref }}</div>
+    {% if p.data_uri %}
+    <img src="{{ p.data_uri }}" alt="{{ p.nom }}">
+    {% else %}
+    <div class="photo-manquante">
+      Image indisponible (pièce supprimée, inaccessible, ou format non affichable).<br>
+      {{ p.nom }}
+    </div>
+    {% endif %}
+    <p class="photo-caption">{{ p.nom }}{% if p.date_document %} · {{ p.date_document | dt }}{% endif %}</p>
+    <p class="small"><a href="#occ-{{ g.occurrence_id }}">↩ Retour à l'action</a></p>
+  </div>
+  {% endfor %}
+  {% endfor %}
+</section>
+{% endif %}
+
+{# ---------- Annexe pièces PDF ---------- #}
+{% if annexe_pdfs %}
+<section class="annexe" id="annexe-pieces">
+  <h2>{{ num_annexe_pieces }}. Annexe — Pièces jointes (PDF)</h2>
+  <p class="small muted">
+    {{ nb_pdfs }} document{{ 's' if nb_pdfs > 1 else '' }} (rapports, factures, comptes rendus…).
+    Un clic sur la référence (D-n) dans une fiche d'action ouvre l'intercalaire ;
+    les pages originales du fichier suivent immédiatement.
+  </p>
+  <ul>
+    {% for g in annexe_pdfs %}
+      {% for p in g.pdfs %}
+      <li>
+        <a class="ref-doc" href="#annexe-doc-{{ p.id }}">{{ p.ref }}</a>
+        — {% if g.code %}{{ g.code }} · {% endif %}{{ p.nom }}
+        {% if p.ok %}<span class="muted">({{ p.nb_pages }} p.)</span>{% else %}<span class="muted">(indisponible)</span>{% endif %}
+      </li>
+      {% endfor %}
+    {% endfor %}
+  </ul>
+  {% for g in annexe_pdfs %}
+    {% for p in g.pdfs %}
+    <div class="pdf-intercalaire" id="annexe-doc-{{ p.id }}">
+      <div class="photo-ref">{{ p.ref }}</div>
+      <div class="titre-doc">{{ p.nom }}</div>
+      <p class="small muted">
+        Action :
+        <a href="#occ-{{ g.occurrence_id }}">{% if g.code %}{{ g.code }} — {% endif %}{{ g.titre }}</a>
+        {% if p.date_document %} · {{ p.date_document | dt }}{% endif %}
+        {% if p.categorie %} · {{ p.categorie }}{% endif %}
+      </p>
+      {% if p.ok %}
+      <p>Le document original suit ({{ p.nb_pages_incluses }} page{{ 's' if p.nb_pages_incluses > 1 else '' }}).
+        {% if p.tronque %} Seules les {{ p.nb_pages_incluses }} premières pages sur {{ p.nb_pages }} sont reproduites.{% endif %}
+      </p>
+      {% else %}
+      <div class="photo-manquante">
+        Document indisponible (pièce supprimée, inaccessible, ou PDF illisible).<br>
+        {{ p.nom }}
+      </div>
+      {% endif %}
+      <p class="small" style="margin-top:10pt"><a href="#occ-{{ g.occurrence_id }}">↩ Retour à l'action</a></p>
+    </div>
+    {% endfor %}
+  {% endfor %}
+</section>
+{% endif %}
 
 </body>
 </html>

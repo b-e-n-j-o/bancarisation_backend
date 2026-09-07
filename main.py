@@ -29,6 +29,8 @@ from api.projets.router import router as projets_router
 from api.cadastre.router import router as cadastre_router
 from api.satellite.router import router as satellite_router
 from api.annotations.router import router as annotations_router
+from api.journal_actions.router import router as journal_actions_router
+from api.carto.router import router as cao_router
 
 app = FastAPI(
     title="Bancarisation API",
@@ -74,3 +76,5 @@ app.include_router(geomce_router, prefix="/api", tags=["geomce"])
 app.include_router(geomce_exports_router, prefix="/api", tags=["geomce"])
 app.include_router(satellite_router, prefix="/api", tags=["satellite"])
 app.include_router(annotations_router, prefix="/api", tags=["annotations"])
+app.include_router(journal_actions_router, prefix="/api", tags=["journal"])
+app.include_router(cao_router, prefix="/api", tags=["cao"])

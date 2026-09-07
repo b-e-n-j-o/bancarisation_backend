@@ -5,7 +5,8 @@ from __future__ import annotations
 from typing import Any, Optional
 from uuid import UUID
 
-from fastapi import APIRouter, File, Form, HTTPException, UploadFile, status
+from fastapi import APIRouter, BackgroundTasks, File, Form, HTTPException, UploadFile, status
+from fastapi.responses import Response
 
 from .crud import (
     compter_projets_parc_par_departement,
@@ -13,7 +14,13 @@ from .crud import (
     lister_geometries_ug,
     renommer_ug,
 )
-from .ingestion import GeometryIngestError, ingest_shapefile_zip, persister_ug
+from .export_shp import exporter_shp_zip
+from .ingestion import (
+    GeometryIngestError,
+    est_erreur_connexion,
+    ingest_shapefile_zip,
+    persister_ug,
+)
 from .sig_analyse import (
     AnalyseSig,
     ConfirmerSigBody,
@@ -41,6 +48,51 @@ def list_geometries_route(projet_id: UUID) -> dict[str, Any]:
         if "connection" in detail.lower() or "postgres" in detail.lower():
             code = status.HTTP_503_SERVICE_UNAVAILABLE
         raise HTTPException(status_code=code, detail=detail) from exc
+
+
+def _shp_zip_response(data: bytes, filename: str) -> Response:
+    return Response(
+        content=data,
+        media_type="application/zip",
+        headers={
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "Cache-Control": "no-store",
+        },
+    )
+
+
+@router.get("/projets/{projet_id}/ugs/{ug_id}/export-shp")
+def export_shp_ug_route(
+    projet_id: UUID,
+    ug_id: str,
+    geom_id: str | None = None,
+) -> Response:
+    """ZIP shapefile Lambert 93 de l'UG (ou d'une géométrie si geom_id)."""
+    try:
+        data, filename = exporter_shp_zip(
+            projet_id,
+            ug_id=ug_id,
+            geom_id=geom_id,
+        )
+    except GeometryIngestError as exc:
+        detail = str(exc)
+        code = status.HTTP_404_NOT_FOUND if "aucune" in detail.lower() or "introuvable" in detail.lower() else status.HTTP_400_BAD_REQUEST
+        if "connection" in detail.lower() or "postgres" in detail.lower():
+            code = status.HTTP_503_SERVICE_UNAVAILABLE
+        raise HTTPException(status_code=code, detail=detail) from exc
+    return _shp_zip_response(data, filename)
+
+
+@router.get("/projets/{projet_id}/emprise/export-shp")
+def export_shp_emprise_route(projet_id: UUID) -> Response:
+    """ZIP shapefile Lambert 93 de l'emprise projet."""
+    try:
+        data, filename = exporter_shp_zip(projet_id, emprise=True)
+    except GeometryIngestError as exc:
+        detail = str(exc)
+        code = status.HTTP_404_NOT_FOUND if "aucune" in detail.lower() else status.HTTP_400_BAD_REQUEST
+        raise HTTPException(status_code=code, detail=detail) from exc
+    return _shp_zip_response(data, filename)
 
 
 @router.patch("/projets/{projet_id}/ugs/{ug_id}")
@@ -146,11 +198,23 @@ def get_analyse_sig_route(projet_id: UUID, analyse_id: str) -> AnalyseSig:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
 
 
+def _cadastre_arriere_plan(projet_id: UUID) -> None:
+    """Hors du spinner UI : l'IGN peut prendre des dizaines de secondes."""
+    try:
+        enrichir_cadastre_projet(projet_id)
+    except Exception as exc:  # noqa: BLE001
+        print(f"⚠️  Cadastre (arrière-plan) projet {projet_id} : {exc}", flush=True)
+
+
 @router.post(
     "/projets/{projet_id}/sig/confirmer",
     status_code=status.HTTP_201_CREATED,
 )
-def confirmer_sig_route(projet_id: UUID, body: ConfirmerSigBody) -> dict[str, Any]:
+def confirmer_sig_route(
+    projet_id: UUID,
+    body: ConfirmerSigBody,
+    background_tasks: BackgroundTasks,
+) -> dict[str, Any]:
     """Écrit les couches validées (une ligne PostGIS par géométrie, même ug_id)."""
     import geopandas as gpd
 
@@ -191,21 +255,28 @@ def confirmer_sig_route(projet_id: UUID, body: ConfirmerSigBody) -> dict[str, An
                 "nb": len(ids),
             })
     except GeometryIngestError as exc:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+        print(f"⚠️  SIG confirmer : {exc}", flush=True)
+        code = (
+            status.HTTP_503_SERVICE_UNAVAILABLE
+            if est_erreur_connexion(exc)
+            else status.HTTP_400_BAD_REQUEST
+        )
+        raise HTTPException(status_code=code, detail=str(exc)) from exc
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+        print(f"⚠️  SIG confirmer : {exc}", flush=True)
+        code = (
+            status.HTTP_503_SERVICE_UNAVAILABLE
+            if est_erreur_connexion(exc)
+            else status.HTTP_400_BAD_REQUEST
+        )
+        raise HTTPException(status_code=code, detail=str(exc)) from exc
 
-    cadastre_info: dict[str, Any] | None = None
     if any(c.get("nb") for c in crees):
-        try:
-            # Bbox englobant toutes les UG du projet (repli buffer 200 m si > 5000)
-            cadastre_info = enrichir_cadastre_projet(projet_id).to_dict()
-        except Exception as exc:  # noqa: BLE001
-            cadastre_info = {"avertissements": [str(exc)], "nb_parcelles": 0}
+        background_tasks.add_task(_cadastre_arriere_plan, projet_id)
 
     return {
         "analyse_id": body.analyse_id,
         "couches_persistees": crees,
         "total_entites": sum(c["nb"] for c in crees),
-        "cadastre": cadastre_info,
+        "cadastre": None,
     }

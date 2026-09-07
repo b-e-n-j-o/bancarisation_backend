@@ -46,30 +46,86 @@ def _iso_date(v: Any) -> date | None:
     return date.fromisoformat(str(v)[:10])
 
 
-def _rubriques_from_extraction(extraction: Any) -> list[str]:
-    if not extraction:
-        return []
-    if isinstance(extraction, str):
+CATEGORIES_OK = {
+    "compensation",
+    "evitement",
+    "reduction",
+    "accompagnement",
+    "suivi",
+    "chantier",
+    "administratif",
+    "gouvernance",
+    "information",
+    "donnees",
+}
+NATURES_OK = {
+    "calendaire",
+    "recurrente",
+    "permanente",
+    "ponctuelle",
+    "seuil",
+}
+
+
+def _as_dict(v: Any) -> dict[str, Any] | None:
+    if v is None:
+        return None
+    if isinstance(v, dict):
+        return v
+    if isinstance(v, str):
         try:
-            extraction = json.loads(extraction)
+            parsed = json.loads(v)
         except json.JSONDecodeError:
-            return []
-    if not isinstance(extraction, dict):
+            return None
+        return parsed if isinstance(parsed, dict) else None
+    return None
+
+
+def _as_str_list(v: Any) -> list[str]:
+    if not v:
         return []
-    meta = extraction.get("metadonnees") or {}
-    rub = meta.get("rubriques") or []
-    if isinstance(rub, list):
-        return [str(x) for x in rub if x]
+    if isinstance(v, str):
+        try:
+            v = json.loads(v)
+        except json.JSONDecodeError:
+            return [v] if v else []
+    if isinstance(v, list):
+        return [str(x) for x in v if x]
     return []
 
 
+def _extraction_dict(extraction: Any) -> dict[str, Any]:
+    data = _as_dict(extraction) or {}
+    meta = data.get("metadonnees")
+    if isinstance(meta, dict):
+        fused = {**meta, **{k: v for k, v in data.items() if k != "metadonnees"}}
+        return fused
+    return data
+
+
+def _rubriques_from_extraction(extraction: Any) -> list[str]:
+    data = _extraction_dict(extraction)
+    rub = data.get("rubriques") or []
+    if not isinstance(rub, list):
+        return []
+    out: list[str] = []
+    for x in rub:
+        if isinstance(x, dict):
+            label = x.get("rubrique") or x.get("intitule_court")
+            if label:
+                out.append(str(label))
+        elif x:
+            out.append(str(x))
+    return out
+
+
 def _map_prescription_row(r: dict[str, Any]) -> ArretePrescriptionOut:
-    rec = r.get("recurrence")
-    if isinstance(rec, str):
-        try:
-            rec = json.loads(rec)
-        except json.JSONDecodeError:
-            rec = None
+    rec = _as_dict(r.get("recurrence"))
+    tempo = _as_dict(r.get("temporalite"))
+    dest = _as_str_list(r.get("autorite_destinataire"))
+    opp = r.get("opposable")
+    if opp is None:
+        opp = True
     return ArretePrescriptionOut(
         id=r.get("id"),
         article=r.get("article"),
@@ -79,14 +135,37 @@ def _map_prescription_row(r: dict[str, Any]) -> ArretePrescriptionOut:
         cible_valeur=float(r["cible_valeur"]) if r.get("cible_valeur") is not None else None,
         cible_unite=r.get("cible_unite"),
         echeance=_iso_date(r.get("echeance")),
-        recurrence=rec if isinstance(rec, dict) else None,
+        recurrence=rec,
         page_source=r.get("page_source"),
         texte_source=r.get("texte_source"),
         confiance=float(r["confiance"]) if r.get("confiance") is not None else None,
+        code=r.get("code"),
+        opposable=bool(opp),
+        phase=r.get("phase"),
+        destinataire=r.get("destinataire"),
+        livrable=r.get("livrable"),
+        indicateur=r.get("indicateur"),
+        obligation_de_resultat=bool(r.get("obligation_de_resultat") or False),
+        temporalite=tempo,
+        autorite_destinataire=dest,
+        remarque=r.get("remarque"),
     )
 
 
 def _map_arrete_row(r: dict[str, Any], prescriptions: list[ArretePrescriptionOut] | None = None) -> ArreteOut:
+    ext = _extraction_dict(r.get("extraction"))
+    site = ext.get("site_compensation")
+    fondement = ext.get("fondement") or []
+    if not isinstance(fondement, list):
+        fondement = [fondement] if fondement else []
+    avert = ext.get("avertissements") or []
+    if not isinstance(avert, list):
+        avert = [str(avert)] if avert else []
+    duree = ext.get("duree_suivi_annees")
+    try:
+        duree_i = int(duree) if duree is not None else None
+    except (TypeError, ValueError):
+        duree_i = None
     return ArreteOut(
         id=r["id"],
         projet_id=r["projet_id"],
@@ -102,6 +181,12 @@ def _map_arrete_row(r: dict[str, Any], prescriptions: list[ArretePrescriptionOut
         extraction_modele=r.get("extraction_modele"),
         rubriques=_rubriques_from_extraction(r.get("extraction")),
         prescriptions=prescriptions or [],
+        service_instructeur=ext.get("service_instructeur") or None,
+        fondement=[str(x) for x in fondement if x],
+        projet_nom=ext.get("projet_nom") or None,
+        duree_suivi_annees=duree_i,
+        avertissements=[str(x) for x in avert if x],
+        site_compensation=site if isinstance(site, dict) else None,
     )
 
 
@@ -110,9 +195,7 @@ def _charger_prescriptions(cur, arrete_ids: list[str]) -> dict[str, list[ArreteP
         return {}
     cur.execute(
         """
-        SELECT id, arrete_id, article, intitule, categorie, nature,
-               cible_valeur, cible_unite, echeance, recurrence,
-               page_source, texte_source, confiance
+        SELECT *
         FROM bancarisation.arrete_prescription
         WHERE arrete_id = ANY(%s::uuid[])
         ORDER BY article NULLS LAST, cree_le
@@ -823,6 +906,104 @@ def lire_arrete(
             return _map_arrete_row(r, presc)
 
 
+def _colonnes_prescription(cur: Any) -> set[str]:
+    cur.execute(
+        """
+        SELECT column_name
+        FROM information_schema.columns
+        WHERE table_schema = 'bancarisation'
+          AND table_name = 'arrete_prescription'
+        """
+    )
+    return {r["column_name"] for r in cur.fetchall()}
+
+
+def _inserer_prescriptions(cur: Any, arrete_id: str, prescriptions: list[dict[str, Any]]) -> None:
+    cols = _colonnes_prescription(cur)
+    riche = "temporalite" in cols and "code" in cols
+    for p in prescriptions:
+        cat = p.get("categorie") if p.get("categorie") in CATEGORIES_OK else None
+        nat = p.get("nature") if p.get("nature") in NATURES_OK else None
+        dest = p.get("autorite_destinataire")
+        if dest is not None and not isinstance(dest, (list, dict)):
+            dest = [dest]
+        if riche:
+            cur.execute(
+                """
+                INSERT INTO bancarisation.arrete_prescription (
+                  arrete_id, article, intitule, categorie, nature,
+                  cible_valeur, cible_unite, echeance, recurrence,
+                  page_source, texte_source, confiance, origine,
+                  code, opposable, phase, destinataire, livrable,
+                  indicateur, obligation_de_resultat, temporalite,
+                  autorite_destinataire, remarque
+                ) VALUES (
+                  %s, %s, %s, %s, %s,
+                  %s, %s, %s::date, %s,
+                  %s, %s, %s, %s,
+                  %s, %s, %s, %s, %s,
+                  %s, %s, %s,
+                  %s, %s
+                )
+                """,
+                (
+                    arrete_id,
+                    p.get("article"),
+                    p.get("intitule") or "Prescription",
+                    cat,
+                    nat,
+                    p.get("cible_valeur"),
+                    p.get("cible_unite"),
+                    p.get("echeance"),
+                    Json(p["recurrence"]) if p.get("recurrence") is not None else None,
+                    p.get("page_source"),
+                    p.get("texte_source"),
+                    p.get("confiance"),
+                    p.get("origine") or "ia",
+                    p.get("code"),
+                    True if p.get("opposable") is None else bool(p.get("opposable")),
+                    p.get("phase"),
+                    p.get("destinataire"),
+                    p.get("livrable"),
+                    p.get("indicateur"),
+                    bool(p.get("obligation_de_resultat") or False),
+                    Json(p["temporalite"]) if p.get("temporalite") is not None else None,
+                    Json(dest) if dest is not None else None,
+                    p.get("remarque"),
+                ),
+            )
+        else:
+            cur.execute(
+                """
+                INSERT INTO bancarisation.arrete_prescription (
+                  arrete_id, article, intitule, categorie, nature,
+                  cible_valeur, cible_unite, echeance, recurrence,
+                  page_source, texte_source, confiance, origine
+                ) VALUES (
+                  %s, %s, %s, %s, %s, %s, %s, %s::date, %s, %s, %s, %s, %s
+                )
+                """,
+                (
+                    arrete_id,
+                    p.get("article"),
+                    p.get("intitule") or "Prescription",
+                    cat if cat in {
+                        "compensation", "evitement", "reduction", "accompagnement",
+                        "suivi", "chantier", "administratif",
+                    } else None,
+                    nat,
+                    p.get("cible_valeur"),
+                    p.get("cible_unite"),
+                    p.get("echeance"),
+                    Json(p["recurrence"]) if p.get("recurrence") is not None else None,
+                    p.get("page_source"),
+                    p.get("texte_source"),
+                    p.get("confiance"),
+                    p.get("origine") or "ia",
+                ),
+            )
+
+
 def persister_extraction_arrete(
     arrete_id: UUID,
     *,
@@ -874,52 +1055,147 @@ def persister_extraction_arrete(
                 "DELETE FROM bancarisation.arrete_prescription WHERE arrete_id = %s",
                 (str(arrete_id),),
             )
-            for p in prescriptions:
-                cat = p.get("categorie")
-                nat = p.get("nature")
-                if cat not in (
-                    "compensation",
-                    "evitement",
-                    "reduction",
-                    "accompagnement",
-                    "suivi",
-                    "chantier",
-                    "administratif",
-                ):
-                    cat = None
-                if nat not in (
-                    "calendaire",
-                    "recurrente",
-                    "permanente",
-                    "ponctuelle",
-                    "seuil",
-                ):
-                    nat = None
-                cur.execute(
-                    """
-                    INSERT INTO bancarisation.arrete_prescription (
-                      arrete_id, article, intitule, categorie, nature,
-                      cible_valeur, cible_unite, echeance, recurrence,
-                      page_source, texte_source, confiance, origine
-                    ) VALUES (
-                      %s, %s, %s, %s, %s, %s, %s, %s::date, %s, %s, %s, %s, 'ia'
-                    )
-                    """,
-                    (
-                        str(arrete_id),
-                        p.get("article"),
-                        p.get("intitule") or "Prescription",
-                        cat,
-                        nat,
-                        p.get("cible_valeur"),
-                        p.get("cible_unite"),
-                        p.get("echeance"),
-                        Json(p["recurrence"]) if p.get("recurrence") is not None else None,
-                        p.get("page_source"),
-                        p.get("texte_source"),
-                        p.get("confiance"),
-                    ),
-                )
+            _inserer_prescriptions(cur, str(arrete_id), prescriptions)
             conn.commit()
             presc = _charger_prescriptions(cur, [str(arrete_id)]).get(str(arrete_id), [])
             return _map_arrete_row(r, presc)
+
+
+def _document_ids_arrete(cur: Any, projet_id: UUID) -> list[str]:
+    """PDF d'arrêté du projet (catégorie ou dossier storage `/arrete/`)."""
+    try:
+        cur.execute(
+            """
+            SELECT id
+            FROM bancarisation.documents
+            WHERE projet_id = %s
+              AND (
+                categorie = 'arrete'
+                OR bucket_path ILIKE '%%/arrete/%%'
+              )
+            ORDER BY id DESC
+            """,
+            (str(projet_id),),
+        )
+    except Exception:  # noqa: BLE001
+        return []
+    return [str(r["id"]) for r in cur.fetchall() if r.get("id")]
+
+
+def lister_arretes_projet(projet_id: UUID) -> list[ArreteOut]:
+    """Lecture BE — pas de gate DREAL. Même payload que le dossier de contrôle."""
+    with _conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT id, projet_id, type, reference, date_notification,
+                       date_signature, document_id, autorite, beneficiaire,
+                       numero_dossier, confiance, extraction_modele, extraction
+                FROM bancarisation.arrete
+                WHERE projet_id = %s
+                ORDER BY date_notification NULLS LAST, date_signature NULLS LAST, cree_le
+                """,
+                (str(projet_id),),
+            )
+            rows = list(cur.fetchall())
+            doc_ids = _document_ids_arrete(cur, projet_id)
+            fallback = doc_ids[0] if doc_ids else None
+            if fallback:
+                for r in rows:
+                    if r.get("document_id"):
+                        continue
+                    r["document_id"] = fallback
+                    cur.execute(
+                        """
+                        UPDATE bancarisation.arrete
+                        SET document_id = %s, modifie_le = now()
+                        WHERE id = %s AND document_id IS NULL
+                        """,
+                        (fallback, str(r["id"])),
+                    )
+                conn.commit()
+            presc_by = _charger_prescriptions(cur, [str(r["id"]) for r in rows])
+            return [
+                _map_arrete_row(r, presc_by.get(str(r["id"]), []))
+                for r in rows
+            ]
+
+
+TYPES_ARRETE_OK = {
+    "declaration_loi_eau",
+    "autorisation_env",
+    "derogation_ep",
+    "arrete_modificatif",
+    "autre",
+}
+
+
+def ingerer_arretes_ia(
+    projet_id: UUID,
+    lots: list[tuple[dict[str, Any], list[dict[str, Any]]]],
+    *,
+    replace_ia: bool = True,
+) -> dict[str, Any]:
+    """INSERT arrêtés extraits par le DAG. Remplace les lignes origine='ia' du projet."""
+    if not lots:
+        return {"arretes": 0, "prescriptions": 0, "ids": []}
+
+    with _conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT 1 FROM bancarisation.projets WHERE id = %s",
+                (str(projet_id),),
+            )
+            if not cur.fetchone():
+                raise ValueError(f"Projet introuvable : {projet_id}")
+
+            if replace_ia:
+                cur.execute(
+                    """
+                    DELETE FROM bancarisation.arrete
+                    WHERE projet_id = %s AND origine = 'ia'
+                    """,
+                    (str(projet_id),),
+                )
+
+            ids: list[str] = []
+            n_presc = 0
+            for arrete_row, prescriptions in lots:
+                type_a = arrete_row.get("type") or "autre"
+                if type_a not in TYPES_ARRETE_OK:
+                    type_a = "autre"
+                cur.execute(
+                    """
+                    INSERT INTO bancarisation.arrete (
+                      projet_id, type, reference, autorite, beneficiaire,
+                      numero_dossier, date_signature, date_notification,
+                      document_id, extraction, extraction_modele, confiance, origine
+                    ) VALUES (
+                      %s, %s, %s, %s, %s, %s, %s::date, %s::date,
+                      %s, %s, %s, %s, 'ia'
+                    )
+                    RETURNING id
+                    """,
+                    (
+                        str(projet_id),
+                        type_a,
+                        arrete_row.get("reference"),
+                        arrete_row.get("autorite"),
+                        arrete_row.get("beneficiaire"),
+                        arrete_row.get("numero_dossier"),
+                        arrete_row.get("date_signature"),
+                        arrete_row.get("date_notification"),
+                        arrete_row.get("document_id"),
+                        Json(arrete_row["extraction"])
+                        if arrete_row.get("extraction") is not None
+                        else None,
+                        arrete_row.get("extraction_modele"),
+                        arrete_row.get("confiance"),
+                    ),
+                )
+                aid = str(cur.fetchone()["id"])
+                ids.append(aid)
+                _inserer_prescriptions(cur, aid, prescriptions)
+                n_presc += len(prescriptions)
+            conn.commit()
+            return {"arretes": len(ids), "prescriptions": n_presc, "ids": ids}

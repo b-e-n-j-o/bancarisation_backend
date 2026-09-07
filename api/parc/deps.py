@@ -21,6 +21,7 @@ class MembreContext:
     user_id: UUID | None
     role: str
     organisation_id: UUID | None
+    organisation_nom: str | None = None
 
 
 def _lookup_membre(user_id: UUID) -> MembreContext | None:
@@ -28,9 +29,10 @@ def _lookup_membre(user_id: UUID) -> MembreContext | None:
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT user_id, organisation_id, role
-                FROM bancarisation.membre
-                WHERE user_id = %s AND actif
+                SELECT m.user_id, m.organisation_id, m.role, o.nom AS organisation_nom
+                FROM bancarisation.membre m
+                LEFT JOIN bancarisation.organisations o ON o.id = m.organisation_id
+                WHERE m.user_id = %s AND m.actif
                 """,
                 (str(user_id),),
             )
@@ -38,10 +40,12 @@ def _lookup_membre(user_id: UUID) -> MembreContext | None:
     if not row:
         return None
     org = row["organisation_id"]
+    nom = row.get("organisation_nom")
     return MembreContext(
         user_id=row["user_id"],
         role=row["role"],
         organisation_id=UUID(str(org)) if org else None,
+        organisation_nom=str(nom) if nom else None,
     )
 
 

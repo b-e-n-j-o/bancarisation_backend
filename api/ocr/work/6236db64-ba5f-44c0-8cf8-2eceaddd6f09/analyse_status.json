@@ -1,0 +1,114 @@
+{
+  "projet_id": "6236db64-ba5f-44c0-8cf8-2eceaddd6f09",
+  "status": "done",
+  "etape": "termine",
+  "fichier": "Plan_de_gestion_exemple.pdf",
+  "fichiers": [
+    {
+      "nom": "Plan_de_gestion_exemple.pdf",
+      "doc_id": "plan-de-gestion-exemple-dc3424",
+      "statut": "done",
+      "pages": 75,
+      "format": "pdf",
+      "blocs": 75
+    }
+  ],
+  "detail": "Génération du calendrier…",
+  "message_user": "Analyse terminée",
+  "progression": 100,
+  "pages_totales": 75,
+  "erreur": null,
+  "recap": {
+    "pipeline": "multidocs",
+    "docs": 1,
+    "blocs": 75,
+    "segments": 3,
+    "jobs": 1,
+    "claims": 24,
+    "par_kind": {
+      "action": 4,
+      "echeance_regle": 20
+    },
+    "zones_sig": 0,
+    "laisses": [],
+    "non_couvert": [
+      "plan-de-gestion-exemple-dc3424 (pdf) / calendrier_previsionnel : aucun extracteur — Planning de mise en œuvre des actions sur 26 ans avec tableau récapitulatif années × actions.",
+      "plan-de-gestion-exemple-dc3424 (pdf) / compte_rendu_suivi : aucun extracteur — Bilan des cinq premières années de suivi (2019-2023) et rapport de suivi des mesures d'évitement et compensatoires (annexe)."
+    ],
+    "avertissements": [
+      "Semoir / ingestion : connection failed: connection to server at \"127.0.0.1\", port 5432 failed: could not receive data from server: Connection refused"
+    ],
+    "sortie": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/work/6236db64-ba5f-44c0-8cf8-2eceaddd6f09/multidocs",
+    "journal": {
+      "projet_id": "6236db64-ba5f-44c0-8cf8-2eceaddd6f09",
+      "etapes": [
+        {
+          "n": 1,
+          "nom": "Normalisation",
+          "script": "etape1 + utils/pdf → OCR Mistral",
+          "appels_llm": 0,
+          "appels_ocr": 1,
+          "detail_appels": "1 API",
+          "resultat": "1 doc(s), 75 bloc(s)",
+          "ok": true
+        },
+        {
+          "n": 2,
+          "nom": "Triage",
+          "script": "etape2_triage.cartographier",
+          "appels_llm": 1,
+          "appels_ocr": 0,
+          "detail_appels": "1 chat (retries inclus)",
+          "resultat": "3 segment(s) · rôles : calendrier_previsionnel, compte_rendu_suivi, plan_gestion · 5 param. · 0 signal(aux)",
+          "ok": true
+        },
+        {
+          "n": 3,
+          "nom": "Plan",
+          "script": "etape3_planification (déterministe)",
+          "appels_llm": 0,
+          "appels_ocr": 0,
+          "detail_appels": "0 (pas de LLM)",
+          "resultat": "1 job(s) · plan_gestion",
+          "ok": true
+        },
+        {
+          "n": 4,
+          "nom": "Extraction",
+          "script": "etape4 → extracteurs (plan_gestion…)",
+          "appels_llm": 5,
+          "appels_ocr": 0,
+          "detail_appels": "5 chat",
+          "resultat": "24 claim(s) · action=4, echeance_regle=20",
+          "ok": true
+        },
+        {
+          "n": 5,
+          "nom": "Calendrier",
+          "script": "claims → semoir → ingestion",
+          "appels_llm": 0,
+          "appels_ocr": 0,
+          "detail_appels": "",
+          "resultat": "échec : connection failed: connection to server at \"127.0.0.1\", port 5432 failed: could not receive data from server: Connection refused",
+          "ok": false
+        }
+      ],
+      "ocr_appels": 1,
+      "ocr_pages": 75,
+      "ocr_cache_hits": 0,
+      "llm_appels": 6
+    },
+    "llm_appels": 6,
+    "ocr_appels": 1,
+    "cout_total_usd": 0.2515,
+    "stats": {
+      "actions": 4,
+      "echeances": 20,
+      "occurrences": 0,
+      "non_placables": 0,
+      "horizon": 0
+    }
+  },
+  "started_at": "2026-09-03T18:36:49.683851+00:00",
+  "updated_at": "2026-09-03T18:40:47.661934+00:00"
+}

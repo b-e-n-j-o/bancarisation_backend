@@ -1,0 +1,61 @@
+```json
+{
+  "segments": [
+    {
+      "doc_id": "plan-de-gestion-exemple-dc3424",
+      "role": "plan_gestion",
+      "locators": [],
+      "description": "Plan de gestion complet incluant contexte, obligations réglementaires, bilan des 5 premières années de suivi, définition des objectifs, mesures de gestion (TU, TE, SE, MG), unités de gestion, planning et annexes.",
+      "confiance": 0.95
+    },
+    {
+      "doc_id": "plan-de-gestion-exemple-dc3424",
+      "role": "calendrier_previsionnel",
+      "locators": ["p17", "p31"],
+      "description": "Planning de mise en œuvre des actions sur 26 ans avec tableau récapitulatif années × actions.",
+      "confiance": 0.9
+    },
+    {
+      "doc_id": "plan-de-gestion-exemple-dc3424",
+      "role": "compte_rendu_suivi",
+      "locators": ["p9", "p34", "p35"],
+      "description": "Bilan des cinq premières années de suivi (2019-2023) et rapport de suivi des mesures d'évitement et compensatoires (annexe).",
+      "confiance": 0.9
+    }
+  ],
+  "parametres": [
+    {
+      "cle": "annee_t0",
+      "valeur": "2019",
+      "ancre": "p5",
+      "confiance": 0.95
+    },
+    {
+      "cle": "origine_t0",
+      "valeur": "Arrêté DDEP N°2018D/718 du 28 janvier 2019",
+      "ancre": "p4",
+      "confiance": 0.9
+    },
+    {
+      "cle": "duree_ans",
+      "valeur": "30",
+      "ancre": "p33",
+      "confiance": 0.8
+    },
+    {
+      "cle": "maitre_d_ouvrage",
+      "valeur": "SARL PROMOBAT",
+      "ancre": "p1",
+      "confiance": 0.95
+    },
+    {
+      "cle": "bureau_d_etudes",
+      "valeur": "SIMETHIS",
+      "ancre": "p1",
+      "confiance": 0.95
+    }
+  ],
+  "signaux": [],
+  "documents_non_classes": []
+}
+```

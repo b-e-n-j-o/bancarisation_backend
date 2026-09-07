@@ -204,7 +204,7 @@
     <div class="val">{{ s.realise | eur(court=True) }}</div>
   </div>
   <div class="cartouche">
-    <div class="lbl">Écart / initial</div>
+    <div class="lbl">Écart (prévu − initial)</div>
     <div class="val {{ 'pos' if s.delta_prevu_initial > 0 else ('neg' if s.delta_prevu_initial < 0 else '') }}">
       {{ s.delta_prevu_initial | eur(court=True, signe=True) }}
     </div>
@@ -257,7 +257,7 @@
       <td class="num {{ 'pos' if s.delta_prevu_initial > 0 else ('neg' if s.delta_prevu_initial < 0 else '') }}">
         {{ s.delta_prevu_initial | eur(signe=True) }}
       </td>
-      <td class="small muted">Décomposition détaillée au § 3.</td>
+      <td class="small">Formule : prévu actualisé − budget initial figé. L'engagé et le réalisé ne rentrent pas dans ce calcul.</td>
     </tr>
   </tfoot>
 </table>
