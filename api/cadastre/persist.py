@@ -145,9 +145,12 @@ def supprimer_cadastre_projet(projet_id: UUID, *, ug_ids: list[str] | None = Non
 
 
 def lier_parcelles_aux_ugs(projet_id: UUID) -> dict[str, int]:
-    """Croisement spatial : parcelles du snapshot qui intersectent chaque UG.
+    """Croisement spatial : parcelles dont l’intérieur recoupe chaque UG.
 
-    Remplit ``cadastre_parcelle_ug``. Retourne ``{ug_id: nb_parcelles}``.
+    ``ST_Intersects`` tout seul compte aussi les contacts de bordure
+    (``ST_Touches``) : une UG collée à la limite d’une parcelle voisine
+    était liée à tort. On exige un recouvrement d’intérieur, et pour les
+    surfaces une intersection ≥ 1 m² (Lambert 93) pour ignorer les slivers.
     """
     pid = str(projet_id)
     counts: dict[str, int] = {}
@@ -195,29 +198,74 @@ def lier_parcelles_aux_ugs(projet_id: UUID) -> dict[str, int]:
                           AND ug_id IS NOT NULL AND ug_id <> ''
                     ) t
                     GROUP BY ug_id
+                ),
+                inter AS (
+                    SELECT
+                        p.projet_id,
+                        u.ug_id,
+                        p.idu,
+                        p.section,
+                        p.numero,
+                        p.code_insee,
+                        p.nom_com,
+                        p.contenance,
+                        ST_MakeValid(
+                            ST_Intersection(
+                                ST_MakeValid(p.geom_3857),
+                                ST_MakeValid(u.geom_3857)
+                            )
+                        ) AS geom_inter
+                    FROM parcels p
+                    JOIN ugs u
+                      ON ST_Intersects(p.geom_3857, u.geom_3857)
+                     AND NOT ST_Touches(p.geom_3857, u.geom_3857)
                 )
                 INSERT INTO bancarisation.cadastre_parcelle_ug (
                     projet_id, ug_id, idu, section, numero, code_insee, nom_com,
                     contenance, surface_inter_m2
                 )
                 SELECT
-                    p.projet_id,
-                    u.ug_id,
-                    p.idu,
-                    p.section,
-                    p.numero,
-                    p.code_insee,
-                    p.nom_com,
-                    p.contenance,
-                    NULL::numeric
-                FROM parcels p
-                JOIN ugs u ON ST_Intersects(p.geom_3857, u.geom_3857)
+                    projet_id,
+                    ug_id,
+                    idu,
+                    section,
+                    numero,
+                    code_insee,
+                    nom_com,
+                    contenance,
+                    ROUND(
+                        (
+                            ST_Area(
+                                ST_Transform(
+                                    ST_CollectionExtract(geom_inter, 3),
+                                    2154
+                                )
+                            )
+                        )::numeric,
+                        2
+                    )
+                FROM inter
+                WHERE geom_inter IS NOT NULL
+                  AND NOT ST_IsEmpty(geom_inter)
+                  AND (
+                    ST_Dimension(geom_inter) < 2
+                    OR COALESCE(
+                        ST_Area(
+                            ST_Transform(
+                                ST_CollectionExtract(geom_inter, 3),
+                                2154
+                            )
+                        ),
+                        0
+                    ) >= 1
+                  )
                 ON CONFLICT (projet_id, ug_id, idu) DO UPDATE SET
                     section = EXCLUDED.section,
                     numero = EXCLUDED.numero,
                     code_insee = EXCLUDED.code_insee,
                     nom_com = EXCLUDED.nom_com,
-                    contenance = EXCLUDED.contenance
+                    contenance = EXCLUDED.contenance,
+                    surface_inter_m2 = EXCLUDED.surface_inter_m2
                 """,
                 (pid, pid, pid, pid),
             )

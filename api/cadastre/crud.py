@@ -68,11 +68,15 @@ def lister_cadastre_projet(
     projet_id: UUID,
     *,
     ug_id: str | None = None,
+    croisement: bool = False,
 ) -> dict[str, Any]:
     """FeatureCollection 4326 des parcelles cadastrales (snapshot ingestion).
 
     Si ``ug_id`` est fourni : uniquement les parcelles liées via
     ``cadastre_parcelle_ug`` (composition spatiale). Fallback soft si table absente.
+
+    Si ``croisement`` : toutes les parcelles qui intersectent au moins une UG
+    (l’onglet Foncier), pas le buffer autour du site.
     """
     features: list[dict[str, Any]] = []
     try:
@@ -142,6 +146,35 @@ def lister_cadastre_projet(
                             """,
                             (str(projet_id), ug_id, ug_id),
                         )
+                elif croisement:
+                    cur.execute(
+                        """
+                        SELECT DISTINCT ON (c.idu)
+                            c.id::text,
+                            (
+                              SELECT string_agg(DISTINCT link2.ug_id, ', ' ORDER BY link2.ug_id)
+                              FROM bancarisation.cadastre_parcelle_ug link2
+                              WHERE link2.projet_id = c.projet_id AND link2.idu = c.idu
+                            ) AS ug_id,
+                            c.idu,
+                            c.section,
+                            c.numero,
+                            c.code_insee,
+                            c.nom_com,
+                            c.contenance,
+                            c.properties,
+                            ST_AsGeoJSON(
+                                COALESCE(c.geom, ST_Transform(c.geom_3857, 4326))
+                            )::text
+                        FROM bancarisation.cadastre_parcelle c
+                        INNER JOIN bancarisation.cadastre_parcelle_ug link
+                            ON link.projet_id = c.projet_id
+                           AND link.idu = c.idu
+                        WHERE c.projet_id = %s
+                        ORDER BY c.idu, c.fetched_at DESC
+                        """,
+                        (str(projet_id),),
+                    )
                 else:
                     cur.execute(
                         """
@@ -221,5 +254,6 @@ def lister_cadastre_projet(
         "meta": {
             "nb_parcelles": len(features),
             "ug_id": ug_id,
+            "croisement": croisement,
         },
     }

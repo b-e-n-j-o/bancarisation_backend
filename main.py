@@ -27,6 +27,7 @@ from api.prestataires.router import router as prestataires_router
 from api.projets.geometries.router import router as geometries_router
 from api.projets.router import router as projets_router
 from api.cadastre.router import router as cadastre_router
+from api.foncier.router import router as foncier_router
 from api.satellite.router import router as satellite_router
 from api.annotations.router import router as annotations_router
 from api.journal_actions.router import router as journal_actions_router
@@ -60,6 +61,7 @@ def healthcheck() -> dict[str, bool]:
 app.include_router(projets_router, prefix="/api", tags=["projets"])
 app.include_router(geometries_router, prefix="/api", tags=["geometries"])
 app.include_router(cadastre_router, prefix="/api", tags=["cadastre"])
+app.include_router(foncier_router, prefix="/api", tags=["foncier"])
 app.include_router(budget_router, prefix="/api", tags=["budget"])
 app.include_router(bilan_suivi_router, prefix="/api", tags=["bilan-suivi"])
 app.include_router(prestataires_router, prefix="/api", tags=["prestataires"])

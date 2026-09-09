@@ -103,6 +103,10 @@ def exporter_parcellaire_intersections(
                               ST_MakeValid(u.geom_3857),
                               ST_MakeValid(p.geom_3857)
                           )
+                         AND NOT ST_Touches(
+                              ST_MakeValid(u.geom_3857),
+                              ST_MakeValid(p.geom_3857)
+                          )
                     )
                     SELECT
                         ug_id,

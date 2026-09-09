@@ -55,6 +55,11 @@ def _eclater(geom: BaseGeometry) -> list[BaseGeometry]:
 
 
 def _row(geom: BaseGeometry, attrs: dict[str, Any]) -> dict[str, Any]:
+    attribs = attrs.get("attributs")
+    if isinstance(attribs, dict) and attribs:
+        attribs_txt = json.dumps(attribs, ensure_ascii=False)[:254]
+    else:
+        attribs_txt = ""
     return {
         "geometry": geom,
         "id": attrs["id"],
@@ -62,6 +67,9 @@ def _row(geom: BaseGeometry, attrs: dict[str, Any]) -> dict[str, Any]:
         "dxf_type": (attrs.get("dxf_type") or "")[:254],
         "handle": (attrs.get("handle") or "")[:254],
         "texte": (attrs.get("texte") or "")[:254],
+        "bloc": (attrs.get("bloc") or "")[:254],
+        "couleur": (attrs.get("couleur") or "")[:254],
+        "attribs": attribs_txt,
     }
 
 
@@ -81,6 +89,7 @@ def exporter_shp_zip(projet_id: UUID, plan_id: UUID) -> tuple[bytes, str]:
         except UndefinedTable as exc:
             raise PlanCaoError(
                 "Tables plan_cao absentes — appliquer backend/api/ocr/db/sql/035_plan_cao.sql"
+                " puis 037_plan_cao_contexte.sql"
             ) from exc
         if not plan:
             raise PlanCaoError("Plan CAO introuvable.")
@@ -89,7 +98,7 @@ def exporter_shp_zip(projet_id: UUID, plan_id: UUID) -> tuple[bytes, str]:
 
         entites = conn.execute(
             """
-            SELECT id, calque, dxf_type, handle, texte,
+            SELECT id, calque, dxf_type, handle, texte, bloc, attributs, couleur,
                    ST_AsGeoJSON(geom) AS geom
             FROM bancarisation.plan_cao_entite
             WHERE plan_id = %s
@@ -114,6 +123,9 @@ def exporter_shp_zip(projet_id: UUID, plan_id: UUID) -> tuple[bytes, str]:
             "dxf_type": e["dxf_type"],
             "handle": e["handle"],
             "texte": e["texte"],
+            "bloc": e.get("bloc"),
+            "attributs": e.get("attributs"),
+            "couleur": e.get("couleur"),
         }
         for part in _eclater(geom):
             bucket = _bucket(part)

@@ -20,10 +20,14 @@ router = APIRouter()
 def get_cadastre_route(
     projet_id: UUID,
     ug_id: Optional[str] = Query(default=None),
+    croisement: bool = Query(
+        default=False,
+        description="Uniquement les parcelles qui intersectent une UG (onglet Foncier).",
+    ),
 ) -> dict[str, Any]:
     """GeoJSON des parcelles cadastrales stockées pour le projet (ou une UG)."""
     try:
-        return lister_cadastre_projet(projet_id, ug_id=ug_id)
+        return lister_cadastre_projet(projet_id, ug_id=ug_id, croisement=croisement)
     except CadastreReadError as exc:
         detail = str(exc)
         code = status.HTTP_400_BAD_REQUEST

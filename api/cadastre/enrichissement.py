@@ -37,7 +37,7 @@ logger = logging.getLogger(__name__)
 
 
 def _croiser_ugs(projet_id: UUID, result: EnrichissementCadastreResult) -> None:
-    """Matérialise les parcelles qui composent chaque UG (ST_Intersects)."""
+    """Matérialise les parcelles qui composent chaque UG (intérieur ∩, pas la bordure)."""
     try:
         counts = lier_parcelles_aux_ugs(projet_id)
         total = sum(counts.values())

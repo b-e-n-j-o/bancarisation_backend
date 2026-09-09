@@ -8,19 +8,24 @@ import tempfile
 from typing import Any
 from uuid import UUID
 
-from fastapi import APIRouter, File, HTTPException, Query, UploadFile, status
+from fastapi import APIRouter, File, Form, HTTPException, Query, UploadFile, status
 from fastapi.responses import Response
 from pydantic import BaseModel
 
 from api.carto import persist as cao_persist
 from api.carto.dxf_processor import ProcesseurDXF
+from api.carto.dxf_geodata import (
+    analyser_crs,
+    enrichir_calques_crs,
+    libelle_srid,
+    srid_depuis_code,
+    zone_cc_depuis_latitude,
+)
 from api.carto.dxf_raster import (
     DepotCao,
     appliquer_pdf_et_apercus,
     apparier,
-    bbox_depuis_rasters,
     extraire_references,
-    fusionner_bbox,
     fusionner_complements,
     medias_depuis_bytes,
     ouvrir_depot,
@@ -48,8 +53,17 @@ class PaireCalage(BaseModel):
 
 
 class CalageBody(BaseModel):
-    paires: list[PaireCalage]
+    paires: list[PaireCalage] = []
     mode: str = "deux_points"
+
+
+class SridCalqueItem(BaseModel):
+    nom: str
+    srid_source: int | None = None
+
+
+class SridCalquesBody(BaseModel):
+    calques: list[SridCalqueItem]
 
 
 class BboxPciBody(BaseModel):
@@ -76,7 +90,8 @@ def _lire_depot(nom: str, contenu: bytes) -> DepotCao:
 def _extraire(
     depot: DepotCao,
     inclure_calque_0: bool,
-) -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, int], list[dict[str, Any]], dict[str, Any]]:
+    code_formulaire: str = "inconnu",
+) -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, int], list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
     ignores = [] if inclure_calque_0 else ["0"]
     tmp_path = None
     proc: ProcesseurDXF | None = None
@@ -89,7 +104,7 @@ def _extraire(
             calques_ignores=ignores,
             inclure_textes=True,
             fleche_metres=FLECHE_PREVIEW_M,
-            aplatir_z=True,
+            aplatir_z=False,
             arrondi=3,
         )
         if not proc.charger():
@@ -98,15 +113,20 @@ def _extraire(
                 detail="DXF illisible (format corrompu ou non supporté).",
             )
         collection = proc.traiter()
+        analyse = analyser_crs(
+            collection.get("features") or [],
+            proc.doc,
+            code_formulaire,
+        )
+        meta = collection.get("metadata") or {}
+        meta["analyse_crs"] = analyse
+        collection["metadata"] = meta
         refs, non_placees = extraire_references(proc.doc, proc.facteur)
         apparier(refs, depot.fichiers)
         appliquer_pdf_et_apercus(refs, depot.fichiers, proc.facteur)
         unused = [c for c in depot.fichiers if c not in {r.get("chemin_archive") for r in refs}]
         rasters = serialiser_refs(refs)
         resume = resume_rasters(refs, non_placees, unused)
-        meta = collection.get("metadata") or {}
-        meta["bbox_locale"] = fusionner_bbox(meta.get("bbox_locale"), bbox_depuis_rasters(refs))
-        collection["metadata"] = meta
     except HTTPException:
         raise
     except Exception as exc:
@@ -129,13 +149,26 @@ def _extraire(
         nom = r.get("calque") or "0"
         c = par.get(nom)
         if not c:
-            c = {"nom": nom, "nb": 0, "types": {}, "visible_defaut": nom != "0"}
+            meta_c = (proc.table_calques or {}).get(nom) or {}
+            c = {
+                "nom": nom,
+                "nb": 0,
+                "types": {},
+                "visible_defaut": not meta_c.get("eteint") and not meta_c.get("gele"),
+                "couleur": meta_c.get("couleur"),
+                "aci": meta_c.get("aci"),
+                "eteint": bool(meta_c.get("eteint")),
+                "gele": bool(meta_c.get("gele")),
+                "verrouille": bool(meta_c.get("verrouille")),
+            }
             par[nom] = c
             calques.append(c)
         t = r.get("dxf_type") or "IMAGE"
         c["types"][t] = c["types"].get(t, 0) + 1
         c["nb"] = int(c.get("nb") or 0) + 1
-    return collection, calques, dict(proc.calques_masques), rasters, resume
+    analyse = (collection.get("metadata") or {}).get("analyse_crs") or {}
+    enrichir_calques_crs(calques, analyse)
+    return collection, calques, dict(proc.calques_masques), rasters, resume, analyse
 
 
 def _payload_preview(
@@ -169,12 +202,24 @@ def _payload_preview(
             "bbox_locale": bbox,
             "largeur": (bbox["xmax"] - bbox["xmin"]) if bbox else None,
             "hauteur": (bbox["ymax"] - bbox["ymin"]) if bbox else None,
+            "types_3d": meta.get("types_3d") or {},
+            "profil_z": meta.get("profil_z") or {},
+            "blocs": meta.get("blocs") or {},
+            "nb_entites_avec_attributs": meta.get("nb_entites_avec_attributs") or 0,
         },
         "calques": calques,
         "calques_masques": masques,
         "geojson": {"type": "FeatureCollection", "features": features},
         "rasters": rasters,
         "rasters_resume": rasters_resume,
+    }
+    analyse = meta.get("analyse_crs") or {}
+    comparaison = analyse.get("comparaison") or {}
+    body["crs"] = {
+        "srid_declare": comparaison.get("srid_formulaire") or comparaison.get("srid_autorite"),
+        "srid_declare_origine": comparaison.get("origine_autorite") or "formulaire",
+        "multi_crs": bool(analyse.get("multi_crs")),
+        "analyse": analyse,
     }
     if plan_id:
         body["plan_id"] = plan_id
@@ -210,15 +255,50 @@ async def _depot_requete(
     return depot
 
 
+def _code_formulaire(valeur: str | None) -> str:
+    code = (valeur or "inconnu").strip().lower()
+    if code in ("", "none", "null"):
+        return "inconnu"
+    if code in ("local", "inconnu"):
+        return code
+    try:
+        srid = int(code)
+    except ValueError:
+        raise HTTPException(
+            status.HTTP_400_BAD_REQUEST,
+            detail="Système de coordonnées du fichier invalide.",
+        ) from None
+    if srid not in (2154, 27572, 32630, 32631, 4326) and not (3942 <= srid <= 3950):
+        raise HTTPException(
+            status.HTTP_400_BAD_REQUEST,
+            detail="Système de coordonnées non pris en charge.",
+        )
+    return str(srid)
+
+
+def _origine_declare(analyse: dict[str, Any], code: str) -> tuple[int | None, str | None]:
+    comparaison = analyse.get("comparaison") or {}
+    if comparaison.get("srid_geodata"):
+        return int(comparaison["srid_geodata"]), "geodata"
+    srid = srid_depuis_code(code)
+    if srid:
+        return srid, "formulaire"
+    return None, "formulaire"
+
+
 @router.post("/projets/{projet_id}/cao/preview")
 async def preview_dxf(
     projet_id: UUID,
     fichier: UploadFile = File(...),
     complements: UploadFile | None = File(default=None),
-    inclure_calque_0: bool = Query(default=False),
+    inclure_calque_0: bool = Query(default=True),
+    srid_declare: str = Form(default="inconnu"),
 ) -> dict[str, Any]:
+    code = _code_formulaire(srid_declare)
     depot = await _depot_requete(fichier, complements)
-    collection, calques, masques, rasters, resume = _extraire(depot, inclure_calque_0)
+    collection, calques, masques, rasters, resume, _analyse = _extraire(
+        depot, inclure_calque_0, code,
+    )
     return _payload_preview(
         projet_id, depot.dxf_nom, collection, calques, masques, inclure_calque_0, rasters, resume,
     )
@@ -229,10 +309,15 @@ async def creer_plan(
     projet_id: UUID,
     fichier: UploadFile = File(...),
     complements: UploadFile | None = File(default=None),
-    inclure_calque_0: bool = Query(default=False),
+    inclure_calque_0: bool = Query(default=True),
+    srid_declare: str = Form(default="inconnu"),
 ) -> dict[str, Any]:
+    code = _code_formulaire(srid_declare)
     depot = await _depot_requete(fichier, complements)
-    collection, calques, masques, rasters, resume = _extraire(depot, inclure_calque_0)
+    collection, calques, masques, rasters, resume, analyse = _extraire(
+        depot, inclure_calque_0, code,
+    )
+    srid_val, origine = _origine_declare(analyse, code)
 
     document_id = None
     try:
@@ -262,6 +347,10 @@ async def creer_plan(
             calque_0_inclus=inclure_calque_0,
             rasters=rasters,
             rasters_resume=resume,
+            analyse_crs=analyse,
+            srid_declare=srid_val,
+            srid_declare_origine=origine,
+            multi_crs=bool(analyse.get("multi_crs")),
         )
         enregistre = cao_persist.charger(projet_id, UUID(plan_id))
     except cao_persist.PlanCaoError as exc:
@@ -333,6 +422,20 @@ def charger_plan(projet_id: UUID, plan_id: UUID) -> dict[str, Any]:
         raise _http_persist(exc) from exc
 
 
+@router.delete(
+    "/projets/{projet_id}/cao/plans/{plan_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_class=Response,
+)
+def supprimer_plan(projet_id: UUID, plan_id: UUID) -> Response:
+    """Efface le plan CAO en cascade (entités, calques, groupes, calage) et le DXF."""
+    try:
+        cao_persist.supprimer(projet_id, plan_id)
+    except cao_persist.PlanCaoError as exc:
+        raise _http_persist(exc) from exc
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
 @router.put("/projets/{projet_id}/cao/plans/{plan_id}/groupes")
 def sauver_groupes(projet_id: UUID, plan_id: UUID, body: GroupesBody) -> dict[str, bool]:
     try:
@@ -370,24 +473,69 @@ def export_shp_plan(projet_id: UUID, plan_id: UUID) -> Response:
     return _shp_zip_response(data, filename)
 
 
+@router.get("/projets/{projet_id}/cao/crs-suggestion")
+def crs_suggestion(projet_id: UUID) -> dict[str, Any]:
+    """Zone CC plausible d'après la latitude du projet (UG), pour pré-sélectionner le formulaire."""
+    try:
+        lat = cao_persist.latitude_projet(projet_id)
+    except cao_persist.PlanCaoError as exc:
+        raise _http_persist(exc) from exc
+    zone = zone_cc_depuis_latitude(lat)
+    srid = (3900 + zone) if zone else None
+    return {
+        "latitude": lat,
+        "zone_cc": zone,
+        "srid_suggere": srid,
+        "nom": libelle_srid(srid) if srid else None,
+        "code": str(srid) if srid else None,
+    }
+
+
+@router.put("/projets/{projet_id}/cao/plans/{plan_id}/srid-calques")
+def sauver_srid_calques(
+    projet_id: UUID, plan_id: UUID, body: SridCalquesBody,
+) -> dict[str, Any]:
+    try:
+        return cao_persist.enregistrer_srid_calques(
+            projet_id,
+            plan_id,
+            [c.model_dump() for c in body.calques],
+        )
+    except cao_persist.PlanCaoError as exc:
+        raise _http_persist(exc) from exc
+
+
 @router.put("/projets/{projet_id}/cao/plans/{plan_id}/calage")
 def caler_plan(projet_id: UUID, plan_id: UUID, body: CalageBody) -> dict[str, Any]:
     from api.carto.calage import CalageError, paires_depuis_body, similitude_deux_points
 
-    raw = [p.model_dump() for p in body.paires]
+    mode = body.mode if body.mode in ("deux_points", "srid_direct", "manuel") else "deux_points"
     try:
-        s1, d1, s2, d2 = paires_depuis_body(raw)
-        params = similitude_deux_points(s1, d1, s2, d2)
-        enregistre = cao_persist.appliquer_calage(
-            projet_id,
-            plan_id,
-            mode=body.mode if body.mode in ("deux_points", "manuel") else "deux_points",
-            tx=params["tx"],
-            ty=params["ty"],
-            rotation_rad=params["rotation_rad"],
-            echelle=params["echelle"],
-            paires=raw[:2],
-        )
+        if mode == "srid_direct":
+            enregistre = cao_persist.appliquer_calage(
+                projet_id,
+                plan_id,
+                mode="srid_direct",
+                tx=0,
+                ty=0,
+                rotation_rad=0,
+                echelle=1,
+                paires=[],
+            )
+        else:
+            raw = [p.model_dump() for p in body.paires]
+            s1, d1, s2, d2 = paires_depuis_body(raw)
+            params = similitude_deux_points(s1, d1, s2, d2)
+            enregistre = cao_persist.appliquer_calage(
+                projet_id,
+                plan_id,
+                mode=mode,
+                tx=params["tx"],
+                ty=params["ty"],
+                rotation_rad=params["rotation_rad"],
+                echelle=params["echelle"],
+                paires=raw[:2],
+            )
     except CalageError as exc:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     except cao_persist.PlanCaoError as exc:

@@ -1,0 +1,6755 @@
+{
+  "fichier": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/carto/transfer-01a07b58/19.054 APS_2025.10.17.dxf",
+  "dxf_version": "AC1015",
+  "unites": {
+    "insunits": 0,
+    "nom": "sans_unite",
+    "facteur_vers_metre": null
+  },
+  "erreurs_recuperees": 0,
+  "extmin_header": [
+    394605.5024995296,
+    4170077.132981174,
+    0.0
+  ],
+  "extmax_header": [
+    1395362.361091538,
+    6406138.881423684,
+    53.18240247563517
+  ],
+  "modelspace_niveau0": {
+    "TEXT": 1159,
+    "ELLIPSE": 1,
+    "LWPOLYLINE": 4659,
+    "INSERT": 6946,
+    "ACAD_PROXY_ENTITY": 65,
+    "LINE": 2894,
+    "MTEXT": 22,
+    "HATCH": 155,
+    "IMAGE": 17,
+    "PDFREFERENCE": 2,
+    "CIRCLE": 71,
+    "ARC": 3
+  },
+  "nb_inserts_niveau0": 6946,
+  "inserts_niveau0": {
+    "ATPOINT": {
+      "nb": 1995,
+      "tags": [
+        "ALT",
+        "MAT"
+      ],
+      "echantillon": [
+        {
+          "MAT": "2000",
+          "ALT": "52.25"
+        },
+        {
+          "MAT": "2001",
+          "ALT": "52.15"
+        },
+        {
+          "MAT": "2002",
+          "ALT": "52.20"
+        },
+        {
+          "MAT": "2003",
+          "ALT": "52.26"
+        },
+        {
+          "MAT": "2004",
+          "ALT": "52.24"
+        }
+      ]
+    },
+    "0-POINTS_DA": {
+      "nb": 1216,
+      "tags": [
+        "ALT",
+        "MAT"
+      ],
+      "echantillon": [
+        {
+          "MAT": "2038",
+          "ALT": "52.14"
+        },
+        {
+          "MAT": "2049",
+          "ALT": "52.18"
+        },
+        {
+          "MAT": "2062",
+          "ALT": "52.21"
+        },
+        {
+          "MAT": "2076",
+          "ALT": "52.26"
+        },
+        {
+          "MAT": "2089",
+          "ALT": "52.24"
+        }
+      ]
+    },
+    "GEOEDFTT": {
+      "nb": 775,
+      "tags": [],
+      "echantillon": []
+    },
+    "GEOCROIX": {
+      "nb": 485,
+      "tags": [],
+      "echantillon": []
+    },
+    "V025": {
+      "nb": 417,
+      "tags": [],
+      "echantillon": []
+    },
+    "TCPOINT": {
+      "nb": 336,
+      "tags": [
+        "ALT",
+        "MAT"
+      ],
+      "echantillon": [
+        {
+          "MAT": "B100",
+          "ALT": "51.17"
+        },
+        {
+          "MAT": "B101",
+          "ALT": "51.64"
+        },
+        {
+          "MAT": "B102",
+          "ALT": "51.18"
+        },
+        {
+          "MAT": "B103",
+          "ALT": "51.16"
+        },
+        {
+          "MAT": "B104",
+          "ALT": "51.21"
+        }
+      ]
+    },
+    "BORLIPRO": {
+      "nb": 309,
+      "tags": [],
+      "echantillon": []
+    },
+    "CLOTMI": {
+      "nb": 204,
+      "tags": [],
+      "echantillon": []
+    },
+    "R008": {
+      "nb": 157,
+      "tags": [],
+      "echantillon": []
+    },
+    "MURNOMI": {
+      "nb": 118,
+      "tags": [],
+      "echantillon": []
+    },
+    "D005": {
+      "nb": 104,
+      "tags": [],
+      "echantillon": []
+    },
+    "GEOROND": {
+      "nb": 97,
+      "tags": [],
+      "echantillon": []
+    },
+    "GEOPTTA": {
+      "nb": 97,
+      "tags": [],
+      "echantillon": []
+    },
+    "V045": {
+      "nb": 66,
+      "tags": [],
+      "echantillon": []
+    },
+    "GEOCARR2": {
+      "nb": 56,
+      "tags": [],
+      "echantillon": []
+    },
+    "GEOEDFBT": {
+      "nb": 53,
+      "tags": [],
+      "echantillon": []
+    },
+    "FLÈCHE_GAUCHE": {
+      "nb": 45,
+      "tags": [],
+      "echantillon": []
+    },
+    "FLÈCHE_DROITE": {
+      "nb": 45,
+      "tags": [],
+      "echantillon": []
+    },
+    "GEOHAIE1": {
+      "nb": 42,
+      "tags": [],
+      "echantillon": []
+    },
+    "GEOCARR1": {
+      "nb": 29,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAISON6": {
+      "nb": 28,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAISON": {
+      "nb": 23,
+      "tags": [],
+      "echantillon": []
+    },
+    "*U16": {
+      "nb": 17,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.1"
+        },
+        {
+          "P.": "P.2"
+        },
+        {
+          "P.": "P.3"
+        },
+        {
+          "P.": "P.4"
+        },
+        {
+          "P.": "P.5"
+        }
+      ]
+    },
+    "*U7": {
+      "nb": 15,
+      "tags": [],
+      "echantillon": []
+    },
+    "A$C4CDA1AAE": {
+      "nb": 14,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAISON1": {
+      "nb": 13,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAISON2": {
+      "nb": 12,
+      "tags": [],
+      "echantillon": []
+    },
+    "PYLONE1": {
+      "nb": 9,
+      "tags": [],
+      "echantillon": []
+    },
+    "GE13": {
+      "nb": 8,
+      "tags": [],
+      "echantillon": []
+    },
+    "*U2": {
+      "nb": 6,
+      "tags": [],
+      "echantillon": []
+    },
+    "E004": {
+      "nb": 6,
+      "tags": [],
+      "echantillon": []
+    },
+    "FLECHRU1": {
+      "nb": 5,
+      "tags": [],
+      "echantillon": []
+    },
+    "_ORIGIN2": {
+      "nb": 5,
+      "tags": [],
+      "echantillon": []
+    },
+    "V024": {
+      "nb": 5,
+      "tags": [],
+      "echantillon": []
+    },
+    "L010": {
+      "nb": 4,
+      "tags": [],
+      "echantillon": []
+    },
+    "V015": {
+      "nb": 4,
+      "tags": [],
+      "echantillon": []
+    },
+    "U014": {
+      "nb": 3,
+      "tags": [],
+      "echantillon": []
+    },
+    "G013": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "CLOTNOMI": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_231": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_232": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_233": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_234": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_235": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_236": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_237": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_238": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_239": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_240": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_241": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_242": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_243": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_244": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_245": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_246": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_247": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_248": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_249": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_250": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_251": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_252": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_253": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_254": {
+      "nb": 2,
+      "tags": [],
+      "echantillon": []
+    },
+    "Y001": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "*U35": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.1"
+        }
+      ]
+    },
+    "*U36": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.2"
+        }
+      ]
+    },
+    "*U37": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.3"
+        }
+      ]
+    },
+    "*U38": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.4"
+        }
+      ]
+    },
+    "*U39": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.5"
+        }
+      ]
+    },
+    "*U40": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.6"
+        }
+      ]
+    },
+    "*U41": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.7"
+        }
+      ]
+    },
+    "*U42": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.8"
+        }
+      ]
+    },
+    "*U43": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.9"
+        }
+      ]
+    },
+    "*U44": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.10"
+        }
+      ]
+    },
+    "*U45": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.12"
+        }
+      ]
+    },
+    "*U46": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.13"
+        }
+      ]
+    },
+    "*U47": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.14"
+        }
+      ]
+    },
+    "*U48": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.15"
+        }
+      ]
+    },
+    "*U49": {
+      "nb": 1,
+      "tags": [
+        "P."
+      ],
+      "echantillon": [
+        {
+          "P.": "P.16"
+        }
+      ]
+    },
+    "A$CD921491C": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "A$CEC60F415": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "A$C4128763F": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "A$C551103EA": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "A$CD02C6D29": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_255": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_256": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_257": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_258": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_259": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_260": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_261": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_262": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_263": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_264": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_265": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_266": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_267": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_268": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_269": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_270": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_271": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_272": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_273": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_274": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_275": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_276": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_277": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_278": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_279": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_280": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_281": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_282": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_283": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_284": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_285": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_286": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_287": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_288": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_289": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_290": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_291": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_292": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_293": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_294": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_295": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_296": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_297": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_298": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_299": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_300": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_301": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "MAILLAGE_302": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "A$C5C3C03D5": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    },
+    "LOGO_AUIGE0": {
+      "nb": 1,
+      "tags": [],
+      "echantillon": []
+    }
+  },
+  "definitions_blocs": [
+    {
+      "nom": "A$C551103EA",
+      "nb_entites": 780,
+      "types": {
+        "ELLIPSE": 557,
+        "LINE": 222,
+        "POINT": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "A$CD02C6D29",
+      "nb_entites": 722,
+      "types": {
+        "LWPOLYLINE": 11,
+        "LINE": 562,
+        "ELLIPSE": 14,
+        "ARC": 104,
+        "SPLINE": 31
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "A$C4CDA1AAE",
+      "nb_entites": 563,
+      "types": {
+        "LINE": 563
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "A$C4128763F",
+      "nb_entites": 113,
+      "types": {
+        "LINE": 11,
+        "POINT": 1,
+        "LWPOLYLINE": 73,
+        "SPLINE": 28
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "V015",
+      "nb_entites": 75,
+      "types": {
+        "LINE": 68,
+        "ARC": 5,
+        "CIRCLE": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "V024",
+      "nb_entites": 61,
+      "types": {
+        "LINE": 17,
+        "LWPOLYLINE": 44
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "V045",
+      "nb_entites": 52,
+      "types": {
+        "LWPOLYLINE": 18,
+        "LINE": 34
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "V025",
+      "nb_entites": 49,
+      "types": {
+        "LWPOLYLINE": 47,
+        "LINE": 2
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "A$C5C3C03D5",
+      "nb_entites": 49,
+      "types": {
+        "LWPOLYLINE": 47,
+        "LINE": 2
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "GEOHAIE1",
+      "nb_entites": 38,
+      "types": {
+        "LINE": 38
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "LOGO_AUIGE0",
+      "nb_entites": 26,
+      "types": {
+        "HATCH": 10,
+        "LWPOLYLINE": 5,
+        "TEXT": 10,
+        "INSERT": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "A$C758E7D02",
+      "nb_entites": 19,
+      "types": {
+        "ARC": 18,
+        "CIRCLE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAISON",
+      "nb_entites": 18,
+      "types": {
+        "LWPOLYLINE": 12,
+        "HATCH": 6
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "LOGO_AUIGE",
+      "nb_entites": 17,
+      "types": {
+        "HATCH": 4,
+        "LWPOLYLINE": 3,
+        "TEXT": 10
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "LOGO",
+      "nb_entites": 16,
+      "types": {
+        "HATCH": 4,
+        "LWPOLYLINE": 2,
+        "TEXT": 10
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "L010",
+      "nb_entites": 12,
+      "types": {
+        "LWPOLYLINE": 9,
+        "LINE": 2,
+        "CIRCLE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAISON6",
+      "nb_entites": 12,
+      "types": {
+        "HATCH": 4,
+        "LWPOLYLINE": 8
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAISON1",
+      "nb_entites": 11,
+      "types": {
+        "HATCH": 5,
+        "LWPOLYLINE": 6
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAISON2",
+      "nb_entites": 10,
+      "types": {
+        "HATCH": 4,
+        "LWPOLYLINE": 6
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "ARBRES",
+      "nb_entites": 5,
+      "types": {
+        "POINT": 5
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "A$CEC60F415",
+      "nb_entites": 5,
+      "types": {
+        "POINT": 5
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "E004",
+      "nb_entites": 4,
+      "types": {
+        "LWPOLYLINE": 2,
+        "LINE": 1,
+        "CIRCLE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_ORIGIN2",
+      "nb_entites": 4,
+      "types": {
+        "CIRCLE": 2,
+        "LINE": 1,
+        "HATCH": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "GE13",
+      "nb_entites": 4,
+      "types": {
+        "LINE": 2,
+        "LWPOLYLINE": 2
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "GEOCARR1",
+      "nb_entites": 3,
+      "types": {
+        "LWPOLYLINE": 1,
+        "LINE": 2
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "GEOCARR2",
+      "nb_entites": 3,
+      "types": {
+        "LWPOLYLINE": 1,
+        "LINE": 2
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "ATPOINT",
+      "nb_entites": 3,
+      "types": {
+        "POINT": 1,
+        "ATTDEF": 2
+      },
+      "tags_attdef": [
+        "MAT",
+        "ALT"
+      ]
+    },
+    {
+      "nom": "0-POINTS_DA",
+      "nb_entites": 3,
+      "types": {
+        "POINT": 1,
+        "ATTDEF": 2
+      },
+      "tags_attdef": [
+        "MAT",
+        "ALT"
+      ]
+    },
+    {
+      "nom": "GEOEDFTT",
+      "nb_entites": 3,
+      "types": {
+        "SOLID": 3
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "FLÈCHE_DROITE",
+      "nb_entites": 3,
+      "types": {
+        "ARC": 1,
+        "LINE": 2
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "FLÈCHE_GAUCHE",
+      "nb_entites": 3,
+      "types": {
+        "LINE": 2,
+        "ARC": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_CLOSEDBLANK",
+      "nb_entites": 3,
+      "types": {
+        "LINE": 3
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "TCPOINT",
+      "nb_entites": 3,
+      "types": {
+        "POINT": 1,
+        "ATTDEF": 2
+      },
+      "tags_attdef": [
+        "MAT",
+        "ALT"
+      ]
+    },
+    {
+      "nom": "G013",
+      "nb_entites": 2,
+      "types": {
+        "CIRCLE": 1,
+        "HATCH": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "GEOCROIX",
+      "nb_entites": 2,
+      "types": {
+        "LINE": 2
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "Y001",
+      "nb_entites": 2,
+      "types": {
+        "LWPOLYLINE": 1,
+        "TEXT": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "U014",
+      "nb_entites": 2,
+      "types": {
+        "LINE": 1,
+        "CIRCLE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_231",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_232",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_233",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_234",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_235",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_236",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_237",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_238",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_239",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_240",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_241",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_242",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_243",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_244",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_245",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_246",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_247",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_248",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_249",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_250",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_251",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_252",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_253",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_254",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_255",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_256",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_257",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_258",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_259",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_260",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_261",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_262",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_263",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_264",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_265",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_266",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_267",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_268",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_269",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_270",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_271",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_272",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_273",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_274",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_275",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_276",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_277",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_278",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_279",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_280",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_281",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_282",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_283",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_284",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_285",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_286",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_287",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_288",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_289",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_290",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_291",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_292",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_293",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_294",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_295",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_296",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_297",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_298",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_299",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_300",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_301",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MAILLAGE_302",
+      "nb_entites": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_BOXFILLED",
+      "nb_entites": 2,
+      "types": {
+        "SOLID": 1,
+        "LINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_OPEN30",
+      "nb_entites": 2,
+      "types": {
+        "LWPOLYLINE": 1,
+        "LINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_DOT",
+      "nb_entites": 2,
+      "types": {
+        "LINE": 1,
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_INTEGRAL",
+      "nb_entites": 2,
+      "types": {
+        "ARC": 2
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_CLOSED",
+      "nb_entites": 2,
+      "types": {
+        "LWPOLYLINE": 1,
+        "LINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_ORIGIN",
+      "nb_entites": 2,
+      "types": {
+        "CIRCLE": 1,
+        "LINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_DOTBLANK",
+      "nb_entites": 2,
+      "types": {
+        "CIRCLE": 1,
+        "LINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_OPEN",
+      "nb_entites": 2,
+      "types": {
+        "LWPOLYLINE": 1,
+        "LINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_OPEN90",
+      "nb_entites": 2,
+      "types": {
+        "LWPOLYLINE": 1,
+        "LINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_BOXBLANK",
+      "nb_entites": 2,
+      "types": {
+        "LWPOLYLINE": 1,
+        "LINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "R008",
+      "nb_entites": 1,
+      "types": {
+        "INSERT": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "GEOPTTA",
+      "nb_entites": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "D005",
+      "nb_entites": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "GEOROND",
+      "nb_entites": 1,
+      "types": {
+        "POLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "BORLIPRO",
+      "nb_entites": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "CLOTMI",
+      "nb_entites": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "FLECHRU1",
+      "nb_entites": 1,
+      "types": {
+        "POINT": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "PYLONE1",
+      "nb_entites": 1,
+      "types": {
+        "POINT": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "CLOTNOMI",
+      "nb_entites": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "MURNOMI",
+      "nb_entites": 1,
+      "types": {
+        "LINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "GEOEDFBT",
+      "nb_entites": 1,
+      "types": {
+        "SOLID": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "A$CD921491C",
+      "nb_entites": 1,
+      "types": {
+        "INSERT": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_CLOSEDFILLED",
+      "nb_entites": 1,
+      "types": {
+        "SOLID": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_ARCHTICK",
+      "nb_entites": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_DOTSMALL",
+      "nb_entites": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_DATUMBLANK",
+      "nb_entites": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_OBLIQUE",
+      "nb_entites": 1,
+      "types": {
+        "LINE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_DATUMFILLED",
+      "nb_entites": 1,
+      "types": {
+        "SOLID": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_SMALL",
+      "nb_entites": 1,
+      "types": {
+        "CIRCLE": 1
+      },
+      "tags_attdef": []
+    },
+    {
+      "nom": "_NONE",
+      "nb_entites": 0,
+      "types": {},
+      "tags_attdef": []
+    }
+  ],
+  "apres_eclatement": {
+    "TEXT": 1203,
+    "ELLIPSE": 572,
+    "LWPOLYLINE": 27526,
+    "LINE": 18272,
+    "CIRCLE": 297,
+    "ARC": 3081,
+    "ACAD_PROXY_ENTITY": 2,
+    "POINT": 3663,
+    "HATCH": 667,
+    "POLYLINE": 17050,
+    "SOLID": 2378,
+    "MTEXT": 22,
+    "IMAGE": 17,
+    "PDFREFERENCE": 2,
+    "SPLINE": 59
+  },
+  "blocs_apres_eclatement": {
+    "V025": {
+      "total": 20433,
+      "types": {
+        "LWPOLYLINE": 19599,
+        "LINE": 834
+      }
+    },
+    "A$C4CDA1AAE": {
+      "total": 7882,
+      "types": {
+        "LINE": 7882
+      }
+    },
+    "V045": {
+      "total": 3432,
+      "types": {
+        "LWPOLYLINE": 1188,
+        "LINE": 2244
+      }
+    },
+    "A$C758E7D02": {
+      "total": 2983,
+      "types": {
+        "ARC": 2826,
+        "CIRCLE": 157
+      }
+    },
+    "GEOEDFTT": {
+      "total": 2325,
+      "types": {
+        "SOLID": 2325
+      }
+    },
+    "ATPOINT": {
+      "total": 1995,
+      "types": {
+        "POINT": 1995
+      }
+    },
+    "GEOHAIE1": {
+      "total": 1596,
+      "types": {
+        "LINE": 1596
+      }
+    },
+    "0-POINTS_DA": {
+      "total": 1216,
+      "types": {
+        "POINT": 1216
+      }
+    },
+    "GEOCROIX": {
+      "total": 970,
+      "types": {
+        "LINE": 970
+      }
+    },
+    "A$C551103EA": {
+      "total": 780,
+      "types": {
+        "ELLIPSE": 557,
+        "LINE": 222,
+        "POINT": 1
+      }
+    },
+    "A$CD02C6D29": {
+      "total": 722,
+      "types": {
+        "LWPOLYLINE": 11,
+        "LINE": 562,
+        "ELLIPSE": 14,
+        "ARC": 104,
+        "SPLINE": 31
+      }
+    },
+    "MAISON": {
+      "total": 414,
+      "types": {
+        "LWPOLYLINE": 276,
+        "HATCH": 138
+      }
+    },
+    "TCPOINT": {
+      "total": 336,
+      "types": {
+        "POINT": 336
+      }
+    },
+    "MAISON6": {
+      "total": 336,
+      "types": {
+        "HATCH": 112,
+        "LWPOLYLINE": 224
+      }
+    },
+    "BORLIPRO": {
+      "total": 309,
+      "types": {
+        "LWPOLYLINE": 309
+      }
+    },
+    "V024": {
+      "total": 305,
+      "types": {
+        "LINE": 85,
+        "LWPOLYLINE": 220
+      }
+    },
+    "V015": {
+      "total": 300,
+      "types": {
+        "LINE": 272,
+        "ARC": 20,
+        "CIRCLE": 4,
+        "LWPOLYLINE": 4
+      }
+    },
+    "CLOTMI": {
+      "total": 204,
+      "types": {
+        "LWPOLYLINE": 204
+      }
+    },
+    "GEOCARR2": {
+      "total": 168,
+      "types": {
+        "LWPOLYLINE": 56,
+        "LINE": 112
+      }
+    },
+    "MAISON1": {
+      "total": 143,
+      "types": {
+        "HATCH": 65,
+        "LWPOLYLINE": 78
+      }
+    },
+    "FLÈCHE_GAUCHE": {
+      "total": 135,
+      "types": {
+        "LINE": 90,
+        "ARC": 45
+      }
+    },
+    "FLÈCHE_DROITE": {
+      "total": 135,
+      "types": {
+        "ARC": 45,
+        "LINE": 90
+      }
+    },
+    "MAISON2": {
+      "total": 120,
+      "types": {
+        "HATCH": 48,
+        "LWPOLYLINE": 72
+      }
+    },
+    "*U16": {
+      "total": 119,
+      "types": {
+        "LWPOLYLINE": 34,
+        "ARC": 17,
+        "LINE": 51,
+        "HATCH": 17
+      }
+    },
+    "MURNOMI": {
+      "total": 118,
+      "types": {
+        "LINE": 118
+      }
+    },
+    "A$C4128763F": {
+      "total": 113,
+      "types": {
+        "LINE": 11,
+        "POINT": 1,
+        "LWPOLYLINE": 73,
+        "SPLINE": 28
+      }
+    },
+    "D005": {
+      "total": 104,
+      "types": {
+        "LWPOLYLINE": 104
+      }
+    },
+    "GEOROND": {
+      "total": 97,
+      "types": {
+        "POLYLINE": 97
+      }
+    },
+    "GEOPTTA": {
+      "total": 97,
+      "types": {
+        "LWPOLYLINE": 97
+      }
+    },
+    "*U7": {
+      "total": 90,
+      "types": {
+        "LINE": 90
+      }
+    },
+    "GEOCARR1": {
+      "total": 87,
+      "types": {
+        "LWPOLYLINE": 29,
+        "LINE": 58
+      }
+    },
+    "*U2": {
+      "total": 66,
+      "types": {
+        "LWPOLYLINE": 42,
+        "LINE": 6,
+        "CIRCLE": 12,
+        "ARC": 6
+      }
+    },
+    "GEOEDFBT": {
+      "total": 53,
+      "types": {
+        "SOLID": 53
+      }
+    },
+    "A$C5C3C03D5": {
+      "total": 49,
+      "types": {
+        "LWPOLYLINE": 47,
+        "LINE": 2
+      }
+    },
+    "L010": {
+      "total": 48,
+      "types": {
+        "LWPOLYLINE": 36,
+        "LINE": 8,
+        "CIRCLE": 4
+      }
+    },
+    "GE13": {
+      "total": 32,
+      "types": {
+        "LINE": 16,
+        "LWPOLYLINE": 16
+      }
+    },
+    "LOGO_AUIGE0": {
+      "total": 25,
+      "types": {
+        "HATCH": 10,
+        "LWPOLYLINE": 5,
+        "TEXT": 10
+      }
+    },
+    "E004": {
+      "total": 24,
+      "types": {
+        "LWPOLYLINE": 12,
+        "LINE": 6,
+        "CIRCLE": 6
+      }
+    },
+    "_ORIGIN2": {
+      "total": 20,
+      "types": {
+        "CIRCLE": 10,
+        "LINE": 5,
+        "HATCH": 5
+      }
+    },
+    "LOGO": {
+      "total": 16,
+      "types": {
+        "HATCH": 4,
+        "LWPOLYLINE": 2,
+        "TEXT": 10
+      }
+    },
+    "PYLONE1": {
+      "total": 9,
+      "types": {
+        "POINT": 9
+      }
+    },
+    "*U35": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U36": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U37": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U38": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U39": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U40": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U41": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U42": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U43": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U44": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U45": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U46": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U47": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U48": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "*U49": {
+      "total": 7,
+      "types": {
+        "LWPOLYLINE": 2,
+        "ARC": 1,
+        "LINE": 3,
+        "HATCH": 1
+      }
+    },
+    "U014": {
+      "total": 6,
+      "types": {
+        "LINE": 3,
+        "CIRCLE": 3
+      }
+    },
+    "FLECHRU1": {
+      "total": 5,
+      "types": {
+        "POINT": 5
+      }
+    },
+    "ARBRES": {
+      "total": 5,
+      "types": {
+        "POINT": 5
+      }
+    },
+    "A$CEC60F415": {
+      "total": 5,
+      "types": {
+        "POINT": 5
+      }
+    },
+    "G013": {
+      "total": 4,
+      "types": {
+        "CIRCLE": 2,
+        "HATCH": 2
+      }
+    },
+    "MAILLAGE_231": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_232": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_233": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_234": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_235": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_236": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_237": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_238": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_239": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_240": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_241": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_242": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_243": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_244": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_245": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_246": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_247": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_248": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_249": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_250": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_251": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_252": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_253": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_254": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      }
+    },
+    "Y001": {
+      "total": 2,
+      "types": {
+        "LWPOLYLINE": 1,
+        "TEXT": 1
+      }
+    },
+    "CLOTNOMI": {
+      "total": 2,
+      "types": {
+        "LWPOLYLINE": 2
+      }
+    },
+    "MAILLAGE_255": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_256": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_257": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_258": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_259": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_260": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_261": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_262": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_263": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_264": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_265": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_266": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_267": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_268": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_269": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_270": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_271": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_272": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_273": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_274": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_275": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_276": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_277": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_278": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_279": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_280": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_281": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_282": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_283": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_284": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_285": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_286": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_287": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_288": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_289": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_290": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_291": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_292": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_293": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_294": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_295": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_296": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_297": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_298": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_299": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_300": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_301": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    },
+    "MAILLAGE_302": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      }
+    }
+  },
+  "geometries_avec_attributs": 3771,
+  "attrib_encore_en_texte": 0,
+  "echantillon_attributs_rattaches": [
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2000",
+        "ALT": "52.25"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2001",
+        "ALT": "52.15"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2002",
+        "ALT": "52.20"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2003",
+        "ALT": "52.26"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2004",
+        "ALT": "52.24"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2005",
+        "ALT": "52.23"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2006",
+        "ALT": "52.30"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2007",
+        "ALT": "52.23"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2008",
+        "ALT": "52.26"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2009",
+        "ALT": "52.36"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2010",
+        "ALT": "52.28"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2011",
+        "ALT": "52.29"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2012",
+        "ALT": "52.37"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2013",
+        "ALT": "52.30"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2014",
+        "ALT": "52.18"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2015",
+        "ALT": "52.16"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2016",
+        "ALT": "52.29"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2017",
+        "ALT": "52.24"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2018",
+        "ALT": "52.21"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2019",
+        "ALT": "52.26"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2020",
+        "ALT": "52.16"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2021",
+        "ALT": "52.27"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2022",
+        "ALT": "52.27"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2023",
+        "ALT": "52.16"
+      }
+    },
+    {
+      "calque": "0",
+      "dxf_type": "POINT",
+      "bloc": "ATPOINT",
+      "attributs": {
+        "MAT": "2024",
+        "ALT": "52.28"
+      }
+    }
+  ],
+  "nb_calques_table": 85,
+  "nb_calques_utilises": 70,
+  "calques": {
+    "0": {
+      "total": 63912,
+      "types": {
+        "LWPOLYLINE": 22096,
+        "LINE": 14815,
+        "CIRCLE": 226,
+        "ARC": 2974,
+        "TEXT": 70,
+        "ACAD_PROXY_ENTITY": 1,
+        "POINT": 3663,
+        "HATCH": 54,
+        "POLYLINE": 17050,
+        "SOLID": 2378,
+        "SPLINE": 28,
+        "ELLIPSE": 557
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "ARBRES_À_ENJEUX": {
+      "total": 3242,
+      "types": {
+        "LWPOLYLINE": 3028,
+        "LINE": 214
+      },
+      "couleur": "#ff00ff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-CRASTE": {
+      "total": 2689,
+      "types": {
+        "LWPOLYLINE": 47,
+        "LINE": 2635,
+        "HATCH": 6,
+        "ARC": 1
+      },
+      "couleur": "#7f5f00",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-SECTION_AH": {
+      "total": 1284,
+      "types": {
+        "LWPOLYLINE": 812,
+        "TEXT": 472
+      },
+      "couleur": "#00ff00",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "C-HAB": {
+      "total": 1013,
+      "types": {
+        "HATCH": 363,
+        "LWPOLYLINE": 650
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-VOIE": {
+      "total": 898,
+      "types": {
+        "LWPOLYLINE": 187,
+        "LINE": 562,
+        "ELLIPSE": 14,
+        "ARC": 104,
+        "SPLINE": 31
+      },
+      "couleur": "#000000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-SECTION_AW": {
+      "total": 381,
+      "types": {
+        "LWPOLYLINE": 210,
+        "TEXT": 171
+      },
+      "couleur": "#ffff00",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "NOUVEAU_TERRAIN_-_MODIFIÉ": {
+      "total": 193,
+      "types": {
+        "HATCH": 96,
+        "LWPOLYLINE": 97
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-SURFACES": {
+      "total": 158,
+      "types": {
+        "TEXT": 158
+      },
+      "couleur": "#261313",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-VEGETATION-TEXTE": {
+      "total": 121,
+      "types": {
+        "TEXT": 121
+      },
+      "couleur": "#ff0000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-LOT": {
+      "total": 114,
+      "types": {
+        "LWPOLYLINE": 112,
+        "ARC": 2
+      },
+      "couleur": "#000000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "SIMETHIS_ARBRES_A_ENJEUX_A": {
+      "total": 82,
+      "types": {
+        "HATCH": 82
+      },
+      "couleur": "#1f7f00",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "T-VEGETATION": {
+      "total": 77,
+      "types": {
+        "HATCH": 6,
+        "LWPOLYLINE": 4,
+        "CIRCLE": 67
+      },
+      "couleur": "#002609",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-BATIMENT": {
+      "total": 51,
+      "types": {
+        "LWPOLYLINE": 40,
+        "LINE": 11
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-LEGENDE": {
+      "total": 50,
+      "types": {
+        "TEXT": 20,
+        "ELLIPSE": 1,
+        "LWPOLYLINE": 26,
+        "HATCH": 2,
+        "LINE": 1
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-CLOTURES": {
+      "total": 50,
+      "types": {
+        "LWPOLYLINE": 50
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-COTATIONS": {
+      "total": 49,
+      "types": {
+        "TEXT": 49
+      },
+      "couleur": "#ff0000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-COTATION": {
+      "total": 45,
+      "types": {
+        "TEXT": 37,
+        "LINE": 8
+      },
+      "couleur": "#ff0000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-RECUL": {
+      "total": 45,
+      "types": {
+        "LINE": 15,
+        "TEXT": 26,
+        "LWPOLYLINE": 2,
+        "HATCH": 2
+      },
+      "couleur": "#0000ff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-CADASTRE": {
+      "total": 34,
+      "types": {
+        "LWPOLYLINE": 4,
+        "TEXT": 30
+      },
+      "couleur": "#ff00ff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-EDF": {
+      "total": 28,
+      "types": {
+        "LINE": 8,
+        "LWPOLYLINE": 12,
+        "MTEXT": 8
+      },
+      "couleur": "#ff3f00",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-BATIMENT-HACHURE": {
+      "total": 27,
+      "types": {
+        "LWPOLYLINE": 24,
+        "HATCH": 3
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-VOIRIE": {
+      "total": 24,
+      "types": {
+        "LWPOLYLINE": 24
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-PLU": {
+      "total": 24,
+      "types": {
+        "LWPOLYLINE": 10,
+        "TEXT": 14
+      },
+      "couleur": "#0000ff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-PHOTOS": {
+      "total": 17,
+      "types": {
+        "IMAGE": 17
+      },
+      "couleur": "#00394c",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "P-RTE": {
+      "total": 17,
+      "types": {
+        "LWPOLYLINE": 5,
+        "CIRCLE": 3,
+        "HATCH": 1,
+        "MTEXT": 8
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "T-BORNE": {
+      "total": 15,
+      "types": {
+        "MTEXT": 5,
+        "LWPOLYLINE": 10
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-LIMITES": {
+      "total": 14,
+      "types": {
+        "LWPOLYLINE": 2,
+        "TEXT": 12
+      },
+      "couleur": "#ff0000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "SIMETHIS_ZH": {
+      "total": 13,
+      "types": {
+        "HATCH": 3,
+        "LWPOLYLINE": 10
+      },
+      "couleur": "#001f7f",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "C-LOT": {
+      "total": 12,
+      "types": {
+        "HATCH": 12
+      },
+      "couleur": "#cccccc",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-COMPO_LEGENDE": {
+      "total": 12,
+      "types": {
+        "TEXT": 4,
+        "LINE": 3,
+        "LWPOLYLINE": 4,
+        "HATCH": 1
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "C-VOIE": {
+      "total": 10,
+      "types": {
+        "HATCH": 9,
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#666666",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-EAUX_PLUVIALES": {
+      "total": 9,
+      "types": {
+        "LWPOLYLINE": 9
+      },
+      "couleur": "#0000ff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-TEXTE": {
+      "total": 6,
+      "types": {
+        "TEXT": 6
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-AEP": {
+      "total": 6,
+      "types": {
+        "LWPOLYLINE": 5,
+        "TEXT": 1
+      },
+      "couleur": "#00bfff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "C-VEG": {
+      "total": 6,
+      "types": {
+        "HATCH": 6
+      },
+      "couleur": "#52a500",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-ER": {
+      "total": 5,
+      "types": {
+        "LWPOLYLINE": 2,
+        "TEXT": 3
+      },
+      "couleur": "#ff0000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "SIMETHIS_LOTIER": {
+      "total": 5,
+      "types": {
+        "HATCH": 5
+      },
+      "couleur": "#ffff00",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "P-ZONE_EXCLUSION_SUPPLÉMEN": {
+      "total": 5,
+      "types": {
+        "LWPOLYLINE": 5
+      },
+      "couleur": "#ff7f00",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-EAUX_USEES": {
+      "total": 4,
+      "types": {
+        "LWPOLYLINE": 4
+      },
+      "couleur": "#4c2600",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-ASSIETTE": {
+      "total": 4,
+      "types": {
+        "LWPOLYLINE": 4
+      },
+      "couleur": "#7f0000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "SIMETHIS_GOBEMOUCHE": {
+      "total": 4,
+      "types": {
+        "LWPOLYLINE": 3,
+        "HATCH": 1
+      },
+      "couleur": "#999999",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_PIC_EPEICHETTE": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      },
+      "couleur": "#ff7f00",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_ZONE_D_EXCLUSION_": {
+      "total": 4,
+      "types": {
+        "LWPOLYLINE": 3,
+        "HATCH": 1
+      },
+      "couleur": "#9fff7f",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_ENGOULEVENT": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      },
+      "couleur": "#ff007f",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "P-PUP": {
+      "total": 4,
+      "types": {
+        "HATCH": 4
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-ARCHI_2025_09_29": {
+      "total": 4,
+      "types": {
+        "PDFREFERENCE": 1,
+        "HATCH": 2,
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-FRANCE_TELECOM": {
+      "total": 3,
+      "types": {
+        "LWPOLYLINE": 3
+      },
+      "couleur": "#00ff00",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "SIMETHIS_GRAND_CAPRICORNE": {
+      "total": 3,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 2
+      },
+      "couleur": "#9fff7f",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "A-DETL-CNTR": {
+      "total": 3,
+      "types": {
+        "LWPOLYLINE": 3
+      },
+      "couleur": "#0000ff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "0_NOUVELLE_ZONE_D'EXCLUSIO": {
+      "total": 3,
+      "types": {
+        "LWPOLYLINE": 3
+      },
+      "couleur": "#7f0000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-VUE_AERIENNE": {
+      "total": 2,
+      "types": {
+        "TEXT": 2
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "SIMETHIS_DAMIER_ET_FADAIT": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#7f0000",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_DAMIER_DE_LA_SUCC": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#ffbf00",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "T-TALUS": {
+      "total": 2,
+      "types": {
+        "LWPOLYLINE": 2
+      },
+      "couleur": "#a57c00",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-AEP": {
+      "total": 2,
+      "types": {
+        "TEXT": 2
+      },
+      "couleur": "#001f7f",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-ARTERE-ORANGE-AERIENNE_A": {
+      "total": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#ff7f00",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-CARTOUCHE": {
+      "total": 1,
+      "types": {
+        "TEXT": 1
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "SCAN_PLU_2023": {
+      "total": 1,
+      "types": {
+        "PDFREFERENCE": 1
+      },
+      "couleur": "#0000ff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-ALTI": {
+      "total": 1,
+      "types": {
+        "TEXT": 1
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "TN_MNT": {
+      "total": 1,
+      "types": {
+        "ACAD_PROXY_ENTITY": 1
+      },
+      "couleur": "#00ff00",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "MNT_ERREURS_-_POINTS_DOUBL": {
+      "total": 1,
+      "types": {
+        "CIRCLE": 1
+      },
+      "couleur": "#ff0000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "EBC": {
+      "total": 1,
+      "types": {
+        "HATCH": 1
+      },
+      "couleur": "#cccccc",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "T-COUL": {
+      "total": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "§S_ACHAT": {
+      "total": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#ff00ff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "_TX-TEXTES": {
+      "total": 1,
+      "types": {
+        "MTEXT": 1
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "NOUVEAU_TECHNIQUE_-_DIVERS": {
+      "total": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-EP": {
+      "total": 1,
+      "types": {
+        "TEXT": 1
+      },
+      "couleur": "#0000ff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-EU": {
+      "total": 1,
+      "types": {
+        "TEXT": 1
+      },
+      "couleur": "#4c0000",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    },
+    "P-ALTI_LEGENDE": {
+      "total": 1,
+      "types": {
+        "TEXT": 1
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": false,
+      "verrouille": false,
+      "visible_defaut": true
+    }
+  },
+  "calques_masques_autocad": {
+    "SIMETHIS_ARBRES_A_ENJEUX_A": {
+      "total": 82,
+      "types": {
+        "HATCH": 82
+      },
+      "couleur": "#1f7f00",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "T-PHOTOS": {
+      "total": 17,
+      "types": {
+        "IMAGE": 17
+      },
+      "couleur": "#00394c",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "P-RTE": {
+      "total": 17,
+      "types": {
+        "LWPOLYLINE": 5,
+        "CIRCLE": 3,
+        "HATCH": 1,
+        "MTEXT": 8
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_ZH": {
+      "total": 13,
+      "types": {
+        "HATCH": 3,
+        "LWPOLYLINE": 10
+      },
+      "couleur": "#001f7f",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_LOTIER": {
+      "total": 5,
+      "types": {
+        "HATCH": 5
+      },
+      "couleur": "#ffff00",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_GOBEMOUCHE": {
+      "total": 4,
+      "types": {
+        "LWPOLYLINE": 3,
+        "HATCH": 1
+      },
+      "couleur": "#999999",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_PIC_EPEICHETTE": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      },
+      "couleur": "#ff7f00",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_ZONE_D_EXCLUSION_": {
+      "total": 4,
+      "types": {
+        "LWPOLYLINE": 3,
+        "HATCH": 1
+      },
+      "couleur": "#9fff7f",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_ENGOULEVENT": {
+      "total": 4,
+      "types": {
+        "HATCH": 2,
+        "LWPOLYLINE": 2
+      },
+      "couleur": "#ff007f",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_GRAND_CAPRICORNE": {
+      "total": 3,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 2
+      },
+      "couleur": "#9fff7f",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_DAMIER_ET_FADAIT": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#7f0000",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "SIMETHIS_DAMIER_DE_LA_SUCC": {
+      "total": 2,
+      "types": {
+        "HATCH": 1,
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#ffbf00",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "TN_MNT": {
+      "total": 1,
+      "types": {
+        "ACAD_PROXY_ENTITY": 1
+      },
+      "couleur": "#00ff00",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    },
+    "T-COUL": {
+      "total": 1,
+      "types": {
+        "LWPOLYLINE": 1
+      },
+      "couleur": "#ffffff",
+      "eteint": false,
+      "gele": true,
+      "verrouille": false,
+      "visible_defaut": false
+    }
+  },
+  "extrusions_inversees": 544,
+  "sommets_avec_z": 1553,
+  "types_3d_volumiques": {},
+  "bbox_locale": {
+    "xmin": -1394581.6708735263,
+    "ymin": 0.0,
+    "xmax": 1395299.030581668,
+    "ymax": 6406138.73999097,
+    "largeur": 2789880.7014551945,
+    "hauteur": 6406138.73999097
+  },
+  "crs_candidats": [],
+  "echantillon_textes": [
+    {
+      "calque": "T-LEGENDE",
+      "texte": "Regard de visite EU",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-LEGENDE",
+      "texte": "Poteau EDF avec éclairage",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-LEGENDE",
+      "texte": "Borne O.G.E.",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-LEGENDE",
+      "texte": "Borne O.G.E.",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-LEGENDE",
+      "texte": "Plaque PTT",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-LEGENDE",
+      "texte": "PTT",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "0",
+      "texte": "N",
+      "dxf_type": "TEXT",
+      "bloc": "Y001"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": ".45",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": ".3",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "1.0m",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "fe",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "fe",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "fe",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "fe",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "foncloture",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": ".26",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": ".16",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "fe",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "hum",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "BORNE BETON",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "60",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "DECAL 60",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "BORNE B",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "Ø",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "BORNE",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "BORNE COUCHE",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-VEGETATION-TEXTE",
+      "texte": "ACA",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "AW",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Ruisseau",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "de",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Biard",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Ruisseau",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "de",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Biard",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "BOIS    DE   BIARD",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Avenue",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "de",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "la",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Côte",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "d'Argent",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "RN 250",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Arcachon",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Avenue",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "de",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "la",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Côte",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "d'Argent",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Ruisseau",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "de",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Lacanau",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "fer de Chemin de Bayonne Bordeaux Ligne à",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "REGANEAU",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Source",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "la",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "de",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Allée",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Ruisseau",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "de",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "Lacanau",
+      "dxf_type": "TEXT"
+    },
+    {
+      "calque": "T-SECTION_AW",
+      "texte": "MARCHEPRIME",
+      "dxf_type": "TEXT"
+    }
+  ],
+  "extraction": {
+    "ok": true,
+    "nb_entites": 74375,
+    "nb_avec_couleur": 74375,
+    "nb_rattachees_a_un_bloc": 48270,
+    "nb_geometries_avec_attributs": 3771,
+    "nb_entites_avec_attributs": 3771,
+    "blocs": {
+      "V025": {
+        "nb": 20016,
+        "tags": [],
+        "echantillon": []
+      },
+      "A$C4CDA1AAE": {
+        "nb": 7882,
+        "tags": [],
+        "echantillon": []
+      },
+      "V045": {
+        "nb": 3432,
+        "tags": [],
+        "echantillon": []
+      },
+      "A$C758E7D02": {
+        "nb": 2983,
+        "tags": [],
+        "echantillon": []
+      },
+      "GEOEDFTT": {
+        "nb": 2325,
+        "tags": [],
+        "echantillon": []
+      },
+      "ATPOINT": {
+        "nb": 1995,
+        "tags": [
+          "ALT",
+          "MAT"
+        ],
+        "echantillon": [
+          {
+            "MAT": "2000",
+            "ALT": "52.25"
+          },
+          {
+            "MAT": "2001",
+            "ALT": "52.15"
+          },
+          {
+            "MAT": "2002",
+            "ALT": "52.20"
+          },
+          {
+            "MAT": "2003",
+            "ALT": "52.26"
+          },
+          {
+            "MAT": "2004",
+            "ALT": "52.24"
+          },
+          {
+            "MAT": "2005",
+            "ALT": "52.23"
+          },
+          {
+            "MAT": "2006",
+            "ALT": "52.30"
+          },
+          {
+            "MAT": "2007",
+            "ALT": "52.23"
+          }
+        ]
+      },
+      "GEOHAIE1": {
+        "nb": 1596,
+        "tags": [],
+        "echantillon": []
+      },
+      "0-POINTS_DA": {
+        "nb": 1216,
+        "tags": [
+          "ALT",
+          "MAT"
+        ],
+        "echantillon": [
+          {
+            "MAT": "2038",
+            "ALT": "52.14"
+          },
+          {
+            "MAT": "2049",
+            "ALT": "52.18"
+          },
+          {
+            "MAT": "2062",
+            "ALT": "52.21"
+          },
+          {
+            "MAT": "2076",
+            "ALT": "52.26"
+          },
+          {
+            "MAT": "2089",
+            "ALT": "52.24"
+          },
+          {
+            "MAT": "2111",
+            "ALT": "52.30"
+          },
+          {
+            "MAT": "2112",
+            "ALT": "52.09"
+          },
+          {
+            "MAT": "2117"
+          }
+        ]
+      },
+      "GEOCROIX": {
+        "nb": 970,
+        "tags": [],
+        "echantillon": []
+      },
+      "A$C551103EA": {
+        "nb": 780,
+        "tags": [],
+        "echantillon": []
+      },
+      "A$CD02C6D29": {
+        "nb": 722,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAISON": {
+        "nb": 368,
+        "tags": [],
+        "echantillon": []
+      },
+      "TCPOINT": {
+        "nb": 336,
+        "tags": [
+          "ALT",
+          "MAT"
+        ],
+        "echantillon": [
+          {
+            "MAT": "B100",
+            "ALT": "51.17"
+          },
+          {
+            "MAT": "B101",
+            "ALT": "51.64"
+          },
+          {
+            "MAT": "B102",
+            "ALT": "51.18"
+          },
+          {
+            "MAT": "B103",
+            "ALT": "51.16"
+          },
+          {
+            "MAT": "B104",
+            "ALT": "51.21"
+          },
+          {
+            "MAT": "B105",
+            "ALT": "51.33"
+          },
+          {
+            "MAT": "B106",
+            "ALT": "51.38"
+          },
+          {
+            "MAT": "B107",
+            "ALT": "51.31"
+          }
+        ]
+      },
+      "MAISON6": {
+        "nb": 336,
+        "tags": [],
+        "echantillon": []
+      },
+      "BORLIPRO": {
+        "nb": 309,
+        "tags": [],
+        "echantillon": []
+      },
+      "V024": {
+        "nb": 305,
+        "tags": [],
+        "echantillon": []
+      },
+      "V015": {
+        "nb": 300,
+        "tags": [],
+        "echantillon": []
+      },
+      "CLOTMI": {
+        "nb": 204,
+        "tags": [],
+        "echantillon": []
+      },
+      "GEOCARR2": {
+        "nb": 168,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAISON1": {
+        "nb": 143,
+        "tags": [],
+        "echantillon": []
+      },
+      "FLÈCHE_GAUCHE": {
+        "nb": 135,
+        "tags": [],
+        "echantillon": []
+      },
+      "FLÈCHE_DROITE": {
+        "nb": 135,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAISON2": {
+        "nb": 120,
+        "tags": [],
+        "echantillon": []
+      },
+      "*U16": {
+        "nb": 119,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.2"
+          }
+        ]
+      },
+      "MURNOMI": {
+        "nb": 118,
+        "tags": [],
+        "echantillon": []
+      },
+      "A$C4128763F": {
+        "nb": 113,
+        "tags": [],
+        "echantillon": []
+      },
+      "D005": {
+        "nb": 104,
+        "tags": [],
+        "echantillon": []
+      },
+      "GEOROND": {
+        "nb": 97,
+        "tags": [],
+        "echantillon": []
+      },
+      "GEOPTTA": {
+        "nb": 97,
+        "tags": [],
+        "echantillon": []
+      },
+      "*U7": {
+        "nb": 90,
+        "tags": [],
+        "echantillon": []
+      },
+      "GEOCARR1": {
+        "nb": 87,
+        "tags": [],
+        "echantillon": []
+      },
+      "*U2": {
+        "nb": 66,
+        "tags": [],
+        "echantillon": []
+      },
+      "GEOEDFBT": {
+        "nb": 53,
+        "tags": [],
+        "echantillon": []
+      },
+      "L010": {
+        "nb": 48,
+        "tags": [],
+        "echantillon": []
+      },
+      "A$C5C3C03D5": {
+        "nb": 48,
+        "tags": [],
+        "echantillon": []
+      },
+      "GE13": {
+        "nb": 32,
+        "tags": [],
+        "echantillon": []
+      },
+      "_ORIGIN2": {
+        "nb": 25,
+        "tags": [],
+        "echantillon": []
+      },
+      "LOGO_AUIGE0": {
+        "nb": 25,
+        "tags": [],
+        "echantillon": []
+      },
+      "E004": {
+        "nb": 24,
+        "tags": [],
+        "echantillon": []
+      },
+      "LOGO": {
+        "nb": 16,
+        "tags": [],
+        "echantillon": []
+      },
+      "PYLONE1": {
+        "nb": 9,
+        "tags": [],
+        "echantillon": []
+      },
+      "*U35": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          },
+          {
+            "P.": "P.1"
+          }
+        ]
+      },
+      "*U36": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.2"
+          },
+          {
+            "P.": "P.2"
+          },
+          {
+            "P.": "P.2"
+          },
+          {
+            "P.": "P.2"
+          },
+          {
+            "P.": "P.2"
+          },
+          {
+            "P.": "P.2"
+          },
+          {
+            "P.": "P.2"
+          }
+        ]
+      },
+      "*U37": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.3"
+          },
+          {
+            "P.": "P.3"
+          },
+          {
+            "P.": "P.3"
+          },
+          {
+            "P.": "P.3"
+          },
+          {
+            "P.": "P.3"
+          },
+          {
+            "P.": "P.3"
+          },
+          {
+            "P.": "P.3"
+          }
+        ]
+      },
+      "*U38": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.4"
+          },
+          {
+            "P.": "P.4"
+          },
+          {
+            "P.": "P.4"
+          },
+          {
+            "P.": "P.4"
+          },
+          {
+            "P.": "P.4"
+          },
+          {
+            "P.": "P.4"
+          },
+          {
+            "P.": "P.4"
+          }
+        ]
+      },
+      "*U39": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.5"
+          },
+          {
+            "P.": "P.5"
+          },
+          {
+            "P.": "P.5"
+          },
+          {
+            "P.": "P.5"
+          },
+          {
+            "P.": "P.5"
+          },
+          {
+            "P.": "P.5"
+          },
+          {
+            "P.": "P.5"
+          }
+        ]
+      },
+      "*U40": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.6"
+          },
+          {
+            "P.": "P.6"
+          },
+          {
+            "P.": "P.6"
+          },
+          {
+            "P.": "P.6"
+          },
+          {
+            "P.": "P.6"
+          },
+          {
+            "P.": "P.6"
+          },
+          {
+            "P.": "P.6"
+          }
+        ]
+      },
+      "*U41": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.7"
+          },
+          {
+            "P.": "P.7"
+          },
+          {
+            "P.": "P.7"
+          },
+          {
+            "P.": "P.7"
+          },
+          {
+            "P.": "P.7"
+          },
+          {
+            "P.": "P.7"
+          },
+          {
+            "P.": "P.7"
+          }
+        ]
+      },
+      "*U42": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.8"
+          },
+          {
+            "P.": "P.8"
+          },
+          {
+            "P.": "P.8"
+          },
+          {
+            "P.": "P.8"
+          },
+          {
+            "P.": "P.8"
+          },
+          {
+            "P.": "P.8"
+          },
+          {
+            "P.": "P.8"
+          }
+        ]
+      },
+      "*U43": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.9"
+          },
+          {
+            "P.": "P.9"
+          },
+          {
+            "P.": "P.9"
+          },
+          {
+            "P.": "P.9"
+          },
+          {
+            "P.": "P.9"
+          },
+          {
+            "P.": "P.9"
+          },
+          {
+            "P.": "P.9"
+          }
+        ]
+      },
+      "*U44": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.10"
+          },
+          {
+            "P.": "P.10"
+          },
+          {
+            "P.": "P.10"
+          },
+          {
+            "P.": "P.10"
+          },
+          {
+            "P.": "P.10"
+          },
+          {
+            "P.": "P.10"
+          },
+          {
+            "P.": "P.10"
+          }
+        ]
+      },
+      "*U45": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.12"
+          },
+          {
+            "P.": "P.12"
+          },
+          {
+            "P.": "P.12"
+          },
+          {
+            "P.": "P.12"
+          },
+          {
+            "P.": "P.12"
+          },
+          {
+            "P.": "P.12"
+          },
+          {
+            "P.": "P.12"
+          }
+        ]
+      },
+      "*U46": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.13"
+          },
+          {
+            "P.": "P.13"
+          },
+          {
+            "P.": "P.13"
+          },
+          {
+            "P.": "P.13"
+          },
+          {
+            "P.": "P.13"
+          },
+          {
+            "P.": "P.13"
+          },
+          {
+            "P.": "P.13"
+          }
+        ]
+      },
+      "*U47": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.14"
+          },
+          {
+            "P.": "P.14"
+          },
+          {
+            "P.": "P.14"
+          },
+          {
+            "P.": "P.14"
+          },
+          {
+            "P.": "P.14"
+          },
+          {
+            "P.": "P.14"
+          },
+          {
+            "P.": "P.14"
+          }
+        ]
+      },
+      "*U48": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.15"
+          },
+          {
+            "P.": "P.15"
+          },
+          {
+            "P.": "P.15"
+          },
+          {
+            "P.": "P.15"
+          },
+          {
+            "P.": "P.15"
+          },
+          {
+            "P.": "P.15"
+          },
+          {
+            "P.": "P.15"
+          }
+        ]
+      },
+      "*U49": {
+        "nb": 7,
+        "tags": [
+          "P."
+        ],
+        "echantillon": [
+          {
+            "P.": "P.16"
+          },
+          {
+            "P.": "P.16"
+          },
+          {
+            "P.": "P.16"
+          },
+          {
+            "P.": "P.16"
+          },
+          {
+            "P.": "P.16"
+          },
+          {
+            "P.": "P.16"
+          },
+          {
+            "P.": "P.16"
+          }
+        ]
+      },
+      "FLECHRU1": {
+        "nb": 5,
+        "tags": [],
+        "echantillon": []
+      },
+      "ARBRES": {
+        "nb": 5,
+        "tags": [],
+        "echantillon": []
+      },
+      "A$CEC60F415": {
+        "nb": 5,
+        "tags": [],
+        "echantillon": []
+      },
+      "G013": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_231": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_232": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_233": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_234": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_235": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_236": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_237": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_238": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_239": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_240": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_241": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_242": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_243": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_244": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_245": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_246": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_247": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_248": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_249": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_250": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_251": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_252": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_253": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_254": {
+        "nb": 4,
+        "tags": [],
+        "echantillon": []
+      },
+      "U014": {
+        "nb": 3,
+        "tags": [],
+        "echantillon": []
+      },
+      "Y001": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "CLOTNOMI": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_255": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_256": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_257": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_258": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_259": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_260": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_261": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_262": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_263": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_264": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_265": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_266": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_267": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_268": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_269": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_270": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_271": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_272": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_273": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_274": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_275": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_276": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_277": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_278": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_279": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_280": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_281": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_282": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_283": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_284": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_285": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_286": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_287": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_288": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_289": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_290": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_291": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_292": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_293": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_294": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_295": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_296": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_297": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_298": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_299": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_300": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_301": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      },
+      "MAILLAGE_302": {
+        "nb": 2,
+        "tags": [],
+        "echantillon": []
+      }
+    },
+    "profil_z": {
+      "T-LEGENDE": {
+        "z_min": 0.0,
+        "z_max": 1.659005522959913,
+        "amplitude": 1.659005522959913,
+        "niveaux_distincts": 2,
+        "nb_sommets_z": 712,
+        "porte_altimetrie": true,
+        "probable_courbes_niveau": false
+      },
+      "0": {
+        "z_min": 0.0,
+        "z_max": 52.6,
+        "amplitude": 52.6,
+        "niveaux_distincts": 313,
+        "nb_sommets_z": 484469,
+        "porte_altimetrie": true,
+        "probable_courbes_niveau": true
+      },
+      "T-EAUX_PLUVIALES": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 18,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-VOIRIE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 306,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-CLOTURES": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 123,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-BATIMENT": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 104,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-VEGETATION-TEXTE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 121,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-CRASTE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 6153,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-EDF": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 67,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-BATIMENT-HACHURE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 63,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-SECTION_AW": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 5438,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-SECTION_AH": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 7953,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-CADASTRE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 39,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-BORNE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 25,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-LIMITES": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 115,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-TEXTE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 6,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-FRANCE_TELECOM": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 9,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-ARTERE-ORANGE-AERIENNE_A": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 7,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-EAUX_USEES": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 8,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-AEP": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 19,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-CARTOUCHE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 1,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-COTATIONS": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 49,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-VUE_AERIENNE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 2,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-ASSIETTE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 219,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-PLU": {
+        "z_min": 0.0,
+        "z_max": 50.0500000000029,
+        "amplitude": 50.0500000000029,
+        "niveaux_distincts": 2,
+        "nb_sommets_z": 83,
+        "porte_altimetrie": true,
+        "probable_courbes_niveau": false
+      },
+      "T-ER": {
+        "z_min": 0.0,
+        "z_max": 50.0500000000029,
+        "amplitude": 50.0500000000029,
+        "niveaux_distincts": 3,
+        "nb_sommets_z": 20,
+        "porte_altimetrie": true,
+        "probable_courbes_niveau": false
+      },
+      "P-ALTI": {
+        "z_min": 7.1e-15,
+        "z_max": 7.1e-15,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 1,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "MNT_ERREURS_-_POINTS_DOUBL": {
+        "z_min": 50.76,
+        "z_max": 50.76,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 33,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "EBC": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 16,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "ARBRES_À_ENJEUX": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 56964,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "SIMETHIS_GOBEMOUCHE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 144,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "SIMETHIS_PIC_EPEICHETTE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 116,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "SIMETHIS_ZONE_D_EXCLUSION_": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 232,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "SIMETHIS_GRAND_CAPRICORNE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 142,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "SIMETHIS_ARBRES_A_ENJEUX_A": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 3074,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "SIMETHIS_DAMIER_ET_FADAIT": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 42,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "SIMETHIS_ZH": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 338,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "SIMETHIS_LOTIER": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 325,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "SIMETHIS_DAMIER_DE_LA_SUCC": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 64,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "SIMETHIS_ENGOULEVENT": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 68,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-LOT": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 712,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-SURFACES": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 158,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "C-LOT": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 583,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-COUL": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 51,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-TALUS": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 27,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "T-VEGETATION": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 4523,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-VOIE": {
+        "z_min": 0.0,
+        "z_max": 53.18240247563517,
+        "amplitude": 53.18240247563517,
+        "niveaux_distincts": 3,
+        "nb_sommets_z": 5040,
+        "porte_altimetrie": true,
+        "probable_courbes_niveau": false
+      },
+      "A-DETL-CNTR": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 129,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "§S_ACHAT": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 12,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "C-VEG": {
+        "z_min": 0.0,
+        "z_max": 1.42e-14,
+        "amplitude": 1.42e-14,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 1053,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "C-VOIE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 1643,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "C-HAB": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 3918,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-COMPO_LEGENDE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 131,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "NOUVEAU_TERRAIN_-_MODIFIÉ": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 1072,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-ZONE_EXCLUSION_SUPPLÉMEN": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 93,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-COTATION": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 53,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-RECUL": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 216,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-RTE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 792,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "_TX-TEXTES": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 1,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "NOUVEAU_TECHNIQUE_-_DIVERS": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 2,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "0_NOUVELLE_ZONE_D'EXCLUSIO": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 87,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-PUP": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 72,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-ARCHI_2025_09_29": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 16,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-EP": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 1,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-EU": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 1,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-AEP": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 2,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      },
+      "P-ALTI_LEGENDE": {
+        "z_min": 0.0,
+        "z_max": 0.0,
+        "amplitude": 0.0,
+        "niveaux_distincts": 1,
+        "nb_sommets_z": 1,
+        "porte_altimetrie": false,
+        "probable_courbes_niveau": false
+      }
+    },
+    "calques_alti": {
+      "T-LEGENDE": {
+        "z_min": 0.0,
+        "z_max": 1.659005522959913,
+        "amplitude": 1.659005522959913,
+        "niveaux_distincts": 2,
+        "nb_sommets_z": 712,
+        "porte_altimetrie": true,
+        "probable_courbes_niveau": false
+      },
+      "0": {
+        "z_min": 0.0,
+        "z_max": 52.6,
+        "amplitude": 52.6,
+        "niveaux_distincts": 313,
+        "nb_sommets_z": 484469,
+        "porte_altimetrie": true,
+        "probable_courbes_niveau": true
+      },
+      "T-PLU": {
+        "z_min": 0.0,
+        "z_max": 50.0500000000029,
+        "amplitude": 50.0500000000029,
+        "niveaux_distincts": 2,
+        "nb_sommets_z": 83,
+        "porte_altimetrie": true,
+        "probable_courbes_niveau": false
+      },
+      "T-ER": {
+        "z_min": 0.0,
+        "z_max": 50.0500000000029,
+        "amplitude": 50.0500000000029,
+        "niveaux_distincts": 3,
+        "nb_sommets_z": 20,
+        "porte_altimetrie": true,
+        "probable_courbes_niveau": false
+      },
+      "P-VOIE": {
+        "z_min": 0.0,
+        "z_max": 53.18240247563517,
+        "amplitude": 53.18240247563517,
+        "niveaux_distincts": 3,
+        "nb_sommets_z": 5040,
+        "porte_altimetrie": true,
+        "probable_courbes_niveau": false
+      }
+    },
+    "types_3d": {},
+    "entites_non_converties": {
+      "ACAD_PROXY_ENTITY": 2,
+      "POLYLINE(erreur)": 14
+    },
+    "bbox_locale": {
+      "xmin": 394605.643932243,
+      "ymin": 4171134.89,
+      "xmax": 1395299.030581668,
+      "ymax": 6406138.73999097
+    },
+    "echantillon_features": [
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2000",
+          "ALT": "52.25"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2001",
+          "ALT": "52.15"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2002",
+          "ALT": "52.20"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2003",
+          "ALT": "52.26"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2004",
+          "ALT": "52.24"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2005",
+          "ALT": "52.23"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2006",
+          "ALT": "52.30"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2007",
+          "ALT": "52.23"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2008",
+          "ALT": "52.26"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2009",
+          "ALT": "52.36"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2010",
+          "ALT": "52.28"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2011",
+          "ALT": "52.29"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2012",
+          "ALT": "52.37"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2013",
+          "ALT": "52.30"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2014",
+          "ALT": "52.18"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2015",
+          "ALT": "52.16"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2016",
+          "ALT": "52.29"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2017",
+          "ALT": "52.24"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2018",
+          "ALT": "52.21"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      },
+      {
+        "calque": "0",
+        "dxf_type": "POINT",
+        "bloc": "ATPOINT",
+        "attributs": {
+          "MAT": "2019",
+          "ALT": "52.26"
+        },
+        "couleur": "#ffffff",
+        "texte": null,
+        "geom": "Point"
+      }
+    ]
+  }
+}
