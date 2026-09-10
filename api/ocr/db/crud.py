@@ -18,6 +18,7 @@ _CHAMPS_MODIFIABLES = {
     "mois_debut", "mois_fin", "traverse_nouvel_an",
     "date_realisation", "date_realisation_fin", "surface_m2", "commentaire",
     "montant_ht", "montant_ttc", "taux_tva", "prestataire", "prestataire_id",
+    "responsable_id",
     "ligne_budget_id",
     "montant_engage", "montant_realise",
 }

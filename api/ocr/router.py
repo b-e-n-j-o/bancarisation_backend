@@ -72,6 +72,7 @@ class OccurrenceUpdateRequest(BaseModel):
     taux_tva: Optional[float] = None
     prestataire: Optional[str] = None
     prestataire_id: Optional[UUID] = None
+    responsable_id: Optional[UUID] = None
     ligne_budget_id: Optional[UUID] = None
     montant_engage: Optional[float] = None
     montant_realise: Optional[float] = None
@@ -203,6 +204,8 @@ def update_occurrence(
         champs["ligne_budget_id"] = str(champs["ligne_budget_id"])
     if "prestataire_id" in champs and champs["prestataire_id"] is not None:
         champs["prestataire_id"] = str(champs["prestataire_id"])
+    if "responsable_id" in champs and champs["responsable_id"] is not None:
+        champs["responsable_id"] = str(champs["responsable_id"])
     if not champs:
         raise HTTPException(status_code=400, detail="Aucun champ à modifier.")
     try:

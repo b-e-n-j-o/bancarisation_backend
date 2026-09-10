@@ -48,6 +48,7 @@ _CHAMPS_PG = frozenset(
         "taux_tva",
         "prestataire",
         "prestataire_id",
+        "responsable_id",
         "ligne_budget_id",
         "montant_engage",
         "montant_realise",
