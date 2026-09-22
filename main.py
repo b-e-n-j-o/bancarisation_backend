@@ -18,6 +18,7 @@ from api.ocr.router import router as ocr_router
 from api.ocr.arrete.router import router as ocr_arrete_router
 from api.ocr.match_prescriptions.router import router as match_prescriptions_router
 from api.ocr.multidocs.router import router as multidocs_router
+from api.ocr.ingest_erc.router import router as ingest_erc_router
 from api.geomce.router import router as geomce_router
 from api.geomce.router import router_exports as geomce_exports_router
 from api.parc.router import router as parc_router
@@ -32,11 +33,17 @@ from api.satellite.router import router as satellite_router
 from api.annotations.router import router as annotations_router
 from api.journal_actions.router import router as journal_actions_router
 from api.carto.router import router as cao_router
+from security import IpDenylistMiddleware, docs_enabled
+
+_docs = docs_enabled()
 
 app = FastAPI(
     title="Bancarisation API",
     version="0.1.0",
     description="API backend pour la gestion des projets de bancarisation.",
+    docs_url="/docs" if _docs else None,
+    redoc_url="/redoc" if _docs else None,
+    openapi_url="/openapi.json" if _docs else None,
 )
 
 origins = os.getenv(
@@ -51,6 +58,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(IpDenylistMiddleware)
 
 
 @app.get("/health", tags=["health"])
@@ -69,6 +77,7 @@ app.include_router(documents_router, prefix="/api", tags=["documents"])
 app.include_router(planning_router, prefix="/api", tags=["planning"])
 app.include_router(ocr_router, prefix="/api", tags=["ocr"])
 app.include_router(multidocs_router, prefix="/api", tags=["ocr-multidocs"])
+app.include_router(ingest_erc_router, prefix="/api")
 app.include_router(ocr_arrete_router, prefix="/api", tags=["ocr-arrete"])
 app.include_router(match_prescriptions_router, prefix="/api", tags=["match-prescriptions"])
 app.include_router(parc_router, prefix="/api", tags=["parc"])

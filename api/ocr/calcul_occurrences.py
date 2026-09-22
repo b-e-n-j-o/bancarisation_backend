@@ -168,6 +168,9 @@ def annees_occurrences(e: Echeance, annee_fin: int) -> list[int]:
     if debut > fin:
         return []
 
+    if r.type == TypeRecurrence.explicite:
+        return sorted(a for a in set(r.annees) if a <= fin)
+
     if r.type in (TypeRecurrence.ponctuel, TypeRecurrence.dependant_evenement):
         return [debut] if debut <= fin else []
 

@@ -1,0 +1,10 @@
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+## VII. ANNEXES
+
+### 7.1. Annexe n°1 – Arrêté préfectoral de demande d’autorisation de défrichement
+
+Opération de lycée / collège sur la commune du Barp (33) – Plan de gestion des espaces de compensation et des zones évitées
+Région Nouvelle-Aquitaine
+
+82

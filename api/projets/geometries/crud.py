@@ -22,10 +22,20 @@ SELECT
     properties,
     attributs,
     source_fichier,
-    %s AS couche,
+    %s AS type_geom,
+    couche AS couche_origine,
+    statut,
+    motif,
+    origine,
+    confiance,
+    index_entite,
+    depot_id,
+    zone_id,
     ST_AsGeoJSON(ST_Transform(geom_3857, 4326))::text AS geometry_geojson
 FROM bancarisation.{table}
 WHERE projet_id = %s
+  AND (%s::text IS NULL OR statut = %s)
+  AND (%s::text IS NULL OR %s = %s)
 ORDER BY created_at ASC
 """
 
@@ -74,6 +84,7 @@ def _row_to_feature(row: dict[str, Any]) -> dict[str, Any]:
         else {}
     )
 
+    type_geom = row.get("type_geom") or row.get("couche")
     return {
         "type": "Feature",
         "id": row["id"],
@@ -82,10 +93,19 @@ def _row_to_feature(row: dict[str, Any]) -> dict[str, Any]:
             "id": row["id"],
             "projet_id": row["projet_id"],
             "ug_id": row.get("ug_id"),
-            "nom": row.get("libelle") or row.get("ug_id") or "Sans nom",
+            "nom": row.get("libelle") or row.get("ug_id") or row.get("couche_origine") or "Sans nom",
             "libelle": row.get("libelle") or "",
             "description": row.get("description") or "",
-            "couche": row.get("couche"),
+            "couche": type_geom,
+            "type": type_geom,
+            "couche_origine": row.get("couche_origine"),
+            "statut": row.get("statut") or "ug",
+            "motif": row.get("motif"),
+            "origine": row.get("origine"),
+            "confiance": row.get("confiance"),
+            "index_entite": row.get("index_entite"),
+            "depot_id": row.get("depot_id"),
+            "zone_id": row.get("zone_id"),
             "source_fichier": row.get("source_fichier"),
             "attributs": attributs,
             **meta_props,
@@ -93,9 +113,101 @@ def _row_to_feature(row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def lister_geometries_ug(projet_id: UUID) -> dict[str, Any]:
-    """Retourne un FeatureCollection + métadonnées UG pour la carto projet."""
+def _ugs_depuis_vues(cur: Any, projet_id: str) -> list[dict[str, Any]]:
+    ugs_map: dict[str, dict[str, Any]] = {}
+    try:
+        sources = (("v_ug_surf", "surf"), ("v_ug_lin", "lin"), ("v_ug_pct", "pct"))
+        queries = [
+            (
+                couche,
+                f"""
+                SELECT ug_id, libelle, description, nb_entites
+                FROM bancarisation.{vue}
+                WHERE projet_id = %s
+                """,
+            )
+            for vue, couche in sources
+        ]
+        for couche, sql in queries:
+            cur.execute(sql, (projet_id,))
+            for ug_id, libelle, description, nb in cur.fetchall():
+                if not ug_id:
+                    continue
+                if ug_id not in ugs_map:
+                    ugs_map[ug_id] = {
+                        "id": ug_id,
+                        "libelle": libelle or ug_id,
+                        "description": description or "",
+                        "couches": [],
+                        "nb_entites": 0,
+                    }
+                if couche not in ugs_map[ug_id]["couches"]:
+                    ugs_map[ug_id]["couches"].append(couche)
+                ugs_map[ug_id]["nb_entites"] += int(nb or 0)
+    except Exception:
+        ugs_map = {}
+        for table, couche in (
+            ("unites_de_gestion_surf", "surf"),
+            ("unites_de_gestion_lin", "lin"),
+            ("unites_de_gestion_pct", "pct"),
+        ):
+            cur.execute(
+                f"""
+                SELECT ug_id, max(libelle), max(description), count(*)
+                FROM bancarisation.{table}
+                WHERE projet_id = %s AND statut = 'ug' AND ug_id IS NOT NULL
+                GROUP BY ug_id
+                """,
+                (projet_id,),
+            )
+            for ug_id, libelle, description, nb in cur.fetchall():
+                if not ug_id:
+                    continue
+                if ug_id not in ugs_map:
+                    ugs_map[ug_id] = {
+                        "id": ug_id,
+                        "libelle": libelle or ug_id,
+                        "description": description or "",
+                        "couches": [],
+                        "nb_entites": 0,
+                    }
+                if couche not in ugs_map[ug_id]["couches"]:
+                    ugs_map[ug_id]["couches"].append(couche)
+                ugs_map[ug_id]["nb_entites"] += int(nb or 0)
+    return list(ugs_map.values())
+
+
+def _ugs_sans_geometrie(cur: Any, projet_id: str, ugs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    connus = {u["id"] for u in ugs}
+    cur.execute(
+        """
+        SELECT DISTINCT trim(u)
+        FROM bancarisation.occurrence o
+        CROSS JOIN LATERAL unnest(COALESCE(o.ug_ids, ARRAY[]::text[])) AS u
+        WHERE o.projet_id = %s AND trim(u) <> ''
+        """,
+        (projet_id,),
+    )
+    manquantes: list[dict[str, Any]] = []
+    for (code,) in cur.fetchall():
+        if code and code not in connus:
+            manquantes.append({"id": code, "libelle": code, "sans_geometrie": True})
+            connus.add(code)
+    return manquantes
+
+
+def lister_geometries_ug(
+    projet_id: UUID,
+    *,
+    statut: str | None = None,
+    type_geom: str | None = None,
+) -> dict[str, Any]:
+    """FeatureCollection des entités + UG (vues v_ug_*) pour la carto projet."""
     features: list[dict[str, Any]] = []
+    statut_f = statut.strip() if statut and statut.strip() else None
+    type_f = type_geom.strip() if type_geom and type_geom.strip() else None
+    ugs: list[dict[str, Any]] = []
+    sans_geom: list[dict[str, Any]] = []
     try:
         with psycopg.connect(get_database_url()) as conn:
             with conn.cursor() as cur:
@@ -104,50 +216,46 @@ def lister_geometries_ug(projet_id: UUID) -> dict[str, Any]:
                     ("unites_de_gestion_lin", "lin"),
                     ("unites_de_gestion_pct", "pct"),
                 ):
+                    if type_f and type_f != couche:
+                        continue
                     cur.execute(
                         _SELECT_UG.format(table=table),
-                        (couche, str(projet_id)),
+                        (couche, str(projet_id), statut_f, statut_f, type_f, couche, type_f),
                     )
                     cols = [d.name for d in cur.description]
                     for tup in cur.fetchall():
                         features.append(_row_to_feature(dict(zip(cols, tup))))
 
-                cur.execute(_SELECT_EMPRISE, (str(projet_id),))
-                cols = [d.name for d in cur.description]
-                for tup in cur.fetchall():
-                    features.append(_row_to_feature(dict(zip(cols, tup))))
+                if not type_f and not statut_f:
+                    cur.execute(_SELECT_EMPRISE, (str(projet_id),))
+                    cols = [d.name for d in cur.description]
+                    for tup in cur.fetchall():
+                        features.append(_row_to_feature(dict(zip(cols, tup))))
+
+                ugs = _ugs_depuis_vues(cur, str(projet_id))
+                sans_geom = _ugs_sans_geometrie(cur, str(projet_id), ugs)
     except Exception as exc:
         raise GeometryIngestError(f"Lecture géométries impossible: {exc}") from exc
 
-    ugs_map: dict[str, dict[str, Any]] = {}
+    par_statut: dict[str, int] = {}
     for f in features:
-        props = f.get("properties") or {}
-        if props.get("couche") == "emprise":
-            continue
-        ug_id = props.get("ug_id")
-        if not ug_id:
-            continue
-        if ug_id not in ugs_map:
-            ugs_map[ug_id] = {
-                "id": ug_id,
-                "libelle": props.get("libelle") or ug_id,
-                "description": props.get("description") or "",
-                "couches": [],
-            }
-        couche = props.get("couche")
-        if couche and couche not in ugs_map[ug_id]["couches"]:
-            ugs_map[ug_id]["couches"].append(couche)
+        st = str((f.get("properties") or {}).get("statut") or "")
+        if st:
+            par_statut[st] = par_statut.get(st, 0) + 1
 
     return {
         "type": "FeatureCollection",
         "features": features,
-        "ugs": list(ugs_map.values()),
+        "ugs": ugs,
+        "ugs_sans_geometrie": sans_geom,
         "meta": {
             "nb_features": len(features),
-            "nb_ugs": len(ugs_map),
+            "nb_ugs": len(ugs),
             "nb_emprise": sum(
                 1 for f in features if (f.get("properties") or {}).get("couche") == "emprise"
             ),
+            "nb_non_affectees": par_statut.get("non_affectee", 0),
+            "par_statut": par_statut,
         },
     }
 
@@ -168,6 +276,8 @@ SELECT
 FROM bancarisation.{table} ug
 JOIN bancarisation.projets p ON p.id = ug.projet_id
 WHERE ug.geom_3857 IS NOT NULL
+  AND ug.statut = 'ug'
+  AND ug.ug_id IS NOT NULL
   AND (%s::text IS NULL OR p.departement = %s)
 ORDER BY p.nom, ug.ug_id, ug.created_at
 """
@@ -256,14 +366,17 @@ def compter_projets_parc_par_departement() -> list[dict[str, Any]]:
                         EXISTS (
                           SELECT 1 FROM bancarisation.unites_de_gestion_surf u
                           WHERE u.projet_id = p.id AND u.geom_3857 IS NOT NULL
+                            AND u.statut = 'ug'
                         )
                         OR EXISTS (
                           SELECT 1 FROM bancarisation.unites_de_gestion_lin u
                           WHERE u.projet_id = p.id AND u.geom_3857 IS NOT NULL
+                            AND u.statut = 'ug'
                         )
                         OR EXISTS (
                           SELECT 1 FROM bancarisation.unites_de_gestion_pct u
                           WHERE u.projet_id = p.id AND u.geom_3857 IS NOT NULL
+                            AND u.statut = 'ug'
                         )
                       )
                     GROUP BY p.departement
@@ -302,7 +415,7 @@ def renommer_ug(projet_id: UUID, ug_id: str, libelle: str) -> dict[str, Any]:
                         f"""
                         UPDATE bancarisation.{table}
                         SET libelle = %s, updated_at = now()
-                        WHERE projet_id = %s AND ug_id = %s
+                        WHERE projet_id = %s AND ug_id = %s AND statut = 'ug'
                         """,
                         (clean, str(projet_id), ug_id),
                     )

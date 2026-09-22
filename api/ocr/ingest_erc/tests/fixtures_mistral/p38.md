@@ -1,0 +1,25 @@
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+**Tabl. 5. Tableau de synthèse du programme d'actions**
+
+|  Objectifs à long terme | Objectifs opérationnels | Opérations du plan de travail | Numéro de la mesure | Unité de gestion | Espèce parapluie et cortège d'espèce  |
+| --- | --- | --- | --- | --- | --- |
+|  A - Favoriser et entretenir les faciès de landes arbustives pour la Fauvette pitchou et les oiseaux landicoles associés | a - Réorienter les pratiques sylvicoles | Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles | TU 1 | UG 1 | Fauvette pitchou et oiseaux landicoles  |
+|   |   |  Créer et maintenir des espaces de landes arbustives | TU 2 | UG 3  |   |
+|   |  b - Préserver les espaces de landes | Entretenir les landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles | TE 1 | UG 1 et UG 3  |   |
+|  B - Favoriser et entretenir les faciès de landes humides pour le Fadet des laîches et les oiseaux landicoles associés | a - Réorienter les pratiques sylvicoles | Adapter les itinéraires techniques sylvicoles en faveur du Fadet des laîches et des oiseaux landicoles | TU 3 | UG 2 | Fadet des laîches et oiseaux landicoles et zones humides  |
+|   |   |  Créer et maintenir des espaces de landes humides | TU 4 | UG 4  |   |
+|   |   |  Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles | TU 5 | UG 6  |   |
+|   |  b - Préserver les espaces de landes | Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles | TE 2 | UG 2, UG 4 et UG 6  |   |
+|   |   |  Lutter contre la Fougère aigle | TE 3 | UG 2, UG 4 et UG 6  |   |
+|  C - Favoriser et maintenir des d'îlots de sénescence pour les chauves-souris arboricoles, les insectes saproxylophages et les oiseaux forestiers | a - Réorienter les pratiques sylvicoles | Créer et maintenir des îlots de sénescence | TU 6 | UG 5 et UG 7 | Chiroptères arboricoles, insectes saproxylophages et oiseaux forestiers  |
+|  D - Améliorer les connaissances environnementales sur le site | c - Evaluer de la gestion et suivre les espèces faunistiques et floristiques | Suivi des milieux naturels, de la flore et de la faune | SE 1 | UG 1, UG 2, UG 3, UG 4, UG 5, UG 6, UG 7 | Toutes espèces  |
+|   |   |  Suivi hydraulique | SE 2 |   |   |
+|  E - Garantir la bonne mise en œuvre du programme d'actions | d - Assurer la mise en œuvre du programme d'actions | Pilotage et coordination du programme d'actions | MG 1 | UG 1, UG 2, UG 3, UG 4, UG 5, UG 6, UG 7 | Toutes espèces  |
+|   |   |  Mise à jour du plan de gestion et bilan de fin de mesure compensatoire | MG 2 |   |   |
+
+Opération de lycée / collège sur la commune du Barp (33) – Plan de gestion des espaces de compensation et des zones évitées
+
+Région Nouvelle-Aquitaine
+
+38

@@ -17,9 +17,11 @@ Deux objets, deux natures :
     2. le code aval (occurrences.py) ne voit JAMAIS de None et n'a pas à s'en
        protéger — pas d'AttributeError sur `e.fenetre_intervention.debut`.
 
-Extension implémentée (additive, sans migration grâce au jsonb en base) :
+Extensions (additives, sans migration grâce au jsonb en base) :
 TypeRecurrence.paliers pour les suivis à cadence dégressive (SE1).
 Chaque palier enchaîne depuis la DERNIÈRE occurrence émise, pas le début du segment.
+TypeRecurrence.explicite pour les années listées (tableur).
+TypeOperation est une str libre : la famille vient du référentiel (TU, GH, PI…).
 """
 
 from __future__ import annotations
@@ -34,7 +36,7 @@ from .extractions.catalogue.thema import LIB_THEMA_AUTRE, normaliser_lib_thema
 
 # --- Vocabulaires contrôlés --------------------------------------------------
 
-TypeOperation = Literal["EP", "TU", "TE", "SE", "MG"]
+TypeOperation = str                      # famille du référentiel (TU, GH, PI…)
 
 # Aligné sur les StatutChip du frontend (retard = dérivé à l'affichage).
 Statut = Literal[
@@ -62,6 +64,7 @@ class TypeRecurrence(str, Enum):
     campagnes = "campagnes"                      # K fois/an pendant M ans
     dependant_evenement = "dependant_evenement"  # N ans après un autre événement
     paliers = "paliers"                          # cadence dégressive par segments
+    explicite = "explicite"                      # années listées (tableur)
 
 
 class Palier(BaseModel):
@@ -90,6 +93,7 @@ def _paliers(v: Any) -> Any:
 
 
 ListeStr = Annotated[list[str], BeforeValidator(_liste)]
+ListeInt = Annotated[list[int], BeforeValidator(_liste)]
 ListePalier = Annotated[list[Palier], BeforeValidator(_paliers)]
 
 
@@ -104,6 +108,7 @@ class Recurrence(BaseModel):
     annee_fin: Optional[int] = None             # borne inclusive de la série ("jusqu'en 2042")
     regle_source: Optional[str] = None          # texte brut de la règle
     paliers: ListePalier = Field(default_factory=list)  # si type == paliers
+    annees: ListeInt = Field(default_factory=list)      # si type == explicite
 
 class FenetreIntervention(BaseModel):
     """
@@ -121,6 +126,8 @@ class FenetreIntervention(BaseModel):
 class Source(BaseModel):
     page: Optional[int] = None
     extrait: Optional[str] = None
+    doc: Optional[str] = None
+    loc: Optional[str] = None
 
 
 def _fenetre(v: Any) -> Any:
@@ -136,7 +143,7 @@ class Echeance(BaseModel):
     id: str                                     # clé métier stable
     code_operation: str                         # normalisé "TU 1" → "TU1"
     type_operation: TypeOperation
-    type_metier: str
+    type_metier: str = "autre"
     libelle: str
     lib_thema: str = LIB_THEMA_AUTRE            # propagé depuis la fiche-action
     objectif_long_terme: Optional[str] = None
@@ -415,6 +422,9 @@ class Occurrence(BaseModel):
     confiance: Optional[float] = None
     champs_a_confirmer: list[str] = Field(default_factory=list)
     avertissements: list[str] = Field(default_factory=list)
+    montant_ht: Optional[float] = None
+    montant_realise: Optional[float] = None
+    prestataire: Optional[str] = None
 
     @field_validator("lib_thema", mode="before")
     @classmethod

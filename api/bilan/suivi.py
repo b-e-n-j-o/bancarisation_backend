@@ -205,6 +205,7 @@ def _lignes_annee(
               FROM bancarisation.unites_de_gestion_surf s
               WHERE s.projet_id = o.projet_id
                 AND o.ug_ids IS NOT NULL
+                AND s.statut = 'ug'
                 AND s.ug_id = ANY (o.ug_ids)
             ) AS surface_ug_m2,
             o.commentaire AS commentaire_occurrence,

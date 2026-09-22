@@ -3,24 +3,24 @@
 from __future__ import annotations
 
 import hashlib
-import io
 import re
 import zipfile
 from datetime import date
 from pathlib import Path
 from typing import Any
-from uuid import UUID
 
 import geopandas as gpd
 from shapely import make_valid
-from shapely.geometry import MultiPolygon, Polygon, mapping, shape
+from shapely.geometry import MultiPolygon, Polygon, shape
 from shapely.ops import transform, unary_union
 from pyproj import Transformer
 
 from api.geomce.constantes import (
-    CHAMP_VIDE,
+    DBF_FIELD_NAMES,
+    DBF_SCHEMA,
     ENCODING,
     NOM_FICHIER_MAX,
+    SRID_AIRE,
     STRATEGIE_GEOM_DEFAUT,
 )
 from api.geomce.validation import build_attributs, resolve_srid
@@ -127,12 +127,55 @@ def geom_hash(polys: list[Polygon]) -> str:
     return hashlib.md5(u.wkb).hexdigest()
 
 
-def surface_ha(polys: list[Polygon], srid: int) -> float:
+def surface_ha(polys: list[Polygon]) -> float:
+    """Aire en ha. `polys` déjà dans un SCR métrique adapté (voir SRID_AIRE)."""
     if not polys:
         return 0.0
-    # Aire en m² si SCR projeté métrique ; Guyane 3857 ≈ mètres aussi
     u = unary_union(polys)
     return round(float(u.area) / 10_000.0, 4)
+
+
+def _id_mesure(attributs: dict[str, Any]) -> int:
+    raw = attributs.get("ID", 1)
+    try:
+        return int(raw)
+    except (TypeError, ValueError):
+        return 1
+
+
+def _write_shapefile(gdf: gpd.GeoDataFrame, shp_path: Path, srid: int) -> None:
+    """Écrit .shp/.shx/.dbf/.prj avec les largeurs et types de DBF_SCHEMA."""
+    import shapefile
+    from pyproj import CRS
+    from pyproj.enums import WktVersion
+    from shapely.geometry import mapping
+
+    stem = shp_path.with_suffix("")
+    with shapefile.Writer(str(stem), shapeType=shapefile.POLYGON) as w:
+        for field in DBF_SCHEMA:
+            w.field(
+                str(field["name"]),
+                str(field["type"]),
+                size=int(field["width"]),
+                decimal=int(field.get("precision") or 0),
+            )
+        for _, row in gdf.iterrows():
+            geom = row.geometry
+            if geom is None or geom.is_empty:
+                continue
+            w.shape(mapping(geom))
+            values: list[Any] = []
+            for field in DBF_SCHEMA:
+                name = str(field["name"])
+                val = row[name] if name in row.index else None
+                if field["type"] == "N":
+                    values.append(int(val) if val is not None and val != "" else 0)
+                else:
+                    values.append("" if val is None else str(val))
+            w.record(*values)
+
+    prj = stem.with_suffix(".prj")
+    prj.write_text(CRS.from_epsg(srid).to_wkt(WktVersion.WKT1_ESRI), encoding="utf-8")
 
 
 def build_geodataframe(
@@ -140,22 +183,26 @@ def build_geodataframe(
     attributs: dict[str, str],
     strategie: str = STRATEGIE_GEOM_DEFAUT,
 ) -> gpd.GeoDataFrame:
+    """Une mesure = mêmes attributs sur toutes les lignes, y compris ID (notice)."""
+    id_val = _id_mesure(attributs)
     rows: list[dict[str, Any]] = []
     if strategie == "multipart":
         geom = MultiPolygon(polys_proj) if len(polys_proj) > 1 else polys_proj[0]
-        rows.append({**attributs, "geometry": geom})
+        rows.append({**attributs, "ID": id_val, "geometry": geom})
     else:
-        for i, p in enumerate(polys_proj, start=1):
+        for p in polys_proj:
             row = dict(attributs)
-            row["ID"] = str(i)
+            row["ID"] = id_val
             row["geometry"] = p
             rows.append(row)
     gdf = gpd.GeoDataFrame(rows, geometry="geometry")
-    # Types string for DBF
-    for col in ("ID", "NOM", "CIBLE", "DESCRIPTIO", "DECISION", "REFEI", "CATEGORIE"):
+    if "ID" in gdf.columns:
+        gdf["ID"] = gdf["ID"].astype("int64")
+    for col in ("NOM", "CIBLE", "DESCRIPTIO", "DECISION", "REFEI", "CATEGORIE"):
         if col in gdf.columns:
             gdf[col] = gdf[col].astype(str)
-    return gdf
+    ordered = [c for c in DBF_FIELD_NAMES if c in gdf.columns]
+    return gdf[ordered + ["geometry"]]
 
 
 def write_zip(
@@ -165,7 +212,12 @@ def write_zip(
     basename: str,
     out_dir: Path,
 ) -> Path:
-    """Écrit shapefile dans un sous-dossier puis ZIP (comme notice Windows)."""
+    """Écrit le shapefile puis un ZIP à plat (.shp/.shx/.dbf à la racine).
+
+    La notice Windows décrit la compression d'un dossier, mais la page d'import
+    GéoMCE exige « au moins les fichiers en .shp, .shx et .dbf » dans le ZIP.
+    Un niveau de dossier peut faire échouer l'import.
+    """
     out_dir.mkdir(parents=True, exist_ok=True)
     work = out_dir / basename
     if work.exists():
@@ -176,8 +228,7 @@ def write_zip(
 
     gdf = gdf.set_crs(epsg=srid, allow_override=True)
     shp_path = work / f"{basename}.shp"
-    # Fiona / geopandas — encoding UTF-8
-    gdf.to_file(shp_path, driver="ESRI Shapefile", encoding=ENCODING)
+    _write_shapefile(gdf, shp_path, srid)
 
     cpg = work / f"{basename}.cpg"
     cpg.write_text(ENCODING, encoding="ascii")
@@ -187,8 +238,7 @@ def write_zip(
         zip_path.unlink()
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         for f in work.iterdir():
-            # Fichiers dans un dossier au sein du ZIP
-            zf.write(f, arcname=f"{basename}/{f.name}")
+            zf.write(f, arcname=f.name)
     return zip_path
 
 
@@ -224,7 +274,13 @@ def prepare_export_payload(
     )
 
     ghash = geom_hash(polys_proj) if polys_proj else geom_hash(polys_4326)
-    surf = surface_ha(polys_proj, srid or 2154) if polys_proj else None
+    surf = None
+    if polys_4326 and srid:
+        srid_aire = SRID_AIRE.get(srid, srid)
+        polys_aire = (
+            polys_proj if srid_aire == srid and polys_proj else reproject_polygons(polys_4326, srid_aire)
+        )
+        surf = surface_ha(polys_aire)
 
     return {
         "meta_geoms": meta,

@@ -1,6 +1,6 @@
 """Constantes GéoMCE — gabarit v2.2 (notice Cerema / MTE).
 
-Schéma DBF figé d'après la notice (longueurs utiles). À confronter une fois
+DBF_SCHEMA est appliqué à l'écriture shapefile (pyshp). À confronter une fois
 au gabarit_light.dbf officiel via pyogrio.read_info().
 """
 
@@ -42,7 +42,7 @@ CIBLES_FERMEES: tuple[str, ...] = (
 
 CIBLE_SEP = "|"  # sans espace
 
-# SCR par territoire (département → EPSG)
+# SCR par territoire (département → EPSG) — SCR d'export
 SRID_METROPOLE = 2154
 SRID_PAR_DEPT: dict[str, int] = {
     # La Réunion
@@ -50,7 +50,7 @@ SRID_PAR_DEPT: dict[str, int] = {
     # Guadeloupe / Martinique (RGAF09 / UTM 20N)
     "971": 5490,
     "972": 5490,
-    # Guyane
+    # Guyane (SCR d'export ; l'aire se calcule en 2972)
     "973": 3857,
     # Mayotte
     "976": 4471,
@@ -64,7 +64,16 @@ SRID_LABELS: dict[int, str] = {
     4471: "RGM04 / UTM 38S — EPSG:4471",
 }
 
-# Stratégie géométrique par défaut (cas documenté notice)
+# SCR pour le calcul de surface affiché (l'export reste dans SRID_PAR_DEPT).
+# Pseudo-Mercator déforme l'aire (~0,5 % à 4° N) : UTM 22N pour la Guyane.
+SRID_AIRE: dict[int, int] = {
+    3857: 2972,
+}
+
+DEPTS_DOM: frozenset[str] = frozenset({"971", "972", "973", "974", "975", "976"})
+
+# Stratégie géométrique documentée par la notice (une ligne par polygone,
+# attributs identiques). « multipart » existe en API mais n'est pas dans la notice.
 STRATEGIE_GEOM_DEFAUT = "eclate"
 
 CHAMP_VIDE = "-"

@@ -1,0 +1,32 @@
+{
+ "config": {
+  "ocr_backend": "mistral",
+  "ocr_model": "mistral-ocr-latest",
+  "llm_actif": true,
+  "llm_model": "zai-glm-5-2",
+  "reasoning_effort": "high",
+  "reasoning_effort_routeur": "low",
+  "cle": "MISTRAL_API_KEY_BEN",
+  "cle_llm": "MISTRAL_API_KEY_BEN",
+  "dotenv": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/.env",
+  "cache": "/tmp/ingest_cache"
+ },
+ "durees_s": {
+  "0_inventaire": 0.02,
+  "1a_sig": 0.08,
+  "1b_referentiel": 6.68,
+  "2_reconciliation": 0.01
+ },
+ "stats": {
+  "cellules": 91,
+  "confiance": {
+   "moyenne": 26,
+   "haute": 44,
+   "basse": 21
+  },
+  "questions": 9,
+  "faits": 151,
+  "geomce_pret_pct": 100
+ },
+ "nb_faits": 151
+}

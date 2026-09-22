@@ -11,6 +11,7 @@ from api.geomce.constantes import (
     CIBLES_FERMEES,
     DBF_WIDTHS,
     CHAMP_VIDE,
+    DEPTS_DOM,
     SRID_LABELS,
     SRID_METROPOLE,
     SRID_PAR_DEPT,
@@ -160,6 +161,7 @@ def build_attributs(
             )
         )
 
+    # Ne pas tronquer CIBLE : une valeur coupée n'appartient plus au vocabulaire fermé.
     cible_out = joindre_cibles(cibles)
 
     return {
@@ -259,6 +261,19 @@ def controler(
         ok += 1
         rapport.srid = srid
         rapport.srid_label = srid_label
+        dep = str(projet.get("departement") or "").strip()
+        if dep in DEPTS_DOM:
+            rapport.avertissements.append(
+                ControleItem(
+                    code="W10",
+                    niveau="avertissement",
+                    message=(
+                        "Les gabarits GéoMCE spécifiques aux DROM sont en cours de création. "
+                        "Vérifiez auprès de GéoMCE que ce fichier est accepté pour ce territoire."
+                    ),
+                    champ="departement",
+                )
+            )
 
     nom = projet.get("geomce_nom") or ""
     if mode != "geometrie_seule" and not str(nom).strip():
@@ -322,7 +337,24 @@ def controler(
                     )
                 )
             else:
-                ok += 1
+                cible_join = joindre_cibles(list(cibles))
+                max_cible = DBF_WIDTHS["CIBLE"]
+                if len(cible_join) > max_cible:
+                    n = len([c for c in cibles if c and str(c).strip()])
+                    rapport.bloquants.append(
+                        ControleItem(
+                            code="E10",
+                            niveau="bloquant",
+                            message=(
+                                f"{n} cibles = {len(cible_join)} caractères, "
+                                f"maximum {max_cible} ; retirez-en une."
+                            ),
+                            action="Une valeur coupée n'appartient plus au vocabulaire fermé GéoMCE.",
+                            champ="geomce_cible",
+                        )
+                    )
+                else:
+                    ok += 1
 
     attrs, trunc_warns = build_attributs(
         nom=projet.get("geomce_nom"),
@@ -371,6 +403,18 @@ def controler(
                 message=(
                     f"GéoMCE affichera un message d'erreur lors de l'import. "
                     f"C'est normal : la mesure et ses {nb_parties} emprises seront bien créées."
+                ),
+            )
+        )
+
+    if strategie_geom == "multipart":
+        rapport.avertissements.append(
+            ControleItem(
+                code="W11",
+                niveau="avertissement",
+                message=(
+                    "La stratégie MultiPolygon n'est pas documentée par la notice GéoMCE. "
+                    "Le mode éclaté (une ligne par polygone, attributs identiques) est le cas prévu."
                 ),
             )
         )

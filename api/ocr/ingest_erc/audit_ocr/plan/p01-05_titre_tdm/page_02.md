@@ -1,0 +1,38 @@
+ECO-COMPENSATION – SIMEHTIS – FAGE – Décembre 2021
+
+# TABLE DES MATIERES
+
+|  **I. CONTEXTE DE L’ETUDE** | **5**  |
+| --- | --- |
+|  1.1. RAPPEL | 5  |
+|  1.2. PRESENTATION DU PROJET DE LYCEE / COLLEGE – COMMUNE DU BARP | 6  |
+|  1.2.1. *Localisation du projet* | 6  |
+|  1.2.2. *Description du programme d’aménagement* | 7  |
+|  1.2.3. *Rappel des impacts sur les espèces animales protégées et des espaces soumis à obligations de résultats* | 8  |
+|  **II. ANIMATION FONCIERE** | **11**  |
+|  **III. PRE-CARACTERISATION DES ZONES EVITEES ET DES ESPACES DE COMPENSATION** | **13**  |
+|  3.1. MESURE D’ÉVITEMENT EV-1 – ZONE HUMIDE ET MESURE D’ÉVITEMENT EV-2 – CHENAIE | 13  |
+|  3.2. MESURE DE COMPENSATION C-1 - FAUVETTE PITCHOU ET OISEAUX LANDICOLES | 17  |
+|  3.3. MESURE DE COMPENSATION C-1 - FADET DES LAICHES ET OISEAUX LANDICOLES | 26  |
+|  3.4. MESURE DE COMPENSATION C-1 - CHIROPTERES ARBORICOLES, INSECTES SAPROXYLOPHAGES ET OISEAUX FORESTIERS | 31  |
+|  **IV. SECURISATION FONCIERE** | **35**  |
+|  **V. CONFORMITE VIS-A-VIS DU CODE FORESTIER** | **35**  |
+|  **VI. PLAN DE GESTION, DE RESTAURATION ET D’ENTRETIEN DES ZONES EVITEES ET DES ESPACES DE COMPENSATION** | **36**  |
+|  6.1. DEFINITION DES OBJECTIFS A LONG TERME ET OPERATIONNELS | 36  |
+|  6.2. MESURES DE GESTION ET UNITES DE GESTION | 37  |
+|  6.3. DESCRIPTION DES ACTIONS PREVUES | 40  |
+|  6.3.1. *Travaux uniques (TU)* | 40  |
+|  6.3.2. *Travaux d’entretien (TE)* | 63  |
+|  6.3.3. *Suivis et indicateurs de réussite (SE)* | 71  |
+|  6.3.4. *Mise en œuvre générale du plan de gestion (MG)* | 76  |
+|  6.4. PLANNING DE MISE EN ŒUVRE DES ACTIONS SUR 50 ANS | 80  |
+|  **VII. ANNEXES** | **82**  |
+|  7.1. ANNEXE N°1 – ARRETE PREFECTORAL DE DEMANDE D’AUTORISATION DE DEFRICHEMENT | 82  |
+|  7.2. ANNEXE N°2 – ARRETE PREFECTORAL DE DEMANDE DE DEROGATION AUX INTERDICTIONS DE DESTRUCTION DE SPECIMENS D’ESPECES ANIMALES PROTEGEES ET DE LEURS HABITATS | 89  |
+|  7.3. ANNEXE N°3 – DETAIL ESTIMATIF DES COUTS | 100  |
+
+Opération de lycée / collège sur la commune du Barp (33) – Plan de gestion des espaces de compensation et des zones évitées
+
+Région Nouvelle-Aquitaine
+
+2

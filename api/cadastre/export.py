@@ -45,6 +45,7 @@ def exporter_parcellaire_intersections(
                             FROM bancarisation.unites_de_gestion_surf
                             WHERE projet_id = %s
                               AND geom_3857 IS NOT NULL
+                              AND statut = 'ug'
                               AND ug_id IS NOT NULL AND ug_id <> ''
                               AND (%s::text[] IS NULL OR ug_id = ANY(%s))
                             UNION ALL
@@ -52,6 +53,7 @@ def exporter_parcellaire_intersections(
                             FROM bancarisation.unites_de_gestion_lin
                             WHERE projet_id = %s
                               AND geom_3857 IS NOT NULL
+                              AND statut = 'ug'
                               AND ug_id IS NOT NULL AND ug_id <> ''
                               AND (%s::text[] IS NULL OR ug_id = ANY(%s))
                             UNION ALL
@@ -59,6 +61,7 @@ def exporter_parcellaire_intersections(
                             FROM bancarisation.unites_de_gestion_pct
                             WHERE projet_id = %s
                               AND geom_3857 IS NOT NULL
+                              AND statut = 'ug'
                               AND ug_id IS NOT NULL AND ug_id <> ''
                               AND (%s::text[] IS NULL OR ug_id = ANY(%s))
                         ) t

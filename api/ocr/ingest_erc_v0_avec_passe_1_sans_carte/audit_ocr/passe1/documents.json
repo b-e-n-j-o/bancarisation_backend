@@ -1,0 +1,40 @@
+[
+ {
+  "nom": "90_33_Lyce_e_College_Le_Barp.pdf",
+  "role": "arrete",
+  "indice": "motif « arrete portant derogation » en tête de document",
+  "pages": 19,
+  "pages_scannees": 3,
+  "sous_documents": []
+ },
+ {
+  "nom": "ITK.xlsx",
+  "role": "tableur",
+  "indice": "extension tableur",
+  "pages": 0,
+  "pages_scannees": 0,
+  "sous_documents": []
+ },
+ {
+  "nom": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+  "role": "plan_gestion",
+  "indice": "nom de fichier",
+  "pages": 102,
+  "pages_scannees": 2,
+  "sous_documents": [
+   {
+    "num": 1,
+    "titre": "arrete prefectoral de demande d autorisation de defrichement | 82 | | 7.2. annexe n2 arrete prefectoral de demande de derogation aux interdictions de destruction de specimens d especes animales protegees et de leurs habitats | 89 | | 7.3. annexe n3 detail estimatif des couts | 100 | operation de lycee / college sur la commune du barp (33) plan de gestion des espaces de compensation et des zones evitees region nouvelle-aquitaine 2 eco-compensation simehtis fage decembre 2021 # table des figures fig. 1. plan castral du projet source bkm",
+    "role_probable": "arrete"
+   }
+  ]
+ },
+ {
+  "nom": "SIG.zip",
+  "role": "sig",
+  "indice": "6 couche(s) géographique(s) dans l'archive",
+  "pages": 0,
+  "pages_scannees": 0,
+  "sous_documents": []
+ }
+]

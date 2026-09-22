@@ -1,0 +1,4 @@
+# Denylist d'IPs (une par ligne). Repli aussi via BLOCKED_IPS (virgules) sur Coolify.
+# Utile contre un scanner qui reste sur la même VPS ; inefficace face à une rotation massive.
+
+136.115.183.53

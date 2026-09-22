@@ -1,0 +1,49 @@
+{
+ "vocabulaire": {
+  "unite_terme": "unité de gestion",
+  "unite_prefixes": ["UG"],
+  "unite_exemples": ["UG 1", "UG 2, UG 4 et UG 6"],
+  "action_forme": "code",
+  "action_familles": [
+   {"prefixe": "TU", "libelle": "travaux uniques", "citation": {"page": 37, "texte": "Les travaux uniques (TU) : Travaux de restauration"}},
+   {"prefixe": "TE", "libelle": "travaux d'entretien", "citation": {"page": 37, "texte": "Les travaux d'entretien (TE) : Opérations visant à entretenir"}},
+   {"prefixe": "SE", "libelle": "suivis et études", "citation": {"page": 37, "texte": "Les suivis et études (SE) : Amélioration des connaissances"}},
+   {"prefixe": "MG", "libelle": "mise en œuvre générale du plan de gestion", "citation": {"page": 37, "texte": "Mise en œuvre générale du plan de gestion (MG)"}}
+  ],
+  "action_exemples": ["TU 1", "TE 2", "SE 1"]
+ },
+ "fiches": [
+  {"code": "TU 1", "titre": "Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou", "page": 40},
+  {"code": "TU 5", "titre": "Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches", "page": 53},
+  {"code": "TU 7", "titre": "Créer des mares temporaires pour les amphibiens", "page": 61}
+ ],
+ "champs_fiche": {
+  "unites": ["Unités de gestion"],
+  "parcelles": ["Parcelles concernées"],
+  "objectif": ["Objectif à long terme"],
+  "periode": ["Périodicité"],
+  "fin_entete": ["Constat et justification"]
+ },
+ "tableaux": [
+  {"role": "synthese_mesures", "page": 9, "titre": "Tabl. 1. Synthèse des espaces évités et de compensation",
+   "colonnes": {"mesure": "Mesure", "cible": "Espèce parapluie et cortège d'espèce", "surface": "Surface gérée dans le cadre du plan de gestion"}},
+  {"role": "synthese_actions", "page": 38, "titre": "Tabl. 5. Tableau de synthèse du programme d'actions",
+   "colonnes": {"code": "Numéro de la mesure", "unite": "Unité de gestion", "intitule": "Opérations du plan de travail",
+                "cible": "Espèce parapluie et cortège d'espèce", "objectif": "Objectifs à long terme"}},
+  {"role": "parcelles", "page": 26, "titre": "Tabl. 3. Synthèse des parcelles retenues pour le compensation Fadet des laîches",
+   "colonnes": {"section": "Section", "numero": "Numéro", "subdivision": "Subdivision fiscale", "surface": "Surface en ha"},
+   "pages_suite": [27]},
+  {"role": "synthese_actions", "page": 44, "titre": "Tableau des actions (inventé)",
+   "colonnes": {"code": "Code action", "unite": "Secteur"}}
+ ],
+ "sections": [
+  {"role": "unites_gestion", "titre": "6.2. Mesures de gestion et unités de gestion", "page_debut": 37, "page_fin": 39},
+  {"role": "fiches", "titre": "6.3. Description des actions prévues", "page_debut": 40, "page_fin": 79},
+  {"role": "planning", "titre": "6.4. Planning de mise en œuvre des actions sur 50 ans", "page_debut": 80, "page_fin": 81},
+  {"role": "annexe", "titre": "VII. Annexes", "page_debut": 82, "page_fin": 102}
+ ],
+ "conventions": {"etat_zero": 2022, "annee_N": 2023, "annee_fin": 2072, "montants": "inconnu",
+  "citations": [{"page": 59, "texte": "Etat zéro | N | N+1"}, {"page": 5, "texte": "sur la période 2022 à 2072 soit 50 ans"}]},
+ "annexes": [{"titre": "Annexe n°1 – Arrêté préfectoral de demande d'autorisation de défrichement", "page_debut": 82, "page_fin": 88, "type": "arrete"}],
+ "remarques": ["La fiche TU 7 est inventée pour tester la vérification."]
+}

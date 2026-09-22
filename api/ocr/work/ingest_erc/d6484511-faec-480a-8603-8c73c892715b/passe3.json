@@ -1,0 +1,3550 @@
+{
+ "empreinte_referentiel": "86ab4d6099684bf98adadf272e359b745973404bdaa3094ad3cb461e37671e7a",
+ "annee_fin": 2072,
+ "echeances": [
+  {
+   "id": "MG1-0f3edaa61d",
+   "code_operation": "MG1",
+   "type_operation": "MG",
+   "type_metier": "autre",
+   "libelle": "Pilotage et coordination du programme d'actions",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug1",
+    "ug2",
+    "ug3",
+    "ug4",
+    "ug5",
+    "ug6",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "aucune date écrite",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": null,
+    "extrait": null,
+    "doc": null,
+    "loc": null
+   },
+   "confiance": 0.0,
+   "champs_a_confirmer": [
+    "recurrence"
+   ],
+   "avertissements": [
+    "aucune date trouvée dans les documents"
+   ]
+  },
+  {
+   "id": "MG2-e7a5060fd6",
+   "code_operation": "MG2",
+   "type_operation": "MG",
+   "type_metier": "autre",
+   "libelle": "d - Assurer la mise en œuvre du programme d'actions",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug1",
+    "ug2",
+    "ug3",
+    "ug4",
+    "ug5",
+    "ug6",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "aucune date écrite",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": null,
+    "extrait": null,
+    "doc": null,
+    "loc": null
+   },
+   "confiance": 0.0,
+   "champs_a_confirmer": [
+    "recurrence"
+   ],
+   "avertissements": [
+    "aucune date trouvée dans les documents"
+   ]
+  },
+  {
+   "id": "SE1-de57d1a71b",
+   "code_operation": "SE1",
+   "type_operation": "SE",
+   "type_metier": "autre",
+   "libelle": "Suivi des milieux naturels, de la flore et de la faune",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug1",
+    "ug2",
+    "ug3",
+    "ug4",
+    "ug5",
+    "ug6",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "aucune date écrite",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": null,
+    "extrait": null,
+    "doc": null,
+    "loc": null
+   },
+   "confiance": 0.0,
+   "champs_a_confirmer": [
+    "recurrence"
+   ],
+   "avertissements": [
+    "aucune date trouvée dans les documents"
+   ]
+  },
+  {
+   "id": "SE2-0595004f48",
+   "code_operation": "SE2",
+   "type_operation": "SE",
+   "type_metier": "autre",
+   "libelle": "Suivi hydraulique",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug1",
+    "ug2",
+    "ug3",
+    "ug4",
+    "ug5",
+    "ug6",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "aucune date écrite",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": null,
+    "extrait": null,
+    "doc": null,
+    "loc": null
+   },
+   "confiance": 0.0,
+   "champs_a_confirmer": [
+    "recurrence"
+   ],
+   "avertissements": [
+    "aucune date trouvée dans les documents"
+   ]
+  },
+  {
+   "id": "TE1-69820ca337",
+   "code_operation": "TE1",
+   "type_operation": "TE",
+   "type_metier": "autre",
+   "libelle": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG1, UG3)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug1",
+    "ug3"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2027,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2027,
+     2030,
+     2032,
+     2035,
+     2037
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": "10-01",
+    "fin": "02-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 63,
+    "extrait": "L'entretien sera à prévoir tous les 5 à 8 ans [...] les bandes paires feront l'objet d'un entretien après plantation aux",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.63-66"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TE2-76821e8b36",
+   "code_operation": "TE2",
+   "type_operation": "TE",
+   "type_metier": "autre",
+   "libelle": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG2, UG4, UG6)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2025,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2025,
+     2027,
+     2028,
+     2030,
+     2031,
+     2033,
+     2034,
+     2036,
+     2037
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": "09-01",
+    "fin": "02-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 66,
+    "extrait": "L'entretien sera à prévoir tous les 3 ans [...] les bandes paires feront l'objet d'un entretien après plantation aux ann",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.66-69"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TE3-36ab0b1c9f",
+   "code_operation": "TE3",
+   "type_operation": "TE",
+   "type_metier": "autre",
+   "libelle": "Lutter contre la Fougère aigle — Lutter contre la Fougère aigle (UG UG2, UG4, UG6)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "campagnes",
+    "intervalle_ans": null,
+    "occurrences_par_an": 2,
+    "duree_ans": 4,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 69,
+    "extrait": "Chaque intervention se traduira par deux campagnes par an (juin et août) pendant quatre ans minimum.",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.69-71"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TE3-36ab0b1c9f",
+   "code_operation": "TE3",
+   "type_operation": "TE",
+   "type_metier": "autre",
+   "libelle": "Lutter contre la Fougère aigle — Lutter contre la Fougère aigle (UG UG2, UG4, UG6)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "Apparition et/ou repousses abondantes de Fougère aigle",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 69,
+    "extrait": "En cas d'apparition et/ou de repousses abondantes de la Fougère aigle témoignant d'une dégradation des habitats [...] de",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.69-71"
+   },
+   "confiance": 0.4,
+   "champs_a_confirmer": [
+    "ancrage_annee"
+   ],
+   "avertissements": []
+  },
+  {
+   "id": "TE3-36ab0b1c9f",
+   "code_operation": "TE3",
+   "type_operation": "TE",
+   "type_metier": "autre",
+   "libelle": "Lutter contre la Fougère aigle — Lutter contre la Fougère aigle (UG UG2, UG4, UG6)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "préalable au passage du rouleau brise fougère",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "10-01",
+    "fin": "02-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 69,
+    "extrait": "Au préalable l'entreprise travaux devra prévoir un broyage des vieilles souches de Pin maritime et de la végétation exis",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.69-71"
+   },
+   "confiance": 0.4,
+   "champs_a_confirmer": [
+    "ancrage_annee"
+   ],
+   "avertissements": []
+  },
+  {
+   "id": "TU1-f5a207df3d",
+   "code_operation": "TU1",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug1"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2022,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2022,
+     2023,
+     2024,
+     2025,
+     2027,
+     2029,
+     2030,
+     2032,
+     2034,
+     2035,
+     2037,
+     2039,
+     2040,
+     2041,
+     2042,
+     2044,
+     2045,
+     2046,
+     2047,
+     2049
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": null,
+    "extrait": "TU 1",
+    "doc": "ITK.xlsx",
+    "loc": "ITK Fauvette et Fadet!G46"
+   },
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ]
+  },
+  {
+   "id": "TU2-76c8ceb7ed",
+   "code_operation": "TU2",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG3)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug3"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "periodique",
+    "intervalle_ans": 50.0,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2023,
+    "annee_fin": 2072,
+    "regle_source": null,
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "10-01",
+    "fin": "02-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 43,
+    "extrait": "Ces espaces resteront attractifs durant la totalité de la mesure compensatoire soit 50 ans. [...] Ces travaux devront êt",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.43-48"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TU3-c9bf05f0ba",
+   "code_operation": "TU3",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2023,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2023,
+     2028,
+     2037,
+     2042,
+     2051,
+     2052,
+     2068,
+     2072
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": "11-01",
+    "fin": "02-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 48,
+    "extrait": "La première partie de la compensation N à N+14 sera mise en œuvre sur une parcelle devant faire l'objet d'un programme d",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.48-51"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TU3-c9bf05f0ba",
+   "code_operation": "TU3",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "paliers",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [
+     {
+      "intervalle_ans": 7.0,
+      "nombre_occurrences": 4
+     }
+    ],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "11-01",
+    "fin": "02-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 48,
+    "extrait": "La première éclaircie entre 12 et 15 ans [...] La deuxième éclaircie entre 19 et 22 ans [...] La troisième éclaircie ent",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.48-51"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TU3-c9bf05f0ba",
+   "code_operation": "TU3",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "periodique",
+    "intervalle_ans": 1.0,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2023,
+    "annee_fin": 2025,
+    "regle_source": null,
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "11-01",
+    "fin": "03-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 48,
+    "extrait": "Un dégagement manuel sur la ligne de plantation pourra être effectué au cours des trois premières années [...] en dehors",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.48-51"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TU4-0879868245",
+   "code_operation": "TU4",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG4)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug4"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "periodique",
+    "intervalle_ans": 50.0,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2023,
+    "annee_fin": 2072,
+    "regle_source": null,
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "11-01",
+    "fin": "03-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 51,
+    "extrait": "Ces espaces resteront attractifs durant la totalité de la mesure compensatoire soit 50 ans. [...] soit entre le 1er nove",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.51-53"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TU5-8d9681ae9d",
+   "code_operation": "TU5",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG6)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug6"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "ponctuel",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2023,
+    "annee_fin": 2023,
+    "regle_source": null,
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "11-01",
+    "fin": "03-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 53,
+    "extrait": "Une éclaircie à la débroussailleuse à lame dès la première année des jeunes Pins maritime [...] Tous les travaux [...] d",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.53-58"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TU5-8d9681ae9d",
+   "code_operation": "TU5",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG6)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug6"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "maladie et/ou arbres jugés dangereux",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "11-01",
+    "fin": "03-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 53,
+    "extrait": "Une coupe sanitaire en cas de maladie et/ou d'arbres jugés dangereux pour les riverains",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.53-58"
+   },
+   "confiance": 0.4,
+   "champs_a_confirmer": [
+    "ancrage_annee"
+   ],
+   "avertissements": []
+  },
+  {
+   "id": "TU6-9b6796546d",
+   "code_operation": "TU6",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "periodique",
+    "intervalle_ans": 50.0,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2023,
+    "annee_fin": 2072,
+    "regle_source": null,
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 58,
+    "extrait": "Absence d'exploitation des feuillus et des résineux matures durant la totalité de la mesure de compensation (50 ans)",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.58-63"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TU6-9b6796546d",
+   "code_operation": "TU6",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "periodique",
+    "intervalle_ans": 1.0,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2023,
+    "annee_fin": 2051,
+    "regle_source": null,
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "09-01",
+    "fin": "02-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 58,
+    "extrait": "Clôture / Pose nichoirs [...] N [...] N+28",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.58-63"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TU6-9b6796546d",
+   "code_operation": "TU6",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2037,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2037,
+     2052
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 58,
+    "extrait": "Renouvellement nichoirs si nécessaire [...] N+14 [...] N+29",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.58-63"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  }
+ ],
+ "occurrences": [
+  {
+   "echeance_cle": "TE1-69820ca337",
+   "annee": 2027,
+   "code": "TE 1",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG1, UG3)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1",
+    "ug3"
+   ],
+   "mois_debut": 10,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE1-69820ca337",
+   "annee": 2030,
+   "code": "TE 1",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG1, UG3)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1",
+    "ug3"
+   ],
+   "mois_debut": 10,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE1-69820ca337",
+   "annee": 2032,
+   "code": "TE 1",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG1, UG3)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1",
+    "ug3"
+   ],
+   "mois_debut": 10,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE1-69820ca337",
+   "annee": 2035,
+   "code": "TE 1",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG1, UG3)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1",
+    "ug3"
+   ],
+   "mois_debut": 10,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE1-69820ca337",
+   "annee": 2037,
+   "code": "TE 1",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG1, UG3)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1",
+    "ug3"
+   ],
+   "mois_debut": 10,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE2-76821e8b36",
+   "annee": 2025,
+   "code": "TE 2",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG2, UG4, UG6)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE2-76821e8b36",
+   "annee": 2027,
+   "code": "TE 2",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG2, UG4, UG6)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE2-76821e8b36",
+   "annee": 2028,
+   "code": "TE 2",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG2, UG4, UG6)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE2-76821e8b36",
+   "annee": 2030,
+   "code": "TE 2",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG2, UG4, UG6)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE2-76821e8b36",
+   "annee": 2031,
+   "code": "TE 2",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG2, UG4, UG6)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE2-76821e8b36",
+   "annee": 2033,
+   "code": "TE 2",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG2, UG4, UG6)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE2-76821e8b36",
+   "annee": 2034,
+   "code": "TE 2",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG2, UG4, UG6)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE2-76821e8b36",
+   "annee": 2036,
+   "code": "TE 2",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG2, UG4, UG6)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TE2-76821e8b36",
+   "annee": 2037,
+   "code": "TE 2",
+   "titre": "b - Préserver les espaces de landes — b - Préserver les espaces de landes (UG UG2, UG4, UG6)",
+   "categorie": "TE",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2022,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2023,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2024,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2025,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2027,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2029,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2030,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2032,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2034,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2035,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2037,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2039,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2040,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2041,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2042,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2044,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2045,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2046,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2047,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU1-f5a207df3d",
+   "annee": 2049,
+   "code": "TU 1",
+   "titre": "a - Réorienter les pratiques sylvicoles",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug1"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.75,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+    "lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU2-76c8ceb7ed",
+   "annee": 2023,
+   "code": "TU 2",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG3)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug3"
+   ],
+   "mois_debut": 10,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2023,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2028,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2037,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2042,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2051,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2052,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2068,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2072,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2023,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 3,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2024,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 3,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU3-c9bf05f0ba",
+   "annee": 2025,
+   "code": "TU 3",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug2"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 3,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU4-0879868245",
+   "annee": 2023,
+   "code": "TU 4",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG4)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug4"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 3,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU5-8d9681ae9d",
+   "annee": 2023,
+   "code": "TU 5",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG6)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug6"
+   ],
+   "mois_debut": 11,
+   "mois_fin": 3,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2023,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2023,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2024,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2025,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2026,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2027,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2028,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2029,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2030,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2031,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2032,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2033,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2034,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2035,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2036,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2037,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2038,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2039,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2040,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2041,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2042,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2043,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2044,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2045,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2046,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2047,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2048,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2049,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2050,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2051,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": 9,
+   "mois_fin": 2,
+   "traverse_nouvel_an": true,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2037,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "TU6-9b6796546d",
+   "annee": 2052,
+   "code": "TU 6",
+   "titre": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG5, UG7)",
+   "categorie": "TU",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [
+    "ug5",
+    "ug7"
+   ],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": [],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  }
+ ],
+ "non_placables": [
+  {
+   "id": "MG1-0f3edaa61d",
+   "code_operation": "MG1",
+   "type_operation": "MG",
+   "type_metier": "autre",
+   "libelle": "Pilotage et coordination du programme d'actions",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug1",
+    "ug2",
+    "ug3",
+    "ug4",
+    "ug5",
+    "ug6",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "aucune date écrite",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": null,
+    "extrait": null,
+    "doc": null,
+    "loc": null
+   },
+   "confiance": 0.0,
+   "champs_a_confirmer": [
+    "recurrence"
+   ],
+   "avertissements": [
+    "aucune date trouvée dans les documents"
+   ]
+  },
+  {
+   "id": "MG2-e7a5060fd6",
+   "code_operation": "MG2",
+   "type_operation": "MG",
+   "type_metier": "autre",
+   "libelle": "d - Assurer la mise en œuvre du programme d'actions",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug1",
+    "ug2",
+    "ug3",
+    "ug4",
+    "ug5",
+    "ug6",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "aucune date écrite",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": null,
+    "extrait": null,
+    "doc": null,
+    "loc": null
+   },
+   "confiance": 0.0,
+   "champs_a_confirmer": [
+    "recurrence"
+   ],
+   "avertissements": [
+    "aucune date trouvée dans les documents"
+   ]
+  },
+  {
+   "id": "SE1-de57d1a71b",
+   "code_operation": "SE1",
+   "type_operation": "SE",
+   "type_metier": "autre",
+   "libelle": "Suivi des milieux naturels, de la flore et de la faune",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug1",
+    "ug2",
+    "ug3",
+    "ug4",
+    "ug5",
+    "ug6",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "aucune date écrite",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": null,
+    "extrait": null,
+    "doc": null,
+    "loc": null
+   },
+   "confiance": 0.0,
+   "champs_a_confirmer": [
+    "recurrence"
+   ],
+   "avertissements": [
+    "aucune date trouvée dans les documents"
+   ]
+  },
+  {
+   "id": "SE2-0595004f48",
+   "code_operation": "SE2",
+   "type_operation": "SE",
+   "type_metier": "autre",
+   "libelle": "Suivi hydraulique",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug1",
+    "ug2",
+    "ug3",
+    "ug4",
+    "ug5",
+    "ug6",
+    "ug7"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "aucune date écrite",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": null,
+    "extrait": null,
+    "doc": null,
+    "loc": null
+   },
+   "confiance": 0.0,
+   "champs_a_confirmer": [
+    "recurrence"
+   ],
+   "avertissements": [
+    "aucune date trouvée dans les documents"
+   ]
+  },
+  {
+   "id": "TE3-36ab0b1c9f",
+   "code_operation": "TE3",
+   "type_operation": "TE",
+   "type_metier": "autre",
+   "libelle": "Lutter contre la Fougère aigle — Lutter contre la Fougère aigle (UG UG2, UG4, UG6)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "campagnes",
+    "intervalle_ans": null,
+    "occurrences_par_an": 2,
+    "duree_ans": 4,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 69,
+    "extrait": "Chaque intervention se traduira par deux campagnes par an (juin et août) pendant quatre ans minimum.",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.69-71"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TE3-36ab0b1c9f",
+   "code_operation": "TE3",
+   "type_operation": "TE",
+   "type_metier": "autre",
+   "libelle": "Lutter contre la Fougère aigle — Lutter contre la Fougère aigle (UG UG2, UG4, UG6)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "Apparition et/ou repousses abondantes de Fougère aigle",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 69,
+    "extrait": "En cas d'apparition et/ou de repousses abondantes de la Fougère aigle témoignant d'une dégradation des habitats [...] de",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.69-71"
+   },
+   "confiance": 0.4,
+   "champs_a_confirmer": [
+    "ancrage_annee"
+   ],
+   "avertissements": []
+  },
+  {
+   "id": "TE3-36ab0b1c9f",
+   "code_operation": "TE3",
+   "type_operation": "TE",
+   "type_metier": "autre",
+   "libelle": "Lutter contre la Fougère aigle — Lutter contre la Fougère aigle (UG UG2, UG4, UG6)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2",
+    "ug4",
+    "ug6"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "préalable au passage du rouleau brise fougère",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "10-01",
+    "fin": "02-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 69,
+    "extrait": "Au préalable l'entreprise travaux devra prévoir un broyage des vieilles souches de Pin maritime et de la végétation exis",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.69-71"
+   },
+   "confiance": 0.4,
+   "champs_a_confirmer": [
+    "ancrage_annee"
+   ],
+   "avertissements": []
+  },
+  {
+   "id": "TU3-c9bf05f0ba",
+   "code_operation": "TU3",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG2)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug2"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "paliers",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [
+     {
+      "intervalle_ans": 7.0,
+      "nombre_occurrences": 4
+     }
+    ],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "11-01",
+    "fin": "02-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 48,
+    "extrait": "La première éclaircie entre 12 et 15 ans [...] La deuxième éclaircie entre 19 et 22 ans [...] La troisième éclaircie ent",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.48-51"
+   },
+   "confiance": 0.6,
+   "champs_a_confirmer": [],
+   "avertissements": []
+  },
+  {
+   "id": "TU5-8d9681ae9d",
+   "code_operation": "TU5",
+   "type_operation": "TU",
+   "type_metier": "autre",
+   "libelle": "a - Réorienter les pratiques sylvicoles — a - Réorienter les pratiques sylvicoles (UG UG6)",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [
+    "ug6"
+   ],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "dependant_evenement",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": null,
+    "annee_fin": null,
+    "regle_source": "maladie et/ou arbres jugés dangereux",
+    "paliers": [],
+    "annees": []
+   },
+   "fenetre_intervention": {
+    "debut": "11-01",
+    "fin": "03-28",
+    "traverse_nouvel_an": true,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": 50,
+   "source": {
+    "page": 53,
+    "extrait": "Une coupe sanitaire en cas de maladie et/ou d'arbres jugés dangereux pour les riverains",
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.53-58"
+   },
+   "confiance": 0.4,
+   "champs_a_confirmer": [
+    "ancrage_annee"
+   ],
+   "avertissements": []
+  }
+ ],
+ "budget_non_ventile": [],
+ "rejets": [
+  {
+   "motif": "citation_introuvable",
+   "detail": "SE1 : lot non extrait (1 validation error for ExtractionFicheBrute\n  Invalid JSON: EOF while parsing a list at line 1 column 689 [type=json_invalid, input_value='{\"echeances\":[{\"code\":\"S...état zéro à n+)",
+   "source": {
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.71-74",
+    "extrait": null
+   }
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "SE2 : lot non extrait (1 validation error for ExtractionFicheBrute\n  Invalid JSON: EOF while parsing a list at line 1 column 689 [type=json_invalid, input_value='{\"echeances\":[{\"code\":\"S...état zéro à n+)",
+   "source": {
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.74-76",
+    "extrait": null
+   }
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "MG1 : lot non extrait (1 validation error for ExtractionFicheBrute\n  Invalid JSON: EOF while parsing a list at line 1 column 689 [type=json_invalid, input_value='{\"echeances\":[{\"code\":\"S...état zéro à n+)",
+   "source": {
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.76-78",
+    "extrait": null
+   }
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "MG2 : lot non extrait (1 validation error for ExtractionFicheBrute\n  Invalid JSON: EOF while parsing a list at line 1 column 689 [type=json_invalid, input_value='{\"echeances\":[{\"code\":\"S...état zéro à n+)",
+   "source": {
+    "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "loc": "p.78-79",
+    "extrait": null
+   }
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "code « Code mesure » absent du référentiel",
+   "source": {
+    "doc": "ITK.xlsx",
+    "loc": "ITK Fauvette et Fadet!G59",
+    "extrait": "Code mesure"
+   }
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "code « Code mesure » absent du référentiel",
+   "source": {
+    "doc": "ITK.xlsx",
+    "loc": "ITK Fauvette et Fadet!G60",
+    "extrait": "Code mesure"
+   }
+  }
+ ],
+ "avertissements": [
+  "MG1 : aucune date trouvée dans les documents",
+  "MG2 : aucune date trouvée dans les documents",
+  "SE1 : aucune date trouvée dans les documents",
+  "SE2 : aucune date trouvée dans les documents",
+  "TU1 : en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+  "TU1 : lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+  "TU1 : Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2028, 2037, 2042, 2051, 2052, 2068, 2072] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])",
+  "TU1 : Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.40-43 décrit [2023, 2024, 2025] ; tableur retenu ([2022, 2023, 2024, 2025, 2027, 2029, 2030, 2032])"
+ ],
+ "classeurs": {
+  "ITK.xlsx": {
+   "tableaux_detectes": 14,
+   "carte": {
+    "tableaux": [
+     14,
+     14
+    ],
+    "colonnes": [
+     4,
+     9
+    ],
+    "ecartes": [
+     "ITK Fauvette et Fadet#1 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#6 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#8 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#10 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#12 : colonne « Code mesure » introuvable"
+    ]
+   },
+   "roles": {
+    "Synthèse actions#1": "synthese",
+    "Synthèse actions#2": "synthese",
+    "ITK Fauvette et Fadet#1": "planning_passages",
+    "ITK Fauvette et Fadet#2": "autre",
+    "ITK Fauvette et Fadet#3": "planning_passages",
+    "ITK Fauvette et Fadet#4": "autre",
+    "ITK Fauvette et Fadet#5": "autre",
+    "ITK Fauvette et Fadet#6": "planning_passages",
+    "ITK Fauvette et Fadet#7": "autre",
+    "ITK Fauvette et Fadet#8": "planning_passages",
+    "ITK Fauvette et Fadet#9": "autre",
+    "ITK Fauvette et Fadet#10": "planning_passages",
+    "ITK Fauvette et Fadet#11": "autre",
+    "ITK Fauvette et Fadet#12": "planning_passages"
+   },
+   "libelles_associes": {}
+  }
+ },
+ "stats": {
+  "faits": 44,
+  "temporels": 44,
+  "budgets": 0,
+  "statuts": 0,
+  "echeances": 20,
+  "occurrences": 80,
+  "non_placables": 9,
+  "rejets": 6,
+  "occurrences_avec_montant": 0
+ }
+}

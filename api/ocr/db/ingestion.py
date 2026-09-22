@@ -35,11 +35,17 @@ from psycopg.types.json import Jsonb
 from api.db.env import get_database_url, load_db_env
 from api.ocr.domain.ug_ids import normalize_ug_ids
 from api.ocr.models import (
+    ActionFiche,
     ActionsResult,
+    DossierMetadata,
     DossierResult,
+    Echeance,
+    EcheanceLiee,
     EcheancesLieesResult,
     ExtractionResult,
+    HorizonGestion,
     Occurrence,
+    UniteGestionDossier,
 )
 
 _OCR_DIR = Path(__file__).resolve().parent.parent
@@ -134,12 +140,16 @@ def ingérer(
     modele_llm: str | None = None,
     nb_non_placables: int = 0,
     replace: bool = False,
+    budget_non_ventile: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """
     Sème métadonnées + actions + échéances + occurrences en UNE transaction.
 
     replace=False : refuse si le projet a déjà des occurrences IA.
     replace=True  : re-sème les occurrences IA non modifiées par l'utilisateur.
+
+    Baseline : ``montant_initial = montant_ht`` et ``annee_initiale = annee``.
+    ``budget_non_ventile`` (passe 3) est écrit dans ``ligne_budget``.
     """
     _verifier_projet(conn, projet_id)
     echeances = echeances_liees.echeances
@@ -321,8 +331,13 @@ def ingérer(
                     insert into bancarisation.occurrence (
                         projet_id, echeance_id, annee, code, titre, categorie, lib_thema, statut,
                         ug_ids, mois_debut, mois_fin, traverse_nouvel_an, origine,
-                        confiance, champs_a_confirmer, avertissements
-                    ) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                        confiance, champs_a_confirmer, avertissements,
+                        montant_ht, montant_realise, prestataire,
+                        montant_initial, annee_initiale
+                    ) values (
+                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                        %s, %s, %s, %s, %s
+                    )
                     on conflict (echeance_id, annee)
                         where origine = 'ia' and echeance_id is not null
                     do nothing
@@ -332,12 +347,24 @@ def ingérer(
                         o.lib_thema, o.statut, occ_ug_ids, o.mois_debut, o.mois_fin,
                         o.traverse_nouvel_an, o.origine, o.confiance,
                         o.champs_a_confirmer, o.avertissements,
+                        o.montant_ht, o.montant_realise, o.prestataire,
+                        o.montant_ht, o.annee,
                     ),
                 )
                 inserees += cur.rowcount
 
+            # 6. Budget non ventilé (passe 3) → ligne_budget
+            nb_non_ventile = _inserer_budget_non_ventile(
+                cur,
+                projet_id,
+                budget_non_ventile or [],
+                fichier_nom=fichier_nom,
+                fichier_hash=fichier_hash,
+                modele_llm=modele_llm,
+            )
+
             return {
-                "import_id": import_id,
+                "import_id": str(import_id),
                 "projet_id": str(projet_id),
                 "metadata": 1 if dossier else 0,
                 "actions": actions_upsert,
@@ -345,7 +372,245 @@ def ingérer(
                 "occurrences_inserees": inserees,
                 "occurrences_ia_supprimees": supprimees,
                 "occurrences_ignorees": len(occurrences) - inserees,
+                "lignes_budget_non_ventile": nb_non_ventile,
             }
+
+
+def _inserer_budget_non_ventile(
+    cur,
+    projet_id: UUID | str,
+    lignes: list[dict[str, Any]],
+    *,
+    fichier_nom: str,
+    fichier_hash: str | None,
+    modele_llm: str | None,
+) -> int:
+    """Écrit les montants sans occurrence cible dans ``ligne_budget``."""
+    if not lignes:
+        return 0
+    cur.execute(
+        """
+        insert into bancarisation.budget_import (
+            projet_id, fichier_nom, fichier_hash, modele_llm, devise,
+            nb_lignes, nb_totaux, nb_avertissements,
+            cartographie_json, avertissements
+        ) values (%s, %s, %s, %s, 'EUR', %s, 0, 0, '{}'::jsonb, '[]'::jsonb)
+        returning id
+        """,
+        (str(projet_id), fichier_nom, fichier_hash, modele_llm, len(lignes)),
+    )
+    import_id = cur.fetchone()["id"]
+    inserees = 0
+    for ligne in lignes:
+        if not isinstance(ligne, dict):
+            continue
+        source = ligne.get("source") if isinstance(ligne.get("source"), dict) else {}
+        annee, montant = ligne.get("annee"), ligne.get("montant_ht")
+        annees = {str(annee): montant} if annee is not None and montant is not None else {}
+        code = ligne.get("code")
+        motif = ligne.get("motif") or "Budget non ventilé"
+        grain = ligne.get("grain") or ""
+        libelle = f"{code} — {motif}" if code else (f"{motif} ({grain})" if grain else motif)
+        cur.execute(
+            """
+            insert into bancarisation.ligne_budget (
+                projet_id, import_id,
+                libelle_prestation, libelle_action, code_mesure, prestataire,
+                montant_ht, annees, ligne_json, source_feuille,
+                action_associee, champs_a_confirmer
+            ) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """,
+            (
+                str(projet_id),
+                import_id,
+                libelle,
+                code,
+                code,
+                ligne.get("prestataire"),
+                montant,
+                Jsonb(annees),
+                Jsonb(ligne),
+                source.get("doc") or source.get("loc"),
+                code,
+                ["ventilation"],
+            ),
+        )
+        inserees += 1
+    return inserees
+
+
+def _texte(v: Any) -> str | None:
+    if v is None or v == "":
+        return None
+    if isinstance(v, dict):
+        return v.get("nom") or v.get("valeur") or None
+    return str(v)
+
+
+def _date_iso(v: Any):
+    from datetime import date as _date
+    if not v:
+        return None
+    s = str(v)[:10]
+    try:
+        return _date.fromisoformat(s)
+    except ValueError:
+        return None
+
+
+def dossier_depuis_referentiel(ref) -> DossierResult:
+    """Socle projet : champs nuds du référentiel verrouillé."""
+    p = ref.projet or {}
+    commune = p.get("commune")
+    if isinstance(commune, dict):
+        commune = commune.get("nom")
+    communes = [commune] if commune else []
+    ugs = [
+        UniteGestionDossier(id=u.ug_code, objectif=str(u.libelle) if u.libelle else None)
+        for u in ref.ugs
+    ]
+    traces = list(getattr(ref, "questions_forcees", None) or [])
+    meta = DossierMetadata(
+        nom_operation=_texte(p.get("nom")),
+        maitre_ouvrage=_texte(p.get("maitre_ouvrage")),
+        communes=communes,
+        arrete_numero=_texte(p.get("reference_decision")),
+        arrete_date=_texte(p.get("date_decision")),
+        type_obligation=_texte(p.get("type_procedure")),
+        horizon=HorizonGestion(
+            annee_debut=p.get("annee_etat_zero") or p.get("annee_N"),
+            annee_fin=p.get("annee_fin"),
+            duree_ans=p.get("duree_ans"),
+        ),
+        unites_gestion=ugs,
+        avertissements=traces,
+        confiance=1.0,
+    )
+    return DossierResult(dossier=meta)
+
+
+def actions_depuis_referentiel(ref) -> ActionsResult:
+    import re
+    out: list[ActionFiche] = []
+    for a in ref.actions:
+        m = re.match(r"[A-Za-z]+", a.code or "")
+        cat = m.group(0).upper() if m else "MG"
+        titre = str(a.intitule or a.code)
+        out.append(ActionFiche(
+            id=a.code,
+            code=a.code,
+            categorie=cat,
+            titre=titre,
+            contenu_integral=titre,
+            description=None if a.cible is None else str(a.cible),
+            ug_ids=list(a.ugs or []),
+            confiance=1.0,
+        ))
+    return ActionsResult(actions=out)
+
+
+def calendrier_depuis_passe3(res) -> tuple[EcheancesLieesResult, list[Occurrence]]:
+    echeances: list[EcheanceLiee] = []
+    liaisons: dict[str, str] = {}
+    for raw in res.echeances or []:
+        e = Echeance.model_validate(raw)
+        liee = EcheanceLiee(**e.model_dump(), action_id=e.code_operation)
+        echeances.append(liee)
+        liaisons[e.id] = e.code_operation
+    occs = [Occurrence.model_validate(o) for o in res.occurrences or []]
+    return EcheancesLieesResult(echeances=echeances, liaisons=liaisons), occs
+
+
+def creer_projet_erc(
+    conn: psycopg.Connection,
+    ref,
+    *,
+    statut: str = "brouillon",
+) -> str:
+    """Projet issu du référentiel verrouillé. ``brouillon`` tant que le BE n'a pas relu."""
+    p = ref.projet or {}
+    commune, dept = p.get("commune"), None
+    if isinstance(commune, dict):
+        dept = commune.get("departement")
+        commune = commune.get("nom")
+    nom = _texte(p.get("nom")) or "Projet sans nom"
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            insert into bancarisation.projets (
+                organisation_id, nom, reference_interne, commune, departement,
+                type_procedure, date_decision, duree_annees, statut, description
+            ) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            returning id
+            """,
+            (
+                ORGANISATION_ID_V0,
+                nom,
+                _texte(p.get("reference_decision")),
+                commune,
+                str(dept) if dept else None,
+                _texte(p.get("type_procedure")),
+                _date_iso(p.get("date_decision")),
+                p.get("duree_ans"),
+                statut,
+                f"empreinte {ref.empreinte}",
+            ),
+        )
+        projet_id = str(cur.fetchone()["id"])
+    log.info("Projet ERC créé : %s (%s)", projet_id, nom)
+    return projet_id
+
+
+def ingérer_changeset(
+    conn: psycopg.Connection,
+    ref,
+    res,
+    *,
+    projet_id: str | None = None,
+    fichier_nom: str = "ingest_erc",
+    replace: bool = False,
+) -> dict[str, Any]:
+    """Applique le référentiel verrouillé + ResultatPasse3.
+
+    Ordre : projet → actions → échéances / occurrences / budget non ventilé.
+    Les géométries UG (zone_sig) sont écrites à part, après commit.
+    """
+    dossier = dossier_depuis_referentiel(ref)
+    traces = list(res.avertissements or [])[:80]
+    rejets = list(res.rejets or [])
+    if rejets:
+        motifs: dict[str, int] = {}
+        for r in rejets:
+            m = getattr(r, "motif", None) if not isinstance(r, dict) else r.get("motif")
+            if m:
+                motifs[str(m)] = motifs.get(str(m), 0) + 1
+        traces.insert(
+            0,
+            f"{len(rejets)} rejets passe 3 : "
+            + ", ".join(f"{k}={v}" for k, v in motifs.items()),
+        )
+    dossier.dossier.avertissements = traces
+    actions = actions_depuis_referentiel(ref)
+    echeances_liees, occs = calendrier_depuis_passe3(res)
+    if projet_id:
+        _verifier_projet(conn, projet_id)
+    else:
+        projet_id = creer_projet_erc(conn, ref, statut="brouillon")
+    recap = ingérer(
+        conn,
+        projet_id,
+        dossier=dossier,
+        actions=actions,
+        echeances_liees=echeances_liees,
+        occurrences=occs,
+        fichier_nom=fichier_nom,
+        fichier_hash=ref.empreinte,
+        nb_non_placables=len(res.non_placables or []),
+        replace=replace,
+        budget_non_ventile=list(res.budget_non_ventile or []),
+    )
+    recap["empreinte"] = ref.empreinte
+    return recap
 
 
 def charger_occurrences(chemin: Path) -> tuple[list[Occurrence], int]:

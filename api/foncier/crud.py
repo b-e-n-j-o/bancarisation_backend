@@ -255,6 +255,7 @@ def _lier_ugs_sql(table: str) -> str:
           ON p.projet_id = link.projet_id AND p.idu = link.idu
         JOIN bancarisation.{ug_table} u
           ON u.projet_id = link.projet_id AND u.ug_id = link.ug_id
+         AND u.statut = 'ug'
         WHERE link.projet_id = %s
           AND (%s::text IS NULL OR link.idu = %s)
         ON CONFLICT (ug_id, parcelle_id) DO NOTHING
@@ -292,13 +293,13 @@ def importer_depuis_cadastre(
                     """
                     SELECT EXISTS (
                       SELECT 1 FROM bancarisation.unites_de_gestion_surf
-                      WHERE projet_id = %s AND geom_3857 IS NOT NULL
+                      WHERE projet_id = %s AND geom_3857 IS NOT NULL AND statut = 'ug'
                       UNION ALL
                       SELECT 1 FROM bancarisation.unites_de_gestion_lin
-                      WHERE projet_id = %s AND geom_3857 IS NOT NULL
+                      WHERE projet_id = %s AND geom_3857 IS NOT NULL AND statut = 'ug'
                       UNION ALL
                       SELECT 1 FROM bancarisation.unites_de_gestion_pct
-                      WHERE projet_id = %s AND geom_3857 IS NOT NULL
+                      WHERE projet_id = %s AND geom_3857 IS NOT NULL AND statut = 'ug'
                     )
                     """,
                     (pid, pid, pid),

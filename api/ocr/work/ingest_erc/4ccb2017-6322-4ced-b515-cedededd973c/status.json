@@ -1,0 +1,19 @@
+{
+  "job_id": "4ccb2017-6322-4ced-b515-cedededd973c",
+  "status": "running",
+  "etape": "carte",
+  "message": "Cartographie du plan de gestion et du tableur…",
+  "fichiers": [
+    "90_33_Lyce_e_College_Le_Barp.pdf",
+    "ITK.xlsx",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "SIG.zip"
+  ],
+  "erreur": null,
+  "vue": null,
+  "validation": null,
+  "passe3": null,
+  "projet_id": null,
+  "started_at": "2026-09-21T19:36:36.772900+00:00",
+  "updated_at": "2026-09-21T19:37:04.643912+00:00"
+}

@@ -992,13 +992,13 @@ def latitude_projet(projet_id: UUID) -> float | None:
                 SELECT ST_Y(ST_Transform(ST_Centroid(ST_Collect(g)), 4326)) AS lat
                 FROM (
                   SELECT geom_3857 AS g FROM bancarisation.unites_de_gestion_surf
-                   WHERE projet_id = %s AND geom_3857 IS NOT NULL
+                   WHERE projet_id = %s AND geom_3857 IS NOT NULL AND statut = 'ug'
                   UNION ALL
                   SELECT geom_3857 FROM bancarisation.unites_de_gestion_lin
-                   WHERE projet_id = %s AND geom_3857 IS NOT NULL
+                   WHERE projet_id = %s AND geom_3857 IS NOT NULL AND statut = 'ug'
                   UNION ALL
                   SELECT geom_3857 FROM bancarisation.unites_de_gestion_pct
-                   WHERE projet_id = %s AND geom_3857 IS NOT NULL
+                   WHERE projet_id = %s AND geom_3857 IS NOT NULL AND statut = 'ug'
                 ) s
                 """,
                 (str(projet_id), str(projet_id), str(projet_id)),

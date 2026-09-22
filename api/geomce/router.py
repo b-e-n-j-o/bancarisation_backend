@@ -37,6 +37,7 @@ class GeomceChampsPatch(BaseModel):
 
 class ExportRequest(BaseModel):
     mode: Literal["complet", "geometrie_seule"] = "complet"
+    # « multipart » n'est pas dans la notice ; le mode documenté est « eclate ».
     strategie_geom: Literal["multipart", "eclate"] = STRATEGIE_GEOM_DEFAUT  # type: ignore[assignment]
     confirmer_doublon: bool = False
 
@@ -240,7 +241,7 @@ def exporter(projet_id: UUID, body: ExportRequest) -> dict[str, Any]:
                 "etapes": [
                     "Dans GéoMCE : Mesure → Importer une mesure",
                     "Affilier le projet et la procédure (libellés ci-dessous)",
-                    "Parcourir et sélectionner le ZIP généré",
+                    "Parcourir et sélectionner le ZIP généré (fichiers .shp, .shx, .dbf à la racine)",
                 ],
                 "projet_libelle": projet.get("geomce_projet_libelle") or projet.get("nom"),
                 "procedure_libelle": projet.get("geomce_procedure_libelle") or projet.get("type_procedure"),

@@ -28,6 +28,7 @@ SELECT
     ST_AsGeoJSON(ST_Transform(geom_3857, 4326))::text AS geometry_geojson
 FROM bancarisation.{table}
 WHERE projet_id = %s AND ug_id = %s AND geom_3857 IS NOT NULL
+  AND statut = 'ug'
 ORDER BY created_at ASC
 """
 

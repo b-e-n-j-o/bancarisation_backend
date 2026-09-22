@@ -1,0 +1,31 @@
+{
+ "vocabulaire": {
+  "unite_terme": "secteur", "unite_prefixes": ["S", "secteur", "secteurs"],
+  "unite_exemples": ["S1, S2", "secteur S3"], "action_forme": "code",
+  "action_familles": [
+   {"prefixe": "GH", "libelle": "gestion des habitats", "citation": {"page": 2, "texte": "les opérations de gestion des habitats (GH)"}},
+   {"prefixe": "SE", "libelle": "suivi écologique", "citation": {"page": 2, "texte": "les opérations de suivi écologique (SE)"}}
+  ],
+  "action_exemples": ["GH 01", "SE 01"]
+ },
+ "fiches": [
+  {"code": "GH 01", "titre": "Fauche tardive avec export", "page": 4},
+  {"code": "GH 02", "titre": "Pâturage extensif équin", "page": 5},
+  {"code": "SE 01", "titre": "Suivi des rhopalocères", "page": 5}
+ ],
+ "champs_fiche": {"unites": ["Localisation"], "parcelles": [], "objectif": ["Objectif du plan"], "periode": [], "fin_entete": ["Modalités"]},
+ "tableaux": [
+  {"role": "synthese_actions", "page": 2, "titre": "Tableau 2 – Opérations par secteur",
+   "colonnes": {"code": "Code", "unite": "Secteur(s)", "intitule": "Opération", "cible": "Espèces visées"}},
+  {"role": "synthese_unites", "page": 3, "titre": "Tableau 3 – Secteurs",
+   "colonnes": {"unite": "Secteur", "intitule": "Description", "surface": "Surface"}}
+ ],
+ "sections": [
+  {"role": "programme_actions", "titre": "2. Programme d'opérations", "page_debut": 2, "page_fin": 2},
+  {"role": "unites_gestion", "titre": "3. Secteurs de gestion", "page_debut": 3, "page_fin": 3},
+  {"role": "fiches", "titre": "Fiches opérations", "page_debut": 4, "page_fin": 5}
+ ],
+ "conventions": {"etat_zero": 2025, "annee_N": 2026, "annee_fin": 2034,
+  "citations": [{"page": 2, "texte": "L'état initial est réalisé en 2025 (année 0)"}]},
+ "annexes": [], "remarques": []
+}

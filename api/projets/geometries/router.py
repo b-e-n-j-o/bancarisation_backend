@@ -8,6 +8,13 @@ from uuid import UUID
 from fastapi import APIRouter, BackgroundTasks, File, Form, HTTPException, UploadFile, status
 from fastapi.responses import Response
 
+from .actions import (
+    affecter_entites,
+    creer_ug_depuis_geometries,
+    patch_entite,
+    retirer_entites,
+)
+from .apercu import apercu_sig
 from .crud import (
     compter_projets_parc_par_departement,
     lister_geometries_parc,
@@ -38,10 +45,43 @@ class RenommerUgBody(BaseModel):
     libelle: str = Field(min_length=1, max_length=200)
 
 
+class EntiteRef(BaseModel):
+    type: str = Field(pattern=r"^(surf|lin|pct)$")
+    id: str
+
+
+class PatchEntiteBody(BaseModel):
+    statut: str = Field(pattern=r"^(ug|contexte|non_affectee|ecartee)$")
+    ug_id: str | None = None
+    motif: str | None = None
+
+
+class AffecterBody(BaseModel):
+    entites: list[EntiteRef] = Field(min_length=1)
+    ug_id: str
+    motif: str | None = None
+
+
+class CreerUgBody(BaseModel):
+    entites: list[EntiteRef] = Field(min_length=1)
+    code: str = Field(min_length=1, max_length=40)
+    libelle: str = Field(min_length=1, max_length=200)
+    type_erc: str | None = None
+
+
+class RetirerBody(BaseModel):
+    entites: list[EntiteRef] = Field(min_length=1)
+    motif: str | None = None
+
+
 @router.get("/projets/{projet_id}/geometries")
-def list_geometries_route(projet_id: UUID) -> dict[str, Any]:
+def list_geometries_route(
+    projet_id: UUID,
+    statut: str | None = None,
+    type: str | None = None,
+) -> dict[str, Any]:
     try:
-        return lister_geometries_ug(projet_id)
+        return lister_geometries_ug(projet_id, statut=statut, type_geom=type)
     except GeometryIngestError as exc:
         detail = str(exc)
         code = status.HTTP_400_BAD_REQUEST
@@ -95,15 +135,82 @@ def export_shp_emprise_route(projet_id: UUID) -> Response:
     return _shp_zip_response(data, filename)
 
 
+def _http_geom(exc: GeometryIngestError) -> HTTPException:
+    detail = str(exc)
+    code = status.HTTP_404_NOT_FOUND if "introuvable" in detail.lower() else status.HTTP_400_BAD_REQUEST
+    if "connection" in detail.lower() or "postgres" in detail.lower():
+        code = status.HTTP_503_SERVICE_UNAVAILABLE
+    return HTTPException(status_code=code, detail=detail)
+
+
 @router.patch("/projets/{projet_id}/ugs/{ug_id}")
 def renommer_ug_route(projet_id: UUID, ug_id: str, body: RenommerUgBody) -> dict[str, Any]:
     """Renomme une UG (libellé sur toutes ses géométries)."""
     try:
         return renommer_ug(projet_id, ug_id, body.libelle)
     except GeometryIngestError as exc:
-        detail = str(exc)
-        code = status.HTTP_404_NOT_FOUND if "introuvable" in detail.lower() else status.HTTP_400_BAD_REQUEST
-        raise HTTPException(status_code=code, detail=detail) from exc
+        raise _http_geom(exc) from exc
+
+
+@router.patch("/geometries/{type}/{entite_id}")
+def patch_entite_route(type: str, entite_id: UUID, body: PatchEntiteBody) -> dict[str, Any]:
+    try:
+        return patch_entite(
+            type, entite_id, statut=body.statut, ug_id=body.ug_id, motif=body.motif,
+        )
+    except GeometryIngestError as exc:
+        raise _http_geom(exc) from exc
+
+
+@router.post("/geometries/affecter")
+def affecter_entites_route(body: AffecterBody) -> dict[str, Any]:
+    try:
+        return affecter_entites(
+            [e.model_dump() for e in body.entites],
+            body.ug_id,
+            motif=body.motif,
+        )
+    except GeometryIngestError as exc:
+        raise _http_geom(exc) from exc
+
+
+@router.post("/projets/{projet_id}/ug/depuis-geometries")
+def creer_ug_depuis_geometries_route(projet_id: UUID, body: CreerUgBody) -> dict[str, Any]:
+    try:
+        return creer_ug_depuis_geometries(
+            projet_id,
+            entites=[e.model_dump() for e in body.entites],
+            code=body.code,
+            libelle=body.libelle,
+            type_erc=body.type_erc,
+        )
+    except GeometryIngestError as exc:
+        raise _http_geom(exc) from exc
+
+
+@router.post("/geometries/retirer")
+def retirer_entites_route(body: RetirerBody) -> dict[str, Any]:
+    try:
+        return retirer_entites(
+            [e.model_dump() for e in body.entites],
+            motif=body.motif,
+        )
+    except GeometryIngestError as exc:
+        raise _http_geom(exc) from exc
+
+
+@router.post("/sig/apercu")
+async def apercu_sig_route(
+    files: list[UploadFile] = File(...),
+) -> dict[str, Any]:
+    """GeoJSON 4326 pour l'aperçu carte du dépôt (aucune écriture en base)."""
+    payloads: list[tuple[str, bytes]] = []
+    for f in files:
+        payloads.append((f.filename or "couche", await f.read()))
+    try:
+        return apercu_sig(payloads)
+    except GeometryIngestError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
 
 @router.get("/geometries/parc")
