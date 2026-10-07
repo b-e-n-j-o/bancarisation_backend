@@ -85,12 +85,17 @@ def get_document_content_route(document_id: UUID) -> Response:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
 
-@router.delete("/documents/{document_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/documents/{document_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_model=None,
+)
 def delete_document_route(document_id: UUID) -> None:
     try:
         delete_document(document_id)
     except DocumentServiceError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    return None
 
 
 @router.get("/documents/{document_id}/url", response_model=SignedUrlResponse)

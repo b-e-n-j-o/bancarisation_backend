@@ -425,6 +425,7 @@ def charger_plan(projet_id: UUID, plan_id: UUID) -> dict[str, Any]:
 @router.delete(
     "/projets/{projet_id}/cao/plans/{plan_id}",
     status_code=status.HTTP_204_NO_CONTENT,
+    response_model=None,
     response_class=Response,
 )
 def supprimer_plan(projet_id: UUID, plan_id: UUID) -> Response:

@@ -148,6 +148,7 @@ def attach_projet_prestataire_route(
 @router.delete(
     "/projets/{projet_id}/prestataires/{prestataire_id}",
     status_code=status.HTTP_204_NO_CONTENT,
+    response_model=None,
     response_class=Response,
 )
 def detach_projet_prestataire_route(

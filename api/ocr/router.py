@@ -246,6 +246,7 @@ def update_occurrence(
 @router.delete(
     "/occurrences/{occurrence_id}",
     status_code=status.HTTP_204_NO_CONTENT,
+    response_model=None,
     response_class=Response,
 )
 def delete_occurrence(occurrence_id: UUID, definitif: bool = False) -> Response:

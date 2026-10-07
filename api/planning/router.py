@@ -149,12 +149,17 @@ def update_action_route(action_id: UUID, payload: ActionUpdateRequest) -> dict[s
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
 
-@router.delete("/planning/actions/{action_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/planning/actions/{action_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_model=None,
+)
 def delete_action_route(action_id: UUID) -> None:
     try:
         supprimer_action(action_id)
     except PlanningCrudError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+    return None
 
 
 @router.get("/planning/unites", response_model=list[dict[str, Any]])
@@ -198,12 +203,17 @@ def update_unite_route(unite_id: UUID, payload: UniteUpdateRequest) -> dict[str,
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
 
-@router.delete("/planning/unites/{unite_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/planning/unites/{unite_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_model=None,
+)
 def delete_unite_route(unite_id: UUID) -> None:
     try:
         supprimer_unite(unite_id)
     except PlanningCrudError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+    return None
 
 
 @router.get("/planning/prestataires", response_model=list[dict[str, Any]])

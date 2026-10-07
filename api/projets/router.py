@@ -222,9 +222,14 @@ def update_projet_route(projet_id: UUID, payload: ProjetUpdateRequest) -> Projet
     return ProjetResponse(data=data)
 
 
-@router.delete("/projets/{projet_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/projets/{projet_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_model=None,
+)
 def delete_projet_route(projet_id: UUID) -> None:
     try:
         supprimer_projet(projet_id)
     except ProjetCrudError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+    return None

@@ -179,7 +179,11 @@ def modifier_route(annotation_id: UUID, payload: AnnotationUpdate) -> dict[str, 
         raise _err(exc) from exc
 
 
-@router.delete("/annotations/{annotation_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/annotations/{annotation_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_model=None,
+)
 def supprimer_route(annotation_id: UUID) -> Response:
     try:
         crud.supprimer(annotation_id)

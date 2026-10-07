@@ -81,7 +81,11 @@ def creer_acces(projet_id: UUID, body: ProjetAccesCreate) -> dict[str, Any]:
     return row
 
 
-@router.delete("/projets/{projet_id}/acces/{acces_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/projets/{projet_id}/acces/{acces_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_model=None,
+)
 def supprimer_acces(projet_id: UUID, acces_id: UUID) -> None:
     try:
         with connect_utilisateur_dict() as conn:
@@ -100,3 +104,4 @@ def supprimer_acces(projet_id: UUID, acces_id: UUID) -> None:
         raise http_from_db(exc) from exc
     if not row:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Partage introuvable.")
+    return None
