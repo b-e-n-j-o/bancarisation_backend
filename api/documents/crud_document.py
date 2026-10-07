@@ -395,6 +395,11 @@ def create_signed_url(bucket_path: str, download: Optional[str]) -> str:
 
 
 def create_signed_url_for_document(document_id: UUID, download: Optional[str] = None) -> str:
+    """Signe le chemin stocké sur la ligne, jamais un chemin fourni par le client.
+
+    Le SELECT passe par ``connect_utilisateur`` : la RLS de ``documents``
+    masque une ligne que l'appelant ne peut pas lire, et aucune URL n'est émise.
+    """
     row = _one(
         "SELECT id, bucket_path FROM bancarisation.documents WHERE id = %s",
         (str(document_id),),

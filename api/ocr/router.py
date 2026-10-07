@@ -10,7 +10,7 @@ from uuid import UUID
 from fastapi import APIRouter, BackgroundTasks, Depends, File, HTTPException, Response, UploadFile, status
 from pydantic import BaseModel, Field
 
-from api.journal_actions.acteur import acteur_depuis_headers
+from api.journal_actions.acteur import acteur_courant
 
 from .db import crud
 from .analyse_jobs import lire_status
@@ -195,7 +195,7 @@ def create_occurrence(projet_id: UUID, payload: OccurrenceCreateRequest) -> dict
 def update_occurrence(
     occurrence_id: UUID,
     payload: OccurrenceUpdateRequest,
-    acteur: str | None = Depends(acteur_depuis_headers),
+    acteur: str | None = Depends(acteur_courant),
 ) -> dict[str, Any]:
     # exclude_unset : conserve les null explicites (ex. effacer montant_ht / prestataire).
     champs = payload.model_dump(exclude_unset=True)

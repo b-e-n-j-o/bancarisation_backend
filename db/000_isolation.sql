@@ -260,6 +260,14 @@ select tests.ok(not exists (
      and not coalesce(c.reloptions @> array['security_invoker=true'], false)),
   'toutes les vues en security_invoker');
 
+select tests.ok(coalesce((
+  select c.reloptions @> array['security_invoker=true']
+    from pg_class c
+    join pg_namespace n on n.oid = c.relnamespace
+   where n.nspname = 'bancarisation' and c.relname = 'v_action_portefeuille'
+), false),
+  'v_action_portefeuille est security_invoker (pas de lecture inter-organisations)');
+
 -- ---------------------------------------------------------------------
 -- Contrôle des politiques : rien d'ancien, rien d'ouvert, chaque catégorie protégée
 -- ---------------------------------------------------------------------

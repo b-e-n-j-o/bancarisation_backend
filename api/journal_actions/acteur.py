@@ -1,29 +1,22 @@
-"""Résolution de l'auteur d'une action — placeholder jusqu'à l'auth réelle.
+"""Auteur d'une action journalisée.
 
-Les colonnes `budget_mouvement.modifie_par` et `journal_actions.acteur`
-sont déjà prévues. Tant qu'il n'y a pas de session utilisateur, on lit
-éventuellement un header, sinon on enregistre NULL (l'UI affiche
-« non identifié »).
-
-Quand l'auth arrivera : remplacer le corps de `acteur_depuis_headers`
-par le sujet JWT / e-mail du membre, sans changer les tables ni l'UI.
+L'identité vient du JWT vérifié par le middleware. Les en-têtes
+``X-Acteur`` et ``X-User-Id`` ne sont pas lus : un client pouvait
+s'y attribuer le nom de quelqu'un d'autre.
 """
 
 from __future__ import annotations
 
-from fastapi import Header
+from auth.deps import get_claims
 
 
-def acteur_depuis_headers(
-    x_acteur: str | None = Header(default=None, alias="X-Acteur"),
-    x_user_id: str | None = Header(default=None, alias="X-User-Id"),
-) -> str | None:
-    """Identifiant d'audit à poser sur le journal.
-
-    Ordre : ``X-Acteur`` (libellé / e-mail) → ``X-User-Id`` (déjà utilisé
-    côté parc DREAL). Absent → None.
-    """
-    for raw in (x_acteur, x_user_id):
-        if raw and raw.strip():
-            return raw.strip()[:200]
+def acteur_courant() -> str | None:
+    """Libellé d'audit : e-mail du jeton, sinon son sujet."""
+    claims = get_claims()
+    email = claims.get("email")
+    if isinstance(email, str) and email.strip():
+        return email.strip()[:200]
+    sub = claims.get("sub")
+    if sub:
+        return str(sub)[:200]
     return None

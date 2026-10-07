@@ -1,15 +1,18 @@
 -- =============================================================================
--- 047 — v_action_portefeuille lisible par le client anon (page /actions)
+-- 047 — v_action_portefeuille (page /actions)
 -- =============================================================================
--- Ne pas passer par v_occurrence_calendrier (security_invoker=true) : même
--- avec une vue propriétaire, l'invoker imbriqué réapplique la RLS occurrence
--- et le front reçoit 0 ligne. On part de `occurrence` en propriétaire.
+-- La vue lit `occurrence` directement. Elle reste security_invoker : un
+-- security_invoker = false la faisait tourner avec les droits du propriétaire
+-- et exposait les actions de toutes les organisations. Le « 0 ligne » observé
+-- sans session venait de l'absence d'identité, pas de la RLS.
+-- Les montants viennent de occurrence (lisible par tout lecteur du projet) :
+-- ils ne sont pas masqués par voit_finances.
 -- =============================================================================
 
 BEGIN;
 
 CREATE OR REPLACE VIEW bancarisation.v_action_portefeuille
-WITH (security_invoker = false) AS
+WITH (security_invoker = true) AS
 SELECT
   o.id,
   o.projet_id,
@@ -98,7 +101,8 @@ LEFT JOIN LATERAL (
   WHERE n.occurrence_id = o.id AND n.supprime_le IS NULL
 ) nt ON true;
 
-GRANT SELECT ON bancarisation.v_action_portefeuille TO anon, authenticated;
+REVOKE ALL ON bancarisation.v_action_portefeuille FROM PUBLIC, anon;
+GRANT SELECT ON bancarisation.v_action_portefeuille TO authenticated;
 
 COMMIT;
 
