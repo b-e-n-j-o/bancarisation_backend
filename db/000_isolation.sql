@@ -336,9 +336,6 @@ select tests.ok(not exists (
 
 -- ---------------------------------------------------------------------
 -- mon_contexte / mes_droits_projets
--- Les montants d'occurrence ne sont pas encore isolés : l'assertion
--- « un lecteur sans finances ne voit aucun montant » arrivera avec
--- la table occurrence_finance, pas ici (elle échouerait aujourd'hui).
 -- ---------------------------------------------------------------------
 select tests.en_tant_que('00000000-0000-0000-0000-0000000000a1');
 select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 2, 'admin A : deux projets');
@@ -350,6 +347,9 @@ select tests.ok((select niveau = 2 and not interne and not finances and not part
                    from bancarisation.mes_droits_projets()
                   where projet_id = '00000000-0000-0000-0000-0000000001a2'),
                 'admin A / PA2 après transfert : lecture seule, sans finances');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets(
+                   array['00000000-0000-0000-0000-0000000001b1']::uuid[])) = 0,
+                'projet invisible : aucune ligne, pas un niveau 0');
 select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 1,
                 'admin A : une appartenance');
 reset role;
@@ -403,6 +403,32 @@ select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances'
                 'admin plateforme : zéro appartenance');
 select tests.ok((bancarisation.mon_contexte()->'profil'->>'admin_plateforme')::boolean,
                 'admin plateforme : le profil le dit');
+reset role;
+
+-- CONNU, corrigé par occurrence_finance.
+-- Tant que la table n'existe pas, le script le signale et continue.
+-- Dès qu'elle existe, un externe ne doit voir aucune ligne de montant.
+do $$
+declare n int;
+begin
+  if to_regclass('bancarisation.occurrence_finance') is null then
+    raise notice 'CONNU, corrigé par occurrence_finance : un lecteur sans finances voit encore les montants d''occurrence';
+    return;
+  end if;
+  perform tests.en_tant_que('00000000-0000-0000-0000-0000000000e1');
+  execute $q$
+    select count(*)
+      from bancarisation.occurrence_finance f
+      join bancarisation.occurrence o on o.id = f.occurrence_id
+     where o.projet_id = '00000000-0000-0000-0000-0000000001a1'
+       and (f.montant_ht is not null or f.montant_engage is not null
+            or f.montant_realise is not null or f.montant_initial is not null)
+  $q$ into n;
+  if n > 0 then
+    raise exception 'ÉCHEC : externe sans finances voit des montants d''occurrence';
+  end if;
+  raise notice 'ok : externe sans finances : aucun montant d''occurrence';
+end $$;
 reset role;
 
 grant execute on function tests.echoue(text, text) to anon;

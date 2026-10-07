@@ -7,15 +7,20 @@ s'y attribuer le nom de quelqu'un d'autre.
 
 from __future__ import annotations
 
-from auth.deps import get_claims
+from auth.deps import jwt_claims
 
 
 def acteur_courant() -> str | None:
     """Identifiant d'audit : sujet du JWT (uuid), comme journal_audit.acteur_id.
 
-    L'e-mail n'est pas une clé : il peut changer. L'affichage le résout via profils.
+    Sans session (satellite, tâche planifiée, clé service) : None.
+    Ce n'est pas une erreur : le journal enregistre alors un auteur absent.
+    L'e-mail n'est pas une clé.
     """
-    sub = get_claims().get("sub")
+    claims = jwt_claims.get()
+    if not claims:
+        return None
+    sub = claims.get("sub")
     if not sub:
         return None
     return str(sub)[:200]
