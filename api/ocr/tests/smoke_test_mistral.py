@@ -228,9 +228,9 @@ def main() -> None:
         print("   GLM chez Mistral : pas de `thinking` (Z.ai). "
               "On envoie seulement reasoning_effort.")
 
-    api_key = os.environ.get("MISTRAL_API_KEY_BEN")
+    api_key = os.environ.get("MISTRAL_API_KEY")
     if not api_key:
-        sys.exit("❌ MISTRAL_API_KEY_BEN absente.")
+        sys.exit("❌ MISTRAL_API_KEY absente.")
     print(f"🔑 Clé présente ({api_key[:6]}…{api_key[-4:]})")
 
     prix = tarifs_pour(model)

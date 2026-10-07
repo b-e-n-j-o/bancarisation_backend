@@ -6,7 +6,7 @@ from uuid import UUID
 
 import psycopg
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 from api.ocr.domain.ug_ids import normalize_ug_id
 
 from .ingestion import GeometryIngestError
@@ -163,7 +163,7 @@ def patch_entite(
         code = None
 
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 row = _charger(cur, kind, str(entite_id))
                 libelle = _libelle_ug(cur, row["projet_id"], code) if code else None
@@ -211,7 +211,7 @@ def affecter_entites(
     pairs = _entites_payload(entites)
     updated: list[dict[str, Any]] = []
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 first = _charger(cur, pairs[0][0], pairs[0][1])
                 libelle = _libelle_ug(cur, first["projet_id"], code)
@@ -253,7 +253,7 @@ def creer_ug_depuis_geometries(
     motif = f"UG {ug} créée depuis une sélection"
     updated: list[dict[str, Any]] = []
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     "SELECT 1 FROM bancarisation.projets WHERE id = %s",
@@ -311,7 +311,7 @@ def retirer_entites(
     pairs = _entites_payload(entites)
     updated: list[dict[str, Any]] = []
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 for kind, eid in pairs:
                     updated.append(

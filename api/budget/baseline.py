@@ -10,7 +10,7 @@ from fastapi import APIRouter, HTTPException, status
 from psycopg.rows import dict_row
 from pydantic import BaseModel, Field
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 router = APIRouter()
 
@@ -25,7 +25,7 @@ class BaselinePayload(BaseModel):
 def get_baseline_route(projet_id: UUID) -> dict[str, Any] | None:
     """Dernière baseline figée (None si jamais figée)."""
     try:
-        with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+        with connect_utilisateur(row_factory=dict_row) as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
@@ -66,7 +66,7 @@ def figer_baseline_route(projet_id: UUID, payload: BaselinePayload) -> dict[str,
     """
     filtre_completer = "AND montant_initial IS NULL" if payload.mode == "completer" else ""
     try:
-        with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+        with connect_utilisateur(row_factory=dict_row) as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     f"""

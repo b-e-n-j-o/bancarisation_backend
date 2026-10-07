@@ -26,6 +26,7 @@ from .ingestion import (
     GeometryIngestError,
     est_erreur_connexion,
     ingest_shapefile_zip,
+    initialiser_foncier_apres_ingestion,
     persister_ug,
 )
 from .sig_analyse import (
@@ -35,7 +36,6 @@ from .sig_analyse import (
     charger_analyse,
     chemin_sidecar_couche,
 )
-from api.cadastre import enrichir_cadastre_projet
 from pydantic import BaseModel, Field
 
 router = APIRouter()
@@ -255,13 +255,9 @@ async def ingest_geometry_route(
     except GeometryIngestError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
-    cadastre_info: dict[str, Any] | None = None
+    foncier_info: dict[str, Any] | None = None
     if result.couche != "emprise":
-        try:
-            # Bbox de toutes les UG du projet (repli buffer 200 m si > 5000)
-            cadastre_info = enrichir_cadastre_projet(projet_id).to_dict()
-        except Exception as exc:  # noqa: BLE001
-            cadastre_info = {"avertissements": [str(exc)], "nb_parcelles": 0}
+        foncier_info = initialiser_foncier_apres_ingestion(projet_id)
 
     return {
         "id": result.id,
@@ -272,7 +268,8 @@ async def ingest_geometry_route(
         "geometry_type": result.geometry_type,
         "nb_features_source": result.nb_features_source,
         "srid_source": result.srid_source,
-        "cadastre": cadastre_info,
+        "foncier": foncier_info,
+        "cadastre": (foncier_info or {}).get("enrichissement"),
     }
 
 
@@ -305,12 +302,15 @@ def get_analyse_sig_route(projet_id: UUID, analyse_id: str) -> AnalyseSig:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
 
 
-def _cadastre_arriere_plan(projet_id: UUID) -> None:
+def _foncier_arriere_plan(projet_id: UUID) -> None:
     """Hors du spinner UI : l'IGN peut prendre des dizaines de secondes."""
-    try:
-        enrichir_cadastre_projet(projet_id)
-    except Exception as exc:  # noqa: BLE001
-        print(f"⚠️  Cadastre (arrière-plan) projet {projet_id} : {exc}", flush=True)
+    info = initialiser_foncier_apres_ingestion(projet_id)
+    if not info.get("ok", True):
+        print(
+            f"⚠️  Foncier (arrière-plan) projet {projet_id} : "
+            f"{info.get('avertissements')}",
+            flush=True,
+        )
 
 
 @router.post(
@@ -379,11 +379,12 @@ def confirmer_sig_route(
         raise HTTPException(status_code=code, detail=str(exc)) from exc
 
     if any(c.get("nb") for c in crees):
-        background_tasks.add_task(_cadastre_arriere_plan, projet_id)
+        background_tasks.add_task(_foncier_arriere_plan, projet_id)
 
     return {
         "analyse_id": body.analyse_id,
         "couches_persistees": crees,
         "total_entites": sum(c["nb"] for c in crees),
+        "foncier": None,
         "cadastre": None,
     }

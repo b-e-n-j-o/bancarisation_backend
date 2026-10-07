@@ -12,7 +12,7 @@ from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
 from api.journal_actions import journaliser
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 
 class SuiviError(Exception):
@@ -501,7 +501,7 @@ def construire_bilan_suivi(
 ) -> dict[str, Any]:
     """Construit le snapshot (sans archiver)."""
     pid = str(projet_id)
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -583,7 +583,7 @@ def _upsert_bilan_suivi(
 
 def lister_enveloppes_suivi(projet_id: UUID) -> list[dict[str, Any]]:
     """Enveloppes d'instruction (bilan_suivi) — visibles côté BE pour les actions à faire."""
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -617,7 +617,7 @@ def deposer_rapport_suivi(
 
     # Idempotence : déjà déposé et enveloppe encore en cours d'instruction « normale »
     if rapport.get("bilan_suivi_id"):
-        with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+        with connect_utilisateur(row_factory=dict_row) as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
@@ -637,7 +637,7 @@ def deposer_rapport_suivi(
                 "controles": rapport.get("controles") or [],
             }
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             bilan_suivi_id = _upsert_bilan_suivi(
                 cur,
@@ -700,7 +700,7 @@ def generer_bilan_suivi(
 
     # Persiste les commentaires BE sur les occurrences (source de vérité pour plus tard)
     if commentaires:
-        with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+        with connect_utilisateur(row_factory=dict_row) as conn:
             with conn.cursor() as cur:
                 for oid, texte in commentaires.items():
                     if not oid:
@@ -715,7 +715,7 @@ def generer_bilan_suivi(
                     )
                 conn.commit()
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -805,7 +805,7 @@ def generer_bilan_suivi(
 
 
 def lister_rapports_suivi(projet_id: UUID) -> list[dict[str, Any]]:
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -828,7 +828,7 @@ def lister_rapports_suivi(projet_id: UUID) -> list[dict[str, Any]]:
 
 
 def lire_rapport_suivi(rapport_id: UUID) -> dict[str, Any]:
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -858,7 +858,7 @@ def supprimer_rapport_suivi(
 ) -> dict[str, Any]:
     rapport = lire_rapport_suivi(rapport_id)
     doc_id = rapport.get("document_id")
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             journaliser(
                 action="bilan_suivi.supprimer",

@@ -10,7 +10,7 @@ from uuid import UUID
 import psycopg
 from psycopg.types.json import Jsonb
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 from api.ocr.domain.ug_ids import normalize_ug_ids
 
 class BudgetIngestError(Exception):
@@ -53,7 +53,7 @@ def ingérer_budget_json(
         ).hexdigest()
 
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 if replace:
                     cur.execute(

@@ -92,13 +92,14 @@ def vue_passe1(sortie: dict) -> dict[str, Any]:
     }
 
 
-def creer_job(fichiers: list[tuple[str, bytes]]) -> str:
+def creer_job(fichiers: list[tuple[str, bytes]], roles: list[dict[str, str]] | None = None) -> str:
     job_id = str(uuid4())
     dossier = job_dir(job_id) / "dossier"
     dossier.mkdir(parents=True, exist_ok=True)
     noms: list[str] = []
     vus: dict[str, int] = {}
-    for nom, contenu in fichiers:
+    roles_forces: dict[str, str] = {}
+    for i, (nom, contenu) in enumerate(fichiers):
         if est_bruit_macos(nom):
             continue
         ext = Path(nom).suffix.lower()
@@ -112,6 +113,15 @@ def creer_job(fichiers: list[tuple[str, bytes]]) -> str:
             sur = f"{stem}_{n}{ext}"
         (dossier / sur).write_bytes(contenu)
         noms.append(sur)
+        if roles and i < len(roles):
+            r = roles[i].get("role") if isinstance(roles[i], dict) else None
+            if r:
+                roles_forces[sur] = r
+    if roles_forces:
+        (job_dir(job_id) / "roles.json").write_text(
+            json.dumps(roles_forces, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
     ecrire_status(
         job_id,
         status="queued",
@@ -148,7 +158,11 @@ def _executer_job(job_id: str) -> None:
         ecrire_status(job_id, status="running", etape=cle, message=msg)
 
     try:
-        sortie = executer(chemins, on_etape=on_etape)
+        roles_path = job_dir(job_id) / "roles.json"
+        roles_forces = None
+        if roles_path.exists():
+            roles_forces = json.loads(roles_path.read_text(encoding="utf-8"))
+        sortie = executer(chemins, on_etape=on_etape, roles_forces=roles_forces)
         (job_dir(job_id) / "sortie.json").write_text(
             json.dumps(sortie, ensure_ascii=False, indent=1, default=str),
             encoding="utf-8",
@@ -241,23 +255,105 @@ def construire_verrouille(sortie: dict, payload: dict[str, Any]):
     return ref, verrouille, [f.model_dump() for f in extra]
 
 
+def _resume_recurrence(r: dict[str, Any] | None) -> str:
+    if not r:
+        return "—"
+    t = r.get("type") or "—"
+    bits: list[str] = [str(t)]
+    if r.get("ancrage_annee"):
+        bits.append(f"dès {r['ancrage_annee']}")
+    if r.get("annee_fin"):
+        bits.append(f"jusqu'en {r['annee_fin']}")
+    if r.get("intervalle_ans"):
+        bits.append(f"tous les {r['intervalle_ans']} an(s)")
+    if r.get("duree_ans"):
+        bits.append(f"{r['duree_ans']} ans")
+    if r.get("occurrences_par_an"):
+        bits.append(f"{r['occurrences_par_an']}×/an")
+    paliers = r.get("paliers") or []
+    if paliers:
+        bits.append(f"{len(paliers)} palier(s)")
+    annees = r.get("annees") or []
+    if annees:
+        bits.append(", ".join(str(a) for a in annees[:12]))
+    src = r.get("regle_source")
+    if src:
+        bits.append(f"« {str(src)[:90]} »")
+    return " · ".join(bits)
+
+
+def _dump(obj: Any) -> dict[str, Any]:
+    if obj is None:
+        return {}
+    if isinstance(obj, dict):
+        return obj
+    dump = getattr(obj, "model_dump", None)
+    if dump:
+        return dump(mode="json")
+    return dict(obj)
+
+
 def vue_passe3(res) -> dict[str, Any]:
-    rejets = list(res.rejets or [])
+    rejets = [_dump(r) for r in (res.rejets or [])]
+    echs = [_dump(e) for e in (res.echeances or [])]
+    occs = [_dump(o) for o in (res.occurrences or [])]
+    non_pl = [_dump(e) for e in (res.non_placables or [])]
+
+    annees_par: dict[str, list[int]] = {}
+    ht_par: dict[str, float] = {}
+    for o in occs:
+        cle = str(o.get("echeance_cle") or "")
+        if not cle:
+            continue
+        try:
+            annees_par.setdefault(cle, []).append(int(o["annee"]))
+        except (KeyError, TypeError, ValueError):
+            pass
+        if o.get("montant_ht") is not None:
+            ht_par[cle] = ht_par.get(cle, 0.0) + float(o["montant_ht"])
+
+    audit = []
+    for e in echs:
+        cle = str(e.get("id") or "")
+        rec = e.get("recurrence") if isinstance(e.get("recurrence"), dict) else {}
+        annees = sorted(set(annees_par.get(cle, [])))
+        audit.append({
+            "id": cle,
+            "code": e.get("code_operation"),
+            "libelle": e.get("libelle"),
+            "ugs": e.get("ug_ids") or [],
+            "type": rec.get("type"),
+            "regle": _resume_recurrence(rec),
+            "ancrage": rec.get("ancrage_annee"),
+            "annees": annees,
+            "nb_occ": len(annees),
+            "montant_ht": ht_par.get(cle),
+            "avertissements": (e.get("avertissements") or [])[:4],
+        })
+
     return {
         "stats": res.stats,
         "classeurs": res.classeurs,
         "nb_rejets": len(rejets),
-        "rejets_par_motif": dict(Counter(
-            (getattr(r, "motif", None) if not isinstance(r, dict) else r.get("motif"))
-            for r in rejets
-        )),
+        "rejets_par_motif": dict(Counter(r.get("motif") for r in rejets)),
+        "rejets": [
+            {"motif": r.get("motif"), "detail": str(r.get("detail") or "")[:220]}
+            for r in rejets[:50]
+        ],
         "avertissements": list(res.avertissements or [])[:40],
         "non_placables": [
-            e.get("code_operation") if isinstance(e, dict) else getattr(e, "code_operation", None)
-            for e in (res.non_placables or [])
+            {
+                "code": e.get("code_operation"),
+                "libelle": e.get("libelle"),
+                "regle": _resume_recurrence(
+                    e.get("recurrence") if isinstance(e.get("recurrence"), dict) else {}
+                ),
+            }
+            for e in non_pl
         ],
-        "budget_pose": sum((o.get("montant_ht") or 0) for o in (res.occurrences or [])),
+        "budget_pose": sum((o.get("montant_ht") or 0) for o in occs),
         "budget_non_ventile": sum((l.get("montant_ht") or 0) for l in (res.budget_non_ventile or [])),
+        "audit": audit,
     }
 
 
@@ -287,15 +383,17 @@ def lancer_passe3(job_id: str):
         raise ValueError("Référentiel verrouillé introuvable — valider d'abord.")
     ref = ReferentielVerrouille.model_validate_json(ver_path.read_text(encoding="utf-8"))
 
-    ecrire_status(
-        job_id,
-        status="passe3_en_cours",
-        etape="passe3",
-        message="Extraction du calendrier et du budget…",
-        erreur=None,
-    )
+    def annoncer(msg: str) -> None:
+        print(f"📍 {msg}", flush=True)
+        ecrire_status(job_id, status="passe3_en_cours", etape="passe3", message=msg, erreur=None)
 
-    docs = inventorier(_chemins_dossier(job_id))
+    annoncer("Analyse du dossier avec vos validations…")
+
+    roles_path = dest / "roles.json"
+    roles_forces = None
+    if roles_path.exists():
+        roles_forces = json.loads(roles_path.read_text(encoding="utf-8"))
+    docs = inventorier(_chemins_dossier(job_id), roles_forces)
     cartes = {}
     for d in docs:
         if d.role != "plan_gestion":
@@ -317,6 +415,7 @@ def lancer_passe3(job_id: str):
     plan = next((c for c in cartes.values() if c), None)
     regles = Regles.depuis(plan) if plan else Regles.defaut()
 
+    annoncer("Lecture des fiches et construction du calendrier…")
     res = executer_passe3(ref, docs, cartes, regles, cache, cartes_classeur=cartes_xl)
     (dest / "passe3.json").write_text(res.model_dump_json(indent=1), encoding="utf-8")
     vue = vue_passe3(res)
@@ -337,8 +436,8 @@ def lancer_passe3(job_id: str):
         sig_info = sortie.get("sig") or {}
         zones = sig_info.get("zones") or []
         couches = sig_info.get("couches") or []
-        doc_sig = next((d for d in docs if d.role == "sig"), None)
-        sig_zip = doc_sig.chemin if doc_sig else None
+        docs_sig = [d for d in docs if d.role == "sig"]
+        annoncer("Enregistrement du calendrier en base…")
         with connect() as conn:
             ingestion = ingérer_changeset(
                 conn, ref, res,
@@ -347,16 +446,20 @@ def lancer_passe3(job_id: str):
                 replace=bool(projet_id),
             )
             projet_id = ingestion.get("projet_id")
-        if projet_id and sig_zip:
+        if projet_id and docs_sig:
             try:
-                sig = persister_depot_sig(
-                    projet_id=projet_id,
-                    ref=ref,
-                    sig_zip=sig_zip,
-                    zones=zones,
-                    couches=couches,
-                    depot_id=getattr(doc_sig, "sha256", None),
-                )
+                annoncer("Enregistrement des couches SIG et du cadastre…")
+                parties = []
+                for doc_sig in docs_sig:
+                    parties.append(persister_depot_sig(
+                        projet_id=projet_id,
+                        ref=ref,
+                        sig_zip=doc_sig.chemin,
+                        zones=zones,
+                        couches=couches,
+                        depot_id=getattr(doc_sig, "sha256", None),
+                    ))
+                sig = parties[0] if len(parties) == 1 else {"depots": parties, "ok": True}
             except Exception as err:  # noqa: BLE001
                 traceback.print_exc()
                 sig = {"ok": False, "err": str(err)[:300], "bloquant": True}
@@ -441,7 +544,7 @@ def enregistrer_validation(job_id: str, payload: dict[str, Any]) -> dict[str, An
         vue=vue,
         status="passe3_en_cours",
         etape="passe3",
-        message="Référentiel verrouillé. Extraction du calendrier…",
+        message="Analyse du dossier avec vos validations…",
         erreur=None,
     )
     lancer_passe3_job(job_id)
@@ -485,7 +588,7 @@ def relancer_passe3(job_id: str) -> dict[str, Any]:
         job_id,
         status="passe3_en_cours",
         etape="passe3",
-        message="Extraction du calendrier et du budget…",
+        message="Analyse du dossier avec vos validations…",
         erreur=None,
     )
     lancer_passe3_job(job_id)

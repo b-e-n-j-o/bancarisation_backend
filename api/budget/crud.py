@@ -9,14 +9,14 @@ from uuid import UUID
 import psycopg
 from psycopg.rows import dict_row
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 from .ingestion import BudgetIngestError
 
 
 def lister_lignes_budget(projet_id: UUID) -> dict[str, Any]:
     try:
-        with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+        with connect_utilisateur(row_factory=dict_row) as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """

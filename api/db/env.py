@@ -24,6 +24,18 @@ def load_db_env() -> None:
             load_dotenv(path, override=False)
 
 
+def get_backend_database_url() -> str:
+    """Connexion du rôle kererc_backend (NOINHERIT) pour les requêtes métier RLS."""
+    load_db_env()
+    url = os.environ.get("DATABASE_URL_BACKEND", "").strip()
+    if url:
+        return url
+    raise RuntimeError(
+        "DATABASE_URL_BACKEND manquant : le backend métier doit se connecter "
+        "avec le rôle kererc_backend (voir db/031_role_kererc_backend.sql)."
+    )
+
+
 def get_database_url() -> str:
     load_db_env()
     url = os.environ.get("DATABASE_URL", "").strip()

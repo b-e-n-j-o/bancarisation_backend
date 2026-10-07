@@ -13,7 +13,8 @@ from . import config
 
 def executer(chemins: list[str],
              on_etape: Callable[[str, str], None] | None = None,
-             cartes: dict | None = None) -> dict:
+             cartes: dict | None = None,
+             roles_forces: dict[str, str] | None = None) -> dict:
     from .arrete import charger_ou_lire_arrete, faits_depuis_fiche
     from .carte import Regles, charger_ou_cartographier
     from .carte_classeur import profiler_classeur
@@ -24,16 +25,25 @@ def executer(chemins: list[str],
     from .remarques import trier
     from .sig_profil import profiler_sig
 
+    config.charger_dotenv()
+    from . import llm
+    llm.reset_compteur_tokens()
+    t: dict[str, float] = {}
+    pipeline_t0 = time.time()
+
+    def chronometrer(cle: str, t0: float) -> None:
+        dt = round(time.time() - t0, 2)
+        t[cle] = dt
+        print(f"⏱ {cle} : {dt}s", flush=True)
+
     def etape(cle: str, msg: str) -> None:
         if on_etape:
             on_etape(cle, msg)
 
-    config.charger_dotenv()
-    t = {}
     etape("inventaire", "Lecture et OCR des documents…")
     t0 = time.time()
-    docs = inventorier(chemins)
-    t["0_inventaire"] = round(time.time() - t0, 2)
+    docs = inventorier(chemins, roles_forces)
+    chronometrer("inventaire", t0)
 
     etape("carte", "Cartographie du plan de gestion et du tableur…")
     t0 = time.time()
@@ -61,17 +71,21 @@ def executer(chemins: list[str],
         cartes_classeur[d.nom] = carte_xl
         vues_classeur.append(vue_xl)
         faits_classeur += faits_xl
-    t["1_carte"] = round(time.time() - t0, 2)
+    chronometrer("carte", t0)
 
     etape("sig", "Profil des couches SIG…")
     t0 = time.time()
     couches, zones = [], []
     for d in docs:
         if d.role == "sig":
-            c, z, _ = profiler_sig(d.chemin, regles)
+            try:
+                c, z, _ = profiler_sig(d.chemin, regles)
+            except Exception as err:  # noqa: BLE001
+                print(f"   ⚠️  SIG ignoré ({d.nom}) : {err}", flush=True)
+                continue
             couches += c
             zones += z
-    t["1a_sig"] = round(time.time() - t0, 2)
+    chronometrer("sig", t0)
 
     def _faits_fiche_arrete(d, pages=None, cle="projet"):
         try:
@@ -109,7 +123,7 @@ def executer(chemins: list[str],
             faits += faits_arrete(d)            # regex : deuxième témoin
             faits += _faits_fiche_arrete(d)
     faits += faits_classeur
-    t["1b_referentiel"] = round(time.time() - t0, 2)
+    chronometrer("referentiel", t0)
 
     etape("reconciliation", "Réconciliation des sources…")
     t0 = time.time()
@@ -118,8 +132,10 @@ def executer(chemins: list[str],
     for d in docs:
         if d.nom in cartes:
             tri[d.nom] = trier(cartes[d.nom], d, ref)
-    t["2_reconciliation"] = round(time.time() - t0, 2)
+    chronometrer("reconciliation", t0)
+    chronometrer("pipeline", pipeline_t0)
     etape("termine", "Référentiel prêt à valider.")
+    tokens = llm.bilan_tokens("passe 1")
 
     return {
         "config": config.snapshot(),
@@ -144,6 +160,7 @@ def executer(chemins: list[str],
         "faits": [f.model_dump() for f in faits],
         "referentiel": ref.model_dump(),
         "durees_s": t,
+        "tokens_llm": tokens,
     }
 
 

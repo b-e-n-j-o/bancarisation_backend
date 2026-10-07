@@ -1,4 +1,4 @@
-"""Client Supabase REST (HTTPS) — même accès que le frontend / crud_projet."""
+"""Client Supabase : storage et Auth Admin uniquement (service_role)."""
 
 from __future__ import annotations
 
@@ -18,7 +18,8 @@ def load_supabase_env() -> None:
     load_dotenv(_OCR_DIR / ".env", override=True)
 
 
-def get_supabase() -> Client:
+def get_supabase_admin() -> Client:
+    """Contourne la RLS : réservé au storage, à Auth Admin et aux jobs système."""
     load_supabase_env()
     url = os.getenv("SUPABASE_URL", "").strip()
     key = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "").strip()
@@ -27,6 +28,11 @@ def get_supabase() -> Client:
             "SUPABASE_URL et SUPABASE_SERVICE_ROLE_KEY requis dans backend/.env"
         )
     return create_client(url, key)
+
+
+def get_supabase() -> Client:
+    """Alias historique : ne plus utiliser pour le CRUD métier."""
+    return get_supabase_admin()
 
 
 def bancarisation(client: Client):

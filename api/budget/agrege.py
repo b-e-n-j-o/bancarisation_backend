@@ -8,7 +8,7 @@ from uuid import UUID
 import psycopg
 from psycopg.rows import dict_row
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 
 def lister_budget_annuel(projet_id: UUID) -> list[dict[str, Any]]:
@@ -17,7 +17,7 @@ def lister_budget_annuel(projet_id: UUID) -> list[dict[str, Any]]:
     S'appuie sur la vue v_budget_delta_annuel (migration 008), qui gère déjà
     le FULL JOIN baseline↔courant (années n'existant que d'un côté).
     """
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """

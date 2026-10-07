@@ -20,7 +20,7 @@ from uuid import UUID
 import psycopg
 from psycopg.rows import dict_row
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 from api.journal_actions import journaliser
 from api.ocr.domain.ug_ids import normalize_ug_ids
 
@@ -97,7 +97,7 @@ def modifier_occurrence_avec_contexte(
     sets = ", ".join(f"{col} = %s" for col in maj)
     values = list(maj.values()) + [str(occurrence_id)]
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             appliquer_contexte_mouvement(cur, motif=motif, modifie_par=modifie_par)
             cur.execute(
@@ -114,7 +114,7 @@ def modifier_occurrence_avec_contexte(
 
 
 def _mouvements(where: str, param: str, limite: int) -> list[dict[str, Any]]:
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 f"""
@@ -159,7 +159,7 @@ def etiqueter_dernier_mouvement(
     Utilisé après une édition déjà tracée (motif NULL) : on n'UPDATE pas
     l'occurrence (valeur identique = pas de nouveau trigger).
     """
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -210,7 +210,7 @@ def justifier_ecart_occurrence(
             )
             return {**row, "mode": "etiquetage"}
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """

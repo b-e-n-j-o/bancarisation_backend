@@ -9,7 +9,7 @@ from uuid import UUID
 import psycopg
 from psycopg.rows import dict_row
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 
 def normaliser_siret(raw: str | None) -> str | None:
@@ -20,7 +20,7 @@ def normaliser_siret(raw: str | None) -> str | None:
 
 
 def _connect():
-    return psycopg.connect(get_database_url(), row_factory=dict_row)
+    return connect_utilisateur(row_factory=dict_row)
 
 
 def lister_global(*, q: str | None = None, limit: int = 20) -> list[dict[str, Any]]:

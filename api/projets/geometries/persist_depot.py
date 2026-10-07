@@ -24,9 +24,7 @@ from api.ocr.ingest_erc.ingest_erc.modeles import (
     UGVerrouillee,
     ZoneCandidate,
 )
-from api.ocr.ingest_erc.ingest_erc.sig_profil import extraire_zip
-
-from .apercu import lire_gdf
+from .sig_io import appliquer_crs, identifier_epsg, lire_gdf, sources_depuis_chemin
 from .ingestion import (
     CoucheKind,
     GeometryIngestError,
@@ -260,11 +258,20 @@ def _stocker_couche_sans_crs(
     try:
         from api.documents.crud_document import upload_document
 
+        ext = shp.suffix.lower()
+        if ext in {".gpkg", ".geojson", ".json"}:
+            file_name = shp.name
+            content = shp.read_bytes()
+            content_type = "application/geopackage+sqlite3" if ext == ".gpkg" else "application/geo+json"
+        else:
+            file_name = f"{shp.stem}_sans_crs.zip"
+            content = _zip_sidecars(shp)
+            content_type = "application/zip"
         row = upload_document(
             projet_id=projet_id,
-            file_name=f"{shp.stem}_sans_crs.zip",
-            content=_zip_sidecars(shp),
-            content_type="application/zip",
+            file_name=file_name,
+            content=content,
+            content_type=content_type,
             categorie="technique",
             date_document=None,
             description="Couche SIG sans CRS identifiable ; EPSG à saisir pour relancer l'écriture.",
@@ -458,19 +465,18 @@ def persister_depot_sig(
     couches: list[CoucheProfil] | list[dict] | None = None,
     depot_id: str | None = None,
 ) -> dict[str, Any]:
-    """Écrit toutes les entités lisibles du ZIP. Ne filtre jamais."""
+    """Écrit toutes les entités lisibles (ZIP, GPKG, GeoJSON). Ne filtre jamais."""
     pid = str(projet_id)
     zip_path = Path(sig_zip)
     if not zip_path.is_file():
-        raise GeometryIngestError(f"Archive SIG introuvable : {zip_path}")
+        raise GeometryIngestError(f"Fichier SIG introuvable : {zip_path}")
 
     depot = depot_id or sha256_fichier(zip_path)
     zones_n = _zones_normalisees(zones)
     couches_n = _couches_normalisees(couches)
     par_couche = {c.nom: c for c in couches_n}
 
-    dossier = extraire_zip(str(zip_path))
-    shps = sorted(p for p in dossier.glob("*.shp") if not p.name.startswith("._"))
+    sources = sources_depuis_chemin(zip_path)
 
     rapport = RapportDepot(depot_id=depot, nb_attendues=0, nb_ecrites=0)
     source_zip = zip_path.name
@@ -478,24 +484,23 @@ def persister_depot_sig(
     try:
         with _connect() as conn:
             with conn.cursor() as cur:
-                for shp in shps:
+                for path, layer, nom_couche in sources:
                     try:
-                        gdf = lire_gdf(shp)
+                        gdf = lire_gdf(path, layer)
                     except Exception as exc:  # noqa: BLE001
                         rapport.avertissements.append({
                             "niveau": "erreur",
-                            "couche": shp.stem,
+                            "couche": nom_couche,
                             "message": f"Lecture impossible : {exc}",
                         })
                         continue
 
-                    try:
-                        epsg = int(gdf.crs.to_epsg()) if gdf.crs is not None else None
-                    except Exception:  # noqa: BLE001
-                        epsg = None
+                    epsg, motif_crs = identifier_epsg(path, gdf)
+                    if epsg:
+                        gdf = appliquer_crs(gdf, epsg)
 
                     nb = int(len(gdf))
-                    profil = par_couche.get(shp.stem)
+                    profil = par_couche.get(nom_couche)
                     if profil and profil.nb_entites:
                         nb = int(profil.nb_entites)
 
@@ -503,9 +508,10 @@ def persister_depot_sig(
                         rec = _stocker_couche_sans_crs(
                             projet_id=UUID(pid),
                             depot_id=depot,
-                            shp=shp,
+                            shp=path,
                             nb_entites=nb,
                         )
+                        rec["motif"] = motif_crs or rec.get("motif")
                         rapport.couches_sans_crs.append(rec)
                         continue
 
@@ -516,7 +522,7 @@ def persister_depot_sig(
                     except Exception as exc:  # noqa: BLE001
                         rapport.avertissements.append({
                             "niveau": "erreur",
-                            "couche": shp.stem,
+                            "couche": nom_couche,
                             "message": f"Reprojection 2154 impossible : {exc}",
                         })
                         continue
@@ -526,13 +532,13 @@ def persister_depot_sig(
                     for i, (_, row) in enumerate(gdf_2154.iterrows()):
                         geom = row.geometry
                         attrs = _attrs_ligne(row, attr_cols)
-                        zone = zone_pour_entite(shp.stem, attrs, zones_n)
+                        zone = zone_pour_entite(nom_couche, attrs, zones_n)
                         dest = destination_entite(zone, ref)
 
                         if geom is None or geom.is_empty:
                             rapport.avertissements.append({
                                 "niveau": "ecart",
-                                "couche": shp.stem,
+                                "couche": nom_couche,
                                 "index_entite": i,
                                 "message": "géométrie vide — non écrite",
                             })
@@ -544,19 +550,19 @@ def persister_depot_sig(
                         except GeometryIngestError as exc:
                             rapport.avertissements.append({
                                 "niveau": "ecart",
-                                "couche": shp.stem,
+                                "couche": nom_couche,
                                 "index_entite": i,
                                 "message": str(exc),
                             })
                             continue
 
-                        if _deja_ecrite(cur, pid, depot, shp.stem, i):
+                        if _deja_ecrite(cur, pid, depot, nom_couche, i):
                             continue
 
-                        protege = _ligne_protege(cur, pid, shp.stem, i)
+                        protege = _ligne_protege(cur, pid, nom_couche, i)
                         if protege:
                             rapport.propositions.append({
-                                "couche": shp.stem,
+                                "couche": nom_couche,
                                 "index_entite": i,
                                 "type": protege["type"],
                                 "entite_id": protege["id"],
@@ -588,14 +594,14 @@ def persister_depot_sig(
                                 properties=attrs,
                                 attributs=[attrs] if attrs else [],
                                 source_fichier=source_zip,
-                                couche=shp.stem,
+                                couche=nom_couche,
                                 index_entite=i,
                                 depot_id=depot,
                             )
                         except Exception as exc:  # noqa: BLE001
                             rapport.avertissements.append({
                                 "niveau": "ecart",
-                                "couche": shp.stem,
+                                "couche": nom_couche,
                                 "index_entite": i,
                                 "message": f"écriture refusée : {exc}",
                             })
@@ -626,4 +632,16 @@ def persister_depot_sig(
             "nb_attendues": rapport.nb_attendues,
         })
 
-    return rapport.to_dict()
+    out = rapport.to_dict()
+    if rapport.nb_par_statut.get("ug", 0) > 0:
+        try:
+            from .ingestion import initialiser_foncier_apres_ingestion
+
+            out["foncier"] = initialiser_foncier_apres_ingestion(UUID(pid))
+        except Exception as exc:  # noqa: BLE001
+            out["foncier"] = {
+                "ok": False,
+                "avertissements": [str(exc)],
+                "nb_importees": 0,
+            }
+    return out

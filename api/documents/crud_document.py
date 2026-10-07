@@ -6,11 +6,12 @@ from datetime import date
 from typing import Any, Optional
 from uuid import UUID
 
-from dotenv import load_dotenv
-from supabase import Client, create_client
+from psycopg.rows import dict_row
+from psycopg.types.json import Jsonb
+from supabase import Client
 
-
-load_dotenv()
+from api.db.supabase import get_supabase_admin
+from api.db.utilisateur import connect_utilisateur
 
 BUCKET = "documents-projet"
 GEOM_TABLE = "projet_geometries"
@@ -20,16 +21,22 @@ class DocumentServiceError(Exception):
     pass
 
 
-def _get_supabase_client() -> Client:
-    supabase_url = os.getenv("SUPABASE_URL")
-    service_key = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+def _storage() -> Client:
+    return get_supabase_admin()
 
-    if not supabase_url or not service_key:
-        raise DocumentServiceError(
-            "Variables SUPABASE_URL et SUPABASE_SERVICE_ROLE_KEY manquantes."
-        )
 
-    return create_client(supabase_url, service_key)
+def _one(sql: str, params: Any = None) -> dict[str, Any] | None:
+    with connect_utilisateur(row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, params)
+            return cur.fetchone()
+
+
+def _all(sql: str, params: Any = None) -> list[dict[str, Any]]:
+    with connect_utilisateur(row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, params)
+            return list(cur.fetchall())
 
 
 def _safe_file_name(file_name: str) -> str:
@@ -70,7 +77,6 @@ def _parse_geojson_features(raw: bytes) -> list[dict[str, Any]]:
 
 
 def _store_geojson_features(
-    client: Client,
     projet_id: UUID,
     document_id: str,
     file_name: str,
@@ -98,11 +104,31 @@ def _store_geojson_features(
         raise DocumentServiceError("GeoJSON invalide: aucune géométrie exploitable.")
 
     try:
-        client.schema("bancarisation").table(GEOM_TABLE).insert(rows).execute()
+        with connect_utilisateur() as conn:
+            with conn.cursor() as cur:
+                for row in rows:
+                    cur.execute(
+                        f"""
+                        INSERT INTO bancarisation.{GEOM_TABLE}
+                            (projet_id, document_id, nom, feature_index, geometry_type,
+                             geometry_geojson, properties, source_fichier)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                        """,
+                        (
+                            row["projet_id"],
+                            row["document_id"],
+                            row["nom"],
+                            row["feature_index"],
+                            row["geometry_type"],
+                            Jsonb(row["geometry_geojson"]),
+                            Jsonb(row["properties"]),
+                            row["source_fichier"],
+                        ),
+                    )
+            conn.commit()
     except Exception as exc:  # pragma: no cover
         raise DocumentServiceError(
             "Impossible de stocker les géométries SIG. "
-            "Crée la table bancarisation.projet_geometries (voir script SQL). "
             f"Détail: {exc}"
         ) from exc
 
@@ -119,24 +145,18 @@ def list_documents(
     - only_global : docs sans occurrence (niveau projet)
     - sinon : tous les docs du projet
     """
-    client = _get_supabase_client()
+    sql = "SELECT * FROM bancarisation.documents WHERE projet_id = %s"
+    params: list[Any] = [str(projet_id)]
+    if occurrence_id is not None:
+        sql += " AND occurrence_id = %s"
+        params.append(str(occurrence_id))
+    elif only_global:
+        sql += " AND occurrence_id IS NULL"
+    sql += " ORDER BY categorie, created_at DESC NULLS LAST"
     try:
-        query = (
-            client.schema("bancarisation")
-            .table("documents")
-            .select("*")
-            .eq("projet_id", str(projet_id))
-        )
-        if occurrence_id is not None:
-            query = query.eq("occurrence_id", str(occurrence_id))
-        elif only_global:
-            query = query.is_("occurrence_id", "null")
-        response = query.order("categorie").order("created_at", desc=True).execute()
+        return _all(sql, params)
     except Exception as exc:  # pragma: no cover
-        raise DocumentServiceError(f"Erreur Supabase: {exc}") from exc
-
-    data = response.data or []
-    return data if isinstance(data, list) else [data]
+        raise DocumentServiceError(f"Erreur lecture documents: {exc}") from exc
 
 
 def _build_bucket_path(
@@ -169,7 +189,7 @@ def upload_document(
     occurrence_id: Optional[UUID] = None,
     sous_dossier: Optional[str] = None,
 ) -> dict[str, Any]:
-    client = _get_supabase_client()
+    client = _storage()
     geojson_features: list[dict[str, Any]] | None = None
 
     if categorie == "cartographie":
@@ -178,6 +198,10 @@ def upload_document(
                 "Pour la catégorie cartographie, seul un fichier GeoJSON (.geojson/.json) est autorisé."
             )
         geojson_features = _parse_geojson_features(content)
+
+    niveau = _one("SELECT prive.niveau_projet(%s) AS n", (str(projet_id),))
+    if not niveau or int(niveau.get("n") or 0) < 3:
+        raise DocumentServiceError("Droits insuffisants pour déposer un document.")
 
     display_name = (nom or "").strip() or file_name
     bucket_path = _build_bucket_path(
@@ -212,32 +236,36 @@ def upload_document(
         "date_document": date_document.isoformat() if date_document else None,
         "description": description or None,
     }
-    if occurrence_id is not None:
-        insert_payload["occurrence_id"] = str(occurrence_id)
+    insert_payload["occurrence_id"] = (
+        str(occurrence_id) if occurrence_id is not None else None
+    )
 
     try:
-        response = (
-            client.schema("bancarisation")
-            .table("documents")
-            .insert(insert_payload, returning="representation")
-            .execute()
+        row = _one(
+            """
+            INSERT INTO bancarisation.documents
+                (projet_id, nom, nom_fichier, bucket_path, taille_octets, type_mime,
+                 categorie, date_document, description, occurrence_id)
+            VALUES (%(projet_id)s, %(nom)s, %(nom_fichier)s, %(bucket_path)s,
+                    %(taille_octets)s, %(type_mime)s, %(categorie)s, %(date_document)s,
+                    %(description)s, %(occurrence_id)s)
+            RETURNING *
+            """,
+            insert_payload,
         )
     except Exception as exc:  # pragma: no cover
         try:
             client.storage.from_(BUCKET).remove([bucket_path])
         except Exception:
             pass
-        raise DocumentServiceError(f"Erreur Supabase: {exc}") from exc
+        raise DocumentServiceError(f"Erreur insertion document: {exc}") from exc
 
-    data = response.data
-    row = data[0] if isinstance(data, list) and data else data
     if not row:
         raise DocumentServiceError("Insertion document échouée.")
 
     if categorie == "cartographie" and geojson_features is not None:
         try:
             _store_geojson_features(
-                client=client,
                 projet_id=projet_id,
                 document_id=str(row.get("id")),
                 file_name=file_name,
@@ -245,7 +273,7 @@ def upload_document(
             )
         except Exception as exc:  # pragma: no cover
             try:
-                client.schema("bancarisation").table("documents").delete().eq("id", str(row.get("id"))).execute()
+                _one("DELETE FROM bancarisation.documents WHERE id = %s RETURNING id", (str(row.get("id")),))
                 client.storage.from_(BUCKET).remove([bucket_path])
             except Exception:
                 pass
@@ -255,41 +283,26 @@ def upload_document(
 
 
 def delete_document(document_id: UUID) -> None:
-    client = _get_supabase_client()
-
-    try:
-        lookup = (
-            client.schema("bancarisation")
-            .table("documents")
-            .select("id,bucket_path")
-            .eq("id", str(document_id))
-            .maybe_single()
-            .execute()
-        )
-    except Exception as exc:  # pragma: no cover
-        raise DocumentServiceError(f"Erreur Supabase: {exc}") from exc
-
-    row = lookup.data
+    client = _storage()
+    row = _one(
+        "SELECT id, bucket_path FROM bancarisation.documents WHERE id = %s",
+        (str(document_id),),
+    )
     if not row:
         raise DocumentServiceError("Document introuvable.")
 
     bucket_path = row.get("bucket_path")
+    deleted = _one(
+        "DELETE FROM bancarisation.documents WHERE id = %s RETURNING id",
+        (str(document_id),),
+    )
+    if not deleted:
+        raise DocumentServiceError("Document introuvable.")
     if bucket_path:
         try:
             client.storage.from_(BUCKET).remove([bucket_path])
         except Exception as exc:  # pragma: no cover
             raise DocumentServiceError(f"Erreur suppression bucket: {exc}") from exc
-
-    try:
-        (
-            client.schema("bancarisation")
-            .table("documents")
-            .delete()
-            .eq("id", str(document_id))
-            .execute()
-        )
-    except Exception as exc:  # pragma: no cover
-        raise DocumentServiceError(f"Erreur suppression base: {exc}") from exc
 
 
 def get_document_content(document_id: UUID) -> tuple[bytes, str, str]:
@@ -298,20 +311,15 @@ def get_document_content(document_id: UUID) -> tuple[bytes, str, str]:
     Returns:
         (content, content_type, filename)
     """
-    client = _get_supabase_client()
-    try:
-        lookup = (
-            client.schema("bancarisation")
-            .table("documents")
-            .select("id,bucket_path,type_mime,nom_fichier,nom")
-            .eq("id", str(document_id))
-            .maybe_single()
-            .execute()
-        )
-    except Exception as exc:  # pragma: no cover
-        raise DocumentServiceError(f"Erreur Supabase: {exc}") from exc
-
-    row = lookup.data
+    client = _storage()
+    row = _one(
+        """
+        SELECT id, bucket_path, type_mime, nom_fichier, nom
+        FROM bancarisation.documents
+        WHERE id = %s
+        """,
+        (str(document_id),),
+    )
     if not row:
         raise DocumentServiceError("Document introuvable.")
 
@@ -339,7 +347,7 @@ def get_document_content(document_id: UUID) -> tuple[bytes, str, str]:
 
 
 def create_signed_url(bucket_path: str, download: Optional[str]) -> str:
-    client = _get_supabase_client()
+    client = _storage()
     options = {"download": download} if download else None
     try:
         if options:
@@ -384,3 +392,13 @@ def create_signed_url(bucket_path: str, download: Optional[str]) -> str:
             return _normalize_url(str(value))
 
     raise DocumentServiceError("URL signée introuvable dans la réponse Supabase.")
+
+
+def create_signed_url_for_document(document_id: UUID, download: Optional[str] = None) -> str:
+    row = _one(
+        "SELECT id, bucket_path FROM bancarisation.documents WHERE id = %s",
+        (str(document_id),),
+    )
+    if not row or not row.get("bucket_path"):
+        raise DocumentServiceError("Document introuvable.")
+    return create_signed_url(str(row["bucket_path"]), download)

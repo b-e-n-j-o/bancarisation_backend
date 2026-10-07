@@ -12,7 +12,7 @@ from shapely.geometry.base import BaseGeometry
 from shapely.ops import transform
 from pyproj import Transformer
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 from .ign_client import CadastreIgnError
 _TO_3857 = Transformer.from_crs(4326, 3857, always_xy=True).transform
@@ -34,7 +34,7 @@ def remplacer_parcelles_ug(
     buffer_m: float,
 ) -> int:
     """Remplace le snapshot cadastre d'une UG. Retourne le nombre de parcelles écrites."""
-    with psycopg.connect(get_database_url()) as conn:
+    with connect_utilisateur() as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -103,7 +103,7 @@ def remplacer_parcelles_ug(
 
 
 def supprimer_cadastre_projet(projet_id: UUID, *, ug_ids: list[str] | None = None) -> None:
-    with psycopg.connect(get_database_url()) as conn:
+    with connect_utilisateur() as conn:
         with conn.cursor() as cur:
             if ug_ids:
                 cur.execute(
@@ -154,7 +154,7 @@ def lier_parcelles_aux_ugs(projet_id: UUID) -> dict[str, int]:
     """
     pid = str(projet_id)
     counts: dict[str, int] = {}
-    with psycopg.connect(get_database_url()) as conn:
+    with connect_utilisateur() as conn:
         with conn.cursor() as cur:
             cur.execute(
                 "DELETE FROM bancarisation.cadastre_parcelle_ug WHERE projet_id = %s",

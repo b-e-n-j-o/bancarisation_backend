@@ -15,7 +15,7 @@ from uuid import UUID
 import psycopg
 from psycopg.rows import dict_row
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 
 class DialogueError(Exception):
@@ -52,7 +52,7 @@ _SELECT_DEMANDE = """
 
 def lister_demandes(projet_id: UUID) -> list[dict[str, Any]]:
     """Demandes d'un projet, avec un aperçu du dernier message."""
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 f"""
@@ -86,7 +86,7 @@ def lister_demandes(projet_id: UUID) -> list[dict[str, Any]]:
 
 
 def lister_messages(demande_id: UUID) -> list[dict[str, Any]]:
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -109,7 +109,7 @@ def lister_messages(demande_id: UUID) -> list[dict[str, Any]]:
 
 
 def lire_demande(demande_id: UUID) -> dict[str, Any]:
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 f"""
@@ -143,7 +143,7 @@ def lister_demandes_parc(
     params: list[Any] = [] if statut in (None, "toutes") else [statut]
     params.append(limite)
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 f"""
@@ -180,7 +180,7 @@ def lister_demandes_parc(
 
 def lister_activite(projet_id: UUID, limite: int = 200) -> list[dict[str, Any]]:
     """Fil conducteur du projet — vue dérivée, aucun journal stocké."""
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -227,7 +227,7 @@ def creer_demande(
     if not corps.strip():
         raise DialogueError("Le message ne peut pas être vide.")
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -277,7 +277,7 @@ def ajouter_message(
     if not corps.strip():
         raise DialogueError("Le message ne peut pas être vide.")
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 "SELECT 1 FROM bancarisation.demande WHERE id = %s",
@@ -308,7 +308,7 @@ def changer_statut_demande(demande_id: UUID, statut: str) -> dict[str, Any]:
     if statut not in ("ouverte", "repondue", "close"):
         raise DialogueError(f"Statut inconnu : {statut!r}.")
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """

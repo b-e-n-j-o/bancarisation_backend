@@ -11,7 +11,7 @@ import psycopg
 from psycopg.rows import dict_row
 from psycopg.types.json import Json
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 from api.ocr.match_prescriptions.schemas import (
     AppariementEtatOut,
     CouvertureSyntheseOut,
@@ -22,28 +22,15 @@ from api.ocr.match_prescriptions.schemas import (
 
 
 def _conn():
-    return psycopg.connect(get_database_url(), row_factory=dict_row)
+    return connect_utilisateur(row_factory=dict_row)
 
 
 def _assert_projet_accessible(
     cur: Any,
     projet_id: UUID,
-    *,
-    role: str,
-    organisation_id: UUID | None,
+    **_ignored: Any,
 ) -> None:
-    if role in ("controleur", "admin"):
-        cur.execute("SELECT 1 FROM bancarisation.projets WHERE id = %s", (str(projet_id),))
-    elif organisation_id is None:
-        raise PermissionError("Accès refusé")
-    else:
-        cur.execute(
-            """
-            SELECT 1 FROM bancarisation.projets
-            WHERE id = %s AND organisation_id = %s
-            """,
-            (str(projet_id), str(organisation_id)),
-        )
+    cur.execute("SELECT 1 FROM bancarisation.projets WHERE id = %s", (str(projet_id),))
     if not cur.fetchone():
         raise LookupError("Projet introuvable")
 
@@ -322,8 +309,8 @@ def lire_etat(
     projet_id: UUID,
     arrete_id: UUID,
     *,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> AppariementEtatOut:
     with _conn() as conn:
         with conn.cursor() as cur:
@@ -338,8 +325,8 @@ def charger_pour_match(
     projet_id: UUID,
     arrete_id: UUID,
     *,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     with _conn() as conn:
         with conn.cursor() as cur:
@@ -362,8 +349,8 @@ def persister_propositions_ia(
     arrete_id: UUID,
     rows: list[dict[str, Any]],
     *,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> tuple[int, AppariementEtatOut]:
     with _conn() as conn:
         with conn.cursor() as cur:
@@ -381,8 +368,8 @@ def action_valider_lien(
     prescription_id: UUID,
     echeance_id: UUID,
     *,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> AppariementEtatOut:
     with _conn() as conn:
         with conn.cursor() as cur:
@@ -418,8 +405,8 @@ def action_rejeter_proposition(
     prescription_id: UUID,
     echeance_id: UUID,
     *,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> AppariementEtatOut:
     with _conn() as conn:
         with conn.cursor() as cur:
@@ -449,8 +436,8 @@ def action_retirer_validation(
     prescription_id: UUID,
     echeance_id: UUID,
     *,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> AppariementEtatOut:
     with _conn() as conn:
         with conn.cursor() as cur:

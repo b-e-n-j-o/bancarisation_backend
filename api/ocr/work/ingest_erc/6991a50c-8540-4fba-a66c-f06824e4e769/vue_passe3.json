@@ -1,0 +1,90 @@
+{
+ "stats": {
+  "faits": 42,
+  "temporels": 42,
+  "budgets": 0,
+  "statuts": 0,
+  "echeances": 25,
+  "occurrences": 529,
+  "non_placables": 10,
+  "rejets": 11,
+  "occurrences_avec_montant": 0,
+  "tokens_llm": {
+   "n": 3,
+   "prompt": 27329,
+   "completion": 6034,
+   "total": 33363
+  },
+  "duree_s": 26.6
+ },
+ "classeurs": {
+  "ITK.xlsx": {
+   "tableaux_detectes": 14,
+   "carte": {
+    "tableaux": [
+     14,
+     14
+    ],
+    "colonnes": [
+     4,
+     9
+    ],
+    "ecartes": [
+     "ITK Fauvette et Fadet#1 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#6 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#8 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#10 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#12 : colonne « Code mesure » introuvable"
+    ]
+   },
+   "roles": {
+    "Synthèse actions#1": "synthese",
+    "Synthèse actions#2": "synthese",
+    "ITK Fauvette et Fadet#1": "parcelles",
+    "ITK Fauvette et Fadet#2": "autre",
+    "ITK Fauvette et Fadet#3": "planning_passages",
+    "ITK Fauvette et Fadet#4": "autre",
+    "ITK Fauvette et Fadet#5": "autre",
+    "ITK Fauvette et Fadet#6": "planning_passages",
+    "ITK Fauvette et Fadet#7": "autre",
+    "ITK Fauvette et Fadet#8": "planning_passages",
+    "ITK Fauvette et Fadet#9": "autre",
+    "ITK Fauvette et Fadet#10": "planning_passages",
+    "ITK Fauvette et Fadet#11": "autre",
+    "ITK Fauvette et Fadet#12": "planning_passages"
+   },
+   "libelles_associes": {}
+  }
+ },
+ "nb_rejets": 11,
+ "rejets_par_motif": {
+  "citation_introuvable": 9,
+  "code_inconnu": 2
+ },
+ "avertissements": [
+  "TE1 : aucune date trouvée dans les documents",
+  "TE2 : aucune date trouvée dans les documents",
+  "TE3 : aucune date trouvée dans les documents",
+  "TU1 : en-têtes du tableau décalés de +1 an(s) par rapport à l'ancre validée ; rangs retenus",
+  "TU1 : lignes du tableur aux calendriers différents (parcelles ?) : années fusionnées",
+  "TU2 : aucune date trouvée dans les documents",
+  "TU3 : aucune date trouvée dans les documents",
+  "TU4 : aucune date trouvée dans les documents",
+  "TU5 : aucune date trouvée dans les documents",
+  "TU6 : aucune date trouvée dans les documents"
+ ],
+ "non_placables": [
+  "MG2",
+  "SE1",
+  "TE1",
+  "TE2",
+  "TE3",
+  "TU2",
+  "TU3",
+  "TU4",
+  "TU5",
+  "TU6"
+ ],
+ "budget_pose": 0,
+ "budget_non_ventile": 0
+}

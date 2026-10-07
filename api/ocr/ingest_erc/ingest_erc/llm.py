@@ -7,18 +7,76 @@ Trois appels :
   - extraire_referentiel : extraits retenus → faits (si pas de carte)
 
 Modèles : `config.ROLES` (défaut GLM 5.2 / `zai-glm-5-2`).
-Chez Mistral : uniquement `reasoning_effort` (jamais le champ Z.ai `thinking`).
+GLM 5.2 : `reasoning_effort="none"` (pas de bloc de réflexion).
+Autres modèles Mistral : `reasoning_effort` via le SDK.
 """
 from __future__ import annotations
 
 import json
 import re
+import threading
 import time
 from typing import Optional
 
 from pydantic import BaseModel, ValidationError
 
 from . import config
+
+_local = threading.local()
+
+
+def _compteur() -> dict:
+    if not getattr(_local, "tokens", None):
+        _local.tokens = {"n": 0, "prompt": 0, "completion": 0, "total": 0}
+    return _local.tokens
+
+
+def reset_compteur_tokens() -> None:
+    _local.tokens = {"n": 0, "prompt": 0, "completion": 0, "total": 0}
+
+
+def snapshot_tokens() -> dict:
+    return dict(_compteur())
+
+
+def _usage_de(resp) -> dict:
+    u = getattr(resp, "usage", None)
+    if u is None:
+        return {"prompt": 0, "completion": 0, "total": 0}
+    if isinstance(u, dict):
+        prompt = int(u.get("prompt_tokens") or 0)
+        completion = int(u.get("completion_tokens") or 0)
+        total = int(u.get("total_tokens") or 0)
+    else:
+        prompt = int(getattr(u, "prompt_tokens", 0) or 0)
+        completion = int(getattr(u, "completion_tokens", 0) or 0)
+        total = int(getattr(u, "total_tokens", 0) or 0)
+    if not total:
+        total = prompt + completion
+    return {"prompt": prompt, "completion": completion, "total": total}
+
+
+def _noter_tokens(schema: str, usage: dict) -> None:
+    c = _compteur()
+    c["n"] += 1
+    c["prompt"] += usage["prompt"]
+    c["completion"] += usage["completion"]
+    c["total"] += usage["total"]
+    print(
+        f"   tokens : in={usage['prompt']:,} out={usage['completion']:,} "
+        f"total={usage['total']:,}  · {schema}  · cumul={c['total']:,} ({c['n']} appel{'s' if c['n'] > 1 else ''})",
+        flush=True,
+    )
+
+
+def bilan_tokens(libelle: str = "pipeline") -> dict:
+    c = snapshot_tokens()
+    print(
+        f"📊 tokens LLM {libelle} : {c['n']} appel(s) · "
+        f"in={c['prompt']:,} out={c['completion']:,} total={c['total']:,}",
+        flush=True,
+    )
+    return c
 
 
 def actif() -> bool:
@@ -132,36 +190,68 @@ def _est_429(err) -> bool:
     return "429" in s or "rate_limit" in s or "rate limit" in s
 
 
-def _complete(client, *, model: str, messages: list, effort: str, max_tokens: int):
-    """chat.complete avec reasoning_effort, repli si le modèle / SDK le refuse."""
+def _enveloppe(data: dict):
+    """Réponse chat.completions → objet compatible SDK (`choices`, `usage`)."""
+    from types import SimpleNamespace
+    ch = (data.get("choices") or [{}])[0]
+    msg = ch.get("message") or {}
+    return SimpleNamespace(
+        usage=data.get("usage") or {},
+        choices=[SimpleNamespace(
+            finish_reason=ch.get("finish_reason"),
+            message=SimpleNamespace(content=msg.get("content")),
+        )],
+    )
+
+
+def _http_complete(api_key: str, payload: dict):
+    """Même payload que le SDK si `reasoning_effort` n'est pas dans la signature."""
+    import httpx
+    r = httpx.post(
+        "https://api.mistral.ai/v1/chat/completions",
+        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+        json=payload,
+        timeout=300.0,
+    )
+    if r.status_code >= 400:
+        raise RuntimeError(f"HTTP {r.status_code} {r.text[:800]}")
+    return _enveloppe(r.json())
+
+
+def _complete(api_key: str, *, model: str, messages: list, effort: str, max_tokens: int):
+    from mistralai import Mistral
+
     kwargs = {
         "model": model,
         "messages": messages,
         "response_format": {"type": "json_object"},
         "max_tokens": max_tokens,
     }
-    effort_envoye = config.effort_api(effort) if effort and effort != "none" else None
-    if effort_envoye:
-        kwargs["reasoning_effort"] = effort_envoye
+    if config.famille_llm(model) == "glm":
+        kwargs["reasoning_effort"] = "none"
+    elif effort:
+        kwargs["reasoning_effort"] = config.effort_api(effort)
+
     try:
-        return client.chat.complete(**kwargs)
+        return Mistral(api_key=api_key).chat.complete(**kwargs)
     except TypeError:
-        kwargs.pop("reasoning_effort", None)
-        return client.chat.complete(**kwargs)
+        return _http_complete(api_key, kwargs)
     except Exception as err:
+        effort_envoye = kwargs.get("reasoning_effort")
         if effort_envoye and _effort_refuse(str(err)):
             print(f"   ⚠️  reasoning_effort={effort_envoye} refusé par {model}, "
                   "nouvel essai sans.", flush=True)
             kwargs.pop("reasoning_effort", None)
-            return client.chat.complete(**kwargs)
+            try:
+                return Mistral(api_key=api_key).chat.complete(**kwargs)
+            except TypeError:
+                return _http_complete(api_key, kwargs)
         raise
 
 
 def _appel(system: str, user: str, schema: type[BaseModel], *,
            effort: str | None = None, max_tokens: int | None = None,
            modele: str | None = None) -> BaseModel:
-    from mistralai import Mistral
-
     model = modele or config.modele_llm()
     cle, src = config.api_key_llm(model)
     if not cle:
@@ -170,20 +260,23 @@ def _appel(system: str, user: str, schema: type[BaseModel], *,
         )
     effort = effort or config.effort_llm()
     max_tokens = max_tokens if max_tokens is not None else config.max_tokens()
-    print(f"🤖 [LLM] {model} · effort={config.effort_api(effort)} · clé={src} "
-          f"· {schema.__name__}", flush=True)
+    extra = ("effort=none" if config.famille_llm(model) == "glm"
+             else f"effort={config.effort_api(effort)}")
+    print(f"🤖 [LLM] {model} · {extra} · clé={src} · {schema.__name__}", flush=True)
 
     messages = [{"role": "system", "content": system},
                 {"role": "user", "content": user}]
 
     def tenter(api_key: str, modele: str):
         return _complete(
-            Mistral(api_key=api_key),
+            api_key,
             model=modele,
             messages=messages,
             effort=effort,
             max_tokens=max_tokens,
         )
+
+    t0 = time.time()
 
     try:
         resp = tenter(cle, model)
@@ -213,7 +306,15 @@ def _appel(system: str, user: str, schema: type[BaseModel], *,
             resp = tenter(cle_repli, repli)
         else:
             raise
-    txt = extraire_json(_texte_contenu(resp.choices[0].message.content))
+    dt = round(time.time() - t0, 1)
+    print(f"   ⏱ {schema.__name__} : {dt}s", flush=True)
+    _noter_tokens(schema.__name__, _usage_de(resp))
+    contenu = resp.choices[0].message.content
+    fin = getattr(resp.choices[0], "finish_reason", None)
+    n_car = len(contenu) if isinstance(contenu, str) else len(str(contenu or ""))
+    print(f"   stop={fin or '?'}  · max_tokens={max_tokens:,}  · réponse={n_car:,} car.",
+          flush=True)
+    txt = extraire_json(_texte_contenu(contenu))
     try:
         data = _sans_nulls(json.loads(txt))
     except json.JSONDecodeError:

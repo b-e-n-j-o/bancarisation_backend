@@ -9,7 +9,12 @@ from typing import Any, Optional
 from uuid import UUID
 
 from dotenv import load_dotenv
-from supabase import Client, create_client
+from psycopg.rows import dict_row
+from psycopg.types.json import Jsonb
+from supabase import Client
+
+from api.db.supabase import get_supabase_admin
+from api.db.utilisateur import connect_utilisateur
 
 from api.satellite.aoi import build_padded_aoi
 from api.satellite.auth import SentinelAuthError
@@ -32,13 +37,21 @@ class SatelliteCrudError(Exception):
 
 
 def _supabase() -> Client:
-    url = os.getenv("SUPABASE_URL")
-    key = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
-    if not url or not key:
-        raise SatelliteCrudError(
-            "SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY manquants."
-        )
-    return create_client(url, key)
+    return get_supabase_admin()
+
+
+def _one(sql: str, params: Any = None) -> Optional[dict[str, Any]]:
+    with connect_utilisateur(row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, params)
+            return cur.fetchone()
+
+
+def _all(sql: str, params: Any = None) -> list[dict[str, Any]]:
+    with connect_utilisateur(row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, params)
+            return list(cur.fetchall())
 
 
 def _safe_segment(value: str) -> str:
@@ -109,72 +122,54 @@ def _first_row(resp: Any) -> Optional[dict[str, Any]]:
 def get_capture(
     projet_id: UUID, ug_id: str, acquisition_date: date
 ) -> Optional[dict[str, Any]]:
-    client = _supabase()
     try:
-        resp = (
-            client.schema("bancarisation")
-            .table(TABLE)
-            .select("*")
-            .eq("projet_id", str(projet_id))
-            .eq("ug_id", ug_id)
-            .eq("acquisition_date", acquisition_date.isoformat())
-            .limit(1)
-            .execute()
+        row = _one(
+            f"""
+            SELECT * FROM bancarisation.{TABLE}
+            WHERE projet_id = %s AND ug_id = %s AND acquisition_date = %s
+            LIMIT 1
+            """,
+            (str(projet_id), ug_id, acquisition_date.isoformat()),
         )
     except Exception as exc:
-        raise SatelliteCrudError(
-            f"Lecture capture: {exc}. "
-            "Vérifier que la table bancarisation.satellite_captures existe "
-            "(sql/001_satellite_captures.sql)."
-        ) from exc
-    row = _first_row(resp)
+        raise SatelliteCrudError(f"Lecture capture: {exc}.") from exc
     return _row_to_dict(row) if row else None
 
 
 def get_capture_by_id(
     projet_id: UUID, capture_id: UUID
 ) -> Optional[dict[str, Any]]:
-    client = _supabase()
     try:
-        resp = (
-            client.schema("bancarisation")
-            .table(TABLE)
-            .select("*")
-            .eq("projet_id", str(projet_id))
-            .eq("id", str(capture_id))
-            .limit(1)
-            .execute()
+        row = _one(
+            f"""
+            SELECT * FROM bancarisation.{TABLE}
+            WHERE projet_id = %s AND id = %s
+            LIMIT 1
+            """,
+            (str(projet_id), str(capture_id)),
         )
     except Exception as exc:
-        raise SatelliteCrudError(
-            f"Lecture capture: {exc}. "
-            "Vérifier que la table bancarisation.satellite_captures existe "
-            "(sql/001_satellite_captures.sql)."
-        ) from exc
-    row = _first_row(resp)
+        raise SatelliteCrudError(f"Lecture capture: {exc}.") from exc
     return _row_to_dict(row) if row else None
 
 
 def list_captures(
     projet_id: UUID, *, ug_id: Optional[str] = None
 ) -> list[dict[str, Any]]:
-    client = _supabase()
+    sql = f"""
+        SELECT * FROM bancarisation.{TABLE}
+        WHERE projet_id = %s AND status = 'ready'
+    """
+    params: list[Any] = [str(projet_id)]
+    if ug_id:
+        sql += " AND ug_id = %s"
+        params.append(ug_id)
+    sql += " ORDER BY acquisition_date DESC"
     try:
-        q = (
-            client.schema("bancarisation")
-            .table(TABLE)
-            .select("*")
-            .eq("projet_id", str(projet_id))
-            .eq("status", "ready")
-            .order("acquisition_date", desc=True)
-        )
-        if ug_id:
-            q = q.eq("ug_id", ug_id)
-        resp = q.execute()
+        rows = _all(sql, params)
     except Exception as exc:
         raise SatelliteCrudError(f"Liste captures: {exc}") from exc
-    rows = resp.data or []
-    return [_row_to_dict(r) for r in rows if isinstance(r, dict)]
+    return [_row_to_dict(r) for r in rows]
 
 
 def list_available_scenes(
@@ -284,51 +279,59 @@ def ensure_capture(
         "image/tiff",
     )
 
-    payload = {
-        "projet_id": str(projet_id),
-        "ug_id": ug_id,
-        "acquisition_date": day_s,
-        "scene_id": scene_id,
-        "cloud_cover": cloud_cover,
-        "bbox_4326": aoi.bbox_4326,
-        "epsg": aoi.epsg,
-        "resolution_m": aoi.resolution_m,
-        "width_px": aoi.width_px,
-        "height_px": aoi.height_px,
-        "bucket_path_png": path_png,
-        "bucket_path_tif": path_tif,
-        "document_id_png": None,
-        "document_id_tif": None,
-        "status": "ready",
-        "error_message": None,
-        "updated_at": datetime.now(timezone.utc).isoformat(),
-    }
-
-    client = _supabase()
     try:
         if existing:
-            resp = (
-                client.schema("bancarisation")
-                .table(TABLE)
-                .update(payload)
-                .eq("id", existing["id"])
-                .execute()
+            row = _one(
+                f"""
+                UPDATE bancarisation.{TABLE} SET
+                    scene_id = %s, cloud_cover = %s, bbox_4326 = %s, epsg = %s,
+                    resolution_m = %s, width_px = %s, height_px = %s,
+                    bucket_path_png = %s, bucket_path_tif = %s, status = 'ready',
+                    error_message = NULL, updated_at = now()
+                WHERE id = %s
+                RETURNING *
+                """,
+                (
+                    scene_id,
+                    cloud_cover,
+                    Jsonb(aoi.bbox_4326) if not isinstance(aoi.bbox_4326, str) else aoi.bbox_4326,
+                    aoi.epsg,
+                    aoi.resolution_m,
+                    aoi.width_px,
+                    aoi.height_px,
+                    path_png,
+                    path_tif,
+                    existing["id"],
+                ),
             )
         else:
-            resp = (
-                client.schema("bancarisation")
-                .table(TABLE)
-                .insert(payload)
-                .execute()
+            row = _one(
+                f"""
+                INSERT INTO bancarisation.{TABLE}
+                    (projet_id, ug_id, acquisition_date, scene_id, cloud_cover, bbox_4326,
+                     epsg, resolution_m, width_px, height_px, bucket_path_png, bucket_path_tif,
+                     status)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'ready')
+                RETURNING *
+                """,
+                (
+                    str(projet_id),
+                    ug_id,
+                    day_s,
+                    scene_id,
+                    cloud_cover,
+                    Jsonb(aoi.bbox_4326) if not isinstance(aoi.bbox_4326, str) else aoi.bbox_4326,
+                    aoi.epsg,
+                    aoi.resolution_m,
+                    aoi.width_px,
+                    aoi.height_px,
+                    path_png,
+                    path_tif,
+                ),
             )
     except Exception as exc:
-        raise SatelliteCrudError(
-            f"Insertion capture: {exc}. "
-            "Vérifier que la table bancarisation.satellite_captures existe "
-            "(sql/001_satellite_captures.sql) et est exposée dans l'API Supabase."
-        ) from exc
+        raise SatelliteCrudError(f"Insertion capture: {exc}.") from exc
 
-    row = _first_row(resp)
     if row:
         return _row_to_dict(row), True
     refreshed = get_capture(projet_id, ug_id, acquisition_date)

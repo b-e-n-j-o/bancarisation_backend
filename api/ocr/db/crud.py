@@ -1,8 +1,4 @@
-"""
-crud.py — CRUD post-ingestion sur le schéma bancarisation.
-
-Accès via API REST Supabase (SUPABASE_URL HTTPS), pas Postgres direct.
-"""
+"""CRUD post-ingestion — Postgres identifié (RLS)."""
 
 from __future__ import annotations
 
@@ -10,7 +6,10 @@ from datetime import datetime, timezone
 from typing import Any
 from uuid import UUID
 
-from api.db.supabase import bancarisation, get_supabase
+from psycopg.rows import dict_row
+from psycopg.types.json import Jsonb
+
+from api.db.utilisateur import connect_utilisateur
 from api.ocr.domain.ug_ids import normalize_ug_id, normalize_ug_ids
 
 _CHAMPS_MODIFIABLES = {
@@ -38,46 +37,42 @@ def _oid(occurrence_id: UUID | str) -> str:
     return str(occurrence_id)
 
 
-# --- Lecture -----------------------------------------------------------------
+def _all(sql: str, params: Any = None) -> list[dict[str, Any]]:
+    with connect_utilisateur(row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, params)
+            return list(cur.fetchall())
+
+
+def _one(sql: str, params: Any = None) -> dict[str, Any] | None:
+    rows = _all(sql, params)
+    return rows[0] if rows else None
 
 
 def get_metadata(projet_id: UUID | str) -> dict[str, Any] | None:
-    client = get_supabase()
-    response = (
-        bancarisation(client)
-        .table("projet_metadata")
-        .select("*")
-        .eq("projet_id", _pid(projet_id))
-        .maybe_single()
-        .execute()
+    return _one(
+        "SELECT * FROM bancarisation.projet_metadata WHERE projet_id = %s",
+        (_pid(projet_id),),
     )
-    # maybe_single() peut renvoyer None (pas d'objet) quand aucune ligne n'existe
-    if response is None:
-        return None
-    return response.data
 
 
 def lister_actions(projet_id: UUID | str) -> list[dict[str, Any]]:
-    client = get_supabase()
-    response = (
-        bancarisation(client)
-        .table("action_fiche")
-        .select(
-            "id, cle, code, categorie, titre, contenu_integral, ug_ids, lib_thema, confiance, "
-            "champs_a_confirmer, avertissements"
-        )
-        .eq("projet_id", _pid(projet_id))
-        .order("code")
-        .execute()
+    return _all(
+        """
+        SELECT id, cle, code, categorie, titre, contenu_integral, ug_ids, lib_thema, confiance,
+               champs_a_confirmer, avertissements
+        FROM bancarisation.action_fiche
+        WHERE projet_id = %s
+        ORDER BY code
+        """,
+        (_pid(projet_id),),
     )
-    return response.data or []
 
 
 def lister_actions_pour_ug(
     projet_id: UUID | str,
     ug_id: str,
 ) -> list[dict[str, Any]]:
-    """Actions liées à une UG + nombre d'occurrences sur cette UG."""
     ug = normalize_ug_id(ug_id)
     if not ug:
         raise ValueError("ug_id invalide.")
@@ -106,7 +101,6 @@ def lister_actions_pour_ug(
         out.append(row)
         seen.add(cle)
 
-    # Actions absentes de la liste (rare) mais présentes via occurrences
     for cle, n in counts.items():
         if cle in seen:
             continue
@@ -143,7 +137,6 @@ def creer_action_fiche(
     ug_ids: list[str] | None = None,
     lib_thema: str | None = None,
 ) -> dict[str, Any]:
-    """Crée une fiche-action saisie manuellement (hors import OCR)."""
     from api.ocr.extractions.catalogue.thema import normaliser_lib_thema
 
     code_norm = _normaliser_code_action(code)
@@ -162,18 +155,12 @@ def creer_action_fiche(
     cle_norm = _normaliser_code_action(cle or code_norm)
     ugs = normalize_ug_ids(ug_ids)
     thema = normaliser_lib_thema(lib_thema)
-    client = get_supabase()
 
-    existing = (
-        bancarisation(client)
-        .table("action_fiche")
-        .select("id")
-        .eq("projet_id", _pid(projet_id))
-        .eq("cle", cle_norm)
-        .limit(1)
-        .execute()
+    existing = _one(
+        "SELECT id FROM bancarisation.action_fiche WHERE projet_id = %s AND cle = %s",
+        (_pid(projet_id), cle_norm),
     )
-    if existing.data:
+    if existing:
         raise ValueError(f"Une fiche avec le code {cle_norm} existe déjà sur ce projet.")
 
     fiche_json = {
@@ -188,30 +175,31 @@ def creer_action_fiche(
         "champs_a_confirmer": [],
         "avertissements": ["Fiche créée manuellement"],
     }
-
-    response = (
-        bancarisation(client)
-        .table("action_fiche")
-        .insert({
-            "projet_id": _pid(projet_id),
-            "cle": cle_norm,
-            "code": code_norm,
-            "categorie": cat,
-            "titre": titre_clean,
-            "contenu_integral": contenu_clean,
-            "fiche_json": fiche_json,
-            "ug_ids": ugs,
-            "lib_thema": thema,
-            "confiance": 1.0,
-            "champs_a_confirmer": [],
-            "avertissements": ["Fiche créée manuellement"],
-        })
-        .execute()
+    row = _one(
+        """
+        INSERT INTO bancarisation.action_fiche
+            (projet_id, cle, code, categorie, titre, contenu_integral, fiche_json,
+             ug_ids, lib_thema, confiance, champs_a_confirmer, avertissements)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, 1.0, %s, %s)
+        RETURNING *
+        """,
+        (
+            _pid(projet_id),
+            cle_norm,
+            code_norm,
+            cat,
+            titre_clean,
+            contenu_clean,
+            Jsonb(fiche_json),
+            ugs,
+            thema,
+            [],
+            ["Fiche créée manuellement"],
+        ),
     )
-    data = response.data
-    if not data:
+    if not row:
         raise RuntimeError("Insertion fiche-action échouée.")
-    return data[0] if isinstance(data, list) else data
+    return row
 
 
 def modifier_action_fiche(
@@ -230,43 +218,32 @@ def modifier_action_fiche(
         maj["ug_ids"] = normalize_ug_ids(maj["ug_ids"])
     if "lib_thema" in maj:
         maj["lib_thema"] = normaliser_lib_thema(maj["lib_thema"])
-
-    client = get_supabase()
-    response = (
-        bancarisation(client)
-        .table("action_fiche")
-        .update(maj, returning="representation")
-        .eq("id", str(action_id))
-        .eq("projet_id", _pid(projet_id))
-        .execute()
+    sets = ", ".join(f"{k} = %s" for k in maj)
+    params = list(maj.values()) + [str(action_id), _pid(projet_id)]
+    return _one(
+        f"UPDATE bancarisation.action_fiche SET {sets} WHERE id = %s AND projet_id = %s RETURNING *",
+        params,
     )
-    data = response.data
-    if not data:
-        return None
-    return data[0] if isinstance(data, list) else data
 
 
 def lister_echeances(projet_id: UUID | str) -> list[dict[str, Any]]:
-    client = get_supabase()
-    response = (
-        bancarisation(client)
-        .table("echeance")
-        .select(
-            "id, cle, action_cle, code_operation, libelle, confiance, "
-            "champs_a_confirmer, avertissements, source_page, ug_ids"
-        )
-        .eq("projet_id", _pid(projet_id))
-        .order("code_operation")
-        .execute()
+    return _all(
+        """
+        SELECT id, cle, action_cle, code_operation, libelle, confiance,
+               champs_a_confirmer, avertissements, source_page, ug_ids
+        FROM bancarisation.echeance
+        WHERE projet_id = %s
+        ORDER BY code_operation
+        """,
+        (_pid(projet_id),),
     )
-    return response.data or []
 
 
-_ECHEANCE_SELECT = (
-    "id, cle, action_cle, code_operation, type_operation, type_metier, libelle, "
-    "recurrence, confiance, champs_a_confirmer, avertissements, source_page, "
-    "ug_ids, fenetre_debut, fenetre_fin, fenetre_traverse_nouvel_an"
-)
+_ECHEANCE_SELECT = """
+id, cle, action_cle, code_operation, type_operation, type_metier, libelle,
+recurrence, confiance, champs_a_confirmer, avertissements, source_page,
+ug_ids, fenetre_debut, fenetre_fin, fenetre_traverse_nouvel_an
+"""
 
 
 def _est_a_revoir(row: dict[str, Any]) -> bool:
@@ -284,20 +261,13 @@ def _est_non_placable(row: dict[str, Any]) -> bool:
 
 
 def _lister_echeances_detail(projet_id: UUID | str) -> list[dict[str, Any]]:
-    client = get_supabase()
-    response = (
-        bancarisation(client)
-        .table("echeance")
-        .select(_ECHEANCE_SELECT)
-        .eq("projet_id", _pid(projet_id))
-        .order("code_operation")
-        .execute()
+    return _all(
+        f"SELECT {_ECHEANCE_SELECT} FROM bancarisation.echeance WHERE projet_id = %s ORDER BY code_operation",
+        (_pid(projet_id),),
     )
-    return response.data or []
 
 
 def echeances_non_placables(projet_id: UUID | str) -> list[dict[str, Any]]:
-    """Échéances sans occurrence en base — à positionner manuellement sur le calendrier."""
     echeances = _lister_echeances_detail(projet_id)
     occs = lister_occurrences(projet_id)
     placees = {str(o["echeance_id"]) for o in occs if o.get("echeance_id")}
@@ -318,28 +288,20 @@ def lister_occurrences(
     ug_id: str | None = None,
     inclure_supprimees: bool = True,
 ) -> list[dict[str, Any]]:
-    """Alimente le calendrier via la vue v_occurrence_calendrier."""
-    client = get_supabase()
-    query = (
-        bancarisation(client)
-        .table("v_occurrence_calendrier")
-        .select("*")
-        .eq("projet_id", _pid(projet_id))
-    )
+    sql = "SELECT * FROM bancarisation.v_occurrence_calendrier WHERE projet_id = %s"
+    params: list[Any] = [_pid(projet_id)]
     if annee is not None:
-        query = query.eq("annee", annee)
+        sql += " AND annee = %s"
+        params.append(annee)
     if ug_id is not None:
         ug_norm = normalize_ug_id(ug_id)
         if ug_norm:
-            query = query.contains("ug_ids", [ug_norm])
+            sql += " AND %s = ANY(ug_ids)"
+            params.append(ug_norm)
     if not inclure_supprimees:
-        query = query.neq("statut", "supprime")
-
-    response = query.order("annee").order("code").execute()
-    return response.data or []
-
-
-# --- CRUD occurrences --------------------------------------------------------
+        sql += " AND statut <> 'supprime'"
+    sql += " ORDER BY annee, code"
+    return _all(sql, params)
 
 
 def creer_occurrence(projet_id: UUID | str, **champs: Any) -> dict[str, Any]:
@@ -353,18 +315,15 @@ def creer_occurrence(projet_id: UUID | str, **champs: Any) -> dict[str, Any]:
         colonnes["ug_ids"] = normalize_ug_ids(colonnes["ug_ids"])
     colonnes["projet_id"] = _pid(projet_id)
     colonnes["origine"] = "user"
-
-    client = get_supabase()
-    response = (
-        bancarisation(client)
-        .table("occurrence")
-        .insert(colonnes)
-        .execute()
+    keys = list(colonnes)
+    placeholders = ", ".join(["%s"] * len(keys))
+    row = _one(
+        f"INSERT INTO bancarisation.occurrence ({', '.join(keys)}) VALUES ({placeholders}) RETURNING *",
+        [colonnes[k] for k in keys],
     )
-    data = response.data
-    if not data:
+    if not row:
         raise RuntimeError("Insertion occurrence échouée.")
-    return data[0] if isinstance(data, list) else data
+    return row
 
 
 def modifier_occurrence(
@@ -376,20 +335,13 @@ def modifier_occurrence(
         raise ValueError(f"Aucun champ modifiable. Autorisés : {sorted(_CHAMPS_MODIFIABLES)}")
     if "ug_ids" in maj:
         maj["ug_ids"] = normalize_ug_ids(maj["ug_ids"])
-
     maj["modifie_le"] = _now_iso()
-    client = get_supabase()
-    response = (
-        bancarisation(client)
-        .table("occurrence")
-        .update(maj, returning="representation")
-        .eq("id", _oid(occurrence_id))
-        .execute()
+    sets = ", ".join(f"{k} = %s" for k in maj)
+    params = list(maj.values()) + [_oid(occurrence_id)]
+    return _one(
+        f"UPDATE bancarisation.occurrence SET {sets} WHERE id = %s RETURNING *",
+        params,
     )
-    data = response.data
-    if not data:
-        return None
-    return data[0] if isinstance(data, list) else data
 
 
 def supprimer_occurrence(
@@ -397,22 +349,19 @@ def supprimer_occurrence(
     *,
     definitif: bool = False,
 ) -> bool:
-    client = get_supabase()
     if definitif:
-        response = (
-            bancarisation(client)
-            .table("occurrence")
-            .delete()
-            .eq("id", _oid(occurrence_id))
-            .execute()
+        row = _one(
+            "DELETE FROM bancarisation.occurrence WHERE id = %s RETURNING id",
+            (_oid(occurrence_id),),
         )
-        data = response.data
-        return bool(data)
-    response = (
-        bancarisation(client)
-        .table("occurrence")
-        .update({"statut": "supprime", "modifie_le": _now_iso()}, returning="representation")
-        .eq("id", _oid(occurrence_id))
-        .execute()
+        return bool(row)
+    row = _one(
+        """
+        UPDATE bancarisation.occurrence
+        SET statut = 'supprime', modifie_le = %s
+        WHERE id = %s
+        RETURNING id
+        """,
+        (_now_iso(), _oid(occurrence_id)),
     )
-    return bool(response.data)
+    return bool(row)

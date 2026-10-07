@@ -1,82 +1,37 @@
-"""Aperçu GeoJSON 4326 d'un dépôt SIG (ZIP shapefile, GPKG, GeoJSON)."""
+"""Aperçu GeoJSON 4326 — uniquement les couches que la passe 1 saura profiler."""
 from __future__ import annotations
 
 import tempfile
-import zipfile
 from pathlib import Path
 from typing import Any
 
-import geopandas as gpd
 from shapely.geometry import mapping
 
 from .ingestion import GeometryIngestError
+from .sig_io import (
+    appliquer_crs,
+    est_fichier_macos,
+    identifier_epsg,
+    lire_gdf,
+    sources_depuis_chemin,
+)
 
 MAX_FEATURES = 8_000
-_SIG_EXTS = {".shp", ".gpkg", ".geojson", ".json"}
-# QGIS écrit souvent UTF-8 dans le .cpg alors que le DBF est encore latin-1
-# (noms de champs tronqués avec octets 0xE9/0xEF…). On retente alors.
-_ENCODAGES = (None, "latin1", "cp1252")
 
 
-def _est_fichier_macos(name: str) -> bool:
-    n = name.lower()
-    return n.startswith(".") or n.startswith("._") or n in {"thumbs.db", "desktop.ini"}
-
-
-def lire_gdf(path: Path, layer: str | None = None) -> gpd.GeoDataFrame:
-    """Lit une source SIG en retentant l'encodage si le .cpg ment."""
-    last: Exception | None = None
-    for enc in _ENCODAGES:
-        try:
-            kwargs: dict[str, Any] = {}
-            if layer:
-                kwargs["layer"] = layer
-            if enc:
-                kwargs["encoding"] = enc
-            return gpd.read_file(path, **kwargs)
-        except Exception as exc:  # noqa: BLE001
-            last = exc
-    raise last if last else GeometryIngestError(f"{path.name} : lecture impossible")
-
-
-def _noms_couches(path: Path) -> list[str]:
-    try:
-        import pyogrio
-
-        rows = pyogrio.list_layers(path)
-        return [str(r[0]) for r in rows]
-    except Exception:
-        try:
-            import fiona
-
-            return [str(n) for n in fiona.listlayers(path)]
-        except Exception:
-            return [path.stem]
-
-
-def _vers_4326(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-    if gdf.empty or gdf.geometry.isna().all():
+def _vers_4326(gdf):
+    if gdf.empty or gdf.geometry.isna().all() or gdf.crs is None:
         return gdf
-    if gdf.crs is None:
-        sample = next((g for g in gdf.geometry.values if g is not None and not g.is_empty), None)
-        if sample is not None:
-            minx, miny, maxx, maxy = sample.bounds
-            if abs(minx) > 180 or abs(maxx) > 180 or abs(miny) > 90 or abs(maxy) > 90:
-                gdf = gdf.set_crs(2154, allow_override=True)
-            else:
-                gdf = gdf.set_crs(4326, allow_override=True)
-        else:
-            return gdf
     try:
         epsg = int(gdf.crs.to_epsg() or 0)
     except Exception:
         epsg = 0
-    if epsg != 4326:
-        gdf = gdf.to_crs(epsg=4326)
+    if epsg and epsg != 4326:
+        return gdf.to_crs(epsg=4326)
     return gdf
 
 
-def _features_gdf(gdf: gpd.GeoDataFrame, couche: str) -> list[dict[str, Any]]:
+def _features_gdf(gdf, couche: str) -> list[dict[str, Any]]:
     gdf = _vers_4326(gdf)
     out: list[dict[str, Any]] = []
     for i, row in gdf.iterrows():
@@ -84,7 +39,7 @@ def _features_gdf(gdf: gpd.GeoDataFrame, couche: str) -> list[dict[str, Any]]:
         if geom is None or geom.is_empty:
             continue
         props = {
-            k: (None if v != v else v)  # NaN
+            k: (None if v != v else v)
             for k, v in row.drop(labels=["geometry"], errors="ignore").items()
             if v is not None
         }
@@ -103,33 +58,21 @@ def _features_gdf(gdf: gpd.GeoDataFrame, couche: str) -> list[dict[str, Any]]:
     return out
 
 
-def _lire_source(path: Path, couche_defaut: str) -> list[dict[str, Any]]:
-    features: list[dict[str, Any]] = []
-    for nom in _noms_couches(path):
-        try:
-            gdf = lire_gdf(path, layer=nom) if nom else lire_gdf(path)
-        except Exception:
-            try:
-                gdf = lire_gdf(path)
-            except Exception as exc:
-                raise GeometryIngestError(f"{path.name} : {exc}") from exc
-        features.extend(_features_gdf(gdf, nom or couche_defaut))
-    return features
-
-
-def _extraire_zip(dest: Path, root: Path, avertissements: list[str]) -> None:
+def _lire_couche(path: Path, layer: str | None, nom: str, avertissements: list[str]) -> list[dict[str, Any]]:
     try:
-        with zipfile.ZipFile(dest) as zf:
-            for info in zf.infolist():
-                name = info.filename
-                if name.startswith("/") or ".." in Path(name).parts:
-                    continue
-                if _est_fichier_macos(Path(name).name) or "__MACOSX" in name:
-                    continue
-                cible = root / Path(name).name
-                cible.write_bytes(zf.read(info))
-    except zipfile.BadZipFile as exc:
-        avertissements.append(f"{dest.name} : ZIP invalide ({exc})")
+        gdf = lire_gdf(path, layer)
+    except Exception as exc:  # noqa: BLE001
+        avertissements.append(f"{nom} : lecture impossible ({exc})")
+        return []
+    epsg, motif = identifier_epsg(path, gdf)
+    if not epsg:
+        avertissements.append(f"{nom} : {motif} — non affiché et non analysé.")
+        return []
+    gdf = appliquer_crs(gdf, epsg)
+    feats = _features_gdf(gdf, nom)
+    if not feats:
+        avertissements.append(f"{nom} : couche vide (aucune géométrie).")
+    return feats
 
 
 def apercu_sig(fichiers: list[tuple[str, bytes]]) -> dict[str, Any]:
@@ -139,50 +82,54 @@ def apercu_sig(fichiers: list[tuple[str, bytes]]) -> dict[str, Any]:
     features: list[dict[str, Any]] = []
     couches: list[str] = []
     avertissements: list[str] = []
+    sig_present = False
 
     with tempfile.TemporaryDirectory(prefix="sig_apercu_") as tmp:
         root = Path(tmp)
-        zips: list[Path] = []
-        # 1. Écrire tous les fichiers (shp + sidecars .dbf/.prj/…) avant toute lecture.
         for nom, brut in fichiers:
             if not brut:
                 continue
             name = Path(nom).name
-            if _est_fichier_macos(name):
+            if est_fichier_macos(name):
                 continue
             dest = root / name
             dest.write_bytes(brut)
-            if dest.suffix.lower() == ".zip":
-                zips.append(dest)
+            ext = dest.suffix.lower()
+            if ext == ".shp":
+                # sidecars écrits séparément ; on lit via le ZIP ou on ignore le SHP nu
+                # sauf s'il est seul avec .prj (hors contrat passe 1).
+                sig_present = True
+                continue
+            if ext not in {".zip", ".gpkg", ".geojson", ".json"}:
+                continue
+            sig_present = True
+            sources = sources_depuis_chemin(dest)
+            if not sources:
+                avertissements.append(f"{name} : aucune couche SIG lisible.")
+                continue
+            for path, layer, couche in sources:
+                feats = _lire_couche(path, layer, couche, avertissements)
+                if feats:
+                    couches.append(couche)
+                    features.extend(feats)
 
-        for zpath in zips:
-            _extraire_zip(zpath, root, avertissements)
+        # shapefile hors ZIP : bloquant s'il n'y a rien d'autre d'analysable
+        shps_nus = [
+            p for p in root.iterdir()
+            if p.is_file() and p.suffix.lower() == ".shp" and not est_fichier_macos(p.name)
+        ]
+        if shps_nus and not couches:
+            avertissements.append(
+                "Shapefile hors archive ZIP : zippez-le avec .shx, .dbf et .prj "
+                "pour qu'il soit pris par l'analyse."
+            )
+        elif shps_nus:
+            avertissements.append(
+                "Shapefile hors ZIP ignoré — seuls le ZIP, le GeoPackage et le GeoJSON sont lus."
+            )
 
-        vus: dict[str, Path] = {}
-        for p in root.iterdir():
-            if not p.is_file() or _est_fichier_macos(p.name):
-                continue
-            if p.suffix.lower() not in _SIG_EXTS:
-                continue
-            vus.setdefault(p.stem.lower(), p)
-        sources = sorted(vus.values(), key=lambda p: p.name.lower())
-        if not sources:
-            avertissements.append("Aucune couche SIG lisible dans le dépôt.")
-
-        for src in sources:
-            try:
-                feats = _lire_source(src, src.stem)
-            except GeometryIngestError as exc:
-                avertissements.append(str(exc))
-                continue
-            except Exception as exc:  # noqa: BLE001
-                avertissements.append(f"{src.name} : {exc}")
-                continue
-            if feats:
-                couches.append(src.stem)
-                features.extend(feats)
-            else:
-                avertissements.append(f"{src.stem} : couche vide (aucune géométrie).")
+    if not sig_present:
+        avertissements.append("Aucune couche SIG lisible dans le dépôt.")
 
     if len(features) > MAX_FEATURES:
         avertissements.append(
@@ -190,6 +137,7 @@ def apercu_sig(fichiers: list[tuple[str, bytes]]) -> dict[str, Any]:
         )
         features = features[:MAX_FEATURES]
 
+    analysable = bool(couches)
     return {
         "type": "FeatureCollection",
         "features": features,
@@ -197,5 +145,8 @@ def apercu_sig(fichiers: list[tuple[str, bytes]]) -> dict[str, Any]:
             "nb_features": len(features),
             "couches": sorted(set(couches)),
             "avertissements": avertissements,
+            "sig_present": sig_present,
+            "analysable": analysable,
+            "bloquant": sig_present and not analysable,
         },
     }

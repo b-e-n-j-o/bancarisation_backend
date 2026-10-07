@@ -10,7 +10,7 @@ from uuid import UUID
 
 import psycopg
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 from .crud import CadastreReadError
 
@@ -31,7 +31,7 @@ def exporter_parcellaire_intersections(
     ug_filter = ug_ids if ug_ids else None
 
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """

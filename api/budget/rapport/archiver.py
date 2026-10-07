@@ -10,7 +10,7 @@ from psycopg import sql
 from psycopg.rows import dict_row
 import psycopg
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 from api.documents.crud_document import (
     DocumentServiceError,
     delete_document,
@@ -69,7 +69,7 @@ def archiver_pdf_bilan(rapport_id: UUID, *, remplacer: bool = True) -> dict[str,
     if not new_doc_id:
         raise BilanError("Archivage PDF : document sans id.")
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """

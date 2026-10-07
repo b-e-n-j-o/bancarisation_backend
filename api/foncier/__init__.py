@@ -1,1 +1,1 @@
-"""Module foncier — parcelles bancarisées + geojson carto."""
+"""Module foncier — lecture des parcelles persistées à l'ingestion."""

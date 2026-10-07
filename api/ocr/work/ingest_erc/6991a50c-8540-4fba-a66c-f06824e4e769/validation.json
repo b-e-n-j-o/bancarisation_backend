@@ -1,0 +1,83 @@
+{
+ "corrections": {
+  "projet": {},
+  "ugs": [],
+  "actions": []
+ },
+ "reponses": [
+  {
+   "id": "ancre_etat_zero:projet",
+   "portee": "projet",
+   "question": "Année de l'état zéro : les documents divergent. 2022 selon 90_33_Lyce_e_College_Le_Barp.pdf (2 tableaux), ITK.xlsx (4 tableaux), Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf (3 tableaux) ; 2023 selon ITK.xlsx (4 tableaux)",
+   "reponse": "2022"
+  },
+  {
+   "id": "convention_montants:itk-xlsx",
+   "portee": "itk-xlsx",
+   "question": "Les totaux de ITK.xlsx valent les montants × 1.1 (TVA 10.0 % ?). Les montants par ligne sont-ils HT ?",
+   "reponse": "Tout est HT (le coefficient est autre chose)"
+  },
+  {
+   "id": "action_ug_fusion:MG2+SE2",
+   "portee": "MG2+SE2",
+   "question": "Dans le tableur, une même cellule UG fusionnée (UG1, UG2, UG3, UG4, UG5, UG6, UG7) couvre plusieurs actions : MG2 (Mise à jour du plan de gestion et bilan de fin de mesure compensatoire) ; SE2 (Suivi hydraulique). Préciser les UG de chacune (pré-rempli : toutes).",
+   "reponse": "UG1, UG2, UG3, UG4, UG5, UG6, UG7"
+  },
+  {
+   "id": "bloc_code_incoherent:travaux-d-entretien-fauvette-pitchou:TE",
+   "portee": "travaux-d-entretien-fauvette-pitchou:TE",
+   "question": "Le bloc « Travaux d'entretien - Fauvette pitchou » (ITK.xlsx) est codé TU1 alors que son titre correspond à la famille TE (travaux d'entretien). Ses parcelles relèvent de UG1, UG3. S'agit-il de TE1 ?",
+   "reponse": "Garder TU1"
+  },
+  {
+   "id": "ug_zone_inferee:UG5",
+   "portee": "UG5",
+   "question": "UG5 (Boisement de feuillus) : la couche « Compensation_Chiroptères » n'a pas d'attribut UG. Rapprochement proposé d'après nom, parcelles, type. Confirmer ?",
+   "reponse": "Oui"
+  },
+  {
+   "id": "ug_zone_inferee:UG6",
+   "portee": "UG6",
+   "question": "UG6 (Zone humide évitée) : la couche « Evitement_Zone_humide » n'a pas d'attribut UG. Rapprochement proposé d'après nom, surface, type. Confirmer ?",
+   "reponse": "Oui"
+  },
+  {
+   "id": "ug_zone_inferee:UG7",
+   "portee": "UG7",
+   "question": "UG7 (Boisement de feuillus évité) : la couche « Evitement_Boisement » n'a pas d'attribut UG. Rapprochement proposé d'après nom, surface, type. Confirmer ?",
+   "reponse": "Oui"
+  },
+  {
+   "id": "couche_orpheline:Evitement_Fauvette",
+   "portee": "Evitement_Fauvette",
+   "question": "La couche « Evitement_Fauvette » (reprojetée depuis EPSG:4326), 0.665 ha, type E, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+   "reponse": "Nouvelle UG"
+  },
+  {
+   "id": "parcelle_introuvable:C974c",
+   "portee": "C974c",
+   "question": "Parcelle « 330290C974c » citée dans la fiche TU1 (p.40) introuvable dans le SIG et le tableur. Les documents contiennent C974a : même parcelle ?",
+   "reponse": "C974a"
+  },
+  {
+   "id": "annexe_decision:plan-de-gestion-espe-ces-prote-ge-es-lyce-ecolle:annexe1",
+   "portee": "plan-de-gestion-espe-ces-prote-ge-es-lyce-ecolle:annexe1",
+   "question": "L'annexe 1 du plan de gestion contient une autre décision (21-037, Autorisation de défrichement (L.341-1 C. for.), du 2021-09-13, reboisement 15.897 ha, indemnité 58 821 €), non fournie séparément. L'ajouter comme décision du projet ?",
+   "reponse": "Non pertinent"
+  },
+  {
+   "id": "legende_conflit:CP+CR",
+   "portee": "CP+CR",
+   "question": "Le tableur utilise deux abréviations pour « coupe rase » : CR et CP. Même opération ?",
+   "reponse": "Non, opérations différentes"
+  },
+  {
+   "id": "R1",
+   "portee": "annee_fin",
+   "question": "Le plan de gestion se contredit. Incohérence de l'année de fin de mesure compensatoire (N+72 soit 2072) indiquée page 78 alors que 2023+49=2072 (et non 2095), suggérant une erreur de formulation sur N+72. Quelle valeur retenir ?",
+   "reponse": "2072"
+  }
+ ],
+ "origine": "user",
+ "validated_at": "2026-09-22T15:59:53.182109+00:00"
+}

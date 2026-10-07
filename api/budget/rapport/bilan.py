@@ -16,7 +16,7 @@ import psycopg
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 from api.journal_actions import journaliser
 
 
@@ -283,7 +283,7 @@ def _controles(
 def construire_bilan(projet_id: UUID, annee: int) -> dict[str, Any]:
     """Construit le snapshot complet du bilan (sans l'archiver)."""
     pid = str(projet_id)
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -333,7 +333,7 @@ def generer_bilan(
 ) -> dict[str, Any]:
     """Construit le bilan et l'archive (version = max + 1). Statut = valide."""
     bilan = construire_bilan(projet_id, annee)
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -385,7 +385,7 @@ def valider_bilan(
 ) -> dict[str, Any]:
     """Valide un brouillon. Refuse si contrôles bloquants, sauf force=True
     (le forçage est lui-même tracé dans les données du bilan)."""
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 "SELECT statut, controles FROM bancarisation.rapport_bilan WHERE id = %s",
@@ -474,7 +474,7 @@ def lister_bilans(projet_id: UUID) -> list[dict[str, Any]]:
         WHERE projet_id = %s
         ORDER BY annee DESC, version DESC
     """
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             try:
                 cur.execute(sql_avec_doc, (str(projet_id),))
@@ -485,7 +485,7 @@ def lister_bilans(projet_id: UUID) -> list[dict[str, Any]]:
 
 
 def lire_bilan(rapport_id: UUID) -> dict[str, Any]:
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -516,7 +516,7 @@ def supprimer_bilan(
     bilan = lire_bilan(rapport_id)
 
     doc_id = bilan.get("document_id")
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             journaliser(
                 action="bilan.supprimer",

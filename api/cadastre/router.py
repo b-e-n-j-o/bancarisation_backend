@@ -99,7 +99,16 @@ def rafraichir_cadastre_route(
             buffer_m=buffer_m,
             ug_ids=[ug_id] if ug_id else None,
         )
-        return result.to_dict()
+        out = result.to_dict()
+        try:
+            from api.projets.geometries.foncier_croisement import (
+                persister_parcelles_concernees,
+            )
+
+            out["foncier"] = persister_parcelles_concernees(projet_id)
+        except Exception as exc:  # noqa: BLE001
+            out["foncier"] = {"avertissements": [str(exc)], "nb_importees": 0}
+        return out
     except CadastreIgnError as exc:
         raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail=str(exc)) from exc
     except Exception as exc:  # noqa: BLE001

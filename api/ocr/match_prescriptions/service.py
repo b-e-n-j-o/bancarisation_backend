@@ -18,15 +18,11 @@ logger = logging.getLogger("match_prescriptions.service")
 def lancer_appariement(
     projet_id: UUID,
     arrete_id: UUID,
-    *,
-    role: str,
-    organisation_id: UUID | None,
+    **_ignored: object,
 ) -> ApparierResultOut:
     presc, ech = crud.charger_pour_match(
         projet_id,
         arrete_id,
-        role=role,
-        organisation_id=organisation_id,
     )
     if not presc:
         raise ValueError("Aucune prescription sur cet arrêté — lancez d'abord l'extraction.")
@@ -46,8 +42,6 @@ def lancer_appariement(
         projet_id,
         arrete_id,
         rows,
-        role=role,
-        organisation_id=organisation_id,
     )
     print(
         f"[appariement] terminé — liens LLM={len(liens)} inseres={n} usage={usage}",

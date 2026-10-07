@@ -9,7 +9,7 @@ from uuid import UUID, uuid4
 import psycopg
 from psycopg.rows import dict_row
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 ALLOWED_GEOM_TYPES = {
     "Point",
@@ -186,7 +186,7 @@ def lister(
     *,
     ug_id: str | None = None,
 ) -> list[dict[str, Any]]:
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             if ug_id:
                 cur.execute(
@@ -245,7 +245,7 @@ def creer(
     src_ug = (source_ug_geom_id or "").strip() or None
     obs = (observed_at or "").strip() or None
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -287,7 +287,7 @@ def creer(
 
 
 def lire(annotation_id: UUID) -> dict[str, Any]:
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 f"""
@@ -344,7 +344,7 @@ def modifier(
         return lire(annotation_id)
 
     params.append(str(annotation_id))
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 f"""
@@ -361,7 +361,7 @@ def modifier(
 
 
 def supprimer(annotation_id: UUID) -> None:
-    with psycopg.connect(get_database_url()) as conn:
+    with connect_utilisateur() as conn:
         with conn.cursor() as cur:
             cur.execute(
                 "DELETE FROM bancarisation.annotation_terrain WHERE id = %s",

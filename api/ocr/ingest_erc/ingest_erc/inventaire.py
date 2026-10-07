@@ -147,8 +147,20 @@ def detecter_doublons(docs: list[Document]) -> None:
                         "arrêté non fourni séparément → OCR Mistral requis pour l'exploiter")
 
 
-def inventorier(chemins: list[str]) -> list[Document]:
+ROLES_OK = {"plan_gestion", "arrete", "tableur", "sig", "execution", "autre"}
+ROLE_ALIAS = {"budget": "tableur"}
+
+
+def _role_force(valeur: str | None) -> str | None:
+    if not valeur:
+        return None
+    r = ROLE_ALIAS.get(valeur.strip().lower(), valeur.strip().lower())
+    return r if r in ROLES_OK else None
+
+
+def inventorier(chemins: list[str], roles_forces: dict[str, str] | None = None) -> list[Document]:
     config.charger_dotenv()
+    forces = {k: _role_force(v) for k, v in (roles_forces or {}).items() if _role_force(v)}
     docs = []
     for c in chemins:
         p = Path(c)
@@ -185,6 +197,12 @@ def inventorier(chemins: list[str]) -> list[Document]:
         else:
             d = Document(nom=p.name, chemin=str(p), sha256=sha, extension=ext,
                          role="autre", role_indice="type non géré en v0")
+        force = forces.get(p.name)
+        if force and force != d.role:
+            d.role = force
+            d.role_indice = "saisi au dépôt"
+            if force == "plan_gestion" and ext == ".pdf" and not d.sous_documents:
+                d.sous_documents = annexes_embarquees(d)
         docs.append(d)
     detecter_doublons(docs)
     # doublons stricts de fichier

@@ -6,10 +6,8 @@ import json
 from typing import Any
 from uuid import UUID
 
-import psycopg
 from psycopg.rows import dict_row
-from api.db.env import get_database_url
-from api.parc.filtre import filtre_organisation
+from api.db.utilisateur import connect_utilisateur
 from api.parc.schemas import (
     CaseBilanMatrice,
     ProjetParc,
@@ -90,8 +88,6 @@ def _row_to_projet(row: dict[str, Any]) -> ProjetParc:
 
 def lister_projets_parc(
     *,
-    role: str,
-    organisation_id: UUID | None,
     organisation_filtre: UUID | None = None,
     departement: str | None = None,
     gravite: int | None = None,
@@ -100,7 +96,7 @@ def lister_projets_parc(
     q: str | None = None,
     file_controle_only: bool = False,
 ) -> list[ProjetParc]:
-    clause, params = filtre_organisation(role, organisation_id)
+    clause, params = "TRUE", []
     where = [f"({clause})"]
     args: list[Any] = list(params)
 
@@ -152,22 +148,18 @@ def lister_projets_parc(
             nb_signaux_attention DESC,
             total_prevu DESC
     """
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(sql, args)
             rows = cur.fetchall()
     return [_row_to_projet(dict(r)) for r in rows]
 
 
-def lire_synthese_parc(
-    *,
-    role: str,
-    organisation_id: UUID | None,
-) -> SyntheseParc:
-    clause, params = filtre_organisation(role, organisation_id)
+def lire_synthese_parc() -> SyntheseParc:
+    clause, params = "TRUE", []
     args = list(params)
 
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(
                 f"""
@@ -238,13 +230,11 @@ def lire_synthese_parc(
 
 def lister_bilans_matrice(
     *,
-    role: str,
-    organisation_id: UUID | None,
     annee_min: int | None = None,
     annee_max: int | None = None,
     organisation_filtre: UUID | None = None,
 ) -> list[CaseBilanMatrice]:
-    clause, params = filtre_organisation(role, organisation_id)
+    clause, params = "TRUE", []
     # La vue matrice n'a pas organisation_nom : jointure projets/orgs.
     # Le filtre porte sur m.organisation_id.
     where = [f"({clause.replace('organisation_id', 'm.organisation_id')})"]
@@ -277,7 +267,7 @@ def lister_bilans_matrice(
         WHERE {' AND '.join(where)}
         ORDER BY org.nom, p.nom, m.annee
     """
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(sql, args)
             rows = cur.fetchall()

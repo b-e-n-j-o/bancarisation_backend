@@ -15,7 +15,7 @@ from psycopg.errors import InvalidParameterValue, UndefinedColumn, UndefinedFunc
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 _MSG_TABLES = (
     "Tables plan_cao absentes — appliquer backend/api/ocr/db/sql/035_plan_cao.sql"
@@ -51,7 +51,7 @@ class PlanCaoError(Exception):
 
 def _connect():
     try:
-        return psycopg.connect(get_database_url(), row_factory=dict_row, connect_timeout=8)
+        return connect_utilisateur(row_factory=dict_row, connect_timeout=8)
     except Exception as exc:
         raise PlanCaoError(f"Postgres injoignable : {exc}") from exc
 

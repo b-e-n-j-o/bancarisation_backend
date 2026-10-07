@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import io
 import json
+import logging
 import tempfile
 import zipfile
 from dataclasses import dataclass
@@ -25,11 +26,12 @@ from shapely.geometry import (
 from shapely.geometry.base import BaseGeometry
 from shapely.ops import unary_union
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 from api.ocr.domain.ug_ids import normalize_ug_id
 
 CoucheKind = Literal["surf", "lin", "pct", "emprise"]
 CONNECT_TIMEOUT_S = 8
+logger = logging.getLogger(__name__)
 
 
 class GeometryIngestError(Exception):
@@ -54,7 +56,7 @@ def est_erreur_connexion(exc: BaseException) -> bool:
 def _connect():
     """Connexion PostGIS courte : évite d'attendre 60 s sur un localhost down."""
     try:
-        return psycopg.connect(get_database_url(), connect_timeout=CONNECT_TIMEOUT_S)
+        return connect_utilisateur(connect_timeout=CONNECT_TIMEOUT_S)
     except GeometryIngestError:
         raise
     except Exception as exc:
@@ -499,3 +501,31 @@ def persister_entites_couche(
 
 # Alias demandé par la spec
 persister_ug = persister_entites_couche
+
+
+def initialiser_foncier_apres_ingestion(projet_id: UUID) -> dict[str, Any]:
+    """Après écriture des UG : IGN ∩ UG → ``parcelles`` persistées.
+
+    N'échoue jamais l'ingestion géométrique : un incident IGN est renvoyé
+    dans ``avertissements``.
+    """
+    try:
+        from .foncier_croisement import initialiser_foncier_depuis_ugs
+
+        out = initialiser_foncier_depuis_ugs(projet_id)
+        out.setdefault("ok", True)
+        return out
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(
+            "[foncier] initialisation après ingestion projet=%s : %s",
+            projet_id,
+            exc,
+        )
+        return {
+            "ok": False,
+            "nb_importees": 0,
+            "nb_croisees": 0,
+            "nb_liens_ug": 0,
+            "parcelles": [],
+            "avertissements": [str(exc)],
+        }

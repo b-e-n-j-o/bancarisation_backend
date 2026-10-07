@@ -7,8 +7,10 @@ load_dotenv(Path(__file__).resolve().parent / ".env")
 
 import os
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from psycopg import Error as PsycopgError
 
 from api.bilan.router import router as bilan_suivi_router
 from api.budget.router import router as budget_router
@@ -33,6 +35,11 @@ from api.satellite.router import router as satellite_router
 from api.annotations.router import router as annotations_router
 from api.journal_actions.router import router as journal_actions_router
 from api.carto.router import router as cao_router
+from api.admin.router import router as admin_router
+from api.acces.router import router as acces_router
+from api.transfert.router import router as transfert_router
+from auth.deps import JwtAuthMiddleware
+from auth.errors import http_from_db
 from security import IpDenylistMiddleware, docs_enabled
 
 _docs = docs_enabled()
@@ -51,6 +58,10 @@ origins = os.getenv(
     "http://localhost:5173,http://127.0.0.1:5173",
 ).split(",")
 
+app.add_middleware(JwtAuthMiddleware)
+app.add_middleware(IpDenylistMiddleware)
+# Ajouté en dernier : exécuté en premier, pour que les pré-vols OPTIONS
+# et les réponses 401 portent les en-têtes CORS.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -58,7 +69,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.add_middleware(IpDenylistMiddleware)
+
+
+@app.exception_handler(PsycopgError)
+async def psycopg_http_handler(_request: Request, exc: PsycopgError) -> JSONResponse:
+    mapped = http_from_db(exc)
+    return JSONResponse({"detail": mapped.detail}, status_code=mapped.status_code)
 
 
 @app.get("/health", tags=["health"])
@@ -89,3 +105,6 @@ app.include_router(satellite_router, prefix="/api", tags=["satellite"])
 app.include_router(annotations_router, prefix="/api", tags=["annotations"])
 app.include_router(journal_actions_router, prefix="/api", tags=["journal"])
 app.include_router(cao_router, prefix="/api", tags=["cao"])
+app.include_router(admin_router, prefix="/api", tags=["admin"])
+app.include_router(transfert_router, prefix="/api", tags=["transfert"])
+app.include_router(acces_router, prefix="/api", tags=["acces"])

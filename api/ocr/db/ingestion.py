@@ -32,7 +32,8 @@ import psycopg
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
-from api.db.env import get_database_url, load_db_env
+from api.db.env import load_db_env
+from api.db.utilisateur import connect_utilisateur
 from api.ocr.domain.ug_ids import normalize_ug_ids
 from api.ocr.models import (
     ActionFiche,
@@ -63,7 +64,7 @@ ORGANISATION_ID_V0 = "a1000000-0000-0000-0000-000000000001"
 
 
 def connect() -> psycopg.Connection:
-    return psycopg.connect(get_database_url(), row_factory=dict_row)
+    return connect_utilisateur(row_factory=dict_row)
 
 
 def _verifier_projet(conn: psycopg.Connection, projet_id: UUID | str) -> None:

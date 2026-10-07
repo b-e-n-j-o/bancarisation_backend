@@ -8,7 +8,7 @@ from uuid import UUID
 
 import psycopg
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 from .ingestion import GeometryIngestError
 
@@ -209,7 +209,7 @@ def lister_geometries_ug(
     ugs: list[dict[str, Any]] = []
     sans_geom: list[dict[str, Any]] = []
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 for table, couche in (
                     ("unites_de_gestion_surf", "surf"),
@@ -292,7 +292,7 @@ def lister_geometries_parc(*, departement: str | None = None) -> dict[str, Any]:
     features: list[dict[str, Any]] = []
     dept = departement.strip() if departement and departement.strip() else None
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 for table, couche in (
                     ("unites_de_gestion_surf", "surf"),
@@ -352,7 +352,7 @@ def lister_geometries_parc(*, departement: str | None = None) -> dict[str, Any]:
 def compter_projets_parc_par_departement() -> list[dict[str, Any]]:
     """Décompte des projets du parc ayant au moins une UG, par département."""
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
@@ -408,7 +408,7 @@ def renommer_ug(projet_id: UUID, ug_id: str, libelle: str) -> dict[str, Any]:
 
     updated = 0
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 for table in _UG_TABLES:
                     cur.execute(

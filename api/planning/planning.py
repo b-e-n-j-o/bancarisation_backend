@@ -1,12 +1,10 @@
-import os
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Optional
 from uuid import UUID
 
-from dotenv import load_dotenv
-from supabase import Client, create_client
+from psycopg.rows import dict_row
 
-load_dotenv()
+from api.db.utilisateur import connect_utilisateur
 
 ORGANISATION_ID_V0 = "a1000000-0000-0000-0000-000000000001"
 
@@ -15,19 +13,20 @@ class PlanningCrudError(Exception):
     pass
 
 
-def _get_supabase_client() -> Client:
-    supabase_url = os.getenv("SUPABASE_URL")
-    service_key = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
-    if not supabase_url or not service_key:
-        raise PlanningCrudError(
-            "Variables SUPABASE_URL et SUPABASE_SERVICE_ROLE_KEY manquantes."
-        )
-    return create_client(supabase_url, service_key)
+def _all(sql: str, params: Any = None) -> list[dict[str, Any]]:
+    try:
+        with connect_utilisateur(row_factory=dict_row) as conn:
+            with conn.cursor() as cur:
+                cur.execute(sql, params)
+                return list(cur.fetchall())
+    except Exception as exc:
+        raise PlanningCrudError(f"Erreur SQL: {exc}") from exc
 
 
-# =============================================================================
-# ACTIONS (comp_affectation_annuelle)
-# =============================================================================
+def _one(sql: str, params: Any = None) -> dict[str, Any] | None:
+    rows = _all(sql, params)
+    return rows[0] if rows else None
+
 
 CATEGORIES_VALIDES = {"MG", "SE", "TU", "TE"}
 STATUTS_VALIDES = {"projete", "realise", "supprime", "conditionnel"}
@@ -37,13 +36,13 @@ STATUTS_VALIDES = {"projete", "realise", "supprime", "conditionnel"}
 class CreateActionPayload:
     projet_id: UUID
     annee: int
-    categorie: str                        # MG | SE | TU | TE
+    categorie: str
     libelle_prestation: str
     statut: str = "projete"
     thema_code: Optional[str] = None
     cout_ht_prevu: Optional[float] = None
     prestataire_id: Optional[UUID] = None
-    unit_id: Optional[UUID] = None        # nullable si action transversale
+    unit_id: Optional[UUID] = None
     note: Optional[str] = None
 
 
@@ -75,47 +74,21 @@ def _validate_statut(statut: str) -> None:
 
 
 def lister_actions(projet_id: UUID) -> list[dict[str, Any]]:
-    """Retourne toutes les actions d'un projet, enrichies avec prestataire et unité."""
-    client = _get_supabase_client()
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_affectation_annuelle")
-            .select(
-                "*, "
-                "comp_prestataire(id, nom, role_defaut), "
-                "comp_gestion_unit(id, code, libelle, type_milieu)"
-            )
-            .eq("projet_id", str(projet_id))
-            .order("annee")
-            .order("categorie")
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    return response.data or []
+    return _all(
+        """
+        SELECT * FROM bancarisation.comp_affectation_annuelle
+        WHERE projet_id = %s
+        ORDER BY annee, categorie
+        """,
+        (str(projet_id),),
+    )
 
 
 def lire_action(action_id: UUID) -> dict[str, Any]:
-    client = _get_supabase_client()
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_affectation_annuelle")
-            .select(
-                "*, "
-                "comp_prestataire(id, nom, role_defaut), "
-                "comp_gestion_unit(id, code, libelle, type_milieu)"
-            )
-            .eq("id", str(action_id))
-            .maybe_single()
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    row = response.data
+    row = _one(
+        "SELECT * FROM bancarisation.comp_affectation_annuelle WHERE id = %s",
+        (str(action_id),),
+    )
     if not row:
         raise PlanningCrudError("Action introuvable.")
     return row
@@ -124,42 +97,34 @@ def lire_action(action_id: UUID) -> dict[str, Any]:
 def creer_action(payload: CreateActionPayload) -> UUID:
     _validate_categorie(payload.categorie)
     _validate_statut(payload.statut)
-
-    client = _get_supabase_client()
-    insert_payload: dict[str, Any] = {
-        "projet_id": str(payload.projet_id),
-        "annee": payload.annee,
-        "categorie": payload.categorie,
-        "libelle_prestation": payload.libelle_prestation.strip(),
-        "statut": payload.statut,
-        "cout_ht_prevu": payload.cout_ht_prevu,
-        "prestataire_id": str(payload.prestataire_id) if payload.prestataire_id else None,
-        "unit_id": str(payload.unit_id) if payload.unit_id else None,
-        "note": payload.note,
-    }
-    if payload.thema_code is not None:
-        insert_payload["thema_code"] = payload.thema_code.strip() or None
-
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_affectation_annuelle")
-            .insert(insert_payload, returning="representation")
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    data = response.data
-    row = data[0] if isinstance(data, list) and data else data
-    if not row or "id" not in row:
+    row = _one(
+        """
+        INSERT INTO bancarisation.comp_affectation_annuelle
+            (projet_id, annee, categorie, libelle_prestation, statut, cout_ht_prevu,
+             prestataire_id, unit_id, note, thema_code)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        RETURNING id
+        """,
+        (
+            str(payload.projet_id),
+            payload.annee,
+            payload.categorie,
+            payload.libelle_prestation.strip(),
+            payload.statut,
+            payload.cout_ht_prevu,
+            str(payload.prestataire_id) if payload.prestataire_id else None,
+            str(payload.unit_id) if payload.unit_id else None,
+            payload.note,
+            (payload.thema_code or "").strip() or None,
+        ),
+    )
+    if not row:
         raise PlanningCrudError("Insertion échouée : identifiant absent.")
     return UUID(str(row["id"]))
 
 
 def mettre_a_jour_action(action_id: UUID, payload: UpdateActionPayload) -> dict[str, Any]:
     updates: dict[str, Any] = {}
-
     if payload.annee is not None:
         updates["annee"] = payload.annee
     if payload.categorie is not None:
@@ -180,51 +145,26 @@ def mettre_a_jour_action(action_id: UUID, payload: UpdateActionPayload) -> dict[
         updates["unit_id"] = str(payload.unit_id)
     if payload.note is not None:
         updates["note"] = payload.note
-
     if not updates:
         raise PlanningCrudError("Aucune donnée à mettre à jour.")
-
-    client = _get_supabase_client()
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_affectation_annuelle")
-            .update(updates, returning="representation")
-            .eq("id", str(action_id))
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    data = response.data
-    row = data[0] if isinstance(data, list) and data else data
+    sets = ", ".join(f"{k} = %s" for k in updates)
+    row = _one(
+        f"UPDATE bancarisation.comp_affectation_annuelle SET {sets} WHERE id = %s RETURNING *",
+        list(updates.values()) + [str(action_id)],
+    )
     if not row:
         raise PlanningCrudError("Action introuvable ou mise à jour échouée.")
     return row
 
 
 def supprimer_action(action_id: UUID) -> None:
-    client = _get_supabase_client()
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_affectation_annuelle")
-            .delete(returning="representation")
-            .eq("id", str(action_id))
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    data = response.data
-    row = data[0] if isinstance(data, list) and data else data
+    row = _one(
+        "DELETE FROM bancarisation.comp_affectation_annuelle WHERE id = %s RETURNING id",
+        (str(action_id),),
+    )
     if not row:
         raise PlanningCrudError("Action introuvable ou suppression échouée.")
 
-
-# =============================================================================
-# UNITÉS DE GESTION (comp_gestion_unit)
-# =============================================================================
 
 TYPES_MILIEU_VALIDES = {"zone_humide", "fosse", "lande", "boisement", "prairie", "autre"}
 
@@ -247,20 +187,14 @@ class UpdateUnitePayload:
 
 
 def lister_unites(projet_id: UUID) -> list[dict[str, Any]]:
-    client = _get_supabase_client()
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_gestion_unit")
-            .select("*")
-            .eq("projet_id", str(projet_id))
-            .order("code")
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    return response.data or []
+    return _all(
+        """
+        SELECT * FROM bancarisation.comp_gestion_unit
+        WHERE projet_id = %s
+        ORDER BY code
+        """,
+        (str(projet_id),),
+    )
 
 
 def creer_unite(payload: CreateUnitePayload) -> UUID:
@@ -269,36 +203,28 @@ def creer_unite(payload: CreateUnitePayload) -> UUID:
             f"Type de milieu invalide '{payload.type_milieu}'. "
             f"Valeurs acceptées : {TYPES_MILIEU_VALIDES}"
         )
-
-    client = _get_supabase_client()
-    insert_payload: dict[str, Any] = {
-        "projet_id": str(payload.projet_id),
-        "code": payload.code.strip().upper(),
-        "type_milieu": payload.type_milieu,
-        "libelle": payload.libelle,
-        "description": payload.description,
-    }
-
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_gestion_unit")
-            .insert(insert_payload, returning="representation")
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    data = response.data
-    row = data[0] if isinstance(data, list) and data else data
-    if not row or "id" not in row:
+    row = _one(
+        """
+        INSERT INTO bancarisation.comp_gestion_unit
+            (projet_id, code, type_milieu, libelle, description)
+        VALUES (%s, %s, %s, %s, %s)
+        RETURNING id
+        """,
+        (
+            str(payload.projet_id),
+            payload.code.strip().upper(),
+            payload.type_milieu,
+            payload.libelle,
+            payload.description,
+        ),
+    )
+    if not row:
         raise PlanningCrudError("Insertion échouée : identifiant absent.")
     return UUID(str(row["id"]))
 
 
 def mettre_a_jour_unite(unite_id: UUID, payload: UpdateUnitePayload) -> dict[str, Any]:
     updates: dict[str, Any] = {}
-
     if payload.code is not None:
         updates["code"] = payload.code.strip().upper()
     if payload.type_milieu is not None:
@@ -309,51 +235,26 @@ def mettre_a_jour_unite(unite_id: UUID, payload: UpdateUnitePayload) -> dict[str
         updates["libelle"] = payload.libelle
     if payload.description is not None:
         updates["description"] = payload.description
-
     if not updates:
         raise PlanningCrudError("Aucune donnée à mettre à jour.")
-
-    client = _get_supabase_client()
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_gestion_unit")
-            .update(updates, returning="representation")
-            .eq("id", str(unite_id))
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    data = response.data
-    row = data[0] if isinstance(data, list) and data else data
+    sets = ", ".join(f"{k} = %s" for k in updates)
+    row = _one(
+        f"UPDATE bancarisation.comp_gestion_unit SET {sets} WHERE id = %s RETURNING *",
+        list(updates.values()) + [str(unite_id)],
+    )
     if not row:
         raise PlanningCrudError("Unité introuvable ou mise à jour échouée.")
     return row
 
 
 def supprimer_unite(unite_id: UUID) -> None:
-    client = _get_supabase_client()
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_gestion_unit")
-            .delete(returning="representation")
-            .eq("id", str(unite_id))
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    data = response.data
-    row = data[0] if isinstance(data, list) and data else data
+    row = _one(
+        "DELETE FROM bancarisation.comp_gestion_unit WHERE id = %s RETURNING id",
+        (str(unite_id),),
+    )
     if not row:
         raise PlanningCrudError("Unité introuvable ou suppression échouée.")
 
-
-# =============================================================================
-# PRESTATAIRES (comp_prestataire)
-# =============================================================================
 
 ROLES_VALIDES = {"mandataire", "sous_traitant", "co_traitant"}
 
@@ -378,21 +279,13 @@ class UpdatePrestaPayload:
 
 
 def lister_prestataires() -> list[dict[str, Any]]:
-    client = _get_supabase_client()
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_prestataire")
-            .select("*")
-            .eq("organisation_id", ORGANISATION_ID_V0)
-            .eq("actif", True)
-            .order("nom")
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    return response.data or []
+    return _all(
+        """
+        SELECT * FROM bancarisation.comp_prestataire
+        WHERE actif = TRUE
+        ORDER BY nom
+        """
+    )
 
 
 def creer_prestataire(payload: CreatePrestaPayload) -> UUID:
@@ -400,37 +293,33 @@ def creer_prestataire(payload: CreatePrestaPayload) -> UUID:
         raise PlanningCrudError(
             f"Rôle invalide '{payload.role_defaut}'. Valeurs acceptées : {ROLES_VALIDES}"
         )
-
-    client = _get_supabase_client()
-    insert_payload: dict[str, Any] = {
-        "organisation_id": ORGANISATION_ID_V0,
-        "nom": payload.nom.strip(),
-        "role_defaut": payload.role_defaut,
-        "siret": payload.siret,
-        "contact_nom": payload.contact_nom,
-        "contact_email": payload.contact_email,
-    }
-
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_prestataire")
-            .insert(insert_payload, returning="representation")
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    data = response.data
-    row = data[0] if isinstance(data, list) and data else data
-    if not row or "id" not in row:
+    org = _one(
+        "SELECT organisation_id FROM prive.mes_appartenances() WHERE role = 'admin' LIMIT 1"
+    )
+    org_id = str(org["organisation_id"]) if org else ORGANISATION_ID_V0
+    row = _one(
+        """
+        INSERT INTO bancarisation.comp_prestataire
+            (organisation_id, nom, role_defaut, siret, contact_nom, contact_email)
+        VALUES (%s, %s, %s, %s, %s, %s)
+        RETURNING id
+        """,
+        (
+            org_id,
+            payload.nom.strip(),
+            payload.role_defaut,
+            payload.siret,
+            payload.contact_nom,
+            payload.contact_email,
+        ),
+    )
+    if not row:
         raise PlanningCrudError("Insertion échouée : identifiant absent.")
     return UUID(str(row["id"]))
 
 
 def mettre_a_jour_prestataire(presta_id: UUID, payload: UpdatePrestaPayload) -> dict[str, Any]:
     updates: dict[str, Any] = {}
-
     if payload.nom is not None:
         updates["nom"] = payload.nom.strip()
     if payload.role_defaut is not None:
@@ -445,24 +334,13 @@ def mettre_a_jour_prestataire(presta_id: UUID, payload: UpdatePrestaPayload) -> 
         updates["contact_email"] = payload.contact_email
     if payload.actif is not None:
         updates["actif"] = payload.actif
-
     if not updates:
         raise PlanningCrudError("Aucune donnée à mettre à jour.")
-
-    client = _get_supabase_client()
-    try:
-        response = (
-            client.schema("bancarisation")
-            .table("comp_prestataire")
-            .update(updates, returning="representation")
-            .eq("id", str(presta_id))
-            .execute()
-        )
-    except Exception as exc:
-        raise PlanningCrudError(f"Erreur Supabase: {exc}") from exc
-
-    data = response.data
-    row = data[0] if isinstance(data, list) and data else data
+    sets = ", ".join(f"{k} = %s" for k in updates)
+    row = _one(
+        f"UPDATE bancarisation.comp_prestataire SET {sets} WHERE id = %s RETURNING *",
+        list(updates.values()) + [str(presta_id)],
+    )
     if not row:
         raise PlanningCrudError("Prestataire introuvable ou mise à jour échouée.")
     return row

@@ -1,0 +1,98 @@
+%% KerERC — Modèle d'authentification et de droits (état après migrations 027 à 030, schéma bancarisation)
+erDiagram
+  AUTH_USERS {
+    uuid id PK "auth.users (Supabase)"
+    text email
+  }
+  PROFILS {
+    uuid utilisateur_id PK "FK auth.users"
+    text nom
+    text prenom
+    bool admin_plateforme "non modifiable par l'utilisateur"
+  }
+  ORGANISATIONS {
+    uuid id PK
+    uuid parent_id FK "arbre structure / agences"
+    text type "structure, agence"
+    text nature "bureau_etudes, operateur, maitre_ouvrage, service_instructeur, asl, autre"
+    text statut "active, suspendue"
+    bool archivee
+  }
+  ORGANISATION_CLOSURE {
+    uuid ancetre_id PK
+    uuid descendant_id PK
+    int profondeur
+  }
+  MEMBRE_ORGANISATION {
+    uuid id PK
+    uuid utilisateur_id FK
+    uuid organisation_id FK
+    text role "admin, membre"
+    text portee "entite, branche"
+    text acces_global "null, lecteur, contributeur, gestionnaire"
+    text statut "invite, actif, suspendu"
+  }
+  PROJETS {
+    uuid id PK
+    uuid organisation_id FK "proprietaire, change seulement par transfert"
+    text nom
+    uuid cree_par
+  }
+  PROJET_ACCES {
+    uuid id PK
+    uuid projet_id FK
+    uuid organisation_id FK "beneficiaire org (ou)"
+    uuid utilisateur_id FK "beneficiaire personne"
+    text qualite "operateur, maitre_ouvrage, bureau_etudes, controle, ancien_proprietaire"
+    text niveau "lecteur, contributeur, gestionnaire"
+    bool voir_finances
+    timestamptz expire_le
+  }
+  TRANSFERT_PROJET {
+    uuid id PK
+    uuid projet_id FK
+    uuid org_source FK
+    uuid org_cible FK
+    text statut "en_attente, accepte, refuse, annule"
+    bool garder_lecture_source
+    bool finances_source
+  }
+  TABLES_PROJET {
+    uuid projet_id FK "sites, UG, occurrences, documents, calendrier..."
+  }
+  TABLES_FINANCIERES {
+    uuid projet_id FK "budgets, credits"
+  }
+  RAPPORT_BILAN {
+    uuid projet_id FK
+    text type_bilan "ecologique, financier"
+  }
+  NOTE_INTERNE {
+    uuid projet_id FK
+    uuid organisation_id FK "organisation autrice"
+  }
+  JOURNAL_AUDIT {
+    bigint id PK
+    uuid acteur_id
+    uuid organisation_id
+    uuid projet_id
+    text action "insert only, immuable"
+  }
+
+  AUTH_USERS ||--|| PROFILS : "a un profil"
+  AUTH_USERS ||--o{ MEMBRE_ORGANISATION : "appartient a"
+  ORGANISATIONS ||--o{ MEMBRE_ORGANISATION : "compte"
+  ORGANISATIONS ||--o{ ORGANISATIONS : "parent de"
+  ORGANISATIONS ||--o{ ORGANISATION_CLOSURE : "ancetre / descendant"
+  ORGANISATIONS ||--o{ PROJETS : "possede"
+  PROJETS ||--o{ PROJET_ACCES : "partage via"
+  ORGANISATIONS |o--o{ PROJET_ACCES : "beneficiaire org"
+  AUTH_USERS |o--o{ PROJET_ACCES : "beneficiaire personne"
+  PROJETS ||--o{ TRANSFERT_PROJET : "transfere par"
+  ORGANISATIONS ||--o{ TRANSFERT_PROJET : "cede / reprend"
+  PROJETS ||--o{ TABLES_PROJET : "contient"
+  PROJETS ||--o{ TABLES_FINANCIERES : "contient"
+  PROJETS ||--o{ RAPPORT_BILAN : "contient"
+  PROJETS ||--o{ NOTE_INTERNE : "contient"
+  ORGANISATIONS ||--o{ NOTE_INTERNE : "redige"
+  AUTH_USERS ||--o{ JOURNAL_AUDIT : "acteur de"

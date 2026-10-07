@@ -18,7 +18,7 @@ import psycopg
 from shapely import wkt
 from shapely.ops import unary_union
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 from .ign_client import (
     BBOX_MARGIN_M,
@@ -102,7 +102,7 @@ def _charger_unions_ug_3857(
 ) -> dict[str, Any]:
     """ug_id → géométrie 3857 (union des parties)."""
     out: dict[str, list] = {}
-    with psycopg.connect(get_database_url()) as conn:
+    with connect_utilisateur() as conn:
         with conn.cursor() as cur:
             for table in _UG_TABLES:
                 if ug_ids:

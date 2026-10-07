@@ -12,7 +12,7 @@ import psycopg
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 from api.projets.geometries.crud import lister_geometries_ug
 
 
@@ -20,7 +20,7 @@ STORAGE_ROOT = Path(__file__).resolve().parents[2] / "storage" / "geomce"
 
 
 def _conn():
-    return psycopg.connect(get_database_url(), row_factory=dict_row)
+    return connect_utilisateur(row_factory=dict_row)
 
 
 def lire_projet(projet_id: UUID | str) -> dict[str, Any] | None:

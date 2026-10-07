@@ -1,0 +1,33 @@
+%% KerERC — Calcul du droit effectif d'un utilisateur U sur un projet P (org proprietaire O)
+flowchart TD
+  U(["Utilisateur U connecté"]) --> MFA{"JWT aal = aal2 ?"}
+  MFA -- non --> REFUS["Aucune ligne renvoyée<br/>(politique restrictive)"]
+  MFA -- oui --> SOURCES
+
+  subgraph SOURCES["Sources de droits (statut actif, non expiré)"]
+    direction TB
+    S1["Admin de O<br/>ou d'un ancêtre en portée branche"]
+    S2["Membre de O (ou ancêtre, portée branche)<br/>avec acces_global"]
+    S3["projet_acces donné à U"]
+    S4["projet_acces donné à une org<br/>dont U est membre actif"]
+  end
+
+  S1 -- "4" --> MAX
+  S2 -- "niveau acces_global" --> MAX
+  S3 -- "niveau" --> MAX
+  S4 -- "niveau" --> MAX
+
+  MAX{{"Niveau effectif = max des sources"}}
+  MAX --> N4["4 · Gestion<br/>tout + accès du projet"]
+  MAX --> N3["3 · Écriture<br/>sites, géométries, calendrier, documents"]
+  MAX --> N2["2 · Lecture<br/>carte, calendrier, canal d'échanges"]
+  MAX --> N0["0 · Aucun accès"]
+
+  N4 & N3 & N2 --> FIN{"Interne à O<br/>ou partage avec voir_finances ?"}
+  FIN -- oui --> F1["Voit budgets, crédits, bilans financiers"]
+  FIN -- non --> F0["Finances invisibles<br/>(bilans écologiques visibles)"]
+
+  ADM(["Admin plateforme Kerelia"]) -.-> OUTILS["Crée orgs, invite 1er admin, suspend<br/>aucune donnée projet"]
+
+  NOTE["Notes internes : visibles seulement<br/>par l'organisation autrice"]
+  N4 & N3 & N2 -.-> NOTE

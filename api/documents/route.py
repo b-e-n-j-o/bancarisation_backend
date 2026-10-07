@@ -8,7 +8,7 @@ from pydantic import BaseModel
 
 from .crud_document import (
     DocumentServiceError,
-    create_signed_url,
+    create_signed_url_for_document,
     delete_document,
     get_document_content,
     list_documents,
@@ -93,13 +93,13 @@ def delete_document_route(document_id: UUID) -> None:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
 
-@router.get("/documents/signed-url", response_model=SignedUrlResponse)
+@router.get("/documents/{document_id}/url", response_model=SignedUrlResponse)
 def get_signed_url_route(
-    bucket_path: str = Query(..., min_length=1),
+    document_id: UUID,
     download: Optional[str] = Query(default=None),
 ) -> SignedUrlResponse:
     try:
-        url = create_signed_url(bucket_path=bucket_path, download=download)
+        url = create_signed_url_for_document(document_id, download=download)
         return SignedUrlResponse(url=url)
     except DocumentServiceError as exc:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc

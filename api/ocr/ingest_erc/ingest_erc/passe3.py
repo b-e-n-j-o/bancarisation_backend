@@ -15,6 +15,7 @@ import hashlib
 import json
 import re
 import unicodedata
+import time
 from datetime import date
 from pathlib import Path
 from typing import Literal, Optional
@@ -741,6 +742,9 @@ def executer_passe3(ref: ReferentielVerrouille, docs: list, cartes_pdf: Optional
                     regles: Optional[Regles] = None, cache_dir: Optional[Path] = None,
                     cartes_classeur: Optional[dict] = None,
                     annee_courante: Optional[int] = None) -> ResultatPasse3:
+    from . import llm
+    llm.reset_compteur_tokens()
+    t0 = time.time()
     cx = Contexte(ref, regles)
     faits, rejets, classeurs = [], [], {}
     for d in docs:
@@ -774,6 +778,9 @@ def executer_passe3(ref: ReferentielVerrouille, docs: list, cartes_pdf: Optional
 
     occurrences, non_ventile, avert_budget = poser_budget(occurrences, budgets, code_de)
     avertissements = avert_budget + [f"{p.code} : {w}" for p in plans for w in p.avertissements]
+    tokens = llm.bilan_tokens("passe 3")
+    dt = round(time.time() - t0, 2)
+    print(f"⏱ passe 3 pipeline : {dt}s", flush=True)
     return ResultatPasse3(
         empreinte_referentiel=ref.empreinte, annee_fin=annee_fin,
         echeances=[e.model_dump(mode="json") for e in echeances],
@@ -784,4 +791,5 @@ def executer_passe3(ref: ReferentielVerrouille, docs: list, cartes_pdf: Optional
         stats={"faits": len(faits), "temporels": len(temporels), "budgets": len(budgets),
                "statuts": len(statuts), "echeances": len(echeances), "occurrences": len(occurrences),
                "non_placables": len(non_placables), "rejets": len(rejets),
-               "occurrences_avec_montant": sum(getattr(o, "montant_ht", None) is not None for o in occurrences)})
+               "occurrences_avec_montant": sum(getattr(o, "montant_ht", None) is not None for o in occurrences),
+               "tokens_llm": tokens, "duree_s": dt})

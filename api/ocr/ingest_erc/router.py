@@ -4,7 +4,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from fastapi import APIRouter, File, HTTPException, UploadFile, status
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile, status
+import json
 
 from .jobs import (
     EXTENSIONS_OK,
@@ -20,7 +21,10 @@ router = APIRouter(prefix="/ocr/ingest-erc", tags=["ingest-erc"])
 
 
 @router.post("/passe1", status_code=status.HTTP_202_ACCEPTED)
-async def demarrer_passe1(files: list[UploadFile] = File(...)) -> dict[str, Any]:
+async def demarrer_passe1(
+    files: list[UploadFile] = File(...),
+    roles: str | None = Form(default=None),
+) -> dict[str, Any]:
     payloads: list[tuple[str, bytes]] = []
     for f in files:
         if not f.filename:
@@ -43,7 +47,16 @@ async def demarrer_passe1(files: list[UploadFile] = File(...)) -> dict[str, Any]
     if not payloads:
         raise HTTPException(status_code=400, detail="Aucun fichier valide reçu.")
 
-    job_id = creer_job(payloads)
+    roles_list: list[dict[str, str]] | None = None
+    if roles:
+        try:
+            parsed = json.loads(roles)
+        except json.JSONDecodeError as err:
+            raise HTTPException(status_code=400, detail="Rôles invalides.") from err
+        if isinstance(parsed, list):
+            roles_list = [x for x in parsed if isinstance(x, dict)]
+
+    job_id = creer_job(payloads, roles_list)
     lancer_job(job_id)
     return {
         "job_id": job_id,

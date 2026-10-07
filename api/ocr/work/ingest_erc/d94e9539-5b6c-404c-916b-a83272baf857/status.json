@@ -1,0 +1,19 @@
+{
+  "job_id": "d94e9539-5b6c-404c-916b-a83272baf857",
+  "status": "running",
+  "etape": "referentiel",
+  "message": "Extraction du référentiel (tableur, plan, arrêté)…",
+  "fichiers": [
+    "90_33_Lyce_e_College_Le_Barp.pdf",
+    "ITK.xlsx",
+    "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+    "SIG.zip"
+  ],
+  "erreur": null,
+  "vue": null,
+  "validation": null,
+  "passe3": null,
+  "projet_id": null,
+  "started_at": "2026-09-22T15:42:59.242647+00:00",
+  "updated_at": "2026-09-22T15:44:18.172110+00:00"
+}

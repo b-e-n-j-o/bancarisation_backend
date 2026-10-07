@@ -13,7 +13,7 @@ from shapely.geometry import box, mapping, shape
 from shapely.ops import transform as shapely_transform
 from shapely.ops import unary_union
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 OUTPUT_EPSG = 3035
 RESOLUTION_M = 10
@@ -59,7 +59,7 @@ def _load_ug_geometry_4326(projet_id: UUID, ug_id: str) -> dict[str, Any]:
         "pct": [],
     }
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 for table, couche in (
                     ("unites_de_gestion_surf", "surf"),

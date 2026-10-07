@@ -1,0 +1,3941 @@
+{
+ "config": {
+  "ocr_backend": "hybride",
+  "ocr_model": "mistral-ocr-latest",
+  "llm_actif": true,
+  "llm_model": "zai-glm-5-2",
+  "reasoning_effort": "high",
+  "reasoning_effort_routeur": "low",
+  "roles": {
+   "ocr": {
+    "usage": "Lecture PDF (Mistral OCR 4). Pas un LLM.",
+    "branche": true,
+    "modele": "mistral-ocr-latest"
+   },
+   "carte": {
+    "usage": "Passe 1 — structure du plan (vocabulaire, fiches, tableaux).",
+    "branche": true,
+    "modele": "zai-glm-5-2",
+    "effort": "high",
+    "env_modele": "MISTRAL_MODEL_CARTE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CARTE"
+   },
+   "routeur": {
+    "usage": "Passe 1 — choix des sections PDF si la carte n'a pas suffi.",
+    "branche": true,
+    "modele": "zai-glm-5-2",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_ROUTEUR",
+    "env_effort": "MISTRAL_REASONING_EFFORT_ROUTEUR"
+   },
+   "referentiel": {
+    "usage": "Passe 1 — extraction LLM des extraits PDF (seulement sans carte).",
+    "branche": true,
+    "modele": "zai-glm-5-2",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_REFERENTIEL",
+    "env_effort": "MISTRAL_REASONING_EFFORT_REFERENTIEL"
+   },
+   "arrete": {
+    "usage": "Passe 1 — lecture de la décision (identité, obligations, prescriptions).",
+    "branche": true,
+    "modele": "zai-glm-5-2",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_ARRETE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_ARRETE"
+   },
+   "carte_classeur": {
+    "usage": "Passe 1 — rôle et colonnes des tableaux Excel.",
+    "branche": true,
+    "modele": "zai-glm-5-2",
+    "effort": "high",
+    "env_modele": "MISTRAL_MODEL_CARTE_CLASSEUR",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CARTE_CLASSEUR"
+   },
+   "fiche": {
+    "usage": "Passe 3 — temporalité extraite des fiches-actions PDF (lots).",
+    "branche": true,
+    "modele": "zai-glm-5-2",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_FICHE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_FICHE"
+   },
+   "libelles": {
+    "usage": "Passe 3 — correspondance libellés tableur → codes du référentiel.",
+    "branche": true,
+    "modele": "zai-glm-5-2",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_LIBELLES",
+    "env_effort": "MISTRAL_REASONING_EFFORT_LIBELLES"
+   },
+   "calendrier": {
+    "usage": "Passe 3 (non branchée) — matrices de planning.",
+    "branche": false,
+    "modele": "zai-glm-5-2",
+    "effort": "high",
+    "env_modele": "MISTRAL_MODEL_CALENDRIER",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CALENDRIER"
+   },
+   "budget": {
+    "usage": "Passe 3 (non branchée) — matrices de coûts.",
+    "branche": false,
+    "modele": "zai-glm-5-2",
+    "effort": "high",
+    "env_modele": "MISTRAL_MODEL_BUDGET",
+    "env_effort": "MISTRAL_REASONING_EFFORT_BUDGET"
+   }
+  },
+  "cle": "MISTRAL_API_KEY_BEN",
+  "cle_llm": "MISTRAL_API_KEY_BEN",
+  "dotenv": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/.env",
+  "cache": "/tmp/ingest_cache"
+ },
+ "documents": [
+  {
+   "nom": "90_33_Lyce_e_College_Le_Barp.pdf",
+   "role": "arrete",
+   "indice": "motif « arrete portant derogation » en tête de document",
+   "pages": 19,
+   "pages_scannees": 3,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 0.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0
+   }
+  },
+  {
+   "nom": "ITK.xlsx",
+   "role": "tableur",
+   "indice": "extension tableur",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+   "role": "plan_gestion",
+   "indice": "nom de fichier",
+   "pages": 102,
+   "pages_scannees": 16,
+   "sous_documents": [
+    {
+     "num": 1,
+     "titre": "arrete prefectoral de demande d autorisation de defrichement",
+     "page_debut": 82,
+     "page_fin": 88,
+     "role_probable": "arrete",
+     "pages_scannees": true,
+     "texte_ocr": true
+    },
+    {
+     "num": 2,
+     "titre": "arrete prefectoral de demande de derogation aux interdictions de destruction de specimens d especes animales protegees et de leurs habitats",
+     "page_debut": 89,
+     "page_fin": 99,
+     "role_probable": "arrete",
+     "doublon_de": "90_33_Lyce_e_College_Le_Barp.pdf",
+     "score_doublon": 0.86,
+     "methode_doublon": "contenu",
+     "pages_scannees": true,
+     "texte_ocr": true
+    },
+    {
+     "num": 3,
+     "titre": "detail estimatif des couts",
+     "page_debut": 100,
+     "page_fin": 102,
+     "role_probable": "budget"
+    }
+   ],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "11": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 0.82,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 0.98,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 0.62,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 0.89,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0,
+    "72": 1.0,
+    "73": 1.0,
+    "74": 1.0,
+    "75": 1.0,
+    "76": 1.0,
+    "77": 1.0,
+    "78": 1.0,
+    "79": 1.0,
+    "80": 0.54,
+    "81": 1.0,
+    "82": 1.0,
+    "89": 1.0,
+    "100": 1.0,
+    "101": 0.73,
+    "102": 1.0
+   }
+  },
+  {
+   "nom": "SIG.zip",
+   "role": "sig",
+   "indice": "6 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  }
+ ],
+ "selection_pdf": {
+  "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf": {
+   "familles": {
+    "TU": [],
+    "TE": [],
+    "SE": [],
+    "MG": []
+   },
+   "plan": [
+    {
+     "id": 0,
+     "titre": "VI. PLAN DE GESTION, DE RESTAURATION ET D'ENTRETIEN DES ZONES EVITEES ET DES ESPACES DE CO",
+     "pages": "36-36",
+     "car": 2116,
+     "fiche": false,
+     "source": "carte"
+    },
+    {
+     "id": 1,
+     "titre": "6.2. Mesures de gestion et unités de gestion",
+     "pages": "37-39",
+     "car": 4410,
+     "fiche": false,
+     "source": "carte"
+    },
+    {
+     "id": 2,
+     "titre": "Tabl. 1. Synthèse des espaces évités et de compensation",
+     "pages": "9-9",
+     "car": 1527,
+     "fiche": false,
+     "source": "carte"
+    },
+    {
+     "id": 3,
+     "titre": "TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et d",
+     "pages": "40-43",
+     "car": 7385,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 4,
+     "titre": "TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitcho",
+     "pages": "43-48",
+     "car": 7993,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 5,
+     "titre": "TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des",
+     "pages": "48-51",
+     "car": 7360,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 6,
+     "titre": "TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et ",
+     "pages": "51-53",
+     "car": 4976,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 7,
+     "titre": "TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des ",
+     "pages": "53-58",
+     "car": 5197,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 8,
+     "titre": "TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles",
+     "pages": "58-63",
+     "car": 6556,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 9,
+     "titre": "TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux la",
+     "pages": "63-66",
+     "car": 5752,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 10,
+     "titre": "TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landico",
+     "pages": "66-69",
+     "car": 7630,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 11,
+     "titre": "TE 3 : Lutter contre la Fougère aigle",
+     "pages": "69-71",
+     "car": 5018,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 12,
+     "titre": "SE 1 : Suivi des habitats naturels, de la flore et de la faune",
+     "pages": "71-74",
+     "car": 6293,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 13,
+     "titre": "SE 2 : Suivi piézométrique",
+     "pages": "74-76",
+     "car": 3633,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 14,
+     "titre": "MG 1 : Pilotage et coordination du programme d'actions",
+     "pages": "76-78",
+     "car": 4442,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 15,
+     "titre": "MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire",
+     "pages": "78-79",
+     "car": 3088,
+     "fiche": true,
+     "source": "carte"
+    }
+   ],
+   "car_retenus": 14274,
+   "car_total": 190239,
+   "routeur_llm_requis": false,
+   "routeur_llm_utilise": false,
+   "fiches_localisees": "13/13",
+   "retenues": [
+    {
+     "titre": "VI. PLAN DE GESTION, DE RESTAURATION ET D'ENTRETIEN DES ZONES EVITEES ET DES ESPACES DE COMPENSATION",
+     "pages": "36-36",
+     "car": 2116
+    },
+    {
+     "titre": "6.2. Mesures de gestion et unités de gestion",
+     "pages": "37-39",
+     "car": 4410
+    },
+    {
+     "titre": "Tabl. 1. Synthèse des espaces évités et de compensation",
+     "pages": "9-9",
+     "car": 1527
+    },
+    {
+     "titre": "TU 1 : Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles",
+     "pages": "40-43",
+     "car": 670
+    },
+    {
+     "titre": "TU 2 : Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+     "pages": "43-48",
+     "car": 816
+    },
+    {
+     "titre": "TU 3 : Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles",
+     "pages": "48-51",
+     "car": 628
+    },
+    {
+     "titre": "TU 4 : Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+     "pages": "51-53",
+     "car": 799
+    },
+    {
+     "titre": "TU 5 : Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles",
+     "pages": "53-58",
+     "car": 389
+    },
+    {
+     "titre": "TU 6 : Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers",
+     "pages": "58-63",
+     "car": 496
+    },
+    {
+     "titre": "TE 1 : Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+     "pages": "63-66",
+     "car": 524
+    },
+    {
+     "titre": "TE 2 : Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+     "pages": "66-69",
+     "car": 518
+    },
+    {
+     "titre": "TE 3 : Lutter contre la Fougère aigle",
+     "pages": "69-71",
+     "car": 462
+    },
+    {
+     "titre": "SE 1 : Suivi des habitats naturels, de la flore et de la faune",
+     "pages": "71-74",
+     "car": 251
+    },
+    {
+     "titre": "SE 2 : Suivi piézométrique",
+     "pages": "74-76",
+     "car": 215
+    },
+    {
+     "titre": "MG 1 : Pilotage et coordination du programme d'actions",
+     "pages": "76-78",
+     "car": 215
+    },
+    {
+     "titre": "MG 2 : Mise à jour du plan de gestion et bilan de fin de mesure compensatoire",
+     "pages": "78-79",
+     "car": 238
+    }
+   ]
+  }
+ },
+ "cartes": {
+  "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf": {
+   "vocabulaire": {
+    "unite_terme": "unité de gestion",
+    "unite_prefixes": [
+     "UG"
+    ],
+    "unite_exemples": [
+     "UG 1",
+     "UG 3",
+     "UG 1 et UG 3"
+    ],
+    "action_forme": "code",
+    "action_familles": [
+     {
+      "prefixe": "TU",
+      "libelle": "travaux uniques",
+      "citation": {
+       "page": 37,
+       "texte": "Les travaux uniques (TU) : Travaux de restauration (réouverture"
+      }
+     },
+     {
+      "prefixe": "TE",
+      "libelle": "travaux d'entretien",
+      "citation": {
+       "page": 37,
+       "texte": "Les travaux d'entretien (TE) : Opérations visant à entretenir"
+      }
+     },
+     {
+      "prefixe": "SE",
+      "libelle": "suivis et études",
+      "citation": {
+       "page": 37,
+       "texte": "Les suivis et études (SE) : Amélioration des connaissances"
+      }
+     },
+     {
+      "prefixe": "MG",
+      "libelle": "Mise en œuvre générale du plan de gestion",
+      "citation": {
+       "page": 37,
+       "texte": "Mise en œuvre générale du plan de gestion (MG) : Missions associées"
+      }
+     }
+    ],
+    "action_exemples": [
+     "TU 1",
+     "TU 2",
+     "TE 1",
+     "SE 1"
+    ]
+   },
+   "nb_fiches": 13,
+   "nb_tableaux": 17,
+   "verification": {
+    "fiches": [
+     13,
+     13
+    ],
+    "tableaux": [
+     17,
+     17
+    ],
+    "familles": [
+     4,
+     4
+    ],
+    "conventions": [
+     2,
+     2
+    ],
+    "ecartes": [],
+    "remarques": [
+     6,
+     6
+    ]
+   },
+   "remarques": [
+    {
+     "texte": "La page de garde indique la période 2022-2027 mais le document précise une gestion sur 50 ans (2022-2072).",
+     "type": "incoherence_document",
+     "page": 1,
+     "citation": "PLAN DE GESTION DES ESPACES DE COMPENSATION ET DES ZONES EVITEES - 2022 - 2027",
+     "verifiee": true
+    },
+    {
+     "texte": "L'année N est fixée à 2023 dans la frise chronologique, bien que l'état zéro soit en 2022.",
+     "type": "incoherence_document",
+     "page": 59,
+     "citation": "2022 | 2023 | 2024 | 2025 | 2026 | 2027",
+     "verifiee": true
+    },
+    {
+     "texte": "Le document mentionne un total de 918 532 € sans préciser explicitement HT ou TTC.",
+     "type": "incoherence_document",
+     "page": 37,
+     "citation": "estimé à 918 532 €. Cette estimation financière est basée sur les coûts",
+     "verifiee": true
+    },
+    {
+     "texte": "Le tableau de la page 80 affiche des en-têtes d'années incohérentes (ex: 'MAI 2021', 'MAI 2000') à cause d'un défaut d'OCR.",
+     "type": "qualite_de_lecture",
+     "page": 80,
+     "citation": "MAI 2021 | MAI 2020 | MAI 2019 | MAI 2018 | MAI 2017",
+     "verifiee": true
+    },
+    {
+     "texte": "Le tableau des coûts (page 101) contient un texte corrompu par l'OCR ('PLUTAGE ET SUIVIS ÉCRUVAQUES').",
+     "type": "qualite_de_lecture",
+     "page": 101,
+     "citation": "PLUTAGE ET SUIVIS ÉCRUVAQUES",
+     "verifiee": true
+    },
+    {
+     "texte": "Le titre courant sur la page 84 indique 'SIMENTIS' au lieu de 'SIMETHIS'.",
+     "type": "qualite_de_lecture",
+     "page": 84,
+     "citation": "ECO-COMPENSATION – SIMENTIS – FAGE – Décembre 2021",
+     "verifiee": true
+    }
+   ],
+   "tri_remarques": {
+    "questions": 2,
+    "anomalies": 1,
+    "internes": 3
+   },
+   "remarques_internes": [
+    {
+     "texte": "Le tableau de la page 80 affiche des en-têtes d'années incohérentes (ex: 'MAI 2021', 'MAI 2000') à cause d'un défaut d'OCR.",
+     "page": 80,
+     "citation": "MAI 2021 | MAI 2020 | MAI 2019 | MAI 2018 | MAI 2017",
+     "type": "qualite_de_lecture",
+     "source": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf"
+    },
+    {
+     "texte": "Le tableau des coûts (page 101) contient un texte corrompu par l'OCR ('PLUTAGE ET SUIVIS ÉCRUVAQUES').",
+     "page": 101,
+     "citation": "PLUTAGE ET SUIVIS ÉCRUVAQUES",
+     "type": "qualite_de_lecture",
+     "source": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf"
+    },
+    {
+     "texte": "Le titre courant sur la page 84 indique 'SIMENTIS' au lieu de 'SIMETHIS'.",
+     "page": 84,
+     "citation": "ECO-COMPENSATION – SIMENTIS – FAGE – Décembre 2021",
+     "type": "qualite_de_lecture",
+     "source": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf"
+    }
+   ]
+  }
+ },
+ "classeurs": [
+  {
+   "doc": "ITK.xlsx",
+   "verification": {
+    "tableaux": [
+     14,
+     14
+    ],
+    "colonnes": [
+     5,
+     15
+    ],
+    "ecartes": [
+     "ITK Fauvette et Fadet#1 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#1 : colonne « Surface en ha » introuvable",
+     "ITK Fauvette et Fadet#6 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#6 : colonne « Surface en ha » introuvable",
+     "ITK Fauvette et Fadet#8 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#8 : colonne « Surface en ha » introuvable",
+     "ITK Fauvette et Fadet#10 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#10 : colonne « Surface en ha » introuvable",
+     "ITK Fauvette et Fadet#12 : colonne « Code mesure » introuvable",
+     "ITK Fauvette et Fadet#12 : colonne « Surface en ha » introuvable"
+    ]
+   },
+   "remarques": [
+    "Les tableaux d'ITK comportent une section d'en-têtes sur plusieurs lignes fusionnées (titres d'actions, puis libellés de colonnes, puis sous-libellés de l'axe temporel comme 'Etat zéro', 'N', 'N+1', etc.).",
+    "Les tableaux 'ITK Fauvette et Fadet#2', '#4', '#5', '#7', '#9' et '#11' sont des légendes de codes (sans axe temporel), ce sont des tableaux de référence associant un libellé d'état de conservation à un code opérationnel (ex: CR pour Coupe rase).",
+    "La colonne 'Surface en ha' est portée par la lettre F dans tous les tableaux d'ITK de planning."
+   ],
+   "tableaux": [
+    {
+     "id": "Synthèse actions#1",
+     "role": "synthese",
+     "taxe": "inconnu",
+     "orientation": "sans_temps",
+     "col_action": "Numéro de la mesure",
+     "titre": "",
+     "feuille": "Synthèse actions",
+     "nb_lignes": 13
+    },
+    {
+     "id": "Synthèse actions#2",
+     "role": "synthese",
+     "taxe": "inconnu",
+     "orientation": "sans_temps",
+     "col_action": null,
+     "titre": "",
+     "feuille": "Synthèse actions",
+     "nb_lignes": 6
+    },
+    {
+     "id": "ITK Fauvette et Fadet#1",
+     "role": "planning_passages",
+     "taxe": "inconnu",
+     "orientation": "annees_en_colonnes",
+     "col_action": null,
+     "titre": "",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 30
+    },
+    {
+     "id": "ITK Fauvette et Fadet#2",
+     "role": "autre",
+     "taxe": "inconnu",
+     "orientation": "sans_temps",
+     "col_action": null,
+     "titre": "C",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 8
+    },
+    {
+     "id": "ITK Fauvette et Fadet#3",
+     "role": "planning_passages",
+     "taxe": "inconnu",
+     "orientation": "annees_en_colonnes",
+     "col_action": "Code mesure",
+     "titre": "Travaux d'entretien - Fauvette pitchou",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 28
+    },
+    {
+     "id": "ITK Fauvette et Fadet#4",
+     "role": "autre",
+     "taxe": "inconnu",
+     "orientation": "sans_temps",
+     "col_action": null,
+     "titre": "C",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 28
+    },
+    {
+     "id": "ITK Fauvette et Fadet#5",
+     "role": "autre",
+     "taxe": "inconnu",
+     "orientation": "sans_temps",
+     "col_action": null,
+     "titre": "O",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 8
+    },
+    {
+     "id": "ITK Fauvette et Fadet#6",
+     "role": "planning_passages",
+     "taxe": "inconnu",
+     "orientation": "annees_en_colonnes",
+     "col_action": null,
+     "titre": "En bleu  la zone humide évitée et préservée",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 22
+    },
+    {
+     "id": "ITK Fauvette et Fadet#7",
+     "role": "autre",
+     "taxe": "inconnu",
+     "orientation": "sans_temps",
+     "col_action": null,
+     "titre": "O",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 5
+    },
+    {
+     "id": "ITK Fauvette et Fadet#8",
+     "role": "planning_passages",
+     "taxe": "inconnu",
+     "orientation": "annees_en_colonnes",
+     "col_action": null,
+     "titre": "En vert la zone humide évitée et préservée",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 30
+    },
+    {
+     "id": "ITK Fauvette et Fadet#9",
+     "role": "autre",
+     "taxe": "inconnu",
+     "orientation": "sans_temps",
+     "col_action": null,
+     "titre": "C",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 8
+    },
+    {
+     "id": "ITK Fauvette et Fadet#10",
+     "role": "planning_passages",
+     "taxe": "inconnu",
+     "orientation": "annees_en_colonnes",
+     "col_action": null,
+     "titre": "En rouge les parcelles sans exploitation forestière - Etat de landes",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 60
+    },
+    {
+     "id": "ITK Fauvette et Fadet#11",
+     "role": "autre",
+     "taxe": "inconnu",
+     "orientation": "sans_temps",
+     "col_action": null,
+     "titre": "O",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 8
+    },
+    {
+     "id": "ITK Fauvette et Fadet#12",
+     "role": "planning_passages",
+     "taxe": "inconnu",
+     "orientation": "annees_en_colonnes",
+     "col_action": null,
+     "titre": "En vert la zone humide évitée et préservée",
+     "feuille": "ITK Fauvette et Fadet",
+     "nb_lignes": 29
+    }
+   ]
+  }
+ ],
+ "regles": {
+  "source": "carte",
+  "unite": "\\b(?:UG)\\s?(?:n°\\s?)?-?\\s?(\\d{1,3}[a-z]?)\\b",
+  "code": "\\b(TU|TE|SE|MG)\\s?[-.]?\\s?(\\d{1,3}[a-z]?)\\b",
+  "champs": {
+   "unites": "Unités\\s+de\\s+gestion|Unité\\s+de\\s+gestion",
+   "parcelles": "Parcelles\\s+concernées",
+   "objectif": "Objectif\\s+opérationnel|Objectif\\s+à\\s+long\\s+terme",
+   "periode": "Périodicité"
+  }
+ },
+ "sig": {
+  "couches": [
+   {
+    "nom": "Compensation_Chiroptères",
+    "fichier": "Compensation_Chiroptères.shp",
+    "geom_type": "POLYGON",
+    "nb_entites": 3,
+    "epsg": 2154,
+    "surface_ha": 4.09,
+    "avertissements": []
+   },
+   {
+    "nom": "Compensation_Fadet",
+    "fichier": "Compensation_Fadet.shp",
+    "geom_type": "POLYGON",
+    "nb_entites": 8,
+    "epsg": 2154,
+    "surface_ha": 12.776,
+    "avertissements": [
+     "Colonne « UG » ressemble à une UG mais ses valeurs (09.00, 09.04b, 09.05) ne suivent pas la nomenclature du plan → ignorée"
+    ]
+   },
+   {
+    "nom": "Compensation_Fauvette",
+    "fichier": "Compensation_Fauvette.shp",
+    "geom_type": "POLYGON",
+    "nb_entites": 13,
+    "epsg": 2154,
+    "surface_ha": 19.564,
+    "avertissements": [
+     "Colonne « UG » ressemble à une UG mais ses valeurs (05.10b, 06.00, 06.01a) ne suivent pas la nomenclature du plan → ignorée"
+    ]
+   },
+   {
+    "nom": "Evitement_Boisement",
+    "fichier": "Evitement_Boisement.shp",
+    "geom_type": "POLYGON",
+    "nb_entites": 1,
+    "epsg": 2154,
+    "surface_ha": 0.307,
+    "avertissements": []
+   },
+   {
+    "nom": "Evitement_Fauvette",
+    "fichier": "Evitement_Fauvette.shp",
+    "geom_type": "POLYGON",
+    "nb_entites": 1,
+    "epsg": 4326,
+    "surface_ha": 0.665,
+    "avertissements": [
+     "Reprojetée de EPSG:4326 vers EPSG:2154"
+    ]
+   },
+   {
+    "nom": "Evitement_Zone_humide",
+    "fichier": "Evitement_Zone_humide.shp",
+    "geom_type": "POLYGON",
+    "nb_entites": 1,
+    "epsg": 2154,
+    "surface_ha": 2.153,
+    "avertissements": []
+   }
+  ],
+  "zones": [
+   {
+    "id": "Compensation_Chiroptères",
+    "couche": "Compensation_Chiroptères",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 3,
+    "surface_ha": 4.09,
+    "refs_cadastrales": [
+     "C216",
+     "C986b",
+     "D325"
+    ],
+    "type_erc_nom": "C"
+   },
+   {
+    "id": "Compensation_Fadet::Action=UG 2",
+    "couche": "Compensation_Fadet",
+    "filtre": {
+     "Action": "UG 2"
+    },
+    "ug_attribut": "UG2",
+    "nb_entites": 5,
+    "surface_ha": 11.507,
+    "refs_cadastrales": [
+     "C444a",
+     "C444c",
+     "C480a",
+     "C480b",
+     "D2a"
+    ],
+    "type_erc_nom": "C"
+   },
+   {
+    "id": "Compensation_Fadet::Action=UG 4",
+    "couche": "Compensation_Fadet",
+    "filtre": {
+     "Action": "UG 4"
+    },
+    "ug_attribut": "UG4",
+    "nb_entites": 3,
+    "surface_ha": 1.268,
+    "refs_cadastrales": [
+     "C444b",
+     "C480b",
+     "C480c"
+    ],
+    "type_erc_nom": "C"
+   },
+   {
+    "id": "Compensation_Fauvette::Action=UG 1",
+    "couche": "Compensation_Fauvette",
+    "filtre": {
+     "Action": "UG 1"
+    },
+    "ug_attribut": "UG1",
+    "nb_entites": 8,
+    "surface_ha": 13.717,
+    "refs_cadastrales": [
+     "B1103",
+     "B287",
+     "B301",
+     "C1064b",
+     "C1076",
+     "C1082",
+     "C252",
+     "C974a"
+    ],
+    "type_erc_nom": "C"
+   },
+   {
+    "id": "Compensation_Fauvette::Action=UG 3",
+    "couche": "Compensation_Fauvette",
+    "filtre": {
+     "Action": "UG 3"
+    },
+    "ug_attribut": "UG3",
+    "nb_entites": 5,
+    "surface_ha": 5.847,
+    "refs_cadastrales": [
+     "B314",
+     "C1064c",
+     "C1076",
+     "C912"
+    ],
+    "type_erc_nom": "C"
+   },
+   {
+    "id": "Evitement_Boisement",
+    "couche": "Evitement_Boisement",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 1,
+    "surface_ha": 0.307,
+    "refs_cadastrales": [],
+    "type_erc_nom": "E"
+   },
+   {
+    "id": "Evitement_Fauvette",
+    "couche": "Evitement_Fauvette",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 1,
+    "surface_ha": 0.665,
+    "refs_cadastrales": [],
+    "type_erc_nom": "E"
+   },
+   {
+    "id": "Evitement_Zone_humide",
+    "couche": "Evitement_Zone_humide",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 1,
+    "surface_ha": 2.153,
+    "refs_cadastrales": [],
+    "type_erc_nom": "E"
+   }
+  ]
+ },
+ "referentiel": {
+  "projet": {
+   "nom": {
+    "valeur": "Construction d'un nouveau lycée et nouveau collège, sur la commune du Barp (33)",
+    "confiance": "moyenne",
+    "sources": [
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.1",
+      "extrait": "Construction d'un nouveau lycée et nouveau collège, sur la commune du Barp (33)"
+     }
+    ],
+    "note": null
+   },
+   "maitre_ouvrage": {
+    "valeur": "Région Nouvelle-Aquitaine",
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.2",
+      "extrait": "bénéficiaire de la dérogation est la Région Nouvelle-Aquitaine – "
+     },
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.2",
+      "extrait": "bénéficiaire de la dérogation est la Région Nouvelle-Aquitaine"
+     }
+    ],
+    "note": null
+   },
+   "reference_decision": {
+    "valeur": "DBEC 90/2021",
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.1",
+      "extrait": "Réf. DBEC : n° 90/2021"
+     }
+    ],
+    "note": null
+   },
+   "date_decision": {
+    "valeur": "2021-08-17",
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.19",
+      "extrait": "le 17 août 2021"
+     },
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.19",
+      "extrait": "Bordeaux, le 17 août 2021"
+     }
+    ],
+    "note": null
+   },
+   "type_procedure": {
+    "valeur": "Dérogation espèces protégées (L.411-2 C. env.)",
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.1",
+      "extrait": "dérogation aux interdictions de destruction d'espèces protégées"
+     },
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.1",
+      "extrait": "ARRÊTÉ portant dérogation aux interdictions de destruction de spécimens d'espèces"
+     }
+    ],
+    "note": null
+   },
+   "commune": {
+    "valeur": {
+     "nom": "Le Barp",
+     "departement": "33",
+     "insee": "33029"
+    },
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.1",
+      "extrait": "sur la commune du Barp (33)"
+     },
+     {
+      "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+      "loc": "parcelles citées",
+      "extrait": "52 références en 33029"
+     }
+    ],
+    "note": null
+   },
+   "annee_fin": {
+    "valeur": 2072,
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.14",
+      "extrait": "jusqu'en 2072"
+     },
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.14",
+      "extrait": "gestion et d'un entretien conservatoire pendant une durée minimum de 50 ans"
+     },
+     {
+      "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+      "loc": "p.5",
+      "extrait": "sur la période 2022 à 2072 soit 50 ans"
+     },
+     {
+      "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+      "loc": "p.5",
+      "extrait": "En application des articles 11 et 12 de l’arrêté préfectoral du 17 août 2021, ce document constitue le plan de gestion des espaces évitées et de compensation en"
+     }
+    ],
+    "note": null
+   },
+   "annee_etat_zero": {
+    "valeur": 2022,
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.16",
+      "extrait": "des 2022 pour les secteurs"
+     },
+     {
+      "doc": "ITK.xlsx",
+      "loc": "ITK Fauvette et Fadet!L148-149",
+      "extrait": "Travaux de coupes et d'éclaircies - Fauvette pitch : état zéro 2022, N = 2023"
+     },
+     {
+      "doc": "ITK.xlsx",
+      "loc": "ITK Fauvette et Fadet!L190-191",
+      "extrait": "Travaux d'entretien - Fauvette pitchou : état zéro 2022, N = 2023"
+     },
+     {
+      "doc": "ITK.xlsx",
+      "loc": "ITK Fauvette et Fadet!L228-229",
+      "extrait": "Travaux de coupes et d'éclaircies - Fadet des laîc : état zéro 2022, N = 2023"
+     },
+     {
+      "doc": "BE",
+      "loc": "écran de validation",
+      "extrait": "2022"
+     }
+    ],
+    "note": "Validé par vous"
+   },
+   "annee_N": {
+    "valeur": 2023,
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "BE",
+      "loc": "écran de validation",
+      "extrait": "2023"
+     }
+    ],
+    "note": "Année N = état zéro + 1"
+   },
+   "duree_ans": {
+    "valeur": 50,
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.14",
+      "extrait": "duree minimum de 50 ans"
+     },
+     {
+      "doc": "(calcul)",
+      "loc": "fin − état zéro",
+      "extrait": "2072 − 2022"
+     },
+     {
+      "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+      "loc": "p.14",
+      "extrait": "gestion et d'un entretien conservatoire pendant une durée minimum de 50 ans"
+     }
+    ],
+    "note": null
+   },
+   "convention_montants": {
+    "valeur": {
+     "source": "ITK.xlsx",
+     "lignes": "HT",
+     "totaux": "TTC",
+     "coefficient": 1.1
+    },
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "ITK.xlsx",
+      "loc": "ITK Fauvette et Fadet",
+      "extrait": "totaux = montants × 1.1 (61/175 totaux expliqués)"
+     },
+     {
+      "doc": "BE",
+      "loc": "écran de validation",
+      "extrait": "{'source': 'ITK.xlsx', 'lignes': 'HT', 'totaux': 'TTC', 'coefficient': 1.1}"
+     }
+    ],
+    "note": "Validé par vous"
+   }
+  },
+  "ugs": [
+   {
+    "ug_code": "UG1",
+    "libelle": {
+     "valeur": "Landes arbustives sous pinède",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I24",
+       "extrait": "UG1 : Landes arbustives sous pinède"
+      }
+     ],
+     "note": null
+    },
+    "type_erc": {
+     "valeur": "C",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fauvette::Action=UG 1",
+       "extrait": "8 entité(s), 13.717 ha"
+      },
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I24",
+       "extrait": "UG1 : Landes arbustives sous pinède"
+      }
+     ],
+     "note": null
+    },
+    "zone_sig": {
+     "valeur": "Compensation_Fauvette::Action=UG 1",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fauvette::Action=UG 1",
+       "extrait": "8 entité(s), 13.717 ha"
+      }
+     ],
+     "note": "Attribut « Action » ; 100 % des parcelles retrouvées dans les documents"
+    },
+    "surface_ha": {
+     "valeur": 13.717,
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fauvette::Action=UG 1",
+       "extrait": "8 entité(s), 13.717 ha"
+      },
+      {
+       "doc": "tableur",
+       "loc": "somme des parcelles UG1",
+       "extrait": "19.59 ha"
+      }
+     ],
+     "note": "Écart 30 % avec le tableur (19.59 ha)"
+    }
+   },
+   {
+    "ug_code": "UG2",
+    "libelle": {
+     "valeur": "Landes humides sous pinède",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I25",
+       "extrait": "UG2 : Landes humides sous pinède"
+      }
+     ],
+     "note": null
+    },
+    "type_erc": {
+     "valeur": "C",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fadet::Action=UG 2",
+       "extrait": "5 entité(s), 11.507 ha"
+      },
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I25",
+       "extrait": "UG2 : Landes humides sous pinède"
+      }
+     ],
+     "note": null
+    },
+    "zone_sig": {
+     "valeur": "Compensation_Fadet::Action=UG 2",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fadet::Action=UG 2",
+       "extrait": "5 entité(s), 11.507 ha"
+      }
+     ],
+     "note": "Attribut « Action » ; 100 % des parcelles retrouvées dans les documents"
+    },
+    "surface_ha": {
+     "valeur": 11.507,
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fadet::Action=UG 2",
+       "extrait": "5 entité(s), 11.507 ha"
+      },
+      {
+       "doc": "tableur",
+       "loc": "somme des parcelles UG2",
+       "extrait": "11.52 ha"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "ug_code": "UG3",
+    "libelle": {
+     "valeur": "Landes arbustives",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I26",
+       "extrait": "UG3 : Landes arbustives"
+      }
+     ],
+     "note": null
+    },
+    "type_erc": {
+     "valeur": "C",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fauvette::Action=UG 3",
+       "extrait": "5 entité(s), 5.847 ha"
+      },
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I26",
+       "extrait": "UG3 : Landes arbustives"
+      }
+     ],
+     "note": null
+    },
+    "zone_sig": {
+     "valeur": "Compensation_Fauvette::Action=UG 3",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fauvette::Action=UG 3",
+       "extrait": "5 entité(s), 5.847 ha"
+      }
+     ],
+     "note": "Attribut « Action » ; 100 % des parcelles retrouvées dans les documents"
+    },
+    "surface_ha": {
+     "valeur": 5.847,
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fauvette::Action=UG 3",
+       "extrait": "5 entité(s), 5.847 ha"
+      },
+      {
+       "doc": "tableur",
+       "loc": "somme des parcelles UG3",
+       "extrait": "5.85 ha"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "ug_code": "UG4",
+    "libelle": {
+     "valeur": "Landes humides",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I27",
+       "extrait": "UG4 : Landes humides"
+      }
+     ],
+     "note": null
+    },
+    "type_erc": {
+     "valeur": "C",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fadet::Action=UG 4",
+       "extrait": "3 entité(s), 1.268 ha"
+      },
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I27",
+       "extrait": "UG4 : Landes humides"
+      }
+     ],
+     "note": null
+    },
+    "zone_sig": {
+     "valeur": "Compensation_Fadet::Action=UG 4",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fadet::Action=UG 4",
+       "extrait": "3 entité(s), 1.268 ha"
+      }
+     ],
+     "note": "Attribut « Action » ; 100 % des parcelles retrouvées dans les documents"
+    },
+    "surface_ha": {
+     "valeur": 1.268,
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Fadet::Action=UG 4",
+       "extrait": "3 entité(s), 1.268 ha"
+      },
+      {
+       "doc": "tableur",
+       "loc": "somme des parcelles UG4",
+       "extrait": "1.26 ha"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "ug_code": "UG5",
+    "libelle": {
+     "valeur": "Boisement de feuillus",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I28",
+       "extrait": "UG5 : Boisement de feuillus"
+      }
+     ],
+     "note": null
+    },
+    "type_erc": {
+     "valeur": "C",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Chiroptères",
+       "extrait": "3 entité(s), 4.09 ha"
+      },
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I28",
+       "extrait": "UG5 : Boisement de feuillus"
+      }
+     ],
+     "note": null
+    },
+    "zone_sig": {
+     "valeur": "Compensation_Chiroptères",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Chiroptères",
+       "extrait": "3 entité(s), 4.09 ha"
+      },
+      {
+       "doc": "BE",
+       "loc": "écran de validation",
+       "extrait": "Compensation_Chiroptères"
+      }
+     ],
+     "note": "Rapprochement confirmé par vous"
+    },
+    "surface_ha": {
+     "valeur": 4.09,
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Compensation_Chiroptères",
+       "extrait": "3 entité(s), 4.09 ha"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "ug_code": "UG6",
+    "libelle": {
+     "valeur": "Zone humide évitée",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I29",
+       "extrait": "UG6 : Zone humide évitée"
+      }
+     ],
+     "note": null
+    },
+    "type_erc": {
+     "valeur": "E",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Evitement_Zone_humide",
+       "extrait": "1 entité(s), 2.153 ha"
+      },
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I29",
+       "extrait": "UG6 : Zone humide évitée"
+      }
+     ],
+     "note": null
+    },
+    "zone_sig": {
+     "valeur": "Evitement_Zone_humide",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Evitement_Zone_humide",
+       "extrait": "1 entité(s), 2.153 ha"
+      },
+      {
+       "doc": "BE",
+       "loc": "écran de validation",
+       "extrait": "Evitement_Zone_humide"
+      }
+     ],
+     "note": "Rapprochement confirmé par vous"
+    },
+    "surface_ha": {
+     "valeur": 2.153,
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Evitement_Zone_humide",
+       "extrait": "1 entité(s), 2.153 ha"
+      },
+      {
+       "doc": "tableur",
+       "loc": "somme des parcelles UG6",
+       "extrait": "2.1 ha"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "ug_code": "UG7",
+    "libelle": {
+     "valeur": "Boisement de feuillus évité",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I30",
+       "extrait": "UG7 : Boisement de feuillus évité"
+      }
+     ],
+     "note": null
+    },
+    "type_erc": {
+     "valeur": "E",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Evitement_Boisement",
+       "extrait": "1 entité(s), 0.307 ha"
+      },
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!I30",
+       "extrait": "UG7 : Boisement de feuillus évité"
+      }
+     ],
+     "note": null
+    },
+    "zone_sig": {
+     "valeur": "Evitement_Boisement",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Evitement_Boisement",
+       "extrait": "1 entité(s), 0.307 ha"
+      },
+      {
+       "doc": "BE",
+       "loc": "écran de validation",
+       "extrait": "Evitement_Boisement"
+      }
+     ],
+     "note": "Rapprochement confirmé par vous"
+    },
+    "surface_ha": {
+     "valeur": 0.307,
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "Evitement_Boisement",
+       "extrait": "1 entité(s), 0.307 ha"
+      }
+     ],
+     "note": null
+    }
+   }
+  ],
+  "actions": [
+   {
+    "code": "MG1",
+    "intitule": {
+     "valeur": "Pilotage et coordination du programme d'actions",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L16",
+       "extrait": "Pilotage et coordination du programme d'actions"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.76",
+       "extrait": "Pilotage et coordination du programme d'actions"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "Mise en œuvre générale du plan de gestion",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Mise en œuvre générale du plan de gestion (MG) : Missions associées"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG1",
+      "UG2",
+      "UG3",
+      "UG4",
+      "UG5",
+      "UG6",
+      "UG7"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H16 (fusion)",
+       "extrait": "MG1 → UG1, UG2, UG3, UG4, UG5, UG6, UG7"
+      },
+      {
+       "doc": "BE",
+       "loc": "écran de validation",
+       "extrait": "['UG1', 'UG2', 'UG3', 'UG4', 'UG5', 'UG6', 'UG7']"
+      }
+     ],
+     "note": "Confirmé par vous"
+    },
+    "cible": {
+     "valeur": null,
+     "confiance": "basse",
+     "sources": [],
+     "note": null
+    }
+   },
+   {
+    "code": "MG2",
+    "intitule": {
+     "valeur": "Mise à jour du plan de gestion et bilan de fin de mesure compensatoire",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L17",
+       "extrait": "Mise à jour du plan de gestion et bilan de fin de mesure compensatoire"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.78",
+       "extrait": "Mise à jour du plan de gestion et bilan de fin de mesure compensatoire"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "Mise en œuvre générale du plan de gestion",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Mise en œuvre générale du plan de gestion (MG) : Missions associées"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG1",
+      "UG2",
+      "UG3",
+      "UG4",
+      "UG5",
+      "UG6",
+      "UG7"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H17 (fusion)",
+       "extrait": "MG2 → UG1, UG2, UG3, UG4, UG5, UG6, UG7"
+      },
+      {
+       "doc": "BE",
+       "loc": "écran de validation",
+       "extrait": "['UG1', 'UG2', 'UG3', 'UG4', 'UG5', 'UG6', 'UG7']"
+      }
+     ],
+     "note": "Confirmé par vous"
+    },
+    "cible": {
+     "valeur": null,
+     "confiance": "basse",
+     "sources": [],
+     "note": null
+    }
+   },
+   {
+    "code": "SE1",
+    "intitule": {
+     "valeur": "Suivi des milieux naturels, de la flore et de la faune",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L14",
+       "extrait": "Suivi des milieux naturels, de la flore et de la faune"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.71",
+       "extrait": "Suivi des habitats naturels, de la flore et de la faune"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "suivis et études",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les suivis et études (SE) : Amélioration des connaissances"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG1",
+      "UG2",
+      "UG3",
+      "UG4",
+      "UG5",
+      "UG6",
+      "UG7"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H14 (fusion)",
+       "extrait": "SE1 → UG1, UG2, UG3, UG4, UG5, UG6, UG7"
+      },
+      {
+       "doc": "BE",
+       "loc": "écran de validation",
+       "extrait": "['UG1', 'UG2', 'UG3', 'UG4', 'UG5', 'UG6', 'UG7']"
+      }
+     ],
+     "note": "Confirmé par vous"
+    },
+    "cible": {
+     "valeur": null,
+     "confiance": "basse",
+     "sources": [],
+     "note": null
+    }
+   },
+   {
+    "code": "SE2",
+    "intitule": {
+     "valeur": "Suivi hydraulique",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L15",
+       "extrait": "Suivi hydraulique"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.74",
+       "extrait": "Suivi piézométrique"
+      }
+     ],
+     "note": "Intitulés différents selon les documents"
+    },
+    "nature": {
+     "valeur": "suivis et études",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les suivis et études (SE) : Amélioration des connaissances"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG1",
+      "UG2",
+      "UG3",
+      "UG4",
+      "UG5",
+      "UG6",
+      "UG7"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H15 (fusion)",
+       "extrait": "SE2 → UG1, UG2, UG3, UG4, UG5, UG6, UG7"
+      },
+      {
+       "doc": "BE",
+       "loc": "écran de validation",
+       "extrait": "['UG1', 'UG2', 'UG3', 'UG4', 'UG5', 'UG6', 'UG7']"
+      }
+     ],
+     "note": "Confirmé par vous"
+    },
+    "cible": {
+     "valeur": null,
+     "confiance": "basse",
+     "sources": [],
+     "note": null
+    }
+   },
+   {
+    "code": "TE1",
+    "intitule": {
+     "valeur": "Entretenir les landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L7",
+       "extrait": "Entretenir les landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.63",
+       "extrait": "Entretenir des landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "travaux d'entretien",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les travaux d'entretien (TE) : Opérations visant à entretenir"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG1",
+      "UG3"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H7",
+       "extrait": "TE1 → UG1, UG3"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.63",
+       "extrait": "UG 1 et UG 3"
+      }
+     ],
+     "note": null
+    },
+    "cible": {
+     "valeur": "Fauvette pitchou et oiseaux landicoles",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L7",
+       "extrait": "Fauvette pitchou et oiseaux landicoles"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "code": "TE2",
+    "intitule": {
+     "valeur": "Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L11",
+       "extrait": "Entretenir les landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.66",
+       "extrait": "Entretenir des landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "travaux d'entretien",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les travaux d'entretien (TE) : Opérations visant à entretenir"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG2",
+      "UG4",
+      "UG6"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H11",
+       "extrait": "TE2 → UG2, UG4, UG6"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.66",
+       "extrait": "UG 2, UG 4 et UG 6"
+      }
+     ],
+     "note": null
+    },
+    "cible": {
+     "valeur": "Fadet des laîches et oiseaux landicoles et zones humides",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L11",
+       "extrait": "Fadet des laîches et oiseaux landicoles et zones humides"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "code": "TE3",
+    "intitule": {
+     "valeur": "Lutter contre la Fougère aigle",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L12",
+       "extrait": "Lutter contre la Fougère aigle"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.69",
+       "extrait": "Lutter contre la Fougère aigle"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "travaux d'entretien",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les travaux d'entretien (TE) : Opérations visant à entretenir"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG2",
+      "UG4",
+      "UG6"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H12",
+       "extrait": "TE3 → UG2, UG4, UG6"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.69",
+       "extrait": "UG 2, UG 4 et UG 6"
+      }
+     ],
+     "note": null
+    },
+    "cible": {
+     "valeur": "Fadet des laîches et oiseaux landicoles et zones humides",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L12",
+       "extrait": "Fadet des laîches et oiseaux landicoles et zones humides"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "code": "TU1",
+    "intitule": {
+     "valeur": "Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L5",
+       "extrait": "Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.40",
+       "extrait": "Adapter les itinéraires techniques sylvicoles en faveur de la Fauvette pitchou et des oiseaux landicoles"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "travaux uniques",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les travaux uniques (TU) : Travaux de restauration (réouverture"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG1"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H5",
+       "extrait": "TU1 → UG1"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.40",
+       "extrait": "UG 1"
+      }
+     ],
+     "note": null
+    },
+    "cible": {
+     "valeur": "Fauvette pitchou et oiseaux landicoles",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L5",
+       "extrait": "Fauvette pitchou et oiseaux landicoles"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "code": "TU2",
+    "intitule": {
+     "valeur": "Créer et maintenir des espaces de landes arbustives",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L6",
+       "extrait": "Créer et maintenir des espaces de landes arbustives"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.43",
+       "extrait": "Créer et maintenir des espaces de landes arbustives en faveur de la Fauvette pitchou et des oiseaux landicoles"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "travaux uniques",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les travaux uniques (TU) : Travaux de restauration (réouverture"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG3"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H6",
+       "extrait": "TU2 → UG3"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.43",
+       "extrait": "UG 3"
+      }
+     ],
+     "note": null
+    },
+    "cible": {
+     "valeur": "Fauvette pitchou et oiseaux landicoles",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L6",
+       "extrait": "Fauvette pitchou et oiseaux landicoles"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "code": "TU3",
+    "intitule": {
+     "valeur": "Adapter les itinéraires techniques sylvicoles en faveur du Fadet des laîches et des oiseaux landicoles",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L8",
+       "extrait": "Adapter les itinéraires techniques sylvicoles en faveur du Fadet des laîches et des oiseaux landicoles"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.48",
+       "extrait": "Adapter les itinéraires techniques sylvicoles en faveur de Fadet des laîches et des oiseaux landicoles"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "travaux uniques",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les travaux uniques (TU) : Travaux de restauration (réouverture"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG2"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H8",
+       "extrait": "TU3 → UG2"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.48",
+       "extrait": "UG 2"
+      }
+     ],
+     "note": null
+    },
+    "cible": {
+     "valeur": "Fadet des laîches et oiseaux landicoles et zones humides",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L8",
+       "extrait": "Fadet des laîches et oiseaux landicoles et zones humides"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "code": "TU4",
+    "intitule": {
+     "valeur": "Créer et maintenir des espaces de landes humides",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L9",
+       "extrait": "Créer et maintenir des espaces de landes humides"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.51",
+       "extrait": "Créer et maintenir des espaces de landes humides en faveur du Fadet des laîches et des oiseaux landicoles"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "travaux uniques",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les travaux uniques (TU) : Travaux de restauration (réouverture"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG4"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H9",
+       "extrait": "TU4 → UG4"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.51",
+       "extrait": "UG 4"
+      }
+     ],
+     "note": null
+    },
+    "cible": {
+     "valeur": "Fadet des laîches et oiseaux landicoles et zones humides",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L9",
+       "extrait": "Fadet des laîches et oiseaux landicoles et zones humides"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "code": "TU5",
+    "intitule": {
+     "valeur": "Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L10",
+       "extrait": "Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.53",
+       "extrait": "Maintenir et restaurer la zone humide évitée en faveur du Fadet des laîches et des oiseaux landicoles"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "travaux uniques",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les travaux uniques (TU) : Travaux de restauration (réouverture"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG6"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H10",
+       "extrait": "TU5 → UG6"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.53",
+       "extrait": "UG 6"
+      }
+     ],
+     "note": null
+    },
+    "cible": {
+     "valeur": "Fadet des laîches et oiseaux landicoles et zones humides",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L10",
+       "extrait": "Fadet des laîches et oiseaux landicoles et zones humides"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "code": "TU6",
+    "intitule": {
+     "valeur": "Créer et maintenir des ilots de sénescence",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L13",
+       "extrait": "Créer et maintenir des ilots de sénescence"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.58",
+       "extrait": "Créer et maintenir des îlots de sénescence en faveur des chauves-souris arboricoles, des insectes saproxylophages et les oiseaux forestiers"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "travaux uniques",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.37",
+       "extrait": "Les travaux uniques (TU) : Travaux de restauration (réouverture"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG5",
+      "UG7"
+     ],
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!H13",
+       "extrait": "TU6 → UG5, UG7"
+      },
+      {
+       "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+       "loc": "p.58",
+       "extrait": "UG 5 et UG 7"
+      }
+     ],
+     "note": null
+    },
+    "cible": {
+     "valeur": "Chiroptères arboricoles, insectes saproxylophages et oiseaux forestiers",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "ITK.xlsx",
+       "loc": "Synthèse actions!L13",
+       "extrait": "Chiroptères arboricoles, insectes saproxylophages et oiseaux forestiers"
+      }
+     ],
+     "note": null
+    }
+   }
+  ],
+  "obligations_surfaciques": [
+   {
+    "mesure": "MC1.1a-1",
+    "surface_min_ha": 12.5,
+    "nb_parcelles": 13,
+    "ugs": [
+     "UG1",
+     "UG3"
+    ],
+    "rattachement": "espèce : Fauvette pitchou",
+    "surface_sig_ha": 19.56,
+    "nb_entites_sig": 13,
+    "source": {
+     "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+     "loc": "p.13",
+     "extrait": "éer, développer ou restaurer une mosaïque de landes arbustives à Callune et Ajonc d'Europe et de jeunes pinèdes (< 15 ans), habitat de la Fauvette pitchou, sur "
+    }
+   },
+   {
+    "mesure": "MC1.1a-2",
+    "surface_min_ha": 6.0,
+    "nb_parcelles": 8,
+    "ugs": [
+     "UG2",
+     "UG4"
+    ],
+    "rattachement": "espèce : Fadet des laîches",
+    "surface_sig_ha": 12.78,
+    "nb_entites_sig": 8,
+    "source": {
+     "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+     "loc": "p.14",
+     "extrait": "La compensation en faveur du Fadet des laïches (mesure MC1.1a-2) est mise en œuvre sur 6 ha minimum, répartis sur 8 parcelles et vise à créer, développer et mai"
+    }
+   },
+   {
+    "mesure": "MC3.1b",
+    "surface_min_ha": 4.1,
+    "nb_parcelles": 3,
+    "ugs": [
+     "UG5"
+    ],
+    "rattachement": "intitulé : TU6",
+    "surface_sig_ha": 4.09,
+    "nb_entites_sig": 3,
+    "source": {
+     "doc": "90_33_Lyce_e_College_Le_Barp.pdf",
+     "loc": "p.14",
+     "extrait": "La mesure MC3.1b consiste à créer des îlots de sénescence sur 2 secteurs (3 parcelles) d'un total de 4,1 ha."
+    }
+   },
+   {
+    "mesure": "annexe1:Article 2",
+    "surface_min_ha": 15.897,
+    "nb_parcelles": null,
+    "ugs": [],
+    "rattachement": "intitulé : ",
+    "surface_sig_ha": 0,
+    "nb_entites_sig": 0,
+    "source": {
+     "doc": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+     "loc": "p.83",
+     "extrait": "de (re)boisement en résineux pour une surface de 15,8970 ha"
+    }
+   }
+  ],
+  "questions": [],
+  "anomalies": [
+   {
+    "texte": "La page de garde indique la période 2022-2027 mais le document précise une gestion sur 50 ans (2022-2072).",
+    "page": 1,
+    "citation": "PLAN DE GESTION DES ESPACES DE COMPENSATION ET DES ZONES EVITEES - 2022 - 2027",
+    "type": "incoherence_document",
+    "source": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf"
+   }
+  ],
+  "controles": [
+   {
+    "controle": "Code commune des parcelles",
+    "statut": "info",
+    "detail": "3 référence(s) avec la commune « 30290 » (coquille probable de 33029) — corrigé automatiquement"
+   },
+   {
+    "controle": "Surface UG1 SIG / tableur",
+    "statut": "alerte",
+    "detail": "13.717 ha (SIG) vs 19.59 ha (tableur)"
+   },
+   {
+    "controle": "Surface UG2 SIG / tableur",
+    "statut": "ok",
+    "detail": "11.507 ha (SIG) vs 11.52 ha (tableur)"
+   },
+   {
+    "controle": "Surface UG3 SIG / tableur",
+    "statut": "ok",
+    "detail": "5.847 ha (SIG) vs 5.85 ha (tableur)"
+   },
+   {
+    "controle": "Surface UG4 SIG / tableur",
+    "statut": "ok",
+    "detail": "1.268 ha (SIG) vs 1.26 ha (tableur)"
+   },
+   {
+    "controle": "Surface UG6 SIG / tableur",
+    "statut": "ok",
+    "detail": "2.153 ha (SIG) vs 2.1 ha (tableur)"
+   },
+   {
+    "controle": "Couche Evitement_Fauvette",
+    "statut": "ok",
+    "detail": "= mesure EV-3 (Fauvette pitchou et oiseaux landicoles) : non soumise à obligation de résultats, hors plan de gestion (Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf p.9 tableau 1 (carte)) → couche de contexte"
+   },
+   {
+    "controle": "Référence cadastrale",
+    "statut": "ok",
+    "detail": "« 330290C974c » = C974a (validé par vous)"
+   },
+   {
+    "controle": "Référence cadastrale incomplète",
+    "statut": "ok",
+    "detail": "« 33029444b » (p.66) → C444b"
+   },
+   {
+    "controle": "Obligation MC1.1a-1",
+    "statut": "ok",
+    "detail": "12.5 ha min / 13 parcelles (arrêté) — SIG UG1, UG3 : 19.56 ha / 13 entités"
+   },
+   {
+    "controle": "Obligation MC1.1a-2",
+    "statut": "ok",
+    "detail": "6.0 ha min / 8 parcelles (arrêté) — SIG UG2, UG4 : 12.78 ha / 8 entités"
+   },
+   {
+    "controle": "Obligation MC3.1b",
+    "statut": "ok",
+    "detail": "4.1 ha min / 3 parcelles (arrêté) — SIG UG5 : 4.09 ha / 3 entités (tolérance 2 % appliquée)"
+   },
+   {
+    "controle": "Obligation annexe1:Article 2",
+    "statut": "alerte",
+    "detail": "15.897 ha min / ? parcelles (arrêté) — SIG  : 0 ha / 0 entités — surface insuffisante"
+   },
+   {
+    "controle": "Évitement « zones humides »",
+    "statut": "ok",
+    "detail": "2.1 ha (arrêté) — Evitement_Zone_humide 2.153 ha"
+   },
+   {
+    "controle": "Évitement « chênaie »",
+    "statut": "ok",
+    "detail": "0.3 ha (arrêté) — Evitement_Boisement 0.307 ha"
+   },
+   {
+    "controle": "Mesure EV-1 du plan de gestion",
+    "statut": "ok",
+    "detail": "2.1 ha annoncés (p.9 tableau 1 (carte)) — SIG UG6 2.15 ha"
+   },
+   {
+    "controle": "Mesure EV-2 du plan de gestion",
+    "statut": "ok",
+    "detail": "0.3 ha annoncés (p.9 tableau 1 (carte)) — SIG UG7 0.31 ha"
+   },
+   {
+    "controle": "Mesure C1 du plan de gestion",
+    "statut": "ok",
+    "detail": "19.6 ha annoncés (p.9 tableau 1 (carte)) — tableau de parcelles 19.59 ha — SIG UG1, UG3 19.56 ha"
+   },
+   {
+    "controle": "Mesure C2 du plan de gestion",
+    "statut": "alerte",
+    "detail": "14.88 ha annoncés (p.9 tableau 1 (carte)) — tableau de parcelles 12.78 ha — SIG UG2, UG4 12.78 ha — incohérence interne au dossier, à signaler au BE"
+   },
+   {
+    "controle": "Mesure C3 du plan de gestion",
+    "statut": "ok",
+    "detail": "4.1 ha annoncés (p.9 tableau 1 (carte)) — SIG UG5 4.09 ha"
+   },
+   {
+    "controle": "Document embarqué",
+    "statut": "ok",
+    "detail": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf annexe 2 (p.89-99) = 90_33_Lyce_e_College_Le_Barp.pdf (contenu) → ignorée"
+   },
+   {
+    "controle": "SIG Compensation_Fadet",
+    "statut": "ok",
+    "detail": "Colonne « UG » ressemble à une UG mais ses valeurs (09.00, 09.04b, 09.05) ne suivent pas la nomenclature du plan → ignorée"
+   },
+   {
+    "controle": "SIG Compensation_Fauvette",
+    "statut": "ok",
+    "detail": "Colonne « UG » ressemble à une UG mais ses valeurs (05.10b, 06.00, 06.01a) ne suivent pas la nomenclature du plan → ignorée"
+   },
+   {
+    "controle": "SIG Evitement_Fauvette",
+    "statut": "ok",
+    "detail": "Reprojetée de EPSG:4326 vers EPSG:2154"
+   }
+  ],
+  "decisions": {
+   "alias_codes": {},
+   "alias_parcelles": {
+    "C974c": "C974a"
+   },
+   "parcelles_a_ajouter": [],
+   "requalifications_blocs": {},
+   "couches_contexte": [
+    {
+     "zone": "Evitement_Fauvette",
+     "motif": "mesure EV-3 non soumise à obligation de résultats"
+    }
+   ],
+   "couches_ignorees": [],
+   "decisions_annexes": {
+    "annexe1": {
+     "document": "Plan de gestion_espe_ces_prote_ge_es_Lyce_eColle_ge_Le_Barp_20220108.pdf",
+     "pages": [
+      82,
+      88
+     ],
+     "statut": "ignore",
+     "faits": {
+      "decision_reference": "21-037",
+      "decision_date": "2021-09-13",
+      "type_procedure": "Autorisation de défrichement (L.341-1 C. for.)",
+      "obligation_boisement": {
+       "surface_ha": 15.897
+      },
+      "indemnite": 58821.0,
+      "duree_ans": 5,
+      "fiche_arrete": {
+       "identite": {
+        "reference": {
+         "valeur": "21-037",
+         "citation": {
+          "page": 83,
+          "texte": "Arrêté n° 21-037 portant autorisation de défrichement"
+         }
+        },
+        "date": {
+         "valeur": null,
+         "citation": null
+        },
+        "autorite": {
+         "valeur": null,
+         "citation": null
+        },
+        "procedure": {
+         "valeur": null,
+         "citation": null
+        },
+        "beneficiaire": {
+         "valeur": null,
+         "citation": null
+        },
+        "projet": {
+         "valeur": null,
+         "citation": null
+        },
+        "communes": [],
+        "departement": null
+       },
+       "duree": {
+        "duree_ans": 5,
+        "debut": null,
+        "fin": null,
+        "point_depart": null,
+        "citation": {
+         "page": 84,
+         "texte": "La durée de validité de cette autorisation est de 5 ans"
+        }
+       },
+       "mesures": [
+        {
+         "code": "Article 2",
+         "libelle": "Création d'une piste périmétrale de 7 m de large, 4 portails d'accès",
+         "type_erc": "R",
+         "cible": "Lutte contre les feux de forêt",
+         "surface_ha": null,
+         "surface_texte": null,
+         "nb_parcelles": null,
+         "parcelles": [],
+         "citation": {
+          "page": 83,
+          "texte": "La création d'une piste périmétrale de 7 m de large en bordure du projet"
+         }
+        },
+        {
+         "code": "Article 2",
+         "libelle": "Maintien du débroussaillement de la forêt autour des constructions sur 100 m",
+         "type_erc": "R",
+         "cible": "Forêt autour des constructions",
+         "surface_ha": null,
+         "surface_texte": null,
+         "nb_parcelles": null,
+         "parcelles": [],
+         "citation": {
+          "page": 83,
+          "texte": "Le maintien du débroussaillement de la forêt autour des constructions"
+         }
+        },
+        {
+         "code": "Article 2",
+         "libelle": "Mise en défens des arbres évités",
+         "type_erc": "R",
+         "cible": "Arbres évités",
+         "surface_ha": null,
+         "surface_texte": null,
+         "nb_parcelles": null,
+         "parcelles": [],
+         "citation": {
+          "page": 83,
+          "texte": "La mise en défens des arbres évités dans le cadre du projet"
+         }
+        },
+        {
+         "code": "Article 2",
+         "libelle": "Travaux de (re)boisement en résineux",
+         "type_erc": "C",
+         "cible": "Massif des Landes de Gascogne",
+         "surface_ha": 15.897,
+         "surface_texte": "15,8970 ha",
+         "nb_parcelles": null,
+         "parcelles": [],
+         "citation": {
+          "page": 83,
+          "texte": "de (re)boisement en résineux pour une surface de 15,8970 ha"
+         }
+        }
+       ],
+       "evitement": [],
+       "prescriptions": [
+        {
+         "id": "P1",
+         "article": "Article 2",
+         "categorie": "travaux_gestion",
+         "texte": "Création d'une piste périmétrale de 7 m de large avec 4 portails d'accès vers la forêt.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "inconnu",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": null,
+          "point_depart": null,
+          "texte": null
+         },
+         "destinataire": null,
+         "citation": {
+          "page": 83,
+          "texte": "La création d'une piste périmétrale de 7 m de large en bordure du projet"
+         }
+        },
+        {
+         "id": "P2",
+         "article": "Article 2",
+         "categorie": "travaux_gestion",
+         "texte": "Maintien du débroussaillement sur 100 m autour des installations.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "continu",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": null,
+          "point_depart": null,
+          "texte": "maintenu"
+         },
+         "destinataire": null,
+         "citation": {
+          "page": 83,
+          "texte": "Le maintien du débroussaillement de la forêt autour des constructions"
+         }
+        },
+        {
+         "id": "P3",
+         "article": "Article 2",
+         "categorie": "travaux_gestion",
+         "texte": "Mise en place de 4 poteaux incendie.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "inconnu",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": null,
+          "point_depart": null,
+          "texte": null
+         },
+         "destinataire": null,
+         "citation": {
+          "page": 83,
+          "texte": "4 poteaux incendie à mettre en place"
+         }
+        },
+        {
+         "id": "P4",
+         "article": "Article 2",
+         "categorie": "travaux_gestion",
+         "texte": "Mise en défens des arbres évités lors de la phase de travaux.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "inconnu",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": null,
+          "point_depart": null,
+          "texte": null
+         },
+         "destinataire": null,
+         "citation": {
+          "page": 83,
+          "texte": "La mise en défens des arbres évités dans le cadre du projet"
+         }
+        },
+        {
+         "id": "P5",
+         "article": "Article 2",
+         "categorie": "travaux_gestion",
+         "texte": "Transmission du cahier des charges de boisement pour approbation.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "delai",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": 3,
+          "point_depart": "à compter de la date de notification de la présente décision",
+          "texte": "dans un délai de 3 mois à compter de la date de notification"
+         },
+         "destinataire": "DDTM de la Gironde",
+         "citation": {
+          "page": 83,
+          "texte": "transmis pour approbation préalable à la D.D.T.M. de la Gironde dans un délai"
+         }
+        },
+        {
+         "id": "P6",
+         "article": "Article 2",
+         "categorie": "travaux_gestion",
+         "texte": "Achèvement des travaux de (re)boisement.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "delai",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": 36,
+          "point_depart": "à compter de la même date",
+          "texte": "sous un délai maximum de 3 ans à compter de la même date"
+         },
+         "destinataire": null,
+         "citation": {
+          "page": 83,
+          "texte": "Les travaux devront être achevés sous un délai maximum de 3 ans"
+         }
+        },
+        {
+         "id": "P7",
+         "article": "Article 2",
+         "categorie": "foncier",
+         "texte": "Convention avec propriétaires tiers en cas de reboisement sur terrains tiers.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "inconnu",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": null,
+          "point_depart": null,
+          "texte": null
+         },
+         "destinataire": null,
+         "citation": {
+          "page": 83,
+          "texte": "En cas de travaux sur terrains tiers, une convention entre le bénéficiaire"
+         }
+        },
+        {
+         "id": "P8",
+         "article": "Article 4",
+         "categorie": "garantie_financiere",
+         "texte": "Versement au fonds stratégique de la forêt et du bois d'une indemnité de 58 821 €.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "inconnu",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": null,
+          "point_depart": null,
+          "texte": null
+         },
+         "destinataire": "Fonds stratégique de la forêt et du bois",
+         "citation": {
+          "page": 83,
+          "texte": "versement au fonds stratégique de la forêt et du bois d'une indemnité d'un montant"
+         }
+        },
+        {
+         "id": "P9",
+         "article": "Article 5",
+         "categorie": "bilan_transmission",
+         "texte": "Transmission à la DDTM de l'acte d'engagement ou de la déclaration de versement.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "delai",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": 12,
+          "point_depart": "à compter de la notification de la présente décision",
+          "texte": "durée maximale d'un an à compter de la notification de la présente décision"
+         },
+         "destinataire": "DDTM de la Gironde",
+         "citation": {
+          "page": 84,
+          "texte": "d'une durée maximale d'un an à compter de la notification de la présente décision"
+         }
+        },
+        {
+         "id": "P10",
+         "article": "Article 8",
+         "categorie": "autre",
+         "texte": "Affichage de l'autorisation sur le terrain et à la mairie avant défrichement.",
+         "mesures": [],
+         "echeancier": {
+          "forme": "delai",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": null,
+          "point_depart": "quinze jours au moins avant le commencement des opérations",
+          "texte": "quinze jours au moins avant le commencement des opérations de défrichement"
+         },
+         "destinataire": null,
+         "citation": {
+          "page": 84,
+          "texte": "quinze jours au moins avant le commencement des opérations de défrichement"
+         }
+        },
+        {
+         "id": "P11",
+         "article": "Acte d'engagement Art. 3",
+         "categorie": "mesure_correctrice",
+         "texte": "Réalisation régulière des opérations de réussite de plantation pendant 10 ans.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "periodique",
+          "annees_relatives": [],
+          "intervalle_ans": 10.0,
+          "delai_mois": null,
+          "point_depart": "à compter de la réalisation des travaux",
+          "texte": "pendant une période de dix ans, à compter de la réalisation des travaux"
+         },
+         "destinataire": null,
+         "citation": {
+          "page": 85,
+          "texte": "pendant une période de dix ans, à compter de la réalisation des travaux"
+         }
+        },
+        {
+         "id": "P12",
+         "article": "Acte d'engagement Art. 3",
+         "categorie": "mesure_correctrice",
+         "texte": "Conservation de l'affectation boisée des terrains pendant 20 ans.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "continu",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": null,
+          "point_depart": null,
+          "texte": "pendant une durée minimale de vingt ans"
+         },
+         "destinataire": null,
+         "citation": {
+          "page": 85,
+          "texte": "conserver l'affectation boisée des terrains pendant une durée minimale"
+         }
+        },
+        {
+         "id": "P13",
+         "article": "Acte d'engagement Art. 3",
+         "categorie": "bilan_transmission",
+         "texte": "Fourniture d'un document de gestion durable dans un délai maximal d'un an.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "delai",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": 12,
+          "point_depart": "à compter de la réalisation des travaux",
+          "texte": "dans un délai maximal de un an à compter de la réalisation des travaux"
+         },
+         "destinataire": null,
+         "citation": {
+          "page": 85,
+          "texte": "dans un délai maximal de un an à compter de la réalisation des travaux"
+         }
+        },
+        {
+         "id": "P14",
+         "article": "Acte d'engagement Art. 4",
+         "categorie": "suivi",
+         "texte": "Contrôle par la DDTM de l'état des boisements et de la sylviculture.",
+         "mesures": [
+          "Article 2"
+         ],
+         "echeancier": {
+          "forme": "inconnu",
+          "annees_relatives": [],
+          "intervalle_ans": null,
+          "delai_mois": null,
+          "point_depart": null,
+          "texte": null
+         },
+         "destinataire": "DDTM",
+         "citation": {
+          "page": 85,
+          "texte": "La DDTM vérifiera l'état des boisements ainsi que la sylviculture"
+         }
+        }
+       ],
+       "termes": [
+        {
+         "terme": "Fonds stratégique de la forêt et du bois",
+         "sens": "Fonds public permettant de compenser les impacts des défrichements via le versement d'une indemnité équivalente."
+        },
+        {
+         "terme": "Coefficient multiplicateur",
+         "sens": "Valeur fixée à 2 pour le calcul de la surface à boiser en compensation de la surface défrichée dans le Massif des Landes de Gascogne."
+        },
+        {
+         "terme": "Obligations Légales de Débroussaillement",
+         "sens": "Obligation de débroussailler et maintenir en état débroussaillé le terrain autour des constructions."
+        }
+       ],
+       "resume": "L'arrêté préfectoral n°21-037 autorise le Conseil Régional de Nouvelle-Aquitaine à défricher 7,9488 ha de bois sur la commune du Barp (33) pour construire un collège et un lycée. Les mesures de réduction incluent la création d'une piste périmétrale anti-incendie et la mise en défens d'arbres. La compensation impose 15,8970 ha de reboisement, avec un cahier des charges à valider sous 3 mois. Le pétitionnaire peut choisir de s'acquitter via un versement de 58 821 € au Fonds Stratégique de la Forêt et du Bois. L'engagement de compensation prévoit un entretien sur 10 ans et une conservation boisée de 20 ans. La validité de l'autorisation est de 5 ans."
+      }
+     }
+    }
+   },
+   "roles_tableaux": {
+    "Synthèse actions#1": "synthese",
+    "Synthèse actions#2": "synthese",
+    "ITK Fauvette et Fadet#1": "planning_passages",
+    "ITK Fauvette et Fadet#2": "autre",
+    "ITK Fauvette et Fadet#3": "planning_passages",
+    "ITK Fauvette et Fadet#4": "autre",
+    "ITK Fauvette et Fadet#5": "autre",
+    "ITK Fauvette et Fadet#6": "planning_passages",
+    "ITK Fauvette et Fadet#7": "autre",
+    "ITK Fauvette et Fadet#8": "planning_passages",
+    "ITK Fauvette et Fadet#9": "autre",
+    "ITK Fauvette et Fadet#10": "planning_passages",
+    "ITK Fauvette et Fadet#11": "autre",
+    "ITK Fauvette et Fadet#12": "planning_passages"
+   },
+   "commentaires": [],
+   "arrete": {
+    "projet": {
+     "identite": {
+      "reference": {
+       "valeur": "n° 90/2021",
+       "citation": {
+        "page": 1,
+        "texte": "Réf. DBEC : n° 90/2021"
+       }
+      },
+      "date": {
+       "valeur": "2021-08-17",
+       "citation": {
+        "page": 19,
+        "texte": "Bordeaux, le 17 août 2021"
+       }
+      },
+      "autorite": {
+       "valeur": "Préfète de la Gironde / DREAL Nouvelle-Aquitaine",
+       "citation": {
+        "page": 1,
+        "texte": "La Préfète de la Gironde"
+       }
+      },
+      "procedure": {
+       "valeur": "Dérogation aux interdictions de destruction d'espèces animales protégées et de leurs habitats",
+       "citation": {
+        "page": 1,
+        "texte": "ARRÊTÉ portant dérogation aux interdictions de destruction de spécimens d'espèces"
+       }
+      },
+      "beneficiaire": {
+       "valeur": "Région Nouvelle-Aquitaine",
+       "citation": {
+        "page": 2,
+        "texte": "bénéficiaire de la dérogation est la Région Nouvelle-Aquitaine"
+       }
+      },
+      "projet": {
+       "valeur": "Construction d'un nouveau lycée et nouveau collège",
+       "citation": {
+        "page": 1,
+        "texte": "Construction d'un nouveau lycée et nouveau collège"
+       }
+      },
+      "communes": [
+       "Le Barp"
+      ],
+      "departement": "33"
+     },
+     "duree": {
+      "duree_ans": 50,
+      "debut": 2022,
+      "fin": 2072,
+      "point_depart": "à compter de leur aménagement et/ou restauration et de la mise en œuvre du plan de gestion",
+      "citation": {
+       "page": 14,
+       "texte": "gestion et d'un entretien conservatoire pendant une durée minimum de 50 ans"
+      }
+     },
+     "mesures": [
+      {
+       "code": "Mesures d'évitement (Art. 5)",
+       "libelle": "Evitement de zones humides et de chênaie",
+       "type_erc": "E",
+       "cible": "Fadet des laîches, Damier de la Succise, chiroptères, grand Capricorne",
+       "surface_ha": 2.4,
+       "surface_texte": "2,1 ha de zones humides ... 3000 m² de chênaie",
+       "nb_parcelles": null,
+       "parcelles": [],
+       "citation": {
+        "page": 5,
+        "texte": "évitant 2,1 ha de zones humides favorables au Fadet des laïches ... 3000 m² de chênaie"
+       }
+      },
+      {
+       "code": "MC3.1b",
+       "libelle": "Création d'ilots de sénescence",
+       "type_erc": "C",
+       "cible": "Chiroptères arboricoles, insectes saproxyliques et oiseaux forestiers",
+       "surface_ha": 4.1,
+       "surface_texte": "4,1 ha",
+       "nb_parcelles": 3,
+       "parcelles": [],
+       "citation": {
+        "page": 14,
+        "texte": "La mesure MC3.1b consiste à créer des îlots de sénescence sur 2 secteurs (3 parcelles) d'un total de 4,1 ha"
+       }
+      }
+     ],
+     "evitement": [
+      {
+       "milieu": "Zones humides (landes humides)",
+       "surface_ha": 2.1,
+       "citation": {
+        "page": 5,
+        "texte": "évitant 2,1 ha de zones humides favorables au Fadet des laïches"
+       }
+      },
+      {
+       "milieu": "Chênaie",
+       "surface_ha": 0.3,
+       "citation": {
+        "page": 5,
+        "texte": "3000 m² de chênaie favorables notamment aux chiroptères et grand Capricorne"
+       }
+      }
+     ],
+     "prescriptions": [
+      {
+       "id": "P2",
+       "article": "Art. 4",
+       "categorie": "travaux_gestion",
+       "texte": "Achèvement des opérations de défrichement",
+       "mesures": [],
+       "echeancier": {
+        "forme": "ponctuel",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": null,
+        "texte": "le défrichement doit notamment être terminé le 28 février 2022"
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 4,
+        "texte": "Le défrichement doit notamment être terminé le 28 février 2022, au plus tard"
+       }
+      },
+      {
+       "id": "P6",
+       "article": "Art. 7",
+       "categorie": "bilan_transmission",
+       "texte": "Transmission du compte-rendu des opérations de sauvetage de la petite faune",
+       "mesures": [],
+       "echeancier": {
+        "forme": "ponctuel",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": "à l'issue de ces opérations",
+        "texte": "à l'issue de ces opérations"
+       },
+       "destinataire": "DREAL/SPN",
+       "citation": {
+        "page": 10,
+        "texte": "font l'objet d'un compte-rendu transmis à la DREAL/SPN"
+       }
+      },
+      {
+       "id": "P8",
+       "article": "Art. 9",
+       "categorie": "bilan_transmission",
+       "texte": "Transmission du journal de bord du chantier",
+       "mesures": [],
+       "echeancier": {
+        "forme": "periodique",
+        "annees_relatives": [],
+        "intervalle_ans": 0.083,
+        "delai_mois": null,
+        "point_depart": "à compter du démarrage des travaux",
+        "texte": "tous les mois ... à compter du démarrage des travaux"
+       },
+       "destinataire": "DREAL/SPN",
+       "citation": {
+        "page": 12,
+        "texte": "transmettre à la DREAL/SPN, tous les mois ou à une fréquence régulière"
+       }
+      },
+      {
+       "id": "P11",
+       "article": "Art. 12",
+       "categorie": "travaux_gestion",
+       "texte": "Démarrage des travaux compensatoires",
+       "mesures": [
+        "MC1.1a-1",
+        "MC1.1a-2",
+        "MC3.1b"
+       ],
+       "echeancier": {
+        "forme": "ponctuel",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": null,
+        "texte": "Les travaux compensatoires doivent débuter au plus tard en 2022"
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 14,
+        "texte": "Les travaux compensatoires doivent débuter au plus tard en 2022"
+       }
+      },
+      {
+       "id": "P12",
+       "article": "Art. 12",
+       "categorie": "bilan_transmission",
+       "texte": "Transmission du compte-rendu d'achèvement des travaux compensatoires",
+       "mesures": [
+        "MC1.1a-1",
+        "MC1.1a-2",
+        "MC3.1b"
+       ],
+       "echeancier": {
+        "forme": "ponctuel",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": "dès leur achèvement",
+        "texte": "dès leur achèvement, l'objet d'un compte-rendu de chantier"
+       },
+       "destinataire": "DREAL/SPN",
+       "citation": {
+        "page": 14,
+        "texte": "font, dès leur achèvement, l'objet d'un compte-rendu de chantier qui est transmis à la DREAL/SPN"
+       }
+      },
+      {
+       "id": "P14",
+       "article": "Art. 14",
+       "categorie": "suivi",
+       "texte": "Mise en place d'un suivi écologique sur le site du projet, les secteurs évités et de compensation pendant 50 ans",
+       "mesures": [],
+       "echeancier": {
+        "forme": "liste_annees",
+        "annees_relatives": [
+         1,
+         2,
+         3,
+         4,
+         5,
+         10,
+         20,
+         30,
+         40,
+         50
+        ],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": "dès 2022 pour les secteurs d'évitement et de compensation",
+        "texte": "annuelle pendant les 5 premières années ... tous les 5 ans jusqu'en 2042 et tous les 10 ans jusqu'en 2072"
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 16,
+        "texte": "réalisés de façon annuelle pendant les 5 premières années, à compter de 2022"
+       }
+      },
+      {
+       "id": "P15",
+       "article": "Art. 14",
+       "categorie": "bilan_transmission",
+       "texte": "Transmission du compte-rendu détaillé des opérations de suivi et bilan des mesures",
+       "mesures": [],
+       "echeancier": {
+        "forme": "periodique",
+        "annees_relatives": [],
+        "intervalle_ans": 1.0,
+        "delai_mois": null,
+        "point_depart": "au plus tard le 31 décembre de l'année de suivi",
+        "texte": "au plus tard le 31 décembre de l'année de suivi"
+       },
+       "destinataire": "DREAL/SPN",
+       "citation": {
+        "page": 16,
+        "texte": "transmis à la DREAL/SPN, à l'issue de chaque campagne de suivi (au plus tard le 31 décembre)"
+       }
+      },
+      {
+       "id": "P16",
+       "article": "Art. 14",
+       "categorie": "bilan_transmission",
+       "texte": "Versement des données brutes de biodiversité sur l'espace de dépôt naturefrance et transmettre le récépissé",
+       "mesures": [],
+       "echeancier": {
+        "forme": "periodique",
+        "annees_relatives": [],
+        "intervalle_ans": 1.0,
+        "delai_mois": null,
+        "point_depart": "au plus tard le 31 décembre de l'année de suivi",
+        "texte": "fournies aux mêmes échéances que les suivis afférents ... sans délai à la DREAL/SPN"
+       },
+       "destinataire": "DREAL/SPN",
+       "citation": {
+        "page": 16,
+        "texte": "verser, sur l'espace de dépôt https://depot-legal-biodiversite.naturefrance.fr/, les données brutes de biodiversité"
+       }
+      },
+      {
+       "id": "P17",
+       "article": "Art. 16",
+       "categorie": "autre",
+       "texte": "Mise en place d'un comité de suivi des mesures et réunions périodiques",
+       "mesures": [],
+       "echeancier": {
+        "forme": "liste_annees",
+        "annees_relatives": [
+         1,
+         2,
+         3,
+         4,
+         5,
+         10,
+         20,
+         30,
+         40,
+         50
+        ],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": "dès le début du chantier",
+        "texte": "au moins une fois par an pendant les 5 premières années ... puis tous les 5 ans"
+       },
+       "destinataire": "DREAL, DDTM, Région Nouvelle-Aquitaine, OFB",
+       "citation": {
+        "page": 17,
+        "texte": "comité se réunit au moins une fois par an pendant les 5 premières années"
+       }
+      }
+     ],
+     "termes": [
+      {
+       "terme": "OLD",
+       "sens": "Obligations Légales de Débroussaillement"
+      },
+      {
+       "terme": "DREAL/SPN",
+       "sens": "Direction Régionale de l'Environnement, de l'Aménagement et du Logement / Service Patrimoine Naturel"
+      },
+      {
+       "terme": "GéoMCE",
+       "sens": "Outil national de géolocalisation des mesures de compensation des atteintes à la biodiversité"
+      },
+      {
+       "terme": "Refuge LPO®",
+       "sens": "Dispositif de sensibilisation à la protection de la biodiversité au sein de l'établissement scolaire"
+      }
+     ],
+     "resume": "Arrêté de dérogation espèces protégées accordé à la Région Nouvelle-Aquitaine pour la construction d'un lycée et d'un collège au Barp (33), signé le 17 août 2021. Le projet impacte plusieurs espèces protégées (amphibiens, reptiles, oiseaux, chiroptères, insectes) sur environ 14 ha. Les mesures d'évitement préserveront 2,1 ha de zones humides et 3000 m² de chênaie. Les mesures de compensation (MC1.1a-1, MC1.1a-2, MC3.1b) prévoient la création/restauration de landes et îlots de sénescence sur 22,6 ha. La gestion conservatoire et le suivi écologique s'étendent sur 50 ans (de 2022 à 2072), avec un plan de gestion et des bilans réguliers imposés."
+    },
+    "annexe1": {
+     "identite": {
+      "reference": {
+       "valeur": "21-037",
+       "citation": {
+        "page": 83,
+        "texte": "Arrêté n° 21-037 portant autorisation de défrichement"
+       }
+      },
+      "date": {
+       "valeur": null,
+       "citation": null
+      },
+      "autorite": {
+       "valeur": null,
+       "citation": null
+      },
+      "procedure": {
+       "valeur": null,
+       "citation": null
+      },
+      "beneficiaire": {
+       "valeur": null,
+       "citation": null
+      },
+      "projet": {
+       "valeur": null,
+       "citation": null
+      },
+      "communes": [],
+      "departement": null
+     },
+     "duree": {
+      "duree_ans": 5,
+      "debut": null,
+      "fin": null,
+      "point_depart": null,
+      "citation": {
+       "page": 84,
+       "texte": "La durée de validité de cette autorisation est de 5 ans"
+      }
+     },
+     "mesures": [
+      {
+       "code": "Article 2",
+       "libelle": "Création d'une piste périmétrale de 7 m de large, 4 portails d'accès",
+       "type_erc": "R",
+       "cible": "Lutte contre les feux de forêt",
+       "surface_ha": null,
+       "surface_texte": null,
+       "nb_parcelles": null,
+       "parcelles": [],
+       "citation": {
+        "page": 83,
+        "texte": "La création d'une piste périmétrale de 7 m de large en bordure du projet"
+       }
+      },
+      {
+       "code": "Article 2",
+       "libelle": "Maintien du débroussaillement de la forêt autour des constructions sur 100 m",
+       "type_erc": "R",
+       "cible": "Forêt autour des constructions",
+       "surface_ha": null,
+       "surface_texte": null,
+       "nb_parcelles": null,
+       "parcelles": [],
+       "citation": {
+        "page": 83,
+        "texte": "Le maintien du débroussaillement de la forêt autour des constructions"
+       }
+      },
+      {
+       "code": "Article 2",
+       "libelle": "Mise en défens des arbres évités",
+       "type_erc": "R",
+       "cible": "Arbres évités",
+       "surface_ha": null,
+       "surface_texte": null,
+       "nb_parcelles": null,
+       "parcelles": [],
+       "citation": {
+        "page": 83,
+        "texte": "La mise en défens des arbres évités dans le cadre du projet"
+       }
+      },
+      {
+       "code": "Article 2",
+       "libelle": "Travaux de (re)boisement en résineux",
+       "type_erc": "C",
+       "cible": "Massif des Landes de Gascogne",
+       "surface_ha": 15.897,
+       "surface_texte": "15,8970 ha",
+       "nb_parcelles": null,
+       "parcelles": [],
+       "citation": {
+        "page": 83,
+        "texte": "de (re)boisement en résineux pour une surface de 15,8970 ha"
+       }
+      }
+     ],
+     "evitement": [],
+     "prescriptions": [
+      {
+       "id": "P1",
+       "article": "Article 2",
+       "categorie": "travaux_gestion",
+       "texte": "Création d'une piste périmétrale de 7 m de large avec 4 portails d'accès vers la forêt.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "inconnu",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": null,
+        "texte": null
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 83,
+        "texte": "La création d'une piste périmétrale de 7 m de large en bordure du projet"
+       }
+      },
+      {
+       "id": "P2",
+       "article": "Article 2",
+       "categorie": "travaux_gestion",
+       "texte": "Maintien du débroussaillement sur 100 m autour des installations.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "continu",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": null,
+        "texte": "maintenu"
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 83,
+        "texte": "Le maintien du débroussaillement de la forêt autour des constructions"
+       }
+      },
+      {
+       "id": "P3",
+       "article": "Article 2",
+       "categorie": "travaux_gestion",
+       "texte": "Mise en place de 4 poteaux incendie.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "inconnu",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": null,
+        "texte": null
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 83,
+        "texte": "4 poteaux incendie à mettre en place"
+       }
+      },
+      {
+       "id": "P4",
+       "article": "Article 2",
+       "categorie": "travaux_gestion",
+       "texte": "Mise en défens des arbres évités lors de la phase de travaux.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "inconnu",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": null,
+        "texte": null
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 83,
+        "texte": "La mise en défens des arbres évités dans le cadre du projet"
+       }
+      },
+      {
+       "id": "P5",
+       "article": "Article 2",
+       "categorie": "travaux_gestion",
+       "texte": "Transmission du cahier des charges de boisement pour approbation.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "delai",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": 3,
+        "point_depart": "à compter de la date de notification de la présente décision",
+        "texte": "dans un délai de 3 mois à compter de la date de notification"
+       },
+       "destinataire": "DDTM de la Gironde",
+       "citation": {
+        "page": 83,
+        "texte": "transmis pour approbation préalable à la D.D.T.M. de la Gironde dans un délai"
+       }
+      },
+      {
+       "id": "P6",
+       "article": "Article 2",
+       "categorie": "travaux_gestion",
+       "texte": "Achèvement des travaux de (re)boisement.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "delai",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": 36,
+        "point_depart": "à compter de la même date",
+        "texte": "sous un délai maximum de 3 ans à compter de la même date"
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 83,
+        "texte": "Les travaux devront être achevés sous un délai maximum de 3 ans"
+       }
+      },
+      {
+       "id": "P7",
+       "article": "Article 2",
+       "categorie": "foncier",
+       "texte": "Convention avec propriétaires tiers en cas de reboisement sur terrains tiers.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "inconnu",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": null,
+        "texte": null
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 83,
+        "texte": "En cas de travaux sur terrains tiers, une convention entre le bénéficiaire"
+       }
+      },
+      {
+       "id": "P8",
+       "article": "Article 4",
+       "categorie": "garantie_financiere",
+       "texte": "Versement au fonds stratégique de la forêt et du bois d'une indemnité de 58 821 €.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "inconnu",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": null,
+        "texte": null
+       },
+       "destinataire": "Fonds stratégique de la forêt et du bois",
+       "citation": {
+        "page": 83,
+        "texte": "versement au fonds stratégique de la forêt et du bois d'une indemnité d'un montant"
+       }
+      },
+      {
+       "id": "P9",
+       "article": "Article 5",
+       "categorie": "bilan_transmission",
+       "texte": "Transmission à la DDTM de l'acte d'engagement ou de la déclaration de versement.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "delai",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": 12,
+        "point_depart": "à compter de la notification de la présente décision",
+        "texte": "durée maximale d'un an à compter de la notification de la présente décision"
+       },
+       "destinataire": "DDTM de la Gironde",
+       "citation": {
+        "page": 84,
+        "texte": "d'une durée maximale d'un an à compter de la notification de la présente décision"
+       }
+      },
+      {
+       "id": "P10",
+       "article": "Article 8",
+       "categorie": "autre",
+       "texte": "Affichage de l'autorisation sur le terrain et à la mairie avant défrichement.",
+       "mesures": [],
+       "echeancier": {
+        "forme": "delai",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": "quinze jours au moins avant le commencement des opérations",
+        "texte": "quinze jours au moins avant le commencement des opérations de défrichement"
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 84,
+        "texte": "quinze jours au moins avant le commencement des opérations de défrichement"
+       }
+      },
+      {
+       "id": "P11",
+       "article": "Acte d'engagement Art. 3",
+       "categorie": "mesure_correctrice",
+       "texte": "Réalisation régulière des opérations de réussite de plantation pendant 10 ans.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "periodique",
+        "annees_relatives": [],
+        "intervalle_ans": 10.0,
+        "delai_mois": null,
+        "point_depart": "à compter de la réalisation des travaux",
+        "texte": "pendant une période de dix ans, à compter de la réalisation des travaux"
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 85,
+        "texte": "pendant une période de dix ans, à compter de la réalisation des travaux"
+       }
+      },
+      {
+       "id": "P12",
+       "article": "Acte d'engagement Art. 3",
+       "categorie": "mesure_correctrice",
+       "texte": "Conservation de l'affectation boisée des terrains pendant 20 ans.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "continu",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": null,
+        "texte": "pendant une durée minimale de vingt ans"
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 85,
+        "texte": "conserver l'affectation boisée des terrains pendant une durée minimale"
+       }
+      },
+      {
+       "id": "P13",
+       "article": "Acte d'engagement Art. 3",
+       "categorie": "bilan_transmission",
+       "texte": "Fourniture d'un document de gestion durable dans un délai maximal d'un an.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "delai",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": 12,
+        "point_depart": "à compter de la réalisation des travaux",
+        "texte": "dans un délai maximal de un an à compter de la réalisation des travaux"
+       },
+       "destinataire": null,
+       "citation": {
+        "page": 85,
+        "texte": "dans un délai maximal de un an à compter de la réalisation des travaux"
+       }
+      },
+      {
+       "id": "P14",
+       "article": "Acte d'engagement Art. 4",
+       "categorie": "suivi",
+       "texte": "Contrôle par la DDTM de l'état des boisements et de la sylviculture.",
+       "mesures": [
+        "Article 2"
+       ],
+       "echeancier": {
+        "forme": "inconnu",
+        "annees_relatives": [],
+        "intervalle_ans": null,
+        "delai_mois": null,
+        "point_depart": null,
+        "texte": null
+       },
+       "destinataire": "DDTM",
+       "citation": {
+        "page": 85,
+        "texte": "La DDTM vérifiera l'état des boisements ainsi que la sylviculture"
+       }
+      }
+     ],
+     "termes": [
+      {
+       "terme": "Fonds stratégique de la forêt et du bois",
+       "sens": "Fonds public permettant de compenser les impacts des défrichements via le versement d'une indemnité équivalente."
+      },
+      {
+       "terme": "Coefficient multiplicateur",
+       "sens": "Valeur fixée à 2 pour le calcul de la surface à boiser en compensation de la surface défrichée dans le Massif des Landes de Gascogne."
+      },
+      {
+       "terme": "Obligations Légales de Débroussaillement",
+       "sens": "Obligation de débroussailler et maintenir en état débroussaillé le terrain autour des constructions."
+      }
+     ],
+     "resume": "L'arrêté préfectoral n°21-037 autorise le Conseil Régional de Nouvelle-Aquitaine à défricher 7,9488 ha de bois sur la commune du Barp (33) pour construire un collège et un lycée. Les mesures de réduction incluent la création d'une piste périmétrale anti-incendie et la mise en défens d'arbres. La compensation impose 15,8970 ha de reboisement, avec un cahier des charges à valider sous 3 mois. Le pétitionnaire peut choisir de s'acquitter via un versement de 58 821 € au Fonds Stratégique de la Forêt et du Bois. L'engagement de compensation prévoit un entretien sur 10 ans et une conservation boisée de 20 ans. La validité de l'autorisation est de 5 ans."
+    }
+   }
+  },
+  "stats": {
+   "cellules": 91,
+   "confiance": {
+    "moyenne": 21,
+    "haute": 66,
+    "basse": 4
+   },
+   "questions": 0,
+   "questions_bloquantes": 0,
+   "faits": 269,
+   "faits_user": 13,
+   "geomce_pret_pct": 100,
+   "anomalies": 1
+  }
+ },
+ "durees_s": {
+  "0_inventaire": 0.09,
+  "1_carte": 0.63,
+  "1a_sig": 0.1,
+  "1b_referentiel": 0.73,
+  "2_reconciliation": 0.0
+ },
+ "nb_faits": 256
+}

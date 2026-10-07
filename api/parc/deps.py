@@ -1,19 +1,11 @@
-"""Contexte membre résolu depuis le header X-User-Id (V1, sans JWT)."""
+"""Contexte membre : l'identité vient du JWT (middleware), les droits de la RLS."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from uuid import UUID
 
-import psycopg
-from fastapi import Header, HTTPException, status
-from psycopg.rows import dict_row
-
-from api.db.env import get_database_url
-
-# Défaut démo : contrôleur du parc entier (sans header).
-_DEFAULT_ROLE = "controleur"
-_DEFAULT_USER_ID = UUID("c1000000-0000-0000-0000-000000000001")
+from auth.deps import get_claims
 
 
 @dataclass(frozen=True, slots=True)
@@ -24,57 +16,14 @@ class MembreContext:
     organisation_nom: str | None = None
 
 
-def _lookup_membre(user_id: UUID) -> MembreContext | None:
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
-        with conn.cursor() as cur:
-            cur.execute(
-                """
-                SELECT m.user_id, m.organisation_id, m.role, o.nom AS organisation_nom
-                FROM bancarisation.membre m
-                LEFT JOIN bancarisation.organisations o ON o.id = m.organisation_id
-                WHERE m.user_id = %s AND m.actif
-                """,
-                (str(user_id),),
-            )
-            row = cur.fetchone()
-    if not row:
-        return None
-    org = row["organisation_id"]
-    nom = row.get("organisation_nom")
-    return MembreContext(
-        user_id=row["user_id"],
-        role=row["role"],
-        organisation_id=UUID(str(org)) if org else None,
-        organisation_nom=str(nom) if nom else None,
-    )
-
-
-def get_membre_context(
-    x_user_id: str | None = Header(default=None, alias="X-User-Id"),
-) -> MembreContext:
-    """Résout le membre courant.
-
-    - Pas de header → contrôleur démo (voit tout le parc).
-    - Header présent → lookup `bancarisation.membre`, 403 si inconnu/inactif.
-    """
-    if not x_user_id or not x_user_id.strip():
-        return MembreContext(
-            user_id=_DEFAULT_USER_ID,
-            role=_DEFAULT_ROLE,
-            organisation_id=None,
-        )
+def get_membre_context() -> MembreContext:
+    claims = get_claims()
     try:
-        uid = UUID(x_user_id.strip())
-    except ValueError as exc:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="X-User-Id invalide (uuid attendu).",
-        ) from exc
-
-    membre = _lookup_membre(uid)
-    if membre is None:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Utilisateur inconnu ou inactif dans bancarisation.membre.",
-        )
-    return membre
+        uid = UUID(str(claims["sub"]))
+    except (KeyError, ValueError):
+        uid = None
+    return MembreContext(
+        user_id=uid,
+        role=str(claims.get("role") or "authenticated"),
+        organisation_id=None,
+    )

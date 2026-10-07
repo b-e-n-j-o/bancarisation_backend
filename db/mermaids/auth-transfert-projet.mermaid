@@ -1,0 +1,26 @@
+%% KerERC — Procédure de transfert d'un projet entre organisations (migration 030)
+sequenceDiagram
+  autonumber
+  actor S as Admin org cédante<br/>(ou gestionnaire interne)
+  participant DB as Base KerERC<br/>(fonctions + RLS)
+  actor C as Admin org repreneuse
+
+  S->>DB: demander_transfert(projet, org cible, garder lecture, finances)
+  DB->>DB: Vérifie droit de partage et org cible active
+  DB-->>S: Demande « en_attente » + journal
+  DB--)C: Demande visible (nom du projet, options)
+
+  alt Acceptation
+    C->>DB: accepter_transfert(id)
+    DB->>DB: Vérifie admin de la cible et propriétaire inchangé
+    Note over DB: Bascule atomique<br/>1. projet -> org repreneuse<br/>2. accès personnels des membres cédants retirés<br/>3. cédant gardé en lecteur « ancien_proprietaire »<br/>4. partages externes (MOA, DREAL) conservés<br/>5. notes internes restent au cédant<br/>6. historique financier suit le projet
+    DB-->>C: Projet géré par la repreneuse
+    DB-->>S: Lecture seule conservée
+  else Refus
+    C->>DB: refuser_transfert(id, motif)
+    DB-->>S: Demande refusée + motif
+  else Annulation
+    S->>DB: annuler_transfert(id)
+    DB-->>C: Demande annulée
+  end
+  Note over S,C: Chaque étape est inscrite au journal d'audit des deux organisations

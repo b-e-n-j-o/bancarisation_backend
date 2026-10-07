@@ -8,7 +8,7 @@ from uuid import UUID
 
 import psycopg
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 
 class CadastreReadError(Exception):
@@ -30,7 +30,7 @@ def _props_dict(props: Any) -> dict[str, Any]:
 def lister_parcelles_pour_ug(projet_id: UUID, ug_id: str) -> list[dict[str, Any]]:
     """Métadonnées des parcelles qui composent une UG (table de jonction)."""
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
@@ -80,7 +80,7 @@ def lister_cadastre_projet(
     """
     features: list[dict[str, Any]] = []
     try:
-        with psycopg.connect(get_database_url()) as conn:
+        with connect_utilisateur() as conn:
             with conn.cursor() as cur:
                 if ug_id:
                     cur.execute(

@@ -25,6 +25,9 @@ NORMALISATION_LLM = {
     "glm-5-2": "zai-glm-5-2",
     "glm-5.2": "zai-glm-5-2",
     "zai-glm-5.2": "zai-glm-5-2",
+    "glm-5-3": "zai-glm-5-3",
+    "glm-5.3": "zai-glm-5-3",
+    "zai-glm-5.3": "zai-glm-5-3",
 }
 
 # ---------------------------------------------------------------------------
@@ -34,7 +37,7 @@ NORMALISATION_LLM = {
 OCR_MODELE_DEFAUT = "mistral-ocr-latest"
 LLM_DEFAUT = "glm"            # → zai-glm-5-2
 LLM_REPLI = "mistral-medium-3-5"  # si GLM hors palier de la clé
-EFFORT_DEFAUT = "high"
+EFFORT_DEFAUT = "medium"
 EFFORT_ROUTEUR_DEFAUT = "low"
 
 ROLES: dict[str, dict] = {
@@ -47,11 +50,11 @@ ROLES: dict[str, dict] = {
     "carte": {
         "usage": "Passe 1 — structure du plan (vocabulaire, fiches, tableaux).",
         "modele": LLM_DEFAUT,
-        "effort": "high",
+        "effort": EFFORT_DEFAUT,
         "env_modele": "MISTRAL_MODEL_CARTE",
         "env_effort": "MISTRAL_REASONING_EFFORT_CARTE",
         "budget_tokens": 100_000,
-        "max_tokens": 32_000,
+        "max_tokens": 64_000,
     },
     "routeur": {
         "usage": "Passe 1 — choix des sections PDF si la carte n'a pas suffi.",
@@ -75,7 +78,7 @@ ROLES: dict[str, dict] = {
         "effort": "low",
         "env_modele": "MISTRAL_MODEL_ARRETE",
         "env_effort": "MISTRAL_REASONING_EFFORT_ARRETE",
-        "max_tokens": 16_000,
+        "max_tokens": 32_000,
     },
     "carte_classeur": {
         "usage": "Passe 1 — rôle et colonnes des tableaux Excel.",
@@ -83,7 +86,7 @@ ROLES: dict[str, dict] = {
         "effort": EFFORT_DEFAUT,
         "env_modele": "MISTRAL_MODEL_CARTE_CLASSEUR",
         "env_effort": "MISTRAL_REASONING_EFFORT_CARTE_CLASSEUR",
-        "max_tokens": 32_000,
+        "max_tokens": 64_000,
     },
     "fiche": {
         "usage": "Passe 3 — temporalité extraite des fiches-actions PDF (lots).",
@@ -91,7 +94,7 @@ ROLES: dict[str, dict] = {
         "effort": "medium",  # high
         "env_modele": "MISTRAL_MODEL_FICHE",
         "env_effort": "MISTRAL_REASONING_EFFORT_FICHE",
-        "max_tokens": 32_000,
+        "max_tokens": 64_000,
     },
     "libelles": {
         "usage": "Passe 3 — correspondance libellés tableur → codes du référentiel.",
@@ -174,18 +177,14 @@ def appliquer(*, model: str | None = None, effort: str | None = None,
 
 
 def api_key() -> str | None:
-    """OCR + LLM : MISTRAL_API_KEY_BEN en priorité (la clé prod n'est pas encore activée)."""
+    """OCR + LLM : MISTRAL_API_KEY en priorité."""
     charger_dotenv()
-    return os.environ.get("MISTRAL_API_KEY_BEN") or os.environ.get("MISTRAL_API_KEY")
+    return os.environ.get("MISTRAL_API_KEY_BEN")
 
 
 def api_key_source() -> str | None:
     charger_dotenv()
-    if os.environ.get("MISTRAL_API_KEY_BEN"):
-        return "MISTRAL_API_KEY_BEN"
-    if os.environ.get("MISTRAL_API_KEY"):
-        return "MISTRAL_API_KEY"
-    return None
+    return "MISTRAL_API_KEY_BEN"
 
 
 def api_key_llm(model: str | None = None) -> tuple[str | None, str | None]:
@@ -250,7 +249,7 @@ def max_tokens_pour(role: str) -> int:
     if "max_tokens" in spec:
         return int(spec["max_tokens"])
     charger_dotenv()
-    return int(os.environ.get("MISTRAL_MAX_TOKENS", "16000"))
+    return int(os.environ.get("MISTRAL_MAX_TOKENS", "64000"))
 
 
 def budget_carte() -> int:
@@ -309,7 +308,7 @@ def cache_dir() -> Path:
 
 def max_tokens() -> int:
     charger_dotenv()
-    return int(os.environ.get("MISTRAL_MAX_TOKENS", "16000"))
+    return int(os.environ.get("MISTRAL_MAX_TOKENS", "64000"))
 
 
 def _role_snapshot(role: str) -> dict:

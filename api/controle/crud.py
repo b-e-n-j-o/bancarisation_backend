@@ -11,7 +11,7 @@ import psycopg
 from psycopg.rows import dict_row
 from psycopg.types.json import Json
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 from api.controle.schemas import (
     ActeDrealOut,
     ArreteOut,
@@ -25,7 +25,7 @@ from api.controle.schemas import (
 )
 
 def _conn():
-    return psycopg.connect(get_database_url(), row_factory=dict_row)
+    return connect_utilisateur(row_factory=dict_row)
 
 
 def _map_conformite_ui(raw: str | None) -> str:
@@ -249,19 +249,9 @@ def _resume_justification_controles(controles: Any) -> tuple[int, int, str | Non
     return nb_sans_preuve, nb_sans_commentaire, detail
 
 
-def lister_bannette(
-    *,
-    role: str,
-    organisation_id: UUID | None,
-) -> list[ItemBannetteOut]:
-    if role in ("controleur", "admin"):
-        where = "TRUE"
-        params: list[Any] = []
-    elif organisation_id is None:
-        return []
-    else:
-        where = "p.organisation_id = %s"
-        params = [str(organisation_id)]
+def lister_bannette() -> list[ItemBannetteOut]:
+    where = "TRUE"
+    params: list[Any] = []
 
     sql = f"""
         SELECT
@@ -338,22 +328,9 @@ def lister_bannette(
 def _assert_projet_accessible(
     cur: Any,
     projet_id: UUID,
-    *,
-    role: str,
-    organisation_id: UUID | None,
+    **_ignored: Any,
 ) -> None:
-    if role in ("controleur", "admin"):
-        cur.execute("SELECT 1 FROM bancarisation.projets WHERE id = %s", (str(projet_id),))
-    elif organisation_id is None:
-        raise PermissionError("Accès refusé")
-    else:
-        cur.execute(
-            """
-            SELECT 1 FROM bancarisation.projets
-            WHERE id = %s AND organisation_id = %s
-            """,
-            (str(projet_id), str(organisation_id)),
-        )
+    cur.execute("SELECT 1 FROM bancarisation.projets WHERE id = %s", (str(projet_id),))
     if not cur.fetchone():
         raise LookupError("Projet introuvable")
 
@@ -361,8 +338,8 @@ def _assert_projet_accessible(
 def lire_dossier(
     projet_id: UUID,
     *,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> DossierControleOut:
     with _conn() as conn:
         with conn.cursor() as cur:
@@ -623,8 +600,8 @@ def patch_bilan_statut(
     bilan_id: UUID,
     statut: str,
     *,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> BilanSuiviOut:
     with _conn() as conn:
         with conn.cursor() as cur:
@@ -666,8 +643,8 @@ def emettre_acte(
     projet_id: UUID,
     acte_id: UUID,
     *,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> ActeDrealOut:
     with _conn() as conn:
         with conn.cursor() as cur:
@@ -716,8 +693,8 @@ def generer_acte_depuis_ecarts(
     *,
     type_acte: str,
     delai_jours: int,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> ActeDrealOut:
     dossier = lire_dossier(projet_id, role=role, organisation_id=organisation_id)
     ecarts = [
@@ -776,19 +753,9 @@ def generer_acte_depuis_ecarts(
             )
 
 
-def lister_statuts(
-    *,
-    role: str,
-    organisation_id: UUID | None,
-) -> list[dict[str, Any]]:
-    if role in ("controleur", "admin"):
-        where = "TRUE"
-        params: list[Any] = []
-    elif organisation_id is None:
-        return []
-    else:
-        where = "p.organisation_id = %s"
-        params = [str(organisation_id)]
+def lister_statuts() -> list[dict[str, Any]]:
+    where = "TRUE"
+    params: list[Any] = []
     sql = f"""
         SELECT s.projet_id, s.statut_controle, s.force_manuel
         FROM bancarisation.v_projet_statut_effectif s
@@ -804,8 +771,8 @@ def lister_statuts(
 def lister_actions_fiche(
     projet_id: UUID,
     *,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> list[ActionFicheOption]:
     with _conn() as conn:
         with conn.cursor() as cur:
@@ -835,8 +802,8 @@ def creer_arrete(
     date_notification: date | None,
     document_id: UUID | None,
     action_fiche_ids: list[UUID] | None,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
     origine: str = "user",
 ) -> ArreteOut:
     with _conn() as conn:
@@ -881,8 +848,8 @@ def lire_arrete(
     arrete_id: UUID,
     *,
     projet_id: UUID,
-    role: str,
-    organisation_id: UUID | None,
+    role: str = "",
+    organisation_id: UUID | None = None,
 ) -> ArreteOut:
     with _conn() as conn:
         with conn.cursor() as cur:

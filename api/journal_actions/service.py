@@ -9,7 +9,7 @@ import psycopg
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
-from api.db.env import get_database_url
+from api.db.utilisateur import connect_utilisateur
 
 
 def journaliser(
@@ -60,7 +60,7 @@ def journaliser(
         _run(cur)
         return
 
-    with psycopg.connect(get_database_url()) as conn:
+    with connect_utilisateur() as conn:
         with conn.cursor() as c:
             _run(c)
 
@@ -91,7 +91,7 @@ def lister_actions(
         ORDER BY cree_le DESC
         LIMIT %s
     """
-    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+    with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             cur.execute(sql, params)
             rows = [dict(r) for r in cur.fetchall()]
