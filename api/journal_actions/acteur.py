@@ -11,12 +11,11 @@ from auth.deps import get_claims
 
 
 def acteur_courant() -> str | None:
-    """Libellé d'audit : e-mail du jeton, sinon son sujet."""
-    claims = get_claims()
-    email = claims.get("email")
-    if isinstance(email, str) and email.strip():
-        return email.strip()[:200]
-    sub = claims.get("sub")
-    if sub:
-        return str(sub)[:200]
-    return None
+    """Identifiant d'audit : sujet du JWT (uuid), comme journal_audit.acteur_id.
+
+    L'e-mail n'est pas une clé : il peut changer. L'affichage le résout via profils.
+    """
+    sub = get_claims().get("sub")
+    if not sub:
+        return None
+    return str(sub)[:200]

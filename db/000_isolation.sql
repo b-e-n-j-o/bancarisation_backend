@@ -171,6 +171,14 @@ select tests.en_tant_que('00000000-0000-0000-0000-0000000000c1');
 select tests.ok((select count(*) from bancarisation.projets) = 2, 'M voit les 2 projets partagés');
 select tests.ok((select count(*) from bancarisation.projets
                   where id = '00000000-0000-0000-0000-0000000001a2') = 0, 'M ne voit pas PA2');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 2, 'M : deux lignes de droits');
+select tests.ok((select niveau = 2 and not interne and not finances and not partage
+                   and qualite = 'maitre_ouvrage'
+                   from bancarisation.mes_droits_projets()
+                  where projet_id = '00000000-0000-0000-0000-0000000001a1'),
+                'M / PA1 : lecture partagée, sans finances');
+select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 1,
+                'M : une appartenance');
 reset role;
 
 -- Départ de M : perte immédiate des accès
@@ -178,6 +186,10 @@ update bancarisation.membre_organisation set statut = 'suspendu'
  where utilisateur_id = '00000000-0000-0000-0000-0000000000c1';
 select tests.en_tant_que('00000000-0000-0000-0000-0000000000c1');
 select tests.ok((select count(*) from bancarisation.projets) = 0, 'membre sorti de M : plus rien');
+select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 0,
+                'membre sorti de M : zéro appartenance');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 0,
+                'membre sorti de M : zéro projet dans mes_droits_projets');
 reset role;
 
 -- ---------------------------------------------------------------------
@@ -321,5 +333,82 @@ select tests.ok(not exists (
   select 1 from information_schema.role_table_grants
    where grantee = 'anon' and table_schema = 'bancarisation'),
   'anon n''a aucun privilège sur le schéma');
+
+-- ---------------------------------------------------------------------
+-- mon_contexte / mes_droits_projets
+-- Les montants d'occurrence ne sont pas encore isolés : l'assertion
+-- « un lecteur sans finances ne voit aucun montant » arrivera avec
+-- la table occurrence_finance, pas ici (elle échouerait aujourd'hui).
+-- ---------------------------------------------------------------------
+select tests.en_tant_que('00000000-0000-0000-0000-0000000000a1');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 2, 'admin A : deux projets');
+select tests.ok((select niveau = 4 and interne and finances and partage and qualite is null
+                   from bancarisation.mes_droits_projets()
+                  where projet_id = '00000000-0000-0000-0000-0000000001a1'),
+                'admin A / PA1 : gestion interne');
+select tests.ok((select niveau = 2 and not interne and not finances and not partage
+                   from bancarisation.mes_droits_projets()
+                  where projet_id = '00000000-0000-0000-0000-0000000001a2'),
+                'admin A / PA2 après transfert : lecture seule, sans finances');
+select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 1,
+                'admin A : une appartenance');
+reset role;
+
+select tests.en_tant_que('00000000-0000-0000-0000-0000000000a2');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 1, 'membre A1 : un projet');
+select tests.ok((select niveau = 3 and interne and finances and not partage
+                   from bancarisation.mes_droits_projets()
+                  where projet_id = '00000000-0000-0000-0000-0000000001a1'),
+                'membre A1 / PA1 : écriture interne, pas de partage');
+select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 1,
+                'membre A1 : une appartenance');
+reset role;
+
+select tests.en_tant_que('00000000-0000-0000-0000-0000000000a3');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 0, 'membre sans projet : zéro droit');
+select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 1,
+                'membre sans projet : une appartenance quand même');
+reset role;
+
+select tests.en_tant_que('00000000-0000-0000-0000-0000000000a4');
+select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 0,
+                'membre suspendu : zéro appartenance');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 0,
+                'membre suspendu : zéro projet');
+reset role;
+
+select tests.en_tant_que('00000000-0000-0000-0000-0000000000e1');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 1, 'externe : un projet');
+select tests.ok((select niveau = 2 and not interne and not finances and not partage
+                   from bancarisation.mes_droits_projets()
+                  where projet_id = '00000000-0000-0000-0000-0000000001a1'),
+                'externe / PA1 : lecture, sans finances');
+select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 0,
+                'externe : zéro appartenance');
+reset role;
+
+select tests.en_tant_que('00000000-0000-0000-0000-0000000000b1');
+select tests.ok((select niveau = 4 and interne and finances and partage
+                   from bancarisation.mes_droits_projets()
+                  where projet_id = '00000000-0000-0000-0000-0000000001b1'),
+                'admin B / PB1 : gestion interne');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()
+                  where projet_id = '00000000-0000-0000-0000-0000000001a2') = 1,
+                'admin B voit PA2 après le transfert');
+reset role;
+
+select tests.en_tant_que('00000000-0000-0000-0000-0000000000f1');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 0, 'admin plateforme : zéro projet');
+select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 0,
+                'admin plateforme : zéro appartenance');
+select tests.ok((bancarisation.mon_contexte()->'profil'->>'admin_plateforme')::boolean,
+                'admin plateforme : le profil le dit');
+reset role;
+
+grant execute on function tests.echoue(text, text) to anon;
+select set_config('role', 'anon', true);
+select tests.echoue('select bancarisation.mon_contexte()', 'anon refusé sur mon_contexte');
+select tests.echoue('select * from bancarisation.mes_droits_projets()', 'anon refusé sur mes_droits_projets');
+reset role;
 
 rollback;
