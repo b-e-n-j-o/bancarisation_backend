@@ -20,10 +20,13 @@ def identite() -> dict[str, Any]:
         with conn.cursor() as cur:
             cur.execute(
                 """
-                select current_user,
-                       auth.uid() as uid,
+                select current_database() as db,
+                       inet_server_addr()::text as host,
+                       current_user,
+                       auth.uid()::text as uid,
                        current_setting('request.jwt.claims', true) as claims,
-                       (select count(*) from bancarisation.projets) as nb_projets
+                       (select count(*) from bancarisation.projets) as projets,
+                       (select count(*) from bancarisation.v_projet_liste_resume) as vue
                 """
             )
             row = cur.fetchone()
