@@ -104,24 +104,14 @@ def lire_projet(projet_id: UUID) -> dict[str, Any]:
 
 
 def lister_projets(limit: int = 100, offset: int = 0) -> list[dict[str, Any]]:
-    try:
-        return _all(
-            """
-            SELECT * FROM bancarisation.v_projet_liste_resume
-            ORDER BY created_at DESC
-            LIMIT %s OFFSET %s
-            """,
-            (limit, offset),
-        )
-    except Exception:
-        return _all(
-            """
-            SELECT * FROM bancarisation.projets
-            ORDER BY created_at DESC
-            LIMIT %s OFFSET %s
-            """,
-            (limit, offset),
-        )
+    return _all(
+        """
+        SELECT * FROM bancarisation.v_projet_liste_resume
+        ORDER BY created_at DESC
+        LIMIT %s OFFSET %s
+        """,
+        (limit, offset),
+    )
 
 
 def mettre_a_jour_projet(projet_id: UUID, payload: UpdateProjetPayload) -> dict[str, Any]:
