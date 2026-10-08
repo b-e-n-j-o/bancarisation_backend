@@ -2,7 +2,9 @@ from datetime import date
 from typing import Any, Literal, Optional
 from uuid import UUID
 
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
+
+from auth.deps import get_claims
 from pydantic import BaseModel, Field, field_validator
 
 from api.controle.crud import lister_arretes_projet
@@ -129,7 +131,7 @@ def session_route() -> SessionResponse:
 
 
 @router.get("/projets/catalogue-counts", response_model=CatalogueCountsResponse)
-def catalogue_counts_route() -> CatalogueCountsResponse:
+def catalogue_counts_route(_claims: dict[str, Any] = Depends(get_claims)) -> CatalogueCountsResponse:
     try:
         counts = compter_catalogue()
     except ProjetCrudError as exc:
@@ -172,7 +174,11 @@ def create_projet_route(payload: ProjetCreateRequest) -> ProjetCreateResponse:
 
 
 @router.get("/projets", response_model=list[dict[str, Any]])
-def list_projets_route(limit: int = 100, offset: int = 0) -> list[dict[str, Any]]:
+def list_projets_route(
+    limit: int = 100,
+    offset: int = 0,
+    _claims: dict[str, Any] = Depends(get_claims),
+) -> list[dict[str, Any]]:
     try:
         return lister_projets(limit=limit, offset=offset)
     except ProjetCrudError as exc:
