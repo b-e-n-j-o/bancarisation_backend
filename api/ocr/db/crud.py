@@ -9,6 +9,7 @@ from uuid import UUID
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
+from api.budget.finance import ecrire_finance, lire_finance, monter_finance, separer_finance
 from api.db.utilisateur import connect_utilisateur
 from api.ocr.domain.ug_ids import normalize_ug_id, normalize_ug_ids
 
@@ -16,10 +17,9 @@ _CHAMPS_MODIFIABLES = {
     "annee", "code", "titre", "categorie", "lib_thema", "statut", "ug_ids",
     "mois_debut", "mois_fin", "traverse_nouvel_an",
     "date_realisation", "date_realisation_fin", "surface_m2", "commentaire",
-    "montant_ht", "montant_ttc", "taux_tva", "prestataire", "prestataire_id",
+    "montant_ttc", "taux_tva", "prestataire", "prestataire_id",
     "responsable_id",
     "ligne_budget_id",
-    "montant_engage", "montant_realise",
 }
 
 _CHAMPS_ACTION_MODIFIABLES = {"ug_ids", "titre", "contenu_integral", "categorie", "lib_thema"}
@@ -305,8 +305,9 @@ def lister_occurrences(
 
 
 def creer_occurrence(projet_id: UUID | str, **champs: Any) -> dict[str, Any]:
+    reste, finance = separer_finance(champs)
     colonnes = {
-        k: v for k, v in champs.items()
+        k: v for k, v in reste.items()
         if k in _CHAMPS_MODIFIABLES or k == "echeance_id"
     }
     if colonnes.get("echeance_id") is not None:
@@ -317,31 +318,51 @@ def creer_occurrence(projet_id: UUID | str, **champs: Any) -> dict[str, Any]:
     colonnes["origine"] = "user"
     keys = list(colonnes)
     placeholders = ", ".join(["%s"] * len(keys))
-    row = _one(
-        f"INSERT INTO bancarisation.occurrence ({', '.join(keys)}) VALUES ({placeholders}) RETURNING *",
-        [colonnes[k] for k in keys],
-    )
-    if not row:
-        raise RuntimeError("Insertion occurrence échouée.")
-    return row
+    with connect_utilisateur(row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                f"INSERT INTO bancarisation.occurrence ({', '.join(keys)}) VALUES ({placeholders}) RETURNING *",
+                [colonnes[k] for k in keys],
+            )
+            row = cur.fetchone()
+            if not row:
+                raise RuntimeError("Insertion occurrence échouée.")
+            ecrire_finance(cur, str(row["id"]), finance)
+            return monter_finance(dict(row), lire_finance(cur, str(row["id"]))) or {}
 
 
 def modifier_occurrence(
     occurrence_id: UUID | str,
     **champs: Any,
 ) -> dict[str, Any] | None:
-    maj = {k: v for k, v in champs.items() if k in _CHAMPS_MODIFIABLES}
-    if not maj:
+    reste, finance = separer_finance(champs)
+    maj = {k: v for k, v in reste.items() if k in _CHAMPS_MODIFIABLES}
+    if not maj and not finance:
         raise ValueError(f"Aucun champ modifiable. Autorisés : {sorted(_CHAMPS_MODIFIABLES)}")
     if "ug_ids" in maj:
         maj["ug_ids"] = normalize_ug_ids(maj["ug_ids"])
-    maj["modifie_le"] = _now_iso()
-    sets = ", ".join(f"{k} = %s" for k in maj)
-    params = list(maj.values()) + [_oid(occurrence_id)]
-    return _one(
-        f"UPDATE bancarisation.occurrence SET {sets} WHERE id = %s RETURNING *",
-        params,
-    )
+    oid = _oid(occurrence_id)
+    with connect_utilisateur(row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            row = None
+            if maj:
+                maj["modifie_le"] = _now_iso()
+                sets = ", ".join(f"{k} = %s" for k in maj)
+                cur.execute(
+                    f"UPDATE bancarisation.occurrence SET {sets} WHERE id = %s RETURNING *",
+                    [*maj.values(), oid],
+                )
+                row = cur.fetchone()
+                if row is None:
+                    return None
+            ecrire_finance(cur, oid, finance)
+            if row is None:
+                cur.execute(
+                    "SELECT * FROM bancarisation.occurrence WHERE id = %s",
+                    (oid,),
+                )
+                row = cur.fetchone()
+            return monter_finance(dict(row) if row else None, lire_finance(cur, oid))
 
 
 def supprimer_occurrence(

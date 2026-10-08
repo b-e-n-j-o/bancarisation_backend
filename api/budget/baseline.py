@@ -59,25 +59,33 @@ def get_baseline_route(projet_id: UUID) -> dict[str, Any] | None:
     status_code=status.HTTP_201_CREATED,
 )
 def figer_baseline_route(projet_id: UUID, payload: BaselinePayload) -> dict[str, Any]:
-    """Fige montant_initial / annee_initiale sur les occurrences du projet.
+    """Fige montant_initial / annee_initiale dans occurrence_finance.
 
     mode='completer' : ne touche que les occurrences pas encore figées.
     mode='ecraser' : re-fige TOUT (validation d'un avenant).
     """
-    filtre_completer = "AND montant_initial IS NULL" if payload.mode == "completer" else ""
     try:
         with connect_utilisateur(row_factory=dict_row) as conn:
             with conn.cursor() as cur:
                 cur.execute(
-                    f"""
-                    UPDATE bancarisation.occurrence
-                    SET montant_initial = montant_ht,
-                        annee_initiale  = annee
-                    WHERE projet_id = %s
-                      AND statut <> 'supprime'
-                      {filtre_completer}
+                    """
+                    INSERT INTO bancarisation.occurrence_finance
+                        (occurrence_id, montant_initial, annee_initiale)
+                    SELECT o.id, f.montant_ht, o.annee
+                    FROM bancarisation.occurrence o
+                    LEFT JOIN bancarisation.occurrence_finance f ON f.occurrence_id = o.id
+                    WHERE o.projet_id = %s
+                      AND o.statut <> 'supprime'
+                      AND (
+                        %s = 'ecraser'
+                        OR f.occurrence_id IS NULL
+                        OR f.montant_initial IS NULL
+                      )
+                    ON CONFLICT (occurrence_id) DO UPDATE
+                      SET montant_initial = excluded.montant_initial,
+                          annee_initiale = excluded.annee_initiale
                     """,
-                    (str(projet_id),),
+                    (str(projet_id), payload.mode),
                 )
                 nb_figees = cur.rowcount
 
@@ -87,10 +95,11 @@ def figer_baseline_route(projet_id: UUID, payload: BaselinePayload) -> dict[str,
                         (projet_id, libelle, commentaire, mode, nb_occurrences, total_ht)
                     SELECT %s, %s, %s, %s,
                            count(*),
-                           coalesce(sum(montant_ht), 0)
-                    FROM bancarisation.occurrence
-                    WHERE projet_id = %s
-                      AND statut <> 'supprime'
+                           coalesce(sum(f.montant_ht), 0)
+                    FROM bancarisation.occurrence o
+                    LEFT JOIN bancarisation.occurrence_finance f ON f.occurrence_id = o.id
+                    WHERE o.projet_id = %s
+                      AND o.statut <> 'supprime'
                     RETURNING
                         id::text,
                         projet_id::text,

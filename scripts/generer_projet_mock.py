@@ -584,18 +584,15 @@ def inserer_projet(
                 statut, ug_ids, mois_debut, mois_fin, traverse_nouvel_an,
                 origine, confiance, champs_a_confirmer, avertissements,
                 date_realisation, commentaire,
-                montant_ht, montant_initial, annee_initiale,
-                montant_engage, montant_realise,
                 prestataire, prestataire_id
             ) VALUES (
                 %s, %s, %s, %s, %s, %s, %s,
                 %s, %s, %s, %s, %s,
                 %s, %s, %s, %s,
                 %s, %s,
-                %s, %s, %s,
-                %s, %s,
                 %s, %s
             )
+            RETURNING id
             """,
             (
                 str(projet_id),
@@ -616,13 +613,25 @@ def inserer_projet(
                 ["occurrence mock"],
                 o["date_realisation"],
                 o["commentaire"],
+                o["prestataire"],
+                str(o["prestataire_id"]),
+            ),
+        )
+        occ_id = cur.fetchone()["id"]
+        cur.execute(
+            """
+            INSERT INTO bancarisation.occurrence_finance (
+                occurrence_id, montant_ht, montant_initial, annee_initiale,
+                montant_engage, montant_realise
+            ) VALUES (%s, %s, %s, %s, %s, %s)
+            """,
+            (
+                occ_id,
                 o["montant_ht"],
                 o["montant_initial"],
                 o["annee_initiale"],
                 o["montant_engage"],
                 o["montant_realise"],
-                o["prestataire"],
-                str(o["prestataire_id"]),
             ),
         )
         total_baseline += o["montant_initial"]

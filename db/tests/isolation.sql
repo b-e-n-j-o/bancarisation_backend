@@ -77,6 +77,11 @@ insert into bancarisation.projets (id, organisation_id, nom) values
   ('00000000-0000-0000-0000-0000000001a2', '00000000-0000-0000-0000-00000000000a', 'Test PA2'),
   ('00000000-0000-0000-0000-0000000001b1', '00000000-0000-0000-0000-00000000000b', 'Test PB1');
 
+insert into bancarisation.occurrence (id, projet_id, annee, code, titre, categorie)
+values
+  ('00000000-0000-0000-0000-0000000002a1', '00000000-0000-0000-0000-0000000001a1', 2026, 'T-FIN', 'Test finance', 'compensation'),
+  ('00000000-0000-0000-0000-0000000002a2', '00000000-0000-0000-0000-0000000001a1', 2026, 'T-FIN2', 'Test finance écriture', 'compensation');
+
 -- Partages
 insert into bancarisation.projet_acces (projet_id, utilisateur_id, organisation_id, qualite, niveau, expire_le) values
   ('00000000-0000-0000-0000-0000000001a1', '00000000-0000-0000-0000-0000000000a2', null, null, 'contributeur', null),
@@ -355,19 +360,33 @@ select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances'
 reset role;
 
 select tests.en_tant_que('00000000-0000-0000-0000-0000000000a2');
-select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 1, 'membre A1 : un projet');
+-- Avant le transfert, A1 ne voyait que PA1. La lecture conservée est un
+-- partage à l'organisation A : tout membre actif de A voit aussi PA2.
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 2,
+                'membre A1 : PA1 et la lecture conservée sur PA2');
 select tests.ok((select niveau = 3 and interne and finances and not partage
                    from bancarisation.mes_droits_projets()
                   where projet_id = '00000000-0000-0000-0000-0000000001a1'),
                 'membre A1 / PA1 : écriture interne, pas de partage');
+select tests.ok((select niveau = 2 and not interne and not finances and not partage
+                   and qualite = 'ancien_proprietaire'
+                   from bancarisation.mes_droits_projets()
+                  where projet_id = '00000000-0000-0000-0000-0000000001a2'),
+                'membre A1 / PA2 : lecture de l''ancienne organisation, sans finances');
 select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 1,
                 'membre A1 : une appartenance');
 reset role;
 
 select tests.en_tant_que('00000000-0000-0000-0000-0000000000a3');
-select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 0, 'membre sans projet : zéro droit');
+select tests.ok((select count(*) from bancarisation.mes_droits_projets()) = 1,
+                'membre sans attribution : seulement la lecture conservée sur PA2');
+select tests.ok((select niveau = 2 and not interne and not finances and not partage
+                   and qualite = 'ancien_proprietaire'
+                   from bancarisation.mes_droits_projets()
+                  where projet_id = '00000000-0000-0000-0000-0000000001a2'),
+                'membre sans attribution / PA2 : lecture, sans finances');
 select tests.ok(jsonb_array_length(bancarisation.mon_contexte()->'appartenances') = 1,
-                'membre sans projet : une appartenance quand même');
+                'membre sans attribution : une appartenance quand même');
 reset role;
 
 select tests.en_tant_que('00000000-0000-0000-0000-0000000000a4');
@@ -405,16 +424,22 @@ select tests.ok((bancarisation.mon_contexte()->'profil'->>'admin_plateforme')::b
                 'admin plateforme : le profil le dit');
 reset role;
 
--- CONNU, corrigé par occurrence_finance.
--- Tant que la table n'existe pas, le script le signale et continue.
--- Dès qu'elle existe, un externe ne doit voir aucune ligne de montant.
+-- Montants : tant que occurrence_finance n'existe pas, le trou est connu.
+-- Dès 055, un lecteur sans finances voit l'action et des montants null.
 do $$
-declare n int;
+declare
+  n int;
+  ht numeric;
+  colonnes int;
 begin
   if to_regclass('bancarisation.occurrence_finance') is null then
     raise notice 'CONNU, corrigé par occurrence_finance : un lecteur sans finances voit encore les montants d''occurrence';
     return;
   end if;
+
+  insert into bancarisation.occurrence_finance (occurrence_id, montant_ht, montant_initial, annee_initiale)
+  values ('00000000-0000-0000-0000-0000000002a1', 1000, 800, 2026);
+
   perform tests.en_tant_que('00000000-0000-0000-0000-0000000000e1');
   execute $q$
     select count(*)
@@ -425,16 +450,69 @@ begin
             or f.montant_realise is not null or f.montant_initial is not null)
   $q$ into n;
   if n > 0 then
-    raise exception 'ÉCHEC : externe sans finances voit des montants d''occurrence';
+    raise exception 'ÉCHEC : externe sans finances voit des lignes occurrence_finance';
   end if;
-  raise notice 'ok : externe sans finances : aucun montant d''occurrence';
+  raise notice 'ok : externe sans finances : aucune ligne occurrence_finance';
+
+  execute $q$
+    select montant_ht from bancarisation.v_occurrence_calendrier
+     where id = '00000000-0000-0000-0000-0000000002a1'
+  $q$ into ht;
+  if ht is not null then
+    raise exception 'ÉCHEC : externe lit un montant dans v_occurrence_calendrier';
+  end if;
+  raise notice 'ok : externe : montant null dans le calendrier';
+
+  perform tests.echoue(
+    $q$insert into bancarisation.occurrence_finance (occurrence_id, montant_ht)
+       values ('00000000-0000-0000-0000-0000000002a2', 1)$q$,
+    'externe ne peut pas écrire occurrence_finance');
+
+  execute 'reset role';
+  update bancarisation.membre_organisation set statut = 'actif'
+   where utilisateur_id = '00000000-0000-0000-0000-0000000000c1';
+  perform tests.en_tant_que('00000000-0000-0000-0000-0000000000c1');
+  execute $q$
+    select montant_ht from bancarisation.v_occurrence_calendrier
+     where id = '00000000-0000-0000-0000-0000000002a1'
+  $q$ into ht;
+  if ht is not null then
+    raise exception 'ÉCHEC : maître d''ouvrage lit un montant dans v_occurrence_calendrier';
+  end if;
+  raise notice 'ok : maître d''ouvrage : montant null dans le calendrier';
+
+  perform tests.en_tant_que('00000000-0000-0000-0000-0000000000a2');
+  execute $q$
+    select montant_ht from bancarisation.v_occurrence_calendrier
+     where id = '00000000-0000-0000-0000-0000000002a1'
+  $q$ into ht;
+  if ht is distinct from 1000 then
+    raise exception 'ÉCHEC : membre interne ne lit pas le montant (vu %)', ht;
+  end if;
+  raise notice 'ok : membre interne lit le montant';
+
+  reset role;
+  select count(*) into colonnes
+    from information_schema.columns
+   where table_schema = 'bancarisation'
+     and table_name = 'occurrence'
+     and column_name like 'montant_%';
+  if colonnes = 0 then
+    raise notice 'ok : 056 appliquée, occurrence n''a plus de colonne de montant';
+  else
+    raise notice '056 pas encore appliquée : % colonne(s) de montant encore sur occurrence', colonnes;
+  end if;
 end $$;
 reset role;
 
+grant usage on schema tests to anon;
 grant execute on function tests.echoue(text, text) to anon;
 select set_config('role', 'anon', true);
 select tests.echoue('select bancarisation.mon_contexte()', 'anon refusé sur mon_contexte');
 select tests.echoue('select * from bancarisation.mes_droits_projets()', 'anon refusé sur mes_droits_projets');
 reset role;
+
+select 'TOUS LES TESTS PASSENT' as resultat,
+       (select string_agg(version, ', ' order by version) from public.schema_migrations) as migrations;
 
 rollback;

@@ -191,7 +191,7 @@ def _lignes_annee(
             o.statut,
             o.prestataire,
             o.annee,
-            o.annee_initiale,
+            f.annee_initiale,
             o.mois_debut,
             o.mois_fin,
             o.traverse_nouvel_an,
@@ -269,6 +269,7 @@ def _lignes_annee(
                 AND m.champ IN ('annee', 'mois_debut', 'mois_fin')
             ) AS changements_periode
         FROM bancarisation.occurrence o
+        LEFT JOIN bancarisation.occurrence_finance f ON f.occurrence_id = o.id
         WHERE o.projet_id = %s
           AND o.statut <> 'supprime'
           AND (
@@ -291,7 +292,7 @@ def _lignes_annee(
                 AND m.nouvelle_val::integer > %s
             )
             -- Fallback baseline (données antérieures au journal de période).
-            OR (o.annee_initiale = %s AND o.annee > %s)
+            OR (f.annee_initiale = %s AND o.annee > %s)
           )
         ORDER BY o.annee, o.mois_debut NULLS LAST, o.categorie NULLS LAST, o.code, o.titre
         """,
@@ -385,13 +386,14 @@ def _lignes_n1(
             o.categorie,
             o.statut,
             o.annee,
-            o.annee_initiale,
+            f.annee_initiale,
             o.mois_debut,
             o.mois_fin,
             o.traverse_nouvel_an,
             o.prestataire,
             o.ug_ids
         FROM bancarisation.occurrence o
+        LEFT JOIN bancarisation.occurrence_finance f ON f.occurrence_id = o.id
         WHERE o.projet_id = %s
           AND o.annee = %s
           AND o.statut <> 'supprime'

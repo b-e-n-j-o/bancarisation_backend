@@ -333,26 +333,49 @@ def ingérer(
                         projet_id, echeance_id, annee, code, titre, categorie, lib_thema, statut,
                         ug_ids, mois_debut, mois_fin, traverse_nouvel_an, origine,
                         confiance, champs_a_confirmer, avertissements,
-                        montant_ht, montant_realise, prestataire,
-                        montant_initial, annee_initiale
+                        prestataire
                     ) values (
                         %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                        %s, %s, %s, %s, %s
+                        %s
                     )
                     on conflict (echeance_id, annee)
                         where origine = 'ia' and echeance_id is not null
                     do nothing
+                    returning id
                     """,
                     (
                         projet_id, echeance_id, o.annee, o.code, o.titre, o.categorie,
                         o.lib_thema, o.statut, occ_ug_ids, o.mois_debut, o.mois_fin,
                         o.traverse_nouvel_an, o.origine, o.confiance,
                         o.champs_a_confirmer, o.avertissements,
-                        o.montant_ht, o.montant_realise, o.prestataire,
-                        o.montant_ht, o.annee,
+                        o.prestataire,
                     ),
                 )
-                inserees += cur.rowcount
+                inseree = cur.fetchone()
+                if inseree is None:
+                    continue
+                inserees += 1
+                if o.montant_ht is not None or o.montant_realise is not None:
+                    cur.execute(
+                        """
+                        insert into bancarisation.occurrence_finance (
+                            occurrence_id, montant_ht, montant_realise,
+                            montant_initial, annee_initiale
+                        ) values (%s, %s, %s, %s, %s)
+                        on conflict (occurrence_id) do update
+                          set montant_ht = excluded.montant_ht,
+                              montant_realise = excluded.montant_realise,
+                              montant_initial = excluded.montant_initial,
+                              annee_initiale = excluded.annee_initiale
+                        """,
+                        (
+                            inseree["id"],
+                            o.montant_ht,
+                            o.montant_realise,
+                            o.montant_ht,
+                            o.annee,
+                        ),
+                    )
 
             # 6. Budget non ventilé (passe 3) → ligne_budget
             nb_non_ventile = _inserer_budget_non_ventile(

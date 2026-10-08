@@ -20,9 +20,7 @@ from uuid import UUID
 import psycopg
 from psycopg.rows import dict_row
 
-from api.db.utilisateur import connect_utilisateur
-from api.journal_actions import journaliser
-from api.ocr.domain.ug_ids import normalize_ug_ids
+from api.budget.finance import ecrire_finance, lire_finance, monter_finance, separer_finance
 
 # Colonnes occurrence que le trigger surveille + autres champs PATCH utiles
 # via le chemin psycopg (quand un motif est fourni).
@@ -43,15 +41,12 @@ _CHAMPS_PG = frozenset(
         "date_realisation_fin",
         "surface_m2",
         "commentaire",
-        "montant_ht",
         "montant_ttc",
         "taux_tva",
         "prestataire",
         "prestataire_id",
         "responsable_id",
         "ligne_budget_id",
-        "montant_engage",
-        "montant_realise",
     }
 )
 
@@ -82,35 +77,47 @@ def modifier_occurrence_avec_contexte(
     motif: str | None = None,
     modifie_par: str | None = None,
 ) -> dict[str, Any] | None:
-    """UPDATE occurrence via psycopg + contexte session pour le trigger.
+    """UPDATE occurrence et, s'il y a des montants, occurrence_finance.
 
-    À utiliser quand un motif doit être tracé. Sinon le PATCH Supabase
-    (crud.modifier_occurrence) suffit : le trigger logue quand même, motif NULL.
+    Le motif est posé avant les deux écritures : le trigger de la table
+    finance le relit dans la même transaction.
     """
-    maj = {k: v for k, v in champs.items() if k in _CHAMPS_PG}
-    if not maj:
-        raise ValueError(f"Aucun champ modifiable. Autorisés : {sorted(_CHAMPS_PG)}")
+    reste, finance = separer_finance(champs)
+    maj = {k: v for k, v in reste.items() if k in _CHAMPS_PG}
+    if not maj and not finance:
+        raise ValueError(f"Aucun champ modifiable. Autorisés : {sorted(_CHAMPS_PG | set(finance))}")
     if "ug_ids" in maj:
         maj["ug_ids"] = normalize_ug_ids(maj["ug_ids"])
-
-    maj["modifie_le"] = datetime.now(timezone.utc)
-    sets = ", ".join(f"{col} = %s" for col in maj)
-    values = list(maj.values()) + [str(occurrence_id)]
 
     with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
             appliquer_contexte_mouvement(cur, motif=motif, modifie_par=modifie_par)
-            cur.execute(
-                f"""
-                UPDATE bancarisation.occurrence
-                SET {sets}
-                WHERE id = %s
-                RETURNING *
-                """,
-                values,
-            )
-            row = cur.fetchone()
-    return dict(row) if row else None
+            row = None
+            if maj:
+                maj["modifie_le"] = datetime.now(timezone.utc)
+                sets = ", ".join(f"{col} = %s" for col in maj)
+                cur.execute(
+                    f"""
+                    UPDATE bancarisation.occurrence
+                    SET {sets}
+                    WHERE id = %s
+                    RETURNING *
+                    """,
+                    [*maj.values(), str(occurrence_id)],
+                )
+                row = cur.fetchone()
+                if row is None:
+                    return None
+            elif finance:
+                cur.execute(
+                    "select * from bancarisation.occurrence where id = %s",
+                    (str(occurrence_id),),
+                )
+                row = cur.fetchone()
+                if row is None:
+                    return None
+            ecrire_finance(cur, str(occurrence_id), finance)
+            return monter_finance(dict(row) if row else None, lire_finance(cur, str(occurrence_id)))
 
 
 def _mouvements(where: str, param: str, limite: int) -> list[dict[str, Any]]:
@@ -214,9 +221,10 @@ def justifier_ecart_occurrence(
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT id::text, projet_id::text, montant_ht::text AS montant_ht
-                FROM bancarisation.occurrence
-                WHERE id = %s
+                SELECT id::text, projet_id::text, f.montant_ht::text AS montant_ht
+                FROM bancarisation.occurrence o
+                LEFT JOIN bancarisation.occurrence_finance f ON f.occurrence_id = o.id
+                WHERE o.id = %s
                 """,
                 (str(occurrence_id),),
             )

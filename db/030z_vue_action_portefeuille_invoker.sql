@@ -12,3 +12,10 @@ revoke all on bancarisation.v_action_portefeuille from public, anon;
 grant select on bancarisation.v_action_portefeuille to authenticated;
 
 notify pgrst, 'reload schema';
+
+create table if not exists public.schema_migrations (
+  version text primary key,
+  appliquee_le timestamptz default now()
+);
+
+insert into public.schema_migrations (version) values ('030z_vue_action_portefeuille_invoker');

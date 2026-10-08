@@ -61,11 +61,11 @@ def _lignes_annee(cur: psycopg.Cursor, projet_id: str, annee: int) -> list[dict[
             o.statut,
             o.prestataire,
             o.ug_ids,
-            o.montant_initial::float8 AS montant_initial,
-            o.annee_initiale,
-            o.montant_ht::float8      AS prevu,
-            o.montant_engage::float8  AS engage,
-            o.montant_realise::float8 AS realise,
+            f.montant_initial::float8 AS montant_initial,
+            f.annee_initiale,
+            f.montant_ht::float8      AS prevu,
+            f.montant_engage::float8  AS engage,
+            f.montant_realise::float8 AS realise,
             o.champs_a_confirmer,
             (
                 SELECT jsonb_object_agg(t.champ, t.motif)
@@ -78,6 +78,7 @@ def _lignes_annee(cur: psycopg.Cursor, projet_id: str, annee: int) -> list[dict[
                 ) t
             ) AS motifs
         FROM bancarisation.occurrence o
+        LEFT JOIN bancarisation.occurrence_finance f ON f.occurrence_id = o.id
         WHERE o.projet_id = %s
           AND o.annee = %s
           AND o.statut <> 'supprime'

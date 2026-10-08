@@ -18,6 +18,16 @@ alter table bancarisation.personnes
 
 drop index if exists bancarisation.personnes_utilisateur_id_uidx;
 
+-- Les seeds 018/043 (ex. c1000000-…-0002, Marion Dupont) vivent dans
+-- bancarisation.membre, pas dans auth.users. On garde la fiche d'annuaire
+-- et on retire seulement le lien vers un compte qui n'existe pas.
+update bancarisation.personnes p
+set utilisateur_id = null
+where utilisateur_id is not null
+  and not exists (
+    select 1 from auth.users u where u.id = p.utilisateur_id
+  );
+
 alter table bancarisation.personnes
   add constraint personnes_utilisateur_fkey
   foreign key (utilisateur_id) references auth.users(id) on delete set null;
@@ -101,6 +111,8 @@ revoke all on function bancarisation.mon_contexte() from public, anon;
 revoke all on function bancarisation.mes_droits_projets(uuid[]) from public, anon;
 grant execute on function bancarisation.mon_contexte() to authenticated;
 grant execute on function bancarisation.mes_droits_projets(uuid[]) to authenticated;
+
+insert into public.schema_migrations (version) values ('054_contexte_droits');
 
 commit;
 

@@ -32,7 +32,7 @@ def get_backend_database_url() -> str:
         return url
     raise RuntimeError(
         "DATABASE_URL_BACKEND manquant : le backend métier doit se connecter "
-        "avec le rôle kererc_backend (voir db/031_role_kererc_backend.sql)."
+        "avec le rôle kererc_backend (voir db/000_roles.sql)."
     )
 
 
