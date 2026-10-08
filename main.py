@@ -37,6 +37,7 @@ from api.journal_actions.router import router as journal_actions_router
 from api.carto.router import router as cao_router
 from api.admin.router import router as admin_router
 from api.acces.router import router as acces_router
+from api.diagnostic.router import router as diagnostic_router
 from api.transfert.router import router as transfert_router
 from auth.deps import JwtAuthMiddleware
 from auth.errors import http_from_db
@@ -108,3 +109,4 @@ app.include_router(cao_router, prefix="/api", tags=["cao"])
 app.include_router(admin_router, prefix="/api", tags=["admin"])
 app.include_router(transfert_router, prefix="/api", tags=["transfert"])
 app.include_router(acces_router, prefix="/api", tags=["acces"])
+app.include_router(diagnostic_router, prefix="/api")

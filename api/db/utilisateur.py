@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Iterator
+from contextlib import contextmanager
 from typing import Any
 
 import psycopg
@@ -30,28 +32,32 @@ def _claims_courants(claims: dict[str, Any] | None = None) -> dict[str, Any]:
 
 
 def appliquer_identite(conn: psycopg.Connection, claims: dict[str, Any] | None = None) -> None:
+    """Pose l'identité pour la transaction en cours. À appeler dedans, avant la requête."""
     payload = _claims_courants(claims)
     raw = json.dumps(payload)
-    conn.execute("select set_config('request.jwt.claims', %s, false)", (raw,))
-    conn.execute("select set_config('request.jwt.claim.sub', %s, false)", (payload["sub"],))
-    conn.execute("select set_config('request.jwt.claim.role', %s, false)", (payload["role"],))
-    conn.execute("set role authenticated")
+    conn.execute("select set_config('request.jwt.claims', %s, true)", (raw,))
+    conn.execute("select set_config('request.jwt.claim.sub', %s, true)", (payload["sub"],))
+    conn.execute("select set_config('request.jwt.claim.role', %s, true)", (payload["role"],))
+    conn.execute("set local role authenticated")
 
 
+@contextmanager
 def connect_utilisateur(
     claims: dict[str, Any] | None = None,
     **kwargs: Any,
-) -> psycopg.Connection:
-    """Ouverture d'une connexion kererc_backend endossant authenticated."""
+) -> Iterator[psycopg.Connection]:
+    """kererc_backend, puis authenticated et le JWT, le temps d'une transaction."""
     conn = psycopg.connect(get_backend_database_url(), **kwargs)
     try:
-        appliquer_identite(conn, claims)
-    except Exception:
+        with conn.transaction():
+            appliquer_identite(conn, claims)
+            yield conn
+    finally:
         conn.close()
-        raise
-    return conn
 
 
-def connect_utilisateur_dict(**kwargs: Any) -> psycopg.Connection:
+@contextmanager
+def connect_utilisateur_dict(**kwargs: Any) -> Iterator[psycopg.Connection]:
     kwargs.setdefault("row_factory", dict_row)
-    return connect_utilisateur(**kwargs)
+    with connect_utilisateur(**kwargs) as conn:
+        yield conn
