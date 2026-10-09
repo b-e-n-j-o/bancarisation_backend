@@ -351,15 +351,24 @@ def lister_organisations() -> list[dict[str, Any]]:
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT o.id, o.nom, o.type, o.nature, o.parent_id,
-                       (SELECT count(*) FROM bancarisation.membre_organisation m
-                         WHERE m.organisation_id = o.id AND m.statut = 'actif') AS nb_membres,
-                       (SELECT count(*) FROM bancarisation.invitation i
-                         LEFT JOIN auth.users u ON u.id = i.utilisateur_id
-                         WHERE i.organisation_id = o.id
-                           AND i.revoquee_le IS NULL
-                           AND u.last_sign_in_at IS NULL) AS invitations_en_attente
+                SELECT o.id, o.nom, o.type, o.nature, o.statut, o.parent_id,
+                       coalesce(mb.nb_membres, 0) AS nb_membres,
+                       coalesce(mb.membres, '[]'::json) AS membres,
+                       (SELECT count(*) FROM bancarisation.projets p
+                         WHERE p.organisation_id = o.id) AS nb_projets
                 FROM bancarisation.organisations o
+                LEFT JOIN LATERAL (
+                  SELECT count(*) AS nb_membres,
+                         json_agg(json_build_object(
+                           'utilisateur_id', m.utilisateur_id,
+                           'email', u.email,
+                           'role', m.role,
+                           'statut', m.statut
+                         ) ORDER BY u.email) AS membres
+                  FROM bancarisation.membre_organisation m
+                  JOIN auth.users u ON u.id = m.utilisateur_id
+                  WHERE m.organisation_id = o.id
+                ) mb ON true
                 ORDER BY o.nom
                 """
             )
@@ -370,8 +379,26 @@ def lister_organisations() -> list[dict[str, Any]]:
                 if item.get("parent_id"):
                     item["parent_id"] = str(item["parent_id"])
                 item["nb_membres"] = int(item["nb_membres"])
-                item["invitations_en_attente"] = int(item["invitations_en_attente"])
+                item["nb_projets"] = int(item["nb_projets"])
+                item["membres"] = item["membres"] or []
+                item["invitations_en_attente"] = 0
                 rows.append(item)
+            try:
+                cur.execute(
+                    """
+                    SELECT i.organisation_id::text AS organisation_id, count(*) AS n
+                    FROM bancarisation.invitation i
+                    LEFT JOIN auth.users u ON u.id = i.utilisateur_id
+                    WHERE i.revoquee_le IS NULL
+                      AND u.last_sign_in_at IS NULL
+                    GROUP BY i.organisation_id
+                    """
+                )
+                en_attente = {r["organisation_id"]: int(r["n"]) for r in cur.fetchall()}
+                for item in rows:
+                    item["invitations_en_attente"] = en_attente.get(item["id"], 0)
+            except Exception:
+                conn.rollback()
             return rows
     finally:
         conn.close()

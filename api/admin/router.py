@@ -99,7 +99,7 @@ def inviter(organisation_id: UUID, body: InvitationBody) -> dict[str, Any]:
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status.HTTP_400_BAD_REQUEST, f"Invitation impossible : {exc}") from exc
+        raise _echec(exc, "Invitation impossible") from exc
 
 
 @router.post("/invitations/{invitation_id}/renvoyer")

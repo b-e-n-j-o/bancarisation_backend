@@ -22,10 +22,13 @@ def get_supabase_admin() -> Client:
     """Contourne la RLS : réservé au storage, à Auth Admin et aux jobs système."""
     load_supabase_env()
     url = os.getenv("SUPABASE_URL", "").strip()
-    key = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "").strip()
+    key = (
+        os.getenv("SERVICE_ROLE_KEY", "").strip()
+        or os.getenv("SUPABASE_SERVICE_ROLE_KEY", "").strip()
+    )
     if not url or not key:
         raise RuntimeError(
-            "SUPABASE_URL et SUPABASE_SERVICE_ROLE_KEY requis dans backend/.env"
+            "SUPABASE_URL et SERVICE_ROLE_KEY (ou SUPABASE_SERVICE_ROLE_KEY) requis dans backend/.env"
         )
     return create_client(url, key)
 
