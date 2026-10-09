@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import html
 import os
 import smtplib
 from email.message import EmailMessage
@@ -161,6 +162,7 @@ def _envoyer_acces(email: str, nom_org: str) -> None:
             "Envoi du mail impossible : SMTP non configuré.",
         )
     msg = EmailMessage()
+    nom_html = html.escape(nom_org)
     msg["Subject"] = f"Accès à l'espace {nom_org}"
     msg["From"] = sender
     msg["To"] = email
@@ -168,19 +170,19 @@ def _envoyer_acces(email: str, nom_org: str) -> None:
         f"Vous avez désormais accès à l'espace {nom_org}.\n"
         f"Ouvrez {_SITE} et connectez-vous avec votre compte existant.\n"
     )
-    html = f"""<!DOCTYPE html>
+    corps = f"""<!DOCTYPE html>
 <html lang="fr"><body style="margin:0;padding:0;background:#f4f6f4;font-family:Georgia,serif;color:#1c241c;">
 <table role="presentation" width="100%" style="background:#f4f6f4;padding:32px 12px;"><tr><td align="center">
 <table role="presentation" width="100%" style="max-width:520px;background:#fff;border:1px solid #e2e8e2;border-radius:12px;">
 <tr><td style="padding:28px 32px 8px;font-family:Arial,sans-serif;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#3d6b4f;">KerERC</td></tr>
 <tr><td style="padding:8px 32px 0;font-size:26px;">Nouvel accès</td></tr>
 <tr><td style="padding:16px 32px 0;font-family:Arial,sans-serif;font-size:15px;line-height:1.6;color:#3a433a;">
-Vous avez désormais accès à l'espace <strong>{nom_org}</strong>.</td></tr>
+Vous avez désormais accès à l'espace <strong>{nom_html}</strong>.</td></tr>
 <tr><td style="padding:24px 32px 28px;">
 <a href="{_SITE}" style="display:inline-block;background:#245c3a;color:#fff;font-family:Arial,sans-serif;font-size:15px;font-weight:600;text-decoration:none;padding:12px 20px;border-radius:8px;">Ouvrir KerERC</a>
 </td></tr></table></td></tr></table></body></html>"""
     msg.set_content(texte)
-    msg.add_alternative(html, subtype="html")
+    msg.add_alternative(corps, subtype="html")
     with smtplib.SMTP(host, port, timeout=30) as smtp:
         smtp.starttls()
         smtp.login(user, password)
@@ -232,7 +234,10 @@ def inviter(
                     status.HTTP_409_CONFLICT,
                     "Cette personne est déjà membre de l'organisation.",
                 )
-            _envoyer_acces(email_n, nom)
+            if existant["last_sign_in_at"] is None:
+                _inviter_compte(email_n, nom)
+            else:
+                _envoyer_acces(email_n, nom)
         else:
             uid = _inviter_compte(email_n, nom)
             nouveau_compte = True
@@ -471,12 +476,13 @@ def renvoyer(invitation_id: UUID) -> dict[str, Any]:
         client = get_supabase_admin()
         lien = client.auth.admin.generate_link({"type": "invite", "email": email})
         props = getattr(lien, "properties", None) or {}
-        action = getattr(props, "action_link", None) or (
-            props.get("action_link") if isinstance(props, dict) else None
+        token = getattr(props, "hashed_token", None) or (
+            props.get("hashed_token") if isinstance(props, dict) else None
         )
-        if not action:
+        if not token:
             raise HTTPException(status.HTTP_400_BAD_REQUEST, "Renvoi de l'invitation impossible.")
-        _envoyer_lien_invite(email, nom, str(action))
+        lien_activer = f"{_SITE}/auth/activer?token_hash={token}&type=invite"
+        _envoyer_lien_invite(email, nom, lien_activer)
     return {"ok": True}
 
 
@@ -490,10 +496,12 @@ def _envoyer_lien_invite(email: str, nom_org: str, lien: str) -> None:
     msg["Subject"] = "Activer votre compte KerERC"
     msg["From"] = sender
     msg["To"] = email
+    nom_html = html.escape(nom_org)
+    lien_html = html.escape(lien, quote=True)
     msg.set_content(f"Vous êtes invité(e) à rejoindre l'espace {nom_org}.\n{lien}\n")
     msg.add_alternative(
-        f"<p>Vous êtes invité(e) à rejoindre l'espace <strong>{nom_org}</strong>.</p>"
-        f'<p><a href="{lien}">Activer mon compte</a></p>',
+        f"<p>Vous êtes invité(e) à rejoindre l'espace <strong>{nom_html}</strong>.</p>"
+        f'<p><a href="{lien_html}">Activer mon compte</a></p>',
         subtype="html",
     )
     with smtplib.SMTP(host, port, timeout=30) as smtp:

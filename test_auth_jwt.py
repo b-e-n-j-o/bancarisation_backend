@@ -41,6 +41,13 @@ def test_http_from_db_42501() -> None:
     assert mapped.status_code == 403
 
 
+def test_http_from_db_connexion() -> None:
+    from psycopg import OperationalError
+
+    mapped = http_from_db(OperationalError("connection timeout"))
+    assert mapped.status_code == 503
+
+
 def test_http_from_db_40001() -> None:
     class Fake(Exception):
         sqlstate = "40001"

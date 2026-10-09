@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 from typing import Any
 from uuid import UUID
 
@@ -10,6 +11,13 @@ from api.admin import service
 from api.db.utilisateur import connect_utilisateur_dict
 
 router = APIRouter()
+log = logging.getLogger(__name__)
+
+
+def _echec(exc: Exception, message: str) -> HTTPException:
+    log.exception("%s", message)
+    detail = str(exc).strip() or message
+    return HTTPException(status.HTTP_400_BAD_REQUEST, detail)
 
 
 class OrganisationCreate(BaseModel):
@@ -42,7 +50,12 @@ def _est_admin_plateforme() -> bool:
 
 @router.get("/admin/organisations")
 def lister_organisations() -> list[dict[str, Any]]:
-    return service.lister_organisations()
+    try:
+        return service.lister_organisations()
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise _echec(exc, "Lecture des organisations impossible") from exc
 
 
 @router.post("/admin/organisations", status_code=status.HTTP_201_CREATED)
@@ -58,7 +71,7 @@ def creer_organisation(body: OrganisationCreate) -> dict[str, Any]:
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status.HTTP_400_BAD_REQUEST, f"Création impossible : {exc}") from exc
+        raise _echec(exc, "Création impossible") from exc
 
 
 @router.get("/organisations/{organisation_id}/membres")
