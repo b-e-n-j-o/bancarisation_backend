@@ -33,7 +33,7 @@ Ne pas rejouer `001` à `053`. Ces scripts supposent l'état du moment où ils o
 
 La restauration à blanc se fait sur une base jetable (Postgres local ou `postgres_test`), jamais sur supabase-dev. On y rejoue les tests d'isolation, puis on redump avec la même commande et on diff avec `000_baseline.sql`. Aucune différence attendue.
 
-`api/ocr/db/sql/` sort de l'ordre d'application seulement après ce diff. On garde les fichiers pour lire l'historique.
+Les scripts V0 sont dans `archive/sql_v0/`. Ne pas les rejouer : plusieurs posent des policies `v0_open`.
 
 ## Suivi
 

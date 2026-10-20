@@ -88,7 +88,7 @@ def exporter_shp_zip(projet_id: UUID, plan_id: UUID) -> tuple[bytes, str]:
             ).fetchone()
         except UndefinedTable as exc:
             raise PlanCaoError(
-                "Tables plan_cao absentes — appliquer backend/api/ocr/db/sql/035_plan_cao.sql"
+                "Tables plan_cao absentes — historique dans archive/sql_v0/ocr, ne pas rejouer"
                 " puis 037_plan_cao_contexte.sql"
             ) from exc
         if not plan:

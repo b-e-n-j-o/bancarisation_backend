@@ -11,6 +11,7 @@ from uuid import UUID
 
 from fastapi import HTTPException, status
 from psycopg.rows import dict_row
+from psycopg.types.json import Json
 
 from api.db.env import get_database_url
 from api.db.supabase import get_supabase_admin
@@ -18,6 +19,16 @@ from api.db.utilisateur import connect_utilisateur_dict
 
 ROLES = ("admin", "membre")
 PORTEES = ("entite", "branche")
+TYPES_INVITATION = ("bureau", "partenaire")
+NIVEAUX_ACCES = ("lecteur", "contributeur", "gestionnaire")
+QUALITES_ACCES = (
+    "operateur",
+    "maitre_ouvrage",
+    "bureau_etudes",
+    "controle",
+    "ancien_proprietaire",
+    "prestataire",
+)
 _RANG = {"membre": 1, "admin": 2}
 _SITE = "https://bancarisation.kerelia.fr"
 
@@ -192,22 +203,36 @@ Vous avez désormais accès à l'espace <strong>{nom_html}</strong>.</td></tr>
 def inviter(
     email: str,
     organisation_id: UUID,
-    role: str,
+    role: str | None,
     portee: str,
     invite_par: UUID,
     *,
     cur=None,
     compte_deja_cree: str | None = None,
+    type_personne: str = "bureau",
+    projets: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """Rattache l'utilisateur puis enregistre l'invitation.
+    """Rattache l'utilisateur (sauf partenaire) puis enregistre l'invitation et les accès.
 
     Si ``cur`` est fourni, l'appelant possède la transaction (création d'organisation).
     """
     email_n = normaliser_email(email)
-    if role not in ROLES:
-        raise HTTPException(status.HTTP_400_BAD_REQUEST, "Rôle inconnu.")
+    if type_personne not in TYPES_INVITATION:
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, "Type d'invitation inconnu.")
     if portee not in PORTEES:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, "Portée inconnue.")
+    lignes = _normaliser_projets(projets or [])
+    if type_personne == "partenaire":
+        role = None
+        if not lignes:
+            raise HTTPException(
+                status.HTTP_400_BAD_REQUEST,
+                "Un partenaire doit recevoir au moins un projet.",
+            )
+    elif role not in ROLES:
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, "Rôle inconnu.")
+    if role == "admin":
+        lignes = []
 
     propre = cur is None
     conn = _connect() if propre else None
@@ -216,20 +241,14 @@ def inviter(
     cree_ici: str | None = None
     try:
         nom = _nom_organisation(curseur, organisation_id)
+        _verifier_projets_organisation(curseur, organisation_id, lignes)
         existant = _utilisateur_par_email(curseur, email_n)
         if compte_deja_cree:
             uid = compte_deja_cree
             nouveau_compte = True
         elif existant:
             uid = str(existant["id"])
-            curseur.execute(
-                """
-                SELECT 1 FROM bancarisation.membre_organisation
-                WHERE utilisateur_id = %s AND organisation_id = %s
-                """,
-                (uid, str(organisation_id)),
-            )
-            if curseur.fetchone():
+            if _est_membre(curseur, uid, organisation_id):
                 raise HTTPException(
                     status.HTTP_409_CONFLICT,
                     "Cette personne est déjà membre de l'organisation.",
@@ -243,24 +262,38 @@ def inviter(
             nouveau_compte = True
             cree_ici = uid
 
-        curseur.execute(
-            """
-            INSERT INTO bancarisation.membre_organisation
-                (utilisateur_id, organisation_id, role, portee, statut, invite_par)
-            VALUES (%s, %s, %s, %s, 'actif', %s)
-            """,
-            (uid, str(organisation_id), role, portee, str(invite_par)),
-        )
+        if type_personne == "bureau":
+            curseur.execute(
+                """
+                INSERT INTO bancarisation.membre_organisation
+                    (utilisateur_id, organisation_id, role, portee, statut, invite_par)
+                VALUES (%s, %s, %s, %s, 'actif', %s)
+                """,
+                (uid, str(organisation_id), role, portee, str(invite_par)),
+            )
         curseur.execute(
             """
             INSERT INTO bancarisation.invitation
-                (email, organisation_id, role, portee, utilisateur_id, invite_par, nouveau_compte)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
+                (email, organisation_id, role, portee, utilisateur_id, invite_par,
+                 nouveau_compte, type, projets)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             RETURNING id
             """,
-            (email_n, str(organisation_id), role, portee, uid, str(invite_par), nouveau_compte),
+            (
+                email_n,
+                str(organisation_id),
+                role,
+                portee,
+                uid,
+                str(invite_par),
+                nouveau_compte,
+                type_personne,
+                Json(lignes),
+            ),
         )
         invitation_id = curseur.fetchone()["id"]
+        for ligne in lignes:
+            _inserer_acces(curseur, ligne, uid, invite_par)
         if propre:
             conn.commit()
         return {
@@ -269,6 +302,8 @@ def inviter(
             "utilisateur_id": uid,
             "nouveau_compte": nouveau_compte,
             "statut": "en_attente",
+            "type": type_personne,
+            "projets": lignes,
         }
     except Exception:
         if propre and conn is not None:
@@ -282,6 +317,81 @@ def inviter(
     finally:
         if propre and conn is not None:
             conn.close()
+
+
+def _normaliser_projets(projets: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    lignes = []
+    for brut in projets:
+        niveau = brut.get("niveau")
+        qualite = brut.get("qualite")
+        if niveau not in NIVEAUX_ACCES:
+            raise HTTPException(status.HTTP_400_BAD_REQUEST, "Niveau inconnu.")
+        if qualite is not None and qualite not in QUALITES_ACCES:
+            raise HTTPException(status.HTTP_400_BAD_REQUEST, "Qualité inconnue.")
+        lignes.append({
+            "projet_id": str(brut["projet_id"]),
+            "niveau": niveau,
+            "voir_finances": bool(brut.get("voir_finances")),
+            "qualite": qualite,
+        })
+    return lignes
+
+
+def _verifier_projets_organisation(cur, organisation_id: UUID, lignes: list[dict[str, Any]]) -> None:
+    for ligne in lignes:
+        cur.execute(
+            """
+            SELECT 1 FROM bancarisation.projets
+            WHERE id = %s AND organisation_id = %s
+            """,
+            (ligne["projet_id"], str(organisation_id)),
+        )
+        if not cur.fetchone():
+            raise HTTPException(
+                status.HTTP_400_BAD_REQUEST,
+                "Un des projets n'appartient pas à cette organisation.",
+            )
+
+
+def _est_membre(cur, utilisateur_id: str, organisation_id: UUID) -> bool:
+    cur.execute(
+        """
+        SELECT 1 FROM bancarisation.membre_organisation
+        WHERE utilisateur_id = %s AND organisation_id = %s
+        """,
+        (utilisateur_id, str(organisation_id)),
+    )
+    return cur.fetchone() is not None
+
+
+def _inserer_acces(cur, ligne: dict[str, Any], utilisateur_id: str, accorde_par: UUID) -> None:
+    cur.execute(
+        """
+        SELECT 1 FROM bancarisation.projet_acces
+        WHERE projet_id = %s AND utilisateur_id = %s
+        """,
+        (ligne["projet_id"], utilisateur_id),
+    )
+    if cur.fetchone():
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            "Cette personne a déjà un accès sur l'un des projets.",
+        )
+    cur.execute(
+        """
+        INSERT INTO bancarisation.projet_acces
+            (projet_id, utilisateur_id, qualite, niveau, voir_finances, accorde_par)
+        VALUES (%s, %s, %s, %s, %s, %s)
+        """,
+        (
+            ligne["projet_id"],
+            utilisateur_id,
+            ligne["qualite"],
+            ligne["niveau"],
+            ligne["voir_finances"],
+            str(accorde_par),
+        ),
+    )
 
 
 def creer_organisation(
@@ -411,9 +521,12 @@ def lister_membres(organisation_id: UUID) -> list[dict[str, Any]]:
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT m.utilisateur_id, u.email, m.role, m.portee, u.last_sign_in_at
+                SELECT m.utilisateur_id, u.email,
+                       nullif(trim(concat_ws(' ', p.prenom, p.nom)), '') AS nom,
+                       m.role, m.portee, u.last_sign_in_at
                 FROM bancarisation.membre_organisation m
                 JOIN auth.users u ON u.id = m.utilisateur_id
+                LEFT JOIN bancarisation.profils p ON p.utilisateur_id = m.utilisateur_id
                 WHERE m.organisation_id = %s
                 ORDER BY u.email
                 """,
@@ -438,7 +551,7 @@ def lister_invitations(organisation_id: UUID) -> list[dict[str, Any]]:
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT i.id, i.email, i.role, i.portee, i.nouveau_compte,
+                SELECT i.id, i.email, i.role, i.portee, i.nouveau_compte, i.type, i.projets,
                        i.revoquee_le, i.created_at, u.last_sign_in_at
                 FROM bancarisation.invitation i
                 LEFT JOIN auth.users u ON u.id = i.utilisateur_id
@@ -455,6 +568,8 @@ def lister_invitations(organisation_id: UUID) -> list[dict[str, Any]]:
                     "role": row["role"],
                     "portee": row["portee"],
                     "nouveau_compte": row["nouveau_compte"],
+                    "type": row.get("type") or "bureau",
+                    "projets": row.get("projets") or [],
                     "statut": statut_invitation(row["revoquee_le"], row["last_sign_in_at"]),
                     "created_at": row["created_at"].isoformat(),
                 }
@@ -559,6 +674,16 @@ def revoquer(invitation_id: UUID) -> dict[str, Any]:
                     """,
                     (uid, str(row["organisation_id"])),
                 )
+                for ligne in row.get("projets") or []:
+                    projet_id = ligne.get("projet_id") if isinstance(ligne, dict) else None
+                    if projet_id:
+                        cur.execute(
+                            """
+                            DELETE FROM bancarisation.projet_acces
+                            WHERE projet_id = %s AND utilisateur_id = %s
+                            """,
+                            (str(projet_id), uid),
+                        )
                 if row["nouveau_compte"] and row["last_sign_in_at"] is None:
                     cur.execute(
                         """
@@ -577,3 +702,68 @@ def revoquer(invitation_id: UUID) -> dict[str, Any]:
     if supprimer and uid:
         _supprimer_compte(uid)
     return {"ok": True}
+
+
+def changer_role_membre(organisation_id: UUID, utilisateur_id: UUID, role: str) -> dict[str, Any]:
+    _exiger_admin_org_ou_plateforme(organisation_id)
+    if role not in ROLES:
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, "Rôle inconnu.")
+    with connect_utilisateur_dict() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT admin_plateforme
+                FROM bancarisation.profils
+                WHERE utilisateur_id = auth.uid()
+                """
+            )
+            profil = cur.fetchone()
+    _verifier_role_attribuable(
+        organisation_id,
+        role,
+        bool(profil and profil.get("admin_plateforme")),
+    )
+    conn = _connect()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT role FROM bancarisation.membre_organisation
+                WHERE organisation_id = %s AND utilisateur_id = %s
+                """,
+                (str(organisation_id), str(utilisateur_id)),
+            )
+            actuel = cur.fetchone()
+            if not actuel:
+                raise HTTPException(status.HTTP_404_NOT_FOUND, "Membre introuvable.")
+            if actuel["role"] == "admin" and role == "membre":
+                cur.execute(
+                    """
+                    SELECT count(*) AS n FROM bancarisation.membre_organisation
+                    WHERE organisation_id = %s AND role = 'admin'
+                    """,
+                    (str(organisation_id),),
+                )
+                if int(cur.fetchone()["n"]) <= 1:
+                    raise HTTPException(
+                        status.HTTP_409_CONFLICT,
+                        "Il doit rester au moins un administrateur.",
+                    )
+            cur.execute(
+                """
+                UPDATE bancarisation.membre_organisation
+                SET role = %s
+                WHERE organisation_id = %s AND utilisateur_id = %s
+                """,
+                (role, str(organisation_id), str(utilisateur_id)),
+            )
+        conn.commit()
+    except HTTPException:
+        conn.rollback()
+        raise
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
+    return {"ok": True, "role": role}

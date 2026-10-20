@@ -18,14 +18,14 @@ from psycopg.types.json import Jsonb
 from api.db.utilisateur import connect_utilisateur
 
 _MSG_TABLES = (
-    "Tables plan_cao absentes — appliquer backend/api/ocr/db/sql/035_plan_cao.sql"
+    "Tables plan_cao absentes — historique dans archive/sql_v0/ocr, ne pas rejouer"
     " puis 037_plan_cao_contexte.sql, 038_plan_cao_geom_z.sql et 040_plan_cao_srid_calque.sql"
 )
 _MSG_GEOM_Z = (
-    "geom_local refuse le Z — appliquer backend/api/ocr/db/sql/038_plan_cao_geom_z.sql"
+    "geom_local refuse le Z — historique dans archive/sql_v0/ocr, ne pas rejouer"
 )
 _MSG_CRS = (
-    "Colonnes CRS absentes — appliquer backend/api/ocr/db/sql/040_plan_cao_srid_calque.sql"
+    "Colonnes CRS absentes — historique dans archive/sql_v0/ocr, ne pas rejouer"
 )
 
 logger = logging.getLogger(__name__)

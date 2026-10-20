@@ -28,10 +28,23 @@ class OrganisationCreate(BaseModel):
     manager_email: str
 
 
+class AccesInvite(BaseModel):
+    projet_id: UUID
+    niveau: str = Field(pattern="^(lecteur|contributeur|gestionnaire)$")
+    voir_finances: bool = False
+    qualite: str | None = None
+
+
 class InvitationBody(BaseModel):
     email: str
-    role: str = "membre"
+    type: str = "bureau"
+    role: str | None = "membre"
     portee: str = "entite"
+    projets: list[AccesInvite] = []
+
+
+class RoleMembreBody(BaseModel):
+    role: str
 
 
 def _est_admin_plateforme() -> bool:
@@ -87,19 +100,35 @@ def lister_invitations(organisation_id: UUID) -> list[dict[str, Any]]:
 @router.post("/organisations/{organisation_id}/invitations", status_code=status.HTTP_201_CREATED)
 def inviter(organisation_id: UUID, body: InvitationBody) -> dict[str, Any]:
     acteur = service._exiger_admin_org_ou_plateforme(organisation_id)
-    service._verifier_role_attribuable(organisation_id, body.role, _est_admin_plateforme())
+    role = body.role
+    if body.type == "bureau":
+        role = role or "membre"
+        service._verifier_role_attribuable(organisation_id, role, _est_admin_plateforme())
+    else:
+        role = None
     try:
         return service.inviter(
             str(body.email),
             organisation_id,
-            body.role,
+            role,
             body.portee,
             acteur,
+            type_personne=body.type,
+            projets=[p.model_dump() for p in body.projets],
         )
     except HTTPException:
         raise
     except Exception as exc:
         raise _echec(exc, "Invitation impossible") from exc
+
+
+@router.patch("/organisations/{organisation_id}/membres/{utilisateur_id}")
+def changer_role_membre(
+    organisation_id: UUID,
+    utilisateur_id: UUID,
+    body: RoleMembreBody,
+) -> dict[str, Any]:
+    return service.changer_role_membre(organisation_id, utilisateur_id, body.role)
 
 
 @router.post("/invitations/{invitation_id}/renvoyer")
