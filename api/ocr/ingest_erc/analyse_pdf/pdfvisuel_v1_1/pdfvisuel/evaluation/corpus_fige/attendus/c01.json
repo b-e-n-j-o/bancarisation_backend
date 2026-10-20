@@ -1,0 +1,23 @@
+{
+ "pdf": "c01.pdf",
+ "description": "Fiche type Word : mois surlignés dans l'en-tête (bordures en rectangles fins).",
+ "grilles": [
+  {
+   "page": 1,
+   "type_axe": "mois",
+   "lignes": [
+    {
+     "role": "entete",
+     "libelle_contient": "intervention",
+     "couleur": [
+      3,
+      4,
+      7,
+      8
+     ]
+    }
+   ]
+  }
+ ],
+ "exhaustif": true
+}

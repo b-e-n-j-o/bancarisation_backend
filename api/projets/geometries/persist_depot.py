@@ -18,7 +18,7 @@ from uuid import UUID
 from shapely.geometry.base import BaseGeometry
 
 from api.ocr.domain.ug_ids import normalize_ug_id
-from api.ocr.ingest_erc.ingest_erc.modeles import (
+from api.ocr.ingest_erc.main_pipeline_a_utiliser.modeles import (
     CoucheProfil,
     ReferentielVerrouille,
     UGVerrouillee,
@@ -310,7 +310,6 @@ def _stocker_couche_sans_crs(
                     ),
                 )
                 rec["id"] = cur.fetchone()[0]
-            conn.commit()
     except Exception as exc:  # noqa: BLE001
         rec["erreur"] = str(exc)[:240]
     if avertissement:
@@ -612,7 +611,6 @@ def persister_depot_sig(
                         )
                         rapport.nb_par_type[kind] = rapport.nb_par_type.get(kind, 0) + 1
 
-                conn.commit()
                 rapport.nb_ecrites = _compter_depot(cur, pid, depot)
     except GeometryIngestError:
         raise

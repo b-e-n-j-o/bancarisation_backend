@@ -205,8 +205,6 @@ def _encoding_dbf(shp: Path) -> str:
             except UnicodeDecodeError:
                 continue
         if declare in ("utf-8", "utf8"):
-            # Souvent mensonger sur les exports BE FR → on le tente en 1er,
-            # _lire_shapefile repliera sur cp1252.
             return "utf-8"
         if declare in ("ansi", "windows-1252", "cp1252", "iso-8859-1", "latin1", "latin-1"):
             return "cp1252"
@@ -216,46 +214,72 @@ def _encoding_dbf(shp: Path) -> str:
 
 
 def _lire_shapefile(shp: Path):
-    """Lecture robuste : essaie l'encodage du .cpg puis CP1252 / latin-1."""
+    """Lit le shapefile en respectant le .cpg, puis répare le mojibake UTF-8."""
     import geopandas as gpd
 
-    # Si .cpg dit utf-8, cp1252 reste prioritaire (exports ArcGIS FR).
-    premier = _encoding_dbf(shp)
-    candidats = [premier, "cp1252", "latin-1", "ISO-8859-1", "utf-8"]
-    if premier == "utf-8":
-        candidats = ["cp1252", "latin-1", "utf-8", "ISO-8859-1"]
+    from api.projets.geometries.sig_io import reparer_attributs, score_mojibake
 
-    vus: set[str] = set()
+    premier = _encoding_dbf(shp)
+    candidats: list[str] = []
+    for enc in (premier, "utf-8", "cp1252", "latin-1"):
+        if enc not in candidats:
+            candidats.append(enc)
+
+    meilleur = None
+    meilleur_score: int | None = None
     dernier: Exception | None = None
     for enc in candidats:
-        if enc in vus:
-            continue
-        vus.add(enc)
         for kwargs in (
             {"encoding": enc},
             {"encoding": enc, "engine": "fiona"},
         ):
             try:
-                return gpd.read_file(shp, **kwargs)
+                gdf = reparer_attributs(gpd.read_file(shp, **kwargs))
             except TypeError:
-                # Ancienne version sans engine=
                 try:
-                    return gpd.read_file(shp, encoding=enc)
+                    gdf = reparer_attributs(gpd.read_file(shp, encoding=enc))
                 except Exception as exc:  # noqa: BLE001
                     dernier = exc
+                    continue
             except Exception as exc:  # noqa: BLE001
                 dernier = exc
                 msg = str(exc).lower()
                 if "codec" in msg or "decode" in msg or "utf" in msg or "encoding" in msg:
                     continue
-                # Erreur non liée à l'encodage : on remonte
-                if "engine" in str(exc).lower():
+                if "engine" in msg:
                     continue
                 raise
+            score = _score_gdf(gdf, score_mojibake)
+            if score == 0:
+                return gdf
+            if meilleur is None or score < (meilleur_score or 0):
+                meilleur = gdf
+                meilleur_score = score
+            break
+    if meilleur is not None:
+        return meilleur
     raise ValueError(
         f"Lecture impossible de {shp.name} "
         f"(encodage table attributaire). Dernière erreur : {dernier}"
     ) from dernier
+
+
+def _score_gdf(gdf, score_fn) -> int:
+    total = 0
+    vus = 0
+    for col in gdf.columns:
+        if col == "geometry":
+            continue
+        if gdf[col].dtype != object and str(gdf[col].dtype) != "string":
+            continue
+        for valeur in gdf[col].head(30):
+            if not isinstance(valeur, str):
+                continue
+            total += score_fn(valeur)
+            vus += 1
+            if vus >= 80:
+                return total
+    return total
 
 
 def _verifier_zip(chemin: Path) -> None:

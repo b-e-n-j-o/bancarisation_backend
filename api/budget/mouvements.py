@@ -21,6 +21,9 @@ import psycopg
 from psycopg.rows import dict_row
 
 from api.budget.finance import ecrire_finance, lire_finance, monter_finance, separer_finance
+from api.db.utilisateur import connect_utilisateur
+from api.ocr.db.responsables import lire_responsables, remplacer_responsables
+from api.ocr.domain.ug_ids import normalize_ug_ids
 
 # Colonnes occurrence que le trigger surveille + autres champs PATCH utiles
 # via le chemin psycopg (quand un motif est fourni).
@@ -41,8 +44,6 @@ _CHAMPS_PG = frozenset(
         "date_realisation_fin",
         "surface_m2",
         "commentaire",
-        "montant_ttc",
-        "taux_tva",
         "prestataire",
         "prestataire_id",
         "responsable_id",
@@ -83,11 +84,16 @@ def modifier_occurrence_avec_contexte(
     finance le relit dans la même transaction.
     """
     reste, finance = separer_finance(champs)
+    responsable_ids = reste.pop("responsable_ids", None)
+    a_des_responsables = "responsable_ids" in champs
+    if a_des_responsables:
+        reste.pop("responsable_id", None)
     maj = {k: v for k, v in reste.items() if k in _CHAMPS_PG}
-    if not maj and not finance:
+    if not maj and not finance and not a_des_responsables:
         raise ValueError(f"Aucun champ modifiable. Autorisés : {sorted(_CHAMPS_PG | set(finance))}")
     if "ug_ids" in maj:
         maj["ug_ids"] = normalize_ug_ids(maj["ug_ids"])
+    oid = str(occurrence_id)
 
     with connect_utilisateur(row_factory=dict_row) as conn:
         with conn.cursor() as cur:
@@ -103,21 +109,29 @@ def modifier_occurrence_avec_contexte(
                     WHERE id = %s
                     RETURNING *
                     """,
-                    [*maj.values(), str(occurrence_id)],
+                    [*maj.values(), oid],
                 )
                 row = cur.fetchone()
                 if row is None:
                     return None
-            elif finance:
+            if a_des_responsables:
+                remplacer_responsables(cur, oid, list(responsable_ids or []))
+            elif "responsable_id" in maj:
+                rid = maj["responsable_id"]
+                remplacer_responsables(cur, oid, [str(rid)] if rid else [])
+            if row is None:
                 cur.execute(
                     "select * from bancarisation.occurrence where id = %s",
-                    (str(occurrence_id),),
+                    (oid,),
                 )
                 row = cur.fetchone()
                 if row is None:
                     return None
-            ecrire_finance(cur, str(occurrence_id), finance)
-            return monter_finance(dict(row) if row else None, lire_finance(cur, str(occurrence_id)))
+            ecrire_finance(cur, oid, finance)
+            monte = monter_finance(dict(row) if row else None, lire_finance(cur, oid))
+            if monte:
+                monte["responsables"] = lire_responsables(cur, [oid]).get(oid, [])
+            return monte
 
 
 def _mouvements(where: str, param: str, limite: int) -> list[dict[str, Any]]:

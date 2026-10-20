@@ -1,0 +1,41 @@
+Grille p25_t0_g0 — page 25 — axe rel_year — N = 2025 — colonnes : N, N+1, N+2, N+3, N+4, N+5, N+6, N+7, N+8, N+9, N+10, N+11, N+12, N+13, N+14, N+15
+  - RG1 | Réouverture des fourrés de roncier et d’Herbe de la Pampa | cases cochées/colorées : N
+  - RG1 | Entretien par fauche | bande N…N+15 : « 1 à 2 fauches annuelles selon développement de la végétation concurrente »
+  - RG1 | Griffage du sol | bande N…N+15 : « Une fois tous les 2 à 3 ans »
+  - RG2 | Débroussaillage | cases cochées/colorées : N ; bande N+1…N+15 : « Entretien »
+  - RG2 | Plantation et regarnis éventuel | cases cochées/colorées : N ; bande N+1…N+15 : « Regarnis à prévoir si perte »
+  - ES1 | Inventaire et cartographie | cases cochées/colorées : N, N+1, N+2, N+3, N+4, N+5 ; bande N+6…N+15 : « 1 suivi tous les 5 ans »
+  - ES2 | Inventaire et cartographie | cases cochées/colorées : N, N+1, N+2, N+3, N+4, N+5 ; bande N+6…N+15 : « 1 suivi tous les 5 ans »
+  - FG1 | Animation du plan de gestion | bande N…N+15 : « Communication et concertation locale / Veille sur le site / Coordination des prestations de travaux et suivis / Élaboration » ; bande N…N+15 : « d’une base de données géoréférencées / Rapport d’activité / Pilotage du programme »
+Grille p26_t0_g0 — page 26 — axe rel_year — N = 2025 — colonnes : N, N+1, N+2, N+3, N+4, N+5, N+6, N+7, N+8, N+9, N+10, N+11, N+12, N+13, N+14, N+15
+  - FG2 | Evaluation et mise à jour du plan de gestion | cases cochées/colorées : N+5 ; bande N+6…N+15 : « 1 bilan intermédiaire tous les 5 ans et un bilan final à N+30 »
+Grille p26_t1_g0 — page 26 — axe rel_year — N = 2025 — colonnes : N+16, N+17, N+18, N+19, N+20, N+21, N+22, N+23, N+24, N+25, N+26, N+27, N+28, N+29, N+30
+  - RG1 | Entretien par fauche | bande N+16…N+30 : « 1 à 2 fauches annuelles selon développement de la végétation concurrente »
+  - RG1 | Griffage du sol | bande N+16…N+30 : « Une fois tous les 2 à 3 ans »
+  - RG3 | Débroussaillage | bande N+16…N+30 : « Entretien »
+  - ES1 | Inventaire et cartographie | bande N+16…N+30 : « 1 suivi tous les 5 ans »
+  - ES2 | Inventaire et cartographie | bande N+16…N+30 : « 1 suivi tous les 5 ans »
+Grille p27_t0_g0 — page 27 — axe rel_year — N = 2025 — colonnes : N+16, N+17, N+18, N+19, N+20, N+21, N+22, N+23, N+24, N+25, N+26, N+27, N+28, N+29, N+30
+  - FG1 | Animation du plan de gestion | bande N+16…N+30 : « Communication et concertation locale / Veille sur le site / Coordination des prestations de travaux et suivis / » ; bande N+16…N+30 : « Élaboration d’une base de données géoréférencées / Rapport d’activité / Pilotage du programme »
+  - FG2 | Bilans intermédiaires | bande N+16…N+30 : « 1 bilan intermédiaire tous les 5 ans et un bilan final à N+30 »
+Grille p31_t0_g0 — page 31 — axe month — colonnes : janv., févr., mars, avr., mai, juin, juil., août, sept., oct., nov., déc.
+  - RG1 | Période d’intervention | mois colorés : mars, avr., juil., août
+Grille p31_t0_g1 — page 31 — axe rel_year — N = 2025 — colonnes : N, N+1, N+2, N+3, N+4, N+5, N+6→N+10, N+11→N+15, N+16→N+20, N+21→N+25, N+26→N+30
+  - RG1 | Travaux initiaux | cases cochées/colorées : N ; bande N+1…N+26→N+30 : « Fauche et griffage »
+Grille p34_t0_g0 — page 34 — axe month — colonnes : janv., févr., mars, avr., mai, juin, juil., août, sept., oct., nov., déc.
+  - RG2 | Période d’intervention | mois colorés : sept., oct.
+Grille p34_t0_g1 — page 34 — axe rel_year — N = 2025 — colonnes : N, N+1, N+2, N+3, N+4, N+5, N+6→N+10, N+11→N+15, N+16→N+20, N+21→N+25, N+26→N+30
+  - RG2 | Travaux initiaux | cases cochées/colorées : N ; bande N+1…N+26→N+30 : « Entretien par débroussaillage et regarnis si besoin »
+Grille p37_t0_g0 — page 37 — axe month — colonnes : janv., févr., mars, avr., mai, juin, juil., août, sept., oct., nov., déc.
+  - ES1 | Période d’intervention | mois colorés : juin, juil.
+Grille p37_t0_g1 — page 37 — axe rel_year — N = 2025 — colonnes : N, N+1, N+2, N+3, N+4, N+5, N+6→N+10, N+11→N+15, N+16→N+20, N+21→N+25, N+26→N+30
+  - ES1 | Inventaire et cartographie | cases cochées/colorées : N, N+1, N+2, N+3, N+4, N+5 ; bande N+6→N+10…N+26→N+30 : « 1 suivis tous les 5 ans »
+Grille p38_t0_g0 — page 38 — axe month — colonnes : janv., févr., mars, avr., mai, juin, juil., août, sept., oct., nov., déc.
+  - ES2 | Période d’intervention | mois colorés : avr., mai, juin
+Grille p38_t0_g1 — page 38 — axe rel_year — N = 2025 — colonnes : N, N+1, N+2, N+3, N+4, N+5, N+6→N+10, N+11→N+15, N+16→N+20, N+21→N+25, N+26→N+30
+  - ES2 | Inventaire et cartographie | cases cochées/colorées : N, N+1, N+2, N+3, N+4, N+5 ; bande N+6→N+10…N+26→N+30 : « 1 suivis tous les 5 ans »
+Grille p41_t0_g0 — page 41 — axe rel_year — N = 2025 — colonnes : N, N+1, N+2, N+3, N+4, N+5, N+6→N+10, N+11→N+15, N+16→N+20, N+21→N+25, N+26→N+30
+  - FG1 |  | cases cochées/colorées : N, N+1, N+2, N+3, N+4, N+5, N+6→N+10, N+11→N+15, N+16→N+20, N+21→N+25, N+26→N+30
+Grille p42_t0_g0 — page 42 — axe rel_year — N = 2025 — colonnes : N, N+1, N+2, N+3, N+4, N+5, N+6→N+10, N+11→N+15, N+16→N+20, N+21→N+25, N+26→N+30
+  - FG2 | Bilans intermédiaires | cases cochées/colorées : N+5, N+6→N+10, N+11→N+15, N+16→N+20, N+21→N+25
+  - FG2 | Bilan final | cases cochées/colorées : N+26→N+30

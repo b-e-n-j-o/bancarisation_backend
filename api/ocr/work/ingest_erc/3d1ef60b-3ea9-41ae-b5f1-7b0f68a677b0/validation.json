@@ -1,0 +1,66 @@
+{
+ "corrections": {
+  "projet": {},
+  "ugs": [],
+  "actions": []
+ },
+ "reponses": [
+  {
+   "id": "action_ug_absente:ES1",
+   "portee": "ES1",
+   "question": "ES1 (Suivi des habitats naturels et de la flore à enjeu) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "UG1"
+  },
+  {
+   "id": "action_ug_absente:ES2",
+   "portee": "ES2",
+   "question": "ES2 (Suivi de l'avifaune) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "UG2"
+  },
+  {
+   "id": "action_ug_absente:FG1",
+   "portee": "FG1",
+   "question": "FG1 (Animation du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "Aucune"
+  },
+  {
+   "id": "action_ug_absente:FG2",
+   "portee": "FG2",
+   "question": "FG2 (Evaluation et mise à jour du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "Aucune"
+  },
+  {
+   "id": "action_ug_absente:RG1",
+   "portee": "RG1",
+   "question": "RG1 (Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "UG1"
+  },
+  {
+   "id": "action_ug_absente:RG2",
+   "portee": "RG2",
+   "question": "RG2 (Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "UG2 UG1"
+  },
+  {
+   "id": "couche_orpheline:Enjeux_arbres_Pt_20240923",
+   "portee": "Enjeux_arbres_Pt_20240923",
+   "question": "La couche « Enjeux_arbres_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+   "reponse": "Évitement sans gestion (contexte)"
+  },
+  {
+   "id": "couche_orpheline:Enjeux_bois_mort_Pt_20240923",
+   "portee": "Enjeux_bois_mort_Pt_20240923",
+   "question": "La couche « Enjeux_bois_mort_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+   "reponse": "Évitement sans gestion (contexte)"
+  },
+  {
+   "id": "couche_orpheline:Enjeux_lisieres_Li_20240923",
+   "portee": "Enjeux_lisieres_Li_20240923",
+   "question": "La couche « Enjeux_lisieres_Li_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+   "reponse": "Évitement sans gestion (contexte)"
+  }
+ ],
+ "organisation_id": "a1000000-0000-0000-0000-000000000003",
+ "origine": "user",
+ "validated_at": "2026-10-15T17:18:12.557927+00:00"
+}

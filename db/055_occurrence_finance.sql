@@ -366,7 +366,7 @@ select
   sum(f.montant_engage)                             as total_ht_engage
 from bancarisation.occurrence o
 left join bancarisation.occurrence_finance f on f.occurrence_id = o.id
-where o.statut <> 'supprime'
+where o.statut not in ('supprime', 'archive')
 group by o.projet_id, o.annee;
 
 create or replace view bancarisation.v_budget_delta_annuel
@@ -378,7 +378,7 @@ with courant as (
          sum(f.montant_realise) as realise
   from bancarisation.occurrence o
   left join bancarisation.occurrence_finance f on f.occurrence_id = o.id
-  where o.statut <> 'supprime'
+  where o.statut not in ('supprime', 'archive')
   group by o.projet_id, o.annee
 ),
 initial as (
@@ -406,14 +406,14 @@ select
   o.projet_id,
   coalesce(f.annee_initiale, o.annee) as annee_ref,
   sum(f.montant_initial) filter (
-    where o.statut = 'supprime' and f.montant_initial is not null) as annule,
+    where o.statut in ('supprime', 'archive') and f.montant_initial is not null) as annule,
   sum(f.montant_ht) filter (
-    where o.statut <> 'supprime' and f.annee_initiale is not null
+    where o.statut not in ('supprime', 'archive') and f.annee_initiale is not null
       and o.annee <> f.annee_initiale) as glisse_sortant,
   sum(f.montant_ht) filter (
-    where o.statut <> 'supprime' and f.montant_initial is null) as ajoute,
+    where o.statut not in ('supprime', 'archive') and f.montant_initial is null) as ajoute,
   sum(f.montant_ht - f.montant_initial) filter (
-    where o.statut <> 'supprime' and f.montant_initial is not null
+    where o.statut not in ('supprime', 'archive') and f.montant_initial is not null
       and o.annee = f.annee_initiale) as revision_prix
 from bancarisation.occurrence o
 left join bancarisation.occurrence_finance f on f.occurrence_id = o.id
@@ -435,7 +435,7 @@ with dep as (
     sum(f.montant_ht) as depenses
   from bancarisation.occurrence o
   left join bancarisation.occurrence_finance f on f.occurrence_id = o.id
-  where o.statut <> 'supprime'
+  where o.statut not in ('supprime', 'archive')
   group by o.projet_id, o.annee
 ),
 rec as (
@@ -469,13 +469,13 @@ with depuis_occurrences as (
   select
     o.projet_id,
     o.prestataire_id,
-    count(*) filter (where o.statut <> 'supprime') as nb_occurrences,
+    count(*) filter (where o.statut not in ('supprime', 'archive')) as nb_occurrences,
     count(*) filter (where o.statut = 'realise') as nb_realisees,
-    sum(f.montant_ht) filter (where o.statut <> 'supprime') as total_prevu_ht,
-    sum(f.montant_engage) filter (where o.statut <> 'supprime') as total_engage_ht,
-    sum(f.montant_realise) filter (where o.statut <> 'supprime') as total_realise_ht,
-    min(o.annee) filter (where o.statut <> 'supprime') as annee_min,
-    max(o.annee) filter (where o.statut <> 'supprime') as annee_max
+    sum(f.montant_ht) filter (where o.statut not in ('supprime', 'archive')) as total_prevu_ht,
+    sum(f.montant_engage) filter (where o.statut not in ('supprime', 'archive')) as total_engage_ht,
+    sum(f.montant_realise) filter (where o.statut not in ('supprime', 'archive')) as total_realise_ht,
+    min(o.annee) filter (where o.statut not in ('supprime', 'archive')) as annee_min,
+    max(o.annee) filter (where o.statut not in ('supprime', 'archive')) as annee_max
   from bancarisation.occurrence o
   left join bancarisation.occurrence_finance f on f.occurrence_id = o.id
   where o.prestataire_id is not null
@@ -617,7 +617,7 @@ derive as (
   from bancarisation.occurrence oc
   join bancarisation.occurrence_finance f on f.occurrence_id = oc.id
   where f.montant_initial is not null
-    and oc.statut <> 'supprime'
+    and oc.statut not in ('supprime', 'archive')
   group by oc.projet_id
 ),
 sig_derive as (

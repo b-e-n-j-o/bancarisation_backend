@@ -1,0 +1,12 @@
+{
+ "pdf": "c08.pdf",
+ "description": "Page entièrement numérisée (aucune couche texte).",
+ "grilles": [],
+ "exhaustif": true,
+ "pages_scannees": [
+  1
+ ],
+ "routage_vision": [
+  1
+ ]
+}

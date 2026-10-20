@@ -1,0 +1,27 @@
+{
+  "job_id": "e43d2466-57a7-47ec-8cd1-22a3d970f49f",
+  "status": "error",
+  "etape": "erreur",
+  "document_id": "30c0f5b1-d0bd-4a65-8758-944b0671f01a",
+  "projet_id": "8d061654-c30c-4ced-95a6-99297b43020a",
+  "nom": "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+  "date_document": "2026-10-16",
+  "llm": {
+    "appels": 1,
+    "appels_api": 1,
+    "appels_cache": 0,
+    "echecs": 0,
+    "tokens_prompt": 16451,
+    "tokens_completion": 10608,
+    "tokens_total": 27059,
+    "secondes": 225.8,
+    "par_tag": {
+      "fiche": 1
+    },
+    "par_modele": {
+      "mistral-large-4-0": 1
+    }
+  },
+  "erreur": "cannot unpack non-iterable NoneType object\nTraceback (most recent call last):\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/jobs.py\", line 220, in _executer\n    _res, run_dir = run(pdf, settings, anchors=anchors, log=_log, on_call=_on_call)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/pipeline.py\", line 51, in run\n    fiche, synth, articles, obls, raw = extract(doc, seg, settings, llm, injected)\n                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/s3_extract.py\", line 98, in extract\n    fiche = (call(FicheLLM, prompts.FICHE.format(**base), \"fiche\", t=0) or [FicheLLM()])[0]\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/s3_extract.py\", line 91, in call\n    return llm.chat_json(schema, prompts.SYSTEM, prompt, tag=tag, n=n, temperature=t, cache_key_hint=key)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/llm.py\", line 234, in chat_json\n    raw_choices, usage = self._complete(model, messages, schema, temperature, n, cache_key_hint)\n    ^^^^^^^^^^^^^^^^^^\nTypeError: cannot unpack non-iterable NoneType object\n",
+  "updated_at": "2026-10-16T13:30:49.455999+00:00"
+}

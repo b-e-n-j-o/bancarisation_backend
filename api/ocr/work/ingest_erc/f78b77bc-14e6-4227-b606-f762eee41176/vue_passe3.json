@@ -1,0 +1,245 @@
+{
+ "stats": {
+  "faits": 16,
+  "temporels": 16,
+  "budgets": 0,
+  "statuts": 0,
+  "echeances": 7,
+  "occurrences": 22,
+  "non_placables": 0,
+  "rejets": 14,
+  "occurrences_avec_montant": 0,
+  "tokens_llm": {
+   "n": 1,
+   "prompt": 9446,
+   "reasoning": 0,
+   "completion": 3340,
+   "total": 12786
+  },
+  "duree_s": 32.96
+ },
+ "classeurs": {},
+ "nb_rejets": 14,
+ "rejets_par_motif": {
+  "ug_inconnue": 14
+ },
+ "rejets": [
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel"
+  }
+ ],
+ "avertissements": [
+  "ES1 : bande non interprétée : la règle reste à la fiche",
+  "ES2 : bande non interprétée : la règle reste à la fiche",
+  "FG1 : colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+  "FG1 : colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+  "FG1 : colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+  "FG1 : colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+  "FG1 : colonne à plage ignorée (N+6 à N+10 2031 à 2035)",
+  "FG2 : bande non interprétée : la règle reste à la fiche",
+  "FG2 : colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+  "FG2 : colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+  "FG2 : colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+  "FG2 : colonne à plage ignorée (N+6 à N+10 2031 à 2035)",
+  "RG1 : bande non interprétée : la règle reste à la fiche",
+  "RG2 : bande non interprétée : la règle reste à la fiche"
+ ],
+ "non_placables": [],
+ "budget_pose": 0,
+ "budget_non_ventile": 0,
+ "audit": [
+  {
+   "id": "ES1-19ca651a09",
+   "code": "ES1",
+   "libelle": "Suivi des habitats naturels et de la flore à enjeu",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 6,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "ES2-e60beb0b47",
+   "code": "ES2",
+   "libelle": "Suivi de l'avifaune",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 6,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "FG1-529d433b75",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 6,
+   "montant_ht": null,
+   "avertissements": [
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+26 à N+30 2054 à 2055)"
+   ]
+  },
+  {
+   "id": "FG2-54185bacc7",
+   "code": "FG2",
+   "libelle": "Evaluation et mise à jour du plan de gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2030 · 2030",
+   "ancrage": 2030,
+   "annees": [
+    2030
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche",
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)"
+   ]
+  },
+  {
+   "id": "RG1-90a041a79f",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "RG1-388eb92679",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "RG2-31448ee1d8",
+   "code": "RG2",
+   "libelle": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  }
+ ]
+}

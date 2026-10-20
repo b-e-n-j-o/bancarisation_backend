@@ -11,13 +11,14 @@ from psycopg.types.json import Jsonb
 
 from api.budget.finance import ecrire_finance, lire_finance, monter_finance, separer_finance
 from api.db.utilisateur import connect_utilisateur
+from api.ocr.db.responsables import attacher_responsables, lire_responsables, remplacer_responsables
 from api.ocr.domain.ug_ids import normalize_ug_id, normalize_ug_ids
 
 _CHAMPS_MODIFIABLES = {
     "annee", "code", "titre", "categorie", "lib_thema", "statut", "ug_ids",
     "mois_debut", "mois_fin", "traverse_nouvel_an",
     "date_realisation", "date_realisation_fin", "surface_m2", "commentaire",
-    "montant_ttc", "taux_tva", "prestataire", "prestataire_id",
+    "prestataire", "prestataire_id",
     "responsable_id",
     "ligne_budget_id",
 }
@@ -299,9 +300,11 @@ def lister_occurrences(
             sql += " AND %s = ANY(ug_ids)"
             params.append(ug_norm)
     if not inclure_supprimees:
-        sql += " AND statut <> 'supprime'"
+        sql += " AND statut not in ('supprime', 'archive')"
     sql += " ORDER BY annee, code"
-    return _all(sql, params)
+    rows = _all(sql, params)
+    attacher_responsables(rows)
+    return rows
 
 
 def creer_occurrence(projet_id: UUID | str, **champs: Any) -> dict[str, Any]:
@@ -336,8 +339,12 @@ def modifier_occurrence(
     **champs: Any,
 ) -> dict[str, Any] | None:
     reste, finance = separer_finance(champs)
+    responsable_ids = reste.pop("responsable_ids", None)
+    a_des_responsables = "responsable_ids" in champs
+    if a_des_responsables:
+        reste.pop("responsable_id", None)
     maj = {k: v for k, v in reste.items() if k in _CHAMPS_MODIFIABLES}
-    if not maj and not finance:
+    if not maj and not finance and not a_des_responsables:
         raise ValueError(f"Aucun champ modifiable. Autorisés : {sorted(_CHAMPS_MODIFIABLES)}")
     if "ug_ids" in maj:
         maj["ug_ids"] = normalize_ug_ids(maj["ug_ids"])
@@ -355,6 +362,11 @@ def modifier_occurrence(
                 row = cur.fetchone()
                 if row is None:
                     return None
+            if a_des_responsables:
+                remplacer_responsables(cur, oid, list(responsable_ids or []))
+            elif "responsable_id" in maj:
+                rid = maj["responsable_id"]
+                remplacer_responsables(cur, oid, [str(rid)] if rid else [])
             ecrire_finance(cur, oid, finance)
             if row is None:
                 cur.execute(
@@ -362,7 +374,10 @@ def modifier_occurrence(
                     (oid,),
                 )
                 row = cur.fetchone()
-            return monter_finance(dict(row) if row else None, lire_finance(cur, oid))
+            monte = monter_finance(dict(row) if row else None, lire_finance(cur, oid))
+            if monte:
+                monte["responsables"] = lire_responsables(cur, [oid]).get(oid, [])
+            return monte
 
 
 def supprimer_occurrence(
@@ -370,19 +385,42 @@ def supprimer_occurrence(
     *,
     definitif: bool = False,
 ) -> bool:
-    if definitif:
+    oid = _oid(occurrence_id)
+    if not definitif:
         row = _one(
-            "DELETE FROM bancarisation.occurrence WHERE id = %s RETURNING id",
-            (_oid(occurrence_id),),
+            """
+            UPDATE bancarisation.occurrence
+            SET statut = 'supprime', modifie_le = %s
+            WHERE id = %s
+            RETURNING id
+            """,
+            (_now_iso(), oid),
         )
         return bool(row)
-    row = _one(
-        """
-        UPDATE bancarisation.occurrence
-        SET statut = 'supprime', modifie_le = %s
-        WHERE id = %s
-        RETURNING id
-        """,
-        (_now_iso(), _oid(occurrence_id)),
-    )
-    return bool(row)
+    with connect_utilisateur(row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT statut FROM bancarisation.occurrence WHERE id = %s",
+                (oid,),
+            )
+            row = cur.fetchone()
+            if not row:
+                return False
+            if row["statut"] not in ("archive", "supprime"):
+                raise ValueError(
+                    "Seule une tâche archivée ou annulée peut être supprimée définitivement."
+                )
+            # Ces deux clés étrangères sont NO ACTION : on les retire avant l'occurrence.
+            cur.execute(
+                "DELETE FROM bancarisation.note_interne WHERE occurrence_id = %s",
+                (oid,),
+            )
+            cur.execute(
+                "DELETE FROM bancarisation.action_etape WHERE occurrence_id = %s",
+                (oid,),
+            )
+            cur.execute(
+                "DELETE FROM bancarisation.occurrence WHERE id = %s RETURNING id",
+                (oid,),
+            )
+            return cur.fetchone() is not None

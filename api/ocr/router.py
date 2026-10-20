@@ -73,6 +73,7 @@ class OccurrenceUpdateRequest(BaseModel):
     prestataire: Optional[str] = None
     prestataire_id: Optional[UUID] = None
     responsable_id: Optional[UUID] = None
+    responsable_ids: Optional[list[UUID]] = None
     ligne_budget_id: Optional[UUID] = None
     montant_engage: Optional[float] = None
     montant_realise: Optional[float] = None
@@ -183,6 +184,45 @@ def list_occurrences(
         raise _server_error(exc) from exc
 
 
+class OccurrenceFusionRequest(BaseModel):
+    occurrence_ids: list[UUID] = Field(min_length=2)
+    portee: str = "selection"
+    titre: str
+    code: str
+    categorie: str
+    ug_ids: list[str] = Field(default_factory=list)
+    annee: int
+    mois_debut: int
+    mois_fin: int
+    traverse_nouvel_an: bool = False
+    horizon_ans: int = 1
+    description: Optional[str] = None
+
+
+@router.post("/projets/{projet_id}/occurrences/fusionner", status_code=status.HTTP_201_CREATED)
+def fusionner_occurrences(projet_id: UUID, payload: OccurrenceFusionRequest) -> dict[str, Any]:
+    from .fusion import fusionner_occurrences as fusionner
+
+    try:
+        return fusionner(
+            projet_id,
+            occurrence_ids=[str(i) for i in payload.occurrence_ids],
+            portee=payload.portee,
+            titre=payload.titre,
+            code=payload.code,
+            categorie=payload.categorie,
+            ug_ids=payload.ug_ids,
+            annee=payload.annee,
+            mois_debut=payload.mois_debut,
+            mois_fin=payload.mois_fin,
+            traverse_nouvel_an=payload.traverse_nouvel_an,
+            horizon_ans=payload.horizon_ans,
+            description=payload.description,
+        )
+    except (RuntimeError, ValueError) as exc:
+        raise _db_error(exc) from exc
+
+
 @router.post("/projets/{projet_id}/occurrences", status_code=status.HTTP_201_CREATED)
 def create_occurrence(projet_id: UUID, payload: OccurrenceCreateRequest) -> dict[str, Any]:
     try:
@@ -206,6 +246,8 @@ def update_occurrence(
         champs["prestataire_id"] = str(champs["prestataire_id"])
     if "responsable_id" in champs and champs["responsable_id"] is not None:
         champs["responsable_id"] = str(champs["responsable_id"])
+    if "responsable_ids" in champs and champs["responsable_ids"] is not None:
+        champs["responsable_ids"] = [str(x) for x in champs["responsable_ids"]]
     if not champs:
         raise HTTPException(status_code=400, detail="Aucun champ à modifier.")
     try:
@@ -252,6 +294,8 @@ def update_occurrence(
 def delete_occurrence(occurrence_id: UUID, definitif: bool = False) -> Response:
     try:
         ok = crud.supprimer_occurrence(occurrence_id, definitif=definitif)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc)) from exc
     except RuntimeError as exc:
         raise _server_error(exc) from exc
     if not ok:

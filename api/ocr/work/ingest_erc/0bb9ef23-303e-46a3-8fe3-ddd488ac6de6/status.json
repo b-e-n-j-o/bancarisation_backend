@@ -1,0 +1,33 @@
+{
+  "job_id": "0bb9ef23-303e-46a3-8fe3-ddd488ac6de6",
+  "status": "running",
+  "etape": "pdfvisuel",
+  "message": "Lecture géométrique des plans (grilles, ancre N)…",
+  "fichiers": [
+    "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+    "2025 11 21_JARDINS d_AQUITAINE- courrier DREAL De_marrage travaux et annexes.pdf",
+    "A25086 Pichet Suivi de chantier Bruges - E0.docx.pdf",
+    "A25086 Pichet Suivi de chantier Bruges - Mai 2026.pdf",
+    "Bruges_Pichet_Contrat CDCB_20260721VACdef.docx",
+    "DOSSIER DDEP_ note_CSRPN V2.docx",
+    "DV25111 Pichet - Suivi de chantier Bruges.pdf",
+    "Note_technique_EVEE.docx",
+    "Suivi de chantier septembre 2026.pdf",
+    "cerfa_13614-01_Habitats signe_.pdf",
+    "cerfa_13616-01_Faune signe_.pdf",
+    "cerfa_13617-01_Flore signe_.pdf",
+    "Couches_enjeux_Enjeux_arbres_Pt_20240923.zip",
+    "Couches_enjeux_Enjeux_bois_mort_Pt_20240923.zip",
+    "Couches_enjeux_Enjeux_habitats_Po_20240923.zip",
+    "Couches_enjeux_Enjeux_lisieres_Li_20240923.zip",
+    "Unites_de_gestion_unites_de_gestion.zip"
+  ],
+  "erreur": null,
+  "vue": null,
+  "validation": null,
+  "passe3": null,
+  "projet_id": null,
+  "started_at": "2026-10-16T09:50:09.718649+00:00",
+  "updated_at": "2026-10-16T09:51:41.904744+00:00"
+}

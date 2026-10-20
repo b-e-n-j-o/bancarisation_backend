@@ -12,6 +12,8 @@ CHAMPS_FINANCE = (
     "montant_realise",
     "montant_initial",
     "annee_initiale",
+    "montant_ttc",
+    "taux_tva",
 )
 
 
@@ -42,7 +44,8 @@ def ecrire_finance(cur: psycopg.Cursor, occurrence_id: str, finance: dict[str, A
 def lire_finance(cur: psycopg.Cursor, occurrence_id: str) -> dict[str, Any]:
     cur.execute(
         """
-        select montant_ht, montant_engage, montant_realise, montant_initial, annee_initiale
+        select montant_ht, montant_engage, montant_realise, montant_initial, annee_initiale,
+               montant_ttc, taux_tva
           from bancarisation.occurrence_finance
          where occurrence_id = %s
         """,

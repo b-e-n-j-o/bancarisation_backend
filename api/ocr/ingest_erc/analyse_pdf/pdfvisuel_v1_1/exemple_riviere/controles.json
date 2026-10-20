@@ -1,0 +1,237 @@
+[
+ {
+  "controle": "concordance_mois",
+  "statut": "concordant",
+  "niveau": "info",
+  "page": 30,
+  "page_imprimee": 191,
+  "ref": "p030_g1",
+  "message": "Grille et prose concordent (mars, avril, juillet, août, prose : même page).",
+  "detail": {
+   "mois_grille": [
+    3,
+    4,
+    7,
+    8
+   ],
+   "mois_prose": [
+    3,
+    4,
+    7,
+    8
+   ],
+   "portee_prose": "même page"
+  }
+ },
+ {
+  "controle": "concordance_mois",
+  "statut": "concordant",
+  "niveau": "info",
+  "page": 33,
+  "page_imprimee": 194,
+  "ref": "p033_g1",
+  "message": "Grille et prose concordent (septembre, octobre, prose : 2 page(s) avant).",
+  "detail": {
+   "mois_grille": [
+    9,
+    10
+   ],
+   "mois_prose": [
+    9,
+    10
+   ],
+   "portee_prose": "2 page(s) avant"
+  }
+ },
+ {
+  "controle": "concordance_mois",
+  "statut": "concordant",
+  "niveau": "info",
+  "page": 36,
+  "page_imprimee": 197,
+  "ref": "p036_g1",
+  "message": "Grille et prose concordent (juin, juillet, prose : 1 page(s) avant).",
+  "detail": {
+   "mois_grille": [
+    6,
+    7
+   ],
+   "mois_prose": [
+    6,
+    7
+   ],
+   "portee_prose": "1 page(s) avant"
+  }
+ },
+ {
+  "controle": "concordance_mois",
+  "statut": "couleur_seule",
+  "niveau": "alerte",
+  "page": 37,
+  "page_imprimee": 198,
+  "ref": "p037_g1",
+  "message": "Mois marqués (avril, mai, juin) absents de la prose voisine : l'information n'existe que dans la COULEUR des cellules.",
+  "detail": {
+   "mois_grille": [
+    4,
+    5,
+    6
+   ],
+   "mois_prose": [],
+   "portee_prose": null
+  }
+ },
+ {
+  "controle": "libelles_annees",
+  "statut": "incoherent",
+  "niveau": "attention",
+  "page": 36,
+  "page_imprimee": 197,
+  "ref": "p036_g2",
+  "message": "N = 2025 sur la grille, mais colonnes incohérentes : N+16 à N+20 2041à 2046 ; N+21 à N+25 2047 à 2053 ; N+26 à N+30 2054 à 2055. Se fier aux N+k plutôt qu'aux années écrites.",
+  "detail": {
+   "annee_N": 2025,
+   "colonnes": [
+    "N+16 à N+20 2041à 2046",
+    "N+21 à N+25 2047 à 2053",
+    "N+26 à N+30 2054 à 2055"
+   ]
+  }
+ },
+ {
+  "controle": "libelles_annees",
+  "statut": "incoherent",
+  "niveau": "attention",
+  "page": 37,
+  "page_imprimee": 198,
+  "ref": "p037_g2",
+  "message": "N = 2025 sur la grille, mais colonnes incohérentes : N+16 à N+20 2041à 2046 ; N+21 à N+25 2047 à 2053 ; N+26 à N+30 2054 à 2055. Se fier aux N+k plutôt qu'aux années écrites.",
+  "detail": {
+   "annee_N": 2025,
+   "colonnes": [
+    "N+16 à N+20 2041à 2046",
+    "N+21 à N+25 2047 à 2053",
+    "N+26 à N+30 2054 à 2055"
+   ]
+  }
+ },
+ {
+  "controle": "libelles_annees",
+  "statut": "incoherent",
+  "niveau": "attention",
+  "page": 40,
+  "page_imprimee": 201,
+  "ref": "p040_g1",
+  "message": "N = 2025 sur la grille, mais colonnes incohérentes : N+16 à N+20 2041à 2046 ; N+21 à N+25 2047 à 2053 ; N+26 à N+30 2054 à 2055. Se fier aux N+k plutôt qu'aux années écrites.",
+  "detail": {
+   "annee_N": 2025,
+   "colonnes": [
+    "N+16 à N+20 2041à 2046",
+    "N+21 à N+25 2047 à 2053",
+    "N+26 à N+30 2054 à 2055"
+   ]
+  }
+ },
+ {
+  "controle": "libelles_annees",
+  "statut": "incoherent",
+  "niveau": "attention",
+  "page": 41,
+  "page_imprimee": 202,
+  "ref": "p041_g1",
+  "message": "N = 2025 sur la grille, mais colonnes incohérentes : N+16 à N+20 2041à 2046 ; N+21 à N+25 2047 à 2053 ; N+26 à N+30 2054 à 2055. Se fier aux N+k plutôt qu'aux années écrites.",
+  "detail": {
+   "annee_N": 2025,
+   "colonnes": [
+    "N+16 à N+20 2041à 2046",
+    "N+21 à N+25 2047 à 2053",
+    "N+26 à N+30 2054 à 2055"
+   ]
+  }
+ },
+ {
+  "controle": "plage_agregee",
+  "statut": "annee_imprecise",
+  "niveau": "info",
+  "page": 40,
+  "page_imprimee": 201,
+  "ref": "p040_g1",
+  "message": "« Phasage prévisionnel » : 5 marque(s) sur des plages pluriannuelles (N+6 à N+10 2031 à 2035 ; N+11 à N+15 2036 à 2040 ; N+16 à N+20 2041à 2046 ; N+21 à N+25 2047 à 2053 ; N+26 à N+30 2054 à 2055) — l'année exacte n'est pas dans la grille.",
+  "detail": {
+   "ligne": "Phasage prévisionnel",
+   "plages": [
+    "N+6 à N+10 2031 à 2035",
+    "N+11 à N+15 2036 à 2040",
+    "N+16 à N+20 2041à 2046",
+    "N+21 à N+25 2047 à 2053",
+    "N+26 à N+30 2054 à 2055"
+   ]
+  }
+ },
+ {
+  "controle": "plage_agregee",
+  "statut": "annee_imprecise",
+  "niveau": "info",
+  "page": 41,
+  "page_imprimee": 202,
+  "ref": "p041_g1",
+  "message": "« Phasage prévisionnel | Bilans intermédiaires » : 4 marque(s) sur des plages pluriannuelles (N+6 à N+10 2031 à 2035 ; N+11 à N+15 2036 à 2040 ; N+16 à N+20 2041à 2046 ; N+21 à N+25 2047 à 2053) — l'année exacte n'est pas dans la grille.",
+  "detail": {
+   "ligne": "Phasage prévisionnel | Bilans intermédiaires",
+   "plages": [
+    "N+6 à N+10 2031 à 2035",
+    "N+11 à N+15 2036 à 2040",
+    "N+16 à N+20 2041à 2046",
+    "N+21 à N+25 2047 à 2053"
+   ]
+  }
+ },
+ {
+  "controle": "plage_agregee",
+  "statut": "annee_imprecise",
+  "niveau": "info",
+  "page": 41,
+  "page_imprimee": 202,
+  "ref": "p041_g1",
+  "message": "« Phasage prévisionnel | Bilan final » : 1 marque(s) sur des plages pluriannuelles (N+26 à N+30 2054 à 2055) — l'année exacte n'est pas dans la grille.",
+  "detail": {
+   "ligne": "Phasage prévisionnel | Bilan final",
+   "plages": [
+    "N+26 à N+30 2054 à 2055"
+   ]
+  }
+ },
+ {
+  "controle": "zone_non_lue",
+  "statut": "contenu_manquant",
+  "niveau": "attention",
+  "page": 32,
+  "ref": "p032_img1",
+  "message": "Zone document_raster non transcrite : son contenu est absent du texte. fond blanc dominant, peu de couleur, présence d'encre : texte ou tableau en image",
+  "detail": {
+   "contexte": "Proposition de composition des bosquets :"
+  }
+ },
+ {
+  "controle": "zone_non_lue",
+  "statut": "contenu_manquant",
+  "niveau": "attention",
+  "page": 46,
+  "ref": "p046_img1",
+  "message": "Zone document_raster non transcrite : son contenu est absent du texte. fond blanc dominant, peu de couleur, présence d'encre : texte ou tableau en image",
+  "detail": {
+   "contexte": "▪ Une notion mentionnée dans la réglementation, le critère de proportionnalité."
+  }
+ },
+ {
+  "controle": "zone_non_lue",
+  "statut": "contenu_manquant",
+  "niveau": "alerte",
+  "page": 49,
+  "ref": "p049_img1",
+  "message": "Zone document_raster non transcrite : son contenu est absent du texte. fond blanc dominant, peu de couleur, présence d'encre : texte ou tableau en image",
+  "detail": {
+   "contexte": "FAUNA ; Faune-Nouvelle-Aquitaine ; par Envolis)"
+  }
+ }
+]

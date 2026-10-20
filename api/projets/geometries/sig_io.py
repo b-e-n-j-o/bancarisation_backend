@@ -8,6 +8,7 @@ Même règle partout (aperçu, profil, persistance) :
 """
 from __future__ import annotations
 
+import re
 import tempfile
 import unicodedata
 import zipfile
@@ -18,8 +19,10 @@ import geopandas as gpd
 
 from .ingestion import GeometryIngestError
 
-ENCODAGES = (None, "latin1", "cp1252")
-EXTS_SIG = {".shp", ".gpkg", ".geojson", ".json"}
+ENCODAGES = ("utf-8", "cp1252", "latin1")
+# UTF-8 lu comme Latin-1 / CP1252 : « è » devient « Ã¨ ».
+_MOJIBAKE = re.compile(r"(?:Ã[\u0080-\u00bf]|Â[\u0080-\u00bf]|â€|ï¿½)")
+EXTS_SIG = {".shp", ".gpkg", ".geojson", ".json", ".dxf", ".gml", ".kml"}
 
 
 def est_fichier_macos(name: str) -> bool:
@@ -59,6 +62,45 @@ def extraire_zip(chemin: str | Path) -> Path:
     return dest
 
 
+def score_mojibake(texte: str) -> int:
+    return len(_MOJIBAKE.findall(texte))
+
+
+def reparer_chaine(valeur: str) -> str:
+    """Remet en UTF-8 un texte dont les octets ont été lus en Latin-1 ou CP1252."""
+    if not valeur or not _MOJIBAKE.search(valeur):
+        return valeur
+    meilleur = valeur
+    meilleur_score = score_mojibake(valeur)
+    for enc in ("latin-1", "cp1252"):
+        try:
+            fixe = valeur.encode(enc).decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+        score = score_mojibake(fixe)
+        if score < meilleur_score:
+            meilleur = fixe
+            meilleur_score = score
+    return meilleur
+
+
+def reparer_attributs(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    renoms = {
+        col: reparer_chaine(col)
+        for col in gdf.columns
+        if isinstance(col, str) and col != "geometry" and reparer_chaine(col) != col
+    }
+    if renoms:
+        gdf = gdf.rename(columns=renoms)
+    for col in gdf.columns:
+        if col == "geometry":
+            continue
+        if gdf[col].dtype != object and str(gdf[col].dtype) != "string":
+            continue
+        gdf[col] = gdf[col].map(lambda v: reparer_chaine(v) if isinstance(v, str) else v)
+    return gdf
+
+
 def lire_gdf(path: Path, layer: str | None = None) -> gpd.GeoDataFrame:
     last: Exception | None = None
     for enc in ENCODAGES:
@@ -66,9 +108,8 @@ def lire_gdf(path: Path, layer: str | None = None) -> gpd.GeoDataFrame:
             kwargs: dict[str, Any] = {}
             if layer:
                 kwargs["layer"] = layer
-            if enc:
-                kwargs["encoding"] = enc
-            return gpd.read_file(path, **kwargs)
+            kwargs["encoding"] = enc
+            return reparer_attributs(gpd.read_file(path, **kwargs))
         except Exception as exc:  # noqa: BLE001
             last = exc
     raise last if last else GeometryIngestError(f"{path.name} : lecture impossible")

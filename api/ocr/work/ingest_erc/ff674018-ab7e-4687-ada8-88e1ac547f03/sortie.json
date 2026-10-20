@@ -1,0 +1,2261 @@
+{
+ "config": {
+  "ocr_backend": "hybride",
+  "ocr_model": "mistral-ocr-latest",
+  "llm_actif": true,
+  "llm_model": "zai-glm-5-3",
+  "reasoning_effort": "medium",
+  "reasoning_effort_routeur": "low",
+  "roles": {
+   "ocr": {
+    "usage": "Lecture PDF (Mistral OCR 4). Pas un LLM.",
+    "branche": true,
+    "modele": "mistral-ocr-latest"
+   },
+   "carte": {
+    "usage": "Passe 1 — structure du plan (vocabulaire, fiches, tableaux).",
+    "branche": true,
+    "modele": "mistral-large-4-0",
+    "effort": "none",
+    "env_modele": "MISTRAL_MODEL_CARTE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CARTE"
+   },
+   "routeur": {
+    "usage": "Passe 1 — choix des sections PDF si la carte n'a pas suffi.",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_ROUTEUR",
+    "env_effort": "MISTRAL_REASONING_EFFORT_ROUTEUR"
+   },
+   "referentiel": {
+    "usage": "Passe 1 — extraction LLM des extraits PDF (seulement sans carte).",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_REFERENTIEL",
+    "env_effort": "MISTRAL_REASONING_EFFORT_REFERENTIEL"
+   },
+   "arrete": {
+    "usage": "Passe 1 — lecture de la décision (identité, obligations, prescriptions).",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_ARRETE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_ARRETE"
+   },
+   "carte_classeur": {
+    "usage": "Passe 1 — rôle et colonnes des tableaux Excel.",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_CARTE_CLASSEUR",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CARTE_CLASSEUR"
+   },
+   "fiche": {
+    "usage": "Passe 3 — temporalité extraite des fiches-actions PDF (lots).",
+    "branche": true,
+    "modele": "mistral-large-4-0",
+    "effort": "none",
+    "env_modele": "MISTRAL_MODEL_FICHE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_FICHE"
+   },
+   "libelles": {
+    "usage": "Passe 3 — correspondance libellés tableur → codes du référentiel.",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_LIBELLES",
+    "env_effort": "MISTRAL_REASONING_EFFORT_LIBELLES"
+   },
+   "calendrier": {
+    "usage": "Passe 3 (non branchée) — matrices de planning.",
+    "branche": false,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_CALENDRIER",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CALENDRIER"
+   },
+   "budget": {
+    "usage": "Passe 3 (non branchée) — matrices de coûts.",
+    "branche": false,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_BUDGET",
+    "env_effort": "MISTRAL_REASONING_EFFORT_BUDGET"
+   }
+  },
+  "cle": "MISTRAL_API_KEY_BEN",
+  "cle_llm": "MISTRAL_API_KEY_BEN",
+  "dotenv": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/.env",
+  "cache": "/tmp/ingest_cache"
+ },
+ "documents": [
+  {
+   "nom": "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 20,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0
+   }
+  },
+  {
+   "nom": "2025 11 21_JARDINS d_AQUITAINE- courrier DREAL De_marrage travaux et annexes.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 10,
+   "pages_scannees": 1,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.88,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 0.5,
+    "10": 1.0
+   }
+  },
+  {
+   "nom": "A25086 Pichet Suivi de chantier Bruges - E0.docx.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 22,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 0.5
+   }
+  },
+  {
+   "nom": "A25086 Pichet Suivi de chantier Bruges - Mai 2026.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 23,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.67,
+    "2": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "22": 1.0,
+    "23": 1.0
+   }
+  },
+  {
+   "nom": "Bruges_Pichet_Contrat CDCB_20260721VACdef.docx",
+   "role": "autre",
+   "indice": "document Word",
+   "pages": 1,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "cerfa_13614-01_Habitats signe_.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 4,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "4": 1.0
+   }
+  },
+  {
+   "nom": "cerfa_13616-01_Faune signe_.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 4,
+   "pages_scannees": 1,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "3": 1.0
+   }
+  },
+  {
+   "nom": "cerfa_13617-01_Flore signe_.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 3,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.83,
+    "3": 1.0
+   }
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_arbres_Pt_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_bois_mort_Pt_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_habitats_Po_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_lisieres_Li_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+   "role": "plan_gestion",
+   "indice": "motif « plan de gestion » en tête de document",
+   "pages": 49,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 0.8,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 0.62,
+    "9": 1.0,
+    "10": 0.67,
+    "11": 1.0,
+    "12": 0.83,
+    "13": 1.0,
+    "14": 0.67,
+    "15": 0.56,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 0.8,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 0.47,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0
+   }
+  },
+  {
+   "nom": "DOSSIER DDEP_ note_CSRPN V2.docx",
+   "role": "autre",
+   "indice": "document Word",
+   "pages": 1,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "DV25111 Pichet - Suivi de chantier Bruges.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 37,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "6": 1.0,
+    "9": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 0.25,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0
+   }
+  },
+  {
+   "nom": "Note_technique_EVEE.docx",
+   "role": "autre",
+   "indice": "document Word",
+   "pages": 1,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Suivi de chantier septembre 2026.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 21,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.67,
+    "2": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "9": 1.0,
+    "11": 1.0,
+    "20": 1.0,
+    "21": 1.0
+   }
+  },
+  {
+   "nom": "Unites_de_gestion_unites_de_gestion.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  }
+ ],
+ "sig": {
+  "couches": [
+   {
+    "nom": "Enjeux_arbres_Pt_20240923",
+    "fichier": "Enjeux_arbres_Pt_20240923.shp",
+    "geom_type": "POINT",
+    "nb_entites": 17,
+    "crs_source": "RGF93 v1 / Lambert-93",
+    "epsg": 2154,
+    "reprojetee": false,
+    "surface_ha": 0.0,
+    "colonnes": [
+     {
+      "nom": "id",
+      "nb_valeurs": 0,
+      "exemples": [],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Arbre",
+      "nb_valeurs": 17,
+      "exemples": [
+       "Peuplier noir"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Especes",
+      "nb_valeurs": 17,
+      "exemples": [
+       "C. carduelis, S. serinus, C. chloris*"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Enjeu",
+      "nb_valeurs": 17,
+      "exemples": [
+       "Moyen"
+      ],
+      "interpretation": "inconnu"
+     }
+    ],
+    "avertissements": []
+   },
+   {
+    "nom": "Enjeux_bois_mort_Pt_20240923",
+    "fichier": "Enjeux_bois_mort_Pt_20240923.shp",
+    "geom_type": "POINT",
+    "nb_entites": 1,
+    "crs_source": "RGF93 v1 / Lambert-93",
+    "epsg": 2154,
+    "reprojetee": false,
+    "surface_ha": 0.0,
+    "colonnes": [
+     {
+      "nom": "id",
+      "nb_valeurs": 0,
+      "exemples": [],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Especes",
+      "nb_valeurs": 1,
+      "exemples": [
+       "A. fragilis"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Enjeu",
+      "nb_valeurs": 1,
+      "exemples": [
+       "Moyen"
+      ],
+      "interpretation": "inconnu"
+     }
+    ],
+    "avertissements": []
+   },
+   {
+    "nom": "Enjeux_lisieres_Li_20240923",
+    "fichier": "Enjeux_lisieres_Li_20240923.shp",
+    "geom_type": "POLYLINE",
+    "nb_entites": 4,
+    "crs_source": "RGF93 v1 / Lambert-93",
+    "epsg": 2154,
+    "reprojetee": false,
+    "surface_ha": 0.0,
+    "colonnes": [
+     {
+      "nom": "id",
+      "nb_valeurs": 0,
+      "exemples": [],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Lisiere",
+      "nb_valeurs": 4,
+      "exemples": [
+       "Lisière de boisement de Peuplier noir et Robinier",
+       "Lisière de boisement de Robinier"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Especes",
+      "nb_valeurs": 4,
+      "exemples": [
+       "N. leisleri, P. pipistrellus, P. kuhlii, N. noctula*, E. serotinus*, E. europaeus*, P. muralis, L. bilineata*, H. viridiflavus*"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Enjeu",
+      "nb_valeurs": 4,
+      "exemples": [
+       "Assez faible"
+      ],
+      "interpretation": "inconnu"
+     }
+    ],
+    "avertissements": []
+   },
+   {
+    "nom": "unites_de_gestion",
+    "fichier": "unites_de_gestion.shp",
+    "geom_type": "POLYGON",
+    "nb_entites": 2,
+    "crs_source": "RGF93 v1 / Lambert-93",
+    "epsg": 2154,
+    "reprojetee": false,
+    "surface_ha": 2.3,
+    "colonnes": [
+     {
+      "nom": "id",
+      "nb_valeurs": 2,
+      "exemples": [
+       "1",
+       "2"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "nom",
+      "nb_valeurs": 2,
+      "exemples": [
+       "UG1",
+       "UG2"
+      ],
+      "interpretation": "ug_plan"
+     },
+     {
+      "nom": "desc",
+      "nb_valeurs": 2,
+      "exemples": [
+       "Unite de gestion 1 -",
+       "Unité de gestion 2 -"
+      ],
+      "interpretation": "inconnu"
+     }
+    ],
+    "avertissements": []
+   }
+  ],
+  "zones": [
+   {
+    "id": "Enjeux_arbres_Pt_20240923",
+    "couche": "Enjeux_arbres_Pt_20240923",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 17,
+    "surface_ha": 0.0,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   },
+   {
+    "id": "Enjeux_bois_mort_Pt_20240923",
+    "couche": "Enjeux_bois_mort_Pt_20240923",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 1,
+    "surface_ha": 0.0,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   },
+   {
+    "id": "Enjeux_lisieres_Li_20240923",
+    "couche": "Enjeux_lisieres_Li_20240923",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 4,
+    "surface_ha": 0.0,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   },
+   {
+    "id": "unites_de_gestion::nom=UG1",
+    "couche": "unites_de_gestion",
+    "filtre": {
+     "nom": "UG1"
+    },
+    "ug_attribut": "UG1",
+    "nb_entites": 1,
+    "surface_ha": 1.776,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   },
+   {
+    "id": "unites_de_gestion::nom=UG2",
+    "couche": "unites_de_gestion",
+    "filtre": {
+     "nom": "UG2"
+    },
+    "ug_attribut": "UG2",
+    "nb_entites": 1,
+    "surface_ha": 0.524,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   }
+  ]
+ },
+ "selection_pdf": {
+  "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf": {
+   "familles": {
+    "RG": [],
+    "ES": [],
+    "FG": []
+   },
+   "plan": [
+    {
+     "id": 0,
+     "titre": "12.3 Synthèse des enjeux et objectifs à long terme",
+     "pages": "21-22",
+     "car": 5398,
+     "fiche": false,
+     "source": "carte"
+    },
+    {
+     "id": 1,
+     "titre": "12.4 Programme d'actions",
+     "pages": "22-46",
+     "car": 38589,
+     "fiche": false,
+     "source": "carte"
+    },
+    {
+     "id": 2,
+     "titre": "12.4.1 Unités de gestion",
+     "pages": "23-24",
+     "car": 1373,
+     "fiche": false,
+     "source": "carte"
+    },
+    {
+     "id": 3,
+     "titre": "Tableau 47 : Tableau d'éligibilité du projet à la compensation",
+     "pages": "49-49",
+     "car": 3251,
+     "fiche": false,
+     "source": "carte"
+    },
+    {
+     "id": 4,
+     "titre": "RG1 : Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et ges",
+     "pages": "30-32",
+     "car": 2835,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 5,
+     "titre": "RG2 : Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts e",
+     "pages": "32-35",
+     "car": 3904,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 6,
+     "titre": "ES1 : Suivi des habitats naturels et de la flore à enjeu",
+     "pages": "35-38",
+     "car": 4875,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 7,
+     "titre": "ES2 : Suivi de l'avifaune à enjeu",
+     "pages": "38-39",
+     "car": 1807,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 8,
+     "titre": "FG1 : Animation du plan de gestion",
+     "pages": "39-42",
+     "car": 5836,
+     "fiche": true,
+     "source": "carte"
+    },
+    {
+     "id": 9,
+     "titre": "FG2 : Evaluation et mise à jour du plan de gestion",
+     "pages": "42-42",
+     "car": 2465,
+     "fiche": true,
+     "source": "carte"
+    }
+   ],
+   "car_retenus": 50665,
+   "car_total": 75311,
+   "routeur_llm_requis": false,
+   "routeur_llm_utilise": false,
+   "fiches_localisees": "6/6",
+   "retenues": [
+    {
+     "titre": "12.3 Synthèse des enjeux et objectifs à long terme",
+     "pages": "21-22",
+     "car": 5398
+    },
+    {
+     "titre": "12.4 Programme d'actions",
+     "pages": "22-46",
+     "car": 38589
+    },
+    {
+     "titre": "12.4.1 Unités de gestion",
+     "pages": "23-24",
+     "car": 1373
+    },
+    {
+     "titre": "Tableau 47 : Tableau d'éligibilité du projet à la compensation",
+     "pages": "49-49",
+     "car": 3251
+    },
+    {
+     "titre": "RG1 : Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+     "pages": "30-32",
+     "car": 432
+    },
+    {
+     "titre": "RG2 : Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+     "pages": "32-35",
+     "car": 409
+    },
+    {
+     "titre": "ES1 : Suivi des habitats naturels et de la flore à enjeu",
+     "pages": "35-38",
+     "car": 365
+    },
+    {
+     "titre": "ES2 : Suivi de l'avifaune à enjeu",
+     "pages": "38-39",
+     "car": 317
+    },
+    {
+     "titre": "FG1 : Animation du plan de gestion",
+     "pages": "39-42",
+     "car": 257
+    },
+    {
+     "titre": "FG2 : Evaluation et mise à jour du plan de gestion",
+     "pages": "42-42",
+     "car": 274
+    }
+   ]
+  }
+ },
+ "cartes": {
+  "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf": {
+   "vocabulaire": {
+    "unite_terme": "Unité de Gestion (UG)",
+    "unite_prefixes": [
+     "UG"
+    ],
+    "unite_exemples": [
+     "UG1",
+     "UG2"
+    ],
+    "action_forme": "code",
+    "action_familles": [
+     {
+      "prefixe": "RG",
+      "libelle": "Restauration et Gestion",
+      "citation": {
+       "page": 22,
+       "texte": "Restauration et Gestion (RG)"
+      }
+     },
+     {
+      "prefixe": "ES",
+      "libelle": "Etudes et Suivis écologiques",
+      "citation": {
+       "page": 22,
+       "texte": "Etudes et Suivis écologiques (ES)"
+      }
+     },
+     {
+      "prefixe": "FG",
+      "libelle": "Fonctionnement Général",
+      "citation": {
+       "page": 22,
+       "texte": "Fonctionnement Général (FG)"
+      }
+     }
+    ],
+    "action_exemples": [
+     "RG1",
+     "RG2",
+     "ES1",
+     "ES2",
+     "FG1",
+     "FG2"
+    ]
+   },
+   "nb_fiches": 6,
+   "nb_tableaux": 18,
+   "verification": {
+    "fiches": [
+     6,
+     6
+    ],
+    "tableaux": [
+     18,
+     18
+    ],
+    "familles": [
+     3,
+     3
+    ],
+    "conventions": [
+     2,
+     2
+    ],
+    "ecartes": [],
+    "remarques": [
+     13,
+     16
+    ]
+   },
+   "remarques": [
+    {
+     "texte": "Le tableau 40 (page 26) mentionne 'RG3' au lieu de 'RG2' pour la période 2041-2055, alors que RG2 est le code correct utilisé partout ailleurs dans le document.",
+     "type": "incoherence_document",
+     "page": 26,
+     "citation": "RG3 | Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+     "verifiee": true
+    },
+    {
+     "texte": "La fiche RG2 (page 32) indique 'Longueur concernée' au lieu de 'Surface concernée' comme dans la fiche RG1 (page 30), alors que la valeur est en m² (4 625 m²).",
+     "type": "incoherence_document",
+     "page": 32,
+     "citation": "Longueur concernée | 4 625 m²",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans le tableau 37 (page 22), l'action ES1 est libellée 'Suivi du Lotier' mais dans le tableau 42 (page 29) et la fiche ES1 (page 35), elle est libellée 'Suivi des habitats naturels et de la flore à enjeu'.",
+     "type": "incoherence_document",
+     "page": 22,
+     "citation": "ES1 : Suivi du Lotier ES2 : Suivi de l'avifaune cible",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans le tableau 37 (page 22), l'action ES2 est libellée 'Suivi de l'avifaune cible' mais dans le tableau 42 (page 29) et la fiche ES2 (page 38), elle est libellée 'Suivi de l'avifaune' ou 'Suivi de l'avifaune à enjeu'.",
+     "type": "incoherence_document",
+     "page": 22,
+     "citation": "ES1 : Suivi du Lotier ES2 : Suivi de l'avifaune cible",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans le tableau 41 (page 28), l'action ES1 est libellée 'Suivi des habitats naturels et de la flore à enjeu' mais dans le tableau 42 (page 29), elle est libellée 'Suivi des habitats naturels et de la flore' (sans 'à enjeu').",
+     "type": "incoherence_document",
+     "page": 29,
+     "citation": "ES1 | Suivi des habitats naturels et de la flore",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans le tableau 43 (page 43), l'action FG1 apparaît deux fois avec des libellés différents : 'Mise à disposition du foncier' et 'Coordination et animation du plan de gestion • Comité de suivi • Bilan d'activité • Coordination générale'.",
+     "type": "incoherence_document",
+     "page": 43,
+     "citation": "FG1 | Mise à disposition du foncier | 53 710",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans le tableau 43 (page 43), l'action FG2 apparaît deux fois avec des libellés différents : 'Actualisation du plan de gestion' et 'Bilan de PG'.",
+     "type": "incoherence_document",
+     "page": 43,
+     "citation": "FG2 | Actualisation du plan de gestion | 10 000",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans le tableau 44 (page 44), la dette compensatoire pour le milieu arboré est indiquée à 0,46 ha, mais dans le texte de la page 44, il est écrit '0,43 ha de milieu arboré'.",
+     "type": "incoherence_document",
+     "page": 44,
+     "citation": "les besoins compensatoires sont à minima de 0,65 ha de milieu ouvert rudéral, 0,43 ha de milieu arboré",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans le tableau 44 (page 44), la dette compensatoire pour le milieu arboré est indiquée à 0,46 ha, mais dans le texte de la page 44, il est écrit '0,43 ha de milieu arboré', créant une incohérence de 0,03 ha.",
+     "type": "incoherence_document",
+     "page": 44,
+     "citation": "Milieu arboré | 0 ha | 0,46 ha (sécurisation, restauration et gestion) | 0,46 ha | 0,46 ha | Oui",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans le tableau 45 (page 46), la superficie totale des unités de gestion est de 6 969 + 4 625 = 11 594 m², ce qui correspond à 1,1594 ha, arrondi à 1,16 ha dans le texte, mais le tableau 29 (page 2) indique '11 594 m²' pour la surface attribuée.",
+     "type": "qualite_de_lecture",
+     "page": 46,
+     "citation": "Lotier grêle et hispide | UG1 | 6 969",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans la fiche ES1 (page 37), le phasage prévisionnel indique '2041 à 2046' et '2047 à 2053' et '2054 à 2055', ce qui ne correspond pas aux périodes standardisées N+16 à N+20, N+21 à N+25, N+26 à N+30 utilisées dans les autres fiches.",
+     "type": "incoherence_document",
+     "page": 37,
+     "citation": "2041 à 2046 | 2047 à 2053 | 2054 à 2055",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans la fiche FG1 (page 41), le phasage prévisionnel indique '2041 à 2046' et '2047 à 2053' et '2054 à 2055', ce qui ne correspond pas aux périodes standardisées N+16 à N+20, N+21 à N+25, N+26 à N+30 utilisées dans les autres fiches.",
+     "type": "incoherence_document",
+     "page": 41,
+     "citation": "2041 à 2046 | 2047 à 2053 | 2054 à 2055",
+     "verifiee": true
+    },
+    {
+     "texte": "Dans le tableau 39 (page 25), l'action RG2 pour la période 2026 indique 'Entretien' dans la colonne N+1, mais dans le tableau 40 (page 26), l'action est renommée RG3 avec le même libellé.",
+     "type": "incoherence_document",
+     "page": 26,
+     "citation": "RG3 | Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés | Débroussaillage | Entretien",
+     "verifiee": true
+    },
+    {
+     "texte": "La fiche ES2 (page 38) est tronquée dans le document fourni, avec '[… tableau tronqué : 15 lignes au total]', empêchant l'extraction complète des champs de la fiche.",
+     "type": "qualite_de_lecture",
+     "page": 38,
+     "citation": "[… tableau tronqué : 15 lignes au total]",
+     "verifiee": false
+    },
+    {
+     "texte": "La fiche FG2 (page 42) est tronquée dans le document fourni, avec '[… tableau tronqué : 13 lignes au total]', empêchant l'extraction complète des champs de la fiche.",
+     "type": "qualite_de_lecture",
+     "page": 42,
+     "citation": "[… tableau tronqué : 13 lignes au total]",
+     "verifiee": false
+    },
+    {
+     "texte": "Dans le tableau 33 (page 16), le document indique '[… tableau tronqué : 21 lignes au total]', empêchant l'extraction complète de la liste des oiseaux.",
+     "type": "qualite_de_lecture",
+     "page": 16,
+     "citation": "[… tableau tronqué : 21 lignes au total]",
+     "verifiee": false
+    }
+   ],
+   "tri_remarques": {
+    "questions": 0,
+    "anomalies": 12,
+    "internes": 4
+   },
+   "remarques_internes": [
+    {
+     "texte": "Dans le tableau 45 (page 46), la superficie totale des unités de gestion est de 6 969 + 4 625 = 11 594 m², ce qui correspond à 1,1594 ha, arrondi à 1,16 ha dans le texte, mais le tableau 29 (page 2) indique '11 594 m²' pour la surface attribuée.",
+     "page": 46,
+     "citation": "Lotier grêle et hispide | UG1 | 6 969",
+     "type": "qualite_de_lecture",
+     "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+    },
+    {
+     "texte": "La fiche ES2 (page 38) est tronquée dans le document fourni, avec '[… tableau tronqué : 15 lignes au total]', empêchant l'extraction complète des champs de la fiche.",
+     "page": 38,
+     "motif": "citation introuvable"
+    },
+    {
+     "texte": "La fiche FG2 (page 42) est tronquée dans le document fourni, avec '[… tableau tronqué : 13 lignes au total]', empêchant l'extraction complète des champs de la fiche.",
+     "page": 42,
+     "motif": "citation introuvable"
+    },
+    {
+     "texte": "Dans le tableau 33 (page 16), le document indique '[… tableau tronqué : 21 lignes au total]', empêchant l'extraction complète de la liste des oiseaux.",
+     "page": 16,
+     "motif": "citation introuvable"
+    }
+   ]
+  }
+ },
+ "cartes_classeur": [],
+ "regles": {
+  "source": "carte",
+  "unite": "\\b(?:UG)\\s?(?:n°\\s?)?-?\\s?(\\d{1,3}[a-z]?)\\b",
+  "code": "\\b(RG|ES|FG)\\s?[-.]?\\s?(\\d{1,3}[a-z]?)\\b",
+  "champs": {
+   "unites": "Localisation",
+   "parcelles": "parcelles\\s+concern[ée]es",
+   "objectif": "Objectif\\(s\\)\\s+opérationnel\\(s\\)|Objectif\\(s\\)\\s+à\\s+long\\s+terme",
+   "periode": "Période\\s+d'intervention|Phasage\\s+prévisionnel"
+  }
+ },
+ "faits": [
+  {
+   "type": "ancre_temporelle",
+   "cle": "projet",
+   "valeur": {
+    "etat_zero": null,
+    "N": 2025,
+    "bloc": "p025_g1",
+    "grilles": [
+     "p025_g1",
+     "p026_g1",
+     "p026_g2",
+     "p027_g1",
+     "p031_g2",
+     "p034_g2",
+     "p037_g2",
+     "p038_g2",
+     "p041_g1",
+     "p042_g1"
+    ],
+    "nature": "planning_pdf"
+   },
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.25 grille p025_g1",
+    "extrait": "N = 2025 (10 grille(s), colonnes année − rang)"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "famille_code",
+   "cle": "RG",
+   "valeur": "Restauration et Gestion",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.22",
+    "extrait": "Restauration et Gestion (RG)"
+   },
+   "methode": "llm",
+   "confiance_extraction": 0.9
+  },
+  {
+   "type": "famille_code",
+   "cle": "ES",
+   "valeur": "Etudes et Suivis écologiques",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.22",
+    "extrait": "Etudes et Suivis écologiques (ES)"
+   },
+   "methode": "llm",
+   "confiance_extraction": 0.9
+  },
+  {
+   "type": "famille_code",
+   "cle": "FG",
+   "valeur": "Fonctionnement Général",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.22",
+    "extrait": "Fonctionnement Général (FG)"
+   },
+   "methode": "llm",
+   "confiance_extraction": 0.9
+  },
+  {
+   "type": "action_intitule",
+   "cle": "RG1",
+   "valeur": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.30",
+    "extrait": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "RG2",
+   "valeur": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.32",
+    "extrait": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "ES1",
+   "valeur": "Suivi des habitats naturels et de la flore à enjeu",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.35",
+    "extrait": "Suivi des habitats naturels et de la flore à enjeu"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "ES2",
+   "valeur": "Suivi de l'avifaune à enjeu",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.38",
+    "extrait": "Suivi de l'avifaune à enjeu"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "FG1",
+   "valeur": "Animation du plan de gestion",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.39",
+    "extrait": "Animation du plan de gestion"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "FG2",
+   "valeur": "Evaluation et mise à jour du plan de gestion",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.42",
+    "extrait": "Evaluation et mise à jour du plan de gestion"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "ancre_temporelle",
+   "cle": "projet",
+   "valeur": {
+    "etat_zero": 2025,
+    "N": 2025,
+    "bloc": "carte",
+    "titre": "carte du document",
+    "nature": "llm"
+   },
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.2",
+    "extrait": "1,16 ha (2025-2055)"
+   },
+   "methode": "llm",
+   "confiance_extraction": 0.8
+  },
+  {
+   "type": "horizon",
+   "cle": "projet",
+   "valeur": {
+    "fin": 2055
+   },
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.2",
+    "extrait": "1,16 ha (2025-2055)"
+   },
+   "methode": "llm",
+   "confiance_extraction": 0.8
+  },
+  {
+   "type": "ug_libelle",
+   "cle": "UG1",
+   "valeur": "Prairie",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.23 tableau 1 (carte)",
+    "extrait": "UG1 : Prairie"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "ug_surface_doc",
+   "cle": "UG1",
+   "valeur": 6969.0,
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.23 tableau 1 (carte)",
+    "extrait": "6 969"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "ug_libelle",
+   "cle": "UG2",
+   "valeur": "Mosaïque d’habitats : milieux semi-ouverts et boisés",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.23 tableau 1 (carte)",
+    "extrait": "UG2 : Mosaïque d’habitats : milieux semi-ouverts et boisés"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "ug_surface_doc",
+   "cle": "UG2",
+   "valeur": 4625.0,
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.23 tableau 1 (carte)",
+    "extrait": "4 625"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_ug",
+   "cle": "RG1",
+   "valeur": [
+    "UG1"
+   ],
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "RG1 → UG1"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "RG1",
+   "valeur": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_objectif",
+   "cle": "RG1",
+   "valeur": "Bilan des interventions réalisées",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Bilan des interventions réalisées"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_ug",
+   "cle": "RG2",
+   "valeur": [
+    "UG2"
+   ],
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "RG2 → UG2"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "RG2",
+   "valeur": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_objectif",
+   "cle": "RG2",
+   "valeur": "Bilan des interventions réalisées",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Bilan des interventions réalisées"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_ug",
+   "cle": "ES1",
+   "valeur": [
+    "UG1"
+   ],
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "ES1 → UG1"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "ES1",
+   "valeur": "Suivi des habitats naturels et de la flore à enjeu",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Suivi des habitats naturels et de la flore à enjeu"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_objectif",
+   "cle": "ES1",
+   "valeur": "Nombre de passages Surface cartographiée",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Nombre de passages Surface cartographiée"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_ug",
+   "cle": "ES2",
+   "valeur": [
+    "UG2"
+   ],
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "ES2 → UG2"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "ES2",
+   "valeur": "Suivi de l'avifaune",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Suivi de l'avifaune"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_objectif",
+   "cle": "ES2",
+   "valeur": "Nombre de passages Nombre de points d'écoute",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Nombre de passages Nombre de points d'écoute"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_ug",
+   "cle": "FG1",
+   "valeur": [],
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "FG1 → /"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "FG1",
+   "valeur": "Animation du plan de gestion",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Animation du plan de gestion"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_objectif",
+   "cle": "FG1",
+   "valeur": "Transmission des bilans d'activité (oui/non)",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Transmission des bilans d'activité (oui/non)"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_ug",
+   "cle": "FG2",
+   "valeur": [],
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "FG2 → /"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_intitule",
+   "cle": "FG2",
+   "valeur": "Evaluation et mise à jour du plan de gestion",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "Evaluation et mise à jour du plan de gestion"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "action_objectif",
+   "cle": "FG2",
+   "valeur": "- Révision du Plan de gestion (oui / non) - Production du bilan du plan de gestion (oui/non)",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.28 tableau 1 (carte)",
+    "extrait": "- Révision du Plan de gestion (oui / non) - Production du bilan du plan de gestion (oui/non)"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "ug_libelle",
+   "cle": "UG1",
+   "valeur": "Lotier grêle et hispide",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.46 tableau 1 (carte)",
+    "extrait": "UG1 : Lotier grêle et hispide"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "ug_surface_doc",
+   "cle": "UG1",
+   "valeur": 6969.0,
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.46 tableau 1 (carte)",
+    "extrait": "6 969"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "ug_libelle",
+   "cle": "UG2",
+   "valeur": "Avifaune des milieux semi-ouverts et boisés",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.46 tableau 1 (carte)",
+    "extrait": "UG2 : Avifaune des milieux semi-ouverts et boisés"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "ug_surface_doc",
+   "cle": "UG2",
+   "valeur": 4625.0,
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.46 tableau 1 (carte)",
+    "extrait": "4 625"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  },
+  {
+   "type": "ancre_temporelle",
+   "cle": "projet",
+   "valeur": {
+    "etat_zero": 2024,
+    "N": 2025,
+    "bloc": "p.25 tableau 1",
+    "titre": "frise de périodicité",
+    "nature": "planning"
+   },
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.25 tableau 1",
+    "extrait": "État zéro 2024 / N = 2025"
+   },
+   "methode": "deterministe",
+   "confiance_extraction": 1.0
+  }
+ ],
+ "referentiel": {
+  "projet": {
+   "nom": {
+    "valeur": "9 avenue Marc Nouaux 33610 Cestas - Tel : 05 56 49 59 78 - Mail : contact@riviere-environnement.fr",
+    "confiance": "moyenne",
+    "sources": [
+     {
+      "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+      "loc": "pied de page",
+      "extrait": "9 avenue Marc Nouaux 33610 Cestas - Tel : 05 56 49 59 78 - Mail : contact@riviere-environnement.fr"
+     }
+    ],
+    "note": null
+   },
+   "annee_fin": {
+    "valeur": 2055,
+    "confiance": "moyenne",
+    "sources": [
+     {
+      "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+      "loc": "p.2",
+      "extrait": "1,16 ha (2025-2055)"
+     }
+    ],
+    "note": null
+   },
+   "annee_N": {
+    "valeur": 2025,
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+      "loc": "p.25 grille p025_g1",
+      "extrait": "N = 2025 (10 grille(s), colonnes année − rang)"
+     },
+     {
+      "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+      "loc": "p.2",
+      "extrait": "1,16 ha (2025-2055)"
+     }
+    ],
+    "note": "Année N lue sur les colonnes du planning (année − rang)"
+   },
+   "annee_etat_zero": {
+    "valeur": 2025,
+    "confiance": "basse",
+    "sources": [
+     {
+      "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+      "loc": "p.2",
+      "extrait": "1,16 ha (2025-2055)"
+     }
+    ],
+    "note": null
+   },
+   "duree_ans": {
+    "valeur": 31,
+    "confiance": "moyenne",
+    "sources": [
+     {
+      "doc": "(calcul)",
+      "loc": "fin − N + 1",
+      "extrait": "2055 − 2025 + 1"
+     }
+    ],
+    "note": "Durée déduite de l'année N et de l'année de fin"
+   },
+   "duree_gestion": {
+    "valeur": {
+     "valeur": 31,
+     "unite": "an",
+     "debut": 2025,
+     "fin": 2055
+    },
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+      "loc": "p.25 grille p025_g1",
+      "extrait": "N = 2025 (10 grille(s), colonnes année − rang)"
+     },
+     {
+      "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+      "loc": "p.2",
+      "extrait": "1,16 ha (2025-2055)"
+     }
+    ],
+    "note": "Année N lue sur les colonnes du planning (année − rang)"
+   }
+  },
+  "ugs": [
+   {
+    "ug_code": "UG1",
+    "libelle": {
+     "valeur": "Prairie",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.23 tableau 1 (carte)",
+       "extrait": "UG1 : Prairie"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.46 tableau 1 (carte)",
+       "extrait": "UG1 : Lotier grêle et hispide"
+      }
+     ],
+     "note": null
+    },
+    "type_erc": {
+     "valeur": null,
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "unites_de_gestion::nom=UG1",
+       "extrait": "1 entité(s), 1.776 ha"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.23 tableau 1 (carte)",
+       "extrait": "UG1 : Prairie"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.46 tableau 1 (carte)",
+       "extrait": "UG1 : Lotier grêle et hispide"
+      }
+     ],
+     "note": null
+    },
+    "zone_sig": {
+     "valeur": "unites_de_gestion::nom=UG1",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "unites_de_gestion::nom=UG1",
+       "extrait": "1 entité(s), 1.776 ha"
+      }
+     ],
+     "note": "Attribut « nom » ; 0 % des parcelles retrouvées dans les documents"
+    },
+    "surface_ha": {
+     "valeur": 1.776,
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "unites_de_gestion::nom=UG1",
+       "extrait": "1 entité(s), 1.776 ha"
+      }
+     ],
+     "note": null
+    }
+   },
+   {
+    "ug_code": "UG2",
+    "libelle": {
+     "valeur": "Mosaïque d’habitats : milieux semi-ouverts et boisés",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.23 tableau 1 (carte)",
+       "extrait": "UG2 : Mosaïque d’habitats : milieux semi-ouverts et boisés"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.46 tableau 1 (carte)",
+       "extrait": "UG2 : Avifaune des milieux semi-ouverts et boisés"
+      }
+     ],
+     "note": null
+    },
+    "type_erc": {
+     "valeur": null,
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "unites_de_gestion::nom=UG2",
+       "extrait": "1 entité(s), 0.524 ha"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.23 tableau 1 (carte)",
+       "extrait": "UG2 : Mosaïque d’habitats : milieux semi-ouverts et boisés"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.46 tableau 1 (carte)",
+       "extrait": "UG2 : Avifaune des milieux semi-ouverts et boisés"
+      }
+     ],
+     "note": null
+    },
+    "zone_sig": {
+     "valeur": "unites_de_gestion::nom=UG2",
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "unites_de_gestion::nom=UG2",
+       "extrait": "1 entité(s), 0.524 ha"
+      }
+     ],
+     "note": "Attribut « nom » ; 0 % des parcelles retrouvées dans les documents"
+    },
+    "surface_ha": {
+     "valeur": 0.524,
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "SIG",
+       "loc": "unites_de_gestion::nom=UG2",
+       "extrait": "1 entité(s), 0.524 ha"
+      }
+     ],
+     "note": null
+    }
+   }
+  ],
+  "actions": [
+   {
+    "code": "ES1",
+    "intitule": {
+     "valeur": "Suivi des habitats naturels et de la flore à enjeu",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.35",
+       "extrait": "Suivi des habitats naturels et de la flore à enjeu"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.28 tableau 1 (carte)",
+       "extrait": "Suivi des habitats naturels et de la flore à enjeu"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "Etudes et Suivis écologiques",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.22",
+       "extrait": "Etudes et Suivis écologiques (ES)"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG1"
+     ],
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.28 tableau 1 (carte)",
+       "extrait": "ES1 → UG1"
+      }
+     ],
+     "note": "Une seule source"
+    },
+    "cible": {
+     "valeur": null,
+     "confiance": "basse",
+     "sources": [],
+     "note": null
+    }
+   },
+   {
+    "code": "ES2",
+    "intitule": {
+     "valeur": "Suivi de l'avifaune",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.38",
+       "extrait": "Suivi de l'avifaune à enjeu"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.28 tableau 1 (carte)",
+       "extrait": "Suivi de l'avifaune"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "Etudes et Suivis écologiques",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.22",
+       "extrait": "Etudes et Suivis écologiques (ES)"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG2"
+     ],
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.28 tableau 1 (carte)",
+       "extrait": "ES2 → UG2"
+      }
+     ],
+     "note": "Une seule source"
+    },
+    "cible": {
+     "valeur": null,
+     "confiance": "basse",
+     "sources": [],
+     "note": null
+    }
+   },
+   {
+    "code": "FG1",
+    "intitule": {
+     "valeur": "Animation du plan de gestion",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.39",
+       "extrait": "Animation du plan de gestion"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.28 tableau 1 (carte)",
+       "extrait": "Animation du plan de gestion"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "Fonctionnement Général",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.22",
+       "extrait": "Fonctionnement Général (FG)"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [],
+     "confiance": "basse",
+     "sources": [],
+     "note": "Aucune UG trouvée"
+    },
+    "cible": {
+     "valeur": null,
+     "confiance": "basse",
+     "sources": [],
+     "note": null
+    }
+   },
+   {
+    "code": "FG2",
+    "intitule": {
+     "valeur": "Evaluation et mise à jour du plan de gestion",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.42",
+       "extrait": "Evaluation et mise à jour du plan de gestion"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.28 tableau 1 (carte)",
+       "extrait": "Evaluation et mise à jour du plan de gestion"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "Fonctionnement Général",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.22",
+       "extrait": "Fonctionnement Général (FG)"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [],
+     "confiance": "basse",
+     "sources": [],
+     "note": "Aucune UG trouvée"
+    },
+    "cible": {
+     "valeur": null,
+     "confiance": "basse",
+     "sources": [],
+     "note": null
+    }
+   },
+   {
+    "code": "RG1",
+    "intitule": {
+     "valeur": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.30",
+       "extrait": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.28 tableau 1 (carte)",
+       "extrait": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "Restauration et Gestion",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.22",
+       "extrait": "Restauration et Gestion (RG)"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG1"
+     ],
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.28 tableau 1 (carte)",
+       "extrait": "RG1 → UG1"
+      }
+     ],
+     "note": "Une seule source"
+    },
+    "cible": {
+     "valeur": null,
+     "confiance": "basse",
+     "sources": [],
+     "note": null
+    }
+   },
+   {
+    "code": "RG2",
+    "intitule": {
+     "valeur": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.32",
+       "extrait": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés"
+      },
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.28 tableau 1 (carte)",
+       "extrait": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés"
+      }
+     ],
+     "note": null
+    },
+    "nature": {
+     "valeur": "Restauration et Gestion",
+     "confiance": "haute",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.22",
+       "extrait": "Restauration et Gestion (RG)"
+      }
+     ],
+     "note": null
+    },
+    "ugs": {
+     "valeur": [
+      "UG2"
+     ],
+     "confiance": "moyenne",
+     "sources": [
+      {
+       "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+       "loc": "p.28 tableau 1 (carte)",
+       "extrait": "RG2 → UG2"
+      }
+     ],
+     "note": "Une seule source"
+    },
+    "cible": {
+     "valeur": null,
+     "confiance": "basse",
+     "sources": [],
+     "note": null
+    }
+   }
+  ],
+  "obligations_surfaciques": [],
+  "questions": [
+   {
+    "id": "action_ug_absente:FG1",
+    "regle": "action_ug_absente",
+    "portee": "FG1",
+    "texte": "FG1 (Animation du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "options": [],
+    "proposition": null,
+    "sources": [],
+    "bloquante": true
+   },
+   {
+    "id": "action_ug_absente:FG2",
+    "regle": "action_ug_absente",
+    "portee": "FG2",
+    "texte": "FG2 (Evaluation et mise à jour du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "options": [],
+    "proposition": null,
+    "sources": [],
+    "bloquante": true
+   },
+   {
+    "id": "couche_orpheline:Enjeux_arbres_Pt_20240923",
+    "regle": "couche_orpheline",
+    "portee": "Enjeux_arbres_Pt_20240923",
+    "texte": "La couche « Enjeux_arbres_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+    "options": [
+     "Évitement sans gestion (contexte)",
+     "Nouvelle UG",
+     "Ignorer"
+    ],
+    "proposition": null,
+    "sources": [
+     {
+      "doc": "SIG",
+      "loc": "Enjeux_arbres_Pt_20240923",
+      "extrait": null
+     }
+    ],
+    "bloquante": true
+   },
+   {
+    "id": "couche_orpheline:Enjeux_bois_mort_Pt_20240923",
+    "regle": "couche_orpheline",
+    "portee": "Enjeux_bois_mort_Pt_20240923",
+    "texte": "La couche « Enjeux_bois_mort_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+    "options": [
+     "Évitement sans gestion (contexte)",
+     "Nouvelle UG",
+     "Ignorer"
+    ],
+    "proposition": null,
+    "sources": [
+     {
+      "doc": "SIG",
+      "loc": "Enjeux_bois_mort_Pt_20240923",
+      "extrait": null
+     }
+    ],
+    "bloquante": true
+   },
+   {
+    "id": "couche_orpheline:Enjeux_lisieres_Li_20240923",
+    "regle": "couche_orpheline",
+    "portee": "Enjeux_lisieres_Li_20240923",
+    "texte": "La couche « Enjeux_lisieres_Li_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+    "options": [
+     "Évitement sans gestion (contexte)",
+     "Nouvelle UG",
+     "Ignorer"
+    ],
+    "proposition": null,
+    "sources": [
+     {
+      "doc": "SIG",
+      "loc": "Enjeux_lisieres_Li_20240923",
+      "extrait": null
+     }
+    ],
+    "bloquante": true
+   }
+  ],
+  "anomalies": [
+   {
+    "texte": "Le tableau 40 (page 26) mentionne 'RG3' au lieu de 'RG2' pour la période 2041-2055, alors que RG2 est le code correct utilisé partout ailleurs dans le document.",
+    "page": 26,
+    "citation": "RG3 | Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "La fiche RG2 (page 32) indique 'Longueur concernée' au lieu de 'Surface concernée' comme dans la fiche RG1 (page 30), alors que la valeur est en m² (4 625 m²).",
+    "page": 32,
+    "citation": "Longueur concernée | 4 625 m²",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "Dans le tableau 37 (page 22), l'action ES1 est libellée 'Suivi du Lotier' mais dans le tableau 42 (page 29) et la fiche ES1 (page 35), elle est libellée 'Suivi des habitats naturels et de la flore à enjeu'.",
+    "page": 22,
+    "citation": "ES1 : Suivi du Lotier ES2 : Suivi de l'avifaune cible",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "Dans le tableau 37 (page 22), l'action ES2 est libellée 'Suivi de l'avifaune cible' mais dans le tableau 42 (page 29) et la fiche ES2 (page 38), elle est libellée 'Suivi de l'avifaune' ou 'Suivi de l'avifaune à enjeu'.",
+    "page": 22,
+    "citation": "ES1 : Suivi du Lotier ES2 : Suivi de l'avifaune cible",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "Dans le tableau 41 (page 28), l'action ES1 est libellée 'Suivi des habitats naturels et de la flore à enjeu' mais dans le tableau 42 (page 29), elle est libellée 'Suivi des habitats naturels et de la flore' (sans 'à enjeu').",
+    "page": 29,
+    "citation": "ES1 | Suivi des habitats naturels et de la flore",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "Dans le tableau 43 (page 43), l'action FG1 apparaît deux fois avec des libellés différents : 'Mise à disposition du foncier' et 'Coordination et animation du plan de gestion • Comité de suivi • Bilan d'activité • Coordination générale'.",
+    "page": 43,
+    "citation": "FG1 | Mise à disposition du foncier | 53 710",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "Dans le tableau 43 (page 43), l'action FG2 apparaît deux fois avec des libellés différents : 'Actualisation du plan de gestion' et 'Bilan de PG'.",
+    "page": 43,
+    "citation": "FG2 | Actualisation du plan de gestion | 10 000",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "Dans le tableau 44 (page 44), la dette compensatoire pour le milieu arboré est indiquée à 0,46 ha, mais dans le texte de la page 44, il est écrit '0,43 ha de milieu arboré'.",
+    "page": 44,
+    "citation": "les besoins compensatoires sont à minima de 0,65 ha de milieu ouvert rudéral, 0,43 ha de milieu arboré",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "Dans le tableau 44 (page 44), la dette compensatoire pour le milieu arboré est indiquée à 0,46 ha, mais dans le texte de la page 44, il est écrit '0,43 ha de milieu arboré', créant une incohérence de 0,03 ha.",
+    "page": 44,
+    "citation": "Milieu arboré | 0 ha | 0,46 ha (sécurisation, restauration et gestion) | 0,46 ha | 0,46 ha | Oui",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "Dans la fiche ES1 (page 37), le phasage prévisionnel indique '2041 à 2046' et '2047 à 2053' et '2054 à 2055', ce qui ne correspond pas aux périodes standardisées N+16 à N+20, N+21 à N+25, N+26 à N+30 utilisées dans les autres fiches.",
+    "page": 37,
+    "citation": "2041 à 2046 | 2047 à 2053 | 2054 à 2055",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "Dans la fiche FG1 (page 41), le phasage prévisionnel indique '2041 à 2046' et '2047 à 2053' et '2054 à 2055', ce qui ne correspond pas aux périodes standardisées N+16 à N+20, N+21 à N+25, N+26 à N+30 utilisées dans les autres fiches.",
+    "page": 41,
+    "citation": "2041 à 2046 | 2047 à 2053 | 2054 à 2055",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   },
+   {
+    "texte": "Dans le tableau 39 (page 25), l'action RG2 pour la période 2026 indique 'Entretien' dans la colonne N+1, mais dans le tableau 40 (page 26), l'action est renommée RG3 avec le même libellé.",
+    "page": 26,
+    "citation": "RG3 | Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés | Débroussaillage | Entretien",
+    "type": "incoherence_document",
+    "source": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf"
+   }
+  ],
+  "controles": [],
+  "decisions": {
+   "alias_codes": {},
+   "alias_parcelles": {},
+   "parcelles_a_ajouter": [],
+   "requalifications_blocs": {},
+   "couches_contexte": [],
+   "couches_ignorees": [],
+   "decisions_annexes": {},
+   "roles_tableaux": {},
+   "commentaires": [],
+   "arrete": {}
+  },
+  "stats": {
+   "cellules": 38,
+   "confiance": {
+    "moyenne": 15,
+    "haute": 14,
+    "basse": 9
+   },
+   "questions": 5,
+   "questions_bloquantes": 5,
+   "faits": 39,
+   "faits_user": 0,
+   "geomce_pret_pct": 22,
+   "anomalies": 12
+  }
+ },
+ "durees_s": {
+  "inventaire": 0.53,
+  "pdfvisuel": 0.0,
+  "carte": 0.02,
+  "sig": 0.07,
+  "referentiel": 0.05,
+  "reconciliation": 0.0,
+  "pipeline": 0.68
+ },
+ "tokens_llm": {
+  "n": 0,
+  "prompt": 0,
+  "reasoning": 0,
+  "completion": 0,
+  "total": 0
+ }
+}

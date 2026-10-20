@@ -1,0 +1,27 @@
+{
+  "job_id": "1ad2067b-63cf-44d9-9879-a644fe91fc79",
+  "status": "running",
+  "etape": "3/6 extraction (fiche, synthèse, articles)",
+  "document_id": "bbd2a50c-8d24-4d35-b383-19d9a06775bf",
+  "projet_id": "8d061654-c30c-4ced-95a6-99297b43020a",
+  "nom": "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+  "date_document": "2026-10-16",
+  "llm": {
+    "appels": 1,
+    "appels_api": 1,
+    "appels_cache": 0,
+    "echecs": 0,
+    "tokens_prompt": 16451,
+    "tokens_completion": 8194,
+    "tokens_total": 24645,
+    "secondes": 134.2,
+    "par_tag": {
+      "fiche": 1
+    },
+    "par_modele": {
+      "mistral-large-4-0": 1
+    }
+  },
+  "erreur": null,
+  "updated_at": "2026-10-16T13:37:52.505421+00:00"
+}

@@ -22,7 +22,10 @@ import time
 from typing import Optional
 
 from pydantic import BaseModel, Field, ValidationError
-from mistralai import Mistral
+try:
+    from mistralai.client import Mistral  # SDK 2 / 3
+except ImportError:
+    from mistralai import Mistral  # SDK 1
 
 logger = logging.getLogger("match_prescriptions")
 

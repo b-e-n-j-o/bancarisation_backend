@@ -1,0 +1,21 @@
+{
+ "pdf": "c12.pdf",
+ "description": "Deux couleurs dans la même ligne (deux opérations) et une cellule fusionnée colorée sans texte.",
+ "grilles": [
+  {
+   "page": 1,
+   "type_axe": "mois",
+   "lignes": [
+    {
+     "libelle_contient": "Fauche",
+     "couleur": [
+      3,
+      4,
+      8
+     ]
+    }
+   ]
+  }
+ ],
+ "exhaustif": true
+}

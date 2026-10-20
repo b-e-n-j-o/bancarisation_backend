@@ -105,7 +105,7 @@ def lister_actions(
 
 _CHAMPS_PERIODE = frozenset({"annee", "mois_debut", "mois_fin"})
 _CHAMPS_BUDGET = frozenset(
-    {"montant_ht", "montant_engage", "montant_realise", "montant_ttc"}
+    {"montant_ht", "montant_engage", "montant_realise", "montant_initial", "montant_ttc", "taux_tva"}
 )
 
 

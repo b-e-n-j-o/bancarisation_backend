@@ -420,7 +420,6 @@ def renommer_ug(projet_id: UUID, ug_id: str, libelle: str) -> dict[str, Any]:
                         (clean, str(projet_id), ug_id),
                     )
                     updated += cur.rowcount or 0
-            conn.commit()
     except GeometryIngestError:
         raise
     except Exception as exc:
@@ -430,3 +429,79 @@ def renommer_ug(projet_id: UUID, ug_id: str, libelle: str) -> dict[str, Any]:
         raise GeometryIngestError(f"UG introuvable: {ug_id}")
 
     return {"ug_id": ug_id, "libelle": clean, "nb_lignes": updated}
+
+
+_ERC = {"evitement", "reduction", "compensation", "accompagnement", "autre"}
+
+
+def mettre_a_jour_ug(
+    projet_id: UUID,
+    ug_id: str,
+    *,
+    libelle: str | None = None,
+    categorie_erc: str | None = None,
+) -> dict[str, Any]:
+    """Renomme une UG et/ou change sa classe ERC. Les géométries ne bougent pas."""
+    clean_lib = (libelle or "").strip() or None
+    cat = (categorie_erc or "").strip().lower() or None
+    if cat and cat not in _ERC:
+        raise GeometryIngestError(f"Classe inconnue : {categorie_erc}")
+    if not clean_lib and not cat:
+        raise GeometryIngestError("Rien à modifier.")
+    if not (ug_id or "").strip():
+        raise GeometryIngestError("ug_id manquant.")
+
+    updated = 0
+    try:
+        with connect_utilisateur() as conn:
+            with conn.cursor() as cur:
+                for table in _UG_TABLES:
+                    cur.execute(
+                        f"""
+                        UPDATE bancarisation.{table}
+                        SET libelle = COALESCE(%s, libelle),
+                            categorie_erc = COALESCE(%s, categorie_erc),
+                            properties = jsonb_set(
+                                COALESCE(properties, '{{}}'::jsonb),
+                                '{{categorie_erc}}',
+                                to_jsonb(COALESCE(%s, properties->>'categorie_erc', 'autre')),
+                                true
+                            ),
+                            updated_at = now()
+                        WHERE projet_id = %s AND ug_id = %s AND statut = 'ug'
+                        """,
+                        (clean_lib, cat, cat, str(projet_id), ug_id),
+                    )
+                    updated += cur.rowcount or 0
+    except GeometryIngestError:
+        raise
+    except Exception as exc:
+        raise GeometryIngestError(f"Mise à jour UG impossible: {exc}") from exc
+
+    if updated == 0:
+        raise GeometryIngestError(f"UG introuvable: {ug_id}")
+    return {"ug_id": ug_id, "libelle": clean_lib, "categorie_erc": cat, "nb_lignes": updated}
+
+
+def supprimer_ug(projet_id: UUID, ug_id: str) -> dict[str, Any]:
+    """Supprime l'unité et ses géométries (surf, lin, pct)."""
+    if not (ug_id or "").strip():
+        raise GeometryIngestError("ug_id manquant.")
+    deleted = 0
+    try:
+        with connect_utilisateur() as conn:
+            with conn.cursor() as cur:
+                for table in _UG_TABLES:
+                    cur.execute(
+                        f"""
+                        DELETE FROM bancarisation.{table}
+                        WHERE projet_id = %s AND ug_id = %s
+                        """,
+                        (str(projet_id), ug_id),
+                    )
+                    deleted += cur.rowcount or 0
+    except Exception as exc:
+        raise GeometryIngestError(f"Suppression UG impossible: {exc}") from exc
+    if deleted == 0:
+        raise GeometryIngestError(f"UG introuvable: {ug_id}")
+    return {"ug_id": ug_id, "nb_supprimees": deleted}

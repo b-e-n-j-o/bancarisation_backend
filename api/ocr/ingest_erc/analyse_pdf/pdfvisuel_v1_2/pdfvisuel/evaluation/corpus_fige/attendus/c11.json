@@ -1,0 +1,21 @@
+{
+ "pdf": "c11.pdf",
+ "description": "En-tête de mois entièrement coloré (style) et croix dans le corps : la couleur d'en-tête\nne doit PAS être lue comme une marque.",
+ "grilles": [
+  {
+   "page": 1,
+   "type_axe": "mois",
+   "lignes": [
+    {
+     "libelle_contient": "écoute",
+     "croix": [
+      4,
+      5,
+      6
+     ]
+    }
+   ]
+  }
+ ],
+ "exhaustif": true
+}

@@ -1,0 +1,815 @@
+{
+ "config": {
+  "ocr_backend": "hybride",
+  "ocr_model": "mistral-ocr-latest",
+  "llm_actif": true,
+  "llm_model": "zai-glm-5-3",
+  "reasoning_effort": "medium",
+  "reasoning_effort_routeur": "low",
+  "roles": {
+   "ocr": {
+    "usage": "Lecture PDF (Mistral OCR 4). Pas un LLM.",
+    "branche": true,
+    "modele": "mistral-ocr-latest"
+   },
+   "carte": {
+    "usage": "Passe 1 — structure du plan (vocabulaire, fiches, tableaux).",
+    "branche": true,
+    "modele": "mistral-large-4-0",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_CARTE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CARTE"
+   },
+   "routeur": {
+    "usage": "Passe 1 — choix des sections PDF si la carte n'a pas suffi.",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_ROUTEUR",
+    "env_effort": "MISTRAL_REASONING_EFFORT_ROUTEUR"
+   },
+   "referentiel": {
+    "usage": "Passe 1 — extraction LLM des extraits PDF (seulement sans carte).",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_REFERENTIEL",
+    "env_effort": "MISTRAL_REASONING_EFFORT_REFERENTIEL"
+   },
+   "arrete": {
+    "usage": "Passe 1 — lecture de la décision (identité, obligations, prescriptions).",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_ARRETE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_ARRETE"
+   },
+   "carte_classeur": {
+    "usage": "Passe 1 — rôle et colonnes des tableaux Excel.",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_CARTE_CLASSEUR",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CARTE_CLASSEUR"
+   },
+   "fiche": {
+    "usage": "Passe 3 — temporalité extraite des fiches-actions PDF (lots).",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_FICHE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_FICHE"
+   },
+   "libelles": {
+    "usage": "Passe 3 — correspondance libellés tableur → codes du référentiel.",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_LIBELLES",
+    "env_effort": "MISTRAL_REASONING_EFFORT_LIBELLES"
+   },
+   "calendrier": {
+    "usage": "Passe 3 (non branchée) — matrices de planning.",
+    "branche": false,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_CALENDRIER",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CALENDRIER"
+   },
+   "budget": {
+    "usage": "Passe 3 (non branchée) — matrices de coûts.",
+    "branche": false,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_BUDGET",
+    "env_effort": "MISTRAL_REASONING_EFFORT_BUDGET"
+   }
+  },
+  "cle": "MISTRAL_API_KEY_BEN",
+  "cle_llm": "MISTRAL_API_KEY_BEN",
+  "dotenv": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/.env",
+  "cache": "/tmp/ingest_cache"
+ },
+ "documents": [
+  {
+   "nom": "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 20,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0
+   }
+  },
+  {
+   "nom": "2025 11 21_JARDINS d_AQUITAINE- courrier DREAL De_marrage travaux et annexes.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 10,
+   "pages_scannees": 1,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.74,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 0.5,
+    "10": 1.0
+   }
+  },
+  {
+   "nom": "A25086 Pichet Suivi de chantier Bruges - E0.docx.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 22,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 0.5
+   }
+  },
+  {
+   "nom": "A25086 Pichet Suivi de chantier Bruges - Mai 2026.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 23,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.67,
+    "2": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "22": 1.0,
+    "23": 1.0
+   }
+  },
+  {
+   "nom": "Bruges_Pichet_Contrat CDCB_20260721VACdef.docx",
+   "role": "autre",
+   "indice": "document Word",
+   "pages": 1,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "cerfa_13614-01_Habitats signe_.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 4,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "4": 1.0
+   }
+  },
+  {
+   "nom": "cerfa_13616-01_Faune signe_.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 4,
+   "pages_scannees": 1,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "3": 1.0
+   }
+  },
+  {
+   "nom": "cerfa_13617-01_Flore signe_.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 3,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.83,
+    "3": 1.0
+   }
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_arbres_Pt_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_bois_mort_Pt_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_habitats_Po_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_lisieres_Li_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+   "role": "plan_gestion",
+   "indice": "motif « plan de gestion » en tête de document",
+   "pages": 49,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 0.8,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 0.62,
+    "9": 1.0,
+    "10": 0.67,
+    "11": 1.0,
+    "12": 0.56,
+    "13": 1.0,
+    "14": 0.67,
+    "15": 0.56,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 0.8,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 0.47,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0
+   }
+  },
+  {
+   "nom": "DOSSIER DDEP_ note_CSRPN V2.docx",
+   "role": "autre",
+   "indice": "document Word",
+   "pages": 1,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "DV25111 Pichet - Suivi de chantier Bruges.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 37,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "6": 1.0,
+    "9": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 0.25,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0
+   }
+  },
+  {
+   "nom": "Note_technique_EVEE.docx",
+   "role": "autre",
+   "indice": "document Word",
+   "pages": 1,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Suivi de chantier septembre 2026.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 21,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.67,
+    "2": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "9": 1.0,
+    "11": 1.0,
+    "20": 1.0,
+    "21": 1.0
+   }
+  }
+ ],
+ "selection_pdf": {
+  "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf": {
+   "familles": {
+    "RG": [],
+    "ES": [],
+    "FG": []
+   },
+   "plan": [
+    {
+     "id": 0,
+     "titre": "12.4.1 Unités de gestion",
+     "pages": "183-184",
+     "car": 0,
+     "fiche": false,
+     "source": "carte"
+    }
+   ],
+   "car_retenus": 0,
+   "car_total": 75309,
+   "routeur_llm_requis": false,
+   "routeur_llm_utilise": false,
+   "fiches_localisees": "0/0",
+   "retenues": [
+    {
+     "titre": "12.4.1 Unités de gestion",
+     "pages": "183-184",
+     "car": 0
+    }
+   ]
+  }
+ },
+ "cartes": {
+  "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf": {
+   "vocabulaire": {
+    "unite_terme": "Unité de Gestion",
+    "unite_prefixes": [
+     "UG"
+    ],
+    "unite_exemples": [
+     "UG1",
+     "UG2"
+    ],
+    "action_forme": "code",
+    "action_familles": [
+     {
+      "prefixe": "RG",
+      "libelle": "Restauration et Gestion",
+      "citation": null
+     },
+     {
+      "prefixe": "ES",
+      "libelle": "Etudes et Suivis écologiques",
+      "citation": null
+     },
+     {
+      "prefixe": "FG",
+      "libelle": "Fonctionnement Général",
+      "citation": null
+     }
+    ],
+    "action_exemples": [
+     "RG1",
+     "RG2",
+     "ES1",
+     "ES2",
+     "FG1",
+     "FG2"
+    ]
+   },
+   "nb_fiches": 0,
+   "nb_tableaux": 0,
+   "verification": {
+    "fiches": [
+     0,
+     6
+    ],
+    "tableaux": [
+     0,
+     13
+    ],
+    "familles": [
+     3,
+     3
+    ],
+    "conventions": [
+     0,
+     4
+    ],
+    "ecartes": [
+     "fiche RG1 « Réouverture du milieu pour accueillir de » p.190",
+     "fiche RG2 « Création d'une mosaïque d'habitats favor » p.192",
+     "fiche ES1 « Suivi des habitats naturels et de la flo » p.195",
+     "fiche ES2 « Suivi de l'avifaune à enjeu » p.198",
+     "fiche FG1 « Animation du plan de gestion » p.199",
+     "fiche FG2 « Evaluation et mise à jour du plan de ges » p.202",
+     "tableau parcelles p.162 (en-têtes introuvables)",
+     "tableau autre p.166 (en-têtes introuvables)",
+     "tableau synthese_mesures p.182 (en-têtes introuvables)",
+     "tableau synthese_unites p.183 (en-têtes introuvables)",
+     "tableau planning p.185 (en-têtes introuvables)",
+     "tableau planning p.186 (en-têtes introuvables)",
+     "tableau synthese_actions p.188 (en-têtes introuvables)",
+     "tableau synthese_actions p.189 (en-têtes introuvables)",
+     "tableau couts p.203 (en-têtes introuvables)",
+     "tableau synthese_mesures p.204 (en-têtes introuvables)",
+     "tableau synthese_mesures p.206 (en-têtes introuvables)",
+     "tableau autre p.208 (en-têtes introuvables)",
+     "tableau autre p.209 (en-têtes introuvables)",
+     "citation p.162 introuvable",
+     "citation p.162 introuvable",
+     "citation p.191 introuvable",
+     "citation p.203 introuvable"
+    ],
+    "remarques": [
+     0,
+     5
+    ]
+   },
+   "remarques": [
+    {
+     "texte": "Le tableau de programmation 2041-2055 (page 186) utilise le code RG3 pour l'action 'Création d'une mosaïque d'habitats...' alors que les autres tableaux et fiches utilisent RG2.",
+     "type": "incoherence_document",
+     "page": 186,
+     "citation": "RG3 Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+     "verifiee": false
+    },
+    {
+     "texte": "La fiche RG2 (page 192) indique 'Longueur concernée' au lieu de 'Surface concernée' comme dans la fiche RG1.",
+     "type": "incoherence_document",
+     "page": 192,
+     "citation": "Longueur concernée 4 625 m²",
+     "verifiee": false
+    },
+    {
+     "texte": "La fiche ES1 (page 197) présente un phasage prévisionnel avec des années décalées (2041 à 2046 pour N+16 à N+20) par rapport aux fiches RG (2041 à 2045).",
+     "type": "incoherence_document",
+     "page": 197,
+     "citation": "N+16 à N+20 2041 à 2046",
+     "verifiee": false
+    },
+    {
+     "texte": "Le texte mentionne une dette compensatoire de 0,43 ha pour le milieu arboré (page 204) alors que le Tableau 44 indique 0,46 ha.",
+     "type": "incoherence_document",
+     "page": 204,
+     "citation": "0,43 ha de milieu arboré",
+     "verifiee": false
+    },
+    {
+     "texte": "Le titre de l'action ES2 dans la fiche (page 198) est 'Suivi de l'avifaune à enjeu' tandis que le Tableau 42 (page 189) indique 'Suivi de l'avifaune'.",
+     "type": "incoherence_document",
+     "page": 198,
+     "citation": "ES2 Suivi de l'avifaune à enjeu",
+     "verifiee": false
+    }
+   ],
+   "tri_remarques": {
+    "questions": 0,
+    "anomalies": 0,
+    "internes": 5
+   },
+   "remarques_internes": [
+    {
+     "texte": "Le tableau de programmation 2041-2055 (page 186) utilise le code RG3 pour l'action 'Création d'une mosaïque d'habitats...' alors que les autres tableaux et fiches utilisent RG2.",
+     "page": 186,
+     "motif": "citation introuvable"
+    },
+    {
+     "texte": "La fiche RG2 (page 192) indique 'Longueur concernée' au lieu de 'Surface concernée' comme dans la fiche RG1.",
+     "page": 192,
+     "motif": "citation introuvable"
+    },
+    {
+     "texte": "La fiche ES1 (page 197) présente un phasage prévisionnel avec des années décalées (2041 à 2046 pour N+16 à N+20) par rapport aux fiches RG (2041 à 2045).",
+     "page": 197,
+     "motif": "citation introuvable"
+    },
+    {
+     "texte": "Le texte mentionne une dette compensatoire de 0,43 ha pour le milieu arboré (page 204) alors que le Tableau 44 indique 0,46 ha.",
+     "page": 204,
+     "motif": "citation introuvable"
+    },
+    {
+     "texte": "Le titre de l'action ES2 dans la fiche (page 198) est 'Suivi de l'avifaune à enjeu' tandis que le Tableau 42 (page 189) indique 'Suivi de l'avifaune'.",
+     "page": 198,
+     "motif": "citation introuvable"
+    }
+   ]
+  }
+ },
+ "classeurs": [],
+ "regles": {
+  "source": "carte",
+  "unite": "\\b(?:UG)\\s?(?:n°\\s?)?-?\\s?(\\d{1,3}[a-z]?)\\b",
+  "code": "\\b(RG|ES|FG)\\s?[-.]?\\s?(\\d{1,3}[a-z]?)\\b",
+  "champs": {
+   "unites": "Localisation",
+   "parcelles": "parcelles\\s+concern[ée]es",
+   "objectif": "Objectif\\(s\\)\\s+opérationnel\\(s\\)|Objectif\\(s\\)\\s+à\\s+long\\s+terme",
+   "periode": "Période\\s+d'intervention|Phasage\\s+prévisionnel"
+  }
+ },
+ "sig": {
+  "couches": [
+   {
+    "nom": "Enjeux_arbres_Pt_20240923",
+    "fichier": "Enjeux_arbres_Pt_20240923.shp",
+    "geom_type": "POINT",
+    "nb_entites": 17,
+    "epsg": 2154,
+    "surface_ha": 0.0,
+    "avertissements": []
+   },
+   {
+    "nom": "Enjeux_bois_mort_Pt_20240923",
+    "fichier": "Enjeux_bois_mort_Pt_20240923.shp",
+    "geom_type": "POINT",
+    "nb_entites": 1,
+    "epsg": 2154,
+    "surface_ha": 0.0,
+    "avertissements": []
+   },
+   {
+    "nom": "Enjeux_lisieres_Li_20240923",
+    "fichier": "Enjeux_lisieres_Li_20240923.shp",
+    "geom_type": "POLYLINE",
+    "nb_entites": 4,
+    "epsg": 2154,
+    "surface_ha": 0.0,
+    "avertissements": []
+   }
+  ],
+  "zones": [
+   {
+    "id": "Enjeux_arbres_Pt_20240923",
+    "couche": "Enjeux_arbres_Pt_20240923",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 17,
+    "surface_ha": 0.0,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   },
+   {
+    "id": "Enjeux_bois_mort_Pt_20240923",
+    "couche": "Enjeux_bois_mort_Pt_20240923",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 1,
+    "surface_ha": 0.0,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   },
+   {
+    "id": "Enjeux_lisieres_Li_20240923",
+    "couche": "Enjeux_lisieres_Li_20240923",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 4,
+    "surface_ha": 0.0,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   }
+  ]
+ },
+ "referentiel": {
+  "projet": {
+   "nom": {
+    "valeur": "9 avenue Marc Nouaux 33610 Cestas - Tel : 05 56 49 59 78 - Mail : contact@riviere-environnement.fr",
+    "confiance": "moyenne",
+    "sources": [
+     {
+      "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+      "loc": "pied de page",
+      "extrait": "9 avenue Marc Nouaux 33610 Cestas - Tel : 05 56 49 59 78 - Mail : contact@riviere-environnement.fr"
+     }
+    ],
+    "note": null
+   },
+   "annee_N": {
+    "valeur": 2025,
+    "confiance": "haute",
+    "sources": [
+     {
+      "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+      "loc": "p.25 grille p025_g1",
+      "extrait": "N = 2025 (10 grille(s), colonnes année − rang)"
+     }
+    ],
+    "note": "Année N lue sur les colonnes du planning (année − rang)"
+   },
+   "annee_etat_zero": {
+    "valeur": 2024,
+    "confiance": "moyenne",
+    "sources": [
+     {
+      "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+      "loc": "p.25 tableau 1",
+      "extrait": "État zéro 2024 / N = 2025"
+     }
+    ],
+    "note": null
+   }
+  },
+  "ugs": [],
+  "actions": [],
+  "obligations_surfaciques": [],
+  "questions": [
+   {
+    "id": "couche_orpheline:Enjeux_arbres_Pt_20240923",
+    "regle": "couche_orpheline",
+    "portee": "Enjeux_arbres_Pt_20240923",
+    "texte": "La couche « Enjeux_arbres_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+    "options": [
+     "Évitement sans gestion (contexte)",
+     "Nouvelle UG",
+     "Ignorer"
+    ],
+    "proposition": null,
+    "sources": [
+     {
+      "doc": "SIG",
+      "loc": "Enjeux_arbres_Pt_20240923",
+      "extrait": null
+     }
+    ],
+    "bloquante": true
+   },
+   {
+    "id": "couche_orpheline:Enjeux_bois_mort_Pt_20240923",
+    "regle": "couche_orpheline",
+    "portee": "Enjeux_bois_mort_Pt_20240923",
+    "texte": "La couche « Enjeux_bois_mort_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+    "options": [
+     "Évitement sans gestion (contexte)",
+     "Nouvelle UG",
+     "Ignorer"
+    ],
+    "proposition": null,
+    "sources": [
+     {
+      "doc": "SIG",
+      "loc": "Enjeux_bois_mort_Pt_20240923",
+      "extrait": null
+     }
+    ],
+    "bloquante": true
+   },
+   {
+    "id": "couche_orpheline:Enjeux_lisieres_Li_20240923",
+    "regle": "couche_orpheline",
+    "portee": "Enjeux_lisieres_Li_20240923",
+    "texte": "La couche « Enjeux_lisieres_Li_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+    "options": [
+     "Évitement sans gestion (contexte)",
+     "Nouvelle UG",
+     "Ignorer"
+    ],
+    "proposition": null,
+    "sources": [
+     {
+      "doc": "SIG",
+      "loc": "Enjeux_lisieres_Li_20240923",
+      "extrait": null
+     }
+    ],
+    "bloquante": true
+   }
+  ],
+  "anomalies": [],
+  "controles": [],
+  "decisions": {
+   "alias_codes": {},
+   "alias_parcelles": {},
+   "parcelles_a_ajouter": [],
+   "requalifications_blocs": {},
+   "couches_contexte": [],
+   "couches_ignorees": [],
+   "decisions_annexes": {},
+   "roles_tableaux": {},
+   "commentaires": [],
+   "arrete": {}
+  },
+  "stats": {
+   "cellules": 3,
+   "confiance": {
+    "moyenne": 2,
+    "haute": 1
+   },
+   "questions": 3,
+   "questions_bloquantes": 3,
+   "faits": 5,
+   "faits_user": 0,
+   "geomce_pret_pct": 14,
+   "anomalies": 0
+  }
+ },
+ "durees_s": {
+  "inventaire": 0.43,
+  "pdfvisuel": 0.0,
+  "carte": 174.23,
+  "sig": 0.08,
+  "referentiel": 0.02,
+  "reconciliation": 0.0,
+  "pipeline": 174.78
+ },
+ "nb_faits": 5
+}

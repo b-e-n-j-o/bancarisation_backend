@@ -1,0 +1,1538 @@
+{
+  "job_id": "7254cfd6-bdf3-4e2e-80c4-fe7b2cb7750c",
+  "status": "done",
+  "etape": "termine",
+  "message": "Référentiel prêt à valider.",
+  "fichiers": [
+    "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+    "2025 11 21_JARDINS d_AQUITAINE- courrier DREAL De_marrage travaux et annexes.pdf",
+    "A25086 Pichet Suivi de chantier Bruges - E0.docx.pdf",
+    "A25086 Pichet Suivi de chantier Bruges - Mai 2026.pdf",
+    "Bruges_Pichet_Contrat CDCB_20260721VACdef.docx",
+    "DOSSIER DDEP_ note_CSRPN V2.docx",
+    "DV25111 Pichet - Suivi de chantier Bruges.pdf",
+    "Note_technique_EVEE.docx",
+    "Suivi de chantier septembre 2026.pdf",
+    "cerfa_13614-01_Habitats signe_.pdf",
+    "cerfa_13616-01_Faune signe_.pdf",
+    "cerfa_13617-01_Flore signe_.pdf",
+    "Couches_enjeux_Enjeux_arbres_Pt_20240923.zip",
+    "Couches_enjeux_Enjeux_bois_mort_Pt_20240923.zip",
+    "Couches_enjeux_Enjeux_habitats_Po_20240923.zip",
+    "Couches_enjeux_Enjeux_lisieres_Li_20240923.zip"
+  ],
+  "erreur": null,
+  "vue": {
+    "config": {
+      "ocr_backend": "hybride",
+      "ocr_model": "mistral-ocr-latest",
+      "llm_actif": true,
+      "llm_model": "zai-glm-5-3",
+      "reasoning_effort": "medium",
+      "reasoning_effort_routeur": "low",
+      "roles": {
+        "ocr": {
+          "usage": "Lecture PDF (Mistral OCR 4). Pas un LLM.",
+          "branche": true,
+          "modele": "mistral-ocr-latest"
+        },
+        "carte": {
+          "usage": "Passe 1 — structure du plan (vocabulaire, fiches, tableaux).",
+          "branche": true,
+          "modele": "mistral-large-4-0",
+          "effort": "medium",
+          "env_modele": "MISTRAL_MODEL_CARTE",
+          "env_effort": "MISTRAL_REASONING_EFFORT_CARTE"
+        },
+        "routeur": {
+          "usage": "Passe 1 — choix des sections PDF si la carte n'a pas suffi.",
+          "branche": true,
+          "modele": "zai-glm-5-3",
+          "effort": "low",
+          "env_modele": "MISTRAL_MODEL_ROUTEUR",
+          "env_effort": "MISTRAL_REASONING_EFFORT_ROUTEUR"
+        },
+        "referentiel": {
+          "usage": "Passe 1 — extraction LLM des extraits PDF (seulement sans carte).",
+          "branche": true,
+          "modele": "zai-glm-5-3",
+          "effort": "low",
+          "env_modele": "MISTRAL_MODEL_REFERENTIEL",
+          "env_effort": "MISTRAL_REASONING_EFFORT_REFERENTIEL"
+        },
+        "arrete": {
+          "usage": "Passe 1 — lecture de la décision (identité, obligations, prescriptions).",
+          "branche": true,
+          "modele": "zai-glm-5-3",
+          "effort": "low",
+          "env_modele": "MISTRAL_MODEL_ARRETE",
+          "env_effort": "MISTRAL_REASONING_EFFORT_ARRETE"
+        },
+        "carte_classeur": {
+          "usage": "Passe 1 — rôle et colonnes des tableaux Excel.",
+          "branche": true,
+          "modele": "zai-glm-5-3",
+          "effort": "medium",
+          "env_modele": "MISTRAL_MODEL_CARTE_CLASSEUR",
+          "env_effort": "MISTRAL_REASONING_EFFORT_CARTE_CLASSEUR"
+        },
+        "fiche": {
+          "usage": "Passe 3 — temporalité extraite des fiches-actions PDF (lots).",
+          "branche": true,
+          "modele": "zai-glm-5-3",
+          "effort": "medium",
+          "env_modele": "MISTRAL_MODEL_FICHE",
+          "env_effort": "MISTRAL_REASONING_EFFORT_FICHE"
+        },
+        "libelles": {
+          "usage": "Passe 3 — correspondance libellés tableur → codes du référentiel.",
+          "branche": true,
+          "modele": "zai-glm-5-3",
+          "effort": "low",
+          "env_modele": "MISTRAL_MODEL_LIBELLES",
+          "env_effort": "MISTRAL_REASONING_EFFORT_LIBELLES"
+        },
+        "calendrier": {
+          "usage": "Passe 3 (non branchée) — matrices de planning.",
+          "branche": false,
+          "modele": "zai-glm-5-3",
+          "effort": "medium",
+          "env_modele": "MISTRAL_MODEL_CALENDRIER",
+          "env_effort": "MISTRAL_REASONING_EFFORT_CALENDRIER"
+        },
+        "budget": {
+          "usage": "Passe 3 (non branchée) — matrices de coûts.",
+          "branche": false,
+          "modele": "zai-glm-5-3",
+          "effort": "medium",
+          "env_modele": "MISTRAL_MODEL_BUDGET",
+          "env_effort": "MISTRAL_REASONING_EFFORT_BUDGET"
+        }
+      },
+      "cle": "MISTRAL_API_KEY_BEN",
+      "cle_llm": "MISTRAL_API_KEY_BEN",
+      "dotenv": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/.env",
+      "cache": "/tmp/ingest_cache"
+    },
+    "documents": [
+      {
+        "nom": "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+        "role": "autre",
+        "indice": "saisi au dépôt",
+        "pages": 20,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "7": 1.0,
+          "8": 1.0,
+          "9": 1.0,
+          "10": 1.0,
+          "11": 1.0,
+          "12": 1.0,
+          "13": 1.0,
+          "14": 1.0,
+          "15": 1.0,
+          "16": 1.0,
+          "17": 1.0,
+          "18": 1.0,
+          "19": 1.0,
+          "20": 1.0
+        }
+      },
+      {
+        "nom": "2025 11 21_JARDINS d_AQUITAINE- courrier DREAL De_marrage travaux et annexes.pdf",
+        "role": "autre",
+        "indice": "saisi au dépôt",
+        "pages": 10,
+        "pages_scannees": 1,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 0.74,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "6": 1.0,
+          "7": 1.0,
+          "8": 1.0,
+          "9": 0.5,
+          "10": 1.0
+        }
+      },
+      {
+        "nom": "A25086 Pichet Suivi de chantier Bruges - E0.docx.pdf",
+        "role": "autre",
+        "indice": "aucun motif de rôle reconnu",
+        "pages": 22,
+        "pages_scannees": 7,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "7": 1.0,
+          "8": 1.0,
+          "9": 1.0,
+          "10": 1.0,
+          "11": 1.0,
+          "12": 1.0,
+          "13": 1.0,
+          "14": 1.0,
+          "15": 1.0,
+          "16": 1.0,
+          "17": 1.0,
+          "18": 1.0,
+          "19": 1.0,
+          "20": 1.0,
+          "21": 1.0,
+          "22": 0.5
+        }
+      },
+      {
+        "nom": "A25086 Pichet Suivi de chantier Bruges - Mai 2026.pdf",
+        "role": "autre",
+        "indice": "aucun motif de rôle reconnu",
+        "pages": 23,
+        "pages_scannees": 7,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 0.67,
+          "2": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "9": 1.0,
+          "10": 1.0,
+          "22": 1.0,
+          "23": 1.0
+        }
+      },
+      {
+        "nom": "Bruges_Pichet_Contrat CDCB_20260721VACdef.docx",
+        "role": "autre",
+        "indice": "document Word",
+        "pages": 1,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "cerfa_13614-01_Habitats signe_.pdf",
+        "role": "autre",
+        "indice": "saisi au dépôt",
+        "pages": 4,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "2": 1.0,
+          "4": 1.0
+        }
+      },
+      {
+        "nom": "cerfa_13616-01_Faune signe_.pdf",
+        "role": "autre",
+        "indice": "saisi au dépôt",
+        "pages": 4,
+        "pages_scannees": 1,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "3": 1.0
+        }
+      },
+      {
+        "nom": "cerfa_13617-01_Flore signe_.pdf",
+        "role": "autre",
+        "indice": "saisi au dépôt",
+        "pages": 3,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 0.83,
+          "3": 1.0
+        }
+      },
+      {
+        "nom": "Couches_enjeux_Enjeux_arbres_Pt_20240923.zip",
+        "role": "sig",
+        "indice": "1 couche(s) géographique(s) dans l'archive",
+        "pages": 0,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "Couches_enjeux_Enjeux_bois_mort_Pt_20240923.zip",
+        "role": "sig",
+        "indice": "1 couche(s) géographique(s) dans l'archive",
+        "pages": 0,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "Couches_enjeux_Enjeux_habitats_Po_20240923.zip",
+        "role": "sig",
+        "indice": "1 couche(s) géographique(s) dans l'archive",
+        "pages": 0,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "Couches_enjeux_Enjeux_lisieres_Li_20240923.zip",
+        "role": "sig",
+        "indice": "1 couche(s) géographique(s) dans l'archive",
+        "pages": 0,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+        "role": "plan_gestion",
+        "indice": "motif « plan de gestion » en tête de document",
+        "pages": 49,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 0.8,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "7": 1.0,
+          "8": 0.62,
+          "9": 1.0,
+          "10": 0.67,
+          "11": 1.0,
+          "12": 0.56,
+          "13": 1.0,
+          "14": 0.67,
+          "15": 0.56,
+          "16": 1.0,
+          "17": 1.0,
+          "18": 1.0,
+          "19": 1.0,
+          "20": 1.0,
+          "21": 1.0,
+          "22": 1.0,
+          "23": 1.0,
+          "24": 0.8,
+          "25": 1.0,
+          "26": 1.0,
+          "27": 1.0,
+          "28": 1.0,
+          "29": 1.0,
+          "30": 1.0,
+          "31": 0.47,
+          "32": 1.0,
+          "33": 1.0,
+          "34": 1.0,
+          "35": 1.0,
+          "36": 1.0,
+          "37": 1.0,
+          "38": 1.0,
+          "39": 1.0,
+          "40": 1.0,
+          "41": 1.0,
+          "42": 1.0,
+          "43": 1.0,
+          "44": 1.0,
+          "45": 1.0,
+          "46": 1.0,
+          "47": 1.0,
+          "48": 1.0,
+          "49": 1.0
+        }
+      },
+      {
+        "nom": "DOSSIER DDEP_ note_CSRPN V2.docx",
+        "role": "autre",
+        "indice": "document Word",
+        "pages": 1,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "DV25111 Pichet - Suivi de chantier Bruges.pdf",
+        "role": "autre",
+        "indice": "aucun motif de rôle reconnu",
+        "pages": 37,
+        "pages_scannees": 7,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 1.0,
+          "6": 1.0,
+          "9": 1.0,
+          "12": 1.0,
+          "13": 1.0,
+          "14": 1.0,
+          "16": 1.0,
+          "17": 1.0,
+          "19": 1.0,
+          "20": 1.0,
+          "22": 1.0,
+          "23": 1.0,
+          "24": 1.0,
+          "25": 0.25,
+          "26": 1.0,
+          "27": 1.0,
+          "28": 1.0,
+          "29": 1.0,
+          "30": 1.0,
+          "31": 1.0,
+          "32": 1.0,
+          "33": 1.0,
+          "34": 1.0,
+          "35": 1.0,
+          "36": 1.0
+        }
+      },
+      {
+        "nom": "Note_technique_EVEE.docx",
+        "role": "autre",
+        "indice": "document Word",
+        "pages": 1,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "Suivi de chantier septembre 2026.pdf",
+        "role": "autre",
+        "indice": "aucun motif de rôle reconnu",
+        "pages": 21,
+        "pages_scannees": 7,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 0.67,
+          "2": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "9": 1.0,
+          "11": 1.0,
+          "20": 1.0,
+          "21": 1.0
+        }
+      }
+    ],
+    "selection_pdf": {
+      "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf": {
+        "familles": {
+          "RG": [
+            1,
+            2,
+            3
+          ],
+          "ES": [
+            1,
+            2
+          ]
+        },
+        "plan": [
+          {
+            "id": 0,
+            "titre": "(début)",
+            "pages": "1-1",
+            "car": 0,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 1,
+            "titre": "11.3 Conformité de la mise en œuvre des mesures de compensation envisagées avec le code de",
+            "pages": "1-1",
+            "car": 605,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 2,
+            "titre": "Efficacité",
+            "pages": "1-1",
+            "car": 606,
+            "fiche": false,
+            "score": 1.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 1,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 3,
+            "titre": "Temporalité",
+            "pages": "1-1",
+            "car": 751,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 4,
+            "titre": "Pérennité",
+            "pages": "1-2",
+            "car": 506,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 5,
+            "titre": "12 MESURES COMPENSATOIRES : PLAN D’ACTIONS ET DE GESTION",
+            "pages": "2-2",
+            "car": 1496,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 6,
+            "titre": "12.1 Informations générales",
+            "pages": "2-2",
+            "car": 218,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 7,
+            "titre": "12.1.1 Localisation du site",
+            "pages": "2-5",
+            "car": 2530,
+            "fiche": false,
+            "score": 1.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 1,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 8,
+            "titre": "12.1.2 Périmètres et zonages",
+            "pages": "5-5",
+            "car": 31,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 9,
+            "titre": "12.1.2.1 SRADDET",
+            "pages": "5-5",
+            "car": 467,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 10,
+            "titre": "12.1.2.2 Zonages d'inventaires et réglementaires",
+            "pages": "5-8",
+            "car": 6077,
+            "fiche": false,
+            "score": 1.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 3,
+            "tdm": false
+          },
+          {
+            "id": 11,
+            "titre": "12.1.2.3 Articulation avec les documents d'urbanisme",
+            "pages": "8-9",
+            "car": 300,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 12,
+            "titre": "12.1.3 Milieu physique",
+            "pages": "9-9",
+            "car": 25,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 13,
+            "titre": "12.1.3.1 Géologie",
+            "pages": "9-11",
+            "car": 1147,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 14,
+            "titre": "12.1.3.2 Topographie",
+            "pages": "11-11",
+            "car": 483,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 15,
+            "titre": "12.1.3.3 Contexte hydrographique",
+            "pages": "11-12",
+            "car": 794,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 16,
+            "titre": "12.2 Etat initial du site de compensation",
+            "pages": "12-12",
+            "car": 44,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 17,
+            "titre": "12.2.1 Préambule",
+            "pages": "12-13",
+            "car": 1739,
+            "fiche": false,
+            "score": 1.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 1,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 18,
+            "titre": "12.2.2 Habitats naturels",
+            "pages": "13-15",
+            "car": 947,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 19,
+            "titre": "12.2.3 Flore",
+            "pages": "15-15",
+            "car": 171,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 20,
+            "titre": "12.2.3.1 Flore patrimoniale",
+            "pages": "15-15",
+            "car": 444,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 21,
+            "titre": "12.2.3.2 Flore exotique envahissante",
+            "pages": "15-16",
+            "car": 565,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 22,
+            "titre": "12.2.4 Faune",
+            "pages": "16-16",
+            "car": 889,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 23,
+            "titre": "12.2.4.1 Les Oiseaux",
+            "pages": "16-18",
+            "car": 2753,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 24,
+            "titre": "12.2.4.2 Reptiles",
+            "pages": "18-19",
+            "car": 1354,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 25,
+            "titre": "12.2.4.3 Amphibiens",
+            "pages": "19-20",
+            "car": 1059,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 26,
+            "titre": "12.2.4.4 Insectes",
+            "pages": "20-20",
+            "car": 381,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 27,
+            "titre": "12.2.4.5 Mammifères",
+            "pages": "20-21",
+            "car": 945,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 28,
+            "titre": "12.3 Synthèse des enjeux et objectifs à long terme",
+            "pages": "21-21",
+            "car": 53,
+            "fiche": false,
+            "score": 3.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 2,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 29,
+            "titre": "12.3.1 Enjeux et objectifs à long terme du site de compensation",
+            "pages": "21-21",
+            "car": 2280,
+            "fiche": false,
+            "score": 9.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 6,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 30,
+            "titre": "12.3.2 Objectifs opérationnels de gestion du site de compensation",
+            "pages": "21-22",
+            "car": 2560,
+            "fiche": false,
+            "score": 10.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 7,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 31,
+            "titre": "12.4 Programme d'actions",
+            "pages": "22-23",
+            "car": 502,
+            "fiche": false,
+            "score": 1.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 1,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 32,
+            "titre": "12.4.1 Unités de gestion",
+            "pages": "23-25",
+            "car": 1373,
+            "fiche": false,
+            "score": 19.5,
+            "lignes_code_ug": 2,
+            "mots_cles": 9,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 33,
+            "titre": "12.4.2 Programmation des actions",
+            "pages": "25-28",
+            "car": 3719,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 34,
+            "titre": "12.4.3 Outils d'évaluation",
+            "pages": "28-29",
+            "car": 1491,
+            "fiche": false,
+            "score": 12.0,
+            "lignes_code_ug": 4,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 35,
+            "titre": "12.4.4 Fiches techniques des actions compensatoires et de suivis",
+            "pages": "29-30",
+            "car": 1263,
+            "fiche": false,
+            "score": 1.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 1,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 36,
+            "titre": "12.4.4.1 Fiches RG : Restauration et Gestion",
+            "pages": "30-30",
+            "car": 47,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 37,
+            "titre": "RG1 : Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et ges",
+            "pages": "30-32",
+            "car": 2835,
+            "fiche": true,
+            "score": 11.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 2,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 38,
+            "titre": "RG2 : Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts e",
+            "pages": "32-33",
+            "car": 972,
+            "fiche": true,
+            "score": 11.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 2,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 39,
+            "titre": "RG2 : Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts e",
+            "pages": "33-34",
+            "car": 1833,
+            "fiche": true,
+            "score": 9.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 1,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 40,
+            "titre": "RG2 : Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts e",
+            "pages": "34-35",
+            "car": 1041,
+            "fiche": true,
+            "score": 8.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 41,
+            "titre": "12.4.4.2 Fiches ES : Etudes et Suivis écologiques",
+            "pages": "35-36",
+            "car": 2113,
+            "fiche": false,
+            "score": 4.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 3,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 42,
+            "titre": "ES1 Suivi des habitats naturels et de la flore à enjeu",
+            "pages": "36-36",
+            "car": 611,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 43,
+            "titre": "Suivi du Lotier :",
+            "pages": "36-36",
+            "car": 1371,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 44,
+            "titre": "Intervenants",
+            "pages": "36-39",
+            "car": 2591,
+            "fiche": false,
+            "score": 3.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 2,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 45,
+            "titre": "12.4.4.3 Fiches FG : Fonctionnement Général",
+            "pages": "39-40",
+            "car": 2517,
+            "fiche": false,
+            "score": 3.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 2,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 46,
+            "titre": "FG1 : Animation du plan de gestion",
+            "pages": "40-40",
+            "car": 382,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 47,
+            "titre": "Elaboration d’une base de données géoréférencées :",
+            "pages": "40-40",
+            "car": 836,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 48,
+            "titre": "Rapport d’activité :",
+            "pages": "40-40",
+            "car": 503,
+            "fiche": false,
+            "score": 7.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 5,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 49,
+            "titre": "Comités de suivi :",
+            "pages": "40-40",
+            "car": 412,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 50,
+            "titre": "Pilotage du programme :",
+            "pages": "40-41",
+            "car": 239,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 51,
+            "titre": "FG1 : Animation du plan de gestion",
+            "pages": "41-43",
+            "car": 3455,
+            "fiche": false,
+            "score": 6.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 4,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 52,
+            "titre": "12.4.5 Synthèse des coûts",
+            "pages": "43-44",
+            "car": 1060,
+            "fiche": false,
+            "score": 4.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 3,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 53,
+            "titre": "12.4.6 Analyse de l’atteinte de l’équivalence écologique",
+            "pages": "44-44",
+            "car": 617,
+            "fiche": false,
+            "score": 1.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 1,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 54,
+            "titre": "➔ Les mesures compensatoires visent des objets de même nature",
+            "pages": "44-44",
+            "car": 645,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 55,
+            "titre": "➔ L’équivalence écologique est établie au regard de la quantité ET de la qualité fonctionn",
+            "pages": "44-45",
+            "car": 2140,
+            "fiche": false,
+            "score": 0.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 0,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 56,
+            "titre": "➔ La finesse de l'analyse de l'équivalence écologique repose sur la notion de proportionna",
+            "pages": "45-47",
+            "car": 2381,
+            "fiche": false,
+            "score": 1.5,
+            "lignes_code_ug": 0,
+            "mots_cles": 1,
+            "refs_cadastrales": 0,
+            "tdm": false
+          },
+          {
+            "id": 57,
+            "titre": "13 SYNTHESE ET CONCLUSION",
+            "pages": "47-49",
+            "car": 6082,
+            "fiche": false,
+            "score": 9.0,
+            "lignes_code_ug": 0,
+            "mots_cles": 6,
+            "refs_cadastrales": 0,
+            "tdm": false
+          }
+        ],
+        "car_retenus": 29983,
+        "car_total": 75309,
+        "routeur_llm_requis": false,
+        "routeur_llm_utilise": false,
+        "retenues": [
+          {
+            "titre": "12.3 Synthèse des enjeux et objectifs à long terme",
+            "pages": "21-21",
+            "car": 53
+          },
+          {
+            "titre": "12.3.1 Enjeux et objectifs à long terme du site de compensation",
+            "pages": "21-21",
+            "car": 2280
+          },
+          {
+            "titre": "12.3.2 Objectifs opérationnels de gestion du site de compensation",
+            "pages": "21-22",
+            "car": 2560
+          },
+          {
+            "titre": "12.4.1 Unités de gestion",
+            "pages": "23-25",
+            "car": 1373
+          },
+          {
+            "titre": "12.4.3 Outils d'évaluation",
+            "pages": "28-29",
+            "car": 1491
+          },
+          {
+            "titre": "RG1 : Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+            "pages": "30-32",
+            "car": 2829
+          },
+          {
+            "titre": "RG2 : Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+            "pages": "32-33",
+            "car": 968
+          },
+          {
+            "titre": "RG2 : Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+            "pages": "33-34",
+            "car": 1661
+          },
+          {
+            "titre": "RG2 : Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+            "pages": "34-35",
+            "car": 1038
+          },
+          {
+            "titre": "12.4.4.2 Fiches ES : Etudes et Suivis écologiques",
+            "pages": "35-36",
+            "car": 2113
+          },
+          {
+            "titre": "12.4.4.3 Fiches FG : Fonctionnement Général",
+            "pages": "39-40",
+            "car": 2517
+          },
+          {
+            "titre": "Rapport d’activité :",
+            "pages": "40-40",
+            "car": 503
+          },
+          {
+            "titre": "FG1 : Animation du plan de gestion",
+            "pages": "41-43",
+            "car": 3455
+          },
+          {
+            "titre": "12.4.5 Synthèse des coûts",
+            "pages": "43-44",
+            "car": 1060
+          },
+          {
+            "titre": "13 SYNTHESE ET CONCLUSION",
+            "pages": "47-49",
+            "car": 6082
+          }
+        ]
+      }
+    },
+    "cartes": {},
+    "classeurs": [],
+    "regles": {
+      "source": "defaut",
+      "unite": "\\bUG\\s?-?\\s?(\\d{1,3}[a-z]?)\\b",
+      "code": "\\b([A-Z]{2,4})\\s?(\\d{1,2}[a-z]?)\\b",
+      "champs": {
+        "unites": "unit[ée]s?\\s+de\\s+gestion",
+        "parcelles": "parcelles\\s+concern[ée]es",
+        "objectif": "objectif\\s+[àa]\\s+long\\s+terme"
+      }
+    },
+    "sig": {
+      "couches": [
+        {
+          "nom": "Enjeux_arbres_Pt_20240923",
+          "fichier": "Enjeux_arbres_Pt_20240923.shp",
+          "geom_type": "POINT",
+          "nb_entites": 17,
+          "epsg": 2154,
+          "surface_ha": 0.0,
+          "avertissements": []
+        },
+        {
+          "nom": "Enjeux_bois_mort_Pt_20240923",
+          "fichier": "Enjeux_bois_mort_Pt_20240923.shp",
+          "geom_type": "POINT",
+          "nb_entites": 1,
+          "epsg": 2154,
+          "surface_ha": 0.0,
+          "avertissements": []
+        },
+        {
+          "nom": "Enjeux_lisieres_Li_20240923",
+          "fichier": "Enjeux_lisieres_Li_20240923.shp",
+          "geom_type": "POLYLINE",
+          "nb_entites": 4,
+          "epsg": 2154,
+          "surface_ha": 0.0,
+          "avertissements": []
+        }
+      ],
+      "zones": [
+        {
+          "id": "Enjeux_arbres_Pt_20240923",
+          "couche": "Enjeux_arbres_Pt_20240923",
+          "filtre": null,
+          "ug_attribut": null,
+          "nb_entites": 17,
+          "surface_ha": 0.0,
+          "refs_cadastrales": [],
+          "type_erc_nom": null
+        },
+        {
+          "id": "Enjeux_bois_mort_Pt_20240923",
+          "couche": "Enjeux_bois_mort_Pt_20240923",
+          "filtre": null,
+          "ug_attribut": null,
+          "nb_entites": 1,
+          "surface_ha": 0.0,
+          "refs_cadastrales": [],
+          "type_erc_nom": null
+        },
+        {
+          "id": "Enjeux_lisieres_Li_20240923",
+          "couche": "Enjeux_lisieres_Li_20240923",
+          "filtre": null,
+          "ug_attribut": null,
+          "nb_entites": 4,
+          "surface_ha": 0.0,
+          "refs_cadastrales": [],
+          "type_erc_nom": null
+        }
+      ]
+    },
+    "referentiel": {
+      "projet": {
+        "nom": {
+          "valeur": "9 avenue Marc Nouaux 33610 Cestas - Tel : 05 56 49 59 78 - Mail : contact@riviere-environnement.fr",
+          "confiance": "moyenne",
+          "sources": [
+            {
+              "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+              "loc": "pied de page",
+              "extrait": "9 avenue Marc Nouaux 33610 Cestas - Tel : 05 56 49 59 78 - Mail : contact@riviere-environnement.fr"
+            }
+          ],
+          "note": null
+        },
+        "annee_N": {
+          "valeur": 2025,
+          "confiance": "haute",
+          "sources": [
+            {
+              "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+              "loc": "p.25 grille p025_g1",
+              "extrait": "N = 2025 (10 grille(s), colonnes année − rang)"
+            }
+          ],
+          "note": "Année N lue sur les colonnes du planning (année − rang)"
+        },
+        "annee_etat_zero": {
+          "valeur": 2024,
+          "confiance": "moyenne",
+          "sources": [
+            {
+              "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+              "loc": "p.25 tableau 1",
+              "extrait": "État zéro 2024 / N = 2025"
+            }
+          ],
+          "note": null
+        }
+      },
+      "ugs": [],
+      "actions": [
+        {
+          "code": "RG1",
+          "intitule": {
+            "valeur": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion Localisation    UG1",
+            "confiance": "moyenne",
+            "sources": [
+              {
+                "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+                "loc": "p.30",
+                "extrait": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion Localisation    UG1"
+              }
+            ],
+            "note": null
+          },
+          "nature": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          },
+          "ugs": {
+            "valeur": [],
+            "confiance": "basse",
+            "sources": [],
+            "note": "Aucune UG trouvée"
+          },
+          "cible": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          }
+        },
+        {
+          "code": "RG2",
+          "intitule": {
+            "valeur": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés Localisation    UG2",
+            "confiance": "moyenne",
+            "sources": [
+              {
+                "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+                "loc": "p.32",
+                "extrait": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés Localisation    UG2"
+              }
+            ],
+            "note": null
+          },
+          "nature": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          },
+          "ugs": {
+            "valeur": [],
+            "confiance": "basse",
+            "sources": [],
+            "note": "Aucune UG trouvée"
+          },
+          "cible": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          }
+        }
+      ],
+      "obligations_surfaciques": [],
+      "questions": [
+        {
+          "id": "action_ug_absente:RG1",
+          "regle": "action_ug_absente",
+          "portee": "RG1",
+          "texte": "RG1 (Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion Localisation    UG1) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+          "options": [],
+          "proposition": null,
+          "sources": [],
+          "bloquante": true
+        },
+        {
+          "id": "action_ug_absente:RG2",
+          "regle": "action_ug_absente",
+          "portee": "RG2",
+          "texte": "RG2 (Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés Localisation    UG2) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+          "options": [],
+          "proposition": null,
+          "sources": [],
+          "bloquante": true
+        },
+        {
+          "id": "couche_orpheline:Enjeux_arbres_Pt_20240923",
+          "regle": "couche_orpheline",
+          "portee": "Enjeux_arbres_Pt_20240923",
+          "texte": "La couche « Enjeux_arbres_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+          "options": [
+            "Évitement sans gestion (contexte)",
+            "Nouvelle UG",
+            "Ignorer"
+          ],
+          "proposition": null,
+          "sources": [
+            {
+              "doc": "SIG",
+              "loc": "Enjeux_arbres_Pt_20240923",
+              "extrait": null
+            }
+          ],
+          "bloquante": true
+        },
+        {
+          "id": "couche_orpheline:Enjeux_bois_mort_Pt_20240923",
+          "regle": "couche_orpheline",
+          "portee": "Enjeux_bois_mort_Pt_20240923",
+          "texte": "La couche « Enjeux_bois_mort_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+          "options": [
+            "Évitement sans gestion (contexte)",
+            "Nouvelle UG",
+            "Ignorer"
+          ],
+          "proposition": null,
+          "sources": [
+            {
+              "doc": "SIG",
+              "loc": "Enjeux_bois_mort_Pt_20240923",
+              "extrait": null
+            }
+          ],
+          "bloquante": true
+        },
+        {
+          "id": "couche_orpheline:Enjeux_lisieres_Li_20240923",
+          "regle": "couche_orpheline",
+          "portee": "Enjeux_lisieres_Li_20240923",
+          "texte": "La couche « Enjeux_lisieres_Li_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+          "options": [
+            "Évitement sans gestion (contexte)",
+            "Nouvelle UG",
+            "Ignorer"
+          ],
+          "proposition": null,
+          "sources": [
+            {
+              "doc": "SIG",
+              "loc": "Enjeux_lisieres_Li_20240923",
+              "extrait": null
+            }
+          ],
+          "bloquante": true
+        }
+      ],
+      "anomalies": [],
+      "controles": [],
+      "decisions": {
+        "alias_codes": {},
+        "alias_parcelles": {},
+        "parcelles_a_ajouter": [],
+        "requalifications_blocs": {},
+        "couches_contexte": [],
+        "couches_ignorees": [],
+        "decisions_annexes": {},
+        "roles_tableaux": {},
+        "commentaires": [],
+        "arrete": {}
+      },
+      "stats": {
+        "cellules": 11,
+        "confiance": {
+          "moyenne": 4,
+          "haute": 1,
+          "basse": 6
+        },
+        "questions": 5,
+        "questions_bloquantes": 5,
+        "faits": 6,
+        "faits_user": 0,
+        "geomce_pret_pct": 14
+      }
+    },
+    "durees_s": {
+      "inventaire": 10.99,
+      "pdfvisuel": 3.07,
+      "carte": 0.9,
+      "sig": 0.11,
+      "referentiel": 0.33,
+      "reconciliation": 0.0,
+      "pipeline": 15.42
+    },
+    "nb_faits": 6
+  },
+  "validation": null,
+  "passe3": null,
+  "projet_id": null,
+  "started_at": "2026-10-15T09:32:33.390748+00:00",
+  "updated_at": "2026-10-15T09:32:49.040500+00:00"
+}

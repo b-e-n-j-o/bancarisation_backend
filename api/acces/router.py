@@ -73,7 +73,6 @@ def creer_acces(projet_id: UUID, body: ProjetAccesCreate) -> dict[str, Any]:
                     ),
                 )
                 row = cur.fetchone()
-            conn.commit()
     except PsycopgError as exc:
         raise http_from_db(exc) from exc
     if not row:
@@ -99,7 +98,6 @@ def supprimer_acces(projet_id: UUID, acces_id: UUID) -> None:
                     (str(acces_id), str(projet_id)),
                 )
                 row = cur.fetchone()
-            conn.commit()
     except PsycopgError as exc:
         raise http_from_db(exc) from exc
     if not row:

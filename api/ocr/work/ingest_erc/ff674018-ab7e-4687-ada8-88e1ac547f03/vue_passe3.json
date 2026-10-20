@@ -1,0 +1,648 @@
+{
+ "stats": {
+  "faits": 0,
+  "temporels": 0,
+  "budgets": 0,
+  "statuts": 0,
+  "echeances": 20,
+  "occurrences": 225,
+  "non_placables": 6,
+  "rejets": 0,
+  "occurrences_avec_montant": 0,
+  "tokens_llm": {
+   "n": 0,
+   "prompt": 0,
+   "reasoning": 0,
+   "completion": 0,
+   "total": 0
+  },
+  "duree_s": 3.88,
+  "pgcal": [
+   {
+    "document": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "run_dir": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/work/ingest_erc/ff674018-ab7e-4687-ada8-88e1ac547f03/dossier/_pgcal/DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE_20261016-142208",
+    "regles": 25,
+    "echeances": 20,
+    "occurrences": 225,
+    "non_placables": 6,
+    "decisions": {
+     "a_valider": 143,
+     "declencheur": 6,
+     "integre": 22
+    }
+   }
+  ]
+ },
+ "classeurs": {},
+ "nb_rejets": 0,
+ "rejets_par_motif": {},
+ "rejets": [],
+ "avertissements": [
+  "ES1 : aucune date trouvée dans les documents",
+  "ES2 : aucune date trouvée dans les documents",
+  "FG1 : aucune date trouvée dans les documents",
+  "FG2 : aucune date trouvée dans les documents",
+  "RG1 : aucune date trouvée dans les documents",
+  "RG2 : aucune date trouvée dans les documents",
+  "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf : [alerte] Code RG3 (grille) a le même intitulé que RG2 : coquille probable, traité comme RG2.",
+  "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf : p.40 : grille probable non lue (pas de géométrie, vision désactivée)."
+ ],
+ "non_placables": [
+  {
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion — Arrachage manuel des espèces envahissantes",
+   "regle": "dependant_evenement · « Si un développement des espèces envahissantes est constaté »"
+  },
+  {
+   "code": "RG2",
+   "libelle": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés — Regarnis éventuel (si pertes constatées)",
+   "regle": "dependant_evenement · « Si des pertes importantes sont constatées au niveau des plantations d'arbres »"
+  },
+  {
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Veille sur le site",
+   "regle": "dependant_evenement · « pendant les années où il n’y a pas d’intervention de programmée »"
+  },
+  {
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Communication et concertation locale",
+   "regle": "dependant_evenement · « Selon les besoins identifiés dans le cadre de la mise en œuvre du programme de compensatio »"
+  },
+  {
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Coordination des prestations de travaux et suivis",
+   "regle": "dependant_evenement · « externalisation de prestations auprès de prestataires spécialisés »"
+  },
+  {
+   "code": "FG2",
+   "libelle": "Evaluation et mise à jour du plan de gestion — Révision du plan de gestion",
+   "regle": "dependant_evenement · « Selon l'évolution des indicateurs de suivi écologique, si nécessaire »"
+  }
+ ],
+ "budget_pose": 0,
+ "budget_non_ventile": 0,
+ "audit": [
+  {
+   "id": "RG1-4259de9d6c",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion — Réouverture des fourrés de roncier et d'Herbe de la Pampa (travaux initiaux : broyage, export de biomasse, griffage du sol, et dessouchage/arrachage de l'Herbe de la Pampa selon robustesse)",
+   "ugs": [
+    "ug1"
+   ],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025 · « en dehors des périodes sensibles pour la faune »",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "[alerte] Citation introuvable p.25 : « Réouverture des fourrés de roncier et d'Herbe de la Pampa »."
+   ]
+  },
+  {
+   "id": "RG1-26288e4bab",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion — Entretien par fauche — Fauche de printemps",
+   "ugs": [
+    "ug1"
+   ],
+   "type": "explicite",
+   "regle": "explicite · dès 2026 · 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037 · « 1 à 2 fauches annuelles selon développement de la végétation concurrente »",
+   "ancrage": 2026,
+   "annees": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035,
+    2036,
+    2037,
+    2038,
+    2039,
+    2040,
+    2041,
+    2042,
+    2043,
+    2044,
+    2045,
+    2046,
+    2047,
+    2048,
+    2049,
+    2050,
+    2051,
+    2052,
+    2053,
+    2054,
+    2055
+   ],
+   "nb_occ": 30,
+   "montant_ht": null,
+   "avertissements": [
+    "[alerte] Citation introuvable p.25 : « Entretien par fauche »."
+   ]
+  },
+  {
+   "id": "RG1-089d15c3f1",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion — Entretien par fauche — Fauche d'été",
+   "ugs": [
+    "ug1"
+   ],
+   "type": "explicite",
+   "regle": "explicite · dès 2026 · 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037 · « 1 à 2 fauches annuelles selon développement de la végétation concurrente »",
+   "ancrage": 2026,
+   "annees": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035,
+    2036,
+    2037,
+    2038,
+    2039,
+    2040,
+    2041,
+    2042,
+    2043,
+    2044,
+    2045,
+    2046,
+    2047,
+    2048,
+    2049,
+    2050,
+    2051,
+    2052,
+    2053,
+    2054,
+    2055
+   ],
+   "nb_occ": 30,
+   "montant_ht": null,
+   "avertissements": [
+    "[alerte] Citation introuvable p.25 : « Entretien par fauche »."
+   ]
+  },
+  {
+   "id": "RG1-30d7b64b40",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion — Griffage du sol",
+   "ugs": [
+    "ug1"
+   ],
+   "type": "explicite",
+   "regle": "explicite · dès 2026 · 2026, 2029, 2032, 2035, 2038, 2041, 2044, 2047, 2050, 2053 · « Une fois tous les 2 à 3 ans »",
+   "ancrage": 2026,
+   "annees": [
+    2026,
+    2029,
+    2032,
+    2035,
+    2038,
+    2041,
+    2044,
+    2047,
+    2050,
+    2053
+   ],
+   "nb_occ": 10,
+   "montant_ht": null,
+   "avertissements": [
+    "pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)",
+    "[info] Ambiguïté signalée : Le griffage initial est inclus dans les travaux initiaux (RG1-01) en année N. La présente règle RG1-03 concerne les griffages récurrents suivants, théoriquement à partir de N+2 ou N+3, bien que la grille de phasage (p.31) indique 'Fauche et griffage' à partir de N+1."
+   ]
+  },
+  {
+   "id": "RG2-ab5a442e44",
+   "code": "RG2",
+   "libelle": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés — Débroussaillage initial (travaux initiaux) — Débroussaillage",
+   "ugs": [
+    "ug2"
+   ],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025 · « septembre/octobre, en dehors des périodes sensibles pour la faune »",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "RG2-49788ac46f",
+   "code": "RG2",
+   "libelle": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés — Entretien par débroussaillage",
+   "ugs": [
+    "ug2"
+   ],
+   "type": "explicite",
+   "regle": "explicite · dès 2026 · 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037 · « en dehors des périodes sensibles pour la faune »",
+   "ancrage": 2026,
+   "annees": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035,
+    2036,
+    2037,
+    2038,
+    2039,
+    2040,
+    2041,
+    2042,
+    2043,
+    2044,
+    2045,
+    2046,
+    2047,
+    2048,
+    2049,
+    2050,
+    2051,
+    2052,
+    2053,
+    2054,
+    2055
+   ],
+   "nb_occ": 30,
+   "montant_ht": null,
+   "avertissements": [
+    "[alerte] Citation introuvable p.25 : « RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi ».",
+    "[alerte] Citation introuvable p.26 : « RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi ».",
+    "[info] Mois complétés depuis la grille mensuelle colorée de la fiche.",
+    "[info] Ambiguïté signalée : Fréquence non précisée dans le texte : le document mentionne 'entretien' et 'maintenu par débroussaillage' sans indiquer de rythme précis (tous les ans, tous les 2 ans, etc.). La grille de programmation montre une bande continue de N+1 à N+30 suggérant une récurrence régulière."
+   ]
+  },
+  {
+   "id": "RG2-566be220de",
+   "code": "RG2",
+   "libelle": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés — Plantation initiale (16 bosquets)",
+   "ugs": [
+    "ug2"
+   ],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025 · « septembre/octobre (en dehors des périodes sensibles pour la faune) »",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "[alerte] Citation introuvable p.25 : « RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi ».",
+    "[info] Ambiguïté signalée : La période de septembre/octobre est explicitement associée au débroussaillage dans le texte (page 32), mais la grille mensuelle de la fiche RG2 (page 34) colorie en septembre/octobre s'applique à l'ensemble de l'action RG2. Valeur retenue : septembre/octobre pour la plantation également, par cohérence avec la grille mensuelle de la fiche action."
+   ]
+  },
+  {
+   "id": "ES1-c4d2dc7ab7",
+   "code": "ES1",
+   "libelle": "Suivi des habitats naturels et de la flore à enjeu — Inventaire et cartographie — Passage de suivi",
+   "ugs": [
+    "ug1",
+    "ug2"
+   ],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2036, 2041, 2046, 2051 · « Annuel de N à N+5, puis 1 suivi tous les 5 ans de N+6 à N+30 »",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2036,
+    2041,
+    2046,
+    2051
+   ],
+   "nb_occ": 11,
+   "montant_ht": null,
+   "avertissements": [
+    "[alerte] Citation introuvable p.37 : « ES1 | Inventaire et cartographie   X   X   X   X   X   X   1 suivis tous les 5 a »."
+   ]
+  },
+  {
+   "id": "ES2-cd3d5477b1",
+   "code": "ES2",
+   "libelle": "Suivi de l'avifaune — Inventaire et cartographie",
+   "ugs": [
+    "ug2"
+   ],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2036, 2041, 2046, 2051 · « annuel de N à N+5, puis 1 suivi tous les 5 ans de N+6 à N+30 »",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2036,
+    2041,
+    2046,
+    2051
+   ],
+   "nb_occ": 11,
+   "montant_ht": null,
+   "avertissements": [
+    "[alerte] Citation introuvable p.38 : « Inventaire et cartographie | X X X X X X | 1 suivis tous les 5 ans ».",
+    "[info] Ambiguïté signalée : La fenêtre mensuelle d'intervention (avril, mai, juin) est indiquée par la coloration de la grille mensuelle (p. 38) mais n'est pas explicitement mentionnée dans le texte écrit.",
+    "[info] Ambiguïté signalée : Le nombre de passages par campagne n'est pas précisé dans le texte, bien que le terme 'campagnes' (pluriel) soit utilisé et que le protocole STOC-EPS standard implique généralement 2 passages par an.",
+    "[info] Ambiguïté signalée : Incohérence entre le texte page 38 (répartition 2041à 2046, 2047 à 2053, 2054 à 2055) et la grille p38_t0_g1 (répartition N+16→N+20, N+21→N+25, N+26→N+30) pour la période N+16 à N+30, bien que les deux indiquent '1 suivi tous les 5 ans'."
+   ]
+  },
+  {
+   "id": "FG1-01f57e37f9",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Rapports d'activité - Synthèses annuelles (5 premières années)",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2026 · 2026, 2027, 2028, 2029, 2030 · « Des synthèses annuelles seront produites en début d’année N+1 pour les résultats de l’anné »",
+   "ancrage": 2026,
+   "annees": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 5,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "FG1-8de177f146",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Animation continue : pilotage du programme, coordination des prestations de travaux et suivis, élaboration et tenue de la base de données géoréférencées — activité continue",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036 · « pendant toute la durée des engagements du maître d’ouvrage »",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035,
+    2036,
+    2037,
+    2038,
+    2039,
+    2040,
+    2041,
+    2042,
+    2043,
+    2044,
+    2045,
+    2046,
+    2047,
+    2048,
+    2049,
+    2050,
+    2051,
+    2052,
+    2053,
+    2054,
+    2055
+   ],
+   "nb_occ": 31,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "FG1-aaacd1252d",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Rapports d'activité - Rapports quinquennaux (après la 5ème année)",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2035 · 2035, 2040, 2045, 2050, 2055 · « Ensuite, des rapports seront établis tous les 5 ans »",
+   "ancrage": 2035,
+   "annees": [
+    2035,
+    2040,
+    2045,
+    2050,
+    2055
+   ],
+   "nb_occ": 5,
+   "montant_ht": null,
+   "avertissements": [
+    "[info] Ambiguïté signalée : Les rapports quinquennaux commencent à N+10, laissant un intervalle sans rapport entre N+5 et N+10 (les années N+6 à N+9 ne sont pas couvertes par la description textuelle)."
+   ]
+  },
+  {
+   "id": "FG1-fe9f2ddcb0",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Comités de suivi",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030, 2035, 2045, 2055 · « annuellement de N à N+5, puis ponctuellement à N+10, N+20 et N+30 »",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2035,
+    2045,
+    2055
+   ],
+   "nb_occ": 9,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "FG1-0a0882856b",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Mise en place du comité de suivi",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025 · « au lancement des travaux »",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "FG1-c606c4a2ad",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Réunions du comité de suivi - Phase annuelle (N à N+5)",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030 · « ce comité se réunira annuellement de N à N+5 »",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 6,
+   "montant_ht": null,
+   "avertissements": [
+    "[info] Ambiguïté signalée : Cette règle est redondante avec la règle FG1-06 (Comités de suivi) qui couvre déjà cette période annuelle."
+   ]
+  },
+  {
+   "id": "FG1-0b9f568032",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Réunions du comité de suivi - Jalons (N+10, N+20, N+30)",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2035 · 2035, 2045, 2055 · « puis à N+10, N+20 et N+30 »",
+   "ancrage": 2035,
+   "annees": [
+    2035,
+    2045,
+    2055
+   ],
+   "nb_occ": 3,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "FG1-a7ed34dcfb",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Animation du plan de gestion (pilotage, coordination, base de données, communication) — activité continue",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036 · « continue sur toute la durée du plan de gestion »",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035,
+    2036,
+    2037,
+    2038,
+    2039,
+    2040,
+    2041,
+    2042,
+    2043,
+    2044,
+    2045,
+    2046,
+    2047,
+    2048,
+    2049,
+    2050,
+    2051,
+    2052,
+    2053,
+    2054,
+    2055
+   ],
+   "nb_occ": 31,
+   "montant_ht": null,
+   "avertissements": [
+    "[info] Ambiguïté signalée : Cette règle est redondante avec la règle FG1-03 (Animation continue) qui couvre les mêmes activités."
+   ]
+  },
+  {
+   "id": "FG1-e04427ed6a",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Comités de suivi - Réunions ponctuelles",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2035 · 2035, 2045, 2055",
+   "ancrage": 2035,
+   "annees": [
+    2035,
+    2045,
+    2055
+   ],
+   "nb_occ": 3,
+   "montant_ht": null,
+   "avertissements": [
+    "[info] Ambiguïté signalée : Cette règle est redondante avec la règle FG1-09 (Réunions du comité de suivi - Jalons)."
+   ]
+  },
+  {
+   "id": "FG2-c7ead4481f",
+   "code": "FG2",
+   "libelle": "Evaluation et mise à jour du plan de gestion — Bilans intermédiaires",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2030 · 2030, 2035, 2040, 2045, 2050 · « 1 bilan intermédiaire tous les 5 ans »",
+   "ancrage": 2030,
+   "annees": [
+    2030,
+    2035,
+    2040,
+    2045,
+    2050
+   ],
+   "nb_occ": 5,
+   "montant_ht": null,
+   "avertissements": [
+    "[alerte] Citation introuvable p.27 : « FG2 | Bilans intermédiaires | bande N+16…N+30 : « 1 bilan intermédiaire tous les ».",
+    "[alerte] Citation introuvable p.42 : « FG2 | Bilans intermédiaires | cases cochées/colorées : N+5, N+6→N+10, N+11→N+15, »."
+   ]
+  },
+  {
+   "id": "FG2-4a2a665531",
+   "code": "FG2",
+   "libelle": "Evaluation et mise à jour du plan de gestion — Bilan final du plan de gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2055 · 2055 · « Dernière année du programme (N+30) »",
+   "ancrage": 2055,
+   "annees": [
+    2055
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "[alerte] Citation introuvable p.42 : « FG2 | Bilan final | cases cochées/colorées : N+26→N+30 ».",
+    "[info] Ambiguïté signalée : Le texte indique 'dernière année du programme' (N+30) tandis que la grille de programmation (p. 42) représente le bilan final sur la période N+26 à N+30. La règle retient N+30 conformément au texte explicite."
+   ]
+  }
+ ]
+}

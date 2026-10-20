@@ -1,0 +1,17 @@
+{"tag": "roles_1", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}
+{"tag": "roles_16", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}
+{"tag": "roles_31", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}
+{"tag": "roles_46", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}
+{"tag": "frame", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}
+{"tag": "rules_RG1", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 3}
+{"tag": "rules_RG2", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 3}
+{"tag": "rules_ES1", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 3}
+{"tag": "rules_ES2", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 3}
+{"tag": "rules_FG1", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 3}
+{"tag": "rules_FG2", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 3}
+{"tag": "critic_RG1", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}
+{"tag": "critic_RG2", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}
+{"tag": "critic_ES1", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}
+{"tag": "critic_ES2", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}
+{"tag": "critic_FG1", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}
+{"tag": "critic_FG2", "kind": "chat", "model": "mistral-large-4-0", "cached": true, "n": 1}

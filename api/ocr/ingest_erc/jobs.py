@@ -1,6 +1,7 @@
 """Jobs HTTP de la passe 1 ingest_erc (dépôt de dossier → référentiel à valider)."""
 from __future__ import annotations
 
+import contextvars
 import json
 import re
 import threading
@@ -12,7 +13,7 @@ from typing import Any
 from uuid import uuid4
 
 WORK_ROOT = Path(__file__).resolve().parent.parent / "work" / "ingest_erc"
-EXTENSIONS_OK = {".pdf", ".xlsx", ".xlsm", ".zip", ".gpkg", ".geojson"}
+EXTENSIONS_OK = {".pdf", ".xlsx", ".xlsm", ".zip", ".gpkg", ".geojson", ".docx"}
 
 
 def est_bruit_macos(nom: str) -> bool:
@@ -92,6 +93,82 @@ def vue_passe1(sortie: dict) -> dict[str, Any]:
     }
 
 
+def _decouper_pdf(contenu: bytes, debut: int, fin: int, nom: str) -> bytes:
+    """Ne garde que les pages debut–fin (1 = première page)."""
+    from io import BytesIO
+
+    from pypdf import PdfReader, PdfWriter
+
+    reader = PdfReader(BytesIO(contenu))
+    n = len(reader.pages)
+    if debut < 1 or fin < debut or fin > n:
+        raise ValueError(f"{nom} : pages {debut}–{fin} hors document ({n} pages).")
+    writer = PdfWriter()
+    for i in range(debut - 1, fin):
+        writer.add_page(reader.pages[i])
+    buf = BytesIO()
+    writer.write(buf)
+    return buf.getvalue()
+
+
+def _norm_plan(s: str) -> str:
+    import unicodedata
+    t = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
+    return " ".join(t.replace("_", " ").replace("-", " ").split())
+
+
+def est_plan_gestion(nom: str, texte: str) -> tuple[bool, str]:
+    """Le document est un plan de gestion, pas un texte qui le cite.
+
+    Le nom du fichier, ou une ligne-titre courte dans tout le texte natif.
+    Une mention dans une phrase (« détaillé dans le plan de gestion ») ne compte pas.
+    """
+    if "plan de gestion" in _norm_plan(nom):
+        return True, "nom de fichier"
+    for raw in texte.splitlines():
+        ligne = _norm_plan(raw).strip(" :.|")
+        if not ligne or len(ligne) > 48:
+            continue
+        if ligne == "plan de gestion" or ligne.startswith("plan de gestion "):
+            return True, "titre dans le document"
+    return False, ""
+
+
+def proposer_plans(fichiers: list[tuple[str, bytes]]) -> list[dict[str, Any]]:
+    """Repère les plans de gestion sur le nom et le texte natif du document entier. Pas d'OCR."""
+    import tempfile
+
+    out: list[dict[str, Any]] = []
+    for nom, contenu in fichiers:
+        if Path(nom).suffix.lower() != ".pdf" or not contenu:
+            continue
+        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+            tmp.write(contenu)
+            tmp.flush()
+            chemin = tmp.name
+        try:
+            texte = subprocess_run_pdftotext(chemin)
+        finally:
+            Path(chemin).unlink(missing_ok=True)
+        ok, indice = est_plan_gestion(Path(nom).name, texte)
+        out.append({"nom": Path(nom).name, "plan": ok, "indice": indice})
+    return out
+
+
+def subprocess_run_pdfinfo(pdf: str) -> str:
+    import pdfplumber
+    with pdfplumber.open(pdf) as doc:
+        meta = doc.metadata or {}
+        return str(meta.get("Title") or meta.get("title") or "")
+
+
+def subprocess_run_pdftotext(pdf: str) -> str:
+    """Texte natif via pdfplumber (MIT). Le nom historique est conservé."""
+    import pdfplumber
+    with pdfplumber.open(pdf) as doc:
+        return "\n".join((p.extract_text(layout=True) or "") for p in doc.pages)
+
+
 def creer_job(fichiers: list[tuple[str, bytes]], roles: list[dict[str, str]] | None = None) -> str:
     job_id = str(uuid4())
     dossier = job_dir(job_id) / "dossier"
@@ -106,6 +183,14 @@ def creer_job(fichiers: list[tuple[str, bytes]], roles: list[dict[str, str]] | N
         if ext not in EXTENSIONS_OK:
             continue
         sur = _nom_sur(nom)
+        brut_debut = brut_fin = None
+        if roles and i < len(roles) and isinstance(roles[i], dict):
+            brut_debut, brut_fin = roles[i].get("page_debut"), roles[i].get("page_fin")
+            if brut_debut not in (None, "") and brut_fin not in (None, "") and ext == ".pdf":
+                debut, fin = int(brut_debut), int(brut_fin)
+                contenu = _decouper_pdf(contenu, debut, fin, Path(nom).name)
+                stem = Path(sur).stem
+                sur = f"{stem}_p{debut}-{fin}.pdf"
         n = vus.get(sur, 0)
         vus[sur] = n + 1
         if n:
@@ -115,6 +200,8 @@ def creer_job(fichiers: list[tuple[str, bytes]], roles: list[dict[str, str]] | N
         noms.append(sur)
         if roles and i < len(roles):
             r = roles[i].get("role") if isinstance(roles[i], dict) else None
+            if brut_debut not in (None, "") and brut_fin not in (None, ""):
+                r = "plan_gestion"
             if r:
                 roles_forces[sur] = r
     if roles_forces:
@@ -139,7 +226,7 @@ def creer_job(fichiers: list[tuple[str, bytes]], roles: list[dict[str, str]] | N
 
 
 def _executer_job(job_id: str) -> None:
-    from api.ocr.ingest_erc.ingest_erc.passe1 import executer
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser.passes.passe1 import executer
 
     ecrire_status(
         job_id,
@@ -186,8 +273,7 @@ def _executer_job(job_id: str) -> None:
         if "tier_not_allowed" in msg or "subscription tier" in msg.lower():
             msg = (
                 "Le modèle LLM n'est pas inclus dans le palier de la clé Mistral. "
-                "GLM 5.2 nécessite MISTRAL_API_KEY_BEN (smoke test) ; "
-                "sinon le pipeline replie sur mistral-medium-3-5."
+                "La carte utilise mistral-large-4-0, avec repli zai-glm-5-3."
             )
         elif "._" in msg and "octet-stream" in msg:
             msg = "Un fichier macOS (._) a été envoyé à l'OCR. Relancez le dépôt (ils sont maintenant ignorés)."
@@ -217,16 +303,16 @@ def _dict_reponses(payload: dict[str, Any]) -> dict[str, str]:
 
 def construire_verrouille(sortie: dict, payload: dict[str, Any]):
     """Corrections + réponses BE → référentiel proposé → verrouillé (force si questions encore ouvertes)."""
-    from api.ocr.ingest_erc.ingest_erc.corrections import (
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser.passes.corrections import (
         _hydrater_fait,
         _socle_depuis_referentiel,
         appliquer_aux_faits,
         docs_depuis_sortie,
         faits_depuis_corrections,
     )
-    from api.ocr.ingest_erc.ingest_erc.modeles import CoucheProfil, Question, ZoneCandidate
-    from api.ocr.ingest_erc.ingest_erc.reconcile_ref import reconcilier
-    from api.ocr.ingest_erc.ingest_erc.reinjection import faits_depuis_validation, verrouiller
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser.modeles import CoucheProfil, Question, ZoneCandidate
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser.passes.reconcile_ref import reconcilier
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser.sortie.reinjection import faits_depuis_validation, verrouiller
 
     extra, renames, act_renames, ug_suppr, act_suppr = faits_depuis_corrections(
         payload.get("corrections")
@@ -368,12 +454,12 @@ def _chemins_dossier(job_id: str) -> list[str]:
 def lancer_passe3(job_id: str):
     """Passe 3 : mêmes cartes/règles que la passe 1 (cache sha256), puis changeset en base."""
     from api.ocr.db.ingestion import connect, ingérer_changeset
-    from api.ocr.ingest_erc.ingest_erc import config
-    from api.ocr.ingest_erc.ingest_erc.carte import Regles, charger_ou_cartographier
-    from api.ocr.ingest_erc.ingest_erc.carte_classeur import charger_carte_cache
-    from api.ocr.ingest_erc.ingest_erc.inventaire import inventorier
-    from api.ocr.ingest_erc.ingest_erc.modeles import ReferentielVerrouille
-    from api.ocr.ingest_erc.ingest_erc.passe3 import executer_passe3
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser import config
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser.carte_llm.carte import Regles, charger_ou_cartographier
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser.carte_llm.carte_classeur import charger_carte_cache
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser.lecture.inventaire import inventorier
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser.modeles import ReferentielVerrouille
+    from api.ocr.ingest_erc.main_pipeline_a_utiliser.passes.passe3 import executer_passe3
     from api.projets.geometries.persist_depot import persister_depot_sig
 
     dest = job_dir(job_id)
@@ -415,7 +501,10 @@ def lancer_passe3(job_id: str):
     plan = next((c for c in cartes.values() if c), None)
     regles = Regles.depuis(plan) if plan else Regles.defaut()
 
-    annoncer("Lecture des fiches et construction du calendrier…")
+    if any(d.role == "plan_gestion" for d in docs):
+        annoncer("Analyse du plan de gestion et construction du calendrier…")
+    else:
+        annoncer("Lecture des fiches et construction du calendrier…")
     res = executer_passe3(ref, docs, cartes, regles, cache, cartes_classeur=cartes_xl)
     (dest / "passe3.json").write_text(res.model_dump_json(indent=1), encoding="utf-8")
     vue = vue_passe3(res)
@@ -444,6 +533,7 @@ def lancer_passe3(job_id: str):
                 projet_id=projet_id,
                 fichier_nom=next((d.nom for d in docs if d.role == "plan_gestion"), "ingest_erc"),
                 replace=bool(projet_id),
+                organisation_id=(lire_status(job_id) or {}).get("organisation_id"),
             )
             projet_id = ingestion.get("projet_id")
         if projet_id and docs_sig:
@@ -506,7 +596,12 @@ def _executer_passe3(job_id: str) -> None:
 
 
 def lancer_passe3_job(job_id: str) -> None:
-    threading.Thread(target=_executer_passe3, args=(job_id,), daemon=True).start()
+    # Le JWT vit dans le contexte de la requête. Un thread nu ne le voit pas.
+    ctx = contextvars.copy_context()
+    threading.Thread(
+        target=lambda: ctx.run(_executer_passe3, job_id),
+        daemon=True,
+    ).start()
 
 
 def enregistrer_validation(job_id: str, payload: dict[str, Any]) -> dict[str, Any]:
@@ -542,6 +637,7 @@ def enregistrer_validation(job_id: str, payload: dict[str, Any]) -> dict[str, An
         job_id,
         validation=validation,
         vue=vue,
+        organisation_id=payload.get("organisation_id") or actuel.get("organisation_id"),
         status="passe3_en_cours",
         etape="passe3",
         message="Analyse du dossier avec vos validations…",
@@ -551,7 +647,7 @@ def enregistrer_validation(job_id: str, payload: dict[str, Any]) -> dict[str, An
     return statut
 
 
-def relancer_passe3(job_id: str) -> dict[str, Any]:
+def relancer_passe3(job_id: str, organisation_id: str | None = None) -> dict[str, Any]:
     """Reprend un job déjà validé (ex. Le Barp) : verrouille si besoin, relance la passe 3."""
     actuel = lire_status(job_id)
     if not actuel:
@@ -586,6 +682,7 @@ def relancer_passe3(job_id: str) -> dict[str, Any]:
         ecrire_status(job_id, vue=vue)
     statut = ecrire_status(
         job_id,
+        organisation_id=organisation_id or actuel.get("organisation_id"),
         status="passe3_en_cours",
         etape="passe3",
         message="Analyse du dossier avec vos validations…",

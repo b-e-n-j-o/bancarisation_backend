@@ -1,0 +1,653 @@
+{
+ "document": "Plan_de_gestion_de_ddep.pdf (Bruges, extrait DDEP p.162-210)",
+ "frame": {
+  "duration_years": 30,
+  "n_definition": "année d'engagement des travaux compensatoires",
+  "n_year": 2025,
+  "start_year": 2025,
+  "end_year": 2055,
+  "operator": "CDC Biodiversité",
+  "ugs": [
+   {
+    "code": "UG1",
+    "label": "Prairie (lotiers)",
+    "surface_m2": 6969
+   },
+   {
+    "code": "UG2",
+    "label": "Mosaïque semi-ouverte et boisée (avifaune)",
+    "surface_m2": 4625
+   }
+  ],
+  "actions": [
+   {
+    "code": "RG1",
+    "title": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+    "category": "Restauration et Gestion",
+    "ug_codes": [
+     "UG1"
+    ]
+   },
+   {
+    "code": "RG2",
+    "title": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+    "category": "Restauration et Gestion",
+    "ug_codes": [
+     "UG2"
+    ]
+   },
+   {
+    "code": "ES1",
+    "title": "Suivi des habitats naturels et de la flore à enjeu",
+    "category": "Etudes et Suivis",
+    "ug_codes": [
+     "UG1",
+     "UG2"
+    ]
+   },
+   {
+    "code": "ES2",
+    "title": "Suivi de l'avifaune",
+    "category": "Etudes et Suivis",
+    "ug_codes": [
+     "UG2"
+    ]
+   },
+   {
+    "code": "FG1",
+    "title": "Animation du plan de gestion",
+    "category": "Fonctionnement Général",
+    "site_wide": true
+   },
+   {
+    "code": "FG2",
+    "title": "Evaluation et mise à jour du plan de gestion",
+    "category": "Fonctionnement Général",
+    "site_wide": true
+   }
+  ],
+  "citations": [
+   {
+    "page": 1,
+    "quote": "suivie de 30 ans de gestion"
+   }
+  ],
+  "notes": [
+   "Tableau 40 : code RG3 pour l'action RG2 (coquille)",
+   "Fiche ES1 : 10 800 m² ≠ UG1+UG2 (11 594 m²)",
+   "ES1 : UG1+UG2 (fiche) vs UG1 (tableau 41)"
+  ]
+ },
+ "rules": [
+  {
+   "action_code": "RG1",
+   "sub_action": "Réouverture initiale du milieu (broyage avec export, griffage, gestion de l'Herbe de la Pampa)",
+   "ug_codes": [
+    "UG1"
+   ],
+   "kind": "ponctuelle",
+   "segments": [
+    {
+     "years": [
+      0
+     ]
+    }
+   ],
+   "passes": [],
+   "frequency_text": "",
+   "window_text": "en dehors des périodes sensibles pour la faune",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 29,
+     "quote": "les travaux initiaux consisteront en une réouverture de pelouse à lotier par broyage avec export de biomasse et"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "RG1",
+   "sub_action": "Entretien par fauche avec export",
+   "ug_codes": [
+    "UG1"
+   ],
+   "kind": "recurrente",
+   "segments": [
+    {
+     "start": 1,
+     "end": null,
+     "step_min": 1,
+     "step_max": 1
+    }
+   ],
+   "passes": [
+    {
+     "label": "fauche de printemps",
+     "months": [
+      3,
+      4
+     ],
+     "optional": false
+    },
+    {
+     "label": "fauche d'été",
+     "months": [
+      7,
+      8
+     ],
+     "optional": true
+    }
+   ],
+   "frequency_text": "1 à 2 fauches annuelles selon développement de la végétation concurrente",
+   "window_text": "mars/avril ; fin juillet/début août",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 30,
+     "quote": "entretien par fauche 1 à 2 fois par an"
+    },
+    {
+     "page": 30,
+     "quote": "une première fauche sera réalisée au printemps (en mars/"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": [
+    "Tableau 39 : bande dès N ; fiche RG1 : travaux initiaux en N puis fauche à partir de N+1"
+   ]
+  },
+  {
+   "action_code": "RG1",
+   "sub_action": "Griffage du sol (10 cm max)",
+   "ug_codes": [
+    "UG1"
+   ],
+   "kind": "recurrente",
+   "segments": [
+    {
+     "start": 3,
+     "end": null,
+     "step_min": 2,
+     "step_max": 3
+    }
+   ],
+   "passes": [
+    {
+     "label": "griffage",
+     "months": [
+      7,
+      8
+     ],
+     "optional": false
+    }
+   ],
+   "frequency_text": "une fois tous les 2 à 3 ans",
+   "window_text": "fin juillet/début août",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 30,
+     "quote": "Le griffage sera réalisé fin juillet/ début août, à raison d’une fois tous les"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": [
+    "Année de démarrage du griffage non précisée"
+   ]
+  },
+  {
+   "action_code": "RG1",
+   "sub_action": "Arrachage manuel des espèces envahissantes avec export",
+   "ug_codes": [
+    "UG1"
+   ],
+   "kind": "conditionnelle",
+   "segments": [],
+   "passes": [
+    {
+     "label": "",
+     "months": [
+      9,
+      10,
+      11
+     ],
+     "optional": false
+    }
+   ],
+   "frequency_text": "",
+   "window_text": "automne",
+   "trigger": "développement d'espèces envahissantes constaté",
+   "citations": [
+    {
+     "page": 29,
+     "quote": "Si un développement des espèces envahissantes est constaté, des sessions d’arrachage manuel avec export devront être programmées"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "RG2",
+   "sub_action": "Débroussaillage initial (réouverture)",
+   "ug_codes": [
+    "UG2"
+   ],
+   "kind": "ponctuelle",
+   "segments": [
+    {
+     "years": [
+      0
+     ]
+    }
+   ],
+   "passes": [
+    {
+     "label": "",
+     "months": [
+      9,
+      10
+     ],
+     "optional": false
+    }
+   ],
+   "frequency_text": "",
+   "window_text": "septembre/octobre",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 31,
+     "quote": "Une opération de débroussaillage sera réalisée en dehors des périodes sensibles pour les espèces (septembre/ octobre)"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "RG2",
+   "sub_action": "Plantation de 16 bosquets",
+   "ug_codes": [
+    "UG2"
+   ],
+   "kind": "ponctuelle",
+   "segments": [
+    {
+     "years": [
+      0
+     ]
+    }
+   ],
+   "passes": [],
+   "frequency_text": "",
+   "window_text": "en dehors des périodes sensibles pour la faune",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 32,
+     "quote": "L’objectif sera de constituer un ensemble de 16 petits bosquets de 3 à 9 plants"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "RG2",
+   "sub_action": "Entretien du milieu semi-ouvert par débroussaillage",
+   "ug_codes": [
+    "UG2"
+   ],
+   "kind": "non_precisee",
+   "segments": [
+    {
+     "start": 1,
+     "end": null
+    }
+   ],
+   "passes": [],
+   "frequency_text": "Entretien",
+   "window_text": "en dehors des périodes sensibles pour la faune",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 33,
+     "quote": "Le milieu semi-ouvert sera maintenu par débroussaillage"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": [
+    "Aucune fréquence donnée"
+   ]
+  },
+  {
+   "action_code": "RG2",
+   "sub_action": "Regarnis des plantations",
+   "ug_codes": [
+    "UG2"
+   ],
+   "kind": "conditionnelle",
+   "segments": [],
+   "passes": [],
+   "frequency_text": "",
+   "window_text": "",
+   "trigger": "pertes importantes constatées sur les plantations",
+   "citations": [
+    {
+     "page": 33,
+     "quote": "Si des pertes importantes sont constatées au niveau des plantations d’arbres, un regarnis pourra être réalisé"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "ES1",
+   "sub_action": "Suivi des habitats naturels et de la flore à enjeu (inventaire et cartographie)",
+   "ug_codes": [
+    "UG1",
+    "UG2"
+   ],
+   "kind": "recurrente",
+   "segments": [
+    {
+     "years": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "start": 10,
+     "end": null,
+     "step_min": 5,
+     "step_max": 5
+    }
+   ],
+   "passes": [
+    {
+     "label": "passage",
+     "months": [
+      6,
+      7
+     ],
+     "optional": false
+    }
+   ],
+   "frequency_text": "1 suivi tous les 5 ans",
+   "window_text": "juin/juillet",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 35,
+     "quote": "Chaque campagne se fera à travers un passage courant juin/juillet"
+    },
+    {
+     "page": 34,
+     "quote": "Cette cartographie sera réalisée sur les deux"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "ES2",
+   "sub_action": "Suivi de l'avifaune (points d'écoute STOC-EPS)",
+   "ug_codes": [
+    "UG2"
+   ],
+   "kind": "recurrente",
+   "segments": [
+    {
+     "years": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "start": 10,
+     "end": null,
+     "step_min": 5,
+     "step_max": 5
+    }
+   ],
+   "passes": [
+    {
+     "label": "passage",
+     "months": [
+      4,
+      5,
+      6
+     ],
+     "optional": false
+    }
+   ],
+   "frequency_text": "1 suivis tous les 5 ans",
+   "window_text": "avril à juin (grille colorée)",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 37,
+     "quote": "La méthode appliquée est celle dite des « points d’écoute »"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "FG1",
+   "sub_action": "Synthèse annuelle d'activité",
+   "ug_codes": [],
+   "kind": "recurrente",
+   "segments": [
+    {
+     "years": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "passes": [],
+   "frequency_text": "annuelle, 5 premières années",
+   "window_text": "début d'année N+1",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 39,
+     "quote": "Des synthèses annuelles seront produites en début d’année N+1 pour les résultats de l’année N et ce, durant les 5 premières années du Plan de gestion"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "FG1",
+   "sub_action": "Rapport d'activité quinquennal",
+   "ug_codes": [],
+   "kind": "recurrente",
+   "segments": [
+    {
+     "start": 10,
+     "end": null,
+     "step_min": 5,
+     "step_max": 5
+    }
+   ],
+   "passes": [],
+   "frequency_text": "tous les 5 ans",
+   "window_text": "",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 39,
+     "quote": "Ensuite, des rapports seront établis tous les 5 ans"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "FG1",
+   "sub_action": "Comité de suivi",
+   "ug_codes": [],
+   "kind": "recurrente",
+   "segments": [
+    {
+     "years": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      10,
+      20,
+      30
+     ]
+    }
+   ],
+   "passes": [],
+   "frequency_text": "annuellement de N à N+5, puis à N+10, N+20 et N+30",
+   "window_text": "",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 39,
+     "quote": "ce comité se réunira annuellement de N à N+5, puis à N+10, N+20 et N+30"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "FG1",
+   "sub_action": "Veille sur le site",
+   "ug_codes": [],
+   "kind": "recurrente",
+   "segments": [
+    {
+     "start": 0,
+     "end": null,
+     "count_over_period": 10
+    }
+   ],
+   "passes": [],
+   "frequency_text": "une dizaine de visites sur la durée du plan",
+   "window_text": "années sans intervention programmée",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 38,
+     "quote": "une dizaine de visites sera répartie sur la durée du plan de gestion"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "FG1",
+   "sub_action": "Pilotage et coordination du programme",
+   "ug_codes": [],
+   "kind": "continue",
+   "segments": [
+    {
+     "start": 0,
+     "end": null
+    }
+   ],
+   "passes": [],
+   "frequency_text": "",
+   "window_text": "",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 38,
+     "quote": "pilotage administratif et technique permettant une mise en œuvre efficace des mesures prévues"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "FG2",
+   "sub_action": "Bilan intermédiaire du plan de gestion",
+   "ug_codes": [],
+   "kind": "recurrente",
+   "segments": [
+    {
+     "years": [
+      5,
+      10,
+      15,
+      20,
+      25
+     ]
+    }
+   ],
+   "passes": [],
+   "frequency_text": "1 bilan intermédiaire tous les 5 ans",
+   "window_text": "",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 25,
+     "quote": "1 bilan intermédiaire tous les 5 ans et un bilan final à N+30"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "FG2",
+   "sub_action": "Bilan final du plan de gestion",
+   "ug_codes": [],
+   "kind": "ponctuelle",
+   "segments": [
+    {
+     "years": [
+      30
+     ]
+    }
+   ],
+   "passes": [],
+   "frequency_text": "bilan final à N+30",
+   "window_text": "dernière année",
+   "trigger": "",
+   "citations": [
+    {
+     "page": 41,
+     "quote": "Ce bilan sera produit en dernière année du programme"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  },
+  {
+   "action_code": "FG2",
+   "sub_action": "Révision du plan de gestion",
+   "ug_codes": [],
+   "kind": "conditionnelle",
+   "segments": [],
+   "passes": [],
+   "frequency_text": "",
+   "window_text": "",
+   "trigger": "évolution des indicateurs de suivi écologique",
+   "citations": [
+    {
+     "page": 41,
+     "quote": "Selon l’évolution des indicateurs de suivi écologique, un ajustement du programme de gestion pourra être envisagé"
+    }
+   ],
+   "confidence": 0.9,
+   "ambiguities": []
+  }
+ ]
+}

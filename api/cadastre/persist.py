@@ -98,7 +98,6 @@ def remplacer_parcelles_ug(
                     ),
                 )
                 n += 1
-        conn.commit()
     return n
 
 
@@ -141,7 +140,6 @@ def supprimer_cadastre_projet(projet_id: UUID, *, ug_ids: list[str] | None = Non
                         "DELETE FROM bancarisation.cadastre_parcelle_ug WHERE projet_id = %s",
                         (str(projet_id),),
                     )
-        conn.commit()
 
 
 def lier_parcelles_aux_ugs(projet_id: UUID) -> dict[str, int]:
@@ -280,5 +278,4 @@ def lier_parcelles_aux_ugs(projet_id: UUID) -> dict[str, int]:
             )
             for ug_id, n in cur.fetchall():
                 counts[str(ug_id)] = int(n)
-        conn.commit()
     return counts

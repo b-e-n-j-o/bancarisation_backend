@@ -9,7 +9,9 @@ reasoning_effort passe, et à quelle vitesse ce modèle génère ?"
     python smoke_test_mistral.py --model small --effort none
     python smoke_test_mistral.py --model medium --effort high
     python smoke_test_mistral.py --model large --effort low
+    python smoke_test_mistral.py --model mistral4 --effort none
     python smoke_test_mistral.py --model glm --effort high
+    python smoke_test_mistral.py --model glm53 --effort high
     python smoke_test_mistral.py --model glm --reasoning xhigh
 
 La vitesse mesurée (tokens/s) permet d'extrapoler la durée du vrai run :
@@ -23,6 +25,7 @@ import json
 import os
 import sys
 import time
+from pathlib import Path
 
 import httpx
 from dotenv import load_dotenv
@@ -36,7 +39,11 @@ ALIAS = {
     "small": "mistral-small-latest",
     "medium": "mistral-medium-3-5",
     "large": "mistral-large-latest",
+    "large4": "mistral-large-4-0",
+    "mistral4": "mistral-large-4-0",
     "glm": "zai-glm-5-2",
+    "glm53": "zai-glm-5-3",
+    "glm5-3": "zai-glm-5-3",
 }
 
 # Variantes d'écriture courantes → id canonique.
@@ -58,6 +65,8 @@ PRIX = {
     "mistral-large-2411": (0.50, 0.05, 1.50),
     "zai-glm-5-2": (1.40, 0.14, 4.40),
     "glm-5-2": (1.40, 0.14, 4.40),
+    "zai-glm-5-3": (1.40, 0.14, 4.40),
+    "glm-5-3": (1.40, 0.14, 4.40),
 }
 
 PLAN_IN = 13_000
@@ -69,6 +78,8 @@ PLAN_OUT = 20_000
 EFFORTS_TOUS = ("none", "minimal", "low", "medium", "high", "xhigh", "max")
 EFFORTS_MISTRAL = ("none", "low", "medium", "high")
 EFFORTS_GLM = ("none", "minimal", "low", "medium", "high", "xhigh", "max")
+# zai-glm-5-3 refuse « none » : low, high, max seulement. « max » reste max.
+EFFORTS_GLM53 = ("low", "high", "max")
 ALIAS_EFFORT = {"max": "xhigh"}
 
 
@@ -93,17 +104,31 @@ def famille(model: str) -> str:
     return "autre"
 
 
+def _glm53(model: str) -> bool:
+    m = model.lower()
+    return "glm-5-3" in m or "glm-5.3" in m
+
+
 def efforts_pour(model: str) -> tuple[str, ...]:
+    if _glm53(model):
+        return EFFORTS_GLM53
     return EFFORTS_GLM if famille(model) == "glm" else EFFORTS_MISTRAL
 
 
-def effort_api(effort: str) -> str:
+def effort_api(model: str, effort: str) -> str:
+    if _glm53(model):
+        return effort
     return ALIAS_EFFORT.get(effort, effort)
 
 
-def payload_raisonnement(_model: str, effort: str) -> dict:
-    """Chez Mistral : uniquement reasoning_effort. Jamais `thinking` (Z.ai)."""
-    return {"reasoning_effort": effort_api(effort)}
+def payload_raisonnement(model: str, effort: str) -> dict:
+    """Chez Mistral : uniquement reasoning_effort. Jamais `thinking` (Z.ai).
+
+    GLM 5.3 n'a pas de palier « none » : on omet le champ, le modèle choisit.
+    """
+    if _glm53(model) and effort == "none":
+        return {}
+    return {"reasoning_effort": effort_api(model, effort)}
 
 
 def effort_refuse(corps: str) -> bool:
@@ -191,7 +216,8 @@ def main() -> None:
         description="Smoke test Mistral : clé, modèle, vitesse, coût estimé.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
-            "Modèles : small, medium, large, glm  (ou un id API exact).\n"
+            "Modèles : small, medium, large, mistral4 (mistral-large-4-0),\n"
+            "          glm (zai-glm-5-2), glm53 (zai-glm-5-3), ou un id API exact.\n"
             "Raisonnement : --effort / --reasoning\n"
             "  · small/medium/large : none, low, medium, high\n"
             "  · glm (API Mistral)  : none, minimal, low, medium, high, xhigh\n"
@@ -207,6 +233,11 @@ def main() -> None:
         choices=list(EFFORTS_TOUS),
         help="Mode de raisonnement. Défaut: none. Alias: --reasoning.",
     )
+    p.add_argument(
+        "--text",
+        help="Fichier texte envoyé tel quel (ex. l'arrêté extrait). "
+             "La consigne de sortie reste courte, pour mesurer le délai du premier token.",
+    )
     args = p.parse_args()
 
     model = resoudre_modele(args.model)
@@ -214,16 +245,23 @@ def main() -> None:
         print(f"🧭 Alias '{args.model}' → {model}")
 
     autorises = efforts_pour(model)
-    if args.effort not in autorises:
+    if _glm53(model) and args.effort == "none":
         print(
-            f"⚠️  effort='{args.effort}' n'est pas un palier de {famille(model)} "
-            f"({', '.join(autorises)}). On l'envoie quand même."
+            "🧠 Raisonnement : none omis — GLM 5.3 n'accepte que "
+            + ", ".join(autorises)
         )
-    print(
-        f"🧠 Raisonnement : {args.effort}"
-        + (f" → {effort_api(args.effort)}" if effort_api(args.effort) != args.effort else "")
-        + f"  (valeurs typiques : {', '.join(autorises)})"
-    )
+    else:
+        if args.effort not in autorises:
+            print(
+                f"⚠️  effort='{args.effort}' n'est pas un palier de {famille(model)} "
+                f"({', '.join(autorises)}). On l'envoie quand même."
+            )
+        envoye = effort_api(model, args.effort)
+        print(
+            f"🧠 Raisonnement : {args.effort}"
+            + (f" → {envoye}" if envoye != args.effort else "")
+            + f"  (valeurs typiques : {', '.join(autorises)})"
+        )
     if famille(model) == "glm":
         print("   GLM chez Mistral : pas de `thinking` (Z.ai). "
               "On envoie seulement reasoning_effort.")
@@ -263,11 +301,17 @@ def main() -> None:
 
     # 2. Appel réel, en streaming, avec chrono.
     extra_raisonnement = payload_raisonnement(model, args.effort)
-    print(f"\n② Appel test ({model}, {extra_raisonnement}) …")
+    consigne = "Compte de 1 à 20 en français, puis réponds uniquement : OK."
+    if args.text:
+        extrait = Path(args.text).read_text(encoding="utf-8")
+        contenu = extrait.rstrip() + "\n\n" + consigne
+        print(f"\n② Appel test ({model}, {extra_raisonnement}) — texte {len(extrait):,} car. …")
+    else:
+        contenu = consigne
+        print(f"\n② Appel test ({model}, {extra_raisonnement}) …")
     payload = {
         "model": model,
-        "messages": [{"role": "user", "content":
-                      "Compte de 1 à 20 en français, puis réponds uniquement : OK."}],
+        "messages": [{"role": "user", "content": contenu}],
         "max_tokens": 2000,
         "stream": True,
         **extra_raisonnement,
@@ -275,7 +319,8 @@ def main() -> None:
 
     t0 = time.time()
     try:
-        with httpx.Client(timeout=180.0) as client:
+        attente = 600.0 if args.text else 180.0
+        with httpx.Client(timeout=attente) as client:
             ok, status, corps, usage, premier_token, morceaux = streamer(
                 client, api_key, payload, t0)
             if not ok and "reasoning_effort" in payload and effort_refuse(corps):

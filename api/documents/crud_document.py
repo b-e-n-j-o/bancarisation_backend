@@ -2,6 +2,7 @@ import os
 import re
 import time
 import json
+import logging
 from datetime import date
 from typing import Any, Optional
 from uuid import UUID
@@ -15,6 +16,7 @@ from api.db.utilisateur import connect_utilisateur
 
 BUCKET = "documents-projet"
 GEOM_TABLE = "projet_geometries"
+logger = logging.getLogger("documents.crud")
 
 
 class DocumentServiceError(Exception):
@@ -23,6 +25,43 @@ class DocumentServiceError(Exception):
 
 def _storage() -> Client:
     return get_supabase_admin()
+
+
+def _colonne_absente(exc: Exception, colonne: str) -> bool:
+    if getattr(exc, "sqlstate", None) != "42703":
+        return False
+    return colonne in str(exc)
+
+
+def _inserer_document(payload: dict[str, Any]) -> dict[str, Any] | None:
+    with_sous_type = """
+        INSERT INTO bancarisation.documents
+            (projet_id, nom, nom_fichier, bucket_path, taille_octets, type_mime,
+             categorie, date_document, description, occurrence_id, sous_type)
+        VALUES (%(projet_id)s, %(nom)s, %(nom_fichier)s, %(bucket_path)s,
+                %(taille_octets)s, %(type_mime)s, %(categorie)s, %(date_document)s,
+                %(description)s, %(occurrence_id)s, %(sous_type)s)
+        RETURNING *
+    """
+    without = """
+        INSERT INTO bancarisation.documents
+            (projet_id, nom, nom_fichier, bucket_path, taille_octets, type_mime,
+             categorie, date_document, description, occurrence_id)
+        VALUES (%(projet_id)s, %(nom)s, %(nom_fichier)s, %(bucket_path)s,
+                %(taille_octets)s, %(type_mime)s, %(categorie)s, %(date_document)s,
+                %(description)s, %(occurrence_id)s)
+        RETURNING *
+    """
+    try:
+        return _one(with_sous_type, payload)
+    except Exception as exc:
+        if not _colonne_absente(exc, "sous_type"):
+            raise
+        logger.warning(
+            "Colonne bancarisation.documents.sous_type absente : dépôt sans le type d'arrêté. "
+            "Exécuter backend/api/documents/sql/002_document_sous_type.sql"
+        )
+        return _one(without, payload)
 
 
 def _one(sql: str, params: Any = None) -> dict[str, Any] | None:
@@ -188,6 +227,7 @@ def upload_document(
     nom: Optional[str] = None,
     occurrence_id: Optional[UUID] = None,
     sous_dossier: Optional[str] = None,
+    sous_type: Optional[str] = None,
 ) -> dict[str, Any]:
     client = _storage()
     geojson_features: list[dict[str, Any]] | None = None
@@ -235,24 +275,14 @@ def upload_document(
         "categorie": categorie,
         "date_document": date_document.isoformat() if date_document else None,
         "description": description or None,
+        "sous_type": (sous_type or "").strip() or None,
     }
     insert_payload["occurrence_id"] = (
         str(occurrence_id) if occurrence_id is not None else None
     )
 
     try:
-        row = _one(
-            """
-            INSERT INTO bancarisation.documents
-                (projet_id, nom, nom_fichier, bucket_path, taille_octets, type_mime,
-                 categorie, date_document, description, occurrence_id)
-            VALUES (%(projet_id)s, %(nom)s, %(nom_fichier)s, %(bucket_path)s,
-                    %(taille_octets)s, %(type_mime)s, %(categorie)s, %(date_document)s,
-                    %(description)s, %(occurrence_id)s)
-            RETURNING *
-            """,
-            insert_payload,
-        )
+        row = _inserer_document(insert_payload)
     except Exception as exc:  # pragma: no cover
         try:
             client.storage.from_(BUCKET).remove([bucket_path])
@@ -280,6 +310,55 @@ def upload_document(
             raise DocumentServiceError(str(exc)) from exc
 
     return row
+
+
+_CATEGORIES_ONGLET = {
+    "arrete",
+    "plan_gestion",
+    "suivi_travaux",
+    "cerfa",
+    "sig",
+    "bilans_annuels",
+}
+
+
+def update_document_classement(
+    document_id: UUID,
+    categorie: str,
+    sous_type: Optional[str] = None,
+) -> dict[str, Any]:
+    """Met à jour uniquement le type (et le sous-type d'arrêté). Le fichier ne bouge pas."""
+    cat = (categorie or "").strip()
+    if cat not in _CATEGORIES_ONGLET:
+        raise DocumentServiceError(f"Type de document inconnu : {categorie}")
+
+    row = _one(
+        "SELECT id, projet_id FROM bancarisation.documents WHERE id = %s",
+        (str(document_id),),
+    )
+    if not row:
+        raise DocumentServiceError("Document introuvable.")
+
+    niveau = _one("SELECT prive.niveau_projet(%s) AS n", (str(row["projet_id"]),))
+    if not niveau or int(niveau.get("n") or 0) < 3:
+        raise DocumentServiceError("Droits insuffisants pour modifier un document.")
+
+    sous = (sous_type or "").strip() or None
+    if cat != "arrete":
+        sous = None
+
+    updated = _one(
+        """
+        UPDATE bancarisation.documents
+        SET categorie = %s, sous_type = %s
+        WHERE id = %s
+        RETURNING *
+        """,
+        (cat, sous, str(document_id)),
+    )
+    if not updated:
+        raise DocumentServiceError("Document introuvable.")
+    return updated
 
 
 def delete_document(document_id: UUID) -> None:

@@ -1,0 +1,405 @@
+{
+ "version": 1,
+ "projet": {
+  "nom": "9 avenue Marc Nouaux 33610 Cestas - Tel : 05 56 49 59 78 - Mail : contact@riviere-environnement.fr",
+  "annee_fin": 2055,
+  "annee_N": 2025,
+  "annee_etat_zero": 2025
+ },
+ "ugs": [],
+ "actions": [
+  {
+   "code": "ES1",
+   "intitule": "Suivi des habitats naturels et de la flore à enjeu",
+   "nature": "Etudes et Suivis écologiques",
+   "ugs": [],
+   "cible": null
+  },
+  {
+   "code": "ES2",
+   "intitule": "Suivi de l'avifaune",
+   "nature": "Etudes et Suivis écologiques",
+   "ugs": [],
+   "cible": null
+  },
+  {
+   "code": "FG1",
+   "intitule": "Animation du plan de gestion",
+   "nature": "Fonctionnement Général",
+   "ugs": [],
+   "cible": null
+  },
+  {
+   "code": "FG2",
+   "intitule": "Evaluation et mise à jour du plan de gestion",
+   "nature": "Fonctionnement Général",
+   "ugs": [],
+   "cible": null
+  },
+  {
+   "code": "RG1",
+   "intitule": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "nature": "Restauration et Gestion",
+   "ugs": [],
+   "cible": null
+  },
+  {
+   "code": "RG2",
+   "intitule": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+   "nature": "Restauration et Gestion",
+   "ugs": [],
+   "cible": null
+  }
+ ],
+ "obligations_surfaciques": [],
+ "decisions": {
+  "alias_codes": {},
+  "alias_parcelles": {},
+  "parcelles_a_ajouter": [],
+  "requalifications_blocs": {},
+  "couches_contexte": [
+   {
+    "zone": "Enjeux_arbres_Pt_20240923",
+    "motif": "confirmé par le BE"
+   },
+   {
+    "zone": "Enjeux_bois_mort_Pt_20240923",
+    "motif": "confirmé par le BE"
+   },
+   {
+    "zone": "Enjeux_lisieres_Li_20240923",
+    "motif": "confirmé par le BE"
+   }
+  ],
+  "couches_ignorees": [],
+  "decisions_annexes": {},
+  "roles_tableaux": {},
+  "commentaires": [
+   {
+    "question": "action_ug_absente:ES1",
+    "regle": "action_ug_absente",
+    "portee": "ES1",
+    "enonce": "ES1 (Suivi des habitats naturels et de la flore à enjeu) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "UG1 UG2",
+    "sources": []
+   },
+   {
+    "question": "action_ug_absente:ES2",
+    "regle": "action_ug_absente",
+    "portee": "ES2",
+    "enonce": "ES2 (Suivi de l'avifaune) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "UG2",
+    "sources": []
+   },
+   {
+    "question": "action_ug_absente:FG1",
+    "regle": "action_ug_absente",
+    "portee": "FG1",
+    "enonce": "FG1 (Animation du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "Aucune",
+    "sources": []
+   },
+   {
+    "question": "action_ug_absente:FG2",
+    "regle": "action_ug_absente",
+    "portee": "FG2",
+    "enonce": "FG2 (Evaluation et mise à jour du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "Aucune",
+    "sources": []
+   },
+   {
+    "question": "action_ug_absente:RG1",
+    "regle": "action_ug_absente",
+    "portee": "RG1",
+    "enonce": "RG1 (Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "UG1",
+    "sources": []
+   },
+   {
+    "question": "action_ug_absente:RG2",
+    "regle": "action_ug_absente",
+    "portee": "RG2",
+    "enonce": "RG2 (Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "UG2",
+    "sources": []
+   }
+  ],
+  "arrete": {}
+ },
+ "provenance": {
+  "projet.nom": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "pied de page",
+     "extrait": "9 avenue Marc Nouaux 33610 Cestas - Tel : 05 56 49 59 78 - Mail : contact@riviere-environnement.fr"
+    }
+   ]
+  },
+  "projet.annee_fin": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.2",
+     "extrait": "1,16 ha (2025-2055)"
+    }
+   ]
+  },
+  "projet.annee_N": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.25 grille p025_g1",
+     "extrait": "N = 2025 (10 grille(s), colonnes année − rang)"
+    },
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.2",
+     "extrait": "1,16 ha (2025-2055)"
+    }
+   ]
+  },
+  "projet.annee_etat_zero": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.2",
+     "extrait": "1,16 ha (2025-2055)"
+    }
+   ]
+  },
+  "action.ES1.intitule": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.35",
+     "extrait": "Suivi des habitats naturels et de la flore à enjeu"
+    },
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.29 tableau 1 (carte)",
+     "extrait": "Suivi des habitats naturels et de la flore à enjeu"
+    }
+   ]
+  },
+  "action.ES1.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.22",
+     "extrait": "Etudes et Suivis écologiques (ES)"
+    }
+   ]
+  },
+  "action.ES1.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.ES1.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.ES2.intitule": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.38",
+     "extrait": "Suivi de l'avifaune à enjeu"
+    },
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.29 tableau 1 (carte)",
+     "extrait": "Suivi de l'avifaune"
+    }
+   ]
+  },
+  "action.ES2.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.22",
+     "extrait": "Etudes et Suivis écologiques (ES)"
+    }
+   ]
+  },
+  "action.ES2.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.ES2.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.FG1.intitule": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.39",
+     "extrait": "Animation du plan de gestion"
+    },
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.29 tableau 1 (carte)",
+     "extrait": "Animation du plan de gestion"
+    }
+   ]
+  },
+  "action.FG1.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.22",
+     "extrait": "Fonctionnement Général (FG)"
+    }
+   ]
+  },
+  "action.FG1.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.FG1.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.FG2.intitule": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.42",
+     "extrait": "Evaluation et mise à jour du plan de gestion"
+    },
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.29 tableau 1 (carte)",
+     "extrait": "Evaluation et mise à jour du plan de gestion"
+    }
+   ]
+  },
+  "action.FG2.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.22",
+     "extrait": "Fonctionnement Général (FG)"
+    }
+   ]
+  },
+  "action.FG2.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.FG2.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.RG1.intitule": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.30",
+     "extrait": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion"
+    },
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.29 tableau 1 (carte)",
+     "extrait": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion"
+    }
+   ]
+  },
+  "action.RG1.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.22",
+     "extrait": "Restauration et Gestion (RG)"
+    }
+   ]
+  },
+  "action.RG1.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.RG1.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.RG2.intitule": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.32",
+     "extrait": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés"
+    },
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.29 tableau 1 (carte)",
+     "extrait": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés"
+    }
+   ]
+  },
+  "action.RG2.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+     "loc": "p.22",
+     "extrait": "Restauration et Gestion (RG)"
+    }
+   ]
+  },
+  "action.RG2.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.RG2.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  }
+ },
+ "questions_forcees": [],
+ "empreinte": "6f14cc8f063f9dbecadc14602b152519b380344c05fe26ddae7b1d91541d13f4",
+ "verrouille_le": "2026-10-15T10:42:38.120100+00:00"
+}

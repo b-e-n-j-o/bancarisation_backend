@@ -1,0 +1,13 @@
+{
+  "job_id": "40bced20-4c94-48ee-8a36-96d4a8e574ea",
+  "status": "running",
+  "etape": "3/6 extraction (fiche, synthèse, articles)",
+  "pipeline": "arx_lite",
+  "document_id": "553228bc-075c-4223-98e6-2b096969ff82",
+  "projet_id": "8d061654-c30c-4ced-95a6-99297b43020a",
+  "nom": "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+  "date_document": "2026-10-19",
+  "llm": null,
+  "erreur": null,
+  "updated_at": "2026-10-19T09:06:06.315075+00:00"
+}

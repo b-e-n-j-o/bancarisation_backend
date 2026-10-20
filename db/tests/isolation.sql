@@ -440,6 +440,23 @@ begin
   insert into bancarisation.occurrence_finance (occurrence_id, montant_ht, montant_initial, annee_initiale)
   values ('00000000-0000-0000-0000-0000000002a1', 1000, 800, 2026);
 
+  if not exists (
+    select 1 from information_schema.columns
+     where table_schema = 'bancarisation' and table_name = 'occurrence_finance'
+       and column_name = 'montant_ttc'
+  ) then
+    raise exception 'ÉCHEC : 059 non appliquée, montant_ttc n''est pas dans occurrence_finance';
+  end if;
+  update bancarisation.occurrence_finance
+     set montant_ttc = 1200, taux_tva = 0.2
+   where occurrence_id = '00000000-0000-0000-0000-0000000002a1';
+
+  insert into bancarisation.budget_mouvement (occurrence_id, projet_id, champ, ancienne_val, nouvelle_val)
+  values
+    ('00000000-0000-0000-0000-0000000002a1', '00000000-0000-0000-0000-0000000001a1', 'montant_ht', '0', '1000'),
+    ('00000000-0000-0000-0000-0000000002a1', '00000000-0000-0000-0000-0000000001a1', 'montant_ttc', '0', '1200'),
+    ('00000000-0000-0000-0000-0000000002a1', '00000000-0000-0000-0000-0000000001a1', 'statut', 'planifie', 'en_cours');
+
   perform tests.en_tant_que('00000000-0000-0000-0000-0000000000e1');
   execute $q$
     select count(*)
@@ -461,7 +478,32 @@ begin
   if ht is not null then
     raise exception 'ÉCHEC : externe lit un montant dans v_occurrence_calendrier';
   end if;
-  raise notice 'ok : externe : montant null dans le calendrier';
+  execute $q$
+    select montant_ttc from bancarisation.v_occurrence_calendrier
+     where id = '00000000-0000-0000-0000-0000000002a1'
+  $q$ into ht;
+  if ht is not null then
+    raise exception 'ÉCHEC : externe lit un montant TTC';
+  end if;
+  raise notice 'ok : externe sans finances : aucun montant, TTC compris';
+
+  execute $q$
+    select count(*) from bancarisation.budget_mouvement
+     where projet_id = '00000000-0000-0000-0000-0000000001a1'
+       and champ not in ('statut', 'annee', 'mois_debut', 'mois_fin')
+  $q$ into n;
+  if n > 0 then
+    raise exception 'ÉCHEC : externe lit % ligne(s) de montant dans budget_mouvement', n;
+  end if;
+  execute $q$
+    select count(*) from bancarisation.budget_mouvement
+     where occurrence_id = '00000000-0000-0000-0000-0000000002a1'
+       and champ = 'statut'
+  $q$ into n;
+  if n < 1 then
+    raise exception 'ÉCHEC : externe ne lit pas la ligne statut de budget_mouvement';
+  end if;
+  raise notice 'ok : externe : aucune ligne de montant dans budget_mouvement, la ligne statut reste lisible';
 
   perform tests.echoue(
     $q$insert into bancarisation.occurrence_finance (occurrence_id, montant_ht)
@@ -501,6 +543,14 @@ begin
     raise notice 'ok : 056 appliquée, occurrence n''a plus de colonne de montant';
   else
     raise notice '056 pas encore appliquée : % colonne(s) de montant encore sur occurrence', colonnes;
+  end if;
+  if exists (
+    select 1 from information_schema.columns
+     where table_schema = 'bancarisation' and table_name = 'occurrence'
+       and column_name in ('montant_ttc', 'taux_tva', 'montant_ht', 'montant_engage',
+                           'montant_realise', 'montant_initial')
+  ) then
+    raise exception 'ÉCHEC : occurrence expose encore une colonne de montant';
   end if;
 end $$;
 reset role;

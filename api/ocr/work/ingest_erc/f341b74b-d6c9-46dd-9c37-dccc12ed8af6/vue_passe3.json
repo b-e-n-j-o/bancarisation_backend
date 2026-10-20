@@ -1,0 +1,411 @@
+{
+ "stats": {
+  "faits": 21,
+  "temporels": 21,
+  "budgets": 0,
+  "statuts": 0,
+  "echeances": 13,
+  "occurrences": 83,
+  "non_placables": 0,
+  "rejets": 14,
+  "occurrences_avec_montant": 0,
+  "tokens_llm": {
+   "n": 0,
+   "prompt": 0,
+   "reasoning": 0,
+   "completion": 0,
+   "total": 0
+  },
+  "duree_s": 12.04
+ },
+ "classeurs": {},
+ "nb_rejets": 14,
+ "rejets_par_motif": {
+  "code_inconnu": 14
+ },
+ "rejets": [
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « E01 : Définition du plan masse en fonction des enjeux enviro »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « E02 : Évitement de 5 arbres gîtes supplémentaires et leur in »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « E03 : Modification des choix d'aménagements du projet »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « R 01 : Limitation des emprises des travaux et des installati »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « R 02 : Dispositif de lutte contre les espèces exotiques enva »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « R 03 : Dispositif permettant d'éloigner les espèces à enjeu  »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « R 04 : Campagne de sauvetage avant destruction de spécimens  »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « R 05 : Mise en œuvre d'un protocole spécifique pour la coupe »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « R 06 : Limitation de l'éclairage artificiel »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « R07 : Transfert de banquettes de sol des stations de lotiers »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « R 08 : Adaptation de la période de travaux »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « R 09 : Mise en place d'un suivi environnemental de chantier »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « A 01 : Renforcer la trame verte locale - plan paysager en fa »"
+  },
+  {
+   "motif": "code_inconnu",
+   "detail": "fiche « A 02 : Installation de nichoirs à oiseaux et à chiroptères e »"
+  }
+ ],
+ "avertissements": [
+  "ES1 : bande non interprétée : la règle reste à la fiche",
+  "ES1 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf p.195-198 décrit [2025, 2026, 2027, 2028, 2029, 2030, 2031, 2036] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])",
+  "ES2 : bande non interprétée : la règle reste à la fiche",
+  "ES2 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf p.198-199 décrit [2025, 2026, 2027, 2028, 2029, 2030, 2031, 2036] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])",
+  "FG1 : colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+  "FG1 : colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+  "FG1 : colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+  "FG1 : colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+  "FG1 : colonne à plage ignorée (N+6 à N+10 2031 à 2035)",
+  "FG1 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf p.199-202 décrit [2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])",
+  "FG2 : bande non interprétée : la règle reste à la fiche",
+  "FG2 : colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+  "FG2 : colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+  "FG2 : colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+  "FG2 : colonne à plage ignorée (N+6 à N+10 2031 à 2035)",
+  "RG1 : bande non interprétée : la règle reste à la fiche",
+  "RG1 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf p.190-192 décrit [2025, 2026, 2028] ; planning PDF retenu ([2025])",
+  "RG2 : bande non interprétée : la règle reste à la fiche",
+  "RG2 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf p.192-195 décrit [2025, 2026] ; planning PDF retenu ([2025])"
+ ],
+ "non_placables": [],
+ "budget_pose": 0,
+ "budget_non_ventile": 0,
+ "audit": [
+  {
+   "id": "ES1-19ca651a09",
+   "code": "ES1",
+   "libelle": "Suivi des habitats naturels et de la flore à enjeu",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 6,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche",
+    "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf p.195-198 décrit [2025, 2026, 2027, 2028, 2029, 2030, 2031, 2036] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])"
+   ]
+  },
+  {
+   "id": "ES1-a740855ece",
+   "code": "ES1",
+   "libelle": "Suivi des habitats naturels et de la flore à enjeu — Suivi des habitats naturels et de la flore à enjeu",
+   "ugs": [
+    "ug1",
+    "ug2"
+   ],
+   "type": "paliers",
+   "regle": "paliers · dès 2025 · jusqu'en 2055 · 2 palier(s)",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2036,
+    2041,
+    2046,
+    2051
+   ],
+   "nb_occ": 11,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "ES2-e60beb0b47",
+   "code": "ES2",
+   "libelle": "Suivi de l'avifaune",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 6,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche",
+    "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf p.198-199 décrit [2025, 2026, 2027, 2028, 2029, 2030, 2031, 2036] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])"
+   ]
+  },
+  {
+   "id": "ES2-df17712714",
+   "code": "ES2",
+   "libelle": "Suivi de l'avifaune — Suivi de l'avifaune à enjeu",
+   "ugs": [
+    "ug2"
+   ],
+   "type": "paliers",
+   "regle": "paliers · dès 2025 · jusqu'en 2055 · 2 palier(s)",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2036,
+    2041,
+    2046,
+    2051
+   ],
+   "nb_occ": 11,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "FG1-529d433b75",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 6,
+   "montant_ht": null,
+   "avertissements": [
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+26 à N+30 2054 à 2055)"
+   ]
+  },
+  {
+   "id": "FG1-bca2568b9a",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Animation du plan de gestion",
+   "ugs": [],
+   "type": "periodique",
+   "regle": "periodique · dès 2025 · jusqu'en 2055 · tous les 1.0 an(s) · 30 ans · 1×/an",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035,
+    2036,
+    2037,
+    2038,
+    2039,
+    2040,
+    2041,
+    2042,
+    2043,
+    2044,
+    2045,
+    2046,
+    2047,
+    2048,
+    2049,
+    2050,
+    2051,
+    2052,
+    2053,
+    2054,
+    2055
+   ],
+   "nb_occ": 31,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "FG2-54185bacc7",
+   "code": "FG2",
+   "libelle": "Evaluation et mise à jour du plan de gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2030 · 2030",
+   "ancrage": 2030,
+   "annees": [
+    2030
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche",
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)"
+   ]
+  },
+  {
+   "id": "RG1-90a041a79f",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche",
+    "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf p.190-192 décrit [2025, 2026, 2028] ; planning PDF retenu ([2025])"
+   ]
+  },
+  {
+   "id": "RG1-388eb92679",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche",
+    "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf p.190-192 décrit [2025, 2026, 2028] ; planning PDF retenu ([2025])"
+   ]
+  },
+  {
+   "id": "RG1-f82965d600",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion — Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "ugs": [
+    "ug1"
+   ],
+   "type": "paliers",
+   "regle": "paliers · dès 2025 · jusqu'en 2055 · 2 palier(s)",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2028
+   ],
+   "nb_occ": 3,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "RG1-ed26eef2d0",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion — Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "ugs": [
+    "ug1"
+   ],
+   "type": "paliers",
+   "regle": "paliers · dès 2025 · jusqu'en 2055 · 2 palier(s)",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2028
+   ],
+   "nb_occ": 3,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "RG2-31448ee1d8",
+   "code": "RG2",
+   "libelle": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche",
+    "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf p.192-195 décrit [2025, 2026] ; planning PDF retenu ([2025])"
+   ]
+  },
+  {
+   "id": "RG2-4f3a9912bd",
+   "code": "RG2",
+   "libelle": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés — Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+   "ugs": [
+    "ug2"
+   ],
+   "type": "paliers",
+   "regle": "paliers · dès 2025 · jusqu'en 2055 · 1 palier(s)",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026
+   ],
+   "nb_occ": 2,
+   "montant_ht": null,
+   "avertissements": []
+  }
+ ]
+}

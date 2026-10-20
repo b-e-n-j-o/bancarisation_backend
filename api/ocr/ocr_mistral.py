@@ -17,7 +17,10 @@ import time
 import unicodedata
 from pathlib import Path
 
-from mistralai import Mistral
+try:
+    from mistralai.client import Mistral  # SDK 2 / 3
+except ImportError:
+    from mistralai import Mistral  # SDK 1
 
 OCR_MODEL = os.environ.get("MISTRAL_OCR_MODEL", "mistral-ocr-latest")
 

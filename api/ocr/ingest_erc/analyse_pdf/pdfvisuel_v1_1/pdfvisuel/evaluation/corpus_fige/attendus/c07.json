@@ -1,0 +1,15 @@
+{
+ "pdf": "c07.pdf",
+ "description": "Grille collée en image (capture) : rien n'est lisible dans la couche vectorielle.",
+ "grilles": [],
+ "exhaustif": true,
+ "images": [
+  {
+   "page": 1,
+   "classe": "document_raster"
+  }
+ ],
+ "routage_vision": [
+  1
+ ]
+}

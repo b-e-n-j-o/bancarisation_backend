@@ -1,0 +1,172 @@
+occ_id;rule_id;action;sous_action;ug;annee_rel;annee;fin_rel;mois;passage;optionnel;hypothese;decision;confiance;pages
+OCC-0001;RG1-01;RG1;Réouverture des fourrés de roncier et d'Herbe de la Pampa (travaux initiaux : broyage, export de biomasse, griffage du sol, et dessouchage/arrachage de l'Herbe de la Pampa selon robustesse);UG1;N;2025;;;;;;à valider;0.812;25,30,31
+OCC-0002;RG1-02;RG1;Entretien par fauche;UG1;N+1;2026;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0003;RG1-02;RG1;Entretien par fauche;UG1;N+1;2026;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0004;RG1-02;RG1;Entretien par fauche;UG1;N+2;2027;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0005;RG1-02;RG1;Entretien par fauche;UG1;N+2;2027;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0006;RG1-02;RG1;Entretien par fauche;UG1;N+3;2028;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0007;RG1-02;RG1;Entretien par fauche;UG1;N+3;2028;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0008;RG1-02;RG1;Entretien par fauche;UG1;N+4;2029;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0009;RG1-02;RG1;Entretien par fauche;UG1;N+4;2029;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0010;RG1-02;RG1;Entretien par fauche;UG1;N+5;2030;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0011;RG1-02;RG1;Entretien par fauche;UG1;N+5;2030;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0012;RG1-02;RG1;Entretien par fauche;UG1;N+6;2031;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0013;RG1-02;RG1;Entretien par fauche;UG1;N+6;2031;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0014;RG1-02;RG1;Entretien par fauche;UG1;N+7;2032;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0015;RG1-02;RG1;Entretien par fauche;UG1;N+7;2032;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0016;RG1-02;RG1;Entretien par fauche;UG1;N+8;2033;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0017;RG1-02;RG1;Entretien par fauche;UG1;N+8;2033;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0018;RG1-02;RG1;Entretien par fauche;UG1;N+9;2034;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0019;RG1-02;RG1;Entretien par fauche;UG1;N+9;2034;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0020;RG1-02;RG1;Entretien par fauche;UG1;N+10;2035;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0021;RG1-02;RG1;Entretien par fauche;UG1;N+10;2035;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0022;RG1-02;RG1;Entretien par fauche;UG1;N+11;2036;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0023;RG1-02;RG1;Entretien par fauche;UG1;N+11;2036;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0024;RG1-02;RG1;Entretien par fauche;UG1;N+12;2037;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0025;RG1-02;RG1;Entretien par fauche;UG1;N+12;2037;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0026;RG1-02;RG1;Entretien par fauche;UG1;N+13;2038;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0027;RG1-02;RG1;Entretien par fauche;UG1;N+13;2038;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0028;RG1-02;RG1;Entretien par fauche;UG1;N+14;2039;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0029;RG1-02;RG1;Entretien par fauche;UG1;N+14;2039;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0030;RG1-02;RG1;Entretien par fauche;UG1;N+15;2040;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0031;RG1-02;RG1;Entretien par fauche;UG1;N+15;2040;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0032;RG1-02;RG1;Entretien par fauche;UG1;N+16;2041;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0033;RG1-02;RG1;Entretien par fauche;UG1;N+16;2041;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0034;RG1-02;RG1;Entretien par fauche;UG1;N+17;2042;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0035;RG1-02;RG1;Entretien par fauche;UG1;N+17;2042;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0036;RG1-02;RG1;Entretien par fauche;UG1;N+18;2043;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0037;RG1-02;RG1;Entretien par fauche;UG1;N+18;2043;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0038;RG1-02;RG1;Entretien par fauche;UG1;N+19;2044;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0039;RG1-02;RG1;Entretien par fauche;UG1;N+19;2044;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0040;RG1-02;RG1;Entretien par fauche;UG1;N+20;2045;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0041;RG1-02;RG1;Entretien par fauche;UG1;N+20;2045;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0042;RG1-02;RG1;Entretien par fauche;UG1;N+21;2046;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0043;RG1-02;RG1;Entretien par fauche;UG1;N+21;2046;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0044;RG1-02;RG1;Entretien par fauche;UG1;N+22;2047;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0045;RG1-02;RG1;Entretien par fauche;UG1;N+22;2047;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0046;RG1-02;RG1;Entretien par fauche;UG1;N+23;2048;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0047;RG1-02;RG1;Entretien par fauche;UG1;N+23;2048;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0048;RG1-02;RG1;Entretien par fauche;UG1;N+24;2049;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0049;RG1-02;RG1;Entretien par fauche;UG1;N+24;2049;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0050;RG1-02;RG1;Entretien par fauche;UG1;N+25;2050;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0051;RG1-02;RG1;Entretien par fauche;UG1;N+25;2050;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0052;RG1-02;RG1;Entretien par fauche;UG1;N+26;2051;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0053;RG1-02;RG1;Entretien par fauche;UG1;N+26;2051;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0054;RG1-02;RG1;Entretien par fauche;UG1;N+27;2052;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0055;RG1-02;RG1;Entretien par fauche;UG1;N+27;2052;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0056;RG1-02;RG1;Entretien par fauche;UG1;N+28;2053;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0057;RG1-02;RG1;Entretien par fauche;UG1;N+28;2053;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0058;RG1-02;RG1;Entretien par fauche;UG1;N+29;2054;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0059;RG1-02;RG1;Entretien par fauche;UG1;N+29;2054;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0060;RG1-02;RG1;Entretien par fauche;UG1;N+30;2055;;mars,avr;Fauche de printemps;;;à valider;0.92;25,30,31
+OCC-0061;RG1-02;RG1;Entretien par fauche;UG1;N+30;2055;;juil,août;Fauche d'été;oui;;à valider;0.82;25,30,31
+OCC-0062;RG1-03;RG1;Griffage du sol;UG1;N+1;2026;;juil,août;;;"pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)";à valider;0.657;25,30,31
+OCC-0063;RG1-03;RG1;Griffage du sol;UG1;N+4;2029;;juil,août;;;"pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)";à valider;0.657;25,30,31
+OCC-0064;RG1-03;RG1;Griffage du sol;UG1;N+7;2032;;juil,août;;;"pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)";à valider;0.657;25,30,31
+OCC-0065;RG1-03;RG1;Griffage du sol;UG1;N+10;2035;;juil,août;;;"pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)";à valider;0.657;25,30,31
+OCC-0066;RG1-03;RG1;Griffage du sol;UG1;N+13;2038;;juil,août;;;"pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)";à valider;0.657;25,30,31
+OCC-0067;RG1-03;RG1;Griffage du sol;UG1;N+16;2041;;juil,août;;;"pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)";à valider;0.657;25,30,31
+OCC-0068;RG1-03;RG1;Griffage du sol;UG1;N+19;2044;;juil,août;;;"pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)";à valider;0.657;25,30,31
+OCC-0069;RG1-03;RG1;Griffage du sol;UG1;N+22;2047;;juil,août;;;"pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)";à valider;0.657;25,30,31
+OCC-0070;RG1-03;RG1;Griffage du sol;UG1;N+25;2050;;juil,août;;;"pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)";à valider;0.657;25,30,31
+OCC-0071;RG1-03;RG1;Griffage du sol;UG1;N+28;2053;;juil,août;;;"pas de 3 ans retenu (document : tous les 2 à 3 ans ; politique « max »)";à valider;0.657;25,30,31
+OCC-0072;RG1-04;RG1;Arrachage manuel des espèces envahissantes;UG1;;;;;;;déclencheur : Si un développement des espèces envahissantes est constaté;déclencheur;0.738;30
+OCC-0073;RG2-01;RG2;Débroussaillage initial (travaux initiaux);UG2;N;2025;;sept,oct;Débroussaillage;;;intégré;0.912;32,34
+OCC-0074;RG2-02;RG2;Entretien par débroussaillage;UG2;N+1;2026;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0075;RG2-02;RG2;Entretien par débroussaillage;UG2;N+2;2027;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0076;RG2-02;RG2;Entretien par débroussaillage;UG2;N+3;2028;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0077;RG2-02;RG2;Entretien par débroussaillage;UG2;N+4;2029;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0078;RG2-02;RG2;Entretien par débroussaillage;UG2;N+5;2030;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0079;RG2-02;RG2;Entretien par débroussaillage;UG2;N+6;2031;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0080;RG2-02;RG2;Entretien par débroussaillage;UG2;N+7;2032;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0081;RG2-02;RG2;Entretien par débroussaillage;UG2;N+8;2033;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0082;RG2-02;RG2;Entretien par débroussaillage;UG2;N+9;2034;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0083;RG2-02;RG2;Entretien par débroussaillage;UG2;N+10;2035;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0084;RG2-02;RG2;Entretien par débroussaillage;UG2;N+11;2036;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0085;RG2-02;RG2;Entretien par débroussaillage;UG2;N+12;2037;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0086;RG2-02;RG2;Entretien par débroussaillage;UG2;N+13;2038;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0087;RG2-02;RG2;Entretien par débroussaillage;UG2;N+14;2039;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0088;RG2-02;RG2;Entretien par débroussaillage;UG2;N+15;2040;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0089;RG2-02;RG2;Entretien par débroussaillage;UG2;N+16;2041;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0090;RG2-02;RG2;Entretien par débroussaillage;UG2;N+17;2042;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0091;RG2-02;RG2;Entretien par débroussaillage;UG2;N+18;2043;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0092;RG2-02;RG2;Entretien par débroussaillage;UG2;N+19;2044;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0093;RG2-02;RG2;Entretien par débroussaillage;UG2;N+20;2045;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0094;RG2-02;RG2;Entretien par débroussaillage;UG2;N+21;2046;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0095;RG2-02;RG2;Entretien par débroussaillage;UG2;N+22;2047;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0096;RG2-02;RG2;Entretien par débroussaillage;UG2;N+23;2048;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0097;RG2-02;RG2;Entretien par débroussaillage;UG2;N+24;2049;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0098;RG2-02;RG2;Entretien par débroussaillage;UG2;N+25;2050;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0099;RG2-02;RG2;Entretien par débroussaillage;UG2;N+26;2051;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0100;RG2-02;RG2;Entretien par débroussaillage;UG2;N+27;2052;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0101;RG2-02;RG2;Entretien par débroussaillage;UG2;N+28;2053;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0102;RG2-02;RG2;Entretien par débroussaillage;UG2;N+29;2054;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0103;RG2-02;RG2;Entretien par débroussaillage;UG2;N+30;2055;;sept,oct;;;;à valider;0.755;25,26,34
+OCC-0104;RG2-03;RG2;Plantation initiale (16 bosquets);UG2;N;2025;;;;;;à valider;0.88;25,33,34
+OCC-0105;RG2-04;RG2;Regarnis éventuel (si pertes constatées);UG2;;;;;;;déclencheur : Si des pertes importantes sont constatées au niveau des plantations d'arbres;déclencheur;0.669;25,34
+OCC-0106;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N;2025;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0107;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N+1;2026;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0108;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N+2;2027;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0109;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N+3;2028;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0110;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N+4;2029;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0111;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N+5;2030;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0112;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N+6;2031;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0113;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N+11;2036;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0114;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N+16;2041;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0115;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N+21;2046;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0116;ES1-01;ES1;Inventaire et cartographie;UG1+UG2;N+26;2051;;juin,juil;Passage de suivi;;;à valider;0.895;25,36,37
+OCC-0117;ES2-01;ES2;Inventaire et cartographie;UG2;N;2025;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0118;ES2-01;ES2;Inventaire et cartographie;UG2;N+1;2026;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0119;ES2-01;ES2;Inventaire et cartographie;UG2;N+2;2027;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0120;ES2-01;ES2;Inventaire et cartographie;UG2;N+3;2028;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0121;ES2-01;ES2;Inventaire et cartographie;UG2;N+4;2029;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0122;ES2-01;ES2;Inventaire et cartographie;UG2;N+5;2030;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0123;ES2-01;ES2;Inventaire et cartographie;UG2;N+6;2031;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0124;ES2-01;ES2;Inventaire et cartographie;UG2;N+11;2036;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0125;ES2-01;ES2;Inventaire et cartographie;UG2;N+16;2041;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0126;ES2-01;ES2;Inventaire et cartographie;UG2;N+21;2046;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0127;ES2-01;ES2;Inventaire et cartographie;UG2;N+26;2051;;avr,mai,juin;;;;à valider;0.718;25,38
+OCC-0128;FG1-01;FG1;Veille sur le site;site;;;;;;;déclencheur : pendant les années où il n’y a pas d’intervention de programmée;déclencheur;0.933;39
+OCC-0129;FG1-02;FG1;Rapports d'activité - Synthèses annuelles (5 premières années);site;N+1;2026;;;;;;intégré;0.912;40
+OCC-0130;FG1-02;FG1;Rapports d'activité - Synthèses annuelles (5 premières années);site;N+2;2027;;;;;;intégré;0.912;40
+OCC-0131;FG1-02;FG1;Rapports d'activité - Synthèses annuelles (5 premières années);site;N+3;2028;;;;;;intégré;0.912;40
+OCC-0132;FG1-02;FG1;Rapports d'activité - Synthèses annuelles (5 premières années);site;N+4;2029;;;;;;intégré;0.912;40
+OCC-0133;FG1-02;FG1;Rapports d'activité - Synthèses annuelles (5 premières années);site;N+5;2030;;;;;;intégré;0.912;40
+OCC-0134;FG1-03;FG1;Animation continue : pilotage du programme, coordination des prestations de travaux et suivis, élaboration et tenue de la base de données géoréférencées;site;N;2025;N+30;;activité continue;;;intégré;0.912;39,40
+OCC-0135;FG1-04;FG1;Communication et concertation locale;site;;;;;;;déclencheur : Selon les besoins identifiés dans le cadre de la mise en œuvre du programme de compensation;déclencheur;0.751;39
+OCC-0136;FG1-05;FG1;Rapports d'activité - Rapports quinquennaux (après la 5ème année);site;N+10;2035;;;;;;intégré;0.902;40
+OCC-0137;FG1-05;FG1;Rapports d'activité - Rapports quinquennaux (après la 5ème année);site;N+15;2040;;;;;;intégré;0.902;40
+OCC-0138;FG1-05;FG1;Rapports d'activité - Rapports quinquennaux (après la 5ème année);site;N+20;2045;;;;;;intégré;0.902;40
+OCC-0139;FG1-05;FG1;Rapports d'activité - Rapports quinquennaux (après la 5ème année);site;N+25;2050;;;;;;intégré;0.902;40
+OCC-0140;FG1-05;FG1;Rapports d'activité - Rapports quinquennaux (après la 5ème année);site;N+30;2055;;;;;;intégré;0.902;40
+OCC-0141;FG1-06;FG1;Comités de suivi;site;N;2025;;;;;;intégré;0.828;40
+OCC-0142;FG1-06;FG1;Comités de suivi;site;N+1;2026;;;;;;intégré;0.828;40
+OCC-0143;FG1-06;FG1;Comités de suivi;site;N+2;2027;;;;;;intégré;0.828;40
+OCC-0144;FG1-06;FG1;Comités de suivi;site;N+3;2028;;;;;;intégré;0.828;40
+OCC-0145;FG1-06;FG1;Comités de suivi;site;N+4;2029;;;;;;intégré;0.828;40
+OCC-0146;FG1-06;FG1;Comités de suivi;site;N+5;2030;;;;;;intégré;0.828;40
+OCC-0147;FG1-06;FG1;Comités de suivi;site;N+10;2035;;;;;;intégré;0.828;40
+OCC-0148;FG1-06;FG1;Comités de suivi;site;N+20;2045;;;;;;intégré;0.828;40
+OCC-0149;FG1-06;FG1;Comités de suivi;site;N+30;2055;;;;;;intégré;0.828;40
+OCC-0150;FG1-07;FG1;Mise en place du comité de suivi;site;N;2025;;;;;;à valider;0.771;40
+OCC-0151;FG1-08;FG1;Réunions du comité de suivi - Phase annuelle (N à N+5);site;N;2025;;;;;;à valider;0.758;40
+OCC-0152;FG1-08;FG1;Réunions du comité de suivi - Phase annuelle (N à N+5);site;N+1;2026;;;;;;à valider;0.758;40
+OCC-0153;FG1-08;FG1;Réunions du comité de suivi - Phase annuelle (N à N+5);site;N+2;2027;;;;;;à valider;0.758;40
+OCC-0154;FG1-08;FG1;Réunions du comité de suivi - Phase annuelle (N à N+5);site;N+3;2028;;;;;;à valider;0.758;40
+OCC-0155;FG1-08;FG1;Réunions du comité de suivi - Phase annuelle (N à N+5);site;N+4;2029;;;;;;à valider;0.758;40
+OCC-0156;FG1-08;FG1;Réunions du comité de suivi - Phase annuelle (N à N+5);site;N+5;2030;;;;;;à valider;0.758;40
+OCC-0157;FG1-09;FG1;Réunions du comité de suivi - Jalons (N+10, N+20, N+30);site;N+10;2035;;;;;;à valider;0.771;40
+OCC-0158;FG1-09;FG1;Réunions du comité de suivi - Jalons (N+10, N+20, N+30);site;N+20;2045;;;;;;à valider;0.771;40
+OCC-0159;FG1-09;FG1;Réunions du comité de suivi - Jalons (N+10, N+20, N+30);site;N+30;2055;;;;;;à valider;0.771;40
+OCC-0160;FG1-10;FG1;Coordination des prestations de travaux et suivis;site;;;;;;;déclencheur : externalisation de prestations auprès de prestataires spécialisés;déclencheur;0.724;39
+OCC-0161;FG1-11;FG1;Animation du plan de gestion (pilotage, coordination, base de données, communication);site;N;2025;N+30;;activité continue;;;intégré;0.813;39,41
+OCC-0162;FG1-12;FG1;Comités de suivi - Réunions ponctuelles;site;N+10;2035;;;;;;à valider;0.751;40
+OCC-0163;FG1-12;FG1;Comités de suivi - Réunions ponctuelles;site;N+20;2045;;;;;;à valider;0.751;40
+OCC-0164;FG1-12;FG1;Comités de suivi - Réunions ponctuelles;site;N+30;2055;;;;;;à valider;0.751;40
+OCC-0165;FG2-01;FG2;Bilans intermédiaires;site;N+5;2030;;;;;;à valider;0.767;26,27,42
+OCC-0166;FG2-01;FG2;Bilans intermédiaires;site;N+10;2035;;;;;;à valider;0.767;26,27,42
+OCC-0167;FG2-01;FG2;Bilans intermédiaires;site;N+15;2040;;;;;;à valider;0.767;26,27,42
+OCC-0168;FG2-01;FG2;Bilans intermédiaires;site;N+20;2045;;;;;;à valider;0.767;26,27,42
+OCC-0169;FG2-01;FG2;Bilans intermédiaires;site;N+25;2050;;;;;;à valider;0.767;26,27,42
+OCC-0170;FG2-02;FG2;Bilan final du plan de gestion;site;N+30;2055;;;;;;à valider;0.88;25,42
+OCC-0171;FG2-03;FG2;Révision du plan de gestion;site;;;;;;;déclencheur : Selon l'évolution des indicateurs de suivi écologique, si nécessaire;déclencheur;0.744;42

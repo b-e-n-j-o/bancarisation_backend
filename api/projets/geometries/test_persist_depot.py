@@ -1,7 +1,7 @@
 """Règles de rattachement du dépôt SIG — sans I/O base."""
 from __future__ import annotations
 
-from api.ocr.ingest_erc.ingest_erc.modeles import (
+from api.ocr.ingest_erc.main_pipeline_a_utiliser.modeles import (
     ReferentielVerrouille,
     UGVerrouillee,
     ZoneCandidate,

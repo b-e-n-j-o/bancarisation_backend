@@ -1,0 +1,20 @@
+{
+ "pdf": "c06.pdf",
+ "description": "Aucune bordure : libellés de mois et barres colorées seules.",
+ "grilles": [
+  {
+   "page": 1,
+   "type_axe": "mois",
+   "lignes": [
+    {
+     "libelle_contient": "Fauche",
+     "couleur": [
+      7,
+      8
+     ]
+    }
+   ]
+  }
+ ],
+ "exhaustif": true
+}

@@ -1,0 +1,74 @@
+{
+ "pdf": "Plan_de_gestion_de_ddep.pdf",
+ "description": "Plan de gestion CDC Biodiversité intégré au dossier de dérogation espèces protégées, Bruges / Sainte-Eulalie (Rivière Environnement, avril 2025), pages imprimées 162-210. Vérité terrain établie à l'œil sur les rendus des pages, indépendamment de la détection.",
+ "exhaustif": true,
+ "grilles": [
+  {"page": 24, "type_axe": "annees", "lignes": [
+   {"libelle_contient": "Réouverture des fourrés", "croix": ["N"]},
+   {"libelle_contient": "Entretien par fauche", "bande": [["N","N+1","N+2","N+3","N+4","N+5","N+6","N+7","N+8","N+9","N+10","N+11","N+12","N+13","N+14","N+15"]]},
+   {"libelle_contient": "Griffage", "bande": [["N","N+1","N+2","N+3","N+4","N+5","N+6","N+7","N+8","N+9","N+10","N+11","N+12","N+13","N+14","N+15"]]},
+   {"libelle_contient": "Débroussaillage", "croix": ["N"], "bande": [["N+1","N+2","N+3","N+4","N+5","N+6","N+7","N+8","N+9","N+10","N+11","N+12","N+13","N+14","N+15"]]},
+   {"libelle_contient": "Plantation", "croix": ["N"], "bande": [["N+1","N+2","N+3","N+4","N+5","N+6","N+7","N+8","N+9","N+10","N+11","N+12","N+13","N+14","N+15"]]},
+   {"libelle_contient": "ES1", "croix": ["N","N+1","N+2","N+3","N+4","N+5"], "bande": [["N+6","N+7","N+8","N+9","N+10","N+11","N+12","N+13","N+14","N+15"]]},
+   {"libelle_contient": "ES2", "croix": ["N","N+1","N+2","N+3","N+4","N+5"], "bande": [["N+6","N+7","N+8","N+9","N+10","N+11","N+12","N+13","N+14","N+15"]]},
+   {"libelle_contient": "FG1", "bande": [["N","N+1","N+2","N+3","N+4","N+5","N+6","N+7","N+8","N+9","N+10","N+11","N+12","N+13","N+14","N+15"]]}
+  ]},
+  {"page": 25, "type_axe": "annees", "premiere_colonne": "N", "lignes": [
+   {"libelle_contient": "FG2", "croix": ["N+5"], "bande": [["N+6","N+7","N+8","N+9","N+10","N+11","N+12","N+13","N+14","N+15"]]}
+  ]},
+  {"page": 25, "type_axe": "annees", "premiere_colonne": "N+16", "lignes": [
+   {"libelle_contient": "Réouverture des fourrés"},
+   {"libelle_contient": "Entretien par fauche", "bande": [["N+16","N+17","N+18","N+19","N+20","N+21","N+22","N+23","N+24","N+25","N+26","N+27","N+28","N+29","N+30"]]},
+   {"libelle_contient": "Griffage", "bande": [["N+16","N+17","N+18","N+19","N+20","N+21","N+22","N+23","N+24","N+25","N+26","N+27","N+28","N+29","N+30"]]},
+   {"libelle_contient": "Débroussaillage", "bande": [["N+16","N+17","N+18","N+19","N+20","N+21","N+22","N+23","N+24","N+25","N+26","N+27","N+28","N+29","N+30"]]},
+   {"libelle_contient": "Plantation"},
+   {"libelle_contient": "ES1", "bande": [["N+16","N+17","N+18","N+19","N+20","N+21","N+22","N+23","N+24","N+25","N+26","N+27","N+28","N+29","N+30"]]},
+   {"libelle_contient": "ES2", "bande": [["N+16","N+17","N+18","N+19","N+20","N+21","N+22","N+23","N+24","N+25","N+26","N+27","N+28","N+29","N+30"]]}
+  ]},
+  {"page": 26, "type_axe": "annees", "lignes": [
+   {"libelle_contient": "FG1", "bande": [["N+16","N+17","N+18","N+19","N+20","N+21","N+22","N+23","N+24","N+25","N+26","N+27","N+28","N+29","N+30"]]},
+   {"libelle_contient": "FG2", "bande": [["N+16","N+17","N+18","N+19","N+20","N+21","N+22","N+23","N+24","N+25","N+26","N+27","N+28","N+29","N+30"]]}
+  ]},
+  {"page": 30, "type_axe": "mois", "lignes": [
+   {"role": "entete", "libelle_contient": "", "couleur": [3, 4, 7, 8]}
+  ]},
+  {"page": 30, "type_axe": "annees", "lignes": [
+   {"libelle_contient": "Travaux initiaux", "croix": ["N"], "bande": [["N+1","N+2","N+3","N+4","N+5","N+6","N+11","N+16","N+21","N+26"]]}
+  ]},
+  {"page": 33, "type_axe": "mois", "lignes": [
+   {"role": "entete", "libelle_contient": "", "couleur": [9, 10]}
+  ]},
+  {"page": 33, "type_axe": "annees", "lignes": [
+   {"libelle_contient": "Travaux initiaux", "croix": ["N"], "bande": [["N+1","N+2","N+3","N+4","N+5","N+6","N+11","N+16","N+21","N+26"]]}
+  ]},
+  {"page": 36, "type_axe": "mois", "lignes": [
+   {"role": "entete", "libelle_contient": "", "couleur": [6, 7]}
+  ]},
+  {"page": 36, "type_axe": "annees", "lignes": [
+   {"libelle_contient": "Inventaire", "croix": ["N","N+1","N+2","N+3","N+4","N+5"], "bande": [["N+6","N+11","N+16","N+21","N+26"]]}
+  ]},
+  {"page": 37, "type_axe": "mois", "lignes": [
+   {"role": "entete", "libelle_contient": "", "couleur": [4, 5, 6]}
+  ]},
+  {"page": 37, "type_axe": "annees", "lignes": [
+   {"libelle_contient": "Inventaire", "croix": ["N","N+1","N+2","N+3","N+4","N+5"], "bande": [["N+6","N+11","N+16","N+21","N+26"]]}
+  ]},
+  {"page": 40, "type_axe": "annees", "lignes": [
+   {"libelle_contient": "", "croix": ["N","N+1","N+2","N+3","N+4","N+5","N+6","N+11","N+16","N+21","N+26"]}
+  ]},
+  {"page": 41, "type_axe": "annees", "lignes": [
+   {"libelle_contient": "Bilans intermédiaires", "croix": ["N+5","N+6","N+11","N+16","N+21"]},
+   {"libelle_contient": "Bilan final", "croix": ["N+26"]}
+  ]}
+ ],
+ "images": [
+  {"page": 32, "classe": "document_raster"},
+  {"page": 46, "classe": "document_raster"},
+  {"page": 49, "classe": "document_raster"},
+  {"page": 2, "classe": "photo_ou_carte"},
+  {"page": 13, "classe": "photo_ou_carte"},
+  {"page": 30, "classe": "photo_ou_carte"},
+  {"page": 31, "classe": "photo_ou_carte"}
+ ],
+ "routage_vision": [32, 49]
+}

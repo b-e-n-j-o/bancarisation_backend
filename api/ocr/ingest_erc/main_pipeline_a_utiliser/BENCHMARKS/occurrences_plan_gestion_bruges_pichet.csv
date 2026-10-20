@@ -1,0 +1,126 @@
+id;action;sous_action;ug;annee_rel;annee_pg;periode;statut;source;note
+OCC-001;RG1;Réouverture initiale (broyage + export, griffage, gestion Herbe de la Pampa);UG1;N;2025;hors période sensible faune;planifiée;"Tab.39 p185 ; fiche RG1 p190-191";
+OCC-002;RG1;Fauche de printemps avec export;UG1;N+1;2026;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-003;RG1;Fauche d'été avec export;UG1;N+1;2026;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-004;RG1;Fauche de printemps avec export;UG1;N+2;2027;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-005;RG1;Fauche d'été avec export;UG1;N+2;2027;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-006;RG1;Fauche de printemps avec export;UG1;N+3;2028;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-007;RG1;Fauche d'été avec export;UG1;N+3;2028;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-008;RG1;Fauche de printemps avec export;UG1;N+4;2029;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-009;RG1;Fauche d'été avec export;UG1;N+4;2029;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-010;RG1;Fauche de printemps avec export;UG1;N+5;2030;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-011;RG1;Fauche d'été avec export;UG1;N+5;2030;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-012;RG1;Fauche de printemps avec export;UG1;N+6;2031;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-013;RG1;Fauche d'été avec export;UG1;N+6;2031;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-014;RG1;Fauche de printemps avec export;UG1;N+7;2032;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-015;RG1;Fauche d'été avec export;UG1;N+7;2032;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-016;RG1;Fauche de printemps avec export;UG1;N+8;2033;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-017;RG1;Fauche d'été avec export;UG1;N+8;2033;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-018;RG1;Fauche de printemps avec export;UG1;N+9;2034;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-019;RG1;Fauche d'été avec export;UG1;N+9;2034;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-020;RG1;Fauche de printemps avec export;UG1;N+10;2035;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-021;RG1;Fauche d'été avec export;UG1;N+10;2035;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-022;RG1;Fauche de printemps avec export;UG1;N+11;2036;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-023;RG1;Fauche d'été avec export;UG1;N+11;2036;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-024;RG1;Fauche de printemps avec export;UG1;N+12;2037;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-025;RG1;Fauche d'été avec export;UG1;N+12;2037;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-026;RG1;Fauche de printemps avec export;UG1;N+13;2038;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-027;RG1;Fauche d'été avec export;UG1;N+13;2038;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-028;RG1;Fauche de printemps avec export;UG1;N+14;2039;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-029;RG1;Fauche d'été avec export;UG1;N+14;2039;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-030;RG1;Fauche de printemps avec export;UG1;N+15;2040;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-031;RG1;Fauche d'été avec export;UG1;N+15;2040;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-032;RG1;Fauche de printemps avec export;UG1;N+16;2041;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-033;RG1;Fauche d'été avec export;UG1;N+16;2041;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-034;RG1;Fauche de printemps avec export;UG1;N+17;2042;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-035;RG1;Fauche d'été avec export;UG1;N+17;2042;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-036;RG1;Fauche de printemps avec export;UG1;N+18;2043;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-037;RG1;Fauche d'été avec export;UG1;N+18;2043;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-038;RG1;Fauche de printemps avec export;UG1;N+19;2044;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-039;RG1;Fauche d'été avec export;UG1;N+19;2044;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-040;RG1;Fauche de printemps avec export;UG1;N+20;2045;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-041;RG1;Fauche d'été avec export;UG1;N+20;2045;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-042;RG1;Fauche de printemps avec export;UG1;N+21;2046;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-043;RG1;Fauche d'été avec export;UG1;N+21;2046;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-044;RG1;Fauche de printemps avec export;UG1;N+22;2047;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-045;RG1;Fauche d'été avec export;UG1;N+22;2047;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-046;RG1;Fauche de printemps avec export;UG1;N+23;2048;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-047;RG1;Fauche d'été avec export;UG1;N+23;2048;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-048;RG1;Fauche de printemps avec export;UG1;N+24;2049;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-049;RG1;Fauche d'été avec export;UG1;N+24;2049;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-050;RG1;Fauche de printemps avec export;UG1;N+25;2050;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-051;RG1;Fauche d'été avec export;UG1;N+25;2050;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-052;RG1;Fauche de printemps avec export;UG1;N+26;2051;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-053;RG1;Fauche d'été avec export;UG1;N+26;2051;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-054;RG1;Fauche de printemps avec export;UG1;N+27;2052;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-055;RG1;Fauche d'été avec export;UG1;N+27;2052;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-056;RG1;Fauche de printemps avec export;UG1;N+28;2053;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-057;RG1;Fauche d'été avec export;UG1;N+28;2053;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-058;RG1;Fauche de printemps avec export;UG1;N+29;2054;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-059;RG1;Fauche d'été avec export;UG1;N+29;2054;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-060;RG1;Fauche de printemps avec export;UG1;N+30;2055;mars-avril;planifiée;"Tab.39/40 ; fiche RG1 p191";1 à 2 fauches/an selon végétation : la 1re est retenue comme systématique
+OCC-061;RG1;Fauche d'été avec export;UG1;N+30;2055;fin juillet-début août;optionnelle (2e fauche);"Tab.39/40 ; fiche RG1 p191";"Seulement si la végétation concurrente l'exige ; tension avec AP art.7 (pas de fauche lotiers mai-juillet)"
+OCC-062;RG1;Griffage du sol (≤10 cm);UG1;N+3;2028;fin juillet-début août;planifiée (pas nominal);"Tab.39/40 ; fiche RG1 p191";"Fréquence 'tous les 2 à 3 ans' : pas de 3 ans retenu ; démarrage non précisé"
+OCC-063;RG1;Griffage du sol (≤10 cm);UG1;N+6;2031;fin juillet-début août;planifiée (pas nominal);"Tab.39/40 ; fiche RG1 p191";"Fréquence 'tous les 2 à 3 ans' : pas de 3 ans retenu ; démarrage non précisé"
+OCC-064;RG1;Griffage du sol (≤10 cm);UG1;N+9;2034;fin juillet-début août;planifiée (pas nominal);"Tab.39/40 ; fiche RG1 p191";"Fréquence 'tous les 2 à 3 ans' : pas de 3 ans retenu ; démarrage non précisé"
+OCC-065;RG1;Griffage du sol (≤10 cm);UG1;N+12;2037;fin juillet-début août;planifiée (pas nominal);"Tab.39/40 ; fiche RG1 p191";"Fréquence 'tous les 2 à 3 ans' : pas de 3 ans retenu ; démarrage non précisé"
+OCC-066;RG1;Griffage du sol (≤10 cm);UG1;N+15;2040;fin juillet-début août;planifiée (pas nominal);"Tab.39/40 ; fiche RG1 p191";"Fréquence 'tous les 2 à 3 ans' : pas de 3 ans retenu ; démarrage non précisé"
+OCC-067;RG1;Griffage du sol (≤10 cm);UG1;N+18;2043;fin juillet-début août;planifiée (pas nominal);"Tab.39/40 ; fiche RG1 p191";"Fréquence 'tous les 2 à 3 ans' : pas de 3 ans retenu ; démarrage non précisé"
+OCC-068;RG1;Griffage du sol (≤10 cm);UG1;N+21;2046;fin juillet-début août;planifiée (pas nominal);"Tab.39/40 ; fiche RG1 p191";"Fréquence 'tous les 2 à 3 ans' : pas de 3 ans retenu ; démarrage non précisé"
+OCC-069;RG1;Griffage du sol (≤10 cm);UG1;N+24;2049;fin juillet-début août;planifiée (pas nominal);"Tab.39/40 ; fiche RG1 p191";"Fréquence 'tous les 2 à 3 ans' : pas de 3 ans retenu ; démarrage non précisé"
+OCC-070;RG1;Griffage du sol (≤10 cm);UG1;N+27;2052;fin juillet-début août;planifiée (pas nominal);"Tab.39/40 ; fiche RG1 p191";"Fréquence 'tous les 2 à 3 ans' : pas de 3 ans retenu ; démarrage non précisé"
+OCC-071;RG1;Griffage du sol (≤10 cm);UG1;N+30;2055;fin juillet-début août;planifiée (pas nominal);"Tab.39/40 ; fiche RG1 p191";"Fréquence 'tous les 2 à 3 ans' : pas de 3 ans retenu ; démarrage non précisé"
+OCC-072;RG1;Arrachage manuel EEE avec export;UG1;;;automne;conditionnelle;fiche RG1 p190;Si développement d'EEE constaté
+OCC-073;RG2;Débroussaillage initial (réouverture);UG2;N;2025;septembre-octobre;planifiée;"Tab.39 p185 ; fiche RG2 p192";
+OCC-074;RG2;Plantation de 16 bosquets (3 à 9 plants, baliveau + jeunes plants);UG2;N;2025;hors période sensible faune;planifiée;"Tab.39 p185 ; fiche RG2 p193";AP art.16.1 : modalités de plantation à transmettre à la DREAL avant mise en œuvre
+OCC-075;RG2;Entretien par débroussaillage (maintien du semi-ouvert);UG2;;;hors période sensible (AP : 1er sept.-mi-février);récurrente, fréquence non précisée;"Tab.39/40 ; fiche RG2 p194";"N+1 à N+30 ; aucune fréquence donnée : ne pas générer d'occurrences sans hypothèse"
+OCC-076;RG2;Regarnis des plantations;UG2;;;hors période sensible faune;conditionnelle;"Tab.39 ; fiche RG2 p194";Si pertes importantes
+OCC-077;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N;2025;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-078;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N+1;2026;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-079;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N+2;2027;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-080;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N+3;2028;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-081;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N+4;2029;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-082;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N+5;2030;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-083;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N+10;2035;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-084;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N+15;2040;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-085;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N+20;2045;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-086;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N+25;2050;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-087;ES1;Suivi habitats naturels + flore à enjeu (lotiers, EEE), 1 passage;"UG1;UG2";N+30;2055;juin-juillet;planifiée;"Tab.39/40 ; fiche ES1 p195-197";"UG1+UG2 selon la fiche, UG1 seul selon Tab.41 ; 'tous les 5 ans' interprété N+10…N+30"
+OCC-088;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N;2025;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-089;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N+1;2026;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-090;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N+2;2027;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-091;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N+3;2028;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-092;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N+4;2029;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-093;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N+5;2030;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-094;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N+10;2035;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-095;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N+15;2040;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-096;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N+20;2045;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-097;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N+25;2050;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-098;ES2;Suivi avifaune (points d'écoute STOC-EPS);UG2;N+30;2055;printemps (nb de passages non précisé);planifiée;"Tab.39/40 ; fiche ES2 p198";AP art.14 : 2 passages (mars-avril + mai-juin)
+OCC-099;FG1;Synthèse annuelle d'activité (résultats de l'année N-1);site;N+1;2026;début d'année;planifiée;fiche FG1 p200;5 premières années du PG
+OCC-100;FG1;Synthèse annuelle d'activité (résultats de l'année N-1);site;N+2;2027;début d'année;planifiée;fiche FG1 p200;5 premières années du PG
+OCC-101;FG1;Synthèse annuelle d'activité (résultats de l'année N-1);site;N+3;2028;début d'année;planifiée;fiche FG1 p200;5 premières années du PG
+OCC-102;FG1;Synthèse annuelle d'activité (résultats de l'année N-1);site;N+4;2029;début d'année;planifiée;fiche FG1 p200;5 premières années du PG
+OCC-103;FG1;Synthèse annuelle d'activité (résultats de l'année N-1);site;N+5;2030;début d'année;planifiée;fiche FG1 p200;5 premières années du PG
+OCC-104;FG1;Rapport d'activité quinquennal;site;N+10;2035;;planifiée;fiche FG1 p200;
+OCC-105;FG1;Rapport d'activité quinquennal;site;N+15;2040;;planifiée;fiche FG1 p200;
+OCC-106;FG1;Rapport d'activité quinquennal;site;N+20;2045;;planifiée;fiche FG1 p200;
+OCC-107;FG1;Rapport d'activité quinquennal;site;N+25;2050;;planifiée;fiche FG1 p200;
+OCC-108;FG1;Rapport d'activité quinquennal;site;N+30;2055;;planifiée;fiche FG1 p200;
+OCC-109;FG1;Comité de suivi;site;N;2025;;planifiée;fiche FG1 p200;"PG : annuel N-N+5 puis N+10/20/30 ; AP art.15 : annuel N-N+3 puis N+5/10/20/30"
+OCC-110;FG1;Comité de suivi;site;N+1;2026;;planifiée;fiche FG1 p200;"PG : annuel N-N+5 puis N+10/20/30 ; AP art.15 : annuel N-N+3 puis N+5/10/20/30"
+OCC-111;FG1;Comité de suivi;site;N+2;2027;;planifiée;fiche FG1 p200;"PG : annuel N-N+5 puis N+10/20/30 ; AP art.15 : annuel N-N+3 puis N+5/10/20/30"
+OCC-112;FG1;Comité de suivi;site;N+3;2028;;planifiée;fiche FG1 p200;"PG : annuel N-N+5 puis N+10/20/30 ; AP art.15 : annuel N-N+3 puis N+5/10/20/30"
+OCC-113;FG1;Comité de suivi;site;N+4;2029;;planifiée;fiche FG1 p200;"PG : annuel N-N+5 puis N+10/20/30 ; AP art.15 : annuel N-N+3 puis N+5/10/20/30"
+OCC-114;FG1;Comité de suivi;site;N+5;2030;;planifiée;fiche FG1 p200;"PG : annuel N-N+5 puis N+10/20/30 ; AP art.15 : annuel N-N+3 puis N+5/10/20/30"
+OCC-115;FG1;Comité de suivi;site;N+10;2035;;planifiée;fiche FG1 p200;"PG : annuel N-N+5 puis N+10/20/30 ; AP art.15 : annuel N-N+3 puis N+5/10/20/30"
+OCC-116;FG1;Comité de suivi;site;N+20;2045;;planifiée;fiche FG1 p200;"PG : annuel N-N+5 puis N+10/20/30 ; AP art.15 : annuel N-N+3 puis N+5/10/20/30"
+OCC-117;FG1;Comité de suivi;site;N+30;2055;;planifiée;fiche FG1 p200;"PG : annuel N-N+5 puis N+10/20/30 ; AP art.15 : annuel N-N+3 puis N+5/10/20/30"
+OCC-118;FG1;Veille du site (~10 visites sur la durée du PG);site;;;années sans intervention programmée;récurrente, dates non précisées;fiche FG1 p199;Non datable : il y a des fauches chaque année
+OCC-119;FG2;Bilan intermédiaire du plan de gestion;site;N+5;2030;;planifiée;"Tab.39/40 ; fiche FG2 p202";
+OCC-120;FG2;Bilan intermédiaire du plan de gestion;site;N+10;2035;;planifiée;"Tab.39/40 ; fiche FG2 p202";
+OCC-121;FG2;Bilan intermédiaire du plan de gestion;site;N+15;2040;;planifiée;"Tab.39/40 ; fiche FG2 p202";
+OCC-122;FG2;Bilan intermédiaire du plan de gestion;site;N+20;2045;;planifiée;"Tab.39/40 ; fiche FG2 p202";
+OCC-123;FG2;Bilan intermédiaire du plan de gestion;site;N+25;2050;;planifiée;"Tab.39/40 ; fiche FG2 p202";
+OCC-124;FG2;Bilan final du plan de gestion;site;N+30;2055;dernière année;planifiée;"Tab.40 ; fiche FG2 p202";
+OCC-125;FG2;Révision / mise à jour du plan de gestion;site;;;;conditionnelle;fiche FG2 p202;Si les indicateurs le justifient

@@ -1,0 +1,886 @@
+{
+ "config": {
+  "ocr_backend": "hybride",
+  "ocr_model": "mistral-ocr-latest",
+  "llm_actif": true,
+  "llm_model": "zai-glm-5-3",
+  "reasoning_effort": "medium",
+  "reasoning_effort_routeur": "low",
+  "roles": {
+   "ocr": {
+    "usage": "Lecture PDF (Mistral OCR 4). Pas un LLM.",
+    "branche": true,
+    "modele": "mistral-ocr-latest"
+   },
+   "carte": {
+    "usage": "Passe 1 — structure du plan (vocabulaire, fiches, tableaux).",
+    "branche": true,
+    "modele": "mistral-large-4-0",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_CARTE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CARTE"
+   },
+   "routeur": {
+    "usage": "Passe 1 — choix des sections PDF si la carte n'a pas suffi.",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_ROUTEUR",
+    "env_effort": "MISTRAL_REASONING_EFFORT_ROUTEUR"
+   },
+   "referentiel": {
+    "usage": "Passe 1 — extraction LLM des extraits PDF (seulement sans carte).",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_REFERENTIEL",
+    "env_effort": "MISTRAL_REASONING_EFFORT_REFERENTIEL"
+   },
+   "arrete": {
+    "usage": "Passe 1 — lecture de la décision (identité, obligations, prescriptions).",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_ARRETE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_ARRETE"
+   },
+   "carte_classeur": {
+    "usage": "Passe 1 — rôle et colonnes des tableaux Excel.",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_CARTE_CLASSEUR",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CARTE_CLASSEUR"
+   },
+   "fiche": {
+    "usage": "Passe 3 — temporalité extraite des fiches-actions PDF (lots).",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_FICHE",
+    "env_effort": "MISTRAL_REASONING_EFFORT_FICHE"
+   },
+   "libelles": {
+    "usage": "Passe 3 — correspondance libellés tableur → codes du référentiel.",
+    "branche": true,
+    "modele": "zai-glm-5-3",
+    "effort": "low",
+    "env_modele": "MISTRAL_MODEL_LIBELLES",
+    "env_effort": "MISTRAL_REASONING_EFFORT_LIBELLES"
+   },
+   "calendrier": {
+    "usage": "Passe 3 (non branchée) — matrices de planning.",
+    "branche": false,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_CALENDRIER",
+    "env_effort": "MISTRAL_REASONING_EFFORT_CALENDRIER"
+   },
+   "budget": {
+    "usage": "Passe 3 (non branchée) — matrices de coûts.",
+    "branche": false,
+    "modele": "zai-glm-5-3",
+    "effort": "medium",
+    "env_modele": "MISTRAL_MODEL_BUDGET",
+    "env_effort": "MISTRAL_REASONING_EFFORT_BUDGET"
+   }
+  },
+  "cle": "MISTRAL_API_KEY_BEN",
+  "cle_llm": "MISTRAL_API_KEY_BEN",
+  "dotenv": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/.env",
+  "cache": "/tmp/ingest_cache"
+ },
+ "documents": [
+  {
+   "nom": "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 20,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0
+   }
+  },
+  {
+   "nom": "2025 11 21_JARDINS d_AQUITAINE- courrier DREAL De_marrage travaux et annexes.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 10,
+   "pages_scannees": 1,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.74,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 0.5,
+    "10": 1.0
+   }
+  },
+  {
+   "nom": "A25086 Pichet Suivi de chantier Bruges - E0.docx.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 22,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 0.5
+   }
+  },
+  {
+   "nom": "A25086 Pichet Suivi de chantier Bruges - Mai 2026.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 23,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.67,
+    "2": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "22": 1.0,
+    "23": 1.0
+   }
+  },
+  {
+   "nom": "Bruges_Pichet_Contrat CDCB_20260721VACdef.docx",
+   "role": "autre",
+   "indice": "document Word",
+   "pages": 1,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "cerfa_13614-01_Habitats signe_.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 4,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "4": 1.0
+   }
+  },
+  {
+   "nom": "cerfa_13616-01_Faune signe_.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 4,
+   "pages_scannees": 1,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "3": 1.0
+   }
+  },
+  {
+   "nom": "cerfa_13617-01_Flore signe_.pdf",
+   "role": "autre",
+   "indice": "saisi au dépôt",
+   "pages": 3,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.83,
+    "3": 1.0
+   }
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_arbres_Pt_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_bois_mort_Pt_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_habitats_Po_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Couches_enjeux_Enjeux_lisieres_Li_20240923.zip",
+   "role": "sig",
+   "indice": "1 couche(s) géographique(s) dans l'archive",
+   "pages": 0,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 247,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 0.43,
+    "21": 0.75,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 0.38,
+    "25": 0.21,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 0.8,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0,
+    "72": 1.0,
+    "73": 1.0,
+    "74": 1.0,
+    "75": 1.0,
+    "76": 1.0,
+    "77": 1.0,
+    "78": 1.0,
+    "79": 1.0,
+    "80": 1.0,
+    "81": 1.0,
+    "82": 1.0,
+    "83": 1.0,
+    "84": 1.0,
+    "85": 1.0,
+    "86": 1.0,
+    "87": 1.0,
+    "88": 1.0,
+    "89": 1.0,
+    "90": 1.0,
+    "91": 1.0,
+    "92": 1.0,
+    "93": 1.0,
+    "94": 1.0,
+    "95": 0.75,
+    "96": 0.86,
+    "97": 0.75,
+    "98": 0.75,
+    "99": 1.0,
+    "100": 0.83,
+    "101": 1.0,
+    "102": 0.83,
+    "103": 1.0,
+    "104": 0.8,
+    "105": 1.0,
+    "106": 1.0,
+    "107": 1.0,
+    "108": 1.0,
+    "109": 1.0,
+    "110": 0.8,
+    "111": 1.0,
+    "112": 1.0,
+    "113": 0.8,
+    "114": 0.83,
+    "115": 1.0,
+    "116": 1.0,
+    "117": 0.88,
+    "118": 1.0,
+    "119": 0.8,
+    "120": 1.0,
+    "121": 0.67,
+    "122": 0.8,
+    "123": 1.0,
+    "124": 1.0,
+    "125": 0.83,
+    "126": 1.0,
+    "127": 0.86,
+    "128": 1.0,
+    "129": 1.0,
+    "130": 0.8,
+    "131": 1.0,
+    "132": 0.8,
+    "133": 1.0,
+    "134": 1.0,
+    "135": 1.0,
+    "136": 1.0,
+    "137": 1.0,
+    "138": 0.25,
+    "139": 0.29,
+    "140": 0.8,
+    "141": 0.8,
+    "142": 0.88,
+    "143": 1.0,
+    "144": 0.8,
+    "145": 1.0,
+    "146": 1.0,
+    "147": 1.0,
+    "148": 1.0,
+    "149": 1.0,
+    "150": 0.8,
+    "151": 1.0,
+    "152": 1.0,
+    "153": 1.0,
+    "154": 1.0,
+    "155": 0.86,
+    "156": 1.0,
+    "157": 1.0,
+    "158": 1.0,
+    "159": 1.0,
+    "160": 1.0,
+    "161": 1.0,
+    "162": 1.0,
+    "163": 0.67,
+    "164": 0.8,
+    "165": 0.83,
+    "166": 1.0,
+    "167": 1.0,
+    "168": 0.56,
+    "169": 0.8,
+    "170": 0.5,
+    "171": 1.0,
+    "172": 0.5,
+    "173": 1.0,
+    "174": 0.55,
+    "175": 0.5,
+    "176": 1.0,
+    "177": 0.8,
+    "178": 1.0,
+    "179": 0.9,
+    "180": 0.91,
+    "181": 1.0,
+    "182": 1.0,
+    "183": 1.0,
+    "184": 0.67,
+    "185": 1.0,
+    "186": 1.0,
+    "187": 1.0,
+    "188": 1.0,
+    "189": 1.0,
+    "190": 1.0,
+    "191": 0.47,
+    "192": 1.0,
+    "193": 1.0,
+    "194": 1.0,
+    "195": 1.0,
+    "196": 1.0,
+    "197": 1.0,
+    "198": 1.0,
+    "199": 1.0,
+    "200": 1.0,
+    "201": 1.0,
+    "202": 1.0,
+    "203": 1.0,
+    "204": 1.0,
+    "205": 1.0,
+    "206": 1.0,
+    "207": 0.86,
+    "208": 1.0,
+    "209": 1.0,
+    "210": 1.0,
+    "211": 1.0,
+    "212": 1.0,
+    "213": 1.0,
+    "214": 1.0,
+    "215": 1.0,
+    "216": 1.0,
+    "217": 1.0,
+    "218": 1.0,
+    "219": 1.0,
+    "220": 1.0,
+    "221": 0.5,
+    "222": 0.8,
+    "223": 0.8,
+    "224": 0.8,
+    "225": 1.0,
+    "226": 0.8,
+    "227": 0.67,
+    "228": 1.0,
+    "229": 0.8,
+    "230": 0.8,
+    "231": 1.0,
+    "232": 0.8,
+    "233": 0.8,
+    "234": 0.36,
+    "235": 0.8,
+    "236": 0.5,
+    "237": 0.24,
+    "238": 0.8,
+    "239": 0.8,
+    "240": 0.67,
+    "241": 1.0,
+    "242": 1.0,
+    "243": 0.18,
+    "244": 0.21,
+    "245": 1.0,
+    "246": 1.0,
+    "247": 1.0
+   }
+  },
+  {
+   "nom": "DOSSIER DDEP_ note_CSRPN V2.docx",
+   "role": "autre",
+   "indice": "document Word",
+   "pages": 1,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "DV25111 Pichet - Suivi de chantier Bruges.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 37,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "6": 1.0,
+    "9": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 0.25,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0
+   }
+  },
+  {
+   "nom": "Note_technique_EVEE.docx",
+   "role": "autre",
+   "indice": "document Word",
+   "pages": 1,
+   "pages_scannees": 0,
+   "sous_documents": [],
+   "fiabilite_ocr": {}
+  },
+  {
+   "nom": "Suivi de chantier septembre 2026.pdf",
+   "role": "autre",
+   "indice": "aucun motif de rôle reconnu",
+   "pages": 21,
+   "pages_scannees": 7,
+   "sous_documents": [],
+   "fiabilite_ocr": {
+    "1": 0.67,
+    "2": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "9": 1.0,
+    "11": 1.0,
+    "20": 1.0,
+    "21": 1.0
+   }
+  }
+ ],
+ "sig": {
+  "couches": [
+   {
+    "nom": "Enjeux_arbres_Pt_20240923",
+    "fichier": "Enjeux_arbres_Pt_20240923.shp",
+    "geom_type": "POINT",
+    "nb_entites": 17,
+    "crs_source": "RGF93 v1 / Lambert-93",
+    "epsg": 2154,
+    "reprojetee": false,
+    "surface_ha": 0.0,
+    "colonnes": [
+     {
+      "nom": "id",
+      "nb_valeurs": 0,
+      "exemples": [],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Arbre",
+      "nb_valeurs": 17,
+      "exemples": [
+       "Peuplier noir"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Especes",
+      "nb_valeurs": 17,
+      "exemples": [
+       "C. carduelis, S. serinus, C. chloris*"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Enjeu",
+      "nb_valeurs": 17,
+      "exemples": [
+       "Moyen"
+      ],
+      "interpretation": "inconnu"
+     }
+    ],
+    "avertissements": []
+   },
+   {
+    "nom": "Enjeux_bois_mort_Pt_20240923",
+    "fichier": "Enjeux_bois_mort_Pt_20240923.shp",
+    "geom_type": "POINT",
+    "nb_entites": 1,
+    "crs_source": "RGF93 v1 / Lambert-93",
+    "epsg": 2154,
+    "reprojetee": false,
+    "surface_ha": 0.0,
+    "colonnes": [
+     {
+      "nom": "id",
+      "nb_valeurs": 0,
+      "exemples": [],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Especes",
+      "nb_valeurs": 1,
+      "exemples": [
+       "A. fragilis"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Enjeu",
+      "nb_valeurs": 1,
+      "exemples": [
+       "Moyen"
+      ],
+      "interpretation": "inconnu"
+     }
+    ],
+    "avertissements": []
+   },
+   {
+    "nom": "Enjeux_lisieres_Li_20240923",
+    "fichier": "Enjeux_lisieres_Li_20240923.shp",
+    "geom_type": "POLYLINE",
+    "nb_entites": 4,
+    "crs_source": "RGF93 v1 / Lambert-93",
+    "epsg": 2154,
+    "reprojetee": false,
+    "surface_ha": 0.0,
+    "colonnes": [
+     {
+      "nom": "id",
+      "nb_valeurs": 0,
+      "exemples": [],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Lisiere",
+      "nb_valeurs": 4,
+      "exemples": [
+       "Lisière de boisement de Peuplier noir et Robinier",
+       "Lisière de boisement de Robinier"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Especes",
+      "nb_valeurs": 4,
+      "exemples": [
+       "N. leisleri, P. pipistrellus, P. kuhlii, N. noctula*, E. serotinus*, E. europaeus*, P. muralis, L. bilineata*, H. viridiflavus*"
+      ],
+      "interpretation": "inconnu"
+     },
+     {
+      "nom": "Enjeu",
+      "nb_valeurs": 4,
+      "exemples": [
+       "Assez faible"
+      ],
+      "interpretation": "inconnu"
+     }
+    ],
+    "avertissements": []
+   }
+  ],
+  "zones": [
+   {
+    "id": "Enjeux_arbres_Pt_20240923",
+    "couche": "Enjeux_arbres_Pt_20240923",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 17,
+    "surface_ha": 0.0,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   },
+   {
+    "id": "Enjeux_bois_mort_Pt_20240923",
+    "couche": "Enjeux_bois_mort_Pt_20240923",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 1,
+    "surface_ha": 0.0,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   },
+   {
+    "id": "Enjeux_lisieres_Li_20240923",
+    "couche": "Enjeux_lisieres_Li_20240923",
+    "filtre": null,
+    "ug_attribut": null,
+    "nb_entites": 4,
+    "surface_ha": 0.0,
+    "refs_cadastrales": [],
+    "type_erc_nom": null
+   }
+  ]
+ },
+ "selection_pdf": {},
+ "cartes": {},
+ "cartes_classeur": [],
+ "regles": {
+  "source": "defaut",
+  "unite": "\\bUG\\s?-?\\s?(\\d{1,3}[a-z]?)\\b",
+  "code": "\\b([A-Z]{2,4})\\s?(\\d{1,2}[a-z]?)\\b",
+  "champs": {
+   "unites": "unit[ée]s?\\s+de\\s+gestion",
+   "parcelles": "parcelles\\s+concern[ée]es",
+   "objectif": "objectif\\s+[àa]\\s+long\\s+terme"
+  }
+ },
+ "faits": [],
+ "referentiel": {
+  "projet": {},
+  "ugs": [],
+  "actions": [],
+  "obligations_surfaciques": [],
+  "questions": [
+   {
+    "id": "couche_orpheline:Enjeux_arbres_Pt_20240923",
+    "regle": "couche_orpheline",
+    "portee": "Enjeux_arbres_Pt_20240923",
+    "texte": "La couche « Enjeux_arbres_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+    "options": [
+     "Évitement sans gestion (contexte)",
+     "Nouvelle UG",
+     "Ignorer"
+    ],
+    "proposition": null,
+    "sources": [
+     {
+      "doc": "SIG",
+      "loc": "Enjeux_arbres_Pt_20240923",
+      "extrait": null
+     }
+    ],
+    "bloquante": true
+   },
+   {
+    "id": "couche_orpheline:Enjeux_bois_mort_Pt_20240923",
+    "regle": "couche_orpheline",
+    "portee": "Enjeux_bois_mort_Pt_20240923",
+    "texte": "La couche « Enjeux_bois_mort_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+    "options": [
+     "Évitement sans gestion (contexte)",
+     "Nouvelle UG",
+     "Ignorer"
+    ],
+    "proposition": null,
+    "sources": [
+     {
+      "doc": "SIG",
+      "loc": "Enjeux_bois_mort_Pt_20240923",
+      "extrait": null
+     }
+    ],
+    "bloquante": true
+   },
+   {
+    "id": "couche_orpheline:Enjeux_lisieres_Li_20240923",
+    "regle": "couche_orpheline",
+    "portee": "Enjeux_lisieres_Li_20240923",
+    "texte": "La couche « Enjeux_lisieres_Li_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+    "options": [
+     "Évitement sans gestion (contexte)",
+     "Nouvelle UG",
+     "Ignorer"
+    ],
+    "proposition": null,
+    "sources": [
+     {
+      "doc": "SIG",
+      "loc": "Enjeux_lisieres_Li_20240923",
+      "extrait": null
+     }
+    ],
+    "bloquante": true
+   }
+  ],
+  "anomalies": [],
+  "controles": [],
+  "decisions": {
+   "alias_codes": {},
+   "alias_parcelles": {},
+   "parcelles_a_ajouter": [],
+   "requalifications_blocs": {},
+   "couches_contexte": [],
+   "couches_ignorees": [],
+   "decisions_annexes": {},
+   "roles_tableaux": {},
+   "commentaires": [],
+   "arrete": {}
+  },
+  "stats": {
+   "cellules": 0,
+   "confiance": {},
+   "questions": 3,
+   "questions_bloquantes": 3,
+   "faits": 0,
+   "faits_user": 0,
+   "geomce_pret_pct": 0
+  }
+ },
+ "durees_s": {
+  "inventaire": 0.75,
+  "pdfvisuel": 0.0,
+  "carte": 0.0,
+  "sig": 0.06,
+  "referentiel": 0.0,
+  "reconciliation": 0.0,
+  "pipeline": 0.83
+ },
+ "tokens_llm": {
+  "n": 0,
+  "prompt": 0,
+  "reasoning": 0,
+  "completion": 0,
+  "total": 0
+ }
+}

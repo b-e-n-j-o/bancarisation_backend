@@ -97,7 +97,15 @@ class UpdateProjetPayload:
 
 
 def lire_projet(projet_id: UUID) -> dict[str, Any]:
-    row = _one("SELECT * FROM bancarisation.projets WHERE id = %s", (str(projet_id),))
+    row = _one(
+        """
+        SELECT p.*, o.nom AS organisation_nom
+          FROM bancarisation.projets p
+          LEFT JOIN bancarisation.organisations o ON o.id = p.organisation_id
+         WHERE p.id = %s
+        """,
+        (str(projet_id),),
+    )
     if not row:
         raise ProjetCrudError("Projet introuvable.")
     return row
@@ -106,8 +114,26 @@ def lire_projet(projet_id: UUID) -> dict[str, Any]:
 def lister_projets(limit: int = 100, offset: int = 0) -> list[dict[str, Any]]:
     return _all(
         """
-        SELECT * FROM bancarisation.v_projet_liste_resume
-        ORDER BY created_at DESC
+        SELECT
+            v.id, v.organisation_id, v.nom, v.reference_interne, v.commune,
+            v.departement, v.description, v.type_procedure, v.statut,
+            v.created_at, v.updated_at, v.nb_occurrences, v.nb_realisees,
+            v.dette_m2, v.prochaine_code, v.prochaine_titre, v.prochaine_deadline,
+            v.prochaine_jours_restants, v.prochaine_mois_fin, v.prochaine_annee_fin,
+            COALESCE(
+                v.date_decision,
+                CASE WHEN m.horizon_debut IS NOT NULL
+                     THEN make_date(m.horizon_debut, 1, 1) END
+            ) AS date_decision,
+            COALESCE(v.duree_annees, m.horizon_duree_ans) AS duree_annees,
+            COALESCE(
+                v.date_fin,
+                CASE WHEN m.horizon_fin IS NOT NULL
+                     THEN make_date(m.horizon_fin, 12, 31) END
+            ) AS date_fin
+        FROM bancarisation.v_projet_liste_resume v
+        LEFT JOIN bancarisation.projet_metadata m ON m.projet_id = v.id
+        ORDER BY v.created_at DESC
         LIMIT %s OFFSET %s
         """,
         (limit, offset),
@@ -117,7 +143,22 @@ def lister_projets(limit: int = 100, offset: int = 0) -> list[dict[str, Any]]:
 def mettre_a_jour_projet(projet_id: UUID, payload: UpdateProjetPayload) -> dict[str, Any]:
     updates: dict[str, Any] = {}
     if payload.nom is not None:
-        updates["nom"] = payload.nom.strip()
+        nom = payload.nom.strip()
+        if not nom:
+            raise ProjetCrudError("Le nom ne peut pas être vide.")
+        acces = _one(
+            """
+            SELECT prive.role_org(organisation_id) AS role
+            FROM bancarisation.projets
+            WHERE id = %s
+            """,
+            (str(projet_id),),
+        )
+        if not acces or acces.get("role") != "admin":
+            raise ProjetCrudError(
+                "Seul un administrateur de l'organisation du projet peut modifier son nom."
+            )
+        updates["nom"] = nom
     if payload.reference_interne is not None:
         updates["reference_interne"] = payload.reference_interne.strip()
     if payload.commune is not None:
@@ -142,6 +183,16 @@ def mettre_a_jour_projet(projet_id: UUID, payload: UpdateProjetPayload) -> dict[
     )
     if not row:
         raise ProjetCrudError("Projet introuvable ou mise à jour échouée.")
+    if "nom" in updates:
+        _one(
+            """
+            UPDATE bancarisation.projet_metadata
+            SET nom_operation = %s
+            WHERE projet_id = %s
+            RETURNING projet_id
+            """,
+            (updates["nom"], str(projet_id)),
+        )
     return row
 
 

@@ -1,0 +1,819 @@
+{
+ "pages": [
+  {
+   "number": 1,
+   "roles": [
+    "hors_plan"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": false,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 2,
+   "roles": [
+    "cadre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 3,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 4,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 5,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 6,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 7,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 8,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 9,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 10,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 11,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [
+    "O9",
+    "O97"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 12,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 13,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 14,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 15,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 16,
+   "roles": [
+    "hors_plan"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": false,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 17,
+   "roles": [
+    "hors_plan"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": false,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 18,
+   "roles": [
+    "hors_plan"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": false,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 19,
+   "roles": [
+    "hors_plan"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": false,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 20,
+   "roles": [
+    "hors_plan"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": false,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 21,
+   "roles": [
+    "cadre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 22,
+   "roles": [
+    "catalogue_actions"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [
+    "ES1",
+    "ES2",
+    "FG1",
+    "FG2",
+    "RG1",
+    "RG2"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 23,
+   "roles": [
+    "unites_gestion"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [
+    "RG1",
+    "RG2"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 24,
+   "roles": [
+    "unites_gestion"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 25,
+   "roles": [
+    "programmation"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [
+    "ES1",
+    "ES2",
+    "FG1",
+    "RG1",
+    "RG2"
+   ],
+   "grid_hint": true
+  },
+  {
+   "number": 26,
+   "roles": [
+    "programmation"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [
+    "ES1",
+    "ES2",
+    "FG2",
+    "RG1",
+    "RG3"
+   ],
+   "grid_hint": true
+  },
+  {
+   "number": 27,
+   "roles": [
+    "programmation"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [
+    "FG1",
+    "FG2"
+   ],
+   "grid_hint": true
+  },
+  {
+   "number": 28,
+   "roles": [
+    "suivi_evaluation"
+   ],
+   "fiche_code": "RG1",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "ES1",
+    "ES2",
+    "FG1",
+    "FG2",
+    "RG1",
+    "RG2"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 29,
+   "roles": [
+    "catalogue_actions"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [
+    "ES1",
+    "ES2",
+    "FG1",
+    "FG2",
+    "RG1",
+    "RG2"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 30,
+   "roles": [
+    "fiche_action"
+   ],
+   "fiche_code": "RG1",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "RG1"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 31,
+   "roles": [
+    "fiche_action",
+    "programmation"
+   ],
+   "fiche_code": "RG1",
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": true
+  },
+  {
+   "number": 32,
+   "roles": [
+    "fiche_action"
+   ],
+   "fiche_code": "RG2",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "RG2"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 33,
+   "roles": [
+    "fiche_action"
+   ],
+   "fiche_code": "RG2",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "RG2"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 34,
+   "roles": [
+    "fiche_action",
+    "programmation"
+   ],
+   "fiche_code": "RG2",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "RG2"
+   ],
+   "grid_hint": true
+  },
+  {
+   "number": 35,
+   "roles": [
+    "fiche_action"
+   ],
+   "fiche_code": "ES1",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "ES1"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 36,
+   "roles": [
+    "fiche_action"
+   ],
+   "fiche_code": "ES1",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "ES1"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 37,
+   "roles": [
+    "fiche_action",
+    "programmation"
+   ],
+   "fiche_code": "ES1",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "ES1"
+   ],
+   "grid_hint": true
+  },
+  {
+   "number": 38,
+   "roles": [
+    "fiche_action"
+   ],
+   "fiche_code": "ES2",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "ES2"
+   ],
+   "grid_hint": true
+  },
+  {
+   "number": 39,
+   "roles": [
+    "fiche_action"
+   ],
+   "fiche_code": "FG1",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "FG1"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 40,
+   "roles": [
+    "fiche_action"
+   ],
+   "fiche_code": "FG1",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "FG1"
+   ],
+   "grid_hint": true
+  },
+  {
+   "number": 41,
+   "roles": [
+    "fiche_action",
+    "programmation"
+   ],
+   "fiche_code": "FG1",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "FG1"
+   ],
+   "grid_hint": true
+  },
+  {
+   "number": 42,
+   "roles": [
+    "fiche_action",
+    "programmation"
+   ],
+   "fiche_code": "FG2",
+   "in_plan_de_gestion": true,
+   "codes": [
+    "FG1",
+    "FG2"
+   ],
+   "grid_hint": true
+  },
+  {
+   "number": 43,
+   "roles": [
+    "couts"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [
+    "ES1",
+    "ES2",
+    "FG1",
+    "FG2",
+    "RG1",
+    "RG2"
+   ],
+   "grid_hint": false
+  },
+  {
+   "number": 44,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 45,
+   "roles": [
+    "autre"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 46,
+   "roles": [
+    "suivi_evaluation"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": true,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 47,
+   "roles": [
+    "hors_plan"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": false,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 48,
+   "roles": [
+    "hors_plan"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": false,
+   "codes": [],
+   "grid_hint": false
+  },
+  {
+   "number": 49,
+   "roles": [
+    "hors_plan"
+   ],
+   "fiche_code": null,
+   "in_plan_de_gestion": false,
+   "codes": [],
+   "grid_hint": false
+  }
+ ],
+ "pg_pages": [
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32,
+  33,
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  40,
+  41,
+  42,
+  43,
+  44,
+  45,
+  46
+ ],
+ "code_candidates": {
+  "FG1": 13,
+  "RG2": 9,
+  "ES1": 9,
+  "RG1": 8,
+  "FG2": 8,
+  "ES2": 7
+ },
+ "ug_candidates": {
+  "UG2": 7,
+  "UG1": 6
+ },
+ "horizon_evidence": [
+  {
+   "page": 1,
+   "text": "de l’ordre de 5 ans bien que les premiers retours d’expériences sur la gestion compensatoire forestière"
+  },
+  {
+   "page": 2,
+   "text": "l’année d’engagement des travaux compensatoires, suivie de 30 ans de gestion"
+  },
+  {
+   "page": 2,
+   "text": "(2025-2055) (avifaune et"
+  },
+  {
+   "page": 25,
+   "text": "Tableau 39 : Programmation pour 2025 à 2040"
+  },
+  {
+   "page": 25,
+   "text": "N+3 N+4 N+5 N+6 N+7 N+8 N+9 N+10 N+11 N+12 N+13 N+14 N+15"
+  },
+  {
+   "page": 26,
+   "text": "N+3 N+4 N+5 N+6 N+7 N+8 N+9 N+10 N+11 N+12 N+13 N+14 N+15"
+  },
+  {
+   "page": 26,
+   "text": "Tableau 40 : Programmation pour 2041 à 2055"
+  },
+  {
+   "page": 26,
+   "text": "N+16 N+17 N+18 N+19 N+20 N+2"
+  },
+  {
+   "page": 26,
+   "text": "1 N+22 N+23 N+24 N+25 N+26 N+27 N+28 N+29 N+30"
+  },
+  {
+   "page": 27,
+   "text": "N+16 N+17 N+18 N+19 N+20 N+2"
+  },
+  {
+   "page": 27,
+   "text": "1 N+22 N+23 N+24 N+25 N+26 N+27 N+28 N+29 N+30"
+  },
+  {
+   "page": 31,
+   "text": "N+6 à N+11 à"
+  },
+  {
+   "page": 31,
+   "text": "N+16 à"
+  },
+  {
+   "page": 31,
+   "text": "N+2 N+3 N+4 N+5 N+10 N+15 N+21 à"
+  },
+  {
+   "page": 31,
+   "text": "N+25 N+26 à N+30"
+  },
+  {
+   "page": 31,
+   "text": "N+20"
+  },
+  {
+   "page": 31,
+   "text": "2027 2028 2029 2030 2031 à 2036 à 2040 2046 à 2050 20"
+  },
+  {
+   "page": 31,
+   "text": "2041 à 2045"
+  },
+  {
+   "page": 34,
+   "text": "N+2 N+3 N+4 N+5 N+6 à N+10 N+11 à N+15 N+16 à N+20 N+2"
+  },
+  {
+   "page": 34,
+   "text": "1 à N+25 N+26 à N+30"
+  },
+  {
+   "page": 34,
+   "text": "2027 2028 2029 2030 2031 à 2035 2036 à 2040 2041 à 2045 2046"
+  },
+  {
+   "page": 34,
+   "text": "à 2050 2051 à 2055"
+  },
+  {
+   "page": 37,
+   "text": "N+2 N+3 N+4 N+5 N+6 à N+10 N+11 à N+15 N+16 à N+20"
+  },
+  {
+   "page": 37,
+   "text": "N+21 à N+25 N+26 à N+30"
+  },
+  {
+   "page": 37,
+   "text": "2026 2027 2028 2029 2030 2031 à 2035 2036 à 2040 2041à 2046"
+  },
+  {
+   "page": 37,
+   "text": "2047 à 2053 2054 à 2055"
+  },
+  {
+   "page": 38,
+   "text": "N+2 N+3 N+4 N+5 N+6 à N+10 N+11 à N+15 N+16 à N+20"
+  },
+  {
+   "page": 38,
+   "text": "N+21 à N+25 N+26 à N+30"
+  },
+  {
+   "page": 38,
+   "text": "2026 2027 2028 2029 2030 2031 à 2035 2036 à 2040 2041à 2046"
+  },
+  {
+   "page": 38,
+   "text": "2047 à 2053 2054 à 2055"
+  },
+  {
+   "page": 40,
+   "text": "vrage, ce comité se réunira annuellement de N à N+5, puis à N+10, N+20 et N+30"
+  },
+  {
+   "page": 41,
+   "text": "N+2 N+3 N+4 N+5 N+6 à N+10 N+11 à N+15 N+16 à N+20 N+21 à N"
+  },
+  {
+   "page": 41,
+   "text": "+25 N+26 à N+30"
+  },
+  {
+   "page": 41,
+   "text": "2027 2028 2029 2030 2031 à 2035 2036 à 2040 2041à 2046 2047 à 20"
+  },
+  {
+   "page": 41,
+   "text": "53 2054 à 2055"
+  },
+  {
+   "page": 42,
+   "text": "N+2 N+3 N+4 N+5 N+6 à N+10 N+11 à N+15 N+16 à N+20 N+"
+  },
+  {
+   "page": 42,
+   "text": "21 à N+25 N+26 à N+30"
+  },
+  {
+   "page": 42,
+   "text": "2027 2028 2029 2030 2031 à 2035 2036 à 2040 2041à 2046 20"
+  },
+  {
+   "page": 42,
+   "text": "47 à 2053 2054 à 2055"
+  }
+ ],
+ "n_year_evidence": [
+  {
+   "page": 25,
+   "text": " N N+1 N+2 N+3 N+4 N+5 N+6 N+7 N+8 N+9 N+10 N+11 N+12 N+13 N+14 N+15 Code "
+  },
+  {
+   "page": 26,
+   "text": " N N+1 N+2 N+3 N+4 N+5 N+6 N+7 N+8 N+9 N+10 N+11 N+12 N+13 N+14 N+15 Code "
+  },
+  {
+   "page": 31,
+   "text": " à N N+1 N+2 N+3 N+4 N+5 N+10 N+15 N+21 à N+25 N+26 à"
+  },
+  {
+   "page": 34,
+   "text": "turels N N+1 N+2 N+3 N+4 N+5 N+6 à N+10 N+11 à N+15 N+16 à N+20 N+21 à N+2"
+  },
+  {
+   "page": 37,
+   "text": " N N+1 N+2 N+3 N+4 N+5 N+6 à N+10 N+11 à N+15 N+16 à N+20 N+21 à N"
+  },
+  {
+   "page": 38,
+   "text": "aphie) N N+1 N+2 N+3 N+4 N+5 N+6 à N+10 N+11 à N+15 N+16 à N+20 N+21 à N+"
+  },
+  {
+   "page": 41,
+   "text": "ion N N+1 N+2 N+3 N+4 N+5 N+6 à N+10 N+11 à N+15 N+16 à N+20 N+21 à N+25 "
+  },
+  {
+   "page": 42,
+   "text": " N N+1 N+2 N+3 N+4 N+5 N+6 à N+10 N+11 à N+15 N+16 à N+20 N+21 à N+2"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "pdf": "c04.pdf",
+ "description": "Mois abrégés ; toute la ligne est grisée et les mois marqués sont d'une autre couleur.",
+ "grilles": [
+  {
+   "page": 1,
+   "type_axe": "mois",
+   "lignes": [
+    {
+     "libelle_contient": "Écoutes",
+     "couleur": [
+      6,
+      7,
+      8
+     ]
+    }
+   ]
+  }
+ ],
+ "exhaustif": true
+}

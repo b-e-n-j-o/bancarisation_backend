@@ -4,7 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from fastapi import APIRouter, File, Form, HTTPException, UploadFile, status
+from fastapi import APIRouter, Body, File, Form, HTTPException, UploadFile, status
 import json
 
 from .jobs import (
@@ -14,10 +14,24 @@ from .jobs import (
     enregistrer_validation,
     lancer_job,
     lire_status,
+    proposer_plans,
     relancer_passe3,
 )
 
 router = APIRouter(prefix="/ocr/ingest-erc", tags=["ingest-erc"])
+
+
+@router.post("/proposer-plans")
+async def route_proposer_plans(files: list[UploadFile] = File(...)) -> dict[str, Any]:
+    """Nom + texte natif des premières pages. Aucun appel OCR."""
+    payloads: list[tuple[str, bytes]] = []
+    for f in files:
+        if not f.filename or est_bruit_macos(f.filename):
+            continue
+        if Path(f.filename).suffix.lower() != ".pdf":
+            continue
+        payloads.append((f.filename, await f.read()))
+    return {"propositions": proposer_plans(payloads)}
 
 
 @router.post("/passe1", status_code=status.HTTP_202_ACCEPTED)
@@ -56,7 +70,10 @@ async def demarrer_passe1(
         if isinstance(parsed, list):
             roles_list = [x for x in parsed if isinstance(x, dict)]
 
-    job_id = creer_job(payloads, roles_list)
+    try:
+        job_id = creer_job(payloads, roles_list)
+    except ValueError as err:
+        raise HTTPException(status_code=400, detail=str(err)) from err
     lancer_job(job_id)
     return {
         "job_id": job_id,
@@ -86,8 +103,12 @@ def valider_passe1(job_id: str, payload: dict[str, Any]) -> dict[str, Any]:
 
 
 @router.post("/passe1/{job_id}/passe3", status_code=status.HTTP_202_ACCEPTED)
-def demarrer_passe3(job_id: str) -> dict[str, Any]:
+def demarrer_passe3(
+    job_id: str,
+    payload: dict[str, Any] | None = Body(default=None),
+) -> dict[str, Any]:
     try:
-        return relancer_passe3(job_id)
+        org = (payload or {}).get("organisation_id")
+        return relancer_passe3(job_id, organisation_id=str(org) if org else None)
     except ValueError as err:
         raise HTTPException(status_code=409, detail=str(err)) from err

@@ -77,13 +77,19 @@ def _insert_parcelles_croisees_sql() -> str:
     """
 
 
-def _assurer_schema_croisement(cur) -> None:
+def _colonne_presente(cur, table: str, colonne: str) -> bool:
+    """Lecture seule : le rôle applicatif n'est pas propriétaire des tables."""
     cur.execute(
         """
-        ALTER TABLE bancarisation.ug_surf_parcelles
-          ADD COLUMN IF NOT EXISTS part_ug_pct numeric
-        """
+        SELECT 1
+        FROM information_schema.columns
+        WHERE table_schema = 'bancarisation'
+          AND table_name = %s
+          AND column_name = %s
+        """,
+        (table, colonne),
     )
+    return cur.fetchone() is not None
 
 
 def _aire_parcelle_sql() -> str:
@@ -95,29 +101,31 @@ def _aire_parcelle_sql() -> str:
         )"""
 
 
-def _lier_ugs_sql(table: str) -> str:
+def _lier_ugs_sql(table: str, *, avec_part: bool = True) -> str:
     extra_cols = ""
     extra_vals = ""
     conflict = "DO NOTHING"
     if table == "ug_surf_parcelles":
         aire = _aire_parcelle_sql()
-        extra_cols = ", emprise_partielle, surface_incluse_m2, part_ug_pct"
+        part_col = ", part_ug_pct" if avec_part else ""
+        part_val = f""",
+          CASE
+            WHEN link.surface_inter_m2 IS NULL THEN NULL
+            WHEN COALESCE({aire}, 0) <= 0 THEN NULL
+            ELSE ROUND((100.0 * link.surface_inter_m2 / {aire})::numeric, 2)
+          END""" if avec_part else ""
+        part_set = ",\n          part_ug_pct = EXCLUDED.part_ug_pct" if avec_part else ""
+        extra_cols = f", emprise_partielle, surface_incluse_m2{part_col}"
         extra_vals = f""",
           CASE
             WHEN link.surface_inter_m2 IS NOT NULL AND p.contenance_m2 IS NOT NULL
             THEN link.surface_inter_m2 < p.contenance_m2 * 0.98
             ELSE false
           END,
-          link.surface_inter_m2,
-          CASE
-            WHEN link.surface_inter_m2 IS NULL THEN NULL
-            WHEN COALESCE({aire}, 0) <= 0 THEN NULL
-            ELSE ROUND((100.0 * link.surface_inter_m2 / {aire})::numeric, 2)
-          END"""
-        conflict = """DO UPDATE SET
+          link.surface_inter_m2{part_val}"""
+        conflict = f"""DO UPDATE SET
           emprise_partielle = EXCLUDED.emprise_partielle,
-          surface_incluse_m2 = EXCLUDED.surface_incluse_m2,
-          part_ug_pct = EXCLUDED.part_ug_pct"""
+          surface_incluse_m2 = EXCLUDED.surface_incluse_m2{part_set}"""
     elif table == "ug_lin_parcelles":
         extra_cols = ", longueur_incluse_m"
         extra_vals = ", NULL::numeric"
@@ -142,9 +150,13 @@ def _lier_ugs_sql(table: str) -> str:
     """
 
 
-def _dedupe_liens_ug_sql() -> str:
-    """Un seul lien par parcelle et code UG (une UG a souvent plusieurs entités)."""
-    return """
+def _dedupe_liens_ug_sql() -> tuple[str, str, str]:
+    """Un seul lien par parcelle et code UG (une UG a souvent plusieurs entités).
+
+    Trois requêtes : psycopg n'exécute qu'une commande par appel.
+    """
+    return (
+        """
         DELETE FROM bancarisation.ug_surf_parcelles l
         USING bancarisation.unites_de_gestion_surf u
         WHERE l.ug_id = u.id AND u.projet_id = %s
@@ -155,7 +167,9 @@ def _dedupe_liens_ug_sql() -> str:
             WHERE l2.parcelle_id = l.parcelle_id AND u2.ug_id = u.ug_id
             ORDER BY l2.surface_incluse_m2 DESC NULLS LAST, l2.id
             LIMIT 1
-          );
+          )
+        """,
+        """
         DELETE FROM bancarisation.ug_lin_parcelles l
         USING bancarisation.unites_de_gestion_lin u
         WHERE l.ug_id = u.id AND u.projet_id = %s
@@ -166,7 +180,9 @@ def _dedupe_liens_ug_sql() -> str:
             WHERE l2.parcelle_id = l.parcelle_id AND u2.ug_id = u.ug_id
             ORDER BY l2.id
             LIMIT 1
-          );
+          )
+        """,
+        """
         DELETE FROM bancarisation.ug_pct_parcelles l
         USING bancarisation.unites_de_gestion_pct u
         WHERE l.ug_id = u.id AND u.projet_id = %s
@@ -177,8 +193,9 @@ def _dedupe_liens_ug_sql() -> str:
             WHERE l2.parcelle_id = l.parcelle_id AND u2.ug_id = u.ug_id
             ORDER BY l2.id
             LIMIT 1
-          );
-    """
+          )
+        """,
+    )
 
 
 def persister_parcelles_concernees(projet_id: UUID) -> dict[str, Any]:
@@ -190,7 +207,7 @@ def persister_parcelles_concernees(projet_id: UUID) -> dict[str, Any]:
     try:
         with _connect() as conn:
             with conn.cursor() as cur:
-                _assurer_schema_croisement(cur)
+                avec_part = _colonne_presente(cur, "ug_surf_parcelles", "part_ug_pct")
                 cur.execute(
                     """
                     SELECT COUNT(DISTINCT idu)
@@ -226,8 +243,9 @@ def persister_parcelles_concernees(projet_id: UUID) -> dict[str, Any]:
                     "ug_lin_parcelles",
                     "ug_pct_parcelles",
                 ):
-                    cur.execute(_lier_ugs_sql(table), (pid,))
-                cur.execute(_dedupe_liens_ug_sql(), (pid, pid, pid))
+                    cur.execute(_lier_ugs_sql(table, avec_part=avec_part), (pid,))
+                for sql in _dedupe_liens_ug_sql():
+                    cur.execute(sql, (pid,))
                 nb_liens = 0
                 for table in (
                     "ug_surf_parcelles",
@@ -243,7 +261,6 @@ def persister_parcelles_concernees(projet_id: UUID) -> dict[str, Any]:
                         (pid,),
                     )
                     nb_liens += int(cur.fetchone()[0])
-            conn.commit()
     except Exception as exc:
         detail = str(exc)
         low = detail.lower()

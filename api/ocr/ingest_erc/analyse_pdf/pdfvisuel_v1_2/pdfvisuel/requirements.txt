@@ -1,0 +1,5 @@
+pdfplumber>=0.11
+pypdfium2>=4.0
+numpy>=1.24
+Pillow>=10.0
+reportlab>=4.0   # génération du corpus de test uniquement

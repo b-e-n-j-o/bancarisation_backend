@@ -12,6 +12,7 @@ from .actions import (
     affecter_entites,
     creer_ug_depuis_geometries,
     patch_entite,
+    poser_attribut_ug,
     retirer_entites,
 )
 from .apercu import apercu_sig
@@ -19,9 +20,12 @@ from .crud import (
     compter_projets_parc_par_departement,
     lister_geometries_parc,
     lister_geometries_ug,
+    mettre_a_jour_ug,
     renommer_ug,
+    supprimer_ug,
 )
 from .export_shp import exporter_shp_zip
+from .export_sig import exporter_sig_zip, lister_couches_sig
 from .ingestion import (
     GeometryIngestError,
     est_erreur_connexion,
@@ -43,6 +47,16 @@ router = APIRouter()
 
 class RenommerUgBody(BaseModel):
     libelle: str = Field(min_length=1, max_length=200)
+
+
+class MajUgBody(BaseModel):
+    libelle: str | None = Field(default=None, max_length=200)
+    categorie_erc: str | None = None
+
+
+class AttributUgBody(BaseModel):
+    cle: str = Field(min_length=1, max_length=80)
+    valeur: str = ""
 
 
 class EntiteRef(BaseModel):
@@ -72,6 +86,12 @@ class CreerUgBody(BaseModel):
 class RetirerBody(BaseModel):
     entites: list[EntiteRef] = Field(min_length=1)
     motif: str | None = None
+
+
+class ExportSigBody(BaseModel):
+    """Identifiants de couches. Vide = toutes les couches disponibles."""
+
+    couches: list[str] = Field(default_factory=list)
 
 
 @router.get("/projets/{projet_id}/geometries")
@@ -135,6 +155,25 @@ def export_shp_emprise_route(projet_id: UUID) -> Response:
     return _shp_zip_response(data, filename)
 
 
+@router.get("/projets/{projet_id}/sig/couches")
+def lister_couches_sig_route(projet_id: UUID) -> dict[str, Any]:
+    """Couches SIG exportables (UG, emprise, cadastre, foncier, notes, autres fichiers)."""
+    try:
+        return {"couches": lister_couches_sig(projet_id)}
+    except GeometryIngestError as exc:
+        raise _http_geom(exc) from exc
+
+
+@router.post("/projets/{projet_id}/sig/export")
+def exporter_sig_route(projet_id: UUID, body: ExportSigBody) -> Response:
+    """ZIP de GeoPackages Lambert 93, une couche par fichier, pour QGIS."""
+    try:
+        data, filename = exporter_sig_zip(projet_id, body.couches or None)
+    except GeometryIngestError as exc:
+        raise _http_geom(exc) from exc
+    return _shp_zip_response(data, filename)
+
+
 def _http_geom(exc: GeometryIngestError) -> HTTPException:
     detail = str(exc)
     code = status.HTTP_404_NOT_FOUND if "introuvable" in detail.lower() else status.HTTP_400_BAD_REQUEST
@@ -148,6 +187,36 @@ def renommer_ug_route(projet_id: UUID, ug_id: str, body: RenommerUgBody) -> dict
     """Renomme une UG (libellé sur toutes ses géométries)."""
     try:
         return renommer_ug(projet_id, ug_id, body.libelle)
+    except GeometryIngestError as exc:
+        raise _http_geom(exc) from exc
+
+
+@router.put("/projets/{projet_id}/ugs/{ug_id}")
+def maj_ug_route(projet_id: UUID, ug_id: str, body: MajUgBody) -> dict[str, Any]:
+    try:
+        return mettre_a_jour_ug(
+            projet_id,
+            ug_id,
+            libelle=body.libelle,
+            categorie_erc=body.categorie_erc,
+        )
+    except GeometryIngestError as exc:
+        raise _http_geom(exc) from exc
+
+
+@router.patch("/projets/{projet_id}/ugs/{ug_id}/attributs")
+def poser_attribut_ug_route(projet_id: UUID, ug_id: str, body: AttributUgBody) -> dict[str, Any]:
+    """Ajoute une colonne à la table attributaire JSONB de l'UG."""
+    try:
+        return poser_attribut_ug(projet_id, ug_id, body.cle, body.valeur)
+    except GeometryIngestError as exc:
+        raise _http_geom(exc) from exc
+
+
+@router.delete("/projets/{projet_id}/ugs/{ug_id}")
+def supprimer_ug_route(projet_id: UUID, ug_id: str) -> dict[str, Any]:
+    try:
+        return supprimer_ug(projet_id, ug_id)
     except GeometryIngestError as exc:
         raise _http_geom(exc) from exc
 
@@ -342,18 +411,44 @@ def confirmer_sig_route(
                 raise GeometryIngestError(f"couche_id inconnu : {conf.couche_id}")
             meta = chemin_sidecar_couche(projet_id, body.analyse_id, conf.couche_id)
             gdf = gpd.read_file(meta["sidecar"], layer=meta["couche"])
+            if gdf.crs is None and conf.epsg_force:
+                gdf = gdf.set_crs(epsg=int(conf.epsg_force))
+            nom = (conf.libelle or "").strip() or couche.nom_source
+            role = (body.role_geometrie or "").strip() or None
+            roles_categorie = {
+                "unite_gestion": "compensation",
+                "emprise_projet": "autre",
+                "plan_de_masse": "autre",
+                "zone_evitement": "evitement",
+                "zone_reduction": "reduction",
+                "zone_accompagnement": "accompagnement",
+                "geometrie_complementaire": "autre",
+            }
+            categorie = roles_categorie.get(role or "", conf.categorie)
+            est_emprise = role == "emprise_projet" or (
+                role is None
+                and conf.categorie == "autre"
+                and "emprise" in couche.nom_source.lower()
+                and not conf.affectations
+            )
+            affectations = (
+                {a.index: (a.ug_code, a.libelle) for a in conf.affectations}
+                if role in (None, "unite_gestion")
+                else {}
+            )
+            attributs_saisis = {a.index: a.valeurs for a in conf.attributs}
             ids = persister_ug(
                 projet_id=projet_id,
                 gdf=gdf,
-                nom_source=couche.nom_source,
-                categorie_erc=conf.categorie,
+                nom_source=nom,
+                categorie_erc=categorie,
                 cible=conf.cible if conf.cible is not None else couche.cible,
                 analyse_id=body.analyse_id,
                 source_fichier=analyse.fichier,
-                is_emprise=(
-                    conf.categorie == "autre"
-                    and "emprise" in couche.nom_source.lower()
-                ),
+                is_emprise=est_emprise,
+                affectations=affectations or None,
+                role_geometrie=role,
+                attributs_saisis=attributs_saisis or None,
             )
             crees.append({
                 "couche_id": conf.couche_id,

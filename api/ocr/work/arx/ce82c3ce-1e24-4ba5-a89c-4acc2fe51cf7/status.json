@@ -1,0 +1,23 @@
+{
+  "job_id": "ce82c3ce-1e24-4ba5-a89c-4acc2fe51cf7",
+  "status": "error",
+  "etape": "erreur",
+  "document_id": "30c0f5b1-d0bd-4a65-8758-944b0671f01a",
+  "projet_id": "8d061654-c30c-4ced-95a6-99297b43020a",
+  "nom": "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+  "date_document": "2026-10-16",
+  "llm": {
+    "appels": 0,
+    "appels_api": 0,
+    "appels_cache": 0,
+    "echecs": 2,
+    "tokens_prompt": 0,
+    "tokens_completion": 0,
+    "tokens_total": 0,
+    "secondes": 0,
+    "par_tag": {},
+    "par_modele": {}
+  },
+  "erreur": "API error occurred: Status 400. Body: {\"object\":\"error\",\"message\":\"top_p must be 1 when using greedy sampling.\",\"type\":\"invalid_request_greedy_sampling\",\"param\":null,\"code\":\"3054\",\"raw_status_code\":400}\nTraceback (most recent call last):\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/jobs.py\", line 220, in _executer\n    _res, run_dir = run(pdf, settings, anchors=anchors, log=_log, on_call=_on_call)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/pipeline.py\", line 51, in run\n    fiche, synth, articles, obls, raw = extract(doc, seg, settings, llm, injected)\n                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/s3_extract.py\", line 98, in extract\n    fiche = (call(FicheLLM, prompts.FICHE.format(**base), \"fiche\", t=0) or [FicheLLM()])[0]\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/s3_extract.py\", line 91, in call\n    return llm.chat_json(schema, prompts.SYSTEM, prompt, tag=tag, n=n, temperature=t, cache_key_hint=key)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/llm.py\", line 207, in chat_json\n    raw_choices, usage = self._complete(model, messages, schema, temperature, n, cache_key_hint)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/llm.py\", line 244, in _complete\n    r, u = self._retry(lambda: call(rf_obj, 1), tag=f\"{tag}:repli\", model=model)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/llm.py\", line 166, in _retry\n    return fn()\n           ^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/llm.py\", line 244, in <lambda>\n    r, u = self._retry(lambda: call(rf_obj, 1), tag=f\"{tag}:repli\", model=model)\n                               ^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/llm.py\", line 231, in call\n    return self._http_chat(tag=tag, model=modele, n=n_, response_format=rf, **params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/api/ocr/ingest_erc/arx/arx/llm.py\", line 253, in _http_chat\n    resp = self.client.chat.complete(model=model, response_format=response_format, n=n, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/benjaminbenoit/Documents/venvs/keralia_venv/lib/python3.11/site-packages/mistralai/client/chat.py\", line 317, in complete\n    raise errors.SDKError(\"API error occurred\", http_res, http_res_text)\nmistralai.client.errors.sdkerror.SDKError: API error occurred: Status 400. Body: {\"object\":\"error\",\"message\":\"top_p must be 1 when using greedy sampling.\",\"type\":\"invalid_request_greedy_sampling\",\"param\":null,\"code\":\"3054\",\"raw_status_code\":400}\n",
+  "updated_at": "2026-10-16T13:25:31.540604+00:00"
+}

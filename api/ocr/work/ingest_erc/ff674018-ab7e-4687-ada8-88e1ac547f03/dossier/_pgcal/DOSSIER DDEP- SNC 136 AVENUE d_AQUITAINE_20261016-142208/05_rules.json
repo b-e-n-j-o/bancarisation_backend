@@ -1,0 +1,1563 @@
+[
+ {
+  "action_code": "RG1",
+  "sub_action": "Réouverture des fourrés de roncier et d'Herbe de la Pampa (travaux initiaux : broyage, export de biomasse, griffage du sol, et dessouchage/arrachage de l'Herbe de la Pampa selon robustesse)",
+  "ug_codes": [
+   "UG1"
+  ],
+  "kind": "ponctuelle",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": [
+     0
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "",
+  "window_text": "en dehors des périodes sensibles pour la faune",
+  "trigger": "",
+  "actor": "CDC Biodiversité / Lucane",
+  "citations": [
+   {
+    "page": 25,
+    "quote": "Réouverture des fourrés de roncier et d'Herbe de la Pampa"
+   },
+   {
+    "page": 30,
+    "quote": "Ouverture du milieu : les travaux initiaux consisteront en une réouverture de pelouse à lotier par broyage avec export de biomasse et griffage du sol."
+   },
+   {
+    "page": 31,
+    "quote": "Travaux initiaux"
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [],
+  "rule_id": "RG1-01",
+  "support": 1.0,
+  "issues": [
+   "[alerte] Citation introuvable p.25 : « Réouverture des fourrés de roncier et d'Herbe de la Pampa »."
+  ],
+  "critic_changes": [
+   "RG1-01 : citations corrigées - suppression des descriptions de grilles ('cases cochées/colorées', '| X') au profit de citations textuelles exactes du document (pages 25, 30, 31)",
+   "RG1-03 : months passé de [3,4,7,8] à [7,8] car le texte précise que le griffage est réalisé 'vers la fin du mois de juillet/début août' (pages 30 et 31), excluant mars et avril qui correspondent à la fauche de printemps",
+   "RG1-03 : ajout d'une ambiguïté sur le chevauchement entre le griffage initial (inclus dans RG1-01 en N) et les griffages récurrents de RG1-03",
+   "RG1-04 : ajout d'une ambiguïté sur l'absence de cette sous-action dans les grilles de programmation (tableaux 39 et 40)"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 0.667,
+   "agreement": 0.667,
+   "grid": 1.0,
+   "specificity": 1.0,
+   "llm": 0.95,
+   "score": 0.812
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "RG1",
+  "sub_action": "Entretien par fauche",
+  "ug_codes": [
+   "UG1"
+  ],
+  "kind": "recurrente",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 1,
+    "end": 30,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [
+   {
+    "label": "Fauche de printemps",
+    "months": [
+     3,
+     4
+    ],
+    "optional": false
+   },
+   {
+    "label": "Fauche d'été",
+    "months": [
+     7,
+     8
+    ],
+    "optional": true
+   }
+  ],
+  "frequency_text": "1 à 2 fauches annuelles selon développement de la végétation concurrente",
+  "window_text": "hors période de pleine floraison des lotiers (un premier au début du printemps et un second en été)",
+  "trigger": "",
+  "actor": "CDC Biodiversité / Lucane",
+  "citations": [
+   {
+    "page": 30,
+    "quote": "les entretiens seront réalisés par fauchage avec export de résidus, hors période de pleine floraison des lotiers (un premier au début du printemps et un second en été)."
+   },
+   {
+    "page": 31,
+    "quote": "Gestion : entretien par fauche 1 à 2 fois par an. En cas de fauche bisannuelle, une première fauche sera réalisée au printemps (en mars/avril) et une seconde au cours de l'été (fin juillet/début août)."
+   },
+   {
+    "page": 25,
+    "quote": "Entretien par fauche"
+   },
+   {
+    "page": 25,
+    "quote": "1 à 2 fauches annuelles selon développement de la végétation concurrente"
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [],
+  "rule_id": "RG1-02",
+  "support": 1.0,
+  "issues": [
+   "[alerte] Citation introuvable p.25 : « Entretien par fauche »."
+  ],
+  "critic_changes": [
+   "RG1-01 : citations corrigées - suppression des descriptions de grilles ('cases cochées/colorées', '| X') au profit de citations textuelles exactes du document (pages 25, 30, 31)",
+   "RG1-03 : months passé de [3,4,7,8] à [7,8] car le texte précise que le griffage est réalisé 'vers la fin du mois de juillet/début août' (pages 30 et 31), excluant mars et avril qui correspondent à la fauche de printemps",
+   "RG1-03 : ajout d'une ambiguïté sur le chevauchement entre le griffage initial (inclus dans RG1-01 en N) et les griffages récurrents de RG1-03",
+   "RG1-04 : ajout d'une ambiguïté sur l'absence de cette sous-action dans les grilles de programmation (tableaux 39 et 40)"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 0.75,
+   "agreement": 1.0,
+   "grid": 1.0,
+   "specificity": 1.0,
+   "llm": 0.95,
+   "score": 0.92
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "RG1",
+  "sub_action": "Griffage du sol",
+  "ug_codes": [
+   "UG1"
+  ],
+  "kind": "recurrente",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 1,
+    "end": 30,
+    "step_min": 2,
+    "step_max": 3,
+    "count_over_period": null
+   }
+  ],
+  "passes": [
+   {
+    "label": "",
+    "months": [
+     7,
+     8
+    ],
+    "optional": false
+   }
+  ],
+  "frequency_text": "Une fois tous les 2 à 3 ans",
+  "window_text": "vers la fin du mois de juillet/ début août",
+  "trigger": "",
+  "actor": "CDC Biodiversité / Lucane",
+  "citations": [
+   {
+    "page": 30,
+    "quote": "Un griffage du sol sera également réalisé tous les 2 à 3 ans sur une épaisseur maximale de 10 cm de profondeur, vers la fin du mois de juillet/ début août"
+   },
+   {
+    "page": 31,
+    "quote": "Le griffage sera réalisé fin juillet/ début août, à raison d'une fois tous les 2 à 3 ans."
+   },
+   {
+    "page": 25,
+    "quote": "Griffage du sol"
+   },
+   {
+    "page": 25,
+    "quote": "Une fois tous les 2 à 3 ans"
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [
+   "Le griffage initial est inclus dans les travaux initiaux (RG1-01) en année N. La présente règle RG1-03 concerne les griffages récurrents suivants, théoriquement à partir de N+2 ou N+3, bien que la grille de phasage (p.31) indique 'Fauche et griffage' à partir de N+1."
+  ],
+  "rule_id": "RG1-03",
+  "support": 1.0,
+  "issues": [
+   "[info] Ambiguïté signalée : Le griffage initial est inclus dans les travaux initiaux (RG1-01) en année N. La présente règle RG1-03 concerne les griffages récurrents suivants, théoriquement à partir de N+2 ou N+3, bien que la grille de phasage (p.31) indique 'Fauche et griffage' à partir de N+1."
+  ],
+  "critic_changes": [
+   "RG1-01 : citations corrigées - suppression des descriptions de grilles ('cases cochées/colorées', '| X') au profit de citations textuelles exactes du document (pages 25, 30, 31)",
+   "RG1-03 : months passé de [3,4,7,8] à [7,8] car le texte précise que le griffage est réalisé 'vers la fin du mois de juillet/début août' (pages 30 et 31), excluant mars et avril qui correspondent à la fauche de printemps",
+   "RG1-03 : ajout d'une ambiguïté sur le chevauchement entre le griffage initial (inclus dans RG1-01 en N) et les griffages récurrents de RG1-03",
+   "RG1-04 : ajout d'une ambiguïté sur l'absence de cette sous-action dans les grilles de programmation (tableaux 39 et 40)"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": 0.875,
+   "specificity": 0.6,
+   "llm": 0.95,
+   "score": 0.757
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "RG1",
+  "sub_action": "Arrachage manuel des espèces envahissantes",
+  "ug_codes": [
+   "UG1"
+  ],
+  "kind": "conditionnelle",
+  "anchor": "N",
+  "segments": [],
+  "passes": [],
+  "frequency_text": "",
+  "window_text": "en automne",
+  "trigger": "Si un développement des espèces envahissantes est constaté",
+  "actor": "CDC Biodiversité / Lucane",
+  "citations": [
+   {
+    "page": 30,
+    "quote": "Si un développement des espèces envahissantes est constaté, des sessions d'arrachage manuel avec export devront être programmées en automne."
+   }
+  ],
+  "confidence": 0.9,
+  "ambiguities": [
+   "Cette sous-action conditionnelle n'apparaît pas dans les grilles de programmation (tableaux 39 et 40, pages 25-26), ce qui est normal pour une action conditionnelle mais explique l'absence de segments temporels précis.",
+   "Aucune fréquence précise n'est donnée pour cet arrachage conditionnel (nombre de sessions par an non précisé)."
+  ],
+  "rule_id": "RG1-04",
+  "support": 1.0,
+  "issues": [
+   "[info] Ambiguïté signalée : Cette sous-action conditionnelle n'apparaît pas dans les grilles de programmation (tableaux 39 et 40, pages 25-26), ce qui est normal pour une action conditionnelle mais explique l'absence de segments temporels précis.",
+   "[info] Ambiguïté signalée : Aucune fréquence précise n'est donnée pour cet arrachage conditionnel (nombre de sessions par an non précisé)."
+  ],
+  "critic_changes": [
+   "RG1-01 : citations corrigées - suppression des descriptions de grilles ('cases cochées/colorées', '| X') au profit de citations textuelles exactes du document (pages 25, 30, 31)",
+   "RG1-03 : months passé de [3,4,7,8] à [7,8] car le texte précise que le griffage est réalisé 'vers la fin du mois de juillet/début août' (pages 30 et 31), excluant mars et avril qui correspondent à la fauche de printemps",
+   "RG1-03 : ajout d'une ambiguïté sur le chevauchement entre le griffage initial (inclus dans RG1-01 en N) et les griffages récurrents de RG1-03",
+   "RG1-04 : ajout d'une ambiguïté sur l'absence de cette sous-action dans les grilles de programmation (tableaux 39 et 40)"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": null,
+   "specificity": 0.8,
+   "llm": 0.9,
+   "score": 0.738
+  },
+  "decision": "declencheur"
+ },
+ {
+  "action_code": "RG2",
+  "sub_action": "Débroussaillage initial (travaux initiaux)",
+  "ug_codes": [
+   "UG2"
+  ],
+  "kind": "ponctuelle",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": [
+     0
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [
+   {
+    "label": "Débroussaillage",
+    "months": [
+     9,
+     10
+    ],
+    "optional": false
+   }
+  ],
+  "frequency_text": "",
+  "window_text": "septembre/octobre, en dehors des périodes sensibles pour la faune",
+  "trigger": "",
+  "actor": "CDC Biodiversité / Arbres et Paysages",
+  "citations": [
+   {
+    "page": 32,
+    "quote": "Une opération de débroussaillage sera réalisée en dehors des périodes sensibles pour les espèces (septembre/ octobre)."
+   },
+   {
+    "page": 34,
+    "quote": "Travaux initiaux X"
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [],
+  "rule_id": "RG2-01",
+  "support": 1.0,
+  "issues": [],
+  "critic_changes": [
+   "RG2-01 : citations vérifiées et conservées (page 32 pour la période septembre/octobre, page 34 pour le phasage 'Travaux initiaux X' en N)",
+   "RG2-02 : kind passé de 'non_precisee' à 'recurrente' car il s'agit d'un entretien sur toute la durée N+1 à N+30 ; correction du code RG3 en RG2 dans la citation page 26 (erreur de frappe dans le tableau 40) ; ajout d'une ambiguïté sur la fréquence non précisée dans le texte",
+   "RG2-03 : citations complétées avec la description des 16 bosquets (page 33) et la ligne du tableau de programmation (page 25) ; période maintenue à septembre/octobre avec ambiguïté sur l'application à la plantation",
+   "RG2-04 : conservée telle quelle, citations vérifiées (page 34 pour le déclencheur, page 25 pour la programmation)",
+   "RG2-05 : supprimée car doublon de RG2-04 (même sous-action 'Regarnis' avec mêmes citations et même déclencheur)"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.667,
+   "grid": 1.0,
+   "specificity": 1.0,
+   "llm": 0.95,
+   "score": 0.912
+  },
+  "decision": "integre"
+ },
+ {
+  "action_code": "RG2",
+  "sub_action": "Entretien par débroussaillage",
+  "ug_codes": [
+   "UG2"
+  ],
+  "kind": "recurrente",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 1,
+    "end": 30,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [
+   {
+    "label": "",
+    "months": [
+     9,
+     10
+    ],
+    "optional": false
+   }
+  ],
+  "frequency_text": "",
+  "window_text": "en dehors des périodes sensibles pour la faune",
+  "trigger": "",
+  "actor": "CDC Biodiversité / Arbres et Paysages",
+  "citations": [
+   {
+    "page": 34,
+    "quote": "Le milieu semi-ouvert sera maintenu par débroussaillage ;"
+   },
+   {
+    "page": 25,
+    "quote": "RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés | Débroussaillage | X | Entretien"
+   },
+   {
+    "page": 26,
+    "quote": "RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés | Débroussaillage | Entretien"
+   }
+  ],
+  "confidence": 0.8,
+  "ambiguities": [
+   "Fréquence non précisée dans le texte : le document mentionne 'entretien' et 'maintenu par débroussaillage' sans indiquer de rythme précis (tous les ans, tous les 2 ans, etc.). La grille de programmation montre une bande continue de N+1 à N+30 suggérant une récurrence régulière.",
+   "Le tableau de programmation page 26 utilise le code 'RG3' (inexistant dans la liste des actions) au lieu de 'RG2' pour cette sous-action. Valeur retenue : RG2, car RG3 n'est pas défini dans le document et correspond à la même action de débroussaillage."
+  ],
+  "rule_id": "RG2-02",
+  "support": 1.0,
+  "issues": [
+   "[alerte] Citation introuvable p.25 : « RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi ».",
+   "[alerte] Citation introuvable p.26 : « RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi ».",
+   "[info] Mois complétés depuis la grille mensuelle colorée de la fiche.",
+   "[info] Ambiguïté signalée : Fréquence non précisée dans le texte : le document mentionne 'entretien' et 'maintenu par débroussaillage' sans indiquer de rythme précis (tous les ans, tous les 2 ans, etc.). La grille de programmation montre une bande continue de N+1 à N+30 suggérant une récurrence régulière.",
+   "[info] Ambiguïté signalée : Le tableau de programmation page 26 utilise le code 'RG3' (inexistant dans la liste des actions) au lieu de 'RG2' pour cette sous-action. Valeur retenue : RG2, car RG3 n'est pas défini dans le document et correspond à la même action de débroussaillage."
+  ],
+  "critic_changes": [
+   "RG2-01 : citations vérifiées et conservées (page 32 pour la période septembre/octobre, page 34 pour le phasage 'Travaux initiaux X' en N)",
+   "RG2-02 : kind passé de 'non_precisee' à 'recurrente' car il s'agit d'un entretien sur toute la durée N+1 à N+30 ; correction du code RG3 en RG2 dans la citation page 26 (erreur de frappe dans le tableau 40) ; ajout d'une ambiguïté sur la fréquence non précisée dans le texte",
+   "RG2-03 : citations complétées avec la description des 16 bosquets (page 33) et la ligne du tableau de programmation (page 25) ; période maintenue à septembre/octobre avec ambiguïté sur l'application à la plantation",
+   "RG2-04 : conservée telle quelle, citations vérifiées (page 34 pour le déclencheur, page 25 pour la programmation)",
+   "RG2-05 : supprimée car doublon de RG2-04 (même sous-action 'Regarnis' avec mêmes citations et même déclencheur)"
+  ],
+  "months_from_grid": true,
+  "confidence_detail": {
+   "evidence": 0.333,
+   "agreement": 1.0,
+   "grid": 1.0,
+   "specificity": 0.75,
+   "llm": 0.8,
+   "score": 0.755
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "RG2",
+  "sub_action": "Plantation initiale (16 bosquets)",
+  "ug_codes": [
+   "UG2"
+  ],
+  "kind": "ponctuelle",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": [
+     0
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "",
+  "window_text": "septembre/octobre (en dehors des périodes sensibles pour la faune)",
+  "trigger": "",
+  "actor": "CDC Biodiversité / Arbres et Paysages",
+  "citations": [
+   {
+    "page": 33,
+    "quote": "L’objectif sera de constituer un ensemble de 16 petits bosquets de 3 à 9 plants."
+   },
+   {
+    "page": 25,
+    "quote": "RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés | Plantation et regarnis éventuel | X"
+   },
+   {
+    "page": 34,
+    "quote": "Travaux initiaux X"
+   }
+  ],
+  "confidence": 0.9,
+  "ambiguities": [
+   "La période de septembre/octobre est explicitement associée au débroussaillage dans le texte (page 32), mais la grille mensuelle de la fiche RG2 (page 34) colorie en septembre/octobre s'applique à l'ensemble de l'action RG2. Valeur retenue : septembre/octobre pour la plantation également, par cohérence avec la grille mensuelle de la fiche action."
+  ],
+  "rule_id": "RG2-03",
+  "support": 1.0,
+  "issues": [
+   "[alerte] Citation introuvable p.25 : « RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi ».",
+   "[info] Ambiguïté signalée : La période de septembre/octobre est explicitement associée au débroussaillage dans le texte (page 32), mais la grille mensuelle de la fiche RG2 (page 34) colorie en septembre/octobre s'applique à l'ensemble de l'action RG2. Valeur retenue : septembre/octobre pour la plantation également, par cohérence avec la grille mensuelle de la fiche action."
+  ],
+  "critic_changes": [
+   "RG2-01 : citations vérifiées et conservées (page 32 pour la période septembre/octobre, page 34 pour le phasage 'Travaux initiaux X' en N)",
+   "RG2-02 : kind passé de 'non_precisee' à 'recurrente' car il s'agit d'un entretien sur toute la durée N+1 à N+30 ; correction du code RG3 en RG2 dans la citation page 26 (erreur de frappe dans le tableau 40) ; ajout d'une ambiguïté sur la fréquence non précisée dans le texte",
+   "RG2-03 : citations complétées avec la description des 16 bosquets (page 33) et la ligne du tableau de programmation (page 25) ; période maintenue à septembre/octobre avec ambiguïté sur l'application à la plantation",
+   "RG2-04 : conservée telle quelle, citations vérifiées (page 34 pour le déclencheur, page 25 pour la programmation)",
+   "RG2-05 : supprimée car doublon de RG2-04 (même sous-action 'Regarnis' avec mêmes citations et même déclencheur)"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 0.667,
+   "agreement": 1.0,
+   "grid": 1.0,
+   "specificity": 0.9,
+   "llm": 0.9,
+   "score": 0.88
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "RG2",
+  "sub_action": "Regarnis éventuel (si pertes constatées)",
+  "ug_codes": [
+   "UG2"
+  ],
+  "kind": "conditionnelle",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 1,
+    "end": 30,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "",
+  "window_text": "en dehors des périodes sensibles pour la faune",
+  "trigger": "Si des pertes importantes sont constatées au niveau des plantations d'arbres",
+  "actor": "CDC Biodiversité / Arbres et Paysages",
+  "citations": [
+   {
+    "page": 34,
+    "quote": "Si des pertes importantes sont constatées au niveau des plantations d’arbres, un regarnis pourra être réalisé."
+   },
+   {
+    "page": 25,
+    "quote": "RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés | Plantation et regarnis éventuel | Regarnis à prévoir si perte"
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [
+   "Le tableau de programmation page 26 utilise le code 'RG3' au lieu de 'RG2' pour la ligne de débroussaillage, mais le regarnis est bien associé à RG2 dans le texte."
+  ],
+  "rule_id": "RG2-04",
+  "support": 0.6666666666666666,
+  "issues": [
+   "[alerte] Citation introuvable p.25 : « RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi ».",
+   "[info] Ambiguïté signalée : Le tableau de programmation page 26 utilise le code 'RG3' au lieu de 'RG2' pour la ligne de débroussaillage, mais le regarnis est bien associé à RG2 dans le texte."
+  ],
+  "critic_changes": [
+   "RG2-01 : citations vérifiées et conservées (page 32 pour la période septembre/octobre, page 34 pour le phasage 'Travaux initiaux X' en N)",
+   "RG2-02 : kind passé de 'non_precisee' à 'recurrente' car il s'agit d'un entretien sur toute la durée N+1 à N+30 ; correction du code RG3 en RG2 dans la citation page 26 (erreur de frappe dans le tableau 40) ; ajout d'une ambiguïté sur la fréquence non précisée dans le texte",
+   "RG2-03 : citations complétées avec la description des 16 bosquets (page 33) et la ligne du tableau de programmation (page 25) ; période maintenue à septembre/octobre avec ambiguïté sur l'application à la plantation",
+   "RG2-04 : conservée telle quelle, citations vérifiées (page 34 pour le déclencheur, page 25 pour la programmation)",
+   "RG2-05 : supprimée car doublon de RG2-04 (même sous-action 'Regarnis' avec mêmes citations et même déclencheur)"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 0.5,
+   "agreement": 0.667,
+   "grid": null,
+   "specificity": 0.9,
+   "llm": 0.95,
+   "score": 0.669
+  },
+  "decision": "declencheur"
+ },
+ {
+  "action_code": "ES1",
+  "sub_action": "Inventaire et cartographie",
+  "ug_codes": [
+   "UG1",
+   "UG2"
+  ],
+  "kind": "recurrente",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   },
+   {
+    "years": null,
+    "start": 6,
+    "end": 30,
+    "step_min": 5,
+    "step_max": 5,
+    "count_over_period": null
+   }
+  ],
+  "passes": [
+   {
+    "label": "Passage de suivi",
+    "months": [
+     6,
+     7
+    ],
+    "optional": false
+   }
+  ],
+  "frequency_text": "Annuel de N à N+5, puis 1 suivi tous les 5 ans de N+6 à N+30",
+  "window_text": "juin/juillet",
+  "trigger": "",
+  "actor": "CDC Biodiversité / Bureau d'étude",
+  "citations": [
+   {
+    "page": 25,
+    "quote": "ES1   Suivi du Lotier   X   X   X   X   X   X   1 suivi tous les 5 ans"
+   },
+   {
+    "page": 36,
+    "quote": "Chaque campagne se fera à travers un passage courant juin/juillet."
+   },
+   {
+    "page": 37,
+    "quote": "ES1 | Inventaire et cartographie   X   X   X   X   X   X   1 suivis tous les 5 ans"
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [],
+  "rule_id": "ES1-01",
+  "support": 1.0,
+  "issues": [
+   "[alerte] Citation introuvable p.37 : « ES1 | Inventaire et cartographie   X   X   X   X   X   X   1 suivis tous les 5 a »."
+  ],
+  "critic_changes": [
+   "règle ES1-01 : citation page 25 corrigée — la citation originale était une description de grille (« cases cochées/colorées ») et non un extrait textuel du document ; remplacée par l'extrait textuel du Tableau 39 : « ES1   Suivi du Lotier   X   X   X   X   X   X   1 suivi tous les 5 ans »",
+   "règle ES1-01 : citation page 37 corrigée — la citation originale était une description de grille (« cases cochées/colorées ») et non un extrait textuel du document ; remplacée par l'extrait textuel du tableau de phasage de la fiche ES1 : « ES1 | Inventaire et cartographie   X   X   X   X   X   X   1 suivis tous les 5 ans »"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 0.667,
+   "agreement": 1.0,
+   "grid": 1.0,
+   "specificity": 1.0,
+   "llm": 0.95,
+   "score": 0.895
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "ES2",
+  "sub_action": "Inventaire et cartographie",
+  "ug_codes": [
+   "UG2"
+  ],
+  "kind": "recurrente",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   },
+   {
+    "years": null,
+    "start": 6,
+    "end": 30,
+    "step_min": 5,
+    "step_max": 5,
+    "count_over_period": null
+   }
+  ],
+  "passes": [
+   {
+    "label": "",
+    "months": [
+     4,
+     5,
+     6
+    ],
+    "optional": false
+   }
+  ],
+  "frequency_text": "annuel de N à N+5, puis 1 suivi tous les 5 ans de N+6 à N+30",
+  "window_text": "périodes favorables de détection des espèces ciblées par la compensation (avril, mai, juin selon la grille mensuelle p. 38)",
+  "trigger": "",
+  "actor": "CDC Biodiversité / Bureau d’étude",
+  "citations": [
+   {
+    "page": 38,
+    "quote": "ES2 Suivi de l’avifaune à enjeu | Localisation UG2 | Surface concernée 4 625 m²"
+   },
+   {
+    "page": 38,
+    "quote": "Inventaire et cartographie | X X X X X X | 1 suivis tous les 5 ans"
+   },
+   {
+    "page": 25,
+    "quote": "ES2 | Suivi de l’avifaune cible | X X X X X X | 1 suivi tous les 5 ans"
+   },
+   {
+    "page": 38,
+    "quote": "Les suivis consistent en la réalisation de campagnes d’inventaires au cours des périodes favorables de détection des espèces ciblées par la compensation"
+   }
+  ],
+  "confidence": 0.9,
+  "ambiguities": [
+   "La fenêtre mensuelle d'intervention (avril, mai, juin) est indiquée par la coloration de la grille mensuelle (p. 38) mais n'est pas explicitement mentionnée dans le texte écrit.",
+   "Le nombre de passages par campagne n'est pas précisé dans le texte, bien que le terme 'campagnes' (pluriel) soit utilisé et que le protocole STOC-EPS standard implique généralement 2 passages par an.",
+   "Incohérence entre le texte page 38 (répartition 2041à 2046, 2047 à 2053, 2054 à 2055) et la grille p38_t0_g1 (répartition N+16→N+20, N+21→N+25, N+26→N+30) pour la période N+16 à N+30, bien que les deux indiquent '1 suivi tous les 5 ans'."
+  ],
+  "rule_id": "ES2-01",
+  "support": 1.0,
+  "issues": [
+   "[alerte] Citation introuvable p.38 : « Inventaire et cartographie | X X X X X X | 1 suivis tous les 5 ans ».",
+   "[info] Ambiguïté signalée : La fenêtre mensuelle d'intervention (avril, mai, juin) est indiquée par la coloration de la grille mensuelle (p. 38) mais n'est pas explicitement mentionnée dans le texte écrit.",
+   "[info] Ambiguïté signalée : Le nombre de passages par campagne n'est pas précisé dans le texte, bien que le terme 'campagnes' (pluriel) soit utilisé et que le protocole STOC-EPS standard implique généralement 2 passages par an.",
+   "[info] Ambiguïté signalée : Incohérence entre le texte page 38 (répartition 2041à 2046, 2047 à 2053, 2054 à 2055) et la grille p38_t0_g1 (répartition N+16→N+20, N+21→N+25, N+26→N+30) pour la période N+16 à N+30, bien que les deux indiquent '1 suivi tous les 5 ans'."
+  ],
+  "critic_changes": [
+   "règle ES2-01 : citation page 38 corrigée de 'Phasage prévisionnel | 2025 2026 2027 2028 2029 2030 | 2031 à 2035 ... 1 suivis' à 'Inventaire et cartographie | X X X X X X | 1 suivis tous les 5 ans' car la citation originale n'existait pas mot pour mot dans le document (problème de formatage des sauts de ligne dans le tableau)",
+   "règle ES2-01 : window_text complété avec '(avril, mai, juin selon la grille mensuelle p. 38)' pour préciser la source de la fenêtre mensuelle issue de la grille p38_t0_g0",
+   "règle ES2-01 : ajout d'une citation page 38 sur la description de l'action pour étayer la fenêtre d'intervention textuelle",
+   "règle ES2-01 : ajout dans ambiguities de l'incohérence entre le texte page 38 et la grille p38_t0_g1 pour la répartition des années N+16 à N+30"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 0.75,
+   "agreement": 0.333,
+   "grid": 1.0,
+   "specificity": 0.7,
+   "llm": 0.9,
+   "score": 0.718
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Veille sur le site",
+  "ug_codes": [],
+  "kind": "conditionnelle",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 0,
+    "end": 30,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": 10
+   }
+  ],
+  "passes": [],
+  "frequency_text": "une dizaine de visites sera répartie sur la durée du plan de gestion",
+  "window_text": "",
+  "trigger": "pendant les années où il n’y a pas d’intervention de programmée",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 39,
+    "quote": "une dizaine de visites sera répartie sur la durée du plan de gestion, pendant les années où il n’y a pas d’intervention de programmée"
+   }
+  ],
+  "confidence": 0.9,
+  "ambiguities": [
+   "La répartition calendaire exacte des 10 visites sur les 30 ans n'est pas précisée ; elles sont conditionnées aux années sans intervention programmée."
+  ],
+  "rule_id": "FG1-01",
+  "support": 1.0,
+  "issues": [
+   "[info] Ambiguïté signalée : La répartition calendaire exacte des 10 visites sur les 30 ans n'est pas précisée ; elles sont conditionnées aux années sans intervention programmée."
+  ],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 1.0,
+   "grid": null,
+   "specificity": 0.6,
+   "llm": 0.9,
+   "score": 0.933
+  },
+  "decision": "declencheur"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Rapports d'activité - Synthèses annuelles (5 premières années)",
+  "ug_codes": [],
+  "kind": "recurrente",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "Des synthèses annuelles seront produites en début d’année N+1 pour les résultats de l’année N et ce, durant les 5 premières années du Plan de gestion",
+  "window_text": "en début d'année",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 40,
+    "quote": "Des synthèses annuelles seront produites en début d’année N+1 pour les résultats de l’année N et ce, durant les 5 premières années du Plan de gestion."
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [],
+  "rule_id": "FG1-02",
+  "support": 1.0,
+  "issues": [],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.667,
+   "grid": 1.0,
+   "specificity": 1.0,
+   "llm": 0.95,
+   "score": 0.912
+  },
+  "decision": "integre"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Animation continue : pilotage du programme, coordination des prestations de travaux et suivis, élaboration et tenue de la base de données géoréférencées",
+  "ug_codes": [],
+  "kind": "continue",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 0,
+    "end": 30,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "pendant toute la durée des engagements du maître d’ouvrage",
+  "window_text": "",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 39,
+    "quote": "Cette mission comprend le pilotage administratif et technique permettant une mise en œuvre efficace des mesures prévues, pendant toute la durée des engagements du maître d’ouvrage."
+   },
+   {
+    "page": 40,
+    "quote": "Il s’agira d’élaborer les cahiers des charges définissant les modalités précises de réalisation des missions, de prévoir des réunions de cadrage préalable (réunions avant-chantier, réunions de lancement, …), de veiller au respect des cahiers des charges (suivi des prestataires), de contrôler la conformité des travaux ou des livrables, etc."
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [],
+  "rule_id": "FG1-03",
+  "support": 0.6666666666666666,
+  "issues": [],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.667,
+   "grid": 1.0,
+   "specificity": 1.0,
+   "llm": 0.95,
+   "score": 0.912
+  },
+  "decision": "integre"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Communication et concertation locale",
+  "ug_codes": [],
+  "kind": "conditionnelle",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 0,
+    "end": 30,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "Selon les besoins identifiés",
+  "window_text": "",
+  "trigger": "Selon les besoins identifiés dans le cadre de la mise en œuvre du programme de compensation",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 39,
+    "quote": "Selon les besoins identifiés dans le cadre de la mise en œuvre du programme de compensation, l’opérateur de compensation cherchera à développer des échanges d’informations et des partenariats avec les acteurs du territoire susceptibles d’être parties prenantes ou intéressées par le programme"
+   }
+  ],
+  "confidence": 0.9,
+  "ambiguities": [
+   "L'activité est décrite comme se déroulant 'selon les besoins', sans fréquence fixe, mais sur toute la durée du plan."
+  ],
+  "rule_id": "FG1-04",
+  "support": 0.6666666666666666,
+  "issues": [
+   "[info] Ambiguïté signalée : L'activité est décrite comme se déroulant 'selon les besoins', sans fréquence fixe, mais sur toute la durée du plan."
+  ],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": null,
+   "specificity": 0.9,
+   "llm": 0.9,
+   "score": 0.751
+  },
+  "decision": "declencheur"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Rapports d'activité - Rapports quinquennaux (après la 5ème année)",
+  "ug_codes": [],
+  "kind": "recurrente",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 10,
+    "end": 30,
+    "step_min": 5,
+    "step_max": 5,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "Ensuite, des rapports seront établis tous les 5 ans",
+  "window_text": "",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 40,
+    "quote": "Ensuite, des rapports seront établis tous les 5 ans."
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [
+   "Les rapports quinquennaux commencent à N+10, laissant un intervalle sans rapport entre N+5 et N+10 (les années N+6 à N+9 ne sont pas couvertes par la description textuelle)."
+  ],
+  "rule_id": "FG1-05",
+  "support": 0.6666666666666666,
+  "issues": [
+   "[info] Ambiguïté signalée : Les rapports quinquennaux commencent à N+10, laissant un intervalle sans rapport entre N+5 et N+10 (les années N+6 à N+9 ne sont pas couvertes par la description textuelle)."
+  ],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.667,
+   "grid": 1.0,
+   "specificity": 0.9,
+   "llm": 0.95,
+   "score": 0.902
+  },
+  "decision": "integre"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Comités de suivi",
+  "ug_codes": [],
+  "kind": "recurrente",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 0,
+    "end": 5,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   },
+   {
+    "years": [
+     10,
+     20,
+     30
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "annuellement de N à N+5, puis ponctuellement à N+10, N+20 et N+30",
+  "window_text": "",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 40,
+    "quote": "A l’initiative du maître d’ouvrage, ce comité se réunira annuellement de N à N+5, puis à N+10, N+20 et N+30."
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [],
+  "rule_id": "FG1-06",
+  "support": 0.6666666666666666,
+  "issues": [],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": 1.0,
+   "specificity": 1.0,
+   "llm": 0.95,
+   "score": 0.828
+  },
+  "decision": "integre"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Mise en place du comité de suivi",
+  "ug_codes": [],
+  "kind": "ponctuelle",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": [
+     0
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "au lancement des travaux",
+  "window_text": "",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 40,
+    "quote": "Un comité de suivi sera mis en place au lancement des travaux pour suivre le bon déroulement du programme de compensation."
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [],
+  "rule_id": "FG1-07",
+  "support": 0.3333333333333333,
+  "issues": [],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": null,
+   "specificity": 1.0,
+   "llm": 0.95,
+   "score": 0.771
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Réunions du comité de suivi - Phase annuelle (N à N+5)",
+  "ug_codes": [],
+  "kind": "recurrente",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 0,
+    "end": 5,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "ce comité se réunira annuellement de N à N+5",
+  "window_text": "",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 40,
+    "quote": "A l’initiative du maître d’ouvrage, ce comité se réunira annuellement de N à N+5, puis à N+10, N+20 et N+30."
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [
+   "Cette règle est redondante avec la règle FG1-06 (Comités de suivi) qui couvre déjà cette période annuelle."
+  ],
+  "rule_id": "FG1-08",
+  "support": 0.3333333333333333,
+  "issues": [
+   "[info] Ambiguïté signalée : Cette règle est redondante avec la règle FG1-06 (Comités de suivi) qui couvre déjà cette période annuelle."
+  ],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": null,
+   "specificity": 0.9,
+   "llm": 0.95,
+   "score": 0.758
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Réunions du comité de suivi - Jalons (N+10, N+20, N+30)",
+  "ug_codes": [],
+  "kind": "ponctuelle",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": [
+     10,
+     20,
+     30
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "puis à N+10, N+20 et N+30",
+  "window_text": "",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 40,
+    "quote": "puis à N+10, N+20 et N+30."
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [],
+  "rule_id": "FG1-09",
+  "support": 0.3333333333333333,
+  "issues": [],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": null,
+   "specificity": 1.0,
+   "llm": 0.95,
+   "score": 0.771
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Coordination des prestations de travaux et suivis",
+  "ug_codes": [],
+  "kind": "conditionnelle",
+  "anchor": "N",
+  "segments": [],
+  "passes": [],
+  "frequency_text": "",
+  "window_text": "",
+  "trigger": "externalisation de prestations auprès de prestataires spécialisés",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 39,
+    "quote": "Certaines actions de travaux, études ou suivis écologiques seront externalisées auprès de prestataires spécialisés. Pour ces prestations, l’opérateur de compensation assurera le pilotage des prestataires, pour s’assurer de la bonne exécution des missions confiées."
+   }
+  ],
+  "confidence": 0.7,
+  "ambiguities": [
+   "Aucune fréquence définie ; l'action est déclenchée par l'externalisation de prestations et se déroule pendant la durée de ces prestations."
+  ],
+  "rule_id": "FG1-10",
+  "support": 0.3333333333333333,
+  "issues": [
+   "[info] Ambiguïté signalée : Aucune fréquence définie ; l'action est déclenchée par l'externalisation de prestations et se déroule pendant la durée de ces prestations."
+  ],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": null,
+   "specificity": 0.9,
+   "llm": 0.7,
+   "score": 0.724
+  },
+  "decision": "declencheur"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Animation du plan de gestion (pilotage, coordination, base de données, communication)",
+  "ug_codes": [],
+  "kind": "continue",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 0,
+    "end": 30,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "continue sur toute la durée du plan de gestion",
+  "window_text": "",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 39,
+    "quote": "Cette mission comprend le pilotage administratif et technique permettant une mise en œuvre efficace des mesures prévues, pendant toute la durée des engagements du maître d’ouvrage."
+   },
+   {
+    "page": 41,
+    "quote": "Ce pilotage comprend : - l’établissement et le suivi des programmations annuelles ; - le suivi administratif et comptable des activités (consultation des prestataires, commande, facturation) ; - la préparation technique des actions (cahiers des charges) ; - la maîtrise d’œuvre éventuelle de certaines actions ; - le remplissage des bases de données ; - la sollicitation de partenaires techniques, en fonction des besoins ; - le relationnel avec le maître d’ouvrage ; - etc."
+   }
+  ],
+  "confidence": 0.9,
+  "ambiguities": [
+   "Cette règle est redondante avec la règle FG1-03 (Animation continue) qui couvre les mêmes activités."
+  ],
+  "rule_id": "FG1-11",
+  "support": 0.3333333333333333,
+  "issues": [
+   "[info] Ambiguïté signalée : Cette règle est redondante avec la règle FG1-03 (Animation continue) qui couvre les mêmes activités."
+  ],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": 1.0,
+   "specificity": 0.9,
+   "llm": 0.9,
+   "score": 0.813
+  },
+  "decision": "integre"
+ },
+ {
+  "action_code": "FG1",
+  "sub_action": "Comités de suivi - Réunions ponctuelles",
+  "ug_codes": [],
+  "kind": "ponctuelle",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": [
+     10,
+     20,
+     30
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "",
+  "window_text": "",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 40,
+    "quote": "puis à N+10, N+20 et N+30"
+   }
+  ],
+  "confidence": 0.9,
+  "ambiguities": [
+   "Cette règle est redondante avec la règle FG1-09 (Réunions du comité de suivi - Jalons)."
+  ],
+  "rule_id": "FG1-12",
+  "support": 0.6666666666666666,
+  "issues": [
+   "[info] Ambiguïté signalée : Cette règle est redondante avec la règle FG1-09 (Réunions du comité de suivi - Jalons)."
+  ],
+  "critic_changes": [
+   "Règle FG1-03 : citation p.40 complétée car elle était tronquée. La citation originale 'Il s’agira d’élaborer les cahiers des charges définissant les modalités précises' a été remplacée par la citation complète incluant la suite du texte jusqu'à 'etc.'",
+   "Règle FG1-11 : citations remplacées. Les citations précédentes étaient des descriptions de grilles relues (pages 25, 27, 41) et non des extraits du document source. Elles ont été remplacées par des citations textuelles valides des pages 39 et 41 du document.",
+   "Règle FG1-08 : ajout d'une ambiguïté notant la redondance avec la règle FG1-06 qui couvre déjà la période annuelle N à N+5.",
+   "Règle FG1-12 : ajout d'une ambiguïté notant la redondance avec la règle FG1-09 qui couvre déjà les jalons N+10, N+20, N+30.",
+   "Règle FG1-02 : vérification effectuée, les années [1,2,3,4,5] correspondent correctement à la production des rapports en début d'année N+1 à N+5 pour les résultats des années N à N+4 (5 premières années).",
+   "Règle FG1-05 : vérification effectuée, la programmation start:10, end:30, step:5 correspond correctement à 'Ensuite, des rapports seront établis tous les 5 ans' après la période des synthèses annuelles."
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": null,
+   "specificity": 0.9,
+   "llm": 0.9,
+   "score": 0.751
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "FG2",
+  "sub_action": "Bilans intermédiaires",
+  "ug_codes": [],
+  "kind": "recurrente",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": null,
+    "start": 5,
+    "end": 25,
+    "step_min": 5,
+    "step_max": 5,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "1 bilan intermédiaire tous les 5 ans",
+  "window_text": "",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 26,
+    "quote": "FG2 | Evaluation et mise à jour du plan de gestion | X | 1 bilan intermédiaire tous les 5 ans et un bilan final à N+30"
+   },
+   {
+    "page": 27,
+    "quote": "FG2 | Bilans intermédiaires | bande N+16…N+30 : « 1 bilan intermédiaire tous les 5 ans et un bilan final à N+30 »"
+   },
+   {
+    "page": 42,
+    "quote": "FG2 | Bilans intermédiaires | cases cochées/colorées : N+5, N+6→N+10, N+11→N+15, N+16→N+20, N+21→N+25"
+   }
+  ],
+  "confidence": 0.95,
+  "ambiguities": [],
+  "rule_id": "FG2-01",
+  "support": 1.0,
+  "issues": [
+   "[alerte] Citation introuvable p.27 : « FG2 | Bilans intermédiaires | bande N+16…N+30 : « 1 bilan intermédiaire tous les ».",
+   "[alerte] Citation introuvable p.42 : « FG2 | Bilans intermédiaires | cases cochées/colorées : N+5, N+6→N+10, N+11→N+15, »."
+  ],
+  "critic_changes": [
+   "FG2-01 : citation 2 corrigée, remplacée par la citation exacte de la page 27 (le libellé 'Bilans intermédiaires' n'apparaît pas sur la page 26 mais sur la page 27 dans le tableau 40)",
+   "FG2-01 : ajout d'une citation page 42 précisant les années exactes des bilans intermédiaires (N+5, N+10, N+15, N+20, N+25)",
+   "FG2-02 : citation 3 corrigée, remplacée par la citation exacte de la page 42 ('FG2 | Bilan final | cases cochées/colorées : N+26→N+30' au lieu de 'Bilan final | N+26 à N+30')",
+   "FG2-02 : ajout d'une ambiguïté sur la discordance entre le texte ('dernière année' = N+30) et la représentation graphique de la grille (période N+26 à N+30)",
+   "FG2-03 : ajout d'une ambiguïté précisant l'absence de programmation temporelle fixe dans les grilles, cohérente avec le caractère conditionnel de l'action"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 0.333,
+   "agreement": 1.0,
+   "grid": 0.889,
+   "specificity": 1.0,
+   "llm": 0.95,
+   "score": 0.767
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "FG2",
+  "sub_action": "Bilan final du plan de gestion",
+  "ug_codes": [],
+  "kind": "ponctuelle",
+  "anchor": "N",
+  "segments": [
+   {
+    "years": [
+     30
+    ],
+    "start": null,
+    "end": null,
+    "step_min": 1,
+    "step_max": 1,
+    "count_over_period": null
+   }
+  ],
+  "passes": [],
+  "frequency_text": "",
+  "window_text": "Dernière année du programme (N+30)",
+  "trigger": "",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 42,
+    "quote": "Ce bilan sera produit en dernière année du programme et sera transmis au maître d’ouvrage et aux services instructeurs."
+   },
+   {
+    "page": 25,
+    "quote": "un bilan final à N+30"
+   },
+   {
+    "page": 42,
+    "quote": "FG2 | Bilan final | cases cochées/colorées : N+26→N+30"
+   }
+  ],
+  "confidence": 0.9,
+  "ambiguities": [
+   "Le texte indique 'dernière année du programme' (N+30) tandis que la grille de programmation (p. 42) représente le bilan final sur la période N+26 à N+30. La règle retient N+30 conformément au texte explicite."
+  ],
+  "rule_id": "FG2-02",
+  "support": 1.0,
+  "issues": [
+   "[alerte] Citation introuvable p.42 : « FG2 | Bilan final | cases cochées/colorées : N+26→N+30 ».",
+   "[info] Ambiguïté signalée : Le texte indique 'dernière année du programme' (N+30) tandis que la grille de programmation (p. 42) représente le bilan final sur la période N+26 à N+30. La règle retient N+30 conformément au texte explicite."
+  ],
+  "critic_changes": [
+   "FG2-01 : citation 2 corrigée, remplacée par la citation exacte de la page 27 (le libellé 'Bilans intermédiaires' n'apparaît pas sur la page 26 mais sur la page 27 dans le tableau 40)",
+   "FG2-01 : ajout d'une citation page 42 précisant les années exactes des bilans intermédiaires (N+5, N+10, N+15, N+20, N+25)",
+   "FG2-02 : citation 3 corrigée, remplacée par la citation exacte de la page 42 ('FG2 | Bilan final | cases cochées/colorées : N+26→N+30' au lieu de 'Bilan final | N+26 à N+30')",
+   "FG2-02 : ajout d'une ambiguïté sur la discordance entre le texte ('dernière année' = N+30) et la représentation graphique de la grille (période N+26 à N+30)",
+   "FG2-03 : ajout d'une ambiguïté précisant l'absence de programmation temporelle fixe dans les grilles, cohérente avec le caractère conditionnel de l'action"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 0.667,
+   "agreement": 1.0,
+   "grid": 1.0,
+   "specificity": 0.9,
+   "llm": 0.9,
+   "score": 0.88
+  },
+  "decision": "a_valider"
+ },
+ {
+  "action_code": "FG2",
+  "sub_action": "Révision du plan de gestion",
+  "ug_codes": [],
+  "kind": "conditionnelle",
+  "anchor": "N",
+  "segments": [],
+  "passes": [],
+  "frequency_text": "",
+  "window_text": "",
+  "trigger": "Selon l'évolution des indicateurs de suivi écologique, si nécessaire",
+  "actor": "CDC Biodiversité",
+  "citations": [
+   {
+    "page": 42,
+    "quote": "Selon l'évolution des indicateurs de suivi écologique, un ajustement du programme de gestion pourra être envisagé, si nécessaire, via une révision du plan de gestion."
+   }
+  ],
+  "confidence": 0.85,
+  "ambiguities": [
+   "Aucune programmation temporelle fixe n'est définie pour cette révision conditionnelle dans les tableaux de programmation (p. 25-27), ce qui est cohérent avec sa nature conditionnelle."
+  ],
+  "rule_id": "FG2-03",
+  "support": 0.3333333333333333,
+  "issues": [
+   "[info] Ambiguïté signalée : Aucune programmation temporelle fixe n'est définie pour cette révision conditionnelle dans les tableaux de programmation (p. 25-27), ce qui est cohérent avec sa nature conditionnelle."
+  ],
+  "critic_changes": [
+   "FG2-01 : citation 2 corrigée, remplacée par la citation exacte de la page 27 (le libellé 'Bilans intermédiaires' n'apparaît pas sur la page 26 mais sur la page 27 dans le tableau 40)",
+   "FG2-01 : ajout d'une citation page 42 précisant les années exactes des bilans intermédiaires (N+5, N+10, N+15, N+20, N+25)",
+   "FG2-02 : citation 3 corrigée, remplacée par la citation exacte de la page 42 ('FG2 | Bilan final | cases cochées/colorées : N+26→N+30' au lieu de 'Bilan final | N+26 à N+30')",
+   "FG2-02 : ajout d'une ambiguïté sur la discordance entre le texte ('dernière année' = N+30) et la représentation graphique de la grille (période N+26 à N+30)",
+   "FG2-03 : ajout d'une ambiguïté précisant l'absence de programmation temporelle fixe dans les grilles, cohérente avec le caractère conditionnel de l'action"
+  ],
+  "months_from_grid": false,
+  "confidence_detail": {
+   "evidence": 1.0,
+   "agreement": 0.333,
+   "grid": null,
+   "specificity": 0.9,
+   "llm": 0.85,
+   "score": 0.744
+  },
+  "decision": "declencheur"
+ }
+]

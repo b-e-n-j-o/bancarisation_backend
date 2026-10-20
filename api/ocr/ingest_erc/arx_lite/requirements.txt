@@ -1,0 +1,6 @@
+pdfplumber>=0.11
+pydantic>=2.6
+rapidfuzz>=3.6
+mistralai>=1.9          # testé avec 3.2 (import mistralai.client) ; 1.x géré en repli
+# texte natif : pdfplumber (MIT), pas poppler
+# dev : pytest

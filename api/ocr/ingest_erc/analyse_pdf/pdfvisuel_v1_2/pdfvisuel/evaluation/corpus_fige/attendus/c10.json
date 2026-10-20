@@ -1,0 +1,19 @@
+{
+ "pdf": "c10.pdf",
+ "description": "Tableau budgétaire avec années en colonnes : grille reconnue, aucune croix ni couleur.",
+ "grilles": [
+  {
+   "page": 1,
+   "type_axe": "annees",
+   "lignes": [
+    {
+     "libelle_contient": "Fauche"
+    },
+    {
+     "libelle_contient": "Suivis"
+    }
+   ]
+  }
+ ],
+ "exhaustif": true
+}

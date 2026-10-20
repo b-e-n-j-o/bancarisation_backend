@@ -1,3 +1,4 @@
+import logging
 from datetime import date
 from typing import Optional
 from uuid import UUID
@@ -12,15 +13,22 @@ from .crud_document import (
     delete_document,
     get_document_content,
     list_documents,
+    update_document_classement,
     upload_document,
 )
 
 
 router = APIRouter()
+logger = logging.getLogger("documents.route")
 
 
 class SignedUrlResponse(BaseModel):
     url: str
+
+
+class ClassementDocument(BaseModel):
+    categorie: str
+    sous_type: Optional[str] = None
 
 
 @router.get("/projets/{projet_id}/documents")
@@ -48,12 +56,13 @@ async def upload_document_route(
     description: Optional[str] = Form(default=None),
     nom: Optional[str] = Form(default=None),
     occurrence_id: Optional[UUID] = Form(default=None),
+    sous_type: Optional[str] = Form(default=None),
 ) -> dict:
     try:
         content = await file.read()
         if not content:
             raise DocumentServiceError("Le fichier est vide.")
-        return upload_document(
+        row = upload_document(
             projet_id=projet_id,
             file_name=file.filename or "document",
             content=content,
@@ -63,8 +72,30 @@ async def upload_document_route(
             description=description,
             nom=nom,
             occurrence_id=occurrence_id,
+            sous_type=sous_type,
         )
+        if categorie == "arrete":
+            from api.ocr.ingest_erc.arx.jobs import demarrer_pour_document, est_pdf
+
+            nom_fichier = file.filename or "document"
+            if est_pdf(nom_fichier, content, file.content_type):
+                try:
+                    job = demarrer_pour_document(
+                        document_id=row["id"],
+                        projet_id=projet_id,
+                        contenu=content,
+                        nom=nom_fichier,
+                        date_document=date_document.isoformat() if date_document else None,
+                    )
+                    row["analyse_job_id"] = job.get("job_id")
+                except Exception:
+                    logger.exception("analyse arrêté non démarrée pour %s", row.get("id"))
+                    row["analyse_erreur"] = "Le document est enregistré, l'analyse n'a pas pu démarrer."
+            else:
+                row["analyse_erreur"] = "L'analyse automatique attend un PDF."
+        return row
     except DocumentServiceError as exc:
+        logger.warning("Dépôt refusé pour le projet %s : %s", projet_id, exc)
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
 
@@ -80,6 +111,18 @@ def get_document_content_route(document_id: UUID) -> Response:
                 "Cache-Control": "private, max-age=300",
                 "Content-Disposition": f'inline; filename="{filename}"',
             },
+        )
+    except DocumentServiceError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+
+
+@router.patch("/documents/{document_id}")
+def update_document_classement_route(document_id: UUID, body: ClassementDocument) -> dict:
+    try:
+        return update_document_classement(
+            document_id,
+            categorie=body.categorie,
+            sous_type=body.sous_type,
         )
     except DocumentServiceError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc

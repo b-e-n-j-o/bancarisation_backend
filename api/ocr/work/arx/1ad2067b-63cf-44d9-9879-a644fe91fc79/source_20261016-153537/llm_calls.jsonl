@@ -1,0 +1,2 @@
+{"kind": "http", "tag": "fiche", "model": "mistral-large-4-0", "cached": false, "ok": true, "n": 1, "seconds": 134.23, "usage": {"prompt_tokens": 16451, "completion_tokens": 8194, "total_tokens": 24645}, "ts": "2026-10-16T15:37:52"}
+{"kind": "requete", "tag": "fiche", "model": "mistral-large-4-0", "cached": false, "n": 1, "ok": 1, "seconds": 134.24, "usage": {"prompt_tokens": 16451, "completion_tokens": 8194, "total_tokens": 24645}, "ts": "2026-10-16T15:37:52"}

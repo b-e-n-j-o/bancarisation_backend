@@ -1,0 +1,3207 @@
+[
+ {
+  "id": "p25_t0_g0",
+  "page": 25,
+  "axis": "rel_year",
+  "columns": [
+   {
+    "label": "N / 2025",
+    "axis": "rel_year",
+    "rel_start": 0,
+    "rel_end": 0,
+    "year_start": 2025,
+    "year_end": 2025,
+    "month": null,
+    "x0": 299.06439597321435,
+    "x1": 332.4188921831502
+   },
+   {
+    "label": "N+1 / 2026",
+    "axis": "rel_year",
+    "rel_start": 1,
+    "rel_end": 1,
+    "year_start": 2026,
+    "year_end": 2026,
+    "month": null,
+    "x0": 332.4188921831502,
+    "x1": 363.83374912499994
+   },
+   {
+    "label": "N+2 / 2027",
+    "axis": "rel_year",
+    "rel_start": 2,
+    "rel_end": 2,
+    "year_start": 2027,
+    "year_end": 2027,
+    "month": null,
+    "x0": 363.83374912499994,
+    "x1": 395.45530673076917
+   },
+   {
+    "label": "N+3 / 2028",
+    "axis": "rel_year",
+    "rel_start": 3,
+    "rel_end": 3,
+    "year_start": 2028,
+    "year_end": 2028,
+    "month": null,
+    "x0": 395.45530673076917,
+    "x1": 426.6656144230768
+   },
+   {
+    "label": "N+4 / 2029",
+    "axis": "rel_year",
+    "rel_start": 4,
+    "rel_end": 4,
+    "year_start": 2029,
+    "year_end": 2029,
+    "month": null,
+    "x0": 426.6656144230768,
+    "x1": 457.73939772727266
+   },
+   {
+    "label": "N+5 / 2030",
+    "axis": "rel_year",
+    "rel_start": 5,
+    "rel_end": 5,
+    "year_start": 2030,
+    "year_end": 2030,
+    "month": null,
+    "x0": 457.73939772727266,
+    "x1": 488.80818499300693
+   },
+   {
+    "label": "N+6 / 2031",
+    "axis": "rel_year",
+    "rel_start": 6,
+    "rel_end": 6,
+    "year_start": 2031,
+    "year_end": 2031,
+    "month": null,
+    "x0": 488.80818499300693,
+    "x1": 519.9517886311188
+   },
+   {
+    "label": "N+7 / 2032",
+    "axis": "rel_year",
+    "rel_start": 7,
+    "rel_end": 7,
+    "year_start": 2032,
+    "year_end": 2032,
+    "month": null,
+    "x0": 519.9517886311188,
+    "x1": 551.0953838076923
+   },
+   {
+    "label": "N+8 / 2033",
+    "axis": "rel_year",
+    "rel_start": 8,
+    "rel_end": 8,
+    "year_start": 2033,
+    "year_end": 2033,
+    "month": null,
+    "x0": 551.0953838076923,
+    "x1": 582.4898866538462
+   },
+   {
+    "label": "N+9 / 2034",
+    "axis": "rel_year",
+    "rel_start": 9,
+    "rel_end": 9,
+    "year_start": 2034,
+    "year_end": 2034,
+    "month": null,
+    "x0": 582.4898866538462,
+    "x1": 613.891894
+   },
+   {
+    "label": "N+10 / 2035",
+    "axis": "rel_year",
+    "rel_start": 10,
+    "rel_end": 10,
+    "year_start": 2035,
+    "year_end": 2035,
+    "month": null,
+    "x0": 613.891894,
+    "x1": 645.0996939999999
+   },
+   {
+    "label": "N+11 / 2036",
+    "axis": "rel_year",
+    "rel_start": 11,
+    "rel_end": 11,
+    "year_start": 2036,
+    "year_end": 2036,
+    "month": null,
+    "x0": 645.0996939999999,
+    "x1": 676.2999984999999
+   },
+   {
+    "label": "N+12 / 2037",
+    "axis": "rel_year",
+    "rel_start": 12,
+    "rel_end": 12,
+    "year_start": 2037,
+    "year_end": 2037,
+    "month": null,
+    "x0": 676.2999984999999,
+    "x1": 707.5000074999999
+   },
+   {
+    "label": "N+13 / 2038",
+    "axis": "rel_year",
+    "rel_start": 13,
+    "rel_end": 13,
+    "year_start": 2038,
+    "year_end": 2038,
+    "month": null,
+    "x0": 707.5000074999999,
+    "x1": 738.7052120000001
+   },
+   {
+    "label": "N+14 / 2039",
+    "axis": "rel_year",
+    "rel_start": 14,
+    "rel_end": 14,
+    "year_start": 2039,
+    "year_end": 2039,
+    "month": null,
+    "x0": 738.7052120000001,
+    "x1": 769.6938692564104
+   },
+   {
+    "label": "N+15 / 2040",
+    "axis": "rel_year",
+    "rel_start": 15,
+    "rel_end": 15,
+    "year_start": 2040,
+    "year_end": 2040,
+    "month": null,
+    "x0": 769.6938692564104,
+    "x1": 804.0229696538465
+   }
+  ],
+  "rows": [
+   {
+    "code": "RG1",
+    "action_label": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+    "sub_label": "Réouverture des fourrés de roncier et d’Herbe de la Pampa",
+    "cells": [
+     {
+      "cols": [
+       0
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#eaf1dd"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "RG1",
+    "action_label": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+    "sub_label": "Entretien par fauche",
+    "cells": [
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "kind": "band",
+      "text": "1 à 2 fauches annuelles selon développement de la végétation concurrente",
+      "fill": "#eaf1dd"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "RG1",
+    "action_label": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+    "sub_label": "Griffage du sol",
+    "cells": [
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "kind": "band",
+      "text": "Une fois tous les 2 à 3 ans",
+      "fill": "#eaf1dd"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "RG2",
+    "action_label": "Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés",
+    "sub_label": "Débroussaillage",
+    "cells": [
+     {
+      "cols": [
+       0
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#eaf1dd"
+     },
+     {
+      "cols": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "kind": "band",
+      "text": "Entretien",
+      "fill": "#eaf1dd"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "RG2",
+    "action_label": "Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés",
+    "sub_label": "Plantation et regarnis éventuel",
+    "cells": [
+     {
+      "cols": [
+       0
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#eaf1dd"
+     },
+     {
+      "cols": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "kind": "band",
+      "text": "Regarnis à prévoir si perte",
+      "fill": "#eaf1dd"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "ES1",
+    "action_label": "Suivi du Lotier",
+    "sub_label": "Inventaire et cartographie",
+    "cells": [
+     {
+      "cols": [
+       0
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       1
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       2
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       3
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       4
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       5
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "kind": "band",
+      "text": "1 suivi tous les 5 ans",
+      "fill": "#e5dfec"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "ES2",
+    "action_label": "Suivi de l’avifaune cible",
+    "sub_label": "Inventaire et cartographie",
+    "cells": [
+     {
+      "cols": [
+       0
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       1
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       2
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       3
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       4
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       5
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#e5dfec"
+     },
+     {
+      "cols": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "kind": "band",
+      "text": "1 suivi tous les 5 ans",
+      "fill": "#e5dfec"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "FG1",
+    "action_label": "",
+    "sub_label": "Animation du plan de gestion",
+    "cells": [
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "kind": "band",
+      "text": "Communication et concertation locale / Veille sur le site / Coordination des prestations de travaux et suivis / Élaboration",
+      "fill": "#c6d9f1"
+     },
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "kind": "band",
+      "text": "d’une base de données géoréférencées / Rapport d’activité / Pilotage du programme",
+      "fill": "#c6d9f1"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": 2025,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p26_t0_g0",
+  "page": 26,
+  "axis": "rel_year",
+  "columns": [
+   {
+    "label": "N / 2025",
+    "axis": "rel_year",
+    "rel_start": 0,
+    "rel_end": 0,
+    "year_start": 2025,
+    "year_end": 2025,
+    "month": null,
+    "x0": 300.62160425480783,
+    "x1": 332.2372780288463
+   },
+   {
+    "label": "N+1 / 2026",
+    "axis": "rel_year",
+    "rel_start": 1,
+    "rel_end": 1,
+    "year_start": 2026,
+    "year_end": 2026,
+    "month": null,
+    "x0": 332.2372780288463,
+    "x1": 362.67153739010996
+   },
+   {
+    "label": "N+2 / 2027",
+    "axis": "rel_year",
+    "rel_start": 2,
+    "rel_end": 2,
+    "year_start": 2027,
+    "year_end": 2027,
+    "month": null,
+    "x0": 362.67153739010996,
+    "x1": 394.54473451236265
+   },
+   {
+    "label": "N+3 / 2028",
+    "axis": "rel_year",
+    "rel_start": 3,
+    "rel_end": 3,
+    "year_start": 2028,
+    "year_end": 2028,
+    "month": null,
+    "x0": 394.54473451236265,
+    "x1": 425.8458555595237
+   },
+   {
+    "label": "N+4 / 2029",
+    "axis": "rel_year",
+    "rel_start": 4,
+    "rel_end": 4,
+    "year_start": 2029,
+    "year_end": 2029,
+    "month": null,
+    "x0": 425.8458555595237,
+    "x1": 457.1224282321428
+   },
+   {
+    "label": "N+5 / 2030",
+    "axis": "rel_year",
+    "rel_start": 5,
+    "rel_end": 5,
+    "year_start": 2030,
+    "year_end": 2030,
+    "month": null,
+    "x0": 457.1224282321428,
+    "x1": 488.9770021666667
+   },
+   {
+    "label": "N+6 / 2031",
+    "axis": "rel_year",
+    "rel_start": 6,
+    "rel_end": 6,
+    "year_start": 2031,
+    "year_end": 2031,
+    "month": null,
+    "x0": 488.9770021666667,
+    "x1": 520.4349260576923
+   },
+   {
+    "label": "N+7 / 2032",
+    "axis": "rel_year",
+    "rel_start": 7,
+    "rel_end": 7,
+    "year_start": 2032,
+    "year_end": 2032,
+    "month": null,
+    "x0": 520.4349260576923,
+    "x1": 552.0690467820514
+   },
+   {
+    "label": "N+8 / 2033",
+    "axis": "rel_year",
+    "rel_start": 8,
+    "rel_end": 8,
+    "year_start": 2033,
+    "year_end": 2033,
+    "month": null,
+    "x0": 552.0690467820514,
+    "x1": 584.0194470576923
+   },
+   {
+    "label": "N+9 / 2034",
+    "axis": "rel_year",
+    "rel_start": 9,
+    "rel_end": 9,
+    "year_start": 2034,
+    "year_end": 2034,
+    "month": null,
+    "x0": 584.0194470576923,
+    "x1": 614.65194675
+   },
+   {
+    "label": "N+10 / 2035",
+    "axis": "rel_year",
+    "rel_start": 10,
+    "rel_end": 10,
+    "year_start": 2035,
+    "year_end": 2035,
+    "month": null,
+    "x0": 614.65194675,
+    "x1": 645.09962
+   },
+   {
+    "label": "N+11 / 2036",
+    "axis": "rel_year",
+    "rel_start": 11,
+    "rel_end": 11,
+    "year_start": 2036,
+    "year_end": 2036,
+    "month": null,
+    "x0": 645.09962,
+    "x1": 677.04399825
+   },
+   {
+    "label": "N+12 / 2037",
+    "axis": "rel_year",
+    "rel_start": 12,
+    "rel_end": 12,
+    "year_start": 2037,
+    "year_end": 2037,
+    "month": null,
+    "x0": 677.04399825,
+    "x1": 709.4230032500001
+   },
+   {
+    "label": "N+13 / 2038",
+    "axis": "rel_year",
+    "rel_start": 13,
+    "rel_end": 13,
+    "year_start": 2038,
+    "year_end": 2038,
+    "month": null,
+    "x0": 709.4230032500001,
+    "x1": 740.3765676739131
+   },
+   {
+    "label": "N+14 / 2039",
+    "axis": "rel_year",
+    "rel_start": 14,
+    "rel_end": 14,
+    "year_start": 2039,
+    "year_end": 2039,
+    "month": null,
+    "x0": 740.3765676739131,
+    "x1": 770.4451281811591
+   },
+   {
+    "label": "N+15 / 2040",
+    "axis": "rel_year",
+    "rel_start": 15,
+    "rel_end": 15,
+    "year_start": 2040,
+    "year_end": 2040,
+    "month": null,
+    "x0": 770.4451281811591,
+    "x1": 804.9012101630435
+   }
+  ],
+  "rows": [
+   {
+    "code": "FG2",
+    "action_label": "",
+    "sub_label": "Evaluation et mise à jour du plan de gestion",
+    "cells": [
+     {
+      "cols": [
+       5
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#c6d9f1"
+     },
+     {
+      "cols": [
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "kind": "band",
+      "text": "1 bilan intermédiaire tous les 5 ans et un bilan final à N+30",
+      "fill": "#c6d9f1"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": 2025,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p26_t1_g0",
+  "page": 26,
+  "axis": "rel_year",
+  "columns": [
+   {
+    "label": "N+16 / 2041",
+    "axis": "rel_year",
+    "rel_start": 16,
+    "rel_end": 16,
+    "year_start": 2041,
+    "year_end": 2041,
+    "month": null,
+    "x0": 300.62160425480783,
+    "x1": 332.2372780288463
+   },
+   {
+    "label": "N+17 / 2042",
+    "axis": "rel_year",
+    "rel_start": 17,
+    "rel_end": 17,
+    "year_start": 2042,
+    "year_end": 2042,
+    "month": null,
+    "x0": 332.2372780288463,
+    "x1": 360.43653887820517
+   },
+   {
+    "label": "N+18 / 2043",
+    "axis": "rel_year",
+    "rel_start": 18,
+    "rel_end": 18,
+    "year_start": 2043,
+    "year_end": 2043,
+    "month": null,
+    "x0": 360.43653887820517,
+    "x1": 390.07473748855307
+   },
+   {
+    "label": "N+19 / 2044",
+    "axis": "rel_year",
+    "rel_start": 19,
+    "rel_end": 19,
+    "year_start": 2044,
+    "year_end": 2044,
+    "month": null,
+    "x0": 390.07473748855307,
+    "x1": 423.610857047619
+   },
+   {
+    "label": "N+20 / 2045",
+    "axis": "rel_year",
+    "rel_start": 20,
+    "rel_end": 20,
+    "year_start": 2045,
+    "year_end": 2045,
+    "month": null,
+    "x0": 423.610857047619,
+    "x1": 457.1224282321428
+   },
+   {
+    "label": "N+21 / 2046",
+    "axis": "rel_year",
+    "rel_start": 21,
+    "rel_end": 21,
+    "year_start": 2046,
+    "year_end": 2046,
+    "month": null,
+    "x0": 457.1224282321428,
+    "x1": 488.9770021666667
+   },
+   {
+    "label": "N+22 / 2047",
+    "axis": "rel_year",
+    "rel_start": 22,
+    "rel_end": 22,
+    "year_start": 2047,
+    "year_end": 2047,
+    "month": null,
+    "x0": 488.9770021666667,
+    "x1": 521.5550027500001
+   },
+   {
+    "label": "N+23 / 2048",
+    "axis": "rel_year",
+    "rel_start": 23,
+    "rel_end": 23,
+    "year_start": 2048,
+    "year_end": 2048,
+    "month": null,
+    "x0": 521.5550027500001,
+    "x1": 554.3092001666666
+   },
+   {
+    "label": "N+24 / 2049",
+    "axis": "rel_year",
+    "rel_start": 24,
+    "rel_end": 24,
+    "year_start": 2049,
+    "year_end": 2049,
+    "month": null,
+    "x0": 554.3092001666666,
+    "x1": 587.2623987500001
+   },
+   {
+    "label": "N+25 / 2050",
+    "axis": "rel_year",
+    "rel_start": 25,
+    "rel_end": 25,
+    "year_start": 2050,
+    "year_end": 2050,
+    "month": null,
+    "x0": 587.2623987500001,
+    "x1": 621.6126967499999
+   },
+   {
+    "label": "N+26 / 2051",
+    "axis": "rel_year",
+    "rel_start": 26,
+    "rel_end": 26,
+    "year_start": 2051,
+    "year_end": 2051,
+    "month": null,
+    "x0": 621.6126967499999,
+    "x1": 654.75249875
+   },
+   {
+    "label": "N+27 / 2052",
+    "axis": "rel_year",
+    "rel_start": 27,
+    "rel_end": 27,
+    "year_start": 2052,
+    "year_end": 2052,
+    "month": null,
+    "x0": 654.75249875,
+    "x1": 683.95900575
+   },
+   {
+    "label": "N+28 / 2053",
+    "axis": "rel_year",
+    "rel_start": 28,
+    "rel_end": 28,
+    "year_start": 2053,
+    "year_end": 2053,
+    "month": null,
+    "x0": 683.95900575,
+    "x1": 711.5230070000001
+   },
+   {
+    "label": "N+29 / 2054",
+    "axis": "rel_year",
+    "rel_start": 29,
+    "rel_end": 29,
+    "year_start": 2054,
+    "year_end": 2054,
+    "month": null,
+    "x0": 711.5230070000001,
+    "x1": 740.3765676739131
+   },
+   {
+    "label": "N+30 / 2055",
+    "axis": "rel_year",
+    "rel_start": 30,
+    "rel_end": 30,
+    "year_start": 2055,
+    "year_end": 2055,
+    "month": null,
+    "x0": 740.3765676739131,
+    "x1": 773.8640407826078
+   }
+  ],
+  "rows": [
+   {
+    "code": "RG1",
+    "action_label": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+    "sub_label": "Entretien par fauche",
+    "cells": [
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14
+      ],
+      "kind": "band",
+      "text": "1 à 2 fauches annuelles selon développement de la végétation concurrente",
+      "fill": "#eaf1dd"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "RG1",
+    "action_label": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+    "sub_label": "Griffage du sol",
+    "cells": [
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14
+      ],
+      "kind": "band",
+      "text": "Une fois tous les 2 à 3 ans",
+      "fill": "#eaf1dd"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "RG3",
+    "action_label": "Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés",
+    "sub_label": "Débroussaillage",
+    "cells": [
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14
+      ],
+      "kind": "band",
+      "text": "Entretien",
+      "fill": "#eaf1dd"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "ES1",
+    "action_label": "Suivi du Lotier",
+    "sub_label": "Inventaire et cartographie",
+    "cells": [
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14
+      ],
+      "kind": "band",
+      "text": "1 suivi tous les 5 ans",
+      "fill": "#e5dfec"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "ES2",
+    "action_label": "Suivi de l’avifaune cible",
+    "sub_label": "Inventaire et cartographie",
+    "cells": [
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14
+      ],
+      "kind": "band",
+      "text": "1 suivi tous les 5 ans",
+      "fill": "#e5dfec"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": 2025,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p27_t0_g0",
+  "page": 27,
+  "axis": "rel_year",
+  "columns": [
+   {
+    "label": "N+16 / 2041",
+    "axis": "rel_year",
+    "rel_start": 16,
+    "rel_end": 16,
+    "year_start": 2041,
+    "year_end": 2041,
+    "month": null,
+    "x0": 301.6396279166667,
+    "x1": 331.8149159722222
+   },
+   {
+    "label": "N+17 / 2042",
+    "axis": "rel_year",
+    "rel_start": 17,
+    "rel_end": 17,
+    "year_start": 2042,
+    "year_end": 2042,
+    "month": null,
+    "x0": 331.8149159722222,
+    "x1": 359.06500041666663
+   },
+   {
+    "label": "N+18 / 2043",
+    "axis": "rel_year",
+    "rel_start": 18,
+    "rel_end": 18,
+    "year_start": 2043,
+    "year_end": 2043,
+    "month": null,
+    "x0": 359.06500041666663,
+    "x1": 388.89533375
+   },
+   {
+    "label": "N+19 / 2044",
+    "axis": "rel_year",
+    "rel_start": 19,
+    "rel_end": 19,
+    "year_start": 2044,
+    "year_end": 2044,
+    "month": null,
+    "x0": 388.89533375,
+    "x1": 422.3556658333333
+   },
+   {
+    "label": "N+20 / 2045",
+    "axis": "rel_year",
+    "rel_start": 20,
+    "rel_end": 20,
+    "year_start": 2045,
+    "year_end": 2045,
+    "month": null,
+    "x0": 422.3556658333333,
+    "x1": 455.7813338333333
+   },
+   {
+    "label": "N+21 / 2046",
+    "axis": "rel_year",
+    "rel_start": 21,
+    "rel_end": 21,
+    "year_start": 2046,
+    "year_end": 2046,
+    "month": null,
+    "x0": 455.7813338333333,
+    "x1": 488.3270039166666
+   },
+   {
+    "label": "N+22 / 2047",
+    "axis": "rel_year",
+    "rel_start": 22,
+    "rel_end": 22,
+    "year_start": 2047,
+    "year_end": 2047,
+    "month": null,
+    "x0": 488.3270039166666,
+    "x1": 521.68600425
+   },
+   {
+    "label": "N+23 / 2048",
+    "axis": "rel_year",
+    "rel_start": 23,
+    "rel_end": 23,
+    "year_start": 2048,
+    "year_end": 2048,
+    "month": null,
+    "x0": 521.68600425,
+    "x1": 555.3021275000001
+   },
+   {
+    "label": "N+24 / 2049",
+    "axis": "rel_year",
+    "rel_start": 24,
+    "rel_end": 24,
+    "year_start": 2049,
+    "year_end": 2049,
+    "month": null,
+    "x0": 555.3021275000001,
+    "x1": 588.8042525000001
+   },
+   {
+    "label": "N+25 / 2050",
+    "axis": "rel_year",
+    "rel_start": 25,
+    "rel_end": 25,
+    "year_start": 2050,
+    "year_end": 2050,
+    "month": null,
+    "x0": 588.8042525000001,
+    "x1": 622.37462375
+   },
+   {
+    "label": "N+26 / 2051",
+    "axis": "rel_year",
+    "rel_start": 26,
+    "rel_end": 26,
+    "year_start": 2051,
+    "year_end": 2051,
+    "month": null,
+    "x0": 622.37462375,
+    "x1": 654.75249875
+   },
+   {
+    "label": "N+27 / 2052",
+    "axis": "rel_year",
+    "rel_start": 27,
+    "rel_end": 27,
+    "year_start": 2052,
+    "year_end": 2052,
+    "month": null,
+    "x0": 654.75249875,
+    "x1": 684.70750625
+   },
+   {
+    "label": "N+28 / 2053",
+    "axis": "rel_year",
+    "rel_start": 28,
+    "rel_end": 28,
+    "year_start": 2053,
+    "year_end": 2053,
+    "month": null,
+    "x0": 684.70750625,
+    "x1": 713.45500625
+   },
+   {
+    "label": "N+29 / 2054",
+    "axis": "rel_year",
+    "rel_start": 29,
+    "rel_end": 29,
+    "year_start": 2054,
+    "year_end": 2054,
+    "month": null,
+    "x0": 713.45500625,
+    "x1": 741.9642047058824
+   },
+   {
+    "label": "N+30 / 2055",
+    "axis": "rel_year",
+    "rel_start": 30,
+    "rel_end": 30,
+    "year_start": 2055,
+    "year_end": 2055,
+    "month": null,
+    "x0": 741.9642047058824,
+    "x1": 773.5076718014707
+   }
+  ],
+  "rows": [
+   {
+    "code": "FG1",
+    "action_label": "",
+    "sub_label": "Animation du plan de gestion",
+    "cells": [
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14
+      ],
+      "kind": "band",
+      "text": "Communication et concertation locale / Veille sur le site / Coordination des prestations de travaux et suivis /",
+      "fill": "#c6d9f1"
+     },
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14
+      ],
+      "kind": "band",
+      "text": "Élaboration d’une base de données géoréférencées / Rapport d’activité / Pilotage du programme",
+      "fill": "#c6d9f1"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "FG2",
+    "action_label": "Evaluation et mise à jour du plan de gestion",
+    "sub_label": "Bilans intermédiaires",
+    "cells": [
+     {
+      "cols": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14
+      ],
+      "kind": "band",
+      "text": "1 bilan intermédiaire tous les 5 ans et un bilan final à N+30",
+      "fill": "#c6d9f1"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": 2025,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p31_t0_g0",
+  "page": 31,
+  "axis": "month",
+  "columns": [
+   {
+    "label": "Janvier",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 1,
+    "x0": 183.37099999999998,
+    "x1": 234.2155008333333
+   },
+   {
+    "label": "Février",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 2,
+    "x0": 234.2155008333333,
+    "x1": 280.9315008333333
+   },
+   {
+    "label": "Mars",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 3,
+    "x0": 280.9315008333333,
+    "x1": 325.379
+   },
+   {
+    "label": "Avril",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 4,
+    "x0": 325.379,
+    "x1": 366.0299983333333
+   },
+   {
+    "label": "Mai",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 5,
+    "x0": 366.0299983333333,
+    "x1": 404.9949941666667
+   },
+   {
+    "label": "Juin",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 6,
+    "x0": 404.9949941666667,
+    "x1": 445.4649958333334
+   },
+   {
+    "label": "Juillet",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 7,
+    "x0": 445.4649958333334,
+    "x1": 488.26
+   },
+   {
+    "label": "Août",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 8,
+    "x0": 488.26,
+    "x1": 536.8700008333333
+   },
+   {
+    "label": "Septembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 9,
+    "x0": 536.8700008333333,
+    "x1": 593.6974958333333
+   },
+   {
+    "label": "Octobre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 10,
+    "x0": 593.6974958333333,
+    "x1": 653.2224900000001
+   },
+   {
+    "label": "Novembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 11,
+    "x0": 653.2224900000001,
+    "x1": 712.6831847222222
+   },
+   {
+    "label": "Décembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 12,
+    "x0": 712.6831847222222,
+    "x1": 777.8793662500001
+   }
+  ],
+  "rows": [
+   {
+    "code": "RG1",
+    "action_label": "",
+    "sub_label": "Période d’intervention",
+    "cells": [
+     {
+      "cols": [
+       2
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     },
+     {
+      "cols": [
+       3
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     },
+     {
+      "cols": [
+       6
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     },
+     {
+      "cols": [
+       7
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": null,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p31_t0_g1",
+  "page": 31,
+  "axis": "rel_year",
+  "columns": [
+   {
+    "label": "N 2025",
+    "axis": "rel_year",
+    "rel_start": 0,
+    "rel_end": 0,
+    "year_start": 2025,
+    "year_end": 2025,
+    "month": null,
+    "x0": 182.17099968749997,
+    "x1": 241.93512687499998
+   },
+   {
+    "label": "N+1 2026",
+    "axis": "rel_year",
+    "rel_start": 1,
+    "rel_end": 1,
+    "year_start": 2026,
+    "year_end": 2026,
+    "month": null,
+    "x0": 241.93512687499998,
+    "x1": 292.4517525
+   },
+   {
+    "label": "N+2 2027",
+    "axis": "rel_year",
+    "rel_start": 2,
+    "rel_end": 2,
+    "year_start": 2027,
+    "year_end": 2027,
+    "month": null,
+    "x0": 292.4517525,
+    "x1": 338.329625625
+   },
+   {
+    "label": "N+3 2028",
+    "axis": "rel_year",
+    "rel_start": 3,
+    "rel_end": 3,
+    "year_start": 2028,
+    "year_end": 2028,
+    "month": null,
+    "x0": 338.329625625,
+    "x1": 381.16999875
+   },
+   {
+    "label": "N+4 2029",
+    "axis": "rel_year",
+    "rel_start": 4,
+    "rel_end": 4,
+    "year_start": 2029,
+    "year_end": 2029,
+    "month": null,
+    "x0": 381.16999875,
+    "x1": 423.88025062500003
+   },
+   {
+    "label": "N+5 2030",
+    "axis": "rel_year",
+    "rel_start": 5,
+    "rel_end": 5,
+    "year_start": 2030,
+    "year_end": 2030,
+    "month": null,
+    "x0": 423.88025062500003,
+    "x1": 467.99025125000003
+   },
+   {
+    "label": "N+6 à / N+10 / 2031 à / 2035",
+    "axis": "rel_year",
+    "rel_start": 6,
+    "rel_end": 10,
+    "year_start": 2031,
+    "year_end": 2035,
+    "month": null,
+    "x0": 467.99025125000003,
+    "x1": 517.45
+   },
+   {
+    "label": "N+11 à / N+15 / 2036 à 2040",
+    "axis": "rel_year",
+    "rel_start": 11,
+    "rel_end": 15,
+    "year_start": 2036,
+    "year_end": 2040,
+    "month": null,
+    "x0": 517.45,
+    "x1": 575.1471225
+   },
+   {
+    "label": "N+16 à N+20 2041 à 2045",
+    "axis": "rel_year",
+    "rel_start": 16,
+    "rel_end": 20,
+    "year_start": 2041,
+    "year_end": 2045,
+    "month": null,
+    "x0": 575.1471225,
+    "x1": 637.861745
+   },
+   {
+    "label": "N+21 à N+25 2046 à 2050",
+    "axis": "rel_year",
+    "rel_start": 21,
+    "rel_end": 25,
+    "year_start": 2046,
+    "year_end": 2050,
+    "month": null,
+    "x0": 637.861745,
+    "x1": 703.3978134722222
+   },
+   {
+    "label": "N+26 à N+30 2051 à 2055",
+    "axis": "rel_year",
+    "rel_start": 26,
+    "rel_end": 30,
+    "year_start": 2051,
+    "year_end": 2055,
+    "month": null,
+    "x0": 703.3978134722222,
+    "x1": 779.296865625
+   }
+  ],
+  "rows": [
+   {
+    "code": "RG1",
+    "action_label": "Phasage prévisionnel",
+    "sub_label": "Travaux initiaux",
+    "cells": [
+     {
+      "cols": [
+       0
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#d6e3bc"
+     },
+     {
+      "cols": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10
+      ],
+      "kind": "band",
+      "text": "Fauche et griffage",
+      "fill": "#d6e3bc"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": 2025,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p34_t0_g0",
+  "page": 34,
+  "axis": "month",
+  "columns": [
+   {
+    "label": "Janvier",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 1,
+    "x0": 146.2708709677419,
+    "x1": 196.06219354838709
+   },
+   {
+    "label": "Février",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 2,
+    "x0": 196.06219354838709,
+    "x1": 241.56950125
+   },
+   {
+    "label": "Mar s",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 3,
+    "x0": 241.56950125,
+    "x1": 286.917503125
+   },
+   {
+    "label": "Avril",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 4,
+    "x0": 286.917503125,
+    "x1": 336.06200325
+   },
+   {
+    "label": "Mai",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 5,
+    "x0": 336.06200325,
+    "x1": 382.004000875
+   },
+   {
+    "label": "Juin",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 6,
+    "x0": 382.004000875,
+    "x1": 424.77699574999997
+   },
+   {
+    "label": "Juillet",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 7,
+    "x0": 424.77699574999997,
+    "x1": 468.5579926785714
+   },
+   {
+    "label": "Août",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 8,
+    "x0": 468.5579926785714,
+    "x1": 515.0759941071428
+   },
+   {
+    "label": "Septembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 9,
+    "x0": 515.0759941071428,
+    "x1": 573.7449947619048
+   },
+   {
+    "label": "Octobre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 10,
+    "x0": 573.7449947619048,
+    "x1": 642.9215004166667
+   },
+   {
+    "label": "Novembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 11,
+    "x0": 642.9215004166667,
+    "x1": 719.8945958333334
+   },
+   {
+    "label": "Décembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 12,
+    "x0": 719.8945958333334,
+    "x1": 823.00789125
+   }
+  ],
+  "rows": [
+   {
+    "code": "RG2",
+    "action_label": "",
+    "sub_label": "Période d’intervention",
+    "cells": [
+     {
+      "cols": [
+       8
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     },
+     {
+      "cols": [
+       9
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": null,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p34_t0_g1",
+  "page": 34,
+  "axis": "rel_year",
+  "columns": [
+   {
+    "label": "N / 2025",
+    "axis": "rel_year",
+    "rel_start": 0,
+    "rel_end": 0,
+    "year_start": 2025,
+    "year_end": 2025,
+    "month": null,
+    "x0": 153.77,
+    "x1": 190.622
+   },
+   {
+    "label": "N+1 / 2026",
+    "axis": "rel_year",
+    "rel_start": 1,
+    "rel_end": 1,
+    "year_start": 2026,
+    "year_end": 2026,
+    "month": null,
+    "x0": 190.622,
+    "x1": 238.478
+   },
+   {
+    "label": "N+2 / 2027",
+    "axis": "rel_year",
+    "rel_start": 2,
+    "rel_end": 2,
+    "year_start": 2027,
+    "year_end": 2027,
+    "month": null,
+    "x0": 238.478,
+    "x1": 289.75100000000003
+   },
+   {
+    "label": "N+3 / 2028",
+    "axis": "rel_year",
+    "rel_start": 3,
+    "rel_end": 3,
+    "year_start": 2028,
+    "year_end": 2028,
+    "month": null,
+    "x0": 289.75100000000003,
+    "x1": 336.57500062500003
+   },
+   {
+    "label": "N+4 / 2029",
+    "axis": "rel_year",
+    "rel_start": 4,
+    "rel_end": 4,
+    "year_start": 2029,
+    "year_end": 2029,
+    "month": null,
+    "x0": 336.57500062500003,
+    "x1": 381.79999937499997
+   },
+   {
+    "label": "N+5 / 2030",
+    "axis": "rel_year",
+    "rel_start": 5,
+    "rel_end": 5,
+    "year_start": 2030,
+    "year_end": 2030,
+    "month": null,
+    "x0": 381.79999937499997,
+    "x1": 437.14099874999994
+   },
+   {
+    "label": "N+6 à N+10 / 2031 à 2035",
+    "axis": "rel_year",
+    "rel_start": 6,
+    "rel_end": 10,
+    "year_start": 2031,
+    "year_end": 2035,
+    "month": null,
+    "x0": 437.14099874999994,
+    "x1": 506.51399892857137
+   },
+   {
+    "label": "N+11 à N+15 / 2036 à 2040",
+    "axis": "rel_year",
+    "rel_start": 11,
+    "rel_end": 15,
+    "year_start": 2036,
+    "year_end": 2040,
+    "month": null,
+    "x0": 506.51399892857137,
+    "x1": 582.1239989285714
+   },
+   {
+    "label": "N+16 à N+20 / 2041 à 2045",
+    "axis": "rel_year",
+    "rel_start": 16,
+    "rel_end": 20,
+    "year_start": 2041,
+    "year_end": 2045,
+    "month": null,
+    "x0": 582.1239989285714,
+    "x1": 658.2909999999999
+   },
+   {
+    "label": "N+21 à N+25 / 2046 à 2050",
+    "axis": "rel_year",
+    "rel_start": 21,
+    "rel_end": 25,
+    "year_start": 2046,
+    "year_end": 2050,
+    "month": null,
+    "x0": 658.2909999999999,
+    "x1": 734.5055
+   },
+   {
+    "label": "N+26 à N+30 / 2051 à 2055",
+    "axis": "rel_year",
+    "rel_start": 26,
+    "rel_end": 30,
+    "year_start": 2051,
+    "year_end": 2055,
+    "month": null,
+    "x0": 734.5055,
+    "x1": 813.42475
+   }
+  ],
+  "rows": [
+   {
+    "code": "RG2",
+    "action_label": "",
+    "sub_label": "Travaux initiaux",
+    "cells": [
+     {
+      "cols": [
+       0
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#d6e3bc"
+     },
+     {
+      "cols": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10
+      ],
+      "kind": "band",
+      "text": "Entretien par débroussaillage et regarnis si besoin",
+      "fill": "#d6e3bc"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": 2025,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p37_t0_g0",
+  "page": 37,
+  "axis": "month",
+  "columns": [
+   {
+    "label": "Janvier",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 1,
+    "x0": 148.59304347826085,
+    "x1": 196.0075652173913
+   },
+   {
+    "label": "Février",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 2,
+    "x0": 196.0075652173913,
+    "x1": 238.353499
+   },
+   {
+    "label": "Mars",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 3,
+    "x0": 238.353499,
+    "x1": 280.7474971666667
+   },
+   {
+    "label": "Avril",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 4,
+    "x0": 280.7474971666667,
+    "x1": 323.1039218205128
+   },
+   {
+    "label": "Mai",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 5,
+    "x0": 323.1039218205128,
+    "x1": 365.4592319230769
+   },
+   {
+    "label": "Juin",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 6,
+    "x0": 365.4592319230769,
+    "x1": 409.1383082692307
+   },
+   {
+    "label": "Juillet",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 7,
+    "x0": 409.1383082692307,
+    "x1": 454.45633166666664
+   },
+   {
+    "label": "Août",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 8,
+    "x0": 454.45633166666664,
+    "x1": 507.20033416666666
+   },
+   {
+    "label": "Septembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 9,
+    "x0": 507.20033416666666,
+    "x1": 577.1275049999999
+   },
+   {
+    "label": "Octobre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 10,
+    "x0": 577.1275049999999,
+    "x1": 657.2724974999999
+   },
+   {
+    "label": "Novembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 11,
+    "x0": 657.2724974999999,
+    "x1": 734.6117683333332
+   },
+   {
+    "label": "Décembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 12,
+    "x0": 734.6117683333332,
+    "x1": 816.0329925000001
+   }
+  ],
+  "rows": [
+   {
+    "code": "ES1",
+    "action_label": "",
+    "sub_label": "Période d’intervention",
+    "cells": [
+     {
+      "cols": [
+       5
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     },
+     {
+      "cols": [
+       6
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": null,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p37_t0_g1",
+  "page": 37,
+  "axis": "rel_year",
+  "columns": [
+   {
+    "label": "N / 2025",
+    "axis": "rel_year",
+    "rel_start": 0,
+    "rel_end": 0,
+    "year_start": 2025,
+    "year_end": 2025,
+    "month": null,
+    "x0": 156.035,
+    "x1": 191.972
+   },
+   {
+    "label": "N+1 / 2026",
+    "axis": "rel_year",
+    "rel_start": 1,
+    "rel_end": 1,
+    "year_start": 2026,
+    "year_end": 2026,
+    "month": null,
+    "x0": 191.972,
+    "x1": 233.024
+   },
+   {
+    "label": "N+2 / 2027",
+    "axis": "rel_year",
+    "rel_start": 2,
+    "rel_end": 2,
+    "year_start": 2027,
+    "year_end": 2027,
+    "month": null,
+    "x0": 233.024,
+    "x1": 275.48899900000004
+   },
+   {
+    "label": "N+3 / 2028",
+    "axis": "rel_year",
+    "rel_start": 3,
+    "rel_end": 3,
+    "year_start": 2028,
+    "year_end": 2028,
+    "month": null,
+    "x0": 275.48899900000004,
+    "x1": 317.9369981666667
+   },
+   {
+    "label": "N+4 / 2029",
+    "axis": "rel_year",
+    "rel_start": 4,
+    "rel_end": 4,
+    "year_start": 2029,
+    "year_end": 2029,
+    "month": null,
+    "x0": 317.9369981666667,
+    "x1": 360.35357095238095
+   },
+   {
+    "label": "N+5 / 2030",
+    "axis": "rel_year",
+    "rel_start": 5,
+    "rel_end": 5,
+    "year_start": 2030,
+    "year_end": 2030,
+    "month": null,
+    "x0": 360.35357095238095,
+    "x1": 413.40885785714283
+   },
+   {
+    "label": "N+6 à N+10 / 2031 à 2035",
+    "axis": "rel_year",
+    "rel_start": 6,
+    "rel_end": 10,
+    "year_start": 2031,
+    "year_end": 2035,
+    "month": null,
+    "x0": 413.40885785714283,
+    "x1": 486.25028607142855
+   },
+   {
+    "label": "N+11 à N+15 / 2036 à 2040",
+    "axis": "rel_year",
+    "rel_start": 11,
+    "rel_end": 15,
+    "year_start": 2036,
+    "year_end": 2040,
+    "month": null,
+    "x0": 486.25028607142855,
+    "x1": 564.436
+   },
+   {
+    "label": "N+16 à N+20 / 2041à 2046",
+    "axis": "rel_year",
+    "rel_start": 16,
+    "rel_end": 20,
+    "year_start": 2041,
+    "year_end": 2046,
+    "month": null,
+    "x0": 564.436,
+    "x1": 640.6210000000001
+   },
+   {
+    "label": "N+21 à N+25 / 2047 à 2053",
+    "axis": "rel_year",
+    "rel_start": 21,
+    "rel_end": 25,
+    "year_start": 2047,
+    "year_end": 2053,
+    "month": null,
+    "x0": 640.6210000000001,
+    "x1": 722.1455
+   },
+   {
+    "label": "N+26 à N+30 / 2054 à 2055",
+    "axis": "rel_year",
+    "rel_start": 26,
+    "rel_end": 30,
+    "year_start": 2054,
+    "year_end": 2055,
+    "month": null,
+    "x0": 722.1455,
+    "x1": 811.1297499999998
+   }
+  ],
+  "rows": [
+   {
+    "code": "ES1",
+    "action_label": "",
+    "sub_label": "Inventaire et cartographie",
+    "cells": [
+     {
+      "cols": [
+       0
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       1
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       2
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       3
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       4
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       5
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       6,
+       7,
+       8,
+       9,
+       10
+      ],
+      "kind": "band",
+      "text": "1 suivis tous les 5 ans",
+      "fill": "#ccc0d9"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": 2025,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p38_t0_g0",
+  "page": 38,
+  "axis": "month",
+  "columns": [
+   {
+    "label": "Janvier",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 1,
+    "x0": 148.36368058320667,
+    "x1": 196.75459681610943
+   },
+   {
+    "label": "Février",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 2,
+    "x0": 196.75459681610943,
+    "x1": 238.72949970238096
+   },
+   {
+    "label": "Mars",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 3,
+    "x0": 238.72949970238096,
+    "x1": 280.77311339743585
+   },
+   {
+    "label": "Avril",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 4,
+    "x0": 280.77311339743585,
+    "x1": 323.13153788461534
+   },
+   {
+    "label": "Mai",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 5,
+    "x0": 323.13153788461534,
+    "x1": 365.4592319230769
+   },
+   {
+    "label": "Juin",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 6,
+    "x0": 365.4592319230769,
+    "x1": 409.30730993589736
+   },
+   {
+    "label": "Juillet",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 7,
+    "x0": 409.30730993589736,
+    "x1": 454.6450004166667
+   },
+   {
+    "label": "Août",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 8,
+    "x0": 454.6450004166667,
+    "x1": 507.22000125
+   },
+   {
+    "label": "Septembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 9,
+    "x0": 507.22000125,
+    "x1": 577.1275049999999
+   },
+   {
+    "label": "Octobre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 10,
+    "x0": 577.1275049999999,
+    "x1": 657.2724974999999
+   },
+   {
+    "label": "Novembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 11,
+    "x0": 657.2724974999999,
+    "x1": 734.6179902941176
+   },
+   {
+    "label": "Décembre",
+    "axis": "month",
+    "rel_start": null,
+    "rel_end": null,
+    "year_start": null,
+    "year_end": null,
+    "month": 12,
+    "x0": 734.6179902941176,
+    "x1": 816.0609913235295
+   }
+  ],
+  "rows": [
+   {
+    "code": "ES2",
+    "action_label": "",
+    "sub_label": "Période d’intervention",
+    "cells": [
+     {
+      "cols": [
+       3
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     },
+     {
+      "cols": [
+       4
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     },
+     {
+      "cols": [
+       5
+      ],
+      "kind": "fill",
+      "text": "",
+      "fill": "#dbe5f1"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": null,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p38_t0_g1",
+  "page": 38,
+  "axis": "rel_year",
+  "columns": [
+   {
+    "label": "N / 2025",
+    "axis": "rel_year",
+    "rel_start": 0,
+    "rel_end": 0,
+    "year_start": 2025,
+    "year_end": 2025,
+    "month": null,
+    "x0": 155.135,
+    "x1": 195.56
+   },
+   {
+    "label": "N+1 / 2026",
+    "axis": "rel_year",
+    "rel_start": 1,
+    "rel_end": 1,
+    "year_start": 2026,
+    "year_end": 2026,
+    "month": null,
+    "x0": 195.56,
+    "x1": 234.812
+   },
+   {
+    "label": "N+2 / 2027",
+    "axis": "rel_year",
+    "rel_start": 2,
+    "rel_end": 2,
+    "year_start": 2027,
+    "year_end": 2027,
+    "month": null,
+    "x0": 234.812,
+    "x1": 275.4869991666667
+   },
+   {
+    "label": "N+3 / 2028",
+    "axis": "rel_year",
+    "rel_start": 3,
+    "rel_end": 3,
+    "year_start": 2028,
+    "year_end": 2028,
+    "month": null,
+    "x0": 275.4869991666667,
+    "x1": 317.909998452381
+   },
+   {
+    "label": "N+4 / 2029",
+    "axis": "rel_year",
+    "rel_start": 4,
+    "rel_end": 4,
+    "year_start": 2029,
+    "year_end": 2029,
+    "month": null,
+    "x0": 317.909998452381,
+    "x1": 360.3285710714286
+   },
+   {
+    "label": "N+5 / 2030",
+    "axis": "rel_year",
+    "rel_start": 5,
+    "rel_end": 5,
+    "year_start": 2030,
+    "year_end": 2030,
+    "month": null,
+    "x0": 360.3285710714286,
+    "x1": 413.42457220238094
+   },
+   {
+    "label": "N+6 à N+10 / 2031 à 2035",
+    "axis": "rel_year",
+    "rel_start": 6,
+    "rel_end": 10,
+    "year_start": 2031,
+    "year_end": 2035,
+    "month": null,
+    "x0": 413.42457220238094,
+    "x1": 486.26600041666666
+   },
+   {
+    "label": "N+11 à N+15 / 2036 à 2040",
+    "axis": "rel_year",
+    "rel_start": 11,
+    "rel_end": 15,
+    "year_start": 2036,
+    "year_end": 2040,
+    "month": null,
+    "x0": 486.26600041666666,
+    "x1": 564.436
+   },
+   {
+    "label": "N+16 à N+20 / 2041à 2046",
+    "axis": "rel_year",
+    "rel_start": 16,
+    "rel_end": 20,
+    "year_start": 2041,
+    "year_end": 2046,
+    "month": null,
+    "x0": 564.436,
+    "x1": 640.6210000000001
+   },
+   {
+    "label": "N+21 à N+25 / 2047 à 2053",
+    "axis": "rel_year",
+    "rel_start": 21,
+    "rel_end": 25,
+    "year_start": 2047,
+    "year_end": 2053,
+    "month": null,
+    "x0": 640.6210000000001,
+    "x1": 722.1455
+   },
+   {
+    "label": "N+26 à N+30 / 2054 à 2055",
+    "axis": "rel_year",
+    "rel_start": 26,
+    "rel_end": 30,
+    "year_start": 2054,
+    "year_end": 2055,
+    "month": null,
+    "x0": 722.1455,
+    "x1": 811.1297499999998
+   }
+  ],
+  "rows": [
+   {
+    "code": "ES2",
+    "action_label": "",
+    "sub_label": "Inventaire et cartographie",
+    "cells": [
+     {
+      "cols": [
+       0
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       1
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       2
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       3
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       4
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       5
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#ccc0d9"
+     },
+     {
+      "cols": [
+       6,
+       7,
+       8,
+       9,
+       10
+      ],
+      "kind": "band",
+      "text": "1 suivis tous les 5 ans",
+      "fill": "#ccc0d9"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": 2025,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p41_t0_g0",
+  "page": 41,
+  "axis": "rel_year",
+  "columns": [
+   {
+    "label": "N / 2025",
+    "axis": "rel_year",
+    "rel_start": 0,
+    "rel_end": 0,
+    "year_start": 2025,
+    "year_end": 2025,
+    "month": null,
+    "x0": 150.305,
+    "x1": 186.95
+   },
+   {
+    "label": "N+1 / 2026",
+    "axis": "rel_year",
+    "rel_start": 1,
+    "rel_end": 1,
+    "year_start": 2026,
+    "year_end": 2026,
+    "month": null,
+    "x0": 186.95,
+    "x1": 233.036
+   },
+   {
+    "label": "N+2 / 2027",
+    "axis": "rel_year",
+    "rel_start": 2,
+    "rel_end": 2,
+    "year_start": 2027,
+    "year_end": 2027,
+    "month": null,
+    "x0": 233.036,
+    "x1": 282.67100000000005
+   },
+   {
+    "label": "N+3 / 2028",
+    "axis": "rel_year",
+    "rel_start": 3,
+    "rel_end": 3,
+    "year_start": 2028,
+    "year_end": 2028,
+    "month": null,
+    "x0": 282.67100000000005,
+    "x1": 334.07
+   },
+   {
+    "label": "N+4 / 2029",
+    "axis": "rel_year",
+    "rel_start": 4,
+    "rel_end": 4,
+    "year_start": 2029,
+    "year_end": 2029,
+    "month": null,
+    "x0": 334.07,
+    "x1": 387.23
+   },
+   {
+    "label": "N+5 / 2030",
+    "axis": "rel_year",
+    "rel_start": 5,
+    "rel_end": 5,
+    "year_start": 2030,
+    "year_end": 2030,
+    "month": null,
+    "x0": 387.23,
+    "x1": 445.71000000000004
+   },
+   {
+    "label": "N+6 à N+10 / 2031 à 2035",
+    "axis": "rel_year",
+    "rel_start": 6,
+    "rel_end": 10,
+    "year_start": 2031,
+    "year_end": 2035,
+    "month": null,
+    "x0": 445.71000000000004,
+    "x1": 514.81
+   },
+   {
+    "label": "N+11 à N+15 / 2036 à 2040",
+    "axis": "rel_year",
+    "rel_start": 11,
+    "rel_end": 15,
+    "year_start": 2036,
+    "year_end": 2040,
+    "month": null,
+    "x0": 514.81,
+    "x1": 589.246
+   },
+   {
+    "label": "N+16 à N+20 / 2041à 2046",
+    "axis": "rel_year",
+    "rel_start": 16,
+    "rel_end": 20,
+    "year_start": 2041,
+    "year_end": 2046,
+    "month": null,
+    "x0": 589.246,
+    "x1": 663.691
+   },
+   {
+    "label": "N+21 à N+25 / 2047 à 2053",
+    "axis": "rel_year",
+    "rel_start": 21,
+    "rel_end": 25,
+    "year_start": 2047,
+    "year_end": 2053,
+    "month": null,
+    "x0": 663.691,
+    "x1": 736.336
+   },
+   {
+    "label": "N+26 à N+30 / 2054 à 2055",
+    "axis": "rel_year",
+    "rel_start": 26,
+    "rel_end": 30,
+    "year_start": 2054,
+    "year_end": 2055,
+    "month": null,
+    "x0": 736.336,
+    "x1": 809.3620000000001
+   }
+  ],
+  "rows": [
+   {
+    "code": "FG1",
+    "action_label": "",
+    "sub_label": "",
+    "cells": [
+     {
+      "cols": [
+       0
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       1
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       2
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       3
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       4
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       5
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       6
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       7
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       8
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       9
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       10
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": 2025,
+  "source": "geometry",
+  "notes": []
+ },
+ {
+  "id": "p42_t0_g0",
+  "page": 42,
+  "axis": "rel_year",
+  "columns": [
+   {
+    "label": "N / 2025",
+    "axis": "rel_year",
+    "rel_start": 0,
+    "rel_end": 0,
+    "year_start": 2025,
+    "year_end": 2025,
+    "month": null,
+    "x0": 157.38500000000002,
+    "x1": 194.0
+   },
+   {
+    "label": "N+1 / 2026",
+    "axis": "rel_year",
+    "rel_start": 1,
+    "rel_end": 1,
+    "year_start": 2026,
+    "year_end": 2026,
+    "month": null,
+    "x0": 194.0,
+    "x1": 240.056
+   },
+   {
+    "label": "N+2 / 2027",
+    "axis": "rel_year",
+    "rel_start": 2,
+    "rel_end": 2,
+    "year_start": 2027,
+    "year_end": 2027,
+    "month": null,
+    "x0": 240.056,
+    "x1": 289.69100000000003
+   },
+   {
+    "label": "N+3 / 2028",
+    "axis": "rel_year",
+    "rel_start": 3,
+    "rel_end": 3,
+    "year_start": 2028,
+    "year_end": 2028,
+    "month": null,
+    "x0": 289.69100000000003,
+    "x1": 341.09
+   },
+   {
+    "label": "N+4 / 2029",
+    "axis": "rel_year",
+    "rel_start": 4,
+    "rel_end": 4,
+    "year_start": 2029,
+    "year_end": 2029,
+    "month": null,
+    "x0": 341.09,
+    "x1": 394.256
+   },
+   {
+    "label": "N+5 / 2030",
+    "axis": "rel_year",
+    "rel_start": 5,
+    "rel_end": 5,
+    "year_start": 2030,
+    "year_end": 2030,
+    "month": null,
+    "x0": 394.256,
+    "x1": 452.736
+   },
+   {
+    "label": "N+6 à N+10 / 2031 à 2035",
+    "axis": "rel_year",
+    "rel_start": 6,
+    "rel_end": 10,
+    "year_start": 2031,
+    "year_end": 2035,
+    "month": null,
+    "x0": 452.736,
+    "x1": 521.89
+   },
+   {
+    "label": "N+11 à N+15 / 2036 à 2040",
+    "axis": "rel_year",
+    "rel_start": 11,
+    "rel_end": 15,
+    "year_start": 2036,
+    "year_end": 2040,
+    "month": null,
+    "x0": 521.89,
+    "x1": 596.4159999999999
+   },
+   {
+    "label": "N+16 à N+20 / 2041à 2046",
+    "axis": "rel_year",
+    "rel_start": 16,
+    "rel_end": 20,
+    "year_start": 2041,
+    "year_end": 2046,
+    "month": null,
+    "x0": 596.4159999999999,
+    "x1": 670.8910000000001
+   },
+   {
+    "label": "N+21 à N+25 / 2047 à 2053",
+    "axis": "rel_year",
+    "rel_start": 21,
+    "rel_end": 25,
+    "year_start": 2047,
+    "year_end": 2053,
+    "month": null,
+    "x0": 670.8910000000001,
+    "x1": 743.5060000000001
+   },
+   {
+    "label": "N+26 à N+30 / 2054 à 2055",
+    "axis": "rel_year",
+    "rel_start": 26,
+    "rel_end": 30,
+    "year_start": 2054,
+    "year_end": 2055,
+    "month": null,
+    "x0": 743.5060000000001,
+    "x1": 816.427
+   }
+  ],
+  "rows": [
+   {
+    "code": "FG2",
+    "action_label": "",
+    "sub_label": "Bilans intermédiaires",
+    "cells": [
+     {
+      "cols": [
+       5
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       6
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       7
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       8
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     },
+     {
+      "cols": [
+       9
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     }
+    ],
+    "agreement": null
+   },
+   {
+    "code": "FG2",
+    "action_label": "",
+    "sub_label": "Bilan final",
+    "cells": [
+     {
+      "cols": [
+       10
+      ],
+      "kind": "mark",
+      "text": "X",
+      "fill": "#8db3e2"
+     }
+    ],
+    "agreement": null
+   }
+  ],
+  "n_year": 2025,
+  "source": "geometry",
+  "notes": []
+ }
+]

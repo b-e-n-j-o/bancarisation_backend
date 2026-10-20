@@ -1,0 +1,6709 @@
+{
+ "version": "1.0",
+ "pdf": "data/Plan_de_gestion_de_ddep.pdf",
+ "sha256": "dd49b6c1857c998b7900b327fbd3a782b8ddf1d6ddcd0a00c55810ba9bf05340",
+ "n_pages_pdf": 49,
+ "synthese": {
+  "pages_analysees": 49,
+  "grilles": 14,
+  "grilles_mois": 4,
+  "grilles_annees": 10,
+  "marques_par_couleur": 11,
+  "images_document_raster": 3,
+  "pages_scannees": 0,
+  "zones_suspectes": 0,
+  "zones_vers_vision": 3,
+  "duree_s": 6.03
+ },
+ "pages": [
+  {
+   "page": 1,
+   "page_imprimee": 162,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 391,
+   "n_traits": 13,
+   "n_aplats": 25,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 2,
+   "page_imprimee": 163,
+   "dimensions": [
+    842.0,
+    595.0
+   ],
+   "n_mots": 63,
+   "n_traits": 5,
+   "n_aplats": 2,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      149.2,
+      70.9,
+      704.2,
+      472.2
+     ],
+     "part_page": 0.445,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.1,
+      "saturation": 0.095,
+      "part_encre": 0.447
+     },
+     "mots_dessus": 2,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 3,
+   "page_imprimee": 164,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 318,
+   "n_traits": 1,
+   "n_aplats": 1,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      56.7,
+      351.6,
+      548.4,
+      699.4
+     ],
+     "part_page": 0.341,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.123,
+      "saturation": 0.178,
+      "part_encre": 0.673
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "compensation de projets d’aménagement dans un périmètre proche.",
+     "vocabulaire_calendaire_proche": false
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 4,
+   "page_imprimee": 165,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 198,
+   "n_traits": 1,
+   "n_aplats": 1,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      56.7,
+      178.1,
+      544.3,
+      522.7
+     ],
+     "part_page": 0.335,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.255,
+      "saturation": 0.265,
+      "part_encre": 0.008
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "bocagers ».",
+     "vocabulaire_calendaire_proche": false
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 5,
+   "page_imprimee": 166,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 482,
+   "n_traits": 11,
+   "n_aplats": 13,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 6,
+   "page_imprimee": 167,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 392,
+   "n_traits": 13,
+   "n_aplats": 13,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 7,
+   "page_imprimee": 168,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 103,
+   "n_traits": 1,
+   "n_aplats": 1,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      70.9,
+      59.5,
+      574.9,
+      415.9
+     ],
+     "part_page": 0.359,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.117,
+      "saturation": 0.099,
+      "part_encre": 0.443
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 8,
+   "page_imprimee": 169,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 167,
+   "n_traits": 5,
+   "n_aplats": 1,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      70.9,
+      59.5,
+      538.4,
+      360.7
+     ],
+     "part_page": 0.281,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.472,
+      "saturation": 0.412,
+      "part_encre": 0.043
+     },
+     "mots_dessus": 3,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 9,
+   "page_imprimee": 170,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 83,
+   "n_traits": 1,
+   "n_aplats": 1,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      74.0,
+      59.5,
+      521.0,
+      375.6
+     ],
+     "part_page": 0.282,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.19,
+      "saturation": 0.493,
+      "part_encre": 0.004
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    },
+    {
+     "bbox": [
+      70.9,
+      412.3,
+      524.5,
+      733.1
+     ],
+     "part_page": 0.29,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.183,
+      "saturation": 0.437,
+      "part_encre": 0.027
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "(source : Référentiel Régional Pédologique de la région Aquitaine)",
+     "vocabulaire_calendaire_proche": false
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 10,
+   "page_imprimee": 171,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 223,
+   "n_traits": 10,
+   "n_aplats": 11,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 11,
+   "page_imprimee": 172,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 204,
+   "n_traits": 9,
+   "n_aplats": 12,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      70.9,
+      59.5,
+      536.6,
+      388.9
+     ],
+     "part_page": 0.306,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.088,
+      "saturation": 0.104,
+      "part_encre": 0.556
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 12,
+   "page_imprimee": 173,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 229,
+   "n_traits": 12,
+   "n_aplats": 11,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 13,
+   "page_imprimee": 174,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 87,
+   "n_traits": 1,
+   "n_aplats": 1,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      70.9,
+      59.5,
+      528.3,
+      383.0
+     ],
+     "part_page": 0.295,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.217,
+      "saturation": 0.301,
+      "part_encre": 0.447
+     },
+     "mots_dessus": 1,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    },
+    {
+     "bbox": [
+      76.3,
+      408.8,
+      323.0,
+      593.9
+     ],
+     "part_page": 0.091,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.018,
+      "saturation": 0.28,
+      "part_encre": 0.322
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "Figure 82 : Habitats naturels, semi-naturels et artificiels présents sur le site de compensation (CDC Biodiversité,",
+     "vocabulaire_calendaire_proche": false
+    },
+    {
+     "bbox": [
+      301.9,
+      408.8,
+      550.8,
+      595.6
+     ],
+     "part_page": 0.093,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.104,
+      "saturation": 0.505,
+      "part_encre": 0.301
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "Habitats naturels, semi-naturels et artificiels présents sur le site de compensation (CDC Biodiversité, 2023)",
+     "vocabulaire_calendaire_proche": false
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 14,
+   "page_imprimee": 175,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 218,
+   "n_traits": 9,
+   "n_aplats": 2,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      70.9,
+      366.5,
+      569.5,
+      719.1
+     ],
+     "part_page": 0.351,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.139,
+      "saturation": 0.164,
+      "part_encre": 0.759
+     },
+     "mots_dessus": 4,
+     "contexte_avant": "D’autres espèces ont également été observées aux alentours du site de compensation.",
+     "vocabulaire_calendaire_proche": false
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 15,
+   "page_imprimee": 176,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 409,
+   "n_traits": 27,
+   "n_aplats": 52,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 16,
+   "page_imprimee": 177,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 223,
+   "n_traits": 9,
+   "n_aplats": 4,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      70.9,
+      332.0,
+      580.8,
+      692.6
+     ],
+     "part_page": 0.367,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.325,
+      "saturation": 0.16,
+      "part_encre": 0.539
+     },
+     "mots_dessus": 12,
+     "contexte_avant": "la restauration d’une mosaïque de milieux ouverts et semi-ouverts.",
+     "vocabulaire_calendaire_proche": false
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 17,
+   "page_imprimee": 178,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 228,
+   "n_traits": 12,
+   "n_aplats": 24,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 18,
+   "page_imprimee": 179,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 212,
+   "n_traits": 10,
+   "n_aplats": 18,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      56.7,
+      59.5,
+      566.6,
+      420.1
+     ],
+     "part_page": 0.367,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.057,
+      "saturation": 0.152,
+      "part_encre": 0.763
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 19,
+   "page_imprimee": 180,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 232,
+   "n_traits": 12,
+   "n_aplats": 20,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      56.7,
+      140.5,
+      551.8,
+      490.6
+     ],
+     "part_page": 0.346,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.079,
+      "saturation": 0.165,
+      "part_encre": 0.847
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "été contactées sur le site. Il s’agit d’espèces communes à très communes.",
+     "vocabulaire_calendaire_proche": true
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 20,
+   "page_imprimee": 181,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 556,
+   "n_traits": 1,
+   "n_aplats": 2,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 21,
+   "page_imprimee": 182,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 372,
+   "n_traits": 13,
+   "n_aplats": 20,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 22,
+   "page_imprimee": 183,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 225,
+   "n_traits": 15,
+   "n_aplats": 30,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 23,
+   "page_imprimee": 184,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 57,
+   "n_traits": 1,
+   "n_aplats": 1,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      74.8,
+      70.5,
+      520.1,
+      385.5
+     ],
+     "part_page": 0.28,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.097,
+      "saturation": 0.172,
+      "part_encre": 0.718
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 24,
+   "page_imprimee": 185,
+   "dimensions": [
+    842.0,
+    595.0
+   ],
+   "n_mots": 293,
+   "n_traits": 38,
+   "n_aplats": 116,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [
+    {
+     "id": "p024_g1",
+     "page": 24,
+     "type_axe": "annees",
+     "bbox": [
+      41.3,
+      174.7,
+      801.1,
+      469.8
+     ],
+     "zone_temporelle": [
+      301.9,
+      801.1
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "hors_tableau",
+     "colonnes_bordees": "16/16",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 301.9,
+       "x1": 331.5,
+       "libelle": "N 2025",
+       "annee_debut": 2025,
+       "annee_fin": 2025,
+       "n_debut": 0,
+       "n_fin": 0,
+       "plage": false
+      },
+      {
+       "i": 1,
+       "x0": 331.5,
+       "x1": 364.3,
+       "libelle": "N+1 2026",
+       "annee_debut": 2026,
+       "annee_fin": 2026,
+       "n_debut": 1,
+       "n_fin": 1,
+       "plage": false
+      },
+      {
+       "i": 2,
+       "x0": 364.3,
+       "x1": 395.4,
+       "libelle": "N+2 2027",
+       "annee_debut": 2027,
+       "annee_fin": 2027,
+       "n_debut": 2,
+       "n_fin": 2,
+       "plage": false
+      },
+      {
+       "i": 3,
+       "x0": 395.4,
+       "x1": 426.7,
+       "libelle": "N+3 2028",
+       "annee_debut": 2028,
+       "annee_fin": 2028,
+       "n_debut": 3,
+       "n_fin": 3,
+       "plage": false
+      },
+      {
+       "i": 4,
+       "x0": 426.7,
+       "x1": 457.9,
+       "libelle": "N+4 2029",
+       "annee_debut": 2029,
+       "annee_fin": 2029,
+       "n_debut": 4,
+       "n_fin": 4,
+       "plage": false
+      },
+      {
+       "i": 5,
+       "x0": 457.9,
+       "x1": 489.1,
+       "libelle": "N+5 2030",
+       "annee_debut": 2030,
+       "annee_fin": 2030,
+       "n_debut": 5,
+       "n_fin": 5,
+       "plage": false
+      },
+      {
+       "i": 6,
+       "x0": 489.1,
+       "x1": 520.3,
+       "libelle": "N+6 2031",
+       "annee_debut": 2031,
+       "annee_fin": 2031,
+       "n_debut": 6,
+       "n_fin": 6,
+       "plage": false
+      },
+      {
+       "i": 7,
+       "x0": 520.3,
+       "x1": 551.5,
+       "libelle": "N+7 2032",
+       "annee_debut": 2032,
+       "annee_fin": 2032,
+       "n_debut": 7,
+       "n_fin": 7,
+       "plage": false
+      },
+      {
+       "i": 8,
+       "x0": 551.5,
+       "x1": 582.7,
+       "libelle": "N+8 2033",
+       "annee_debut": 2033,
+       "annee_fin": 2033,
+       "n_debut": 8,
+       "n_fin": 8,
+       "plage": false
+      },
+      {
+       "i": 9,
+       "x0": 582.7,
+       "x1": 613.9,
+       "libelle": "N+9 2034",
+       "annee_debut": 2034,
+       "annee_fin": 2034,
+       "n_debut": 9,
+       "n_fin": 9,
+       "plage": false
+      },
+      {
+       "i": 10,
+       "x0": 613.9,
+       "x1": 645.1,
+       "libelle": "N+10 2035",
+       "annee_debut": 2035,
+       "annee_fin": 2035,
+       "n_debut": 10,
+       "n_fin": 10,
+       "plage": false
+      },
+      {
+       "i": 11,
+       "x0": 645.1,
+       "x1": 676.3,
+       "libelle": "N+11 2036",
+       "annee_debut": 2036,
+       "annee_fin": 2036,
+       "n_debut": 11,
+       "n_fin": 11,
+       "plage": false
+      },
+      {
+       "i": 12,
+       "x0": 676.3,
+       "x1": 707.5,
+       "libelle": "N+12 2037",
+       "annee_debut": 2037,
+       "annee_fin": 2037,
+       "n_debut": 12,
+       "n_fin": 12,
+       "plage": false
+      },
+      {
+       "i": 13,
+       "x0": 707.5,
+       "x1": 738.7,
+       "libelle": "N+13 2038",
+       "annee_debut": 2038,
+       "annee_fin": 2038,
+       "n_debut": 13,
+       "n_fin": 13,
+       "plage": false
+      },
+      {
+       "i": 14,
+       "x0": 738.7,
+       "x1": 769.9,
+       "libelle": "N+14 2039",
+       "annee_debut": 2039,
+       "annee_fin": 2039,
+       "n_debut": 14,
+       "n_fin": 14,
+       "plage": false
+      },
+      {
+       "i": 15,
+       "x0": 769.9,
+       "x1": 801.1,
+       "libelle": "N+15 2040",
+       "annee_debut": 2040,
+       "annee_fin": 2040,
+       "n_debut": 15,
+       "n_fin": 15,
+       "plage": false
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "RG1 | Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion | Réouverture des fourrés de roncier et d’Herbe de la Pampa",
+       "role": "corps",
+       "y0": 222.9,
+       "y1": 279.6,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": "X",
+         "couleur": "#EAF1DD",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          2
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          3
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          4
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          5
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          6
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          7
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          8
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          9
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          10
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          11
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          12
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          13
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          14
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          15
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          0
+         ],
+         "libelles": [
+          "N 2025"
+         ],
+         "texte": "X",
+         "couleur": "#EAF1DD",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "RG1 | Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion | Entretien par fauche",
+       "role": "corps",
+       "y0": 279.6,
+       "y1": 308.2,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "texte": "1 à 2 fauches annuelles selon développement de la végétation concurrente",
+         "couleur": "#EAF1DD",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "bande",
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "libelles": [
+          "N 2025",
+          "N+1 2026",
+          "N+2 2027",
+          "N+3 2028",
+          "N+4 2029",
+          "N+5 2030",
+          "N+6 2031",
+          "N+7 2032",
+          "N+8 2033",
+          "N+9 2034",
+          "N+10 2035",
+          "N+11 2036",
+          "N+12 2037",
+          "N+13 2038",
+          "N+14 2039",
+          "N+15 2040"
+         ],
+         "texte": "1 à 2 fauches annuelles selon développement de la végétation concurrente",
+         "couleur": "#EAF1DD",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "RG1 | Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion | Griffage du sol",
+       "role": "corps",
+       "y0": 308.2,
+       "y1": 326.7,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "texte": "Une fois tous les 2 à 3 ans",
+         "couleur": "#EAF1DD",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "bande",
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "libelles": [
+          "N 2025",
+          "N+1 2026",
+          "N+2 2027",
+          "N+3 2028",
+          "N+4 2029",
+          "N+5 2030",
+          "N+6 2031",
+          "N+7 2032",
+          "N+8 2033",
+          "N+9 2034",
+          "N+10 2035",
+          "N+11 2036",
+          "N+12 2037",
+          "N+13 2038",
+          "N+14 2039",
+          "N+15 2040"
+         ],
+         "texte": "Une fois tous les 2 à 3 ans",
+         "couleur": "#EAF1DD",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés | Débroussaillage",
+       "role": "corps",
+       "y0": 326.7,
+       "y1": 355.4,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": "X",
+         "couleur": "#EAF1DD",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "texte": "Entretien",
+         "couleur": "#EAF1DD",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          0
+         ],
+         "libelles": [
+          "N 2025"
+         ],
+         "texte": "X",
+         "couleur": "#EAF1DD",
+         "fusion_verticale": false
+        },
+        {
+         "type": "bande",
+         "colonnes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "libelles": [
+          "N+1 2026",
+          "N+2 2027",
+          "N+3 2028",
+          "N+4 2029",
+          "N+5 2030",
+          "N+6 2031",
+          "N+7 2032",
+          "N+8 2033",
+          "N+9 2034",
+          "N+10 2035",
+          "N+11 2036",
+          "N+12 2037",
+          "N+13 2038",
+          "N+14 2039",
+          "N+15 2040"
+         ],
+         "texte": "Entretien",
+         "couleur": "#EAF1DD",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés | Plantation et regarnis éventuel",
+       "role": "corps",
+       "y0": 355.4,
+       "y1": 383.9,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": "X",
+         "couleur": "#EAF1DD",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "texte": "Regarnis à prévoir si perte",
+         "couleur": "#EAF1DD",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          0
+         ],
+         "libelles": [
+          "N 2025"
+         ],
+         "texte": "X",
+         "couleur": "#EAF1DD",
+         "fusion_verticale": false
+        },
+        {
+         "type": "bande",
+         "colonnes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "libelles": [
+          "N+1 2026",
+          "N+2 2027",
+          "N+3 2028",
+          "N+4 2029",
+          "N+5 2030",
+          "N+6 2031",
+          "N+7 2032",
+          "N+8 2033",
+          "N+9 2034",
+          "N+10 2035",
+          "N+11 2036",
+          "N+12 2037",
+          "N+13 2038",
+          "N+14 2039",
+          "N+15 2040"
+         ],
+         "texte": "Regarnis à prévoir si perte",
+         "couleur": "#EAF1DD",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "ES1 | Suivi du Lotier | Inventaire et cartographie",
+       "role": "corps",
+       "y0": 383.9,
+       "y1": 412.5,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          2
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          3
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          4
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          5
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "texte": "1 suivi tous les 5 ans",
+         "couleur": "#E5DFEC",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          0
+         ],
+         "libelles": [
+          "N 2025"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          1
+         ],
+         "libelles": [
+          "N+1 2026"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          2
+         ],
+         "libelles": [
+          "N+2 2027"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          3
+         ],
+         "libelles": [
+          "N+3 2028"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          4
+         ],
+         "libelles": [
+          "N+4 2029"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          5
+         ],
+         "libelles": [
+          "N+5 2030"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "bande",
+         "colonnes": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "libelles": [
+          "N+6 2031",
+          "N+7 2032",
+          "N+8 2033",
+          "N+9 2034",
+          "N+10 2035",
+          "N+11 2036",
+          "N+12 2037",
+          "N+13 2038",
+          "N+14 2039",
+          "N+15 2040"
+         ],
+         "texte": "1 suivi tous les 5 ans",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "ES2 | Suivi de l’avifaune cible | Inventaire et cartographie",
+       "role": "corps",
+       "y0": 412.5,
+       "y1": 441.2,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          2
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          3
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          4
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          5
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "texte": "1 suivi tous les 5 ans",
+         "couleur": "#E5DFEC",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          0
+         ],
+         "libelles": [
+          "N 2025"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          1
+         ],
+         "libelles": [
+          "N+1 2026"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          2
+         ],
+         "libelles": [
+          "N+2 2027"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          3
+         ],
+         "libelles": [
+          "N+3 2028"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          4
+         ],
+         "libelles": [
+          "N+4 2029"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          5
+         ],
+         "libelles": [
+          "N+5 2030"
+         ],
+         "texte": "X",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "bande",
+         "colonnes": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "libelles": [
+          "N+6 2031",
+          "N+7 2032",
+          "N+8 2033",
+          "N+9 2034",
+          "N+10 2035",
+          "N+11 2036",
+          "N+12 2037",
+          "N+13 2038",
+          "N+14 2039",
+          "N+15 2040"
+         ],
+         "texte": "1 suivi tous les 5 ans",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "FG1 | Animation du plan de gestion | -",
+       "role": "corps",
+       "y0": 441.2,
+       "y1": 469.8,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "texte": "Communication et concertation locale / Veille sur le site / Coordination des prestations de travaux et suivis / Élaboration d’une base de données géoréférencées / Rapport d’activité / Pilotage du programme",
+         "couleur": "#C6D9F1",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "bande",
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "libelles": [
+          "N 2025",
+          "N+1 2026",
+          "N+2 2027",
+          "N+3 2028",
+          "N+4 2029",
+          "N+5 2030",
+          "N+6 2031",
+          "N+7 2032",
+          "N+8 2033",
+          "N+9 2034",
+          "N+10 2035",
+          "N+11 2036",
+          "N+12 2037",
+          "N+13 2038",
+          "N+14 2039",
+          "N+15 2040"
+         ],
+         "texte": "Communication et concertation locale / Veille sur le site / Coordination des prestations de travaux et suivis / Élaboration d’une base de données géoréférencées / Rapport d’activité / Pilotage du programme",
+         "couleur": "#C6D9F1",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 25,
+   "page_imprimee": 186,
+   "dimensions": [
+    842.0,
+    595.0
+   ],
+   "n_mots": 248,
+   "n_traits": 54,
+   "n_aplats": 155,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [
+    {
+     "id": "p025_g1",
+     "page": 25,
+     "type_axe": "annees",
+     "bbox": [
+      41.3,
+      66.6,
+      801.1,
+      143.4
+     ],
+     "zone_temporelle": [
+      301.9,
+      801.1
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "hors_tableau",
+     "colonnes_bordees": "16/16",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 301.9,
+       "x1": 331.5,
+       "libelle": "N 2025",
+       "annee_debut": 2025,
+       "annee_fin": 2025,
+       "n_debut": 0,
+       "n_fin": 0,
+       "plage": false
+      },
+      {
+       "i": 1,
+       "x0": 331.5,
+       "x1": 364.3,
+       "libelle": "N+1 2026",
+       "annee_debut": 2026,
+       "annee_fin": 2026,
+       "n_debut": 1,
+       "n_fin": 1,
+       "plage": false
+      },
+      {
+       "i": 2,
+       "x0": 364.3,
+       "x1": 395.4,
+       "libelle": "N+2 2027",
+       "annee_debut": 2027,
+       "annee_fin": 2027,
+       "n_debut": 2,
+       "n_fin": 2,
+       "plage": false
+      },
+      {
+       "i": 3,
+       "x0": 395.4,
+       "x1": 426.7,
+       "libelle": "N+3 2028",
+       "annee_debut": 2028,
+       "annee_fin": 2028,
+       "n_debut": 3,
+       "n_fin": 3,
+       "plage": false
+      },
+      {
+       "i": 4,
+       "x0": 426.7,
+       "x1": 457.9,
+       "libelle": "N+4 2029",
+       "annee_debut": 2029,
+       "annee_fin": 2029,
+       "n_debut": 4,
+       "n_fin": 4,
+       "plage": false
+      },
+      {
+       "i": 5,
+       "x0": 457.9,
+       "x1": 488.8,
+       "libelle": "N+5 2030",
+       "annee_debut": 2030,
+       "annee_fin": 2030,
+       "n_debut": 5,
+       "n_fin": 5,
+       "plage": false
+      },
+      {
+       "i": 6,
+       "x0": 488.8,
+       "x1": 520.3,
+       "libelle": "N+6 2031",
+       "annee_debut": 2031,
+       "annee_fin": 2031,
+       "n_debut": 6,
+       "n_fin": 6,
+       "plage": false
+      },
+      {
+       "i": 7,
+       "x0": 520.3,
+       "x1": 551.5,
+       "libelle": "N+7 2032",
+       "annee_debut": 2032,
+       "annee_fin": 2032,
+       "n_debut": 7,
+       "n_fin": 7,
+       "plage": false
+      },
+      {
+       "i": 8,
+       "x0": 551.5,
+       "x1": 582.7,
+       "libelle": "N+8 2033",
+       "annee_debut": 2033,
+       "annee_fin": 2033,
+       "n_debut": 8,
+       "n_fin": 8,
+       "plage": false
+      },
+      {
+       "i": 9,
+       "x0": 582.7,
+       "x1": 613.9,
+       "libelle": "N+9 2034",
+       "annee_debut": 2034,
+       "annee_fin": 2034,
+       "n_debut": 9,
+       "n_fin": 9,
+       "plage": false
+      },
+      {
+       "i": 10,
+       "x0": 613.9,
+       "x1": 645.1,
+       "libelle": "N+10 2035",
+       "annee_debut": 2035,
+       "annee_fin": 2035,
+       "n_debut": 10,
+       "n_fin": 10,
+       "plage": false
+      },
+      {
+       "i": 11,
+       "x0": 645.1,
+       "x1": 676.3,
+       "libelle": "N+11 2036",
+       "annee_debut": 2036,
+       "annee_fin": 2036,
+       "n_debut": 11,
+       "n_fin": 11,
+       "plage": false
+      },
+      {
+       "i": 12,
+       "x0": 676.3,
+       "x1": 707.5,
+       "libelle": "N+12 2037",
+       "annee_debut": 2037,
+       "annee_fin": 2037,
+       "n_debut": 12,
+       "n_fin": 12,
+       "plage": false
+      },
+      {
+       "i": 13,
+       "x0": 707.5,
+       "x1": 738.7,
+       "libelle": "N+13 2038",
+       "annee_debut": 2038,
+       "annee_fin": 2038,
+       "n_debut": 13,
+       "n_fin": 13,
+       "plage": false
+      },
+      {
+       "i": 14,
+       "x0": 738.7,
+       "x1": 769.9,
+       "libelle": "N+14 2039",
+       "annee_debut": 2039,
+       "annee_fin": 2039,
+       "n_debut": 14,
+       "n_fin": 14,
+       "plage": false
+      },
+      {
+       "i": 15,
+       "x0": 769.9,
+       "x1": 801.1,
+       "libelle": "N+15 2040",
+       "annee_debut": 2040,
+       "annee_fin": 2040,
+       "n_debut": 15,
+       "n_fin": 15,
+       "plage": false
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "FG2 | Evaluation et mise à jour du plan de gestion",
+       "role": "corps",
+       "y0": 114.9,
+       "y1": 143.4,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          2
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          3
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          4
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          5
+         ],
+         "texte": "X",
+         "couleur": "#C6D9F1",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "texte": "1 bilan intermédiaire tous les 5 ans et un bilan final à N+30",
+         "couleur": "#C6D9F1",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          5
+         ],
+         "libelles": [
+          "N+5 2030"
+         ],
+         "texte": "X",
+         "couleur": "#C6D9F1",
+         "fusion_verticale": false
+        },
+        {
+         "type": "bande",
+         "colonnes": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+         ],
+         "libelles": [
+          "N+6 2031",
+          "N+7 2032",
+          "N+8 2033",
+          "N+9 2034",
+          "N+10 2035",
+          "N+11 2036",
+          "N+12 2037",
+          "N+13 2038",
+          "N+14 2039",
+          "N+15 2040"
+         ],
+         "texte": "1 bilan intermédiaire tous les 5 ans et un bilan final à N+30",
+         "couleur": "#C6D9F1",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "p025_g2",
+     "page": 25,
+     "type_axe": "annees",
+     "bbox": [
+      71.4,
+      183.9,
+      771.0,
+      463.4
+     ],
+     "zone_temporelle": [
+      304.1,
+      771.0
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "hors_tableau",
+     "colonnes_bordees": "15/15",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 304.1,
+       "x1": 331.5,
+       "libelle": "N+16 2041",
+       "annee_debut": 2041,
+       "annee_fin": 2041,
+       "n_debut": 16,
+       "n_fin": 16,
+       "plage": false
+      },
+      {
+       "i": 1,
+       "x0": 331.5,
+       "x1": 359.1,
+       "libelle": "N+17 2042",
+       "annee_debut": 2042,
+       "annee_fin": 2042,
+       "n_debut": 17,
+       "n_fin": 17,
+       "plage": false
+      },
+      {
+       "i": 2,
+       "x0": 359.1,
+       "x1": 386.6,
+       "libelle": "N+18 2043",
+       "annee_debut": 2043,
+       "annee_fin": 2043,
+       "n_debut": 18,
+       "n_fin": 18,
+       "plage": false
+      },
+      {
+       "i": 3,
+       "x0": 386.6,
+       "x1": 423.5,
+       "libelle": "N+19 2044",
+       "annee_debut": 2044,
+       "annee_fin": 2044,
+       "n_debut": 19,
+       "n_fin": 19,
+       "plage": false
+      },
+      {
+       "i": 4,
+       "x0": 423.5,
+       "x1": 456.0,
+       "libelle": "N+20 2045",
+       "annee_debut": 2045,
+       "annee_fin": 2045,
+       "n_debut": 20,
+       "n_fin": 20,
+       "plage": false
+      },
+      {
+       "i": 5,
+       "x0": 456.0,
+       "x1": 488.8,
+       "libelle": "N+21 2046",
+       "annee_debut": 2046,
+       "annee_fin": 2046,
+       "n_debut": 21,
+       "n_fin": 21,
+       "plage": false
+      },
+      {
+       "i": 6,
+       "x0": 488.8,
+       "x1": 521.8,
+       "libelle": "N+22 2047",
+       "annee_debut": 2047,
+       "annee_fin": 2047,
+       "n_debut": 22,
+       "n_fin": 22,
+       "plage": false
+      },
+      {
+       "i": 7,
+       "x0": 521.8,
+       "x1": 555.3,
+       "libelle": "N+23 2048",
+       "annee_debut": 2048,
+       "annee_fin": 2048,
+       "n_debut": 23,
+       "n_fin": 23,
+       "plage": false
+      },
+      {
+       "i": 8,
+       "x0": 555.3,
+       "x1": 588.8,
+       "libelle": "N+24 2049",
+       "annee_debut": 2049,
+       "annee_fin": 2049,
+       "n_debut": 24,
+       "n_fin": 24,
+       "plage": false
+      },
+      {
+       "i": 9,
+       "x0": 588.8,
+       "x1": 622.4,
+       "libelle": "N+25 2050",
+       "annee_debut": 2050,
+       "annee_fin": 2050,
+       "n_debut": 25,
+       "n_fin": 25,
+       "plage": false
+      },
+      {
+       "i": 10,
+       "x0": 622.4,
+       "x1": 656.0,
+       "libelle": "N+26 2051",
+       "annee_debut": 2051,
+       "annee_fin": 2051,
+       "n_debut": 26,
+       "n_fin": 26,
+       "plage": false
+      },
+      {
+       "i": 11,
+       "x0": 656.0,
+       "x1": 684.7,
+       "libelle": "N+27 2052",
+       "annee_debut": 2052,
+       "annee_fin": 2052,
+       "n_debut": 27,
+       "n_fin": 27,
+       "plage": false
+      },
+      {
+       "i": 12,
+       "x0": 684.7,
+       "x1": 713.5,
+       "libelle": "N+28 2053",
+       "annee_debut": 2053,
+       "annee_fin": 2053,
+       "n_debut": 28,
+       "n_fin": 28,
+       "plage": false
+      },
+      {
+       "i": 13,
+       "x0": 713.5,
+       "x1": 742.2,
+       "libelle": "N+29 2054",
+       "annee_debut": 2054,
+       "annee_fin": 2054,
+       "n_debut": 29,
+       "n_fin": 29,
+       "plage": false
+      },
+      {
+       "i": 14,
+       "x0": 742.2,
+       "x1": 771.0,
+       "libelle": "N+30 2055",
+       "annee_debut": 2055,
+       "annee_fin": 2055,
+       "n_debut": 30,
+       "n_fin": 30,
+       "plage": false
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "RG1 | Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion | Réouverture des fourrés de roncier et d’Herbe de la Pampa",
+       "role": "corps",
+       "y0": 232.2,
+       "y1": 302.9,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        }
+       ],
+       "marques": []
+      },
+      {
+       "libelle": "RG1 | Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion | Entretien par fauche",
+       "role": "corps",
+       "y0": 302.9,
+       "y1": 331.5,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "texte": "1 à 2 fauches annuelles selon développement de la végétation concurrente",
+         "couleur": "#EAF1DD",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "bande",
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "libelles": [
+          "N+16 2041",
+          "N+17 2042",
+          "N+18 2043",
+          "N+19 2044",
+          "N+20 2045",
+          "N+21 2046",
+          "N+22 2047",
+          "N+23 2048",
+          "N+24 2049",
+          "N+25 2050",
+          "N+26 2051",
+          "N+27 2052",
+          "N+28 2053",
+          "N+29 2054",
+          "N+30 2055"
+         ],
+         "texte": "1 à 2 fauches annuelles selon développement de la végétation concurrente",
+         "couleur": "#EAF1DD",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "RG1 | Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion | Griffage du sol",
+       "role": "corps",
+       "y0": 331.5,
+       "y1": 346.0,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "texte": "Une fois tous les 2 à 3 ans",
+         "couleur": "#EAF1DD",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "bande",
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "libelles": [
+          "N+16 2041",
+          "N+17 2042",
+          "N+18 2043",
+          "N+19 2044",
+          "N+20 2045",
+          "N+21 2046",
+          "N+22 2047",
+          "N+23 2048",
+          "N+24 2049",
+          "N+25 2050",
+          "N+26 2051",
+          "N+27 2052",
+          "N+28 2053",
+          "N+29 2054",
+          "N+30 2055"
+         ],
+         "texte": "Une fois tous les 2 à 3 ans",
+         "couleur": "#EAF1DD",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "RG3 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés | Débroussaillage",
+       "role": "corps",
+       "y0": 346.0,
+       "y1": 363.6,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "texte": "Entretien",
+         "couleur": "#EAF1DD",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "bande",
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "libelles": [
+          "N+16 2041",
+          "N+17 2042",
+          "N+18 2043",
+          "N+19 2044",
+          "N+20 2045",
+          "N+21 2046",
+          "N+22 2047",
+          "N+23 2048",
+          "N+24 2049",
+          "N+25 2050",
+          "N+26 2051",
+          "N+27 2052",
+          "N+28 2053",
+          "N+29 2054",
+          "N+30 2055"
+         ],
+         "texte": "Entretien",
+         "couleur": "#EAF1DD",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "RG3 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés | Plantation et regarnis éventuel",
+       "role": "corps",
+       "y0": 363.6,
+       "y1": 406.2,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        }
+       ],
+       "marques": []
+      },
+      {
+       "libelle": "ES1 | Suivi du Lotier | Inventaire et cartographie",
+       "role": "corps",
+       "y0": 406.2,
+       "y1": 434.7,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "texte": "1 suivi tous les 5 ans",
+         "couleur": "#E5DFEC",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "bande",
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "libelles": [
+          "N+16 2041",
+          "N+17 2042",
+          "N+18 2043",
+          "N+19 2044",
+          "N+20 2045",
+          "N+21 2046",
+          "N+22 2047",
+          "N+23 2048",
+          "N+24 2049",
+          "N+25 2050",
+          "N+26 2051",
+          "N+27 2052",
+          "N+28 2053",
+          "N+29 2054",
+          "N+30 2055"
+         ],
+         "texte": "1 suivi tous les 5 ans",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "ES2 | Suivi de l’avifaune cible | Inventaire et cartographie",
+       "role": "corps",
+       "y0": 434.7,
+       "y1": 463.4,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "texte": "1 suivi tous les 5 ans",
+         "couleur": "#E5DFEC",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "bande",
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "libelles": [
+          "N+16 2041",
+          "N+17 2042",
+          "N+18 2043",
+          "N+19 2044",
+          "N+20 2045",
+          "N+21 2046",
+          "N+22 2047",
+          "N+23 2048",
+          "N+24 2049",
+          "N+25 2050",
+          "N+26 2051",
+          "N+27 2052",
+          "N+28 2053",
+          "N+29 2054",
+          "N+30 2055"
+         ],
+         "texte": "1 suivi tous les 5 ans",
+         "couleur": "#E5DFEC",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 26,
+   "page_imprimee": 187,
+   "dimensions": [
+    842.0,
+    595.0
+   ],
+   "n_mots": 146,
+   "n_traits": 25,
+   "n_aplats": 72,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [
+    {
+     "id": "p026_g1",
+     "page": 26,
+     "type_axe": "annees",
+     "bbox": [
+      71.4,
+      66.6,
+      771.0,
+      172.0
+     ],
+     "zone_temporelle": [
+      304.1,
+      771.0
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "ligne_trop_haute",
+     "colonnes_bordees": "15/15",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 304.1,
+       "x1": 331.6,
+       "libelle": "N+16 2041",
+       "annee_debut": 2041,
+       "annee_fin": 2041,
+       "n_debut": 16,
+       "n_fin": 16,
+       "plage": false
+      },
+      {
+       "i": 1,
+       "x0": 331.6,
+       "x1": 359.1,
+       "libelle": "N+17 2042",
+       "annee_debut": 2042,
+       "annee_fin": 2042,
+       "n_debut": 17,
+       "n_fin": 17,
+       "plage": false
+      },
+      {
+       "i": 2,
+       "x0": 359.1,
+       "x1": 386.6,
+       "libelle": "N+18 2043",
+       "annee_debut": 2043,
+       "annee_fin": 2043,
+       "n_debut": 18,
+       "n_fin": 18,
+       "plage": false
+      },
+      {
+       "i": 3,
+       "x0": 386.6,
+       "x1": 423.5,
+       "libelle": "N+19 2044",
+       "annee_debut": 2044,
+       "annee_fin": 2044,
+       "n_debut": 19,
+       "n_fin": 19,
+       "plage": false
+      },
+      {
+       "i": 4,
+       "x0": 423.5,
+       "x1": 456.0,
+       "libelle": "N+20 2045",
+       "annee_debut": 2045,
+       "annee_fin": 2045,
+       "n_debut": 20,
+       "n_fin": 20,
+       "plage": false
+      },
+      {
+       "i": 5,
+       "x0": 456.0,
+       "x1": 488.4,
+       "libelle": "N+21 2046",
+       "annee_debut": 2046,
+       "annee_fin": 2046,
+       "n_debut": 21,
+       "n_fin": 21,
+       "plage": false
+      },
+      {
+       "i": 6,
+       "x0": 488.4,
+       "x1": 521.8,
+       "libelle": "N+22 2047",
+       "annee_debut": 2047,
+       "annee_fin": 2047,
+       "n_debut": 22,
+       "n_fin": 22,
+       "plage": false
+      },
+      {
+       "i": 7,
+       "x0": 521.8,
+       "x1": 555.3,
+       "libelle": "N+23 2048",
+       "annee_debut": 2048,
+       "annee_fin": 2048,
+       "n_debut": 23,
+       "n_fin": 23,
+       "plage": false
+      },
+      {
+       "i": 8,
+       "x0": 555.3,
+       "x1": 588.8,
+       "libelle": "N+24 2049",
+       "annee_debut": 2049,
+       "annee_fin": 2049,
+       "n_debut": 24,
+       "n_fin": 24,
+       "plage": false
+      },
+      {
+       "i": 9,
+       "x0": 588.8,
+       "x1": 622.4,
+       "libelle": "N+25 2050",
+       "annee_debut": 2050,
+       "annee_fin": 2050,
+       "n_debut": 25,
+       "n_fin": 25,
+       "plage": false
+      },
+      {
+       "i": 10,
+       "x0": 622.4,
+       "x1": 656.0,
+       "libelle": "N+26 2051",
+       "annee_debut": 2051,
+       "annee_fin": 2051,
+       "n_debut": 26,
+       "n_fin": 26,
+       "plage": false
+      },
+      {
+       "i": 11,
+       "x0": 656.0,
+       "x1": 684.7,
+       "libelle": "N+27 2052",
+       "annee_debut": 2052,
+       "annee_fin": 2052,
+       "n_debut": 27,
+       "n_fin": 27,
+       "plage": false
+      },
+      {
+       "i": 12,
+       "x0": 684.7,
+       "x1": 713.5,
+       "libelle": "N+28 2053",
+       "annee_debut": 2053,
+       "annee_fin": 2053,
+       "n_debut": 28,
+       "n_fin": 28,
+       "plage": false
+      },
+      {
+       "i": 13,
+       "x0": 713.5,
+       "x1": 742.2,
+       "libelle": "N+29 2054",
+       "annee_debut": 2054,
+       "annee_fin": 2054,
+       "n_debut": 29,
+       "n_fin": 29,
+       "plage": false
+      },
+      {
+       "i": 14,
+       "x0": 742.2,
+       "x1": 771.0,
+       "libelle": "N+30 2055",
+       "annee_debut": 2055,
+       "annee_fin": 2055,
+       "n_debut": 30,
+       "n_fin": 30,
+       "plage": false
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "FG1 | Animation du plan de gestion | -",
+       "role": "corps",
+       "y0": 114.9,
+       "y1": 143.4,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "texte": "Communication et concertation locale / Veille sur le site / Coordination des prestations de travaux et suivis / Élaboration d’une base de données géoréférencées / Rapport d’activité / Pilotage du programme",
+         "couleur": "#C6D9F1",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "bande",
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "libelles": [
+          "N+16 2041",
+          "N+17 2042",
+          "N+18 2043",
+          "N+19 2044",
+          "N+20 2045",
+          "N+21 2046",
+          "N+22 2047",
+          "N+23 2048",
+          "N+24 2049",
+          "N+25 2050",
+          "N+26 2051",
+          "N+27 2052",
+          "N+28 2053",
+          "N+29 2054",
+          "N+30 2055"
+         ],
+         "texte": "Communication et concertation locale / Veille sur le site / Coordination des prestations de travaux et suivis / Élaboration d’une base de données géoréférencées / Rapport d’activité / Pilotage du programme",
+         "couleur": "#C6D9F1",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "FG2 | Evaluation et mise à jour du plan de gestion | Bilans intermédiaires",
+       "role": "corps",
+       "y0": 143.4,
+       "y1": 172.0,
+       "segments": [
+        {
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "texte": "1 bilan intermédiaire tous les 5 ans et un bilan final à N+30",
+         "couleur": "#C6D9F1",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "bande",
+         "colonnes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+         ],
+         "libelles": [
+          "N+16 2041",
+          "N+17 2042",
+          "N+18 2043",
+          "N+19 2044",
+          "N+20 2045",
+          "N+21 2046",
+          "N+22 2047",
+          "N+23 2048",
+          "N+24 2049",
+          "N+25 2050",
+          "N+26 2051",
+          "N+27 2052",
+          "N+28 2053",
+          "N+29 2054",
+          "N+30 2055"
+         ],
+         "texte": "1 bilan intermédiaire tous les 5 ans et un bilan final à N+30",
+         "couleur": "#C6D9F1",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 27,
+   "page_imprimee": 188,
+   "dimensions": [
+    842.0,
+    595.0
+   ],
+   "n_mots": 260,
+   "n_traits": 16,
+   "n_aplats": 13,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 28,
+   "page_imprimee": 189,
+   "dimensions": [
+    595.0,
+    842.0
+   ],
+   "n_mots": 241,
+   "n_traits": 13,
+   "n_aplats": 7,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 29,
+   "page_imprimee": 190,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 351,
+   "n_traits": 15,
+   "n_aplats": 20,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 30,
+   "page_imprimee": 191,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 199,
+   "n_traits": 35,
+   "n_aplats": 72,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [
+    {
+     "id": "p030_g1",
+     "page": 30,
+     "type_axe": "mois",
+     "bbox": [
+      71.2,
+      211.4,
+      770.9,
+      227.9
+     ],
+     "zone_temporelle": [
+      188.9,
+      770.9
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "texte_pleine_largeur",
+     "colonnes_bordees": "12/12",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 188.9,
+       "x1": 232.7,
+       "libelle": "Janvier",
+       "mois": 1
+      },
+      {
+       "i": 1,
+       "x0": 232.7,
+       "x1": 282.5,
+       "libelle": "Février",
+       "mois": 2
+      },
+      {
+       "i": 2,
+       "x0": 282.5,
+       "x1": 325.3,
+       "libelle": "Mars",
+       "mois": 3
+      },
+      {
+       "i": 3,
+       "x0": 325.3,
+       "x1": 365.9,
+       "libelle": "Avril",
+       "mois": 4
+      },
+      {
+       "i": 4,
+       "x0": 365.9,
+       "x1": 405.2,
+       "libelle": "Mai",
+       "mois": 5
+      },
+      {
+       "i": 5,
+       "x0": 405.2,
+       "x1": 443.7,
+       "libelle": "Juin",
+       "mois": 6
+      },
+      {
+       "i": 6,
+       "x0": 443.7,
+       "x1": 489.2,
+       "libelle": "Juillet",
+       "mois": 7
+      },
+      {
+       "i": 7,
+       "x0": 489.2,
+       "x1": 531.0,
+       "libelle": "Août",
+       "mois": 8
+      },
+      {
+       "i": 8,
+       "x0": 531.0,
+       "x1": 596.5,
+       "libelle": "Septembre",
+       "mois": 9
+      },
+      {
+       "i": 9,
+       "x0": 596.5,
+       "x1": 651.0,
+       "libelle": "Octobre",
+       "mois": 10
+      },
+      {
+       "i": 10,
+       "x0": 651.0,
+       "x1": 714.5,
+       "libelle": "Novembre",
+       "mois": 11
+      },
+      {
+       "i": 11,
+       "x0": 714.5,
+       "x1": 770.9,
+       "libelle": "Décembre",
+       "mois": 12
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "Période d’intervention",
+       "role": "entete",
+       "y0": 214.7,
+       "y1": 224.7,
+       "marques": [
+        {
+         "type": "remplissage",
+         "colonnes": [
+          2
+         ],
+         "libelles": [
+          "Mars"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        },
+        {
+         "type": "remplissage",
+         "colonnes": [
+          3
+         ],
+         "libelles": [
+          "Avril"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        },
+        {
+         "type": "remplissage",
+         "colonnes": [
+          6
+         ],
+         "libelles": [
+          "Juillet"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        },
+        {
+         "type": "remplissage",
+         "colonnes": [
+          7
+         ],
+         "libelles": [
+          "Août"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "p030_g2",
+     "page": 30,
+     "type_axe": "annees",
+     "bbox": [
+      71.2,
+      335.8,
+      770.9,
+      424.6
+     ],
+     "zone_temporelle": [
+      188.9,
+      770.9
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "hors_tableau",
+     "colonnes_bordees": "11/11",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 188.9,
+       "x1": 242.3,
+       "libelle": "N 2025",
+       "annee_debut": 2025,
+       "annee_fin": 2025,
+       "n_debut": 0,
+       "n_fin": 0,
+       "plage": false
+      },
+      {
+       "i": 1,
+       "x0": 242.3,
+       "x1": 294.3,
+       "libelle": "N+1 2026",
+       "annee_debut": 2026,
+       "annee_fin": 2026,
+       "n_debut": 1,
+       "n_fin": 1,
+       "plage": false
+      },
+      {
+       "i": 2,
+       "x0": 294.3,
+       "x1": 338.9,
+       "libelle": "N+2 2027",
+       "annee_debut": 2027,
+       "annee_fin": 2027,
+       "n_debut": 2,
+       "n_fin": 2,
+       "plage": false
+      },
+      {
+       "i": 3,
+       "x0": 338.9,
+       "x1": 381.2,
+       "libelle": "N+3 2028",
+       "annee_debut": 2028,
+       "annee_fin": 2028,
+       "n_debut": 3,
+       "n_fin": 3,
+       "plage": false
+      },
+      {
+       "i": 4,
+       "x0": 381.2,
+       "x1": 423.4,
+       "libelle": "N+4 2029",
+       "annee_debut": 2029,
+       "annee_fin": 2029,
+       "n_debut": 4,
+       "n_fin": 4,
+       "plage": false
+      },
+      {
+       "i": 5,
+       "x0": 423.4,
+       "x1": 467.6,
+       "libelle": "N+5 2030",
+       "annee_debut": 2030,
+       "annee_fin": 2030,
+       "n_debut": 5,
+       "n_fin": 5,
+       "plage": false
+      },
+      {
+       "i": 6,
+       "x0": 467.6,
+       "x1": 513.5,
+       "libelle": "N+6 à N+10 2031 à 2035",
+       "annee_debut": 2031,
+       "annee_fin": 2035,
+       "n_debut": 6,
+       "n_fin": 10,
+       "plage": true
+      },
+      {
+       "i": 7,
+       "x0": 513.5,
+       "x1": 575.3,
+       "libelle": "N+11 à N+15 2036 à 2040",
+       "annee_debut": 2036,
+       "annee_fin": 2040,
+       "n_debut": 11,
+       "n_fin": 15,
+       "plage": true
+      },
+      {
+       "i": 8,
+       "x0": 575.3,
+       "x1": 636.6,
+       "libelle": "N+16 à N+20 2041 à 2045",
+       "annee_debut": 2041,
+       "annee_fin": 2045,
+       "n_debut": 16,
+       "n_fin": 20,
+       "plage": true
+      },
+      {
+       "i": 9,
+       "x0": 636.6,
+       "x1": 703.2,
+       "libelle": "N+21 à N+25 2046 à 2050",
+       "annee_debut": 2046,
+       "annee_fin": 2050,
+       "n_debut": 21,
+       "n_fin": 25,
+       "plage": true
+      },
+      {
+       "i": 10,
+       "x0": 703.2,
+       "x1": 770.9,
+       "libelle": "N+26 à N+30 2051 à 2055",
+       "annee_debut": 2051,
+       "annee_fin": 2055,
+       "n_debut": 26,
+       "n_fin": 30,
+       "plage": true
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "Phasage prévisionnel | Travaux initiaux",
+       "role": "corps",
+       "y0": 396.4,
+       "y1": 424.6,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": "X",
+         "couleur": "#D6E3BC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "texte": "Fauche et griffage",
+         "couleur": "#D6E3BC",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          0
+         ],
+         "libelles": [
+          "N 2025"
+         ],
+         "texte": "X",
+         "couleur": "#D6E3BC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "bande",
+         "colonnes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "libelles": [
+          "N+1 2026",
+          "N+2 2027",
+          "N+3 2028",
+          "N+4 2029",
+          "N+5 2030",
+          "N+6 à N+10 2031 à 2035",
+          "N+11 à N+15 2036 à 2040",
+          "N+16 à N+20 2041 à 2045",
+          "N+21 à N+25 2046 à 2050",
+          "N+26 à N+30 2051 à 2055"
+         ],
+         "texte": "Fauche et griffage",
+         "couleur": "#D6E3BC",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "images": [
+    {
+     "bbox": [
+      194.2,
+      62.5,
+      365.6,
+      191.0
+     ],
+     "part_page": 0.044,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.005,
+      "saturation": 0.333,
+      "part_encre": 0.364
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    },
+    {
+     "bbox": [
+      557.1,
+      60.1,
+      731.9,
+      191.0
+     ],
+     "part_page": 0.046,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.002,
+      "saturation": 0.329,
+      "part_encre": 0.309
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    },
+    {
+     "bbox": [
+      375.2,
+      62.3,
+      546.8,
+      191.0
+     ],
+     "part_page": 0.044,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.0,
+      "saturation": 0.196,
+      "part_encre": 0.324
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "",
+     "vocabulaire_calendaire_proche": true
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 31,
+   "page_imprimee": 192,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 178,
+   "n_traits": 14,
+   "n_aplats": 18,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      156.9,
+      309.1,
+      416.9,
+      504.1
+     ],
+     "part_page": 0.101,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.003,
+      "saturation": 0.218,
+      "part_encre": 0.4
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "Aperçu des secteurs à rouvrir :",
+     "vocabulaire_calendaire_proche": true
+    },
+    {
+     "bbox": [
+      446.2,
+      306.6,
+      706.2,
+      501.6
+     ],
+     "part_page": 0.101,
+     "classe": "photo_ou_carte",
+     "raison": "couleurs ou tons continus dominants",
+     "mesures": {
+      "part_blanc": 0.001,
+      "saturation": 0.269,
+      "part_encre": 0.557
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "débroussaillage sera réalisée en dehors des périodes sensibles pour les espèces (septembre/ octobre).",
+     "vocabulaire_calendaire_proche": true
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 32,
+   "page_imprimee": 193,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 136,
+   "n_traits": 9,
+   "n_aplats": 4,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      315.0,
+      236.2,
+      647.1,
+      462.2
+     ],
+     "part_page": 0.15,
+     "classe": "document_raster",
+     "raison": "fond blanc dominant, peu de couleur, présence d'encre : texte ou tableau en image",
+     "mesures": {
+      "part_blanc": 0.73,
+      "saturation": 0.054,
+      "part_encre": 0.006
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "Proposition de composition des bosquets :",
+     "vocabulaire_calendaire_proche": false
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 33,
+   "page_imprimee": 194,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 200,
+   "n_traits": 38,
+   "n_aplats": 75,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [
+    {
+     "id": "p033_g1",
+     "page": 33,
+     "type_axe": "mois",
+     "bbox": [
+      31.2,
+      143.9,
+      810.7,
+      175.8
+     ],
+     "zone_temporelle": [
+      151.5,
+      810.7
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "texte_pleine_largeur",
+     "colonnes_bordees": "12/12",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 151.5,
+       "x1": 193.7,
+       "libelle": "Janvier",
+       "mois": 1
+      },
+      {
+       "i": 1,
+       "x0": 193.7,
+       "x1": 247.0,
+       "libelle": "Février",
+       "mois": 2
+      },
+      {
+       "i": 2,
+       "x0": 247.0,
+       "x1": 279.4,
+       "libelle": "Mar s",
+       "mois": 3
+      },
+      {
+       "i": 3,
+       "x0": 279.4,
+       "x1": 342.5,
+       "libelle": "Avril",
+       "mois": 4
+      },
+      {
+       "i": 4,
+       "x0": 342.5,
+       "x1": 382.7,
+       "libelle": "Mai",
+       "mois": 5
+      },
+      {
+       "i": 5,
+       "x0": 382.7,
+       "x1": 423.0,
+       "libelle": "Juin",
+       "mois": 6
+      },
+      {
+       "i": 6,
+       "x0": 423.0,
+       "x1": 470.1,
+       "libelle": "Juillet",
+       "mois": 7
+      },
+      {
+       "i": 7,
+       "x0": 470.1,
+       "x1": 510.4,
+       "libelle": "Août",
+       "mois": 8
+      },
+      {
+       "i": 8,
+       "x0": 510.4,
+       "x1": 570.1,
+       "libelle": "Septembre",
+       "mois": 9
+      },
+      {
+       "i": 9,
+       "x0": 570.1,
+       "x1": 644.9,
+       "libelle": "Octobre",
+       "mois": 10
+      },
+      {
+       "i": 10,
+       "x0": 644.9,
+       "x1": 712.1,
+       "libelle": "Novembre",
+       "mois": 11
+      },
+      {
+       "i": 11,
+       "x0": 712.1,
+       "x1": 810.7,
+       "libelle": "Décembre",
+       "mois": 12
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "Période d’intervention",
+       "role": "entete",
+       "y0": 154.6,
+       "y1": 165.1,
+       "marques": [
+        {
+         "type": "remplissage",
+         "colonnes": [
+          8
+         ],
+         "libelles": [
+          "Septembre"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        },
+        {
+         "type": "remplissage",
+         "colonnes": [
+          9
+         ],
+         "libelles": [
+          "Octobre"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "p033_g2",
+     "page": 33,
+     "type_axe": "annees",
+     "bbox": [
+      31.2,
+      246.3,
+      810.7,
+      310.5
+     ],
+     "zone_temporelle": [
+      151.5,
+      810.7
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "ligne_trop_haute",
+     "colonnes_bordees": "11/11",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 151.5,
+       "x1": 187.0,
+       "libelle": "N 2025",
+       "annee_debut": 2025,
+       "annee_fin": 2025,
+       "n_debut": 0,
+       "n_fin": 0,
+       "plage": false
+      },
+      {
+       "i": 1,
+       "x0": 187.0,
+       "x1": 236.5,
+       "libelle": "N+1 2026",
+       "annee_debut": 2026,
+       "annee_fin": 2026,
+       "n_debut": 1,
+       "n_fin": 1,
+       "plage": false
+      },
+      {
+       "i": 2,
+       "x0": 236.5,
+       "x1": 293.2,
+       "libelle": "N+2 2027",
+       "annee_debut": 2027,
+       "annee_fin": 2027,
+       "n_debut": 2,
+       "n_fin": 2,
+       "plage": false
+      },
+      {
+       "i": 3,
+       "x0": 293.2,
+       "x1": 335.8,
+       "libelle": "N+3 2028",
+       "annee_debut": 2028,
+       "annee_fin": 2028,
+       "n_debut": 3,
+       "n_fin": 3,
+       "plage": false
+      },
+      {
+       "i": 4,
+       "x0": 335.8,
+       "x1": 380.7,
+       "libelle": "N+4 2029",
+       "annee_debut": 2029,
+       "annee_fin": 2029,
+       "n_debut": 4,
+       "n_fin": 4,
+       "plage": false
+      },
+      {
+       "i": 5,
+       "x0": 380.7,
+       "x1": 430.3,
+       "libelle": "N+5 2030",
+       "annee_debut": 2030,
+       "annee_fin": 2030,
+       "n_debut": 5,
+       "n_fin": 5,
+       "plage": false
+      },
+      {
+       "i": 6,
+       "x0": 430.3,
+       "x1": 508.3,
+       "libelle": "N+6 à N+10 2031 à 2035",
+       "annee_debut": 2031,
+       "annee_fin": 2035,
+       "n_debut": 6,
+       "n_fin": 10,
+       "plage": true
+      },
+      {
+       "i": 7,
+       "x0": 508.3,
+       "x1": 583.9,
+       "libelle": "N+11 à N+15 2036 à 2040",
+       "annee_debut": 2036,
+       "annee_fin": 2040,
+       "n_debut": 11,
+       "n_fin": 15,
+       "plage": true
+      },
+      {
+       "i": 8,
+       "x0": 583.9,
+       "x1": 657.1,
+       "libelle": "N+16 à N+20 2041 à 2045",
+       "annee_debut": 2041,
+       "annee_fin": 2045,
+       "n_debut": 16,
+       "n_fin": 20,
+       "plage": true
+      },
+      {
+       "i": 9,
+       "x0": 657.1,
+       "x1": 735.1,
+       "libelle": "N+21 à N+25 2046 à 2050",
+       "annee_debut": 2046,
+       "annee_fin": 2050,
+       "n_debut": 21,
+       "n_fin": 25,
+       "plage": true
+      },
+      {
+       "i": 10,
+       "x0": 735.1,
+       "x1": 810.7,
+       "libelle": "N+26 à N+30 2051 à 2055",
+       "annee_debut": 2051,
+       "annee_fin": 2055,
+       "n_debut": 26,
+       "n_fin": 30,
+       "plage": true
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "Phasage prévisionne | Travaux initiaux l",
+       "role": "corps",
+       "y0": 279.4,
+       "y1": 310.5,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": "X",
+         "couleur": "#D6E3BC",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "texte": "Entretien par débroussaillage et regarnis si besoin",
+         "couleur": "#D6E3BC",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          0
+         ],
+         "libelles": [
+          "N 2025"
+         ],
+         "texte": "X",
+         "couleur": "#D6E3BC",
+         "fusion_verticale": false
+        },
+        {
+         "type": "bande",
+         "colonnes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "libelles": [
+          "N+1 2026",
+          "N+2 2027",
+          "N+3 2028",
+          "N+4 2029",
+          "N+5 2030",
+          "N+6 à N+10 2031 à 2035",
+          "N+11 à N+15 2036 à 2040",
+          "N+16 à N+20 2041 à 2045",
+          "N+21 à N+25 2046 à 2050",
+          "N+26 à N+30 2051 à 2055"
+         ],
+         "texte": "Entretien par débroussaillage et regarnis si besoin",
+         "couleur": "#D6E3BC",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 34,
+   "page_imprimee": 195,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 366,
+   "n_traits": 15,
+   "n_aplats": 18,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 35,
+   "page_imprimee": 196,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 367,
+   "n_traits": 9,
+   "n_aplats": 6,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 36,
+   "page_imprimee": 197,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 164,
+   "n_traits": 35,
+   "n_aplats": 85,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [
+    {
+     "id": "p036_g1",
+     "page": 36,
+     "type_axe": "mois",
+     "bbox": [
+      34.8,
+      80.1,
+      807.2,
+      97.3
+     ],
+     "zone_temporelle": [
+      153.9,
+      807.2
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "texte_pleine_largeur",
+     "colonnes_bordees": "12/12",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 153.9,
+       "x1": 196.0,
+       "libelle": "Janvier",
+       "mois": 1
+      },
+      {
+       "i": 1,
+       "x0": 196.0,
+       "x1": 238.2,
+       "libelle": "Février",
+       "mois": 2
+      },
+      {
+       "i": 2,
+       "x0": 238.2,
+       "x1": 280.5,
+       "libelle": "Mars",
+       "mois": 3
+      },
+      {
+       "i": 3,
+       "x0": 280.5,
+       "x1": 322.6,
+       "libelle": "Avril",
+       "mois": 4
+      },
+      {
+       "i": 4,
+       "x0": 322.6,
+       "x1": 364.9,
+       "libelle": "Mai",
+       "mois": 5
+      },
+      {
+       "i": 5,
+       "x0": 364.9,
+       "x1": 407.1,
+       "libelle": "Juin",
+       "mois": 6
+      },
+      {
+       "i": 6,
+       "x0": 407.1,
+       "x1": 456.2,
+       "libelle": "Juillet",
+       "mois": 7
+      },
+      {
+       "i": 7,
+       "x0": 456.2,
+       "x1": 498.4,
+       "libelle": "Août",
+       "mois": 8
+      },
+      {
+       "i": 8,
+       "x0": 498.4,
+       "x1": 575.8,
+       "libelle": "Septembre",
+       "mois": 9
+      },
+      {
+       "i": 9,
+       "x0": 575.8,
+       "x1": 658.4,
+       "libelle": "Octobre",
+       "mois": 10
+      },
+      {
+       "i": 10,
+       "x0": 658.4,
+       "x1": 736.4,
+       "libelle": "Novembre",
+       "mois": 11
+      },
+      {
+       "i": 11,
+       "x0": 736.4,
+       "x1": 807.2,
+       "libelle": "Décembre",
+       "mois": 12
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "Période d’intervention",
+       "role": "entete",
+       "y0": 83.4,
+       "y1": 94.0,
+       "marques": [
+        {
+         "type": "remplissage",
+         "colonnes": [
+          5
+         ],
+         "libelles": [
+          "Juin"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        },
+        {
+         "type": "remplissage",
+         "colonnes": [
+          6
+         ],
+         "libelles": [
+          "Juillet"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "p036_g2",
+     "page": 36,
+     "type_axe": "annees",
+     "bbox": [
+      34.8,
+      185.6,
+      807.2,
+      250.6
+     ],
+     "zone_temporelle": [
+      153.9,
+      807.2
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "ligne_trop_haute",
+     "colonnes_bordees": "11/11",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 153.9,
+       "x1": 190.6,
+       "libelle": "N 2025",
+       "annee_debut": 2025,
+       "annee_fin": 2025,
+       "n_debut": 0,
+       "n_fin": 0,
+       "plage": false
+      },
+      {
+       "i": 1,
+       "x0": 190.6,
+       "x1": 233.1,
+       "libelle": "N+1 2026",
+       "annee_debut": 2026,
+       "annee_fin": 2026,
+       "n_debut": 1,
+       "n_fin": 1,
+       "plage": false
+      },
+      {
+       "i": 2,
+       "x0": 233.1,
+       "x1": 275.6,
+       "libelle": "N+2 2027",
+       "annee_debut": 2027,
+       "annee_fin": 2027,
+       "n_debut": 2,
+       "n_fin": 2,
+       "plage": false
+      },
+      {
+       "i": 3,
+       "x0": 275.6,
+       "x1": 318.2,
+       "libelle": "N+3 2028",
+       "annee_debut": 2028,
+       "annee_fin": 2028,
+       "n_debut": 3,
+       "n_fin": 3,
+       "plage": false
+      },
+      {
+       "i": 4,
+       "x0": 318.2,
+       "x1": 360.7,
+       "libelle": "N+4 2029",
+       "annee_debut": 2029,
+       "annee_fin": 2029,
+       "n_debut": 4,
+       "n_fin": 4,
+       "plage": false
+      },
+      {
+       "i": 5,
+       "x0": 360.7,
+       "x1": 403.1,
+       "libelle": "N+5 2030",
+       "annee_debut": 2030,
+       "annee_fin": 2030,
+       "n_debut": 5,
+       "n_fin": 5,
+       "plage": false
+      },
+      {
+       "i": 6,
+       "x0": 403.1,
+       "x1": 488.2,
+       "libelle": "N+6 à N+10 2031 à 2035",
+       "annee_debut": 2031,
+       "annee_fin": 2035,
+       "n_debut": 6,
+       "n_fin": 10,
+       "plage": true
+      },
+      {
+       "i": 7,
+       "x0": 488.2,
+       "x1": 566.2,
+       "libelle": "N+11 à N+15 2036 à 2040",
+       "annee_debut": 2036,
+       "annee_fin": 2040,
+       "n_debut": 11,
+       "n_fin": 15,
+       "plage": true
+      },
+      {
+       "i": 8,
+       "x0": 566.2,
+       "x1": 637.1,
+       "libelle": "N+16 à N+20 2041à 2046",
+       "annee_debut": 2041,
+       "annee_fin": 2046,
+       "n_debut": 16,
+       "n_fin": 20,
+       "plage": true
+      },
+      {
+       "i": 9,
+       "x0": 637.1,
+       "x1": 722.1,
+       "libelle": "N+21 à N+25 2047 à 2053",
+       "annee_debut": 2047,
+       "annee_fin": 2053,
+       "n_debut": 21,
+       "n_fin": 25,
+       "plage": true
+      },
+      {
+       "i": 10,
+       "x0": 722.1,
+       "x1": 807.2,
+       "libelle": "N+26 à N+30 2054 à 2055",
+       "annee_debut": 2054,
+       "annee_fin": 2055,
+       "n_debut": 26,
+       "n_fin": 30,
+       "plage": true
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "Phasage prévisionnel | Inventaire et cartographie",
+       "role": "corps",
+       "y0": 218.6,
+       "y1": 250.6,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          2
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          3
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          4
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          5
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "texte": "1 suivis tous les 5 ans",
+         "couleur": "#CCC0D9",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          0
+         ],
+         "libelles": [
+          "N 2025"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          1
+         ],
+         "libelles": [
+          "N+1 2026"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          2
+         ],
+         "libelles": [
+          "N+2 2027"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          3
+         ],
+         "libelles": [
+          "N+3 2028"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          4
+         ],
+         "libelles": [
+          "N+4 2029"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          5
+         ],
+         "libelles": [
+          "N+5 2030"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "bande",
+         "colonnes": [
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "libelles": [
+          "N+6 à N+10 2031 à 2035",
+          "N+11 à N+15 2036 à 2040",
+          "N+16 à N+20 2041à 2046",
+          "N+21 à N+25 2047 à 2053",
+          "N+26 à N+30 2054 à 2055"
+         ],
+         "texte": "1 suivis tous les 5 ans",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 37,
+   "page_imprimee": 198,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 308,
+   "n_traits": 43,
+   "n_aplats": 102,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [
+    {
+     "id": "p037_g1",
+     "page": 37,
+     "type_axe": "mois",
+     "bbox": [
+      34.8,
+      277.0,
+      807.2,
+      294.2
+     ],
+     "zone_temporelle": [
+      153.9,
+      807.2
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "texte_pleine_largeur",
+     "colonnes_bordees": "12/12",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 153.9,
+       "x1": 196.0,
+       "libelle": "Janvier",
+       "mois": 1
+      },
+      {
+       "i": 1,
+       "x0": 196.0,
+       "x1": 238.2,
+       "libelle": "Février",
+       "mois": 2
+      },
+      {
+       "i": 2,
+       "x0": 238.2,
+       "x1": 280.5,
+       "libelle": "Mars",
+       "mois": 3
+      },
+      {
+       "i": 3,
+       "x0": 280.5,
+       "x1": 322.6,
+       "libelle": "Avril",
+       "mois": 4
+      },
+      {
+       "i": 4,
+       "x0": 322.6,
+       "x1": 364.9,
+       "libelle": "Mai",
+       "mois": 5
+      },
+      {
+       "i": 5,
+       "x0": 364.9,
+       "x1": 407.1,
+       "libelle": "Juin",
+       "mois": 6
+      },
+      {
+       "i": 6,
+       "x0": 407.1,
+       "x1": 456.2,
+       "libelle": "Juillet",
+       "mois": 7
+      },
+      {
+       "i": 7,
+       "x0": 456.2,
+       "x1": 498.4,
+       "libelle": "Août",
+       "mois": 8
+      },
+      {
+       "i": 8,
+       "x0": 498.4,
+       "x1": 575.8,
+       "libelle": "Septembre",
+       "mois": 9
+      },
+      {
+       "i": 9,
+       "x0": 575.8,
+       "x1": 658.4,
+       "libelle": "Octobre",
+       "mois": 10
+      },
+      {
+       "i": 10,
+       "x0": 658.4,
+       "x1": 736.4,
+       "libelle": "Novembre",
+       "mois": 11
+      },
+      {
+       "i": 11,
+       "x0": 736.4,
+       "x1": 807.2,
+       "libelle": "Décembre",
+       "mois": 12
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "Période d’intervention",
+       "role": "entete",
+       "y0": 280.4,
+       "y1": 290.9,
+       "marques": [
+        {
+         "type": "remplissage",
+         "colonnes": [
+          3
+         ],
+         "libelles": [
+          "Avril"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        },
+        {
+         "type": "remplissage",
+         "colonnes": [
+          4
+         ],
+         "libelles": [
+          "Mai"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        },
+        {
+         "type": "remplissage",
+         "colonnes": [
+          5
+         ],
+         "libelles": [
+          "Juin"
+         ],
+         "texte": null,
+         "couleur": "#DBE5F1",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "p037_g2",
+     "page": 37,
+     "type_axe": "annees",
+     "bbox": [
+      34.8,
+      360.1,
+      807.2,
+      425.2
+     ],
+     "zone_temporelle": [
+      153.9,
+      807.2
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "hors_tableau",
+     "colonnes_bordees": "11/11",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 153.9,
+       "x1": 197.7,
+       "libelle": "N 2025",
+       "annee_debut": 2025,
+       "annee_fin": 2025,
+       "n_debut": 0,
+       "n_fin": 0,
+       "plage": false
+      },
+      {
+       "i": 1,
+       "x0": 197.7,
+       "x1": 233.1,
+       "libelle": "N+1 2026",
+       "annee_debut": 2026,
+       "annee_fin": 2026,
+       "n_debut": 1,
+       "n_fin": 1,
+       "plage": false
+      },
+      {
+       "i": 2,
+       "x0": 233.1,
+       "x1": 275.6,
+       "libelle": "N+2 2027",
+       "annee_debut": 2027,
+       "annee_fin": 2027,
+       "n_debut": 2,
+       "n_fin": 2,
+       "plage": false
+      },
+      {
+       "i": 3,
+       "x0": 275.6,
+       "x1": 318.2,
+       "libelle": "N+3 2028",
+       "annee_debut": 2028,
+       "annee_fin": 2028,
+       "n_debut": 3,
+       "n_fin": 3,
+       "plage": false
+      },
+      {
+       "i": 4,
+       "x0": 318.2,
+       "x1": 360.7,
+       "libelle": "N+4 2029",
+       "annee_debut": 2029,
+       "annee_fin": 2029,
+       "n_debut": 4,
+       "n_fin": 4,
+       "plage": false
+      },
+      {
+       "i": 5,
+       "x0": 360.7,
+       "x1": 403.1,
+       "libelle": "N+5 2030",
+       "annee_debut": 2030,
+       "annee_fin": 2030,
+       "n_debut": 5,
+       "n_fin": 5,
+       "plage": false
+      },
+      {
+       "i": 6,
+       "x0": 403.1,
+       "x1": 488.2,
+       "libelle": "N+6 à N+10 2031 à 2035",
+       "annee_debut": 2031,
+       "annee_fin": 2035,
+       "n_debut": 6,
+       "n_fin": 10,
+       "plage": true
+      },
+      {
+       "i": 7,
+       "x0": 488.2,
+       "x1": 566.2,
+       "libelle": "N+11 à N+15 2036 à 2040",
+       "annee_debut": 2036,
+       "annee_fin": 2040,
+       "n_debut": 11,
+       "n_fin": 15,
+       "plage": true
+      },
+      {
+       "i": 8,
+       "x0": 566.2,
+       "x1": 637.1,
+       "libelle": "N+16 à N+20 2041à 2046",
+       "annee_debut": 2041,
+       "annee_fin": 2046,
+       "n_debut": 16,
+       "n_fin": 20,
+       "plage": true
+      },
+      {
+       "i": 9,
+       "x0": 637.1,
+       "x1": 722.1,
+       "libelle": "N+21 à N+25 2047 à 2053",
+       "annee_debut": 2047,
+       "annee_fin": 2053,
+       "n_debut": 21,
+       "n_fin": 25,
+       "plage": true
+      },
+      {
+       "i": 10,
+       "x0": 722.1,
+       "x1": 807.2,
+       "libelle": "N+26 à N+30 2054 à 2055",
+       "annee_debut": 2054,
+       "annee_fin": 2055,
+       "n_debut": 26,
+       "n_fin": 30,
+       "plage": true
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "Phasage prévisionne | Inventaire et cartographie",
+       "role": "corps",
+       "y0": 393.2,
+       "y1": 425.2,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          2
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          3
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          4
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          5
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "texte": "1 suivis tous les 5 ans",
+         "couleur": "#CCC0D9",
+         "type": "bande",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          0
+         ],
+         "libelles": [
+          "N 2025"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          1
+         ],
+         "libelles": [
+          "N+1 2026"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          2
+         ],
+         "libelles": [
+          "N+2 2027"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          3
+         ],
+         "libelles": [
+          "N+3 2028"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          4
+         ],
+         "libelles": [
+          "N+4 2029"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          5
+         ],
+         "libelles": [
+          "N+5 2030"
+         ],
+         "texte": "X",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        },
+        {
+         "type": "bande",
+         "colonnes": [
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "libelles": [
+          "N+6 à N+10 2031 à 2035",
+          "N+11 à N+15 2036 à 2040",
+          "N+16 à N+20 2041à 2046",
+          "N+21 à N+25 2047 à 2053",
+          "N+26 à N+30 2054 à 2055"
+         ],
+         "texte": "1 suivis tous les 5 ans",
+         "couleur": "#CCC0D9",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 38,
+   "page_imprimee": 199,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 414,
+   "n_traits": 14,
+   "n_aplats": 14,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 39,
+   "page_imprimee": 200,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 410,
+   "n_traits": 11,
+   "n_aplats": 4,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 40,
+   "page_imprimee": 201,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 205,
+   "n_traits": 24,
+   "n_aplats": 87,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [
+    {
+     "id": "p040_g1",
+     "page": 40,
+     "type_axe": "annees",
+     "bbox": [
+      34.8,
+      275.2,
+      807.2,
+      343.9
+     ],
+     "zone_temporelle": [
+      148.0,
+      807.2
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "ligne_trop_haute",
+     "colonnes_bordees": "11/11",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 148.0,
+       "x1": 183.4,
+       "libelle": "N 2025",
+       "annee_debut": 2025,
+       "annee_fin": 2025,
+       "n_debut": 0,
+       "n_fin": 0,
+       "plage": false
+      },
+      {
+       "i": 1,
+       "x0": 183.4,
+       "x1": 233.1,
+       "libelle": "N+1 2026",
+       "annee_debut": 2026,
+       "annee_fin": 2026,
+       "n_debut": 1,
+       "n_fin": 1,
+       "plage": false
+      },
+      {
+       "i": 2,
+       "x0": 233.1,
+       "x1": 282.8,
+       "libelle": "N+2 2027",
+       "annee_debut": 2027,
+       "annee_fin": 2027,
+       "n_debut": 2,
+       "n_fin": 2,
+       "plage": false
+      },
+      {
+       "i": 3,
+       "x0": 282.8,
+       "x1": 332.3,
+       "libelle": "N+3 2028",
+       "annee_debut": 2028,
+       "annee_fin": 2028,
+       "n_debut": 3,
+       "n_fin": 3,
+       "plage": false
+      },
+      {
+       "i": 4,
+       "x0": 332.3,
+       "x1": 389.0,
+       "libelle": "N+4 2029",
+       "annee_debut": 2029,
+       "annee_fin": 2029,
+       "n_debut": 4,
+       "n_fin": 4,
+       "plage": false
+      },
+      {
+       "i": 5,
+       "x0": 389.0,
+       "x1": 438.7,
+       "libelle": "N+5 2030",
+       "annee_debut": 2030,
+       "annee_fin": 2030,
+       "n_debut": 5,
+       "n_fin": 5,
+       "plage": false
+      },
+      {
+       "i": 6,
+       "x0": 438.7,
+       "x1": 516.5,
+       "libelle": "N+6 à N+10 2031 à 2035",
+       "annee_debut": 2031,
+       "annee_fin": 2035,
+       "n_debut": 6,
+       "n_fin": 10,
+       "plage": true
+      },
+      {
+       "i": 7,
+       "x0": 516.5,
+       "x1": 587.6,
+       "libelle": "N+11 à N+15 2036 à 2040",
+       "annee_debut": 2036,
+       "annee_fin": 2040,
+       "n_debut": 11,
+       "n_fin": 15,
+       "plage": true
+      },
+      {
+       "i": 8,
+       "x0": 587.6,
+       "x1": 665.5,
+       "libelle": "N+16 à N+20 2041à 2046",
+       "annee_debut": 2041,
+       "annee_fin": 2046,
+       "n_debut": 16,
+       "n_fin": 20,
+       "plage": true
+      },
+      {
+       "i": 9,
+       "x0": 665.5,
+       "x1": 736.4,
+       "libelle": "N+21 à N+25 2047 à 2053",
+       "annee_debut": 2047,
+       "annee_fin": 2053,
+       "n_debut": 21,
+       "n_fin": 25,
+       "plage": true
+      },
+      {
+       "i": 10,
+       "x0": 736.4,
+       "x1": 807.2,
+       "libelle": "N+26 à N+30 2054 à 2055",
+       "annee_debut": 2054,
+       "annee_fin": 2055,
+       "n_debut": 26,
+       "n_fin": 30,
+       "plage": true
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "Phasage prévisionnel",
+       "role": "corps",
+       "y0": 308.3,
+       "y1": 343.9,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          2
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          3
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          4
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          5
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          6
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          7
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          8
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          9
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          10
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          0
+         ],
+         "libelles": [
+          "N 2025"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          1
+         ],
+         "libelles": [
+          "N+1 2026"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          2
+         ],
+         "libelles": [
+          "N+2 2027"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          3
+         ],
+         "libelles": [
+          "N+3 2028"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          4
+         ],
+         "libelles": [
+          "N+4 2029"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          5
+         ],
+         "libelles": [
+          "N+5 2030"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          6
+         ],
+         "libelles": [
+          "N+6 à N+10 2031 à 2035"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          7
+         ],
+         "libelles": [
+          "N+11 à N+15 2036 à 2040"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          8
+         ],
+         "libelles": [
+          "N+16 à N+20 2041à 2046"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          9
+         ],
+         "libelles": [
+          "N+21 à N+25 2047 à 2053"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          10
+         ],
+         "libelles": [
+          "N+26 à N+30 2054 à 2055"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 41,
+   "page_imprimee": 202,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 436,
+   "n_traits": 31,
+   "n_aplats": 89,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [
+    {
+     "id": "p041_g1",
+     "page": 41,
+     "type_axe": "annees",
+     "bbox": [
+      27.6,
+      412.2,
+      814.3,
+      498.6
+     ],
+     "zone_temporelle": [
+      154.9,
+      814.3
+     ],
+     "confiance": "haute",
+     "mode_colonnes": "bordures",
+     "mode_lignes": "traits",
+     "fin_de_lecture": "hors_tableau",
+     "colonnes_bordees": "11/11",
+     "colonnes": [
+      {
+       "i": 0,
+       "x0": 154.9,
+       "x1": 190.5,
+       "libelle": "N 2025",
+       "annee_debut": 2025,
+       "annee_fin": 2025,
+       "n_debut": 0,
+       "n_fin": 0,
+       "plage": false
+      },
+      {
+       "i": 1,
+       "x0": 190.5,
+       "x1": 240.0,
+       "libelle": "N+1 2026",
+       "annee_debut": 2026,
+       "annee_fin": 2026,
+       "n_debut": 1,
+       "n_fin": 1,
+       "plage": false
+      },
+      {
+       "i": 2,
+       "x0": 240.0,
+       "x1": 289.7,
+       "libelle": "N+2 2027",
+       "annee_debut": 2027,
+       "annee_fin": 2027,
+       "n_debut": 2,
+       "n_fin": 2,
+       "plage": false
+      },
+      {
+       "i": 3,
+       "x0": 289.7,
+       "x1": 339.3,
+       "libelle": "N+3 2028",
+       "annee_debut": 2028,
+       "annee_fin": 2028,
+       "n_debut": 3,
+       "n_fin": 3,
+       "plage": false
+      },
+      {
+       "i": 4,
+       "x0": 339.3,
+       "x1": 396.0,
+       "libelle": "N+4 2029",
+       "annee_debut": 2029,
+       "annee_fin": 2029,
+       "n_debut": 4,
+       "n_fin": 4,
+       "plage": false
+      },
+      {
+       "i": 5,
+       "x0": 396.0,
+       "x1": 445.6,
+       "libelle": "N+5 2030",
+       "annee_debut": 2030,
+       "annee_fin": 2030,
+       "n_debut": 5,
+       "n_fin": 5,
+       "plage": false
+      },
+      {
+       "i": 6,
+       "x0": 445.6,
+       "x1": 523.6,
+       "libelle": "N+6 à N+10 2031 à 2035",
+       "annee_debut": 2031,
+       "annee_fin": 2035,
+       "n_debut": 6,
+       "n_fin": 10,
+       "plage": true
+      },
+      {
+       "i": 7,
+       "x0": 523.6,
+       "x1": 594.5,
+       "libelle": "N+11 à N+15 2036 à 2040",
+       "annee_debut": 2036,
+       "annee_fin": 2040,
+       "n_debut": 11,
+       "n_fin": 15,
+       "plage": true
+      },
+      {
+       "i": 8,
+       "x0": 594.5,
+       "x1": 672.6,
+       "libelle": "N+16 à N+20 2041à 2046",
+       "annee_debut": 2041,
+       "annee_fin": 2046,
+       "n_debut": 16,
+       "n_fin": 20,
+       "plage": true
+      },
+      {
+       "i": 9,
+       "x0": 672.6,
+       "x1": 743.5,
+       "libelle": "N+21 à N+25 2047 à 2053",
+       "annee_debut": 2047,
+       "annee_fin": 2053,
+       "n_debut": 21,
+       "n_fin": 25,
+       "plage": true
+      },
+      {
+       "i": 10,
+       "x0": 743.5,
+       "x1": 814.3,
+       "libelle": "N+26 à N+30 2054 à 2055",
+       "annee_debut": 2054,
+       "annee_fin": 2055,
+       "n_debut": 26,
+       "n_fin": 30,
+       "plage": true
+      }
+     ],
+     "lignes": [
+      {
+       "libelle": "Phasage prévisionnel | Bilans intermédiaires",
+       "role": "corps",
+       "y0": 445.3,
+       "y1": 477.2,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          2
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          3
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          4
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          5
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          6
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          7
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          8
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          9
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          10
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          5
+         ],
+         "libelles": [
+          "N+5 2030"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          6
+         ],
+         "libelles": [
+          "N+6 à N+10 2031 à 2035"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          7
+         ],
+         "libelles": [
+          "N+11 à N+15 2036 à 2040"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          8
+         ],
+         "libelles": [
+          "N+16 à N+20 2041à 2046"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        },
+        {
+         "type": "croix",
+         "colonnes": [
+          9
+         ],
+         "libelles": [
+          "N+21 à N+25 2047 à 2053"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        }
+       ]
+      },
+      {
+       "libelle": "Phasage prévisionnel | Bilan final",
+       "role": "corps",
+       "y0": 477.2,
+       "y1": 498.6,
+       "segments": [
+        {
+         "colonnes": [
+          0
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          1
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          2
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          3
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          4
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          5
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          6
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          7
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          8
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          9
+         ],
+         "texte": null,
+         "couleur": null,
+         "type": null,
+         "fusion_verticale": false
+        },
+        {
+         "colonnes": [
+          10
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "type": "croix",
+         "fusion_verticale": false
+        }
+       ],
+       "marques": [
+        {
+         "type": "croix",
+         "colonnes": [
+          10
+         ],
+         "libelles": [
+          "N+26 à N+30 2054 à 2055"
+         ],
+         "texte": "X",
+         "couleur": "#8DB3E2",
+         "fusion_verticale": false
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 42,
+   "page_imprimee": 203,
+   "dimensions": [
+    595.3,
+    841.9
+   ],
+   "n_mots": 226,
+   "n_traits": 16,
+   "n_aplats": 27,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 43,
+   "page_imprimee": 204,
+   "dimensions": [
+    595.3,
+    841.9
+   ],
+   "n_mots": 437,
+   "n_traits": 12,
+   "n_aplats": 27,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 44,
+   "page_imprimee": 205,
+   "dimensions": [
+    595.3,
+    841.9
+   ],
+   "n_mots": 381,
+   "n_traits": 5,
+   "n_aplats": 7,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 45,
+   "page_imprimee": 206,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 164,
+   "n_traits": 15,
+   "n_aplats": 46,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 46,
+   "page_imprimee": 207,
+   "dimensions": [
+    595.3,
+    841.9
+   ],
+   "n_mots": 335,
+   "n_traits": 2,
+   "n_aplats": 2,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      73.8,
+      458.7,
+      521.5,
+      729.5
+     ],
+     "part_page": 0.242,
+     "classe": "document_raster",
+     "raison": "fond blanc dominant, peu de couleur, présence d'encre : texte ou tableau en image",
+     "mesures": {
+      "part_blanc": 0.656,
+      "saturation": 0.13,
+      "part_encre": 0.022
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "▪ Une notion mentionnée dans la réglementation, le critère de proportionnalité.",
+     "vocabulaire_calendaire_proche": false
+    }
+   ],
+   "suspects": []
+  },
+  {
+   "page": 47,
+   "page_imprimee": 208,
+   "dimensions": [
+    595.3,
+    841.9
+   ],
+   "n_mots": 161,
+   "n_traits": 9,
+   "n_aplats": 9,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 48,
+   "page_imprimee": 209,
+   "dimensions": [
+    595.3,
+    841.9
+   ],
+   "n_mots": 516,
+   "n_traits": 17,
+   "n_aplats": 28,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [],
+   "suspects": []
+  },
+  {
+   "page": 49,
+   "page_imprimee": 210,
+   "dimensions": [
+    841.9,
+    595.3
+   ],
+   "n_mots": 78,
+   "n_traits": 2,
+   "n_aplats": 5,
+   "page_scannee": false,
+   "vocabulaire_calendaire": true,
+   "grilles": [],
+   "images": [
+    {
+     "bbox": [
+      110.5,
+      157.7,
+      731.4,
+      500.7
+     ],
+     "part_page": 0.425,
+     "classe": "document_raster",
+     "raison": "fond blanc dominant, peu de couleur, présence d'encre : texte ou tableau en image",
+     "mesures": {
+      "part_blanc": 0.669,
+      "saturation": 0.033,
+      "part_encre": 0.052
+     },
+     "mots_dessus": 0,
+     "contexte_avant": "FAUNA ; Faune-Nouvelle-Aquitaine ; par Envolis)",
+     "vocabulaire_calendaire_proche": true
+    }
+   ],
+   "suspects": []
+  }
+ ],
+ "routage": [
+  {
+   "page": 2,
+   "zone": [
+    149.2,
+    70.9,
+    704.2,
+    472.2
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p002_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 3,
+   "zone": [
+    56.7,
+    351.6,
+    548.4,
+    699.4
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p003_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 4,
+   "zone": [
+    56.7,
+    178.1,
+    544.3,
+    522.7
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p004_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 7,
+   "zone": [
+    70.9,
+    59.5,
+    574.9,
+    415.9
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p007_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 8,
+   "zone": [
+    70.9,
+    59.5,
+    538.4,
+    360.7
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p008_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 9,
+   "zone": [
+    74.0,
+    59.5,
+    521.0,
+    375.6
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p009_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 9,
+   "zone": [
+    70.9,
+    412.3,
+    524.5,
+    733.1
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p009_img2",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 11,
+   "zone": [
+    70.9,
+    59.5,
+    536.6,
+    388.9
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p011_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 13,
+   "zone": [
+    70.9,
+    59.5,
+    528.3,
+    383.0
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p013_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 13,
+   "zone": [
+    76.3,
+    408.8,
+    323.0,
+    593.9
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p013_img2",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 13,
+   "zone": [
+    301.9,
+    408.8,
+    550.8,
+    595.6
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p013_img3",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 14,
+   "zone": [
+    70.9,
+    366.5,
+    569.5,
+    719.1
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p014_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 16,
+   "zone": [
+    70.9,
+    332.0,
+    580.8,
+    692.6
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p016_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 18,
+   "zone": [
+    56.7,
+    59.5,
+    566.6,
+    420.1
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p018_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 19,
+   "zone": [
+    56.7,
+    140.5,
+    551.8,
+    490.6
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p019_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 23,
+   "zone": [
+    74.8,
+    70.5,
+    520.1,
+    385.5
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p023_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 24,
+   "zone": [
+    41.3,
+    174.7,
+    801.1,
+    469.8
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p024_g1",
+   "priorite": "aucune",
+   "motif": "grille annees lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 25,
+   "zone": [
+    41.3,
+    66.6,
+    801.1,
+    143.4
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p025_g1",
+   "priorite": "aucune",
+   "motif": "grille annees lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 25,
+   "zone": [
+    71.4,
+    183.9,
+    771.0,
+    463.4
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p025_g2",
+   "priorite": "aucune",
+   "motif": "grille annees lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 26,
+   "zone": [
+    71.4,
+    66.6,
+    771.0,
+    172.0
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p026_g1",
+   "priorite": "aucune",
+   "motif": "grille annees lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 30,
+   "zone": [
+    71.2,
+    211.4,
+    770.9,
+    227.9
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p030_g1",
+   "priorite": "aucune",
+   "motif": "grille mois lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 30,
+   "zone": [
+    71.2,
+    335.8,
+    770.9,
+    424.6
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p030_g2",
+   "priorite": "aucune",
+   "motif": "grille annees lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 30,
+   "zone": [
+    194.2,
+    62.5,
+    365.6,
+    191.0
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p030_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 30,
+   "zone": [
+    557.1,
+    60.1,
+    731.9,
+    191.0
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p030_img2",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 30,
+   "zone": [
+    375.2,
+    62.3,
+    546.8,
+    191.0
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p030_img3",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 31,
+   "zone": [
+    156.9,
+    309.1,
+    416.9,
+    504.1
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p031_img1",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 31,
+   "zone": [
+    446.2,
+    306.6,
+    706.2,
+    501.6
+   ],
+   "action": "ignorer",
+   "priorite": "aucune",
+   "ref": "p031_img2",
+   "motif": "photo_ou_carte : couleurs ou tons continus dominants"
+  },
+  {
+   "page": 32,
+   "zone": [
+    315.0,
+    236.2,
+    647.1,
+    462.2
+   ],
+   "action": "vision_zone",
+   "priorite": "normale",
+   "type_zone": "document_raster",
+   "ref": "p032_img1",
+   "contexte": "Proposition de composition des bosquets :",
+   "motif": "fond blanc dominant, peu de couleur, présence d'encre : texte ou tableau en image"
+  },
+  {
+   "page": 33,
+   "zone": [
+    31.2,
+    143.9,
+    810.7,
+    175.8
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p033_g1",
+   "priorite": "aucune",
+   "motif": "grille mois lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 33,
+   "zone": [
+    31.2,
+    246.3,
+    810.7,
+    310.5
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p033_g2",
+   "priorite": "aucune",
+   "motif": "grille annees lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 36,
+   "zone": [
+    34.8,
+    80.1,
+    807.2,
+    97.3
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p036_g1",
+   "priorite": "aucune",
+   "motif": "grille mois lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 36,
+   "zone": [
+    34.8,
+    185.6,
+    807.2,
+    250.6
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p036_g2",
+   "priorite": "aucune",
+   "motif": "grille annees lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 37,
+   "zone": [
+    34.8,
+    277.0,
+    807.2,
+    294.2
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p037_g1",
+   "priorite": "aucune",
+   "motif": "grille mois lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 37,
+   "zone": [
+    34.8,
+    360.1,
+    807.2,
+    425.2
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p037_g2",
+   "priorite": "aucune",
+   "motif": "grille annees lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 40,
+   "zone": [
+    34.8,
+    275.2,
+    807.2,
+    343.9
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p040_g1",
+   "priorite": "aucune",
+   "motif": "grille annees lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 41,
+   "zone": [
+    27.6,
+    412.2,
+    814.3,
+    498.6
+   ],
+   "action": "lecture_vectorielle",
+   "ref": "p041_g1",
+   "priorite": "aucune",
+   "motif": "grille annees lue dans le PDF (bordures/traits)"
+  },
+  {
+   "page": 46,
+   "zone": [
+    73.8,
+    458.7,
+    521.5,
+    729.5
+   ],
+   "action": "vision_zone",
+   "priorite": "normale",
+   "type_zone": "document_raster",
+   "ref": "p046_img1",
+   "contexte": "▪ Une notion mentionnée dans la réglementation, le critère de proportionnalité.",
+   "motif": "fond blanc dominant, peu de couleur, présence d'encre : texte ou tableau en image"
+  },
+  {
+   "page": 49,
+   "zone": [
+    110.5,
+    157.7,
+    731.4,
+    500.7
+   ],
+   "action": "vision_zone",
+   "priorite": "haute",
+   "type_zone": "document_raster",
+   "ref": "p049_img1",
+   "contexte": "FAUNA ; Faune-Nouvelle-Aquitaine ; par Envolis)",
+   "motif": "fond blanc dominant, peu de couleur, présence d'encre : texte ou tableau en image"
+  }
+ ]
+}

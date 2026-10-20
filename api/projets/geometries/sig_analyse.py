@@ -26,7 +26,6 @@ CategorieErc = Literal[
     "compensation", "evitement", "reduction", "accompagnement", "autre"
 ]
 
-MAX_APERCU_BYTES = 400_000
 WORK_ROOT = Path(tempfile.gettempdir()) / "kerelia_sig_analyses"
 
 
@@ -71,15 +70,31 @@ class AnalyseSig(BaseModel):
     fichiers_ignores: list[str] = Field(default_factory=list)
 
 
+class AffectationEntite(BaseModel):
+    index: int = Field(ge=0)
+    ug_code: str = Field(min_length=1, max_length=80)
+    libelle: str = Field(min_length=1, max_length=200)
+
+
+class AttributsEntite(BaseModel):
+    index: int = Field(ge=0)
+    valeurs: dict[str, str] = Field(default_factory=dict)
+
+
 class CoucheConfirmation(BaseModel):
     couche_id: str
     categorie: CategorieErc
     cible: Optional[str] = None
+    libelle: Optional[str] = None
+    epsg_force: Optional[int] = None
     inclure: bool = True
+    affectations: list[AffectationEntite] = Field(default_factory=list)
+    attributs: list[AttributsEntite] = Field(default_factory=list)
 
 
 class ConfirmerSigBody(BaseModel):
     analyse_id: str
+    role_geometrie: Optional[str] = None
     couches: list[CoucheConfirmation]
 
 
@@ -96,71 +111,32 @@ def charger_analyse(projet_id: UUID, analyse_id: str) -> AnalyseSig:
     return AnalyseSig.model_validate_json(path.read_text(encoding="utf-8"))
 
 
-def _simplifier_fc(gdf, tolerance: float = 8.0) -> dict[str, Any]:
-    """Aperçu 4326 simplifié pour MapLibre."""
+def _simplifier_fc(gdf, tolerance: float = 0.0) -> dict[str, Any]:
+    """GeoJSON 4326 pour la carte. Tolérance 0 : tracé source, sans simplification."""
+    import pandas as pd
+
     try:
         g4326 = gdf.to_crs(epsg=4326)
     except Exception:  # noqa: BLE001
         return {"type": "FeatureCollection", "features": []}
-    try:
-        # simplify en mètres approx via 3857 puis retour 4326
-        g3857 = gdf.to_crs(epsg=3857)
-        simplified = g3857.geometry.simplify(tolerance, preserve_topology=True)
-        g4326 = g3857.set_geometry(simplified).to_crs(epsg=4326)
-    except Exception:  # noqa: BLE001
-        pass
-    # drop Z/M
+    if tolerance > 0:
+        try:
+            g3857 = gdf.to_crs(epsg=3857)
+            simplified = g3857.geometry.simplify(tolerance, preserve_topology=True)
+            g4326 = g3857.set_geometry(simplified).to_crs(epsg=4326)
+        except Exception:  # noqa: BLE001
+            pass
     try:
         g4326 = g4326.copy()
         g4326["geometry"] = g4326.geometry.force_2d()
     except Exception:  # noqa: BLE001
         pass
+    for col in list(g4326.columns):
+        if col == "geometry":
+            continue
+        if pd.api.types.is_datetime64_any_dtype(g4326[col]):
+            g4326[col] = g4326[col].dt.strftime("%Y-%m-%d").where(g4326[col].notna(), None)
     return json.loads(g4326.to_json())
-
-
-def _budget_apercus(couches: list[CoucheAnalyse]) -> None:
-    """Garantit ≤ 400 ko pour l'ensemble des aperçus."""
-    total = sum(len(json.dumps(c.apercu or {})) for c in couches)
-    if total <= MAX_APERCU_BYTES:
-        return
-    # Dégrader : centroïdes seulement
-    for c in couches:
-        feats = (c.apercu or {}).get("features") or []
-        cents = []
-        for f in feats:
-            geom = f.get("geometry") or {}
-            # bbox-ish : on garde juste un Point approximatif
-            coords = geom.get("coordinates")
-            if not coords:
-                continue
-            try:
-                flat = list(_flatten_coords(coords))
-                if not flat:
-                    continue
-                xs = [p[0] for p in flat]
-                ys = [p[1] for p in flat]
-                cents.append({
-                    "type": "Feature",
-                    "properties": f.get("properties") or {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [(min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2],
-                    },
-                })
-            except Exception:  # noqa: BLE001
-                continue
-        c.apercu = {"type": "FeatureCollection", "features": cents}
-        c.avertissements.append(
-            "Aperçu allégé (centroïdes) : géométrie détaillée au-delà du budget 400 ko"
-        )
-
-
-def _flatten_coords(coords):
-    if isinstance(coords, (list, tuple)) and coords and isinstance(coords[0], (int, float)):
-        yield coords[:2]
-        return
-    for c in coords:
-        yield from _flatten_coords(c)
 
 
 def analyser_fichier_sig(
@@ -265,8 +241,6 @@ def analyser_fichier_sig(
             json.dumps(couche_meta, ensure_ascii=False), encoding="utf-8"
         )
         couches.append(couche)
-
-    _budget_apercus(couches)
 
     if len(epsgs) > 1:
         avertissements_globaux.append(

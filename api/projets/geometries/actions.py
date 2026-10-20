@@ -332,3 +332,55 @@ def retirer_entites(
     except Exception as exc:
         raise GeometryIngestError(f"Retrait impossible : {exc}") from exc
     return {"entites": updated, "nb": len(updated)}
+
+
+_CLES_GEOMETRIE = {"wkt_geom", "geom", "geometry", "the_geom", "wkb", "wkb_geometry", "wkb_geom"}
+
+
+def poser_attribut_ug(projet_id: UUID, ug_id: str, cle: str, valeur: str) -> dict[str, Any]:
+    """Ajoute ou remplace une colonne attributaire sur toutes les géométries de l'UG.
+
+    Le JSONB ``attributs`` est une liste de lignes ``[{colonne: valeur}]``.
+    La clé est fusionnée dans chaque ligne, sans toucher à la géométrie.
+    """
+    nom = cle.strip()
+    if not nom or len(nom) > 80:
+        raise GeometryIngestError("Nom d'attribut invalide.")
+    if nom.lower() in _CLES_GEOMETRIE:
+        raise GeometryIngestError("Cet attribut est réservé à la géométrie.")
+    code = normalize_ug_id(ug_id) or ug_id.strip()
+    nb = 0
+    try:
+        with connect_utilisateur() as conn:
+            with conn.cursor() as cur:
+                for table in _TABLES.values():
+                    cur.execute(
+                        f"""
+                        UPDATE bancarisation.{table}
+                        SET attributs = CASE
+                          WHEN jsonb_typeof(attributs) = 'array' AND jsonb_array_length(attributs) > 0
+                          THEN (
+                            SELECT jsonb_agg(
+                              CASE
+                                WHEN jsonb_typeof(elem) = 'object'
+                                THEN elem || jsonb_build_object(%s, %s)
+                                ELSE elem
+                              END
+                            )
+                            FROM jsonb_array_elements(attributs) AS elem
+                          )
+                          ELSE jsonb_build_array(jsonb_build_object(%s, %s))
+                        END
+                        WHERE projet_id = %s AND ug_id = %s
+                        """,
+                        (nom, valeur, nom, valeur, str(projet_id), code),
+                    )
+                    nb += cur.rowcount
+            conn.commit()
+    except GeometryIngestError:
+        raise
+    except Exception as exc:
+        raise GeometryIngestError(f"Enregistrement de l'attribut impossible : {exc}") from exc
+    if nb == 0:
+        raise GeometryIngestError("Unité de gestion introuvable.")
+    return {"ug_id": code, "cle": nom, "nb": nb}

@@ -11,6 +11,13 @@ from psycopg.rows import dict_row
 
 from api.db.utilisateur import connect_utilisateur
 
+from .naf import libelle_naf
+
+
+def _avec_libelle_naf(row: dict[str, Any]) -> dict[str, Any]:
+    row["libelle_naf"] = libelle_naf(row.get("code_naf"))
+    return row
+
 
 def normaliser_siret(raw: str | None) -> str | None:
     if not raw:
@@ -24,44 +31,57 @@ def _connect():
 
 
 def lister_global(*, q: str | None = None, limit: int = 20) -> list[dict[str, Any]]:
+    """Annuaire de l'organisation : prestataires déjà liés à l'un de ses projets.
+
+    Pas le référentiel mondial, pour pouvoir les reprendre sur un autre dossier.
+    """
     terme = (q or "").strip()
+    like = f"%{terme}%"
+    siret_like = f"%{normaliser_siret(terme) or terme}%"
     with _connect() as conn:
         with conn.cursor() as cur:
-            if terme:
-                cur.execute(
-                    """
-                    SELECT id::text, nom, siret, telephone, email, commune, actif
-                    FROM bancarisation.prestataires
-                    WHERE actif IS TRUE
-                      AND (
-                        nom ILIKE %s
-                        OR coalesce(siret, '') ILIKE %s
-                        OR coalesce(siret_norm, '') LIKE %s
+            cur.execute(
+                """
+                SELECT id::text, nom, siret, telephone, email, commune, actif
+                FROM bancarisation.prestataires p
+                WHERE actif IS TRUE
+                  AND p.id IN (
+                    SELECT pp.prestataire_id
+                    FROM bancarisation.projet_prestataire pp
+                    JOIN bancarisation.projets pr ON pr.id = pp.projet_id
+                    WHERE pr.organisation_id IN (
+                      SELECT organisation_id FROM prive.mes_appartenances()
+                    )
+                    UNION
+                    SELECT o.prestataire_id
+                    FROM bancarisation.occurrence o
+                    JOIN bancarisation.projets pr ON pr.id = o.projet_id
+                    WHERE o.prestataire_id IS NOT NULL
+                      AND pr.organisation_id IN (
+                        SELECT organisation_id FROM prive.mes_appartenances()
                       )
-                    ORDER BY
-                      CASE WHEN lower(nom) LIKE lower(%s) THEN 0 ELSE 1 END,
-                      nom ASC
-                    LIMIT %s
-                    """,
-                    (
-                        f"%{terme}%",
-                        f"%{terme}%",
-                        f"%{normaliser_siret(terme) or terme}%",
-                        f"{terme}%",
-                        limit,
-                    ),
-                )
-            else:
-                cur.execute(
-                    """
-                    SELECT id::text, nom, siret, telephone, email, commune, actif
-                    FROM bancarisation.prestataires
-                    WHERE actif IS TRUE
-                    ORDER BY nom ASC
-                    LIMIT %s
-                    """,
-                    (limit,),
-                )
+                  )
+                  AND (
+                    %s = ''
+                    OR p.nom ILIKE %s
+                    OR coalesce(p.siret, '') ILIKE %s
+                    OR coalesce(p.siret_norm, '') LIKE %s
+                  )
+                ORDER BY
+                  CASE WHEN %s <> '' AND lower(p.nom) LIKE lower(%s) THEN 0 ELSE 1 END,
+                  p.nom ASC
+                LIMIT %s
+                """,
+                (
+                    terme,
+                    like,
+                    like,
+                    siret_like,
+                    terme,
+                    f"{terme}%",
+                    limit,
+                ),
+            )
             return [dict(r) for r in cur.fetchall()]
 
 
@@ -74,14 +94,14 @@ def get_prestataire(prestataire_id: UUID) -> dict[str, Any] | None:
                   id::text, nom, siret, siret_norm, forme_juridique,
                   adresse, code_postal, commune, departement,
                   email, telephone, interlocuteur, specialites,
-                  categories_mesure, actif, notes
+                  categories_mesure, actif, notes, code_naf, tva
                 FROM bancarisation.prestataires
                 WHERE id = %s
                 """,
                 (str(prestataire_id),),
             )
             row = cur.fetchone()
-            return dict(row) if row else None
+            return _avec_libelle_naf(dict(row)) if row else None
 
 
 def lister_projet(
@@ -89,58 +109,71 @@ def lister_projet(
     *,
     q: str | None = None,
 ) -> list[dict[str, Any]]:
+    """Liste du projet seul.
+
+    La vue `v_projet_prestataires` agrège d'abord toutes les occurrences
+    de tous les projets, puis filtre. Ici le projet est filtré avant les sommes.
+    """
     terme = (q or "").strip()
+    like = f"%{terme}%"
     with _connect() as conn:
         with conn.cursor() as cur:
-            if terme:
-                cur.execute(
-                    """
-                    SELECT
-                      v.projet_id::text,
-                      v.prestataire_id::text AS id,
-                      v.prestataire_nom AS nom,
-                      v.siret, v.siret_norm, v.forme_juridique,
-                      v.adresse, v.code_postal, v.commune, v.departement,
-                      v.email, v.telephone, v.interlocuteur,
-                      v.specialites, v.categories_mesure, v.actif,
-                      v.role, v.rattache_le::text, v.source,
-                      v.nb_occurrences, v.nb_realisees,
-                      v.total_prevu_ht::float, v.total_engage_ht::float,
-                      v.total_realise_ht::float,
-                      v.annee_min, v.annee_max
-                    FROM bancarisation.v_projet_prestataires v
-                    WHERE v.projet_id = %s
-                      AND (
-                        v.prestataire_nom ILIKE %s
-                        OR coalesce(v.siret, '') ILIKE %s
-                      )
-                    ORDER BY v.prestataire_nom ASC
-                    """,
-                    (str(projet_id), f"%{terme}%", f"%{terme}%"),
+            cur.execute(
+                """
+                WITH lies AS (
+                  SELECT prestataire_id, role, created_at AS rattache_le
+                  FROM bancarisation.projet_prestataire
+                  WHERE projet_id = %s
+                ),
+                occ AS (
+                  SELECT
+                    o.prestataire_id,
+                    count(*) FILTER (WHERE o.statut <> 'supprime') AS nb_occurrences,
+                    count(*) FILTER (WHERE o.statut = 'realise') AS nb_realisees,
+                    sum(f.montant_ht) FILTER (WHERE o.statut <> 'supprime') AS total_prevu_ht,
+                    sum(f.montant_engage) FILTER (WHERE o.statut <> 'supprime') AS total_engage_ht,
+                    sum(f.montant_realise) FILTER (WHERE o.statut <> 'supprime') AS total_realise_ht,
+                    min(o.annee) FILTER (WHERE o.statut <> 'supprime') AS annee_min,
+                    max(o.annee) FILTER (WHERE o.statut <> 'supprime') AS annee_max
+                  FROM bancarisation.occurrence o
+                  LEFT JOIN bancarisation.occurrence_finance f ON f.occurrence_id = o.id
+                  WHERE o.projet_id = %s
+                    AND o.prestataire_id IS NOT NULL
+                  GROUP BY o.prestataire_id
                 )
-            else:
-                cur.execute(
-                    """
-                    SELECT
-                      v.projet_id::text,
-                      v.prestataire_id::text AS id,
-                      v.prestataire_nom AS nom,
-                      v.siret, v.siret_norm, v.forme_juridique,
-                      v.adresse, v.code_postal, v.commune, v.departement,
-                      v.email, v.telephone, v.interlocuteur,
-                      v.specialites, v.categories_mesure, v.actif,
-                      v.role, v.rattache_le::text, v.source,
-                      v.nb_occurrences, v.nb_realisees,
-                      v.total_prevu_ht::float, v.total_engage_ht::float,
-                      v.total_realise_ht::float,
-                      v.annee_min, v.annee_max
-                    FROM bancarisation.v_projet_prestataires v
-                    WHERE v.projet_id = %s
-                    ORDER BY v.prestataire_nom ASC
-                    """,
-                    (str(projet_id),),
-                )
-            return [dict(r) for r in cur.fetchall()]
+                SELECT
+                  %s::text AS projet_id,
+                  coalesce(occ.prestataire_id, lies.prestataire_id)::text AS id,
+                  p.nom,
+                  p.siret, p.siret_norm, p.forme_juridique,
+                  p.adresse, p.code_postal, p.commune, p.departement,
+                  p.email, p.telephone, p.interlocuteur,
+                  p.specialites, p.categories_mesure, p.actif,
+                  lies.role, lies.rattache_le::text,
+                  CASE
+                    WHEN occ.prestataire_id IS NOT NULL AND lies.prestataire_id IS NOT NULL THEN 'les_deux'
+                    WHEN occ.prestataire_id IS NOT NULL THEN 'occurrence'
+                    ELSE 'projet'
+                  END AS source,
+                  coalesce(occ.nb_occurrences, 0) AS nb_occurrences,
+                  coalesce(occ.nb_realisees, 0) AS nb_realisees,
+                  occ.total_prevu_ht::float,
+                  occ.total_engage_ht::float,
+                  occ.total_realise_ht::float,
+                  occ.annee_min, occ.annee_max,
+                  p.code_naf, p.tva
+                FROM occ
+                FULL JOIN lies ON lies.prestataire_id = occ.prestataire_id
+                JOIN bancarisation.prestataires p
+                  ON p.id = coalesce(occ.prestataire_id, lies.prestataire_id)
+                WHERE %s = ''
+                   OR p.nom ILIKE %s
+                   OR coalesce(p.siret, '') ILIKE %s
+                ORDER BY p.nom ASC
+                """,
+                (str(projet_id), str(projet_id), str(projet_id), terme, like, like),
+            )
+            return [_avec_libelle_naf(dict(r)) for r in cur.fetchall()]
 
 
 def trouver_par_siret(siret_norm: str) -> dict[str, Any] | None:
@@ -185,6 +218,9 @@ def rattacher(
     adresse: str | None = None,
     code_postal: str | None = None,
     commune: str | None = None,
+    departement: str | None = None,
+    code_naf: str | None = None,
+    tva: str | None = None,
     telephone: str | None = None,
     email: str | None = None,
     interlocuteur: str | None = None,
@@ -222,9 +258,9 @@ def rattacher(
                 cur.execute(
                     """
                     INSERT INTO bancarisation.prestataires (
-                      nom, siret, adresse, code_postal, commune,
-                      telephone, email, interlocuteur
-                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                      nom, siret, adresse, code_postal, commune, departement,
+                      code_naf, tva, telephone, email, interlocuteur
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     RETURNING id::text, nom
                     """,
                     (
@@ -233,6 +269,9 @@ def rattacher(
                         adresse,
                         code_postal,
                         commune,
+                        departement,
+                        code_naf,
+                        tva,
                         telephone,
                         email,
                         interlocuteur,
@@ -249,6 +288,9 @@ def rattacher(
                       adresse = COALESCE(NULLIF(%s, ''), adresse),
                       code_postal = COALESCE(NULLIF(%s, ''), code_postal),
                       commune = COALESCE(NULLIF(%s, ''), commune),
+                      departement = COALESCE(NULLIF(%s, ''), departement),
+                      code_naf = COALESCE(NULLIF(%s, ''), code_naf),
+                      tva = COALESCE(NULLIF(%s, ''), tva),
                       telephone = COALESCE(NULLIF(%s, ''), telephone),
                       email = COALESCE(NULLIF(%s, ''), email),
                       interlocuteur = COALESCE(NULLIF(%s, ''), interlocuteur)
@@ -259,6 +301,9 @@ def rattacher(
                         adresse,
                         code_postal,
                         commune,
+                        departement,
+                        code_naf,
+                        tva,
                         telephone,
                         email,
                         interlocuteur,
@@ -267,8 +312,6 @@ def rattacher(
                 )
 
             upsert_lien_projet(cur, projet_id, pid, role=role)
-
-        conn.commit()
 
     rows = lister_projet(projet_id)
     for r in rows:
@@ -314,7 +357,6 @@ def detacher(projet_id: UUID, prestataire_id: UUID) -> None:
             )
             if cur.fetchone() is None:
                 raise LookupError("Rattachement introuvable.")
-        conn.commit()
 
 
 def patch_prestataire(
@@ -329,6 +371,8 @@ def patch_prestataire(
         "code_postal",
         "commune",
         "departement",
+        "code_naf",
+        "tva",
         "email",
         "telephone",
         "interlocuteur",
@@ -353,7 +397,6 @@ def patch_prestataire(
             )
             if cur.fetchone() is None:
                 return None
-        conn.commit()
     return get_prestataire(prestataire_id)
 
 
@@ -376,4 +419,3 @@ def lier_occurrence_au_projet(
             if not row:
                 return
             upsert_lien_projet(cur, row["projet_id"], prestataire_id)
-        conn.commit()

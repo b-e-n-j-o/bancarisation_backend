@@ -1,0 +1,4786 @@
+{
+ "_doc": "Réponses attendues d'un LLM pour l'arrêté DBEC 149/2025 (Bruges) — sert d'exemple de sortie et de jeu de test (--inject).",
+ "fiche": {
+  "reference": "DBEC n° 149/2025",
+  "titre": "Arrêté portant dérogation à l'interdiction de destruction d'espèces végétales et animales protégées et de leurs habitats — Opération immobilière « les Jardins d'Aquitaine » — Commune de Bruges (33)",
+  "type_acte": "derogation_especes_protegees",
+  "procedure": "Dérogation espèces protégées (art. L.411-1 et L.411-2 du code de l'environnement)",
+  "autorite": "Préfet de la Gironde",
+  "date_signature": "2025-11-20",
+  "lieu_signature": "Bordeaux",
+  "projet": {
+   "nom": "Les Jardins d'Aquitaine",
+   "nature": "Opération immobilière (dont 59 logements locatifs sociaux et 54 logements locatifs intermédiaires)",
+   "communes": [
+    "Bruges"
+   ],
+   "departement": "Gironde (33)",
+   "region": "Nouvelle-Aquitaine"
+  },
+  "parties": [
+   {
+    "role": "beneficiaire",
+    "nom": "SNC 136 avenue d'Aquitaine (Pichet)",
+    "adresse": "82 chemin des courses – 20-24 rue Canteranne – 33600 Pessac"
+   },
+   {
+    "role": "autorite",
+    "nom": "Préfet de la Gironde"
+   },
+   {
+    "role": "signataire",
+    "nom": "DREAL Nouvelle-Aquitaine",
+    "qualite": "Pour le préfet et par délégation, pour le directeur régional et par subdélégation"
+   },
+   {
+    "role": "service_instructeur",
+    "nom": "DREAL Nouvelle-Aquitaine — Service Patrimoine Naturel (SPN)",
+    "contact": "especes-protegees.dreal-na@developpement-durable.gouv.fr ; geomce.dreal-na@developpement-durable.gouv.fr"
+   },
+   {
+    "role": "destinataire_copie",
+    "nom": "DDTM de la Gironde"
+   },
+   {
+    "role": "destinataire_copie",
+    "nom": "OFB (direction régionale et service départemental de la Gironde)"
+   }
+  ],
+  "bases_juridiques": [
+   "Code de l'environnement L.110-1",
+   "L.163-1",
+   "L.163-5",
+   "L.171-1 à L.171-12",
+   "L.411-1",
+   "L.411-1A",
+   "L.411-2",
+   "L.415-3",
+   "R.411-1 à R.411-14",
+   "Arrêté ministériel du 19 février 2007 modifié (instruction des dérogations)",
+   "Arrêté du 20 janvier 1981 (flore protégée nationale)",
+   "Arrêté du 8 mars 2002 (flore protégée Aquitaine)",
+   "Arrêté du 23 avril 2007 (mammifères terrestres)",
+   "Arrêté du 29 octobre 2009 (oiseaux)",
+   "Arrêté du 8 janvier 2021 (amphibiens et reptiles)",
+   "Arrêté du 27 décembre 2018 (nuisances lumineuses, cité art. 11.8.2)"
+  ],
+  "visas": [
+   {
+    "type": "texte_legal",
+    "libelle": "Code de l'environnement"
+   },
+   {
+    "type": "arrete_ministeriel",
+    "libelle": "Conditions de demande et d'instruction des dérogations",
+    "date": "2007-02-19"
+   },
+   {
+    "type": "arrete_ministeriel",
+    "libelle": "Liste des espèces végétales protégées (national)",
+    "date": "1981-01-20"
+   },
+   {
+    "type": "arrete_ministeriel",
+    "libelle": "Liste des espèces végétales protégées en Aquitaine",
+    "date": "2002-03-08"
+   },
+   {
+    "type": "arrete_ministeriel",
+    "libelle": "Liste des mammifères terrestres protégés",
+    "date": "2007-04-23"
+   },
+   {
+    "type": "arrete_ministeriel",
+    "libelle": "Liste des oiseaux protégés",
+    "date": "2009-10-29"
+   },
+   {
+    "type": "arrete_ministeriel",
+    "libelle": "Listes des amphibiens et reptiles protégés",
+    "date": "2021-01-08"
+   },
+   {
+    "type": "delegation",
+    "libelle": "Délégation de signature au directeur régional de la DREAL",
+    "date": "2023-12-22",
+    "reference": "33-2023-12-22-00009"
+   },
+   {
+    "type": "delegation",
+    "libelle": "Délégation de signature à des agents de la DREAL",
+    "date": "2025-10-01",
+    "reference": "33-2025-10-01-00010"
+   },
+   {
+    "type": "demande",
+    "libelle": "Dépôt de la demande de dérogation",
+    "date": "2025-04-29",
+    "auteur": "SNC 136 avenue d'Aquitaine"
+   },
+   {
+    "type": "complement",
+    "libelle": "Complément de la demande",
+    "date": "2025-07-24",
+    "auteur": "SNC 136 avenue d'Aquitaine"
+   },
+   {
+    "type": "avis",
+    "libelle": "Avis du CSRPN",
+    "date": "2025-09-04",
+    "auteur": "CSRPN Nouvelle-Aquitaine"
+   },
+   {
+    "type": "reponse",
+    "libelle": "Réponse à l'avis du CSRPN",
+    "date": "2025-09-19",
+    "auteur": "pétitionnaire"
+   },
+   {
+    "type": "reponse",
+    "libelle": "Réponse à l'avis du CSRPN (2e)",
+    "date": "2025-10-28",
+    "auteur": "pétitionnaire"
+   },
+   {
+    "type": "consultation_public",
+    "libelle": "Consultation du public (site de la DREAL)",
+    "date": "2025-10-21",
+    "date_fin": "2025-11-05"
+   }
+  ],
+  "actes_lies": [
+   {
+    "reference": "33-2023-12-22-00009",
+    "date": "2023-12-22",
+    "relation": "vise",
+    "libelle": "délégation de signature"
+   },
+   {
+    "reference": "33-2025-10-01-00010",
+    "date": "2025-10-01",
+    "relation": "vise",
+    "libelle": "délégation de signature"
+   }
+  ],
+  "recours": {
+   "delai": "2 mois à compter de la notification ou de la publication",
+   "juridiction": "Tribunal administratif de Bordeaux",
+   "modalites": [
+    "recours contentieux par courrier ou Télérecours",
+    "recours gracieux préalable auprès du préfet (rejet tacite après 2 mois)"
+   ]
+  },
+  "publication": "Recueil des actes administratifs de la préfecture de la Gironde ; notification au pétitionnaire",
+  "copies": [
+   "DDTM de la Gironde",
+   "Directeur régional de l'OFB",
+   "Chef du service départemental de l'OFB de la Gironde"
+  ],
+  "citations": [
+   {
+    "page": 1,
+    "quote": "Réf. DBEC : n° 149 / 2025"
+   },
+   {
+    "page": 20,
+    "quote": "Bordeaux, le 20 novembre 2025"
+   },
+   {
+    "page": 3,
+    "quote": "Le bénéficiaire de la dérogation est la SNC 136 avenue d’Aquitaine (Pichet)"
+   }
+  ]
+ },
+ "synthese": {
+  "resume_general": "Dérogation accordée le 20/11/2025 à la SNC 136 avenue d'Aquitaine (Pichet) pour l'opération immobilière « les Jardins d'Aquitaine » à Bruges : destruction de 2 lotiers protégés, perturbation et capture d'amphibiens, de reptiles et du Hérisson, destruction d'habitats de 21 oiseaux et 4 chiroptères. En contrepartie : évitement de la zone humide ouest, du boisement de peupliers et de 16 arbres gîtes sur 18 ; mesures de réduction en chantier et en exploitation ; compensation in situ (10 mares à Crapaud calamite) et ex situ à Sainte-Eulalie (lotiers et avifaune, CDC Biodiversité) pendant au moins 30 ans ; suivis jusqu'à N+30, comité de suivi et nombreuses transmissions à la DREAL. Travaux autorisés jusqu'au 31/12/2028.",
+  "justification": {
+   "resume": "Raison impérative d'intérêt public majeur de nature sociale et économique (rattrapage SRU de Bruges, objectifs du POA Habitat de Bordeaux Métropole, lutte contre l'étalement urbain), absence d'alternative plus satisfaisante sur un site déjà largement artificialisé, maintien des populations dans un état de conservation favorable grâce aux mesures ERC.",
+   "motifs": [
+    "raison impérative d'intérêt public majeur (sociale et économique)",
+    "absence d'autre solution satisfaisante",
+    "pas d'atteinte à l'état de conservation favorable des populations"
+   ],
+   "chiffres_cles": [
+    "59 logements locatifs sociaux",
+    "54 logements locatifs intermédiaires",
+    "site déjà largement artificialisé"
+   ]
+  },
+  "especes": [
+   {
+    "nom_scientifique": "Lotus hispidus",
+    "nom_vernaculaire": "Lotier hispide",
+    "groupe": "flore",
+    "natures": [
+     "destruction_individus"
+    ]
+   },
+   {
+    "nom_scientifique": "Lotus angustissimus",
+    "nom_vernaculaire": "Lotier grêle",
+    "groupe": "flore",
+    "natures": [
+     "destruction_individus"
+    ]
+   },
+   {
+    "nom_scientifique": "Prunella modularis",
+    "nom_vernaculaire": "Accenteur mouchet",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Cettia cetti",
+    "nom_vernaculaire": "Bouscarle de Cetti",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Carduelis carduelis",
+    "nom_vernaculaire": "Chardonneret élégant",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Cuculus canorus",
+    "nom_vernaculaire": "Coucou gris",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Sylvia atricapilla",
+    "nom_vernaculaire": "Fauvette à tête noire",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Certhia brachydactyla",
+    "nom_vernaculaire": "Grimpereau des jardins",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Hippolais polyglotta",
+    "nom_vernaculaire": "Hypolaïs polyglotte",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Cyanistes caeruleus",
+    "nom_vernaculaire": "Mésange bleue",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Parus major",
+    "nom_vernaculaire": "Mésange charbonnière",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Aegithalos caudatus",
+    "nom_vernaculaire": "Orite à longue queue",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Dendrocopos major",
+    "nom_vernaculaire": "Pic épeiche",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Picus viridis",
+    "nom_vernaculaire": "Pic vert",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Fringilla coelebs",
+    "nom_vernaculaire": "Pinson des arbres",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Phylloscopus collybita",
+    "nom_vernaculaire": "Pouillot véloce",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Regulus ignicapilla",
+    "nom_vernaculaire": "Roitelet à triple bandeau",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Luscinia megarhynchos",
+    "nom_vernaculaire": "Rossignol philomèle",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Erithacus rubecula",
+    "nom_vernaculaire": "Rougegorge familier",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Sitta europaea",
+    "nom_vernaculaire": "Sittelle torchepot",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Troglodytes troglodytes",
+    "nom_vernaculaire": "Troglodyte mignon",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Serinus serinus",
+    "nom_vernaculaire": "Serin cini",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Chloris chloris",
+    "nom_vernaculaire": "Verdier d'Europe",
+    "groupe": "oiseaux",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Nyctalus leisleri",
+    "nom_vernaculaire": "Noctule de Leisler",
+    "groupe": "chiropteres",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Pipistrellus pipistrellus",
+    "nom_vernaculaire": "Pipistrelle commune",
+    "groupe": "chiropteres",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Pipistrellus kuhlii",
+    "nom_vernaculaire": "Pipistrelle de Kuhl",
+    "groupe": "chiropteres",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Eptesicus serotinus",
+    "nom_vernaculaire": "Sérotine commune",
+    "groupe": "chiropteres",
+    "natures": [
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Epidalea calamita",
+    "nom_vernaculaire": "Crapaud calamite",
+    "groupe": "amphibiens",
+    "natures": [
+     "destruction_individus",
+     "capture_enlevement",
+     "perturbation_intentionnelle",
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Bufo spinosus",
+    "nom_vernaculaire": "Crapaud épineux",
+    "groupe": "amphibiens",
+    "natures": [
+     "destruction_individus",
+     "capture_enlevement",
+     "perturbation_intentionnelle",
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Rana dalmatina",
+    "nom_vernaculaire": "Grenouille agile",
+    "groupe": "amphibiens",
+    "natures": [
+     "destruction_individus",
+     "capture_enlevement",
+     "perturbation_intentionnelle",
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Hierophis viridiflavus",
+    "nom_vernaculaire": "Couleuvre verte et jaune",
+    "groupe": "reptiles",
+    "natures": [
+     "destruction_individus",
+     "capture_enlevement",
+     "perturbation_intentionnelle",
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Lacerta bilineata",
+    "nom_vernaculaire": "Lézard à deux raies",
+    "groupe": "reptiles",
+    "natures": [
+     "destruction_individus",
+     "capture_enlevement",
+     "perturbation_intentionnelle",
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Podarcis muralis",
+    "nom_vernaculaire": "Lézard des murailles",
+    "groupe": "reptiles",
+    "natures": [
+     "destruction_individus",
+     "capture_enlevement",
+     "perturbation_intentionnelle",
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Anguis fragilis",
+    "nom_vernaculaire": "Orvet fragile",
+    "groupe": "reptiles",
+    "natures": [
+     "destruction_individus",
+     "capture_enlevement",
+     "perturbation_intentionnelle",
+     "destruction_habitat"
+    ]
+   },
+   {
+    "nom_scientifique": "Erinaceus europaeus",
+    "nom_vernaculaire": "Hérisson d'Europe",
+    "groupe": "mammiferes",
+    "natures": [
+     "destruction_individus",
+     "capture_enlevement",
+     "perturbation_intentionnelle",
+     "destruction_habitat"
+    ]
+   }
+  ],
+  "impacts": [
+   {
+    "description": "Habitats favorables aux Lotiers grêle et hispide",
+    "quantites": [
+     {
+      "valeur": 0.65,
+      "valeur_max": null,
+      "unite": "ha",
+      "objet": "habitats à lotiers"
+     }
+    ],
+    "especes": [
+     "Lotus angustissimus",
+     "Lotus hispidus"
+    ],
+    "citations": [
+     {
+      "page": 3,
+      "quote": "0,65 ha d’habitats favorables aux Lotiers grêle et hispide"
+     }
+    ]
+   },
+   {
+    "description": "Fourrés et boisements favorables au repos de la Grenouille agile",
+    "quantites": [
+     {
+      "valeur": 113,
+      "valeur_max": null,
+      "unite": "m²",
+      "objet": "fourrés"
+     },
+     {
+      "valeur": 0.29,
+      "valeur_max": null,
+      "unite": "ha",
+      "objet": "boisements"
+     }
+    ],
+    "especes": [
+     "Rana dalmatina"
+    ],
+    "citations": [
+     {
+      "page": 3,
+      "quote": "113 m² de fourrés et 0,29 ha de boisements favorables au repos de la Grenouille agile"
+     }
+    ]
+   },
+   {
+    "description": "Landes et mare temporaire du Crapaud calamite",
+    "quantites": [
+     {
+      "valeur": 0.07,
+      "valeur_max": null,
+      "unite": "ha",
+      "objet": "landes"
+     },
+     {
+      "valeur": 1,
+      "valeur_max": null,
+      "unite": "mare",
+      "objet": "mare temporaire"
+     }
+    ],
+    "especes": [
+     "Epidalea calamita"
+    ],
+    "citations": [
+     {
+      "page": 3,
+      "quote": "0,07 ha de landes favorables au repos du Crapaud calamite et une mare temporaire"
+     }
+    ]
+   },
+   {
+    "description": "Lisières favorables aux reptiles",
+    "quantites": [
+     {
+      "valeur": 400,
+      "valeur_max": null,
+      "unite": "m",
+      "objet": "lisières"
+     }
+    ],
+    "especes": [
+     "reptiles"
+    ],
+    "citations": [
+     {
+      "page": 3,
+      "quote": "400 m de lisières favorables aux reptiles"
+     }
+    ]
+   },
+   {
+    "description": "Habitats de nidification de l'avifaune commune",
+    "quantites": [
+     {
+      "valeur": 0.29,
+      "valeur_max": null,
+      "unite": "ha",
+      "objet": "habitats"
+     },
+     {
+      "valeur": 2,
+      "valeur_max": null,
+      "unite": "arbre",
+      "objet": "arbres"
+     }
+    ],
+    "especes": [
+     "oiseaux"
+    ],
+    "citations": [
+     {
+      "page": 3,
+      "quote": "0,29 ha + 2 arbres favorables à la nidification de l’avifaune commune"
+     }
+    ]
+   },
+   {
+    "description": "Fourrés favorables à la Bouscarle de Cetti et au Hérisson",
+    "quantites": [
+     {
+      "valeur": 113,
+      "valeur_max": null,
+      "unite": "m²",
+      "objet": "fourrés"
+     }
+    ],
+    "especes": [
+     "Cettia cetti",
+     "Erinaceus europaeus"
+    ],
+    "citations": [
+     {
+      "page": 3,
+      "quote": "113 m² de fourrés favorables à la Bouscarle de Cetti et au Hérisson d’Europe"
+     }
+    ]
+   },
+   {
+    "description": "Arbres gîtes à chiroptères",
+    "quantites": [
+     {
+      "valeur": 2,
+      "valeur_max": null,
+      "unite": "arbre",
+      "objet": "arbres gîtes"
+     }
+    ],
+    "especes": [
+     "chiroptères"
+    ],
+    "citations": [
+     {
+      "page": 3,
+      "quote": "2 arbres favorables au gîte des chiroptères"
+     }
+    ]
+   }
+  ],
+  "perimetre": "Périmètre de la figure 1 (accès, emprises bâties, bases vie et stationnements, stockages, zones de travaux et de terre excavée) ; la dérogation s'y applique strictement.",
+  "durees": [
+   {
+    "objet": "phase chantier",
+    "date_fin": "2028-12-31",
+    "citations": [
+     {
+      "page": 4,
+      "quote": "peuvent se dérouler jusqu’au"
+     }
+    ]
+   },
+   {
+    "objet": "compensation in situ et ex situ",
+    "valeur": 30,
+    "unite": "an",
+    "minimale": true,
+    "debut": "mise en œuvre des mesures",
+    "citations": [
+     {
+      "page": 7,
+      "quote": "pour une durée minimale de 30 ans"
+     }
+    ]
+   },
+   {
+    "objet": "gestion conservatoire",
+    "debut": "pendant toute la durée des atteintes à la biodiversité",
+    "citations": [
+     {
+      "page": 13,
+      "quote": "restent effectives pendant toute la durée des atteintes à la biodiversité"
+     }
+    ]
+   },
+   {
+    "objet": "sécurisation et gestion du secteur évité (ORE)",
+    "valeur": 30,
+    "unite": "an",
+    "minimale": true,
+    "citations": [
+     {
+      "page": 7,
+      "quote": "permet une gestion de ce secteur pour une durée minimale de 30 ans"
+     }
+    ]
+   },
+   {
+    "objet": "suivis écologiques",
+    "valeur": 30,
+    "unite": "an",
+    "debut": "N+1 (début du chantier ou achèvement des compensations)",
+    "citations": [
+     {
+      "page": 16,
+      "quote": "N+15, N+20, N+25, N+30"
+     }
+    ]
+   }
+  ],
+  "sites": [
+   {
+    "nom": "Site du projet « les Jardins d'Aquitaine »",
+    "type": "projet",
+    "communes": [
+     "Bruges"
+    ],
+    "figures": [
+     "1"
+    ]
+   },
+   {
+    "nom": "Zone humide ouest et boisement de peupliers",
+    "type": "evite",
+    "communes": [
+     "Bruges"
+    ],
+    "description": "exclus de tout aménagement, gestion via le plan de gestion, ORE ≥ 30 ans",
+    "figures": [
+     "2",
+     "3"
+    ]
+   },
+   {
+    "nom": "Mares à Crapaud calamite",
+    "type": "compensation_in_situ",
+    "communes": [
+     "Bruges"
+    ],
+    "surface_m2": 150,
+    "description": "10 mares temporaires (9 en frange nord, 1 en entrée de site)",
+    "figures": [
+     "7"
+    ]
+   },
+   {
+    "nom": "Secteur lotiers, Sainte-Eulalie",
+    "type": "compensation_ex_situ",
+    "communes": [
+     "Sainte-Eulalie"
+    ],
+    "surface_m2": 6969,
+    "operateur": "CDC Biodiversité",
+    "description": "à 8,1 km à l'est, rive droite de la Garonne ; secteur vert de la figure 9",
+    "figures": [
+     "8",
+     "9"
+    ]
+   },
+   {
+    "nom": "Secteur avifaune, Sainte-Eulalie",
+    "type": "compensation_ex_situ",
+    "communes": [
+     "Sainte-Eulalie"
+    ],
+    "surface_m2": 4625,
+    "operateur": "CDC Biodiversité",
+    "description": "secteur jaune de la figure 9",
+    "figures": [
+     "8",
+     "9"
+    ]
+   }
+  ],
+  "gouvernance": "Comité de suivi (DREAL/SPN, Pichet, écologue, opérateurs de compensation, OFB) dès le début du chantier : au moins une fois par an pendant 3 ans, puis N+5, N+10, N+20, N+30.",
+  "points_cles": [
+   "35 espèces protégées concernées, dont 2 lotiers (destruction d'individus)",
+   "Plafonds d'impact : 0,65 ha à lotiers, 0,29 ha de boisements, 400 m de lisières, 2 arbres gîtes abattus",
+   "Évitement de la zone humide ouest, du boisement de peupliers et de 16 arbres gîtes sur 18",
+   "Travaux autorisés jusqu'au 31/12/2028 ; libération des emprises du 1er septembre à mi-février",
+   "Compensation au moins 30 ans : 10 mares (150 m²) in situ ; 6 969 m² lotiers et 4 625 m² avifaune à Sainte-Eulalie (CDC Biodiversité)",
+   "Dans les 6 mois après notification : plan de gestion détaillé, sécurisation foncière, opérateurs, 1re transmission GéoMCE",
+   "Suivis N+1 à N+5 puis tous les 5 ans jusqu'à N+30 ; bilans d'efficacité au 31/03 de N+4, N+6, N+11…N+31",
+   "Accompagnement : 16 nichoirs, 15 nids de martinets, 10 à 15 d'hirondelles, 16 gîtes à chiroptères, 2 hibernacula, 3 panneaux"
+  ],
+  "citations": [
+   {
+    "page": 3,
+    "quote": "ARTICLE 2 : Nature de la dérogation"
+   }
+  ]
+ },
+ "articles": {
+  "1": {
+   "resume": "Le bénéficiaire de la dérogation est la SNC 136 avenue d'Aquitaine (Pichet), pour l'opération immobilière « les Jardins d'Aquitaine » à Bruges (33).",
+   "categories": [
+    "objet"
+   ],
+   "obligations": [],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "2": {
+   "resume": "Autorise, sous conditions, la destruction d'individus de 2 lotiers ; la destruction accidentelle, capture, déplacement et perturbation de 3 amphibiens, 4 reptiles et du Hérisson ; la destruction et l'altération d'habitats de 21 oiseaux, 4 chiroptères, des amphibiens, reptiles et du Hérisson. Impacts : 0,65 ha à lotiers, 0,29 ha de boisements et 113 m² de fourrés, 0,07 ha de landes et une mare, 400 m de lisières, 0,29 ha + 2 arbres pour l'avifaune, 2 arbres gîtes à chiroptères.",
+   "categories": [
+    "nature_derogation"
+   ],
+   "obligations": [
+    {
+     "intitule": "Limiter les impacts aux habitats et quantités autorisés",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "Les impacts portent notamment sur"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 0.65,
+       "valeur_max": null,
+       "unite": "ha",
+       "objet": "habitats favorables aux lotiers"
+      },
+      {
+       "valeur": 113,
+       "valeur_max": null,
+       "unite": "m²",
+       "objet": "fourrés"
+      },
+      {
+       "valeur": 0.29,
+       "valeur_max": null,
+       "unite": "ha",
+       "objet": "boisements (Grenouille agile)"
+      },
+      {
+       "valeur": 0.07,
+       "valeur_max": null,
+       "unite": "ha",
+       "objet": "landes (Crapaud calamite)"
+      },
+      {
+       "valeur": 1,
+       "valeur_max": null,
+       "unite": "mare",
+       "objet": "mare temporaire"
+      },
+      {
+       "valeur": 400,
+       "valeur_max": null,
+       "unite": "m",
+       "objet": "lisières favorables aux reptiles"
+      },
+      {
+       "valeur": 2,
+       "valeur_max": null,
+       "unite": "arbre",
+       "objet": "arbres favorables à l'avifaune"
+      },
+      {
+       "valeur": 2,
+       "valeur_max": null,
+       "unite": "arbre",
+       "objet": "arbres gîtes à chiroptères"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [
+      "« notamment » : liste des impacts non limitative"
+     ],
+     "confidence": 0.75,
+     "especes": [],
+     "citations": [
+      {
+       "page": 3,
+       "quote": "Les impacts portent notamment sur :"
+      },
+      {
+       "page": 3,
+       "quote": "0,65 ha d’habitats favorables aux Lotiers grêle et hispide"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "3": {
+   "resume": "La dérogation s'applique strictement au périmètre de la figure 1 (accès, emprises bâties, bases vie, stationnements, stockages, zones de travaux et de terre excavée). Les aménagements sont conformes aux plans et données du dossier.",
+   "categories": [
+    "perimetre"
+   ],
+   "obligations": [
+    {
+     "intitule": "Ne pas intervenir hors du périmètre de la dérogation (figure 1)",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "s'applique strictement à ce périmètre"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 3,
+       "quote": "La présente dérogation s’applique strictement à ce périmètre."
+      }
+     ]
+    },
+    {
+     "intitule": "Réaliser les aménagements conformément aux plans et données techniques du dossier",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.7,
+     "especes": [],
+     "citations": [
+      {
+       "page": 4,
+       "quote": "exploitées conformément aux plans et données techniques du dossier"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": [
+    "1"
+   ]
+  },
+  "4": {
+   "resume": "Les travaux peuvent se dérouler jusqu'au 31/12/2028. La DREAL/SPN est informée du démarrage effectif dans les plus brefs délais et, sans délai, de toute modification de la date de début.",
+   "categories": [
+    "duree"
+   ],
+   "obligations": [
+    {
+     "intitule": "Achever les travaux d'aménagement au plus tard le 31/12/2028",
+     "categorie": "contrainte_calendaire",
+     "echeance": {
+      "kind": "date_fixe",
+      "texte": "jusqu’au 31/12/2028",
+      "date": "2028-12-31"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 4,
+       "quote": "peuvent se dérouler jusqu’au"
+      },
+      {
+       "page": 4,
+       "quote": "31/12/2028"
+      }
+     ]
+    },
+    {
+     "intitule": "Informer la DREAL/SPN du démarrage effectif des travaux",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": "dans les plus brefs délais",
+      "anchor": "demarrage_travaux"
+     },
+     "preuve_attendue": [
+      "courrier"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 4,
+       "quote": "sont informés, dans les plus brefs délais, du démarrage effectif des"
+      }
+     ]
+    },
+    {
+     "intitule": "Informer sans délai la DREAL/SPN de toute modification de la date de début des travaux",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": "sans délai"
+     },
+     "preuve_attendue": [
+      "courrier"
+     ],
+     "condition": "modification de la date de début des travaux",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 4,
+       "quote": "En cas de modification de la date de début des travaux, le bénéficiaire informe sans délai la"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "5": {
+   "resume": "Le bénéficiaire met en œuvre les mesures ERC du dossier complété après avis du CSRPN et celles de l'arrêté ; il les communique aux entreprises, s'assure de leur respect et les inscrit aux dossiers de consultation sous forme de notice de respect de l'environnement.",
+   "categories": [
+    "prescriptions_generales"
+   ],
+   "obligations": [
+    {
+     "intitule": "Intégrer les mesures aux dossiers de consultation / marchés des entreprises (notice de respect de l'environnement)",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [
+      "dossier_consultation_entreprises"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 4,
+       "quote": "sous forme d’une notice de respect de l’environnement"
+      }
+     ]
+    },
+    {
+     "intitule": "S'assurer du respect des mesures par les entreprises de travaux",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 4,
+       "quote": "Il s’assure, en outre, que ces mesures sont respectées."
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "6": {
+   "resume": "Un écologue assure le suivi environnemental de l'ensemble des travaux (projet et compensation) : contrôle des engagements, des mesures ERC, absence d'espèces protégées et sauvetages, comptes-rendus. Présence renforcée au démarrage, réunion de sensibilisation en début de travaux. Tout élément du suivi et le nom de l'écologue sont transmis à la DREAL/SPN.",
+   "categories": [
+    "suivi_chantier"
+   ],
+   "obligations": [
+    {
+     "intitule": "Assurer un suivi environnemental par un écologue pendant l'ensemble des travaux (projet et compensation)",
+     "categorie": "suivi",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "durant l’ensemble des travaux"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire (écologue)",
+     "destinataire": "",
+     "mesure_code": "6",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "Un suivi environnemental par un écologue est mis en place par le bénéficiaire durant"
+      }
+     ]
+    },
+    {
+     "intitule": "Tenir une réunion de sensibilisation des entreprises au début des travaux",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "au début des travaux",
+      "anchor": "demarrage_travaux",
+      "offset_value": 0,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "cr_suivi_chantier"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "écologue",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "Une réunion de sensibilisation est effectuée par l’écologue en"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre à la DREAL/SPN les éléments du suivi environnemental et le nom et la qualité de l'écologue",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "non_precisee",
+      "texte": ""
+     },
+     "preuve_attendue": [
+      "courrier"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.7,
+     "especes": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "ainsi que le nom et la qualité de l’écologue en charge"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "6",
+     "type": "S",
+     "intitule": "Suivi écologique de chantier par un écologue",
+     "localisation": "tous",
+     "site": "",
+     "quantites": [],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "une coordination environnementale est mise en place"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": []
+  },
+  "7": {
+   "resume": "Calendrier des travaux préparatoires : balisages, mises en défens et délimitation des foyers d'invasives par l'écologue avant toute coupe ; libération des emprises du 1er septembre à mi-février avec défrichement directionnel supervisé ; abattage des arbres gîtes de mi-mars à mi-mai ou de septembre à mi-octobre ; busage des fossés en septembre-octobre ; entretien des compensations de septembre à mi-février, sans fauche des lotiers de mai à juillet. Grumes évacuées vite, construction engagée rapidement, pas de travaux de nuit ni par temps sec et venteux, interventions en période sensible exceptionnelles et justifiées.",
+   "categories": [
+    "calendrier_travaux"
+   ],
+   "obligations": [
+    {
+     "intitule": "Réaliser balisages, mises en défens et délimitation des foyers d'espèces invasives par l'écologue avant toute coupe d'arbres et débroussaillage",
+     "categorie": "contrainte_calendaire",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "préalablement à toutes opérations de coupe d’arbres et débroussaillage",
+      "anchor": "evenement_ponctuel",
+      "anchor_label": "coupe d'arbres et débroussaillage",
+      "offset_value": 0,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "écologue",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "préalablement à toutes opérations de coupe d’arbres et débroussaillage"
+      }
+     ]
+    },
+    {
+     "intitule": "Libérer les emprises (abattage, débroussaillage) uniquement entre le 1er septembre et mi-février",
+     "categorie": "contrainte_calendaire",
+     "echeance": {
+      "kind": "periode_autorisee",
+      "texte": "entre le 1er septembre et mi-février",
+      "window_start": "09-01",
+      "window_end": "02-15"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "La libération des emprises (abattage et débroussaillage) est à réaliser entre le 1er septembre et"
+      }
+     ]
+    },
+    {
+     "intitule": "Pratiquer un défrichement directionnel supervisé par l'écologue, avec capture et déplacement si nécessaire",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "Un défrichement directionnel (du"
+      }
+     ]
+    },
+    {
+     "intitule": "Abattre les arbres gîtes à chiroptères en phase de transit : de mi-mars à mi-mai",
+     "categorie": "contrainte_calendaire",
+     "echeance": {
+      "kind": "periode_autorisee",
+      "texte": "entre mi-mars et mi-mai",
+      "window_start": "03-15",
+      "window_end": "05-15"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "soit entre mi-mars et mi-mai ou de septembre à la mi-octobre"
+      }
+     ]
+    },
+    {
+     "intitule": "Abattre les arbres gîtes à chiroptères en phase de transit : de septembre à mi-octobre",
+     "categorie": "contrainte_calendaire",
+     "echeance": {
+      "kind": "periode_autorisee",
+      "texte": "de septembre à la mi-octobre",
+      "window_start": "09-01",
+      "window_end": "10-15"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "soit entre mi-mars et mi-mai ou de septembre à la mi-octobre"
+      }
+     ]
+    },
+    {
+     "intitule": "Buser les fossés entre début septembre et fin octobre",
+     "categorie": "contrainte_calendaire",
+     "echeance": {
+      "kind": "periode_autorisee",
+      "texte": "entre début septembre et fin octobre",
+      "window_start": "09-01",
+      "window_end": "10-31"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "Le busage des fossés est effectué entre début septembre et fin octobre"
+      }
+     ]
+    },
+    {
+     "intitule": "Réaliser la gestion / l'entretien des mesures compensatoires (hors lotiers) entre le 1er septembre et mi-février",
+     "categorie": "contrainte_calendaire",
+     "echeance": {
+      "kind": "periode_autorisee",
+      "texte": "entre le 1er septembre et mi-février",
+      "window_start": "09-01",
+      "window_end": "02-15"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "Les interventions de gestion / entretien des mesures compensatoires (hors lotier) sont réalisées"
+      }
+     ]
+    },
+    {
+     "intitule": "Ne pas faucher les secteurs de compensation à lotiers en période de fructification (mai à juillet)",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "periode_interdite",
+      "texte": "mai à juillet",
+      "window_start": "05-01",
+      "window_end": "07-31"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [
+      "Lotus hispidus",
+      "Lotus angustissimus"
+     ],
+     "citations": [
+      {
+       "page": 5,
+       "quote": "Aucune fauche n’est permise en période de"
+      }
+     ]
+    },
+    {
+     "intitule": "Évacuer rapidement grumes et rémanents",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "les grumes et les rémanents sont évacués rapidement"
+      }
+     ]
+    },
+    {
+     "intitule": "Engager les travaux de construction le plus rapidement possible après libération des emprises",
+     "categorie": "contrainte_calendaire",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": "le plus rapidement possible après libération des emprises",
+      "anchor": "evenement_ponctuel",
+      "anchor_label": "libération des emprises"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.7,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "Les travaux de construction sont engagés le plus rapidement possible après libération des emprises"
+      }
+     ]
+    },
+    {
+     "intitule": "Ne pas réaliser de travaux de nuit (sauf indispensable : éclairage dirigé et limité)",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "Les travaux de nuit sont proscrits"
+      }
+     ]
+    },
+    {
+     "intitule": "Ne pas réaliser de travaux générant des envols de poussière par temps sec et vent fort",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "temps sec avec vents forts",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "sont proscrits en cas de temps sec avec des vents forts"
+      }
+     ]
+    },
+    {
+     "intitule": "Justifier auprès de la DREAL/SPN toute intervention en période sensible, après vérification par l'écologue",
+     "categorie": "declaration",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": ""
+     },
+     "preuve_attendue": [
+      "courrier"
+     ],
+     "condition": "nécessité d'intervenir en période sensible pour la faune",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "Cette possibilité doit rester"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [
+    "9",
+    "10",
+    "11.2",
+    "11.7"
+   ],
+   "figures": []
+  },
+  "8": {
+   "resume": "Le planning prévisionnel des opérations de préparation (écologue, mises en défens, défrichement, clôture, base vie, accès…) et les plans de localisation sont transmis à la DREAL/SPN au plus tard 15 jours avant le démarrage des travaux.",
+   "categories": [
+    "transmission_documents"
+   ],
+   "obligations": [
+    {
+     "intitule": "Transmettre le planning prévisionnel et les plans de localisation des opérations préparatoires",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "au plus tard, 15 jours avant le démarrage des travaux",
+      "anchor": "demarrage_travaux",
+      "offset_value": 15,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "planning",
+      "plan_localisation",
+      "courrier"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "aux services de la DREAL/SPN, au plus tard, 15 jours avant le démarrage des travaux"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "9": {
+   "resume": "Un journal de bord des travaux (planning, plan, enjeux, phases, actions répondant aux prescriptions, incidents) est tenu, complété dans la semaine suivant chaque visite de l'écologue et transmis à la DREAL/SPN avec les comptes-rendus, du démarrage à la fin des travaux.",
+   "categories": [
+    "suivi_chantier",
+    "transmission_documents"
+   ],
+   "obligations": [
+    {
+     "intitule": "Tenir un journal de bord des travaux (planning, plan, enjeux, phases, actions, incidents)",
+     "categorie": "suivi",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [
+      "journal_de_bord"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "Un journal de bord des travaux, précisant notamment le planning et le plan du chantier"
+      }
+     ]
+    },
+    {
+     "intitule": "Compléter le journal de bord dans la semaine suivant chaque visite de l'écologue",
+     "categorie": "suivi",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "dans la semaine suivant les visites de l’écologue",
+      "anchor": "evenement_recurrent",
+      "anchor_label": "visite de l'écologue",
+      "offset_value": 1,
+      "offset_unit": "semaine"
+     },
+     "preuve_attendue": [
+      "journal_de_bord"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "Il est complété dans la semaine suivant les visites de l’écologue."
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre les comptes-rendus de suivi de chantier et le journal de bord à la DREAL/SPN",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "du démarrage du chantier jusqu’à la fin des travaux"
+     },
+     "preuve_attendue": [
+      "cr_suivi_chantier",
+      "journal_de_bord"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "avec les compte-rendus de suivi de chantier, du démarrage du chantier jusqu’à la fin des travaux"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "10": {
+   "resume": "Évitement de la majeure partie de la zone humide ouest et du boisement de peupliers, et de 16 arbres gîtes sur 18 : aucun impact autorisé, zones tampons et mises en défens installées sous supervision de l'écologue avant libération des emprises et maintenues tout le chantier ; aménagements temporaires hors secteurs évités ; secteurs exclus de tout aménagement futur et gérés via le plan de gestion, sécurisés au moins 30 ans (ORE), documents transmis sous 6 mois ; tout abattage d'arbre évité est signalé sans délai.",
+   "categories": [
+    "evitement",
+    "foncier"
+   ],
+   "obligations": [
+    {
+     "intitule": "Ne porter aucune atteinte à la zone humide, au boisement et aux arbres gîtes évités (travaux et exploitation)",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "ni en phase travaux ni en phase exploitation"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "10",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "Aucun impact n’est autorisé sur ces milieux et entités, ni en phase travaux ni en phase exploitation."
+      }
+     ]
+    },
+    {
+     "intitule": "Installer zones tampons et mises en défens autour des arbres et secteurs évités avant la libération des emprises, sous supervision de l'écologue",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "avant la libération des emprises et l’abattage des arbres",
+      "anchor": "evenement_ponctuel",
+      "anchor_label": "libération des emprises",
+      "offset_value": 0,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "10",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 7,
+       "quote": "Elles sont installées avant la libération des emprises et l’abattage des arbres"
+      }
+     ]
+    },
+    {
+     "intitule": "Maintenir et contrôler régulièrement les mises en défens pendant toute la durée du chantier",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "pendant toute la durée du chantier"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "10",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 7,
+       "quote": "Les mises en défens sont conservées et régulièrement contrôlées pendant toute la durée du chantier."
+      }
+     ]
+    },
+    {
+     "intitule": "Signaler sans délai à la DREAL/SPN tout abattage d'un arbre gîte évité",
+     "categorie": "declaration",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": "sans délai"
+     },
+     "preuve_attendue": [
+      "declaration_incident"
+     ],
+     "condition": "abattage fortuit ou intentionnel d'un arbre gîte présenté comme évité",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "doit être signalé sans délai à la DREAL/SPN"
+      }
+     ]
+    },
+    {
+     "intitule": "Positionner les aménagements temporaires (accès, stockages, bases vie…) hors des secteurs évités",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 7,
+       "quote": "sont en particulier positionnés en dehors des secteurs évités"
+      }
+     ]
+    },
+    {
+     "intitule": "Exclure le boisement et la zone humide évités de tout aménagement futur",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 7,
+       "quote": "Le boisement évité et la zone humide ouest sont exclus de tout aménagement futur."
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre les documents de sécurisation foncière des secteurs évités et compensations",
+     "categorie": "foncier",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "dans un délai de 6 mois à compter de la notification",
+      "anchor": "notification",
+      "offset_value": 6,
+      "offset_unit": "mois"
+     },
+     "preuve_attendue": [
+      "acte_foncier"
+     ],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 30,
+       "valeur_max": null,
+       "unite": "an",
+       "objet": "durée minimale de gestion du secteur évité"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 7,
+       "quote": "Les documents de cette contractualisation sont à transmettre à la DREAL/SPN dans un délai de 6 mois à"
+      }
+     ]
+    },
+    {
+     "intitule": "Communiquer à la DREAL/SPN toute cession ou changement de propriété des parcelles concernées",
+     "categorie": "information",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": "dans les plus brefs délais"
+     },
+     "preuve_attendue": [
+      "courrier"
+     ],
+     "condition": "cession ou changement de propriété",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 7,
+       "quote": "Toute cession ou changement de propriété des parcelles"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "10",
+     "type": "E",
+     "intitule": "Évitement de la zone humide ouest, du boisement de peupliers et de 16 arbres gîtes sur 18",
+     "localisation": "secteur_evite",
+     "site": "",
+     "quantites": [
+      {
+       "valeur": 16,
+       "valeur_max": null,
+       "unite": "arbre",
+       "objet": "arbres gîtes évités"
+      },
+      {
+       "valeur": 18,
+       "valeur_max": null,
+       "unite": "arbre",
+       "objet": "arbres gîtes présents"
+      }
+     ],
+     "prescriptions": [
+      "zones tampons et mises en défens",
+      "aucun engin ni personnel dans les secteurs évités",
+      "sécurisation foncière ≥ 30 ans (ORE)"
+     ],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [
+      "2",
+      "3"
+     ],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "16 arbres gîtes à chiroptères sur les 18 présents au total sont totalement évités par le projet"
+      }
+     ]
+    }
+   ],
+   "references_internes": [
+    "12.4"
+   ],
+   "figures": [
+    "2",
+    "3"
+   ]
+  },
+  "11.1": {
+   "resume": "Le cahier des charges des entreprises intègre le management environnemental du chantier (secteurs à enjeux, formation, base vie, engins, pollutions, déchets), avec engagement contractuel des entreprises et sous-traitants. Produits polluants maîtrisés, déchets pollués et résidus d'invasives exportés, ornières rebouchées au plus vite.",
+   "categories": [
+    "reduction"
+   ],
+   "obligations": [
+    {
+     "intitule": "Inscrire le management environnemental du chantier au cahier des charges des entreprises et le faire contractualiser",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [
+      "dossier_consultation_entreprises"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "11.1",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 8,
+       "quote": "La mise en œuvre de ces mesures fait l’objet d’un engagement contractuel"
+      }
+     ]
+    },
+    {
+     "intitule": "Reboucher au plus vite ornières et dépressions (stagnations favorables aux amphibiens)",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "au plus vite"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "11.1",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 8,
+       "quote": "Toutes les ornières et dépressions, naturelles ou liées au chantier, sont rebouchées au plus vite"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.1",
+     "type": "R",
+     "intitule": "Système de management environnemental du chantier",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 8,
+       "quote": "11.1 Mise en place d’un système de management environnemental du chantier"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": []
+  },
+  "11.2": {
+   "resume": "Balisage physique robuste des secteurs évités pendant toute la durée des travaux ; barrières de chantier doublées d'une barrière imperméable à la petite faune (≈ 50 cm hors sol, enterrée ≈ 30 cm, rigide, inclinée ou à bavolet, continue y compris aux portails).",
+   "categories": [
+    "reduction"
+   ],
+   "obligations": [
+    {
+     "intitule": "Baliser physiquement les secteurs sensibles évités et maintenir le balisage pendant toute la durée des travaux",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "pendant toute la durée des travaux"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "11.2",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 8,
+       "quote": "Les secteurs sensibles évités font l’objet d’un balisage physique"
+      }
+     ]
+    },
+    {
+     "intitule": "Doubler les barrières de chantier d'une barrière imperméable à la petite faune, continue, pendant toute la durée du chantier",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "pendant toute la durée du chantier"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 50,
+       "valeur_max": null,
+       "unite": "cm",
+       "objet": "hauteur hors sol (environ)"
+      },
+      {
+       "valeur": 30,
+       "valeur_max": null,
+       "unite": "cm",
+       "objet": "profondeur enterrée (environ)"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "11.2",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [
+      "amphibiens",
+      "petite faune"
+     ],
+     "citations": [
+      {
+       "page": 8,
+       "quote": "sont doublées d’une barrière imperméable"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.2",
+     "type": "R",
+     "intitule": "Balisage, mises en défens et barrière petite faune",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [
+      {
+       "valeur": 50,
+       "valeur_max": null,
+       "unite": "cm",
+       "objet": "hauteur hors sol"
+      },
+      {
+       "valeur": 30,
+       "valeur_max": null,
+       "unite": "cm",
+       "objet": "partie enterrée"
+      }
+     ],
+     "prescriptions": [
+      "rigide, inclinée vers l'extérieur ou bavolet",
+      "continue y compris aux portails",
+      "matériaux non polluants"
+     ],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [
+      "1"
+     ],
+     "citations": [
+      {
+       "page": 8,
+       "quote": "Cette barrière fait une cinquantaine de cm hors sol et est enterrée sur une trentaine de centimètres dans le"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": [
+    "1"
+   ]
+  },
+  "11.3": {
+   "resume": "Sauvetage des individus de petite faune présents dans l'emprise par l'écologue seul (protocoles SHF), relâcher immédiat dans les milieux favorables les plus proches, destruction des individus d'espèces invasives ; compte-rendu détaillé transmis avec le journal de bord.",
+   "categories": [
+    "reduction"
+   ],
+   "obligations": [
+    {
+     "intitule": "Réaliser les opérations de sauvetage de petite faune par l'écologue, selon les protocoles en vigueur",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "écologue",
+     "destinataire": "",
+     "mesure_code": "11.3",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 8,
+       "quote": "Ces opérations sont"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le compte-rendu des opérations de sauvetage (lieux, nombre, espèces) avec le journal de bord",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "avec le journal de bord du chantier"
+     },
+     "preuve_attendue": [
+      "cr_sauvetage"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 8,
+       "quote": "Le compte-rendu de cette mesure précisant les modalités techniques mises en œuvre"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.3",
+     "type": "R",
+     "intitule": "Déplacement / sauvetage d'individus d'espèces protégées",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [],
+     "prescriptions": [],
+     "especes_cibles": [
+      "amphibiens",
+      "reptiles",
+      "petits mammifères"
+     ],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 8,
+       "quote": "Le bénéficiaire met en œuvre des opérations de sauvetage d’individus de petite faune"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": []
+  },
+  "11.4": {
+   "resume": "Prévention, éradication et confinement des espèces invasives sur le chantier et ses abords (engins, formation, repérage, balisage, déchets verts, matériaux) ; herbicides, matériaux calcaires non revêtus et transferts de terre interdits ; prescriptions inscrites aux marchés et contrôlées par l'écologue. En exploitation, lutte complémentaire si développement, pas d'intervention en fructification, déchets exportés ; aucun enfouissement de résidus.",
+   "categories": [
+    "reduction"
+   ],
+   "obligations": [
+    {
+     "intitule": "Prévenir, éradiquer et confiner les espèces exotiques envahissantes en phase travaux",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "11.4",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 9,
+       "quote": "Toutes les mesures de prévention, éradication et confinement précoces sont prises"
+      }
+     ]
+    },
+    {
+     "intitule": "Ne pas utiliser d'herbicides, de matériaux calcaires non revêtus, ni transférer de terres entre secteurs contaminés et indemnes",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 9,
+       "quote": "L'utilisation d’herbicides, de matériaux calcaires non revêtus en surface"
+      }
+     ]
+    },
+    {
+     "intitule": "Inscrire les prescriptions sur les espèces invasives dans les pièces de marché des entreprises",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [
+      "dossier_consultation_entreprises"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 9,
+       "quote": "Les prescriptions du présent article sont spécifiquement inscrites dans les pièces du marché"
+      }
+     ]
+    },
+    {
+     "intitule": "Mettre en œuvre une lutte complémentaire contre les invasives en phase d'exploitation",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "non_precisee",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "développement d'espèces invasives constaté lors du suivi en exploitation",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 9,
+       "quote": "des mesures de lutte contre les espèces exotiques envahissantes"
+      }
+     ]
+    },
+    {
+     "intitule": "N'enfouir aucun résidu de coupe, d'arrachage ou d'abattage (site aménagé et sites compensatoires)",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 9,
+       "quote": "aucun enfouissement de résidus de coupe"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.4",
+     "type": "R",
+     "intitule": "Gestion des espèces invasives (chantier et compensations)",
+     "localisation": "tous",
+     "site": "",
+     "quantites": [],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 9,
+       "quote": "11.4 Gestion des espèces invasives (sur le chantier et sur les compensations)"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": []
+  },
+  "11.5": {
+   "resume": "Les 2 arbres gîtes abattus et tout arbre à cavités sont contrôlés (caméra thermique, endoscope) et marqués par l'écologue avant abattage ; dispositifs anti-retour en transit si présence ; tronçonnage autour des cavités, dépose douce, 48 h au sol cavités vers le haut avant évacuation. Compte-rendu transmis avec le journal de bord ; tout nouvel arbre gîte à abattre est signalé à la DREAL.",
+   "categories": [
+    "reduction"
+   ],
+   "obligations": [
+    {
+     "intitule": "Contrôler (caméra thermique, endoscope) et marquer par l'écologue les arbres gîtes avant abattage",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "avant leur abattage",
+      "anchor": "evenement_ponctuel",
+      "anchor_label": "abattage des arbres gîtes",
+      "offset_value": 0,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "écologue",
+     "destinataire": "",
+     "mesure_code": "11.5",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 9,
+       "quote": "sont systématiquement contrôlés (à la caméra"
+      }
+     ]
+    },
+    {
+     "intitule": "Équiper les cavités de systèmes anti-retour en phase de transit si présence avérée ou suspectée",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "periode_autorisee",
+      "texte": "entre mi-mars et mi-mai ou septembre et mi-octobre",
+      "window_start": "03-15",
+      "window_end": "05-15"
+     },
+     "preuve_attendue": [],
+     "condition": "présence ou forte suspicion de chiroptères",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [
+      "seconde fenêtre (septembre à mi-octobre) non portée par le champ fenêtre"
+     ],
+     "confidence": 0.7,
+     "especes": [],
+     "citations": [
+      {
+       "page": 9,
+       "quote": "il convient"
+      }
+     ]
+    },
+    {
+     "intitule": "Laisser les fûts au sol au moins 48 h cavités vers le haut avant évacuation",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 48,
+       "valeur_max": null,
+       "unite": "h",
+       "objet": "durée minimale au sol"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 9,
+       "quote": "pendant au moins 48 heures"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le compte-rendu d'abattage des arbres gîtes",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "avec le journal de bord du chantier"
+     },
+     "preuve_attendue": [
+      "cr_abattage"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 10,
+       "quote": "Le compte-rendu de cette mesure, précisant notamment l'ensemble des modalités spécifiques mises"
+      }
+     ]
+    },
+    {
+     "intitule": "Signaler à la DREAL tout arbre à abattre nouvellement répertorié comme arbre gîte",
+     "categorie": "declaration",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "nouvel arbre gîte découvert dans l'emprise",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 10,
+       "quote": "Tout arbre devant être abattu, nouvellement répertorié comme arbre gîte, doit être signalé à la DREAL"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.5",
+     "type": "R",
+     "intitule": "Protocole d'abattage des arbres gîtes à chiroptères",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [
+      {
+       "valeur": 2,
+       "valeur_max": null,
+       "unite": "arbre",
+       "objet": "arbres gîtes abattus"
+      }
+     ],
+     "prescriptions": [],
+     "especes_cibles": [
+      "chiroptères"
+     ],
+     "references_dossier": [],
+     "figures": [
+      "3"
+     ],
+     "citations": [
+      {
+       "page": 9,
+       "quote": "Les 2 arbres gîtes abattus dans le cadre du projet"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": [
+    "3"
+   ]
+  },
+  "11.6": {
+   "resume": "Renforcement de la trame verte : espaces verts favorables aux espèces impactées (mosaïque d'habitats, arbres relais pour les chiroptères, corridors nord-sud et ouest-est vers le boisement et la zone humide évités), plantations conformes à l'art. 11.9, surfaces semi-perméables (parking).",
+   "categories": [
+    "reduction"
+   ],
+   "obligations": [
+    {
+     "intitule": "Réaliser les aménagements paysagers favorables aux espèces impactées (mosaïque, arbres relais, corridors, surfaces semi-perméables)",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "non_precisee",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "11.6",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 10,
+       "quote": "La trame verte locale est renforcée par l’aménagement d’espaces verts favorables aux espèces"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.6",
+     "type": "R",
+     "intitule": "Aménagement paysager et renforcement de la trame verte",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [
+      "4"
+     ],
+     "citations": [
+      {
+       "page": 10,
+       "quote": "11.6 Aménagement paysager du site et renforcement de la trame verte locale et des corridors"
+      }
+     ]
+    }
+   ],
+   "references_internes": [
+    "11.9"
+   ],
+   "figures": [
+    "4"
+   ]
+  },
+  "11.7": {
+   "resume": "Les clôtures définitives, y compris autour du boisement et de la zone humide évités, restent perméables à la petite faune ; modalités précisées par un écologue.",
+   "categories": [
+    "reduction"
+   ],
+   "obligations": [
+    {
+     "intitule": "Rendre les clôtures définitives perméables à la petite faune (modalités précisées par un écologue)",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "11.7",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 10,
+       "quote": "doivent demeurer perméables aux déplacements de la petite faune"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.7",
+     "type": "R",
+     "intitule": "Clôtures perméables à la petite faune",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 10,
+       "quote": "11.7 Pose de clôtures perméables à la petite faune"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": []
+  },
+  "11.8.1": {
+   "resume": "Façades du plot 1 les plus proches des arbres gîtes, du boisement et de la zone humide adaptées : loggias occultantes, persiennes coulissantes, ouvertures réduites, vitrages opacifiés, stores oscillants (façades A1, A4, C3).",
+   "categories": [
+    "reduction"
+   ],
+   "obligations": [
+    {
+     "intitule": "Adapter les façades du plot 1 (loggias, persiennes, ouvertures réduites, vitrages opacifiés, stores)",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "non_precisee",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "11.8.1",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 11,
+       "quote": "Les façades du plot 1"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.8.1",
+     "type": "R",
+     "intitule": "Modalités constructives contre la pollution lumineuse",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [
+      "5",
+      "6"
+     ],
+     "citations": [
+      {
+       "page": 11,
+       "quote": "Les façades du plot 1"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": [
+    "5",
+    "6"
+   ]
+  },
+  "11.8.2": {
+   "resume": "Éclairage conforme à l'arrêté du 27/12/2018 et aux recommandations AUBE : durée et intensité restreintes, LED ambrées < 1 700 K à spectre étroit dirigées vers le sol, aucun faisceau vers le boisement et les arbres gîtes. Modalités transmises à la DREAL avant installation.",
+   "categories": [
+    "reduction"
+   ],
+   "obligations": [
+    {
+     "intitule": "Installer un éclairage restreint (LED ambrées < 1 700 K, faisceaux vers le sol, aucun vers le boisement et les arbres gîtes)",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 1700,
+       "valeur_max": null,
+       "unite": "K",
+       "objet": "température de couleur maximale"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "11.8.2",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 11,
+       "quote": "Aucun faisceau lumineux n’est dirigé vers le boisement de peupliers et les arbres gîtes évités par le"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre à la DREAL/SPN les modalités détaillées de l'éclairage, après avis de l'écologue, avant installation",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "préalablement à son installation",
+      "anchor": "evenement_ponctuel",
+      "anchor_label": "installation de l'éclairage",
+      "offset_value": 0,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "note_technique"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 12,
+       "quote": "préalablement à son installation"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.8.2",
+     "type": "R",
+     "intitule": "Adaptation de l'éclairage du site (trame noire)",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [
+      {
+       "valeur": 1700,
+       "valeur_max": null,
+       "unite": "K",
+       "objet": "LED ambrées"
+      }
+     ],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 11,
+       "quote": "Dans l’objectif de conforter la trame noire"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": []
+  },
+  "11.9": {
+   "resume": "Plantations et semis (remise en état et compensation) en espèces indigènes d'origine locale (Végétal local), sans espèces protégées, horticoles ou invasives ; difficultés d'approvisionnement signalées ; bordereaux consignés ; reprise contrôlée et plants remplacés ; modalités validées par l'écologue et transmises à la DREAL.",
+   "categories": [
+    "reduction",
+    "compensation"
+   ],
+   "obligations": [
+    {
+     "intitule": "Planter uniquement des espèces indigènes d'origine locale (Végétal local), sans espèces invasives, protégées ou horticoles",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 12,
+       "quote": "Les plantations et semis sont obligatoirement réalisés au moyen d'espèces indigènes, d’origine locale"
+      }
+     ]
+    },
+    {
+     "intitule": "Informer la DREAL/SPN des difficultés d'approvisionnement en végétaux",
+     "categorie": "information",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": "dans les plus brefs délais"
+     },
+     "preuve_attendue": [],
+     "condition": "difficultés d'approvisionnement",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 12,
+       "quote": "En cas de difficultés d’approvisionnement, la DREAL/SPN est tenue informée dans les plus brefs délais."
+      }
+     ]
+    },
+    {
+     "intitule": "Consigner les bordereaux des plants et semis dans le journal de bord et les rapports de suivi",
+     "categorie": "suivi",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [
+      "bordereau_vegetaux"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 12,
+       "quote": "Les bordereaux des plants et semis sont consignés dans le journal de bord"
+      }
+     ]
+    },
+    {
+     "intitule": "Contrôler la reprise et remplacer systématiquement les plants morts",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 12,
+       "quote": "Les plants sont systématiquement"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre les modalités de mise en œuvre des plantations (palettes, localisation, remplacements) validées par l'écologue",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "après validation par l’écologue et avant la mise en œuvre des plantations",
+      "anchor": "evenement_ponctuel",
+      "anchor_label": "mise en œuvre des plantations",
+      "offset_value": 0,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "note_technique"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 12,
+       "quote": "sont validées par l’écologue chargé du suivi des travaux, et transmises à la DREAL/SPN"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.9",
+     "type": "R",
+     "intitule": "Plantations d'espèces végétales indigènes",
+     "localisation": "tous",
+     "site": "",
+     "quantites": [],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 12,
+       "quote": "11.9 Plantations d’espèces végétales"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": []
+  },
+  "11.10": {
+   "resume": "En exploitation, gestion extensive et différenciée des espaces verts sans aucun phytosanitaire, fauches tardives de septembre à fin février, hauteur de coupe modérée, surveillance des invasives (arrachage manuel, export) ; entretien confié à du personnel qualifié et formé, consigné dans un cahier d'entretien, intégré au plan de gestion.",
+   "categories": [
+    "reduction"
+   ],
+   "obligations": [
+    {
+     "intitule": "Entretenir les espaces verts de façon extensive, sans phytosanitaires, entre septembre et fin février",
+     "categorie": "contrainte_calendaire",
+     "echeance": {
+      "kind": "periode_autorisee",
+      "texte": "entre septembre et fin février",
+      "window_start": "09-01",
+      "window_end": "02-28"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "11.10",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 12,
+       "quote": "sont réalisés en dehors des périodes sensibles pour la faune (entre septembre et fin février)"
+      }
+     ]
+    },
+    {
+     "intitule": "Consigner les opérations d'entretien dans un cahier d'entretien du site",
+     "categorie": "suivi",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [
+      "cahier_entretien"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 13,
+       "quote": "Les opérations d’entretien sont consignées dans un cahier d'entretien du site."
+      }
+     ]
+    },
+    {
+     "intitule": "Confier l'entretien à du personnel qualifié et le former régulièrement",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "pendant toute la durée de l’exploitation"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 13,
+       "quote": "L’entretien adapté est confié à un organisme ou à du personnel qualifié"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "11.10",
+     "type": "R",
+     "intitule": "Entretien extensif et écologique des aménagements paysagers",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 12,
+       "quote": "11.10 Entretien extensif et écologique des aménagements paysagers"
+      }
+     ]
+    }
+   ],
+   "references_internes": [
+    "12.4"
+   ],
+   "figures": []
+  },
+  "12.1": {
+   "resume": "Le chantier de compensation est encadré par un écologue ; les travaux compensatoires, hors période sensible, font l'objet d'un compte-rendu transmis dès leur achèvement ; plantations conformes à l'art. 11.9 ; sites compensatoires exclus de toute exploitation et de tout aménagement futur.",
+   "categories": [
+    "compensation"
+   ],
+   "obligations": [
+    {
+     "intitule": "Faire encadrer les travaux de compensation par un écologue",
+     "categorie": "suivi",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "pendant toute la durée de ces travaux"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire (écologue)",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 13,
+       "quote": "Un suivi et un encadrement du chantier de compensation est assuré par un écologue"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le compte-rendu des travaux compensatoires",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": "dès leur achèvement",
+      "anchor": "fin_travaux_compensatoires"
+     },
+     "preuve_attendue": [
+      "cr_travaux_compensatoires"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 13,
+       "quote": "dès leur achèvement, l’objet d’un compte-rendu de chantier qui est transmis à la DREAL/SPN"
+      }
+     ]
+    },
+    {
+     "intitule": "Exclure les sites compensatoires de toute exploitation et de tout aménagement futur",
+     "categorie": "interdiction",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 13,
+       "quote": "Les sites compensatoires sont exclus de toute exploitation et de tout projet d’aménagement ou"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [
+    "6",
+    "11.9"
+   ],
+   "figures": []
+  },
+  "12.2": {
+   "resume": "Les compensations in et ex situ sont mises en œuvre au moins 30 ans et, en tout état de cause, pendant toute la durée des atteintes (L.163-1 C. env.).",
+   "categories": [
+    "duree",
+    "compensation"
+   ],
+   "obligations": [
+    {
+     "intitule": "Mettre en œuvre les compensations in et ex situ pendant au moins 30 ans et pendant toute la durée des atteintes",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "durée minimale de 30 ans"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 30,
+       "valeur_max": null,
+       "unite": "an",
+       "objet": "durée minimale de compensation"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 13,
+       "quote": "Les mesures de compensation in et ex-situ sont mises en œuvre pour une durée minimale de 30 ans."
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "12.3": {
+   "resume": "La DREAL/SPN et le comité de suivi sont informés des modalités de sécurisation foncière (secteurs évités et compensations) et d'organisation de la compensation, et reçoivent les documents désignant les opérateurs dans les 6 mois ; toute cession est communiquée.",
+   "categories": [
+    "foncier",
+    "compensation"
+   ],
+   "obligations": [
+    {
+     "intitule": "Transmettre les documents de sécurisation foncière des secteurs évités et compensations",
+     "categorie": "foncier",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "dans un délai de 6 mois à compter de la notification",
+      "anchor": "notification",
+      "offset_value": 6,
+      "offset_unit": "mois"
+     },
+     "preuve_attendue": [
+      "acte_foncier"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN + comité de suivi",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 7,
+       "quote": "dans un délai de 6 mois à compter de la notification du présent arrêté"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre les documents désignant les opérateurs de compensation",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "dans un délai de 6 mois à compter de la notification",
+      "anchor": "notification",
+      "offset_value": 6,
+      "offset_unit": "mois"
+     },
+     "preuve_attendue": [
+      "contrat_operateur"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN + comité de suivi",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 13,
+       "quote": "Ils sont rendus destinataires des documents désignant les opérateurs de compensation"
+      }
+     ]
+    },
+    {
+     "intitule": "Communiquer à la DREAL/SPN toute cession ou changement de propriété des parcelles concernées",
+     "categorie": "information",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": "dans les plus brefs délais"
+     },
+     "preuve_attendue": [],
+     "condition": "cession ou changement de propriété",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 7,
+       "quote": "Toute cession ou changement de propriété des parcelles concernées"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "12.4": {
+   "resume": "Un plan de gestion détaillé, établi par un écologue, précise pour chaque secteur (compensations, secteurs évités, aménagements paysagers) espèces visées, gain attendu, calendrier, zones, techniques, entretien, suivis (indicateurs, protocoles, sites témoins, rendus) et gestion des invasives ; transmis à la DREAL/SPN pour validation dans les 6 mois.",
+   "categories": [
+    "compensation",
+    "transmission_documents"
+   ],
+   "obligations": [
+    {
+     "intitule": "Transmettre pour validation un plan de gestion détaillé (compensations, secteurs évités, aménagements paysagers)",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "dans un délai de 6 mois à compter de la notification",
+      "anchor": "notification",
+      "offset_value": 6,
+      "offset_unit": "mois"
+     },
+     "preuve_attendue": [
+      "plan_de_gestion"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 8,
+       "quote": "transmis à la DREAL/SPN"
+      },
+      {
+       "page": 7,
+       "quote": "dans un délai de 6 mois à compter de la notification du présent arrêté"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "12.5": {
+   "resume": "Compensation in situ : 10 mares temporaires (150 m²) pour le Crapaud calamite (9 en frange nord, 1 en entrée de site), sol renaturé, alimentation et imperméabilité contrôlées, habitats pionniers entretenus. Compensation ex situ à Sainte-Eulalie (CDC Biodiversité, 8,1 km) : secteur lotiers de 6 969 m² rouvert puis géré (2 fauches avec export, griffage tous les 2 ans) ; secteur avifaune de 4 625 m² rouvert par gyrobroyage, 16 bosquets plantés, fourrés humides maintenus pour la Bouscarle, invasives contrôlées.",
+   "categories": [
+    "compensation"
+   ],
+   "obligations": [
+    {
+     "intitule": "Créer 10 mares temporaires (150 m² au total) pour le Crapaud calamite sur le site aménagé",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "non_precisee",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 10,
+       "valeur_max": null,
+       "unite": "mare",
+       "objet": "mares temporaires"
+      },
+      {
+       "valeur": 150,
+       "valeur_max": null,
+       "unite": "m²",
+       "objet": "surface totale des mares"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "12.5.1",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [
+      "Epidalea calamita"
+     ],
+     "citations": [
+      {
+       "page": 14,
+       "quote": "Création de 10 mares temporaires (total de 150 m²) pour la reproduction"
+      }
+     ]
+    },
+    {
+     "intitule": "Contrôler l'alimentation en eau et l'imperméabilité des mares et entretenir des habitats pionniers",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "12.5.1",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 14,
+       "quote": "La bonne alimentation en eau et l’imperméabilité de"
+      }
+     ]
+    },
+    {
+     "intitule": "Rouvrir et gérer le secteur à lotiers (2 fauches avec export, griffage tous les 2 ans)",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "2 fauches avec export + griffage tous les 2 ans"
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 6969,
+       "valeur_max": null,
+       "unite": "m²",
+       "objet": "secteur lotiers"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "12.5.2",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [
+      "Lotus hispidus",
+      "Lotus angustissimus"
+     ],
+     "citations": [
+      {
+       "page": 14,
+       "quote": "gestion spécifique (2 fauches avec export +"
+      }
+     ]
+    },
+    {
+     "intitule": "Rouvrir le secteur avifaune par gyrobroyage et planter 16 bosquets",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "non_precisee",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 4625,
+       "valeur_max": null,
+       "unite": "m²",
+       "objet": "secteur avifaune"
+      },
+      {
+       "valeur": 16,
+       "valeur_max": null,
+       "unite": "bosquet",
+       "objet": "bosquets plantés"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "12.5.2",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 15,
+       "quote": "16 bosquets d’essences arborées et fruitières"
+      }
+     ]
+    },
+    {
+     "intitule": "Contrôler la dissémination des espèces invasives sur le site compensatoire avifaune",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "12.5.2",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 15,
+       "quote": "Une gestion visant à contrôler la dissémination des espèces"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "12.5.1",
+     "type": "C",
+     "intitule": "Création de 10 mares temporaires pour le Crapaud calamite",
+     "localisation": "in_situ",
+     "site": "site aménagé (9 en frange nord, 1 en entrée)",
+     "quantites": [
+      {
+       "valeur": 10,
+       "valeur_max": null,
+       "unite": "mare",
+       "objet": "mares"
+      },
+      {
+       "valeur": 150,
+       "valeur_max": null,
+       "unite": "m²",
+       "objet": "surface totale"
+      }
+     ],
+     "prescriptions": [],
+     "especes_cibles": [
+      "Epidalea calamita"
+     ],
+     "references_dossier": [],
+     "figures": [
+      "7"
+     ],
+     "citations": [
+      {
+       "page": 14,
+       "quote": "Création de 10 mares temporaires (total de 150 m²) pour la reproduction"
+      }
+     ]
+    },
+    {
+     "code": "12.5.2-a",
+     "type": "C",
+     "intitule": "Restauration et gestion d'habitats pionniers pour le Lotier grêle et le Lotier hispide",
+     "localisation": "ex_situ",
+     "site": "Sainte-Eulalie, parcelle CDC Biodiversité (secteur vert, UG1)",
+     "quantites": [
+      {
+       "valeur": 6969,
+       "valeur_max": null,
+       "unite": "m²",
+       "objet": "secteur lotiers"
+      }
+     ],
+     "prescriptions": [
+      "2 fauches avec export",
+      "griffage tous les 2 ans",
+      "recommandations CBNSA",
+      "ensoleillement maintenu"
+     ],
+     "especes_cibles": [
+      "Lotus angustissimus",
+      "Lotus hispidus"
+     ],
+     "references_dossier": [],
+     "figures": [
+      "9"
+     ],
+     "citations": [
+      {
+       "page": 14,
+       "quote": "Sur le premier (6 969 m²), le milieu est rouvert"
+      }
+     ]
+    },
+    {
+     "code": "12.5.2-b",
+     "type": "C",
+     "intitule": "Mosaïque d'habitats pour l'avifaune commune et la Bouscarle de Cetti",
+     "localisation": "ex_situ",
+     "site": "Sainte-Eulalie, parcelle CDC Biodiversité (secteur jaune, UG2)",
+     "quantites": [
+      {
+       "valeur": 4625,
+       "valeur_max": null,
+       "unite": "m²",
+       "objet": "secteur avifaune"
+      },
+      {
+       "valeur": 16,
+       "valeur_max": null,
+       "unite": "bosquet",
+       "objet": "bosquets"
+      }
+     ],
+     "prescriptions": [
+      "réouverture par gyrobroyage",
+      "16 bosquets d'essences arborées et fruitières",
+      "fourrés humides maintenus",
+      "contrôle des invasives"
+     ],
+     "especes_cibles": [
+      "Carduelis carduelis",
+      "Serinus serinus",
+      "Chloris chloris",
+      "Cettia cetti"
+     ],
+     "references_dossier": [],
+     "figures": [
+      "9"
+     ],
+     "citations": [
+      {
+       "page": 15,
+       "quote": "Sur le second (4 625 m²)"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": [
+    "7",
+    "8",
+    "9"
+   ]
+  },
+  "13.1": {
+   "resume": "Au moins 3 panneaux de sensibilisation des futurs usagers (évitements ouest, mesures constructives, abris pour la faune).",
+   "categories": [
+    "accompagnement"
+   ],
+   "obligations": [
+    {
+     "intitule": "Installer au moins 3 panneaux de sensibilisation des futurs usagers",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "non_precisee",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 3,
+       "valeur_max": null,
+       "unite": "panneau",
+       "objet": "panneaux (minimum)"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "13.1",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 15,
+       "quote": "à mettre en place a minima 3 panneaux de sensibilisation"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "13.1",
+     "type": "A",
+     "intitule": "Sensibilisation des futurs usagers",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [
+      {
+       "valeur": 3,
+       "valeur_max": null,
+       "unite": "panneau",
+       "objet": "minimum"
+      }
+     ],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 15,
+       "quote": "à mettre en place a minima 3 panneaux de sensibilisation"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": []
+  },
+  "13.2": {
+   "resume": "Abris et gîtes artificiels : 16 nichoirs à passereaux, 15 nids de martinets, 10 à 15 nids d'hirondelles, 16 gîtes à chiroptères encastrés en façade près du boisement, 2 hibernacula près des mares ; modalités précisées par l'écologue et transmises à la DREAL.",
+   "categories": [
+    "accompagnement"
+   ],
+   "obligations": [
+    {
+     "intitule": "Installer 16 nichoirs, 15 nids de martinets, 10 à 15 nids d'hirondelles, 16 gîtes à chiroptères et 2 hibernacula",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "non_precisee",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [
+      {
+       "valeur": 16,
+       "valeur_max": null,
+       "unite": "nichoir",
+       "objet": "nichoirs passereaux"
+      },
+      {
+       "valeur": 15,
+       "valeur_max": null,
+       "unite": "nid",
+       "objet": "nids de martinets"
+      },
+      {
+       "valeur": 10,
+       "valeur_max": 15,
+       "unite": "nid",
+       "objet": "nids d'hirondelles"
+      },
+      {
+       "valeur": 16,
+       "valeur_max": null,
+       "unite": "gîte",
+       "objet": "gîtes à chiroptères"
+      },
+      {
+       "valeur": 2,
+       "valeur_max": null,
+       "unite": "hibernaculum",
+       "objet": "hibernacula"
+      }
+     ],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "13.2",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 15,
+       "quote": "16 nichoirs en faveur des petits passereaux"
+      },
+      {
+       "page": 15,
+       "quote": "2 hibernacula sont aménagés en frange nord du site"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre les modalités fines des abris et gîtes (modèles, localisation, entretien, suivi) précisées par l'écologue",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "non_precisee",
+      "texte": ""
+     },
+     "preuve_attendue": [
+      "note_technique"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 15,
+       "quote": "sont précisées par l’écologue"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "13.2",
+     "type": "A",
+     "intitule": "Abris et gîtes artificiels pour la faune",
+     "localisation": "site_projet",
+     "site": "",
+     "quantites": [
+      {
+       "valeur": 16,
+       "valeur_max": null,
+       "unite": "nichoir",
+       "objet": "nichoirs"
+      },
+      {
+       "valeur": 15,
+       "valeur_max": null,
+       "unite": "nid",
+       "objet": "martinets"
+      },
+      {
+       "valeur": 10,
+       "valeur_max": 15,
+       "unite": "nid",
+       "objet": "hirondelles"
+      },
+      {
+       "valeur": 16,
+       "valeur_max": null,
+       "unite": "gîte",
+       "objet": "chiroptères"
+      },
+      {
+       "valeur": 2,
+       "valeur_max": null,
+       "unite": "hibernaculum",
+       "objet": "hibernacula"
+      }
+     ],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 15,
+       "quote": "13.2 Installation d’abris et de gîtes artificiels en faveur de la faune"
+      }
+     ]
+    }
+   ],
+   "references_internes": [],
+   "figures": []
+  },
+  "14": {
+   "resume": "Suivi écologique du site du projet (aménagements, secteurs évités, mares, gîtes) et des compensations ex situ après un état zéro complet : à partir de N+1 (N = début du chantier pour le secteur évité, achèvement des travaux pour les compensations), annuellement jusqu'à N+5 puis N+10, 15, 20, 25, 30 ; protocoles par taxon. Adaptation de la gestion si évolution négative, compensations complémentaires si les bilans à 3 et 5 ans concluent à l'inefficacité ; compte-rendu au plus tard le 31 mars de l'année suivant chaque campagne.",
+   "categories": [
+    "suivi_ecologique"
+   ],
+   "obligations": [
+    {
+     "intitule": "Réaliser un état zéro complet de référence avant intervention sur les secteurs suivis",
+     "categorie": "suivi",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "avant intervention",
+      "anchor": "demarrage_travaux",
+      "offset_value": 0,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "cr_suivi_ecologique"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 16,
+       "quote": "un état zéro complet de référence avant intervention est réalisé"
+      }
+     ]
+    },
+    {
+     "intitule": "Réaliser le suivi écologique du secteur évité et du site aménagé (N = début du chantier)",
+     "categorie": "suivi",
+     "echeance": {
+      "kind": "annees_relatives",
+      "texte": "l’année N+1, N étant l’année de commencement du chantier",
+      "anchor": "demarrage_travaux",
+      "years_relative": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       10,
+       15,
+       20,
+       25,
+       30
+      ]
+     },
+     "preuve_attendue": [
+      "cr_suivi_ecologique"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [
+      "Tableau : « de N+1 à N+5, puis à N+5, N+10… » (N+5 répété)"
+     ],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 16,
+       "quote": "l’année N+1, N étant l’année de commencement du chantier, sur le secteur évité"
+      }
+     ]
+    },
+    {
+     "intitule": "Réaliser le suivi écologique des compensations (N = achèvement des travaux compensatoires)",
+     "categorie": "suivi",
+     "echeance": {
+      "kind": "annees_relatives",
+      "texte": "l’année N+1, N étant l’année d’achèvement de ces travaux",
+      "anchor": "fin_travaux_compensatoires",
+      "years_relative": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       10,
+       15,
+       20,
+       25,
+       30
+      ]
+     },
+     "preuve_attendue": [
+      "cr_suivi_ecologique"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 16,
+       "quote": "l’année N+1, N étant l’année d’achèvement de ces travaux, pour les compensations"
+      }
+     ]
+    },
+    {
+     "intitule": "Vérifier, nettoyer, entretenir et remplacer si besoin les nids, nichoirs et gîtes lors des suivis",
+     "categorie": "suivi",
+     "echeance": {
+      "kind": "permanente",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 16,
+       "quote": "Les suivis mis en place intègrent la vérification de l’occupation des nids, nichoirs et gîtes"
+      }
+     ]
+    },
+    {
+     "intitule": "Proposer sans délai des compensations complémentaires si les bilans à 3 et 5 ans concluent à l'inefficacité",
+     "categorie": "declaration",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": "sans délai"
+     },
+     "preuve_attendue": [],
+     "condition": "bilans à 3 et 5 ans concluant à l'inefficacité de tout ou partie des mesures",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 13,
+       "quote": "des compensations"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le compte-rendu détaillé des suivis écologiques",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "date_annuelle",
+      "texte": "au plus tard le 31 mars de l’année consécutive à celle du suivi",
+      "anchor": "evenement_recurrent",
+      "anchor_label": "campagne de suivi",
+      "day_month": "03-31",
+      "year_offset": 1
+     },
+     "preuve_attendue": [
+      "cr_suivi_ecologique"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 16,
+       "quote": "au plus tard le 31 mars de l’année consécutive à celle du suivi"
+      }
+     ]
+    }
+   ],
+   "mesures": [
+    {
+     "code": "14",
+     "type": "S",
+     "intitule": "Suivis écologiques du site, des évitements et des compensations",
+     "localisation": "tous",
+     "site": "",
+     "quantites": [],
+     "prescriptions": [],
+     "especes_cibles": [],
+     "references_dossier": [],
+     "figures": [],
+     "citations": [
+      {
+       "page": 16,
+       "quote": "Le bénéficiaire est tenu de mettre en place un suivi écologique sur le site du projet"
+      }
+     ]
+    }
+   ],
+   "references_internes": [
+    "12.4"
+   ],
+   "figures": []
+  },
+  "15": {
+   "resume": "Comité de suivi mis en place dès le début du chantier (DREAL/SPN, Pichet, écologue, opérateurs de compensation, OFB), réuni à l'initiative du bénéficiaire au moins une fois par an pendant les 3 premières années puis à N+5, N+10, N+20 et N+30.",
+   "categories": [
+    "gouvernance"
+   ],
+   "obligations": [
+    {
+     "intitule": "Mettre en place le comité de suivi dès le début du chantier",
+     "categorie": "gouvernance",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "dès le début du chantier",
+      "anchor": "demarrage_travaux",
+      "offset_value": 0,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "cr_comite"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 16,
+       "quote": "dès le début du chantier, un comité de suivi"
+      }
+     ]
+    },
+    {
+     "intitule": "Réunir le comité de suivi au moins une fois par an pendant 3 ans, puis à N+5, N+10, N+20 et N+30",
+     "categorie": "gouvernance",
+     "echeance": {
+      "kind": "annees_relatives",
+      "texte": "au moins une fois par an pendant les 3 premières années […] puis à N+5, N+10, N+20 et N+30",
+      "anchor": "demarrage_travaux",
+      "years_relative": [
+       0,
+       1,
+       2,
+       5,
+       10,
+       20,
+       30
+      ]
+     },
+     "preuve_attendue": [
+      "cr_comite"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 17,
+       "quote": "puis à N+5, N+10, N+20 et N+30"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "16.1": {
+   "resume": "Tableau des documents à transmettre à la DREAL/SPN et de leurs échéances : courrier de démarrage, planning et plans, protocole invasives, CR d'abattage, CR de suivi de chantier et journal de bord, modalités de plantation, CR des suivis écologiques, récépissé Dépobio, plan de gestion détaillé, sécurisation foncière, démarrage et CR des travaux compensatoires, données GéoMCE, bilans d'efficacité.",
+   "categories": [
+    "transmission_documents"
+   ],
+   "obligations": [
+    {
+     "intitule": "Transmettre un courrier prévenant du démarrage des travaux",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "Avant la date de démarrage des travaux",
+      "anchor": "demarrage_travaux",
+      "offset_value": 0,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "courrier"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 17,
+       "quote": "Courrier prévenant du démarrage des travaux"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le planning prévisionnel et les plans de localisation des opérations préparatoires",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "Au plus tard 15 jours avant la date de démarrage des travaux",
+      "anchor": "demarrage_travaux",
+      "offset_value": 15,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "planning",
+      "plan_localisation"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 6,
+       "quote": "Ce planning est accompagné de plans localisant de"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le protocole de surveillance, confinement et éradication des espèces exotiques envahissantes",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "Au plus tard 15 jours avant la date de démarrage des travaux",
+      "anchor": "demarrage_travaux",
+      "offset_value": 15,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "protocole"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 17,
+       "quote": "Protocole de surveillance, confinement et éradication"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le compte-rendu d'abattage des arbres gîtes",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "A l’issue de ces travaux (délai de 15 jours)",
+      "anchor": "evenement_ponctuel",
+      "anchor_label": "fin des travaux d'abattage",
+      "offset_value": 15,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "cr_abattage"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 17,
+       "quote": "A l’issue de ces travaux (délai de 15 jours)"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre les comptes-rendus de suivi de chantier et le journal de bord",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "au plus tard 15 jours après la date du passage de l’écologue",
+      "anchor": "evenement_recurrent",
+      "anchor_label": "passage de l'écologue",
+      "offset_value": 15,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "cr_suivi_chantier",
+      "journal_de_bord"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 17,
+       "quote": "Comptes-rendus du suivi écologique de chantier"
+      },
+      {
+       "page": 17,
+       "quote": "En continu, au plus tard 15 jours après la"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre les modalités de mise en œuvre des plantations (palettes, localisation, remplacements) validées par l'écologue",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "Après validation par l’écologue et avant la mise en œuvre des plantations",
+      "anchor": "evenement_ponctuel",
+      "anchor_label": "mise en œuvre des plantations",
+      "offset_value": 0,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "note_technique"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 17,
+       "quote": "Après validation par l’écologue et avant la"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le compte-rendu détaillé des suivis écologiques",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "date_annuelle",
+      "texte": "au plus tard le 31 décembre de l’année de suivi",
+      "anchor": "evenement_recurrent",
+      "anchor_label": "campagne de suivi",
+      "day_month": "12-31",
+      "year_offset": 0
+     },
+     "preuve_attendue": [
+      "cr_suivi_ecologique"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 17,
+       "quote": "plus tard le 31 décembre de l’année de suivi"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le récépissé de versement des données brutes sur Dépobio",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "date_annuelle",
+      "texte": "Au plus tard le 31 décembre de l’année de suivi",
+      "anchor": "evenement_recurrent",
+      "anchor_label": "campagne de suivi",
+      "day_month": "12-31",
+      "year_offset": 0
+     },
+     "preuve_attendue": [
+      "recepisse_depobio"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 17,
+       "quote": "Récépissé de versement sur l’espace Dépobio des"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre pour validation un plan de gestion détaillé (compensations, secteurs évités, aménagements paysagers)",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "Dans les 6 mois à compter de la notification",
+      "anchor": "notification",
+      "offset_value": 6,
+      "offset_unit": "mois"
+     },
+     "preuve_attendue": [
+      "plan_de_gestion"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 18,
+       "quote": "Plan de gestion détaillé (site aménagé, compensations)"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre les documents de sécurisation foncière des secteurs évités et compensations",
+     "categorie": "foncier",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "Dans les 6 mois à compter de la notification",
+      "anchor": "notification",
+      "offset_value": 6,
+      "offset_unit": "mois"
+     },
+     "preuve_attendue": [
+      "acte_foncier"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 18,
+       "quote": "Documents de sécurisation foncière des secteurs évités"
+      }
+     ]
+    },
+    {
+     "intitule": "Informer du début des travaux des mesures compensatoires",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_avant",
+      "texte": "Au plus tard 15 jours avant la date de démarrage de ces travaux",
+      "anchor": "demarrage_travaux_compensatoires",
+      "offset_value": 15,
+      "offset_unit": "jour"
+     },
+     "preuve_attendue": [
+      "courrier"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 18,
+       "quote": "Début des travaux des mesures compensatoires"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le compte-rendu des travaux compensatoires",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "date_annuelle",
+      "texte": "Au plus tard le 31 mars de l’année N+1",
+      "anchor": "fin_travaux_compensatoires",
+      "day_month": "03-31",
+      "year_offset": 1
+     },
+     "preuve_attendue": [
+      "cr_travaux_compensatoires"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 18,
+       "quote": "Au plus tard le 31 mars de l’année N+1"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre les données de géolocalisation des mesures (GéoMCE)",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "La première transmission au plus tard 6 mois à compter de la notification",
+      "anchor": "notification",
+      "offset_value": 6,
+      "offset_unit": "mois"
+     },
+     "preuve_attendue": [
+      "fiche_geomce",
+      "couche_sig_geomce"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 18,
+       "quote": "La première transmission au plus tard 6 mois"
+      }
+     ]
+    },
+    {
+     "intitule": "Transmettre le bilan de l'ensemble des mesures et de leur efficacité",
+     "categorie": "transmission",
+     "echeance": {
+      "kind": "annees_relatives",
+      "texte": "Au plus tard le 31/03 de l’année N+4, N+6, puis N+11, N+16, N+21, N+26, N+31",
+      "anchor": "demarrage_travaux",
+      "years_relative": [
+       4,
+       6,
+       11,
+       16,
+       21,
+       26,
+       31
+      ],
+      "day_month": "03-31"
+     },
+     "preuve_attendue": [
+      "bilan"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [
+      "N non défini dans le tableau (début des travaux selon l'art. 15, achèvement des compensations selon l'art. 14)",
+      "art. 14 : « bilans effectués à 3 et 5 ans »"
+     ],
+     "confidence": 0.65,
+     "especes": [],
+     "citations": [
+      {
+       "page": 18,
+       "quote": "Au plus tard le 31/03 de l’année N+4, N+6"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [
+    "8",
+    "9",
+    "12.4",
+    "14"
+   ],
+   "figures": []
+  },
+  "16.2": {
+   "resume": "Fourniture des données GéoMCE (fiche projet, fiche par mesure compensatoire, couche SIG shapefile en Lambert 93 avec un champ identifiant la mesure), mesures d'évitement comprises, via l'adresse geomce de la DREAL : première transmission sous 6 mois, puis au fur et à mesure et au moins annuellement jusqu'à mise en œuvre complète.",
+   "categories": [
+    "donnees",
+    "transmission_documents"
+   ],
+   "obligations": [
+    {
+     "intitule": "Transmettre les données de géolocalisation des mesures (GéoMCE)",
+     "categorie": "donnees",
+     "echeance": {
+      "kind": "delai_apres",
+      "texte": "dans les 6 mois à compter de la notification",
+      "anchor": "notification",
+      "offset_value": 6,
+      "offset_unit": "mois"
+     },
+     "preuve_attendue": [
+      "fiche_geomce",
+      "couche_sig_geomce"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL NA (geomce)",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 18,
+       "quote": "La première transmission, incluant les mesures d’évitement, intervient dans les 6 mois à compter de la"
+      }
+     ]
+    },
+    {
+     "intitule": "Mettre à jour les données GéoMCE au fur et à mesure, au moins annuellement, jusqu'à mise en œuvre complète des compensations",
+     "categorie": "donnees",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "au fur et à mesure de leur mise en œuvre, soit a minima annuellement"
+     },
+     "preuve_attendue": [
+      "fiche_geomce",
+      "couche_sig_geomce"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "DREAL NA (geomce)",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 18,
+       "quote": "soit au fur et à mesure de leur mise en œuvre, soit a minima annuellement"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "16.3": {
+   "resume": "Les données brutes de biodiversité acquises après la décision (suivis des impacts et des compensations) sont versées sur Dépobio aux mêmes échéances que les suivis.",
+   "categories": [
+    "donnees"
+   ],
+   "obligations": [
+    {
+     "intitule": "Verser les données brutes de biodiversité sur Dépobio aux mêmes échéances que les suivis",
+     "categorie": "donnees",
+     "echeance": {
+      "kind": "non_precisee",
+      "texte": "aux mêmes échéances que les suivis afférents"
+     },
+     "preuve_attendue": [
+      "recepisse_depobio"
+     ],
+     "condition": "",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 19,
+       "quote": "Celles-ci sont fournies aux mêmes échéances que les suivis afférents."
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "17": {
+   "resume": "La dérogation peut être suspendue ou révoquée, le bénéficiaire entendu, si les conditions ne sont pas respectées.",
+   "categories": [
+    "sanctions_controles"
+   ],
+   "obligations": [],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "18": {
+   "resume": "Le bénéficiaire déclare au préfet et à la DREAL/SPN, dès qu'il en a connaissance, les incidents ou accidents susceptibles de porter atteinte aux espèces protégées, prend les mesures pour y mettre fin et y remédier, et en reste responsable.",
+   "categories": [
+    "incidents"
+   ],
+   "obligations": [
+    {
+     "intitule": "Déclarer au préfet et à la DREAL/SPN tout incident ou accident portant atteinte aux espèces protégées",
+     "categorie": "declaration",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": "Dès qu’il en a connaissance"
+     },
+     "preuve_attendue": [
+      "declaration_incident"
+     ],
+     "condition": "incident ou accident de nature à porter atteinte aux espèces protégées ou à leurs habitats",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "Préfet + DREAL Nouvelle-Aquitaine / SPN",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 19,
+       "quote": "Dès qu’il en a connaissance, le bénéficiaire est tenu de déclarer au préfet du département"
+      }
+     ]
+    },
+    {
+     "intitule": "Mettre fin aux causes de l'incident, en évaluer les conséquences et y remédier",
+     "categorie": "mesure",
+     "echeance": {
+      "kind": "sans_delai",
+      "texte": ""
+     },
+     "preuve_attendue": [],
+     "condition": "incident ou accident",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 19,
+       "quote": "pour mettre fin aux causes de l’incident ou accident, pour évaluer ses"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "19": {
+   "resume": "Les agents de police de la nature ont libre accès aux installations et peuvent demander toute pièce ; DREAL et OFB peuvent faire des contrôles inopinés pendant et après les travaux.",
+   "categories": [
+    "sanctions_controles"
+   ],
+   "obligations": [
+    {
+     "intitule": "Laisser libre accès aux agents de contrôle et fournir toute pièce demandée",
+     "categorie": "information",
+     "echeance": {
+      "kind": "permanente",
+      "texte": "pendant et après les travaux"
+     },
+     "preuve_attendue": [],
+     "condition": "contrôle",
+     "quantites": [],
+     "debiteur": "beneficiaire",
+     "destinataire": "",
+     "mesure_code": "",
+     "ambiguities": [],
+     "confidence": 0.85,
+     "especes": [],
+     "citations": [
+      {
+       "page": 19,
+       "quote": "les agents chargés de la police de la nature ont libre accès aux installations"
+      }
+     ]
+    }
+   ],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "20": {
+   "resume": "Recours contentieux devant le tribunal administratif de Bordeaux (courrier ou Télérecours) ou recours gracieux préalable auprès du préfet, dans les deux mois suivant la notification ou la publication.",
+   "categories": [
+    "recours"
+   ],
+   "obligations": [],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  },
+  "21": {
+   "resume": "Exécution par le secrétaire général de la préfecture et le directeur de la DREAL ; publication au recueil des actes administratifs, notification au pétitionnaire, copie à la DDTM et à l'OFB (régional et départemental).",
+   "categories": [
+    "execution"
+   ],
+   "obligations": [],
+   "mesures": [],
+   "references_internes": [],
+   "figures": []
+  }
+ }
+}

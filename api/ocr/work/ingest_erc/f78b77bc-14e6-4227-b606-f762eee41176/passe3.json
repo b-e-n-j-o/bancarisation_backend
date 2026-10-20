@@ -1,0 +1,1045 @@
+{
+ "empreinte_referentiel": "6f14cc8f063f9dbecadc14602b152519b380344c05fe26ddae7b1d91541d13f4",
+ "annee_fin": 2055,
+ "echeances": [
+  {
+   "id": "ES1-19ca651a09",
+   "code_operation": "ES1",
+   "type_operation": "ES",
+   "type_metier": "autre",
+   "libelle": "Suivi des habitats naturels et de la flore à enjeu",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2025,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2025,
+     2026,
+     2027,
+     2028,
+     2029,
+     2030
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": "06-01",
+    "fin": "07-28",
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": null,
+   "source": {
+    "page": 25,
+    "extrait": "ES1 | Suivi du Lotier | Inventaire et cartographie",
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.25 grille p025_g1"
+   },
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "ES2-e60beb0b47",
+   "code_operation": "ES2",
+   "type_operation": "ES",
+   "type_metier": "autre",
+   "libelle": "Suivi de l'avifaune",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2025,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2025,
+     2026,
+     2027,
+     2028,
+     2029,
+     2030
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": "04-01",
+    "fin": "06-28",
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": null,
+   "source": {
+    "page": 25,
+    "extrait": "ES2 | Suivi de l’avifaune cible | Inventaire et cartographie",
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.25 grille p025_g1"
+   },
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "FG1-529d433b75",
+   "code_operation": "FG1",
+   "type_operation": "FG",
+   "type_metier": "autre",
+   "libelle": "Animation du plan de gestion",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2025,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2025,
+     2026,
+     2027,
+     2028,
+     2029,
+     2030
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": null,
+   "source": {
+    "page": 41,
+    "extrait": "Phasage prévisionnel",
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.41 grille p041_g1"
+   },
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+    "colonne à plage ignorée (N+6 à N+10 2031 à 2035)"
+   ]
+  },
+  {
+   "id": "FG2-54185bacc7",
+   "code_operation": "FG2",
+   "type_operation": "FG",
+   "type_metier": "autre",
+   "libelle": "Evaluation et mise à jour du plan de gestion",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2030,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2030
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": null,
+    "fin": null,
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": null,
+   "source": {
+    "page": 26,
+    "extrait": "FG2 | Evaluation et mise à jour du plan de gestion",
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.26 grille p026_g1"
+   },
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche",
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+6 à N+10 2031 à 2035)"
+   ]
+  },
+  {
+   "id": "RG1-90a041a79f",
+   "code_operation": "RG1",
+   "type_operation": "RG",
+   "type_metier": "autre",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2025,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2025
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": "03-01",
+    "fin": "04-28",
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": null,
+   "source": {
+    "page": 25,
+    "extrait": "RG1 | Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion | Réouverture des fourrés",
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.25 grille p025_g1"
+   },
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "RG1-388eb92679",
+   "code_operation": "RG1",
+   "type_operation": "RG",
+   "type_metier": "autre",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2025,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2025
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": "07-01",
+    "fin": "08-28",
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": null,
+   "source": {
+    "page": 25,
+    "extrait": "RG1 | Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion | Réouverture des fourrés",
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.25 grille p025_g1"
+   },
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "RG2-31448ee1d8",
+   "code_operation": "RG2",
+   "type_operation": "RG",
+   "type_metier": "autre",
+   "libelle": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+   "lib_thema": "autre",
+   "objectif_long_terme": null,
+   "objectif_operationnel": null,
+   "ug_ids": [],
+   "zone_source_proposee": null,
+   "parcelles": [],
+   "communes": [],
+   "recurrence": {
+    "type": "explicite",
+    "intervalle_ans": null,
+    "occurrences_par_an": null,
+    "duree_ans": null,
+    "ancrage_annee": 2025,
+    "annee_fin": null,
+    "regle_source": null,
+    "paliers": [],
+    "annees": [
+     2025
+    ]
+   },
+   "fenetre_intervention": {
+    "debut": "09-01",
+    "fin": "10-28",
+    "traverse_nouvel_an": false,
+    "texte_source": null
+   },
+   "conditions": [],
+   "indicateurs": [],
+   "intervenants": [],
+   "duree_gestion_ans": null,
+   "source": {
+    "page": 25,
+    "extrait": "RG2 | Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés | Débroussaillage",
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.25 grille p025_g1"
+   },
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  }
+ ],
+ "occurrences": [
+  {
+   "echeance_cle": "ES1-19ca651a09",
+   "annee": 2025,
+   "code": "ES 1",
+   "titre": "Suivi des habitats naturels et de la flore à enjeu",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [],
+   "mois_debut": 6,
+   "mois_fin": 7,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES1-19ca651a09",
+   "annee": 2026,
+   "code": "ES 1",
+   "titre": "Suivi des habitats naturels et de la flore à enjeu",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": 6,
+   "mois_fin": 7,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES1-19ca651a09",
+   "annee": 2027,
+   "code": "ES 1",
+   "titre": "Suivi des habitats naturels et de la flore à enjeu",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": 6,
+   "mois_fin": 7,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES1-19ca651a09",
+   "annee": 2028,
+   "code": "ES 1",
+   "titre": "Suivi des habitats naturels et de la flore à enjeu",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": 6,
+   "mois_fin": 7,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES1-19ca651a09",
+   "annee": 2029,
+   "code": "ES 1",
+   "titre": "Suivi des habitats naturels et de la flore à enjeu",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": 6,
+   "mois_fin": 7,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES1-19ca651a09",
+   "annee": 2030,
+   "code": "ES 1",
+   "titre": "Suivi des habitats naturels et de la flore à enjeu",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": 6,
+   "mois_fin": 7,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES2-e60beb0b47",
+   "annee": 2025,
+   "code": "ES 2",
+   "titre": "Suivi de l'avifaune",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [],
+   "mois_debut": 4,
+   "mois_fin": 6,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES2-e60beb0b47",
+   "annee": 2026,
+   "code": "ES 2",
+   "titre": "Suivi de l'avifaune",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": 4,
+   "mois_fin": 6,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES2-e60beb0b47",
+   "annee": 2027,
+   "code": "ES 2",
+   "titre": "Suivi de l'avifaune",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": 4,
+   "mois_fin": 6,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES2-e60beb0b47",
+   "annee": 2028,
+   "code": "ES 2",
+   "titre": "Suivi de l'avifaune",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": 4,
+   "mois_fin": 6,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES2-e60beb0b47",
+   "annee": 2029,
+   "code": "ES 2",
+   "titre": "Suivi de l'avifaune",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": 4,
+   "mois_fin": 6,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "ES2-e60beb0b47",
+   "annee": 2030,
+   "code": "ES 2",
+   "titre": "Suivi de l'avifaune",
+   "categorie": "ES",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": 4,
+   "mois_fin": 6,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "FG1-529d433b75",
+   "annee": 2025,
+   "code": "FG 1",
+   "titre": "Animation du plan de gestion",
+   "categorie": "FG",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+    "colonne à plage ignorée (N+6 à N+10 2031 à 2035)"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "FG1-529d433b75",
+   "annee": 2026,
+   "code": "FG 1",
+   "titre": "Animation du plan de gestion",
+   "categorie": "FG",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+    "colonne à plage ignorée (N+6 à N+10 2031 à 2035)"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "FG1-529d433b75",
+   "annee": 2027,
+   "code": "FG 1",
+   "titre": "Animation du plan de gestion",
+   "categorie": "FG",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+    "colonne à plage ignorée (N+6 à N+10 2031 à 2035)"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "FG1-529d433b75",
+   "annee": 2028,
+   "code": "FG 1",
+   "titre": "Animation du plan de gestion",
+   "categorie": "FG",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+    "colonne à plage ignorée (N+6 à N+10 2031 à 2035)"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "FG1-529d433b75",
+   "annee": 2029,
+   "code": "FG 1",
+   "titre": "Animation du plan de gestion",
+   "categorie": "FG",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+    "colonne à plage ignorée (N+6 à N+10 2031 à 2035)"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "FG1-529d433b75",
+   "annee": 2030,
+   "code": "FG 1",
+   "titre": "Animation du plan de gestion",
+   "categorie": "FG",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+    "colonne à plage ignorée (N+6 à N+10 2031 à 2035)"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "FG2-54185bacc7",
+   "annee": 2030,
+   "code": "FG 2",
+   "titre": "Evaluation et mise à jour du plan de gestion",
+   "categorie": "FG",
+   "lib_thema": "autre",
+   "statut": "planifie",
+   "ug_ids": [],
+   "mois_debut": null,
+   "mois_fin": null,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche",
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+6 à N+10 2031 à 2035)"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "RG1-90a041a79f",
+   "annee": 2025,
+   "code": "RG 1",
+   "titre": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "categorie": "RG",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [],
+   "mois_debut": 3,
+   "mois_fin": 4,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "RG1-388eb92679",
+   "annee": 2025,
+   "code": "RG 1",
+   "titre": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "categorie": "RG",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [],
+   "mois_debut": 7,
+   "mois_fin": 8,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  },
+  {
+   "echeance_cle": "RG2-31448ee1d8",
+   "annee": 2025,
+   "code": "RG 2",
+   "titre": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+   "categorie": "RG",
+   "lib_thema": "autre",
+   "statut": "a_confirmer",
+   "ug_ids": [],
+   "mois_debut": 9,
+   "mois_fin": 10,
+   "traverse_nouvel_an": false,
+   "origine": "ia",
+   "confiance": 0.9,
+   "champs_a_confirmer": [],
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ],
+   "montant_ht": null,
+   "montant_realise": null,
+   "prestataire": null
+  }
+ ],
+ "non_placables": [],
+ "budget_non_ventile": [],
+ "rejets": [
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.30-32",
+    "extrait": "« Phasage prévisionnel | Travaux initiaux » : croix en N 2025 ; bande « Fauche et griffage » de 2026 (N+1) à 2055 (N+30)"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.30-32",
+    "extrait": "« Gestion : entretien par fauche 1 à 2 fois par an. En cas de fauche bisannuelle, une première fauche sera réalisée au p"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.32-35",
+    "extrait": "« Une opération de débroussaillage sera réalisée en dehors des périodes sensibles pour les espèces (septembre/ octobre)."
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.32-35",
+    "extrait": "« Le milieu semi-ouvert sera maintenu par débroussaillage ; Si des pertes importantes sont constatées au niveau des plan"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.35-38",
+    "extrait": "« Chaque campagne se fera à travers un passage courant juin/juillet. » — « Phasage prévisionnel | Inventaire et cartogra"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.35-38",
+    "extrait": "« Chaque campagne se fera à travers un passage courant juin/juillet. » — « Phasage prévisionnel | Inventaire et cartogra"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.38-39",
+    "extrait": "« Les suivis consistent en la réalisation de campagnes d'inventaires au cours des périodes favorables de détection des e"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.38-39",
+    "extrait": "« Les suivis consistent en la réalisation de campagnes d'inventaires au cours des périodes favorables de détection des e"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.39-42",
+    "extrait": "« Phasage prévisionnel » : croix en N 2025, N+1 2026, N+2 2027, N+3 2028, N+4 2029, N+5 2030, N+6 à N+10 2031 à 2035, N+"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.39-42",
+    "extrait": "« Des synthèses annuelles seront produites en début d'année N+1 pour les résultats de l'année N et ce, durant les 5 prem"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.39-42",
+    "extrait": "« Ensuite, des rapports seront établis tous les 5 ans. »"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.39-42",
+    "extrait": "« l'initiative du maître d'ouvrage, ce comité se réunira annuellement de N à N+5, puis à N+10, N+20 et N+30. »"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.39-42",
+    "extrait": "« l'initiative du maître d'ouvrage, ce comité se réunira annuellement de N à N+5, puis à N+10, N+20 et N+30. »"
+   }
+  },
+  {
+   "motif": "ug_inconnue",
+   "detail": "UG ['_'] hors référentiel",
+   "source": {
+    "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf",
+    "loc": "p.39-42",
+    "extrait": "« Pour cela, une dizaine de visites sera répartie sur la durée du plan de gestion, pendant les années où il n'y a pas d'"
+   }
+  }
+ ],
+ "avertissements": [
+  "ES1 : bande non interprétée : la règle reste à la fiche",
+  "ES2 : bande non interprétée : la règle reste à la fiche",
+  "FG1 : colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+  "FG1 : colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+  "FG1 : colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+  "FG1 : colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+  "FG1 : colonne à plage ignorée (N+6 à N+10 2031 à 2035)",
+  "FG2 : bande non interprétée : la règle reste à la fiche",
+  "FG2 : colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+  "FG2 : colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+  "FG2 : colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+  "FG2 : colonne à plage ignorée (N+6 à N+10 2031 à 2035)",
+  "RG1 : bande non interprétée : la règle reste à la fiche",
+  "RG2 : bande non interprétée : la règle reste à la fiche"
+ ],
+ "classeurs": {},
+ "stats": {
+  "faits": 16,
+  "temporels": 16,
+  "budgets": 0,
+  "statuts": 0,
+  "echeances": 7,
+  "occurrences": 22,
+  "non_placables": 0,
+  "rejets": 14,
+  "occurrences_avec_montant": 0,
+  "tokens_llm": {
+   "n": 1,
+   "prompt": 9446,
+   "reasoning": 0,
+   "completion": 3340,
+   "total": 12786
+  },
+  "duree_s": 32.96
+ }
+}

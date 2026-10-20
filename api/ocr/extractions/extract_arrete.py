@@ -26,7 +26,10 @@ from datetime import date
 from pathlib import Path
 from typing import Any, Literal
 
-from mistralai import Mistral
+try:
+    from mistralai.client import Mistral  # SDK 2 / 3
+except ImportError:
+    from mistralai import Mistral  # SDK 1
 from pydantic import BaseModel, Field, ValidationError
 
 from .prompts.prompt_anlayse_arrete import SYSTEM_PROMPT

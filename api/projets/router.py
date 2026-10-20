@@ -86,6 +86,13 @@ class ProjetUpdateRequest(BaseModel):
     type_dispositif: Optional[TypeDispositif] = None
     partager_budget_dreal: Optional[bool] = None
 
+    @field_validator("commune")
+    @classmethod
+    def strip_commune(cls, value: Optional[str]) -> Optional[str]:
+        if value is None:
+            return None
+        return value.strip()
+
     @field_validator("nom", "reference_interne")
     @classmethod
     def strip_update_required_if_provided(cls, value: Optional[str]) -> Optional[str]:

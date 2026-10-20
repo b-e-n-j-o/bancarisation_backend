@@ -1,0 +1,1 @@
+{"kind": "http", "tag": "fiche", "model": "mistral-large-4-0", "cached": false, "ok": true, "n": 1, "seconds": 225.79, "usage": {"prompt_tokens": 16451, "completion_tokens": 10608, "total_tokens": 27059}, "ts": "2026-10-16T15:30:49"}

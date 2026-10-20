@@ -24,7 +24,6 @@ from shapely.geometry import (
     Polygon,
 )
 from shapely.geometry.base import BaseGeometry
-from shapely.ops import unary_union
 
 from api.db.utilisateur import connect_utilisateur
 from api.ocr.domain.ug_ids import normalize_ug_id
@@ -104,41 +103,57 @@ def _extract_zip(content: bytes, dest: Path) -> Path:
     return _find_shapefile(dest)
 
 
+def _pieces(geom: BaseGeometry, atomique: type[BaseGeometry]) -> list[BaseGeometry]:
+    """Aplatit une collection et ne garde que le type demandé (polygone, ligne ou point)."""
+    if geom is None or geom.is_empty:
+        return []
+    if isinstance(geom, GeometryCollection):
+        out: list[BaseGeometry] = []
+        for part in geom.geoms:
+            out.extend(_pieces(part, atomique))
+        return out
+    if isinstance(geom, (MultiPolygon, MultiLineString, MultiPoint)):
+        return [g for g in geom.geoms if isinstance(g, atomique) and not g.is_empty]
+    if isinstance(geom, atomique):
+        return [geom]
+    return []
+
+
 def _ensure_multi(geom: BaseGeometry, kind: CoucheKind) -> BaseGeometry:
     if geom is None or geom.is_empty:
         raise GeometryIngestError("Géométrie vide après lecture du shapefile.")
 
-    if isinstance(geom, GeometryCollection):
-        parts = [g for g in geom.geoms if not g.is_empty]
-        if not parts:
-            raise GeometryIngestError("GeometryCollection vide.")
-        geom = unary_union(parts)
-
     if kind in ("surf", "emprise"):
-        if isinstance(geom, Polygon):
-            return MultiPolygon([geom])
-        if isinstance(geom, MultiPolygon):
-            return geom
-        raise GeometryIngestError(
-            f"Emprise / UG surfacique attendue (Polygon/MultiPolygon), reçu {geom.geom_type}."
-        )
+        parts = _pieces(geom, Polygon)
+        if not parts:
+            raise GeometryIngestError(
+                f"Aucune surface exploitable (Polygon), reçu {geom.geom_type}."
+            )
+        return MultiPolygon(parts)
 
     if kind == "lin":
-        if isinstance(geom, LineString):
-            return MultiLineString([geom])
-        if isinstance(geom, MultiLineString):
-            return geom
-        raise GeometryIngestError(
-            f"UG linéaire attendue (LineString/MultiLineString), reçu {geom.geom_type}."
-        )
+        parts = _pieces(geom, LineString)
+        if not parts:
+            raise GeometryIngestError(
+                f"Aucune ligne exploitable (LineString), reçu {geom.geom_type}."
+            )
+        return MultiLineString(parts)
 
-    # pct
-    if isinstance(geom, Point):
-        return MultiPoint([geom])
-    if isinstance(geom, MultiPoint):
-        return geom
-    raise GeometryIngestError(
-        f"UG ponctuelle attendue (Point/MultiPoint), reçu {geom.geom_type}."
+    parts = _pieces(geom, Point)
+    if not parts:
+        raise GeometryIngestError(
+            f"Aucun point exploitable (Point), reçu {geom.geom_type}."
+        )
+    return MultiPoint(parts)
+
+
+def _sql_geom(kind: CoucheKind) -> str:
+    """ST_MakeValid peut renvoyer une GeometryCollection : on n'en garde que la dimension utile."""
+    dim = 3 if kind in ("surf", "emprise") else 2 if kind == "lin" else 1
+    return (
+        "ST_Multi(ST_CollectionExtract("
+        "ST_MakeValid(ST_Force2D(ST_SetSRID(ST_GeomFromText(%s), %s))), "
+        f"{dim}))"
     )
 
 
@@ -344,7 +359,6 @@ def ingest_shapefile_zip(
                             row_id = inserted
                             table = feat_table
                             kind = feat_kind
-                conn.commit()
         except GeometryIngestError:
             raise
         except Exception as exc:
@@ -365,6 +379,40 @@ def ingest_shapefile_zip(
         )
 
 
+_ROLES_GEOMETRIE = {
+    "unite_gestion",
+    "emprise_projet",
+    "plan_de_masse",
+    "zone_evitement",
+    "zone_reduction",
+    "zone_accompagnement",
+    "geometrie_complementaire",
+}
+
+
+_TABLES_ROLE = (
+    "unites_de_gestion_surf",
+    "unites_de_gestion_lin",
+    "unites_de_gestion_pct",
+    "emprise_projet",
+)
+
+
+def _tables_avec_role(cur) -> set[str]:
+    """La colonne vient de la migration 054. Pas d'ALTER ici : le rôle applicatif n'est pas propriétaire."""
+    cur.execute(
+        """
+        SELECT table_name
+        FROM information_schema.columns
+        WHERE table_schema = 'bancarisation'
+          AND column_name = 'role_geometrie'
+          AND table_name = ANY(%s)
+        """,
+        (list(_TABLES_ROLE),),
+    )
+    return {row[0] for row in cur.fetchall()}
+
+
 def persister_entites_couche(
     *,
     projet_id: UUID,
@@ -375,6 +423,9 @@ def persister_entites_couche(
     analyse_id: str,
     source_fichier: str,
     is_emprise: bool = False,
+    affectations: dict[int, tuple[str, str]] | None = None,
+    role_geometrie: str | None = None,
+    attributs_saisis: dict[int, dict[str, str]] | None = None,
 ) -> list[str]:
     """Persiste UNE LIGNE PAR FEATURE, rattachée à la même UG (.shp).
 
@@ -408,17 +459,29 @@ def persister_entites_couche(
     nb_parts = int(len(gdf))
     ids: list[str] = []
 
+    role = role_geometrie if role_geometrie in _ROLES_GEOMETRIE else None
+    rattacher_ug = role in (None, "unite_gestion")
+
     try:
         with _connect() as conn:
             with conn.cursor() as cur:
+                tables_role = _tables_avec_role(cur)
                 for i, (_, row) in enumerate(gdf.iterrows()):
                     geom = row.geometry
                     if geom is None or geom.is_empty:
                         continue
 
-                    kind: CoucheKind = (
-                        "emprise" if is_emprise else _detect_kind(geom, is_emprise=False)
-                    )
+                    if rattacher_ug and affectations and i in affectations:
+                        code, lib = affectations[i]
+                        row_ug = normalize_ug_id(code) or ug_clean
+                        row_libelle = (lib or "").strip() or libelle
+                        kind = _detect_kind(geom, is_emprise=False)
+                    else:
+                        row_ug = ug_clean if rattacher_ug else None
+                        row_libelle = libelle
+                        kind = (
+                            "emprise" if is_emprise else _detect_kind(geom, is_emprise=False)
+                        )
                     multi_src = _ensure_multi(geom, kind)
                     geom_3857 = gdf_3857.geometry.iloc[i]
                     if geom_3857 is None or geom_3857.is_empty:
@@ -430,6 +493,12 @@ def persister_entites_couche(
                         v = _json_safe_value(row[k])
                         if v is not None:
                             row_attrs[str(k)] = v
+                    for cle, valeur in (attributs_saisis or {}).get(i, {}).items():
+                        texte = valeur.strip()
+                        if texte:
+                            row_attrs[cle] = texte
+                        else:
+                            row_attrs.pop(cle, None)
                     attributs = [row_attrs] if row_attrs else []
 
                     props = {
@@ -440,29 +509,34 @@ def persister_entites_couche(
                         "categorie_erc": categorie_erc,
                         "cible": cible,
                         "analyse_id": analyse_id,
+                        "role_geometrie": role,
                     }
                     table = _table_for(kind)
+                    colonne_role = ", role_geometrie" if table in tables_role else ""
+                    valeur_role = ", %s" if table in tables_role else ""
+                    params_role = (role,) if table in tables_role else ()
 
                     if kind == "emprise":
                         cur.execute(
                             f"""
                             INSERT INTO bancarisation.{table}
                                 (projet_id, libelle, description, geom, geom_3857,
-                                 properties, attributs, source_fichier)
+                                 properties, attributs, source_fichier{colonne_role})
                             VALUES (
                                 %s, %s, %s,
-                                ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), %s)),
-                                ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), 3857)),
-                                %s::jsonb, %s::jsonb, %s
+                                {_sql_geom(kind)},
+                                {_sql_geom(kind)},
+                                %s::jsonb, %s::jsonb, %s{valeur_role}
                             )
                             RETURNING id::text
                             """,
                             (
-                                str(projet_id), libelle, cible or "",
-                                multi_src.wkt, epsg, multi_3857.wkt,
+                                str(projet_id), row_libelle, cible or "",
+                                multi_src.wkt, epsg, multi_3857.wkt, 3857,
                                 json.dumps(props, default=str),
                                 json.dumps(attributs, default=str),
                                 source_fichier,
+                                *params_role,
                             ),
                         )
                     else:
@@ -470,25 +544,25 @@ def persister_entites_couche(
                             f"""
                             INSERT INTO bancarisation.{table}
                                 (projet_id, ug_id, libelle, description, geom, geom_3857,
-                                 properties, attributs, source_fichier)
+                                 properties, attributs, source_fichier{colonne_role})
                             VALUES (
                                 %s, %s, %s, %s,
-                                ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), %s)),
-                                ST_MakeValid(ST_SetSRID(ST_GeomFromText(%s), 3857)),
-                                %s::jsonb, %s::jsonb, %s
+                                {_sql_geom(kind)},
+                                {_sql_geom(kind)},
+                                %s::jsonb, %s::jsonb, %s{valeur_role}
                             )
                             RETURNING id::text
                             """,
                             (
-                                str(projet_id), ug_clean, libelle, cible or "",
-                                multi_src.wkt, epsg, multi_3857.wkt,
+                                str(projet_id), row_ug, row_libelle, cible or "",
+                                multi_src.wkt, epsg, multi_3857.wkt, 3857,
                                 json.dumps(props, default=str),
                                 json.dumps(attributs, default=str),
                                 source_fichier,
+                                *params_role,
                             ),
                         )
                     ids.append(cur.fetchone()[0])
-            conn.commit()
     except GeometryIngestError:
         raise
     except Exception as exc:

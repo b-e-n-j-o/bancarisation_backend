@@ -8,10 +8,11 @@ from __future__ import annotations
 from typing import Any
 from uuid import UUID
 
+import requests
 from fastapi import APIRouter, HTTPException, Query, Response, status
 from pydantic import BaseModel
 
-from . import service
+from . import api_entreprises, service
 
 router = APIRouter()
 
@@ -25,6 +26,9 @@ class PrestataireCreateAttach(BaseModel):
     adresse: str | None = None
     code_postal: str | None = None
     commune: str | None = None
+    departement: str | None = None
+    code_naf: str | None = None
+    tva: str | None = None
     telephone: str | None = None
     email: str | None = None
     interlocuteur: str | None = None
@@ -39,6 +43,8 @@ class PrestatairePatch(BaseModel):
     code_postal: str | None = None
     commune: str | None = None
     departement: str | None = None
+    code_naf: str | None = None
+    tva: str | None = None
     email: str | None = None
     telephone: str | None = None
     interlocuteur: str | None = None
@@ -51,13 +57,28 @@ def list_prestataires_route(
     q: str | None = Query(default=None, description="Recherche partielle nom / SIRET"),
     limit: int = Query(default=20, ge=1, le=50),
 ) -> list[dict[str, Any]]:
-    """Typeahead référentiel global (ajout depuis l’onglet Prestataires)."""
+    """Typeahead de l’organisation (tous ses projets, pas seulement le dossier ouvert)."""
     try:
         return service.lister_global(q=q, limit=limit)
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Lecture prestataires impossible : {exc}",
+        ) from exc
+
+
+@router.get("/prestataires/recherche-entreprises")
+def recherche_entreprises_route(
+    q: str = Query(min_length=2, description="Nom, SIREN ou SIRET"),
+    limit: int = Query(default=8, ge=1, le=25),
+) -> list[dict[str, Any]]:
+    """Annuaire public : structures actives, champs fiche uniquement."""
+    try:
+        return api_entreprises.rechercher(q, limit=limit)
+    except requests.RequestException as exc:
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail=f"Annuaire entreprises indisponible : {exc}",
         ) from exc
 
 
@@ -129,6 +150,9 @@ def attach_projet_prestataire_route(
             adresse=payload.adresse,
             code_postal=payload.code_postal,
             commune=payload.commune,
+            departement=payload.departement,
+            code_naf=payload.code_naf,
+            tva=payload.tva,
             telephone=payload.telephone,
             email=payload.email,
             interlocuteur=payload.interlocuteur,

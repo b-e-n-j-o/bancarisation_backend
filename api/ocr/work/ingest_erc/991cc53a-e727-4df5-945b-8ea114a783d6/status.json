@@ -1,0 +1,33 @@
+{
+  "job_id": "991cc53a-e727-4df5-945b-8ea114a783d6",
+  "status": "error",
+  "etape": "erreur",
+  "message": "L'analyse a échoué.",
+  "fichiers": [
+    "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+    "2025 11 21_JARDINS d_AQUITAINE- courrier DREAL De_marrage travaux et annexes.pdf",
+    "A25086 Pichet Suivi de chantier Bruges - E0.docx.pdf",
+    "A25086 Pichet Suivi de chantier Bruges - Mai 2026.pdf",
+    "Bruges_Pichet_Contrat CDCB_20260721VACdef.docx",
+    "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+    "DOSSIER DDEP_ note_CSRPN V2.docx",
+    "DV25111 Pichet - Suivi de chantier Bruges.pdf",
+    "Note_technique_EVEE.docx",
+    "Suivi de chantier septembre 2026.pdf",
+    "cerfa_13614-01_Habitats signe_.pdf",
+    "cerfa_13616-01_Faune signe_.pdf",
+    "cerfa_13617-01_Flore signe_.pdf",
+    "Plan_de_gestion_de_ddep.pdf",
+    "Couches_enjeux_Enjeux_arbres_Pt_20240923.zip",
+    "Couches_enjeux_Enjeux_bois_mort_Pt_20240923.zip",
+    "Couches_enjeux_Enjeux_habitats_Po_20240923.zip",
+    "Couches_enjeux_Enjeux_lisieres_Li_20240923.zip"
+  ],
+  "erreur": "OCR Mistral échoué (upload puis base64) : API error occurred: Status 429\n{\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}",
+  "vue": null,
+  "validation": null,
+  "passe3": null,
+  "projet_id": null,
+  "started_at": "2026-10-14T15:52:35.814670+00:00",
+  "updated_at": "2026-10-14T15:54:03.045062+00:00"
+}

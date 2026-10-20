@@ -1,0 +1,154 @@
+{
+ "corrections": {
+  "projet": {},
+  "ugs": [],
+  "actions": [
+   {
+    "id": "E1",
+    "origine": "ia",
+    "supprime": true,
+    "valeurs": {}
+   },
+   {
+    "id": "E2",
+    "origine": "ia",
+    "supprime": true,
+    "valeurs": {}
+   },
+   {
+    "id": "E3",
+    "origine": "ia",
+    "supprime": true,
+    "valeurs": {}
+   },
+   {
+    "id": "ES1",
+    "origine": "ia",
+    "supprime": false,
+    "valeurs": {
+     "intitule": "Suivi des habitats naturels et de la flore à enjeu"
+    }
+   },
+   {
+    "id": "R1",
+    "origine": "ia",
+    "supprime": true,
+    "valeurs": {}
+   },
+   {
+    "id": "R2",
+    "origine": "ia",
+    "supprime": true,
+    "valeurs": {}
+   },
+   {
+    "id": "RG1",
+    "origine": "ia",
+    "supprime": false,
+    "valeurs": {
+     "intitule": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion"
+    }
+   }
+  ]
+ },
+ "reponses": [
+  {
+   "id": "action_ug_absente:E1",
+   "portee": "E1",
+   "question": "E1 (Définition du plan masse en fonction des enjeux environnementaux) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "Pas d'UG ce n'est pas de la compensation"
+  },
+  {
+   "id": "action_ug_absente:E2",
+   "portee": "E2",
+   "question": "E2 (Évitement de 5 arbres gîtes supplémentaires et leur intégration dans le plan paysager (préservation du houpier)) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "Pas d'UG ce n'est pas de la compensation"
+  },
+  {
+   "id": "action_ug_absente:E3",
+   "portee": "E3",
+   "question": "E3 (Modification des choix d'aménagements du projet) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "Pas d'UG ce n'est pas de la compensation"
+  },
+  {
+   "id": "action_ug_absente:ES1",
+   "portee": "ES1",
+   "question": "ES1 (Suivi des habitats naturels et de la flore à enjeu) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "UG1 UG2"
+  },
+  {
+   "id": "action_ug_absente:ES2",
+   "portee": "ES2",
+   "question": "ES2 (Suivi de l'avifaune) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "UG2"
+  },
+  {
+   "id": "action_ug_absente:FG1",
+   "portee": "FG1",
+   "question": "FG1 (Animation du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "Aucune"
+  },
+  {
+   "id": "action_ug_absente:FG2",
+   "portee": "FG2",
+   "question": "FG2 (Evaluation et mise à jour du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "Aucune"
+  },
+  {
+   "id": "action_ug_absente:R1",
+   "portee": "R1",
+   "question": "R1 (Limitation des emprises des travaux et des installations de chantier avec mise en défens et balisage des habitats/arbres gîtes à conserver) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "Pas d'UG ce n'est pas de la compensation"
+  },
+  {
+   "id": "action_ug_absente:R2",
+   "portee": "R2",
+   "question": "R2 (Dispositif de lutte contre les espèces exotiques envahissantes (actions préventives et curatives)) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "Pas d'UG ce n'est pas de la compensation"
+  },
+  {
+   "id": "action_ug_absente:RG1",
+   "portee": "RG1",
+   "question": "RG1 (Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "UG1"
+  },
+  {
+   "id": "action_ug_absente:RG2",
+   "portee": "RG2",
+   "question": "RG2 (Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+   "reponse": "UG2"
+  },
+  {
+   "id": "ug_sans_zone:UG1",
+   "portee": "UG1",
+   "question": "UG1 (Création et gestion d’une station mixte de Lotiers grêle et hispide et gestion) : aucune géométrie trouvée dans le SIG. Quelle couche/entité la représente ?",
+   "reponse": "Pas de géométrie"
+  },
+  {
+   "id": "ug_sans_zone:UG2",
+   "portee": "UG2",
+   "question": "UG2 (Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés) : aucune géométrie trouvée dans le SIG. Quelle couche/entité la représente ?",
+   "reponse": "Pas de géométrie"
+  },
+  {
+   "id": "couche_orpheline:Enjeux_arbres_Pt_20240923",
+   "portee": "Enjeux_arbres_Pt_20240923",
+   "question": "La couche « Enjeux_arbres_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+   "reponse": "Évitement sans gestion (contexte)"
+  },
+  {
+   "id": "couche_orpheline:Enjeux_bois_mort_Pt_20240923",
+   "portee": "Enjeux_bois_mort_Pt_20240923",
+   "question": "La couche « Enjeux_bois_mort_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+   "reponse": "Évitement sans gestion (contexte)"
+  },
+  {
+   "id": "couche_orpheline:Enjeux_lisieres_Li_20240923",
+   "portee": "Enjeux_lisieres_Li_20240923",
+   "question": "La couche « Enjeux_lisieres_Li_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+   "reponse": "Évitement sans gestion (contexte)"
+  }
+ ],
+ "origine": "user",
+ "validated_at": "2026-10-15T09:59:00.437095+00:00"
+}

@@ -1,0 +1,343 @@
+{
+ "stats": {
+  "faits": 24,
+  "temporels": 24,
+  "budgets": 0,
+  "statuts": 0,
+  "echeances": 10,
+  "occurrences": 88,
+  "non_placables": 0,
+  "rejets": 10,
+  "occurrences_avec_montant": 0,
+  "tokens_llm": {
+   "n": 1,
+   "prompt": 9446,
+   "reasoning": 0,
+   "completion": 4055,
+   "total": 13501
+  },
+  "duree_s": 38.94
+ },
+ "classeurs": {},
+ "nb_rejets": 10,
+ "rejets_par_motif": {
+  "citation_introuvable": 10
+ },
+ "rejets": [
+  {
+   "motif": "citation_introuvable",
+   "detail": "RG1 : échéance illisible (1 validation error for EcheanceLue\nugs.0\n  Input should be '_' [type=literal_error, input_value='UG1', input_type=str]\n )"
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "RG1 : échéance illisible (1 validation error for EcheanceLue\nugs.0\n  Input should be '_' [type=literal_error, input_value='UG1', input_type=str]\n )"
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "RG1 : échéance illisible (1 validation error for EcheanceLue\nugs.0\n  Input should be '_' [type=literal_error, input_value='UG1', input_type=str]\n )"
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "RG2 : échéance illisible (2 validation errors for EcheanceLue\nugs.0\n  Input should be '_' [type=literal_error, input_value='UG2', input_type=str]\n)"
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "RG2 : échéance illisible (2 validation errors for EcheanceLue\nugs.0\n  Input should be '_' [type=literal_error, input_value='UG2', input_type=str]\n)"
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "RG2 : échéance illisible (2 validation errors for EcheanceLue\nugs.0\n  Input should be '_' [type=literal_error, input_value='UG2', input_type=str]\n)"
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "ES1 : échéance illisible (1 validation error for EcheanceLue\nugs.0\n  Input should be '_' [type=literal_error, input_value='UG1', input_type=str]\n )"
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "ES1 : échéance illisible (1 validation error for EcheanceLue\nugs.0\n  Input should be '_' [type=literal_error, input_value='UG1', input_type=str]\n )"
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "ES2 : échéance illisible (1 validation error for EcheanceLue\nugs.0\n  Input should be '_' [type=literal_error, input_value='UG2', input_type=str]\n )"
+  },
+  {
+   "motif": "citation_introuvable",
+   "detail": "ES2 : échéance illisible (1 validation error for EcheanceLue\nugs.0\n  Input should be '_' [type=literal_error, input_value='UG2', input_type=str]\n )"
+  }
+ ],
+ "avertissements": [
+  "ES1 : bande non interprétée : la règle reste à la fiche",
+  "ES2 : bande non interprétée : la règle reste à la fiche",
+  "FG1 : colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+  "FG1 : colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+  "FG1 : colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+  "FG1 : colonne à plage ignorée (N+26 à N+30 2054 à 2055)",
+  "FG1 : colonne à plage ignorée (N+6 à N+10 2031 à 2035)",
+  "FG1 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf p.39-42 décrit [2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])",
+  "FG1 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf p.39-42 décrit [2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])",
+  "FG1 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf p.39-42 décrit [2031, 2036, 2041, 2046, 2051] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])",
+  "FG1 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf p.39-42 décrit [2035, 2045, 2055] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])",
+  "FG1 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf p.39-42 décrit [2030, 2031, 2036, 2041, 2046] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])",
+  "FG1 : DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE_p161-209.pdf p.39-42 décrit [2051] ; planning PDF retenu ([2025, 2026, 2027, 2028, 2029, 2030])",
+  "FG2 : bande non interprétée : la règle reste à la fiche",
+  "FG2 : colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+  "FG2 : colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+  "FG2 : colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+  "FG2 : colonne à plage ignorée (N+6 à N+10 2031 à 2035)",
+  "RG1 : bande non interprétée : la règle reste à la fiche",
+  "RG2 : bande non interprétée : la règle reste à la fiche"
+ ],
+ "non_placables": [],
+ "budget_pose": 0,
+ "budget_non_ventile": 0,
+ "audit": [
+  {
+   "id": "ES1-19ca651a09",
+   "code": "ES1",
+   "libelle": "Suivi des habitats naturels et de la flore à enjeu",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 6,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "ES2-e60beb0b47",
+   "code": "ES2",
+   "libelle": "Suivi de l'avifaune",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 6,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "FG1-529d433b75",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025, 2026, 2027, 2028, 2029, 2030",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+   ],
+   "nb_occ": 6,
+   "montant_ht": null,
+   "avertissements": [
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)",
+    "colonne à plage ignorée (N+26 à N+30 2054 à 2055)"
+   ]
+  },
+  {
+   "id": "FG1-5a078e0cac",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Animation du plan de gestion (pilotage, coordination, communication, veille, base de données, rapports)",
+   "ugs": [],
+   "type": "periodique",
+   "regle": "periodique · dès 2025 · jusqu'en 2055 · tous les 1.0 an(s)",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035,
+    2036,
+    2037,
+    2038,
+    2039,
+    2040,
+    2041,
+    2042,
+    2043,
+    2044,
+    2045,
+    2046,
+    2047,
+    2048,
+    2049,
+    2050,
+    2051,
+    2052,
+    2053,
+    2054,
+    2055
+   ],
+   "nb_occ": 31,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "FG1-33dc8f9345",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Veille sur le site (visites réparties sur la durée du plan de gestion)",
+   "ugs": [],
+   "type": "campagnes",
+   "regle": "campagnes · dès 2025 · jusqu'en 2055 · 30 ans",
+   "ancrage": 2025,
+   "annees": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035,
+    2036,
+    2037,
+    2038,
+    2039,
+    2040,
+    2041,
+    2042,
+    2043,
+    2044,
+    2045,
+    2046,
+    2047,
+    2048,
+    2049,
+    2050,
+    2051,
+    2052,
+    2053,
+    2054
+   ],
+   "nb_occ": 30,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "FG1-8b9fa33e0e",
+   "code": "FG1",
+   "libelle": "Animation du plan de gestion — Rapports d'activité quinquennaux (après les 5 premières années)",
+   "ugs": [],
+   "type": "periodique",
+   "regle": "periodique · dès 2031 · jusqu'en 2055 · tous les 5.0 an(s)",
+   "ancrage": 2031,
+   "annees": [
+    2031,
+    2036,
+    2041,
+    2046,
+    2051
+   ],
+   "nb_occ": 5,
+   "montant_ht": null,
+   "avertissements": []
+  },
+  {
+   "id": "FG2-54185bacc7",
+   "code": "FG2",
+   "libelle": "Evaluation et mise à jour du plan de gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2030 · 2030",
+   "ancrage": 2030,
+   "annees": [
+    2030
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche",
+    "colonne à plage ignorée (N+11 à N+15 2036 à 2040)",
+    "colonne à plage ignorée (N+16 à N+20 2041à 2046)",
+    "colonne à plage ignorée (N+21 à N+25 2047 à 2053)"
+   ]
+  },
+  {
+   "id": "RG1-90a041a79f",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "RG1-388eb92679",
+   "code": "RG1",
+   "libelle": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  },
+  {
+   "id": "RG2-31448ee1d8",
+   "code": "RG2",
+   "libelle": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+   "ugs": [],
+   "type": "explicite",
+   "regle": "explicite · dès 2025 · 2025",
+   "ancrage": 2025,
+   "annees": [
+    2025
+   ],
+   "nb_occ": 1,
+   "montant_ht": null,
+   "avertissements": [
+    "bande non interprétée : la règle reste à la fiche"
+   ]
+  }
+ ]
+}

@@ -13,15 +13,15 @@ from fastapi.responses import Response
 from pydantic import BaseModel
 
 from api.carto import persist as cao_persist
-from api.carto.dxf_processor import ProcesseurDXF
-from api.carto.dxf_geodata import (
+from api.carto.dxf.dxf_processor import ProcesseurDXF
+from api.carto.dxf.dxf_geodata import (
     analyser_crs,
     enrichir_calques_crs,
     libelle_srid,
     srid_depuis_code,
     zone_cc_depuis_latitude,
 )
-from api.carto.dxf_raster import (
+from api.carto.dxf.dxf_raster import (
     DepotCao,
     appliquer_pdf_et_apercus,
     apparier,

@@ -1,0 +1,28 @@
+{
+ "pdf": "c05.pdf",
+ "description": "Mois en initiales J F M A M J J A S O N D.",
+ "grilles": [
+  {
+   "page": 1,
+   "type_axe": "mois",
+   "lignes": [
+    {
+     "libelle_contient": "Abattage",
+     "couleur": [
+      1,
+      2,
+      12
+     ]
+    },
+    {
+     "libelle_contient": "Curage",
+     "couleur": [
+      10,
+      11
+     ]
+    }
+   ]
+  }
+ ],
+ "exhaustif": true
+}

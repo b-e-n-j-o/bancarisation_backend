@@ -1,0 +1,454 @@
+{
+ "version": 1,
+ "projet": {
+  "nom": "Les Jardins d'Aquitaine Bruges – Demande de dérogation espèces protégées – SNC 136 Avenue d'Aquitaine",
+  "annee_fin": 2055,
+  "annee_N": 2025,
+  "annee_etat_zero": 2025
+ },
+ "ugs": [
+  {
+   "ug_code": "UG1",
+   "libelle": "Création et gestion d’une station mixte de Lotiers grêle et hispide et gestion",
+   "type_erc": null,
+   "zone_sig": null,
+   "surface_ha": null
+  },
+  {
+   "ug_code": "UG2",
+   "libelle": "Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés",
+   "type_erc": null,
+   "zone_sig": null,
+   "surface_ha": null
+  }
+ ],
+ "actions": [
+  {
+   "code": "ES1",
+   "intitule": "Suivi des habitats naturels et de la flore à enjeu",
+   "nature": "Etudes et Suivis écologiques",
+   "ugs": [],
+   "cible": null
+  },
+  {
+   "code": "ES2",
+   "intitule": "Suivi de l'avifaune",
+   "nature": "Etudes et Suivis écologiques",
+   "ugs": [],
+   "cible": null
+  },
+  {
+   "code": "FG1",
+   "intitule": "Animation du plan de gestion",
+   "nature": "Fonctionnement Général",
+   "ugs": [],
+   "cible": null
+  },
+  {
+   "code": "FG2",
+   "intitule": "Evaluation et mise à jour du plan de gestion",
+   "nature": "Fonctionnement Général",
+   "ugs": [],
+   "cible": null
+  },
+  {
+   "code": "RG1",
+   "intitule": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+   "nature": "Restauration et Gestion",
+   "ugs": [],
+   "cible": null
+  },
+  {
+   "code": "RG2",
+   "intitule": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+   "nature": "Restauration et Gestion",
+   "ugs": [],
+   "cible": null
+  }
+ ],
+ "obligations_surfaciques": [],
+ "decisions": {
+  "alias_codes": {},
+  "alias_parcelles": {},
+  "parcelles_a_ajouter": [],
+  "requalifications_blocs": {},
+  "couches_contexte": [
+   {
+    "zone": "Enjeux_arbres_Pt_20240923",
+    "motif": "confirmé par le BE"
+   },
+   {
+    "zone": "Enjeux_bois_mort_Pt_20240923",
+    "motif": "confirmé par le BE"
+   },
+   {
+    "zone": "Enjeux_lisieres_Li_20240923",
+    "motif": "confirmé par le BE"
+   }
+  ],
+  "couches_ignorees": [],
+  "decisions_annexes": {},
+  "roles_tableaux": {},
+  "commentaires": [
+   {
+    "question": "action_ug_absente:ES1",
+    "regle": "action_ug_absente",
+    "portee": "ES1",
+    "enonce": "ES1 (Suivi des habitats naturels et de la flore à enjeu) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "UG1 UG2",
+    "sources": []
+   },
+   {
+    "question": "action_ug_absente:ES2",
+    "regle": "action_ug_absente",
+    "portee": "ES2",
+    "enonce": "ES2 (Suivi de l'avifaune) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "UG2",
+    "sources": []
+   },
+   {
+    "question": "action_ug_absente:FG1",
+    "regle": "action_ug_absente",
+    "portee": "FG1",
+    "enonce": "FG1 (Animation du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "Aucune",
+    "sources": []
+   },
+   {
+    "question": "action_ug_absente:FG2",
+    "regle": "action_ug_absente",
+    "portee": "FG2",
+    "enonce": "FG2 (Evaluation et mise à jour du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "Aucune",
+    "sources": []
+   },
+   {
+    "question": "action_ug_absente:RG1",
+    "regle": "action_ug_absente",
+    "portee": "RG1",
+    "enonce": "RG1 (Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "UG1",
+    "sources": []
+   },
+   {
+    "question": "action_ug_absente:RG2",
+    "regle": "action_ug_absente",
+    "portee": "RG2",
+    "enonce": "RG2 (Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+    "texte": "UG2",
+    "sources": []
+   }
+  ],
+  "arrete": {}
+ },
+ "provenance": {
+  "projet.nom": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "pied de page",
+     "extrait": "Les Jardins d'Aquitaine Bruges – Demande de dérogation espèces protégées – SNC 136 Avenue d'Aquitaine"
+    }
+   ]
+  },
+  "projet.annee_fin": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.57",
+     "extrait": "un démarrage en novembre et décembre 2025 est ainsi ciblé"
+    }
+   ]
+  },
+  "projet.annee_N": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.185 grille p185_g1",
+     "extrait": "N = 2025 (10 grille(s), colonnes année − rang)"
+    },
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.57",
+     "extrait": "un démarrage en novembre et décembre 2025 est ainsi ciblé"
+    }
+   ]
+  },
+  "projet.annee_etat_zero": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.57",
+     "extrait": "un démarrage en novembre et décembre 2025 est ainsi ciblé"
+    }
+   ]
+  },
+  "ug.UG1.libelle": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.183 tableau 1 (carte)",
+     "extrait": "UG1 : Création et gestion d’une station mixte de Lotiers grêle et hispide et gestion"
+    }
+   ]
+  },
+  "ug.UG1.type_erc": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.183 tableau 1 (carte)",
+     "extrait": "UG1 : Création et gestion d’une station mixte de Lotiers grêle et hispide et gestion"
+    }
+   ]
+  },
+  "ug.UG1.zone_sig": {
+   "origine": "be",
+   "confiance": "haute",
+   "sources": []
+  },
+  "ug.UG1.surface_ha": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "ug.UG2.libelle": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.183 tableau 1 (carte)",
+     "extrait": "UG2 : Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés"
+    }
+   ]
+  },
+  "ug.UG2.type_erc": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.183 tableau 1 (carte)",
+     "extrait": "UG2 : Création d’une mosaïque d’habitats favorable à l’avifaune des milieux semi-ouverts et boisés"
+    }
+   ]
+  },
+  "ug.UG2.zone_sig": {
+   "origine": "be",
+   "confiance": "haute",
+   "sources": []
+  },
+  "ug.UG2.surface_ha": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.ES1.intitule": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "saisie BE",
+     "loc": "validation",
+     "extrait": null
+    }
+   ]
+  },
+  "action.ES1.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.182",
+     "extrait": "Etudes et Suivis écologiques (ES)"
+    }
+   ]
+  },
+  "action.ES1.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.ES1.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.ES2.intitule": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.189 tableau 1 (carte)",
+     "extrait": "Suivi de l'avifaune"
+    }
+   ]
+  },
+  "action.ES2.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.182",
+     "extrait": "Etudes et Suivis écologiques (ES)"
+    }
+   ]
+  },
+  "action.ES2.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.ES2.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.FG1.intitule": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.189 tableau 1 (carte)",
+     "extrait": "Animation du plan de gestion"
+    }
+   ]
+  },
+  "action.FG1.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.182",
+     "extrait": "Fonctionnement Général (FG)"
+    }
+   ]
+  },
+  "action.FG1.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.FG1.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.FG2.intitule": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.189 tableau 1 (carte)",
+     "extrait": "Evaluation et mise à jour du plan de gestion"
+    }
+   ]
+  },
+  "action.FG2.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.182",
+     "extrait": "Fonctionnement Général (FG)"
+    }
+   ]
+  },
+  "action.FG2.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.FG2.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.RG1.intitule": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "saisie BE",
+     "loc": "validation",
+     "extrait": null
+    }
+   ]
+  },
+  "action.RG1.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.182",
+     "extrait": "Restauration et Gestion (RG)"
+    }
+   ]
+  },
+  "action.RG1.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.RG1.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.RG2.intitule": {
+   "origine": "accepte",
+   "confiance": "moyenne",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.189 tableau 1 (carte)",
+     "extrait": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés"
+    }
+   ]
+  },
+  "action.RG2.nature": {
+   "origine": "accepte",
+   "confiance": "haute",
+   "sources": [
+    {
+     "doc": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+     "loc": "p.182",
+     "extrait": "Restauration et Gestion (RG)"
+    }
+   ]
+  },
+  "action.RG2.ugs": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  },
+  "action.RG2.cible": {
+   "origine": "accepte",
+   "confiance": "basse",
+   "sources": []
+  }
+ },
+ "questions_forcees": [],
+ "empreinte": "03a048b6391a86d078c1faa3b42b17b6dacf04e8e99f02ee0069e2580285a588",
+ "verrouille_le": "2026-10-15T09:59:00.469197+00:00"
+}

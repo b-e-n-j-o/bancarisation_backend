@@ -1,0 +1,22 @@
+{
+ "pdf": "c13.pdf",
+ "description": "Frise avec colonne « État zéro » avant N (format courant chez certains BE).",
+ "grilles": [
+  {
+   "page": 1,
+   "type_axe": "annees",
+   "lignes": [
+    {
+     "libelle_contient": "Relevés",
+     "croix": [
+      "E0",
+      "N+1",
+      "N+3",
+      "N+7"
+     ]
+    }
+   ]
+  }
+ ],
+ "exhaustif": true
+}

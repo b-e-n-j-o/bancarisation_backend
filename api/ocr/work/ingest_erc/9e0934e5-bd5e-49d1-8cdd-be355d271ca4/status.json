@@ -1,0 +1,1603 @@
+{
+  "job_id": "9e0934e5-bd5e-49d1-8cdd-be355d271ca4",
+  "status": "done",
+  "etape": "termine",
+  "message": "Référentiel prêt à valider.",
+  "fichiers": [
+    "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+    "2025 11 21_JARDINS d_AQUITAINE- courrier DREAL De_marrage travaux et annexes.pdf",
+    "A25086 Pichet Suivi de chantier Bruges - E0.docx.pdf",
+    "A25086 Pichet Suivi de chantier Bruges - Mai 2026.pdf",
+    "Bruges_Pichet_Contrat CDCB_20260721VACdef.docx",
+    "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+    "DOSSIER DDEP_ note_CSRPN V2.docx",
+    "DV25111 Pichet - Suivi de chantier Bruges.pdf",
+    "Note_technique_EVEE.docx",
+    "Suivi de chantier septembre 2026.pdf",
+    "cerfa_13614-01_Habitats signe_.pdf",
+    "cerfa_13616-01_Faune signe_.pdf",
+    "cerfa_13617-01_Flore signe_.pdf",
+    "Plan_de_gestion_de_ddep.pdf",
+    "Couches_enjeux_Enjeux_arbres_Pt_20240923.zip",
+    "Couches_enjeux_Enjeux_bois_mort_Pt_20240923.zip",
+    "Couches_enjeux_Enjeux_habitats_Po_20240923.zip",
+    "Couches_enjeux_Enjeux_lisieres_Li_20240923.zip"
+  ],
+  "erreur": null,
+  "vue": {
+    "config": {
+      "ocr_backend": "hybride",
+      "ocr_model": "mistral-ocr-latest",
+      "llm_actif": true,
+      "llm_model": "zai-glm-5-2",
+      "reasoning_effort": "medium",
+      "reasoning_effort_routeur": "low",
+      "roles": {
+        "ocr": {
+          "usage": "Lecture PDF (Mistral OCR 4). Pas un LLM.",
+          "branche": true,
+          "modele": "mistral-ocr-latest"
+        },
+        "carte": {
+          "usage": "Passe 1 — structure du plan (vocabulaire, fiches, tableaux).",
+          "branche": true,
+          "modele": "zai-glm-5-2",
+          "effort": "medium",
+          "env_modele": "MISTRAL_MODEL_CARTE",
+          "env_effort": "MISTRAL_REASONING_EFFORT_CARTE"
+        },
+        "routeur": {
+          "usage": "Passe 1 — choix des sections PDF si la carte n'a pas suffi.",
+          "branche": true,
+          "modele": "zai-glm-5-2",
+          "effort": "low",
+          "env_modele": "MISTRAL_MODEL_ROUTEUR",
+          "env_effort": "MISTRAL_REASONING_EFFORT_ROUTEUR"
+        },
+        "referentiel": {
+          "usage": "Passe 1 — extraction LLM des extraits PDF (seulement sans carte).",
+          "branche": true,
+          "modele": "zai-glm-5-2",
+          "effort": "low",
+          "env_modele": "MISTRAL_MODEL_REFERENTIEL",
+          "env_effort": "MISTRAL_REASONING_EFFORT_REFERENTIEL"
+        },
+        "arrete": {
+          "usage": "Passe 1 — lecture de la décision (identité, obligations, prescriptions).",
+          "branche": true,
+          "modele": "zai-glm-5-2",
+          "effort": "low",
+          "env_modele": "MISTRAL_MODEL_ARRETE",
+          "env_effort": "MISTRAL_REASONING_EFFORT_ARRETE"
+        },
+        "carte_classeur": {
+          "usage": "Passe 1 — rôle et colonnes des tableaux Excel.",
+          "branche": true,
+          "modele": "zai-glm-5-2",
+          "effort": "medium",
+          "env_modele": "MISTRAL_MODEL_CARTE_CLASSEUR",
+          "env_effort": "MISTRAL_REASONING_EFFORT_CARTE_CLASSEUR"
+        },
+        "fiche": {
+          "usage": "Passe 3 — temporalité extraite des fiches-actions PDF (lots).",
+          "branche": true,
+          "modele": "zai-glm-5-2",
+          "effort": "medium",
+          "env_modele": "MISTRAL_MODEL_FICHE",
+          "env_effort": "MISTRAL_REASONING_EFFORT_FICHE"
+        },
+        "libelles": {
+          "usage": "Passe 3 — correspondance libellés tableur → codes du référentiel.",
+          "branche": true,
+          "modele": "zai-glm-5-2",
+          "effort": "low",
+          "env_modele": "MISTRAL_MODEL_LIBELLES",
+          "env_effort": "MISTRAL_REASONING_EFFORT_LIBELLES"
+        },
+        "calendrier": {
+          "usage": "Passe 3 (non branchée) — matrices de planning.",
+          "branche": false,
+          "modele": "zai-glm-5-2",
+          "effort": "medium",
+          "env_modele": "MISTRAL_MODEL_CALENDRIER",
+          "env_effort": "MISTRAL_REASONING_EFFORT_CALENDRIER"
+        },
+        "budget": {
+          "usage": "Passe 3 (non branchée) — matrices de coûts.",
+          "branche": false,
+          "modele": "zai-glm-5-2",
+          "effort": "medium",
+          "env_modele": "MISTRAL_MODEL_BUDGET",
+          "env_effort": "MISTRAL_REASONING_EFFORT_BUDGET"
+        }
+      },
+      "cle": "MISTRAL_API_KEY_BEN",
+      "cle_llm": "MISTRAL_API_KEY_BEN",
+      "dotenv": "/Volumes/T7/Travaux_Freelance/KERELIA/CUAs/COMPENSATION_PARCELLE/BANCARISATION_COMPENSATION/backend/.env",
+      "cache": "/tmp/ingest_cache"
+    },
+    "documents": [
+      {
+        "nom": "149_33_AP_Jardins_Aquitaine_Bruges.pdf",
+        "role": "autre",
+        "indice": "saisi au dépôt",
+        "pages": 20,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "7": 1.0,
+          "8": 1.0,
+          "9": 1.0,
+          "10": 1.0,
+          "11": 1.0,
+          "12": 1.0,
+          "13": 1.0,
+          "14": 1.0,
+          "15": 1.0,
+          "16": 1.0,
+          "17": 1.0,
+          "18": 1.0,
+          "19": 1.0,
+          "20": 1.0
+        }
+      },
+      {
+        "nom": "2025 11 21_JARDINS d_AQUITAINE- courrier DREAL De_marrage travaux et annexes.pdf",
+        "role": "autre",
+        "indice": "saisi au dépôt",
+        "pages": 10,
+        "pages_scannees": 1,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 0.74,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "6": 1.0,
+          "7": 1.0,
+          "8": 1.0,
+          "9": 0.5,
+          "10": 1.0
+        }
+      },
+      {
+        "nom": "A25086 Pichet Suivi de chantier Bruges - E0.docx.pdf",
+        "role": "autre",
+        "indice": "aucun motif de rôle reconnu",
+        "pages": 22,
+        "pages_scannees": 7,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "7": 1.0,
+          "8": 1.0,
+          "9": 1.0,
+          "10": 1.0,
+          "11": 1.0,
+          "12": 1.0,
+          "13": 1.0,
+          "14": 1.0,
+          "15": 1.0,
+          "16": 1.0,
+          "17": 1.0,
+          "18": 1.0,
+          "19": 1.0,
+          "20": 1.0,
+          "21": 1.0,
+          "22": 0.5
+        }
+      },
+      {
+        "nom": "A25086 Pichet Suivi de chantier Bruges - Mai 2026.pdf",
+        "role": "autre",
+        "indice": "aucun motif de rôle reconnu",
+        "pages": 23,
+        "pages_scannees": 7,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 0.67,
+          "2": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "9": 1.0,
+          "10": 1.0,
+          "22": 1.0,
+          "23": 1.0
+        }
+      },
+      {
+        "nom": "Bruges_Pichet_Contrat CDCB_20260721VACdef.docx",
+        "role": "autre",
+        "indice": "document Word",
+        "pages": 1,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "cerfa_13614-01_Habitats signe_.pdf",
+        "role": "autre",
+        "indice": "saisi au dépôt",
+        "pages": 4,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "2": 1.0,
+          "4": 1.0
+        }
+      },
+      {
+        "nom": "cerfa_13616-01_Faune signe_.pdf",
+        "role": "autre",
+        "indice": "saisi au dépôt",
+        "pages": 4,
+        "pages_scannees": 1,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "3": 1.0
+        }
+      },
+      {
+        "nom": "cerfa_13617-01_Flore signe_.pdf",
+        "role": "autre",
+        "indice": "saisi au dépôt",
+        "pages": 3,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 0.83,
+          "3": 1.0
+        }
+      },
+      {
+        "nom": "Couches_enjeux_Enjeux_arbres_Pt_20240923.zip",
+        "role": "sig",
+        "indice": "1 couche(s) géographique(s) dans l'archive",
+        "pages": 0,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "Couches_enjeux_Enjeux_bois_mort_Pt_20240923.zip",
+        "role": "sig",
+        "indice": "1 couche(s) géographique(s) dans l'archive",
+        "pages": 0,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "Couches_enjeux_Enjeux_habitats_Po_20240923.zip",
+        "role": "sig",
+        "indice": "1 couche(s) géographique(s) dans l'archive",
+        "pages": 0,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "Couches_enjeux_Enjeux_lisieres_Li_20240923.zip",
+        "role": "sig",
+        "indice": "1 couche(s) géographique(s) dans l'archive",
+        "pages": 0,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "DOSSIER DDEP- SNC 136 AVENUE d_AQUITAINE VERSION FINALE.pdf",
+        "role": "autre",
+        "indice": "aucun motif de rôle reconnu",
+        "pages": 247,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "7": 1.0,
+          "8": 1.0,
+          "9": 1.0,
+          "10": 1.0,
+          "11": 1.0,
+          "12": 1.0,
+          "13": 1.0,
+          "14": 1.0,
+          "15": 1.0,
+          "16": 1.0,
+          "17": 1.0,
+          "18": 1.0,
+          "19": 1.0,
+          "20": 0.43,
+          "21": 0.75,
+          "22": 1.0,
+          "23": 1.0,
+          "24": 0.38,
+          "25": 0.21,
+          "26": 1.0,
+          "27": 1.0,
+          "28": 1.0,
+          "29": 1.0,
+          "30": 1.0,
+          "31": 1.0,
+          "32": 1.0,
+          "33": 1.0,
+          "34": 1.0,
+          "35": 1.0,
+          "36": 1.0,
+          "37": 1.0,
+          "38": 1.0,
+          "39": 1.0,
+          "40": 1.0,
+          "41": 1.0,
+          "42": 1.0,
+          "43": 1.0,
+          "44": 1.0,
+          "45": 1.0,
+          "46": 1.0,
+          "47": 1.0,
+          "48": 1.0,
+          "49": 1.0,
+          "50": 1.0,
+          "51": 1.0,
+          "52": 1.0,
+          "53": 1.0,
+          "54": 1.0,
+          "55": 1.0,
+          "56": 1.0,
+          "57": 1.0,
+          "58": 1.0,
+          "59": 1.0,
+          "60": 1.0,
+          "61": 1.0,
+          "62": 1.0,
+          "63": 1.0,
+          "64": 1.0,
+          "65": 1.0,
+          "66": 1.0,
+          "67": 1.0,
+          "68": 0.8,
+          "69": 1.0,
+          "70": 1.0,
+          "71": 1.0,
+          "72": 1.0,
+          "73": 1.0,
+          "74": 1.0,
+          "75": 1.0,
+          "76": 1.0,
+          "77": 1.0,
+          "78": 1.0,
+          "79": 1.0,
+          "80": 1.0,
+          "81": 1.0,
+          "82": 1.0,
+          "83": 1.0,
+          "84": 1.0,
+          "85": 1.0,
+          "86": 1.0,
+          "87": 1.0,
+          "88": 1.0,
+          "89": 1.0,
+          "90": 1.0,
+          "91": 1.0,
+          "92": 1.0,
+          "93": 1.0,
+          "94": 1.0,
+          "95": 0.75,
+          "96": 0.86,
+          "97": 0.75,
+          "98": 0.75,
+          "99": 1.0,
+          "100": 0.83,
+          "101": 1.0,
+          "102": 0.83,
+          "103": 1.0,
+          "104": 0.8,
+          "105": 1.0,
+          "106": 1.0,
+          "107": 1.0,
+          "108": 1.0,
+          "109": 1.0,
+          "110": 0.8,
+          "111": 1.0,
+          "112": 1.0,
+          "113": 0.8,
+          "114": 0.83,
+          "115": 1.0,
+          "116": 1.0,
+          "117": 0.88,
+          "118": 1.0,
+          "119": 0.8,
+          "120": 1.0,
+          "121": 0.67,
+          "122": 0.8,
+          "123": 1.0,
+          "124": 1.0,
+          "125": 0.83,
+          "126": 1.0,
+          "127": 0.86,
+          "128": 1.0,
+          "129": 1.0,
+          "130": 0.8,
+          "131": 1.0,
+          "132": 0.8,
+          "133": 1.0,
+          "134": 1.0,
+          "135": 1.0,
+          "136": 1.0,
+          "137": 1.0,
+          "138": 0.25,
+          "139": 0.29,
+          "140": 0.8,
+          "141": 0.8,
+          "142": 0.88,
+          "143": 1.0,
+          "144": 0.8,
+          "145": 1.0,
+          "146": 1.0,
+          "147": 1.0,
+          "148": 1.0,
+          "149": 1.0,
+          "150": 0.8,
+          "151": 1.0,
+          "152": 1.0,
+          "153": 1.0,
+          "154": 1.0,
+          "155": 0.86,
+          "156": 1.0,
+          "157": 1.0,
+          "158": 1.0,
+          "159": 1.0,
+          "160": 1.0,
+          "161": 1.0,
+          "162": 1.0,
+          "163": 0.67,
+          "164": 0.8,
+          "165": 0.83,
+          "166": 1.0,
+          "167": 1.0,
+          "168": 0.56,
+          "169": 0.8,
+          "170": 0.5,
+          "171": 1.0,
+          "172": 0.5,
+          "173": 1.0,
+          "174": 0.55,
+          "175": 0.5,
+          "176": 1.0,
+          "177": 0.8,
+          "178": 1.0,
+          "179": 0.9,
+          "180": 0.91,
+          "181": 1.0,
+          "182": 1.0,
+          "183": 1.0,
+          "184": 0.67,
+          "185": 1.0,
+          "186": 1.0,
+          "187": 1.0,
+          "188": 1.0,
+          "189": 1.0,
+          "190": 1.0,
+          "191": 0.47,
+          "192": 1.0,
+          "193": 1.0,
+          "194": 1.0,
+          "195": 1.0,
+          "196": 1.0,
+          "197": 1.0,
+          "198": 1.0,
+          "199": 1.0,
+          "200": 1.0,
+          "201": 1.0,
+          "202": 1.0,
+          "203": 1.0,
+          "204": 1.0,
+          "205": 1.0,
+          "206": 1.0,
+          "207": 0.86,
+          "208": 1.0,
+          "209": 1.0,
+          "210": 1.0,
+          "211": 1.0,
+          "212": 1.0,
+          "213": 1.0,
+          "214": 1.0,
+          "215": 1.0,
+          "216": 1.0,
+          "217": 1.0,
+          "218": 1.0,
+          "219": 1.0,
+          "220": 1.0,
+          "221": 0.5,
+          "222": 0.8,
+          "223": 0.8,
+          "224": 0.8,
+          "225": 1.0,
+          "226": 0.8,
+          "227": 0.67,
+          "228": 1.0,
+          "229": 0.8,
+          "230": 0.8,
+          "231": 1.0,
+          "232": 0.8,
+          "233": 0.8,
+          "234": 0.36,
+          "235": 0.8,
+          "236": 0.5,
+          "237": 0.24,
+          "238": 0.8,
+          "239": 0.8,
+          "240": 0.67,
+          "241": 1.0,
+          "242": 1.0,
+          "243": 0.18,
+          "244": 0.21,
+          "245": 1.0,
+          "246": 1.0,
+          "247": 1.0
+        }
+      },
+      {
+        "nom": "DOSSIER DDEP_ note_CSRPN V2.docx",
+        "role": "autre",
+        "indice": "document Word",
+        "pages": 1,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "DV25111 Pichet - Suivi de chantier Bruges.pdf",
+        "role": "autre",
+        "indice": "aucun motif de rôle reconnu",
+        "pages": 37,
+        "pages_scannees": 7,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 1.0,
+          "6": 1.0,
+          "9": 1.0,
+          "12": 1.0,
+          "13": 1.0,
+          "14": 1.0,
+          "16": 1.0,
+          "17": 1.0,
+          "19": 1.0,
+          "20": 1.0,
+          "22": 1.0,
+          "23": 1.0,
+          "24": 1.0,
+          "25": 0.25,
+          "26": 1.0,
+          "27": 1.0,
+          "28": 1.0,
+          "29": 1.0,
+          "30": 1.0,
+          "31": 1.0,
+          "32": 1.0,
+          "33": 1.0,
+          "34": 1.0,
+          "35": 1.0,
+          "36": 1.0
+        }
+      },
+      {
+        "nom": "Note_technique_EVEE.docx",
+        "role": "autre",
+        "indice": "document Word",
+        "pages": 1,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {}
+      },
+      {
+        "nom": "Plan_de_gestion_de_ddep.pdf",
+        "role": "plan_gestion",
+        "indice": "nom de fichier",
+        "pages": 49,
+        "pages_scannees": 0,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 1.0,
+          "2": 0.8,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "7": 0.62,
+          "8": 1.0,
+          "9": 0.67,
+          "10": 1.0,
+          "11": 0.56,
+          "12": 1.0,
+          "13": 0.67,
+          "14": 0.56,
+          "15": 1.0,
+          "16": 1.0,
+          "17": 1.0,
+          "18": 1.0,
+          "19": 1.0,
+          "20": 1.0,
+          "21": 1.0,
+          "22": 1.0,
+          "23": 0.8,
+          "24": 1.0,
+          "25": 1.0,
+          "26": 1.0,
+          "27": 1.0,
+          "28": 1.0,
+          "29": 1.0,
+          "30": 0.47,
+          "31": 1.0,
+          "32": 1.0,
+          "33": 1.0,
+          "34": 1.0,
+          "35": 1.0,
+          "36": 1.0,
+          "37": 1.0,
+          "38": 1.0,
+          "39": 1.0,
+          "40": 1.0,
+          "41": 1.0,
+          "42": 1.0,
+          "43": 1.0,
+          "44": 1.0,
+          "45": 1.0,
+          "46": 1.0,
+          "47": 1.0,
+          "48": 1.0,
+          "49": 1.0
+        }
+      },
+      {
+        "nom": "Suivi de chantier septembre 2026.pdf",
+        "role": "autre",
+        "indice": "aucun motif de rôle reconnu",
+        "pages": 21,
+        "pages_scannees": 7,
+        "sous_documents": [],
+        "fiabilite_ocr": {
+          "1": 0.67,
+          "2": 1.0,
+          "4": 1.0,
+          "5": 1.0,
+          "6": 1.0,
+          "9": 1.0,
+          "11": 1.0,
+          "20": 1.0,
+          "21": 1.0
+        }
+      }
+    ],
+    "selection_pdf": {
+      "Plan_de_gestion_de_ddep.pdf": {
+        "familles": {
+          "RG": [],
+          "ES": [],
+          "FG": []
+        },
+        "plan": [
+          {
+            "id": 0,
+            "titre": "12.3 Synthèse des enjeux et objectifs à long terme",
+            "pages": "20-21",
+            "car": 5398,
+            "fiche": false,
+            "source": "carte"
+          },
+          {
+            "id": 1,
+            "titre": "12.4 Programme d'actions",
+            "pages": "21-28",
+            "car": 9964,
+            "fiche": false,
+            "source": "carte"
+          },
+          {
+            "id": 2,
+            "titre": "12.4.1 Unités de gestion",
+            "pages": "22-23",
+            "car": 1373,
+            "fiche": false,
+            "source": "carte"
+          },
+          {
+            "id": 3,
+            "titre": "Tableau 45 : Récapitulatif du gain écologique attendu",
+            "pages": "45-45",
+            "car": 855,
+            "fiche": false,
+            "source": "carte"
+          },
+          {
+            "id": 4,
+            "titre": "RG1 : Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et ges",
+            "pages": "29-31",
+            "car": 2835,
+            "fiche": true,
+            "source": "carte"
+          },
+          {
+            "id": 5,
+            "titre": "RG2 : Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts e",
+            "pages": "31-33",
+            "car": 3847,
+            "fiche": true,
+            "source": "carte"
+          },
+          {
+            "id": 6,
+            "titre": "ES1 : Suivi des habitats naturels et de la flore à enjeu",
+            "pages": "34-37",
+            "car": 4875,
+            "fiche": true,
+            "source": "carte"
+          },
+          {
+            "id": 7,
+            "titre": "ES2 : Suivi de l'avifaune",
+            "pages": "37-37",
+            "car": 1759,
+            "fiche": true,
+            "source": "carte"
+          },
+          {
+            "id": 8,
+            "titre": "FG1 : Animation du plan de gestion",
+            "pages": "38-41",
+            "car": 5836,
+            "fiche": true,
+            "source": "carte"
+          },
+          {
+            "id": 9,
+            "titre": "FG2 : Evaluation et mise à jour du plan de gestion",
+            "pages": "41-41",
+            "car": 2460,
+            "fiche": true,
+            "source": "carte"
+          }
+        ],
+        "car_retenus": 19644,
+        "car_total": 76650,
+        "routeur_llm_requis": false,
+        "routeur_llm_utilise": false,
+        "fiches_localisees": "6/6",
+        "retenues": [
+          {
+            "titre": "12.3 Synthèse des enjeux et objectifs à long terme",
+            "pages": "20-21",
+            "car": 5398
+          },
+          {
+            "titre": "12.4 Programme d'actions",
+            "pages": "21-28",
+            "car": 9964
+          },
+          {
+            "titre": "12.4.1 Unités de gestion",
+            "pages": "22-23",
+            "car": 1373
+          },
+          {
+            "titre": "Tableau 45 : Récapitulatif du gain écologique attendu",
+            "pages": "45-45",
+            "car": 855
+          },
+          {
+            "titre": "RG1 : Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+            "pages": "29-31",
+            "car": 432
+          },
+          {
+            "titre": "RG2 : Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+            "pages": "31-33",
+            "car": 409
+          },
+          {
+            "titre": "ES1 : Suivi des habitats naturels et de la flore à enjeu",
+            "pages": "34-37",
+            "car": 365
+          },
+          {
+            "titre": "ES2 : Suivi de l'avifaune",
+            "pages": "37-37",
+            "car": 317
+          },
+          {
+            "titre": "FG1 : Animation du plan de gestion",
+            "pages": "38-41",
+            "car": 257
+          },
+          {
+            "titre": "FG2 : Evaluation et mise à jour du plan de gestion",
+            "pages": "41-41",
+            "car": 274
+          }
+        ]
+      }
+    },
+    "cartes": {
+      "Plan_de_gestion_de_ddep.pdf": {
+        "vocabulaire": {
+          "unite_terme": "Unité de Gestion",
+          "unite_prefixes": [
+            "UG"
+          ],
+          "unite_exemples": [
+            "UG1",
+            "UG2"
+          ],
+          "action_forme": "code",
+          "action_familles": [
+            {
+              "prefixe": "RG",
+              "libelle": "Restauration et Gestion",
+              "citation": {
+                "page": 28,
+                "texte": "Restauration et Gestion | RG1 | Réouverture du milieu"
+              }
+            },
+            {
+              "prefixe": "ES",
+              "libelle": "Etudes et Suivis écologiques",
+              "citation": {
+                "page": 28,
+                "texte": "Etudes et Suivis écologiques | ES1 | Suivi des habitats"
+              }
+            },
+            {
+              "prefixe": "FG",
+              "libelle": "Fonctionnement Général",
+              "citation": {
+                "page": 28,
+                "texte": "Fonctionnement Général | FG1 | Animation du plan"
+              }
+            }
+          ],
+          "action_exemples": [
+            "RG1",
+            "RG2",
+            "ES1"
+          ]
+        },
+        "nb_fiches": 6,
+        "nb_tableaux": 9,
+        "verification": {
+          "fiches": [
+            6,
+            6
+          ],
+          "tableaux": [
+            9,
+            9
+          ],
+          "familles": [
+            3,
+            3
+          ],
+          "conventions": [
+            2,
+            4
+          ],
+          "ecartes": [
+            "citation hors sujet p.24 : « N | N+1 | N+2 | N+3 | N+4 | N+5 »",
+            "citation hors sujet p.42 : « Coût €/HT »"
+          ],
+          "remarques": [
+            3,
+            3
+          ]
+        },
+        "remarques": [
+          {
+            "texte": "L'intitulé de l'action RG2 dans le tableau de programmation de 2041-2055 est noté 'RG3' au lieu de 'RG2' à la page 25.",
+            "type": "incoherence_document",
+            "page": 25,
+            "citation": "RG3 | Création d'une mosaïque d'habitats favorable à l'avifaune",
+            "verifiee": true
+          },
+          {
+            "texte": "Le champ de localisation de la fiche RG2 utilise 'Longueur concernée' avec une valeur en m² au lieu de 'Surface concernée' à la page 31.",
+            "type": "incoherence_document",
+            "page": 31,
+            "citation": "Longueur concernée | 4 625 m²",
+            "verifiee": true
+          },
+          {
+            "texte": "Le phasage prévisionnel de la fiche ES1 indique des bornes de période incohérentes (2041 à 2046, 2047 à 2053) qui débordent sur les années suivantes à la page 36.",
+            "type": "incoherence_document",
+            "page": 36,
+            "citation": "N+16 à N+20 | N+21 à N+25 | N+26 à N+30",
+            "verifiee": true
+          }
+        ],
+        "tri_remarques": {
+          "questions": 0,
+          "anomalies": 3,
+          "internes": 0
+        },
+        "remarques_internes": []
+      }
+    },
+    "classeurs": [],
+    "regles": {
+      "source": "carte",
+      "unite": "\\b(?:UG)\\s?(?:n°\\s?)?-?\\s?(\\d{1,3}[a-z]?)\\b",
+      "code": "\\b(RG|ES|FG)\\s?[-.]?\\s?(\\d{1,3}[a-z]?)\\b",
+      "champs": {
+        "unites": "Localisation",
+        "parcelles": "parcelles\\s+concern[ée]es",
+        "objectif": "Objectif\\(s\\)\\s+opérationnel\\(s\\)|Objectif\\(s\\)\\s+à\\s+long\\s+terme",
+        "periode": "Période\\s+d'intervention|Phasage\\s+prévisionnel"
+      }
+    },
+    "sig": {
+      "couches": [
+        {
+          "nom": "Enjeux_arbres_Pt_20240923",
+          "fichier": "Enjeux_arbres_Pt_20240923.shp",
+          "geom_type": "POINT",
+          "nb_entites": 17,
+          "epsg": 2154,
+          "surface_ha": 0.0,
+          "avertissements": []
+        },
+        {
+          "nom": "Enjeux_bois_mort_Pt_20240923",
+          "fichier": "Enjeux_bois_mort_Pt_20240923.shp",
+          "geom_type": "POINT",
+          "nb_entites": 1,
+          "epsg": 2154,
+          "surface_ha": 0.0,
+          "avertissements": []
+        },
+        {
+          "nom": "Enjeux_lisieres_Li_20240923",
+          "fichier": "Enjeux_lisieres_Li_20240923.shp",
+          "geom_type": "POLYLINE",
+          "nb_entites": 4,
+          "epsg": 2154,
+          "surface_ha": 0.0,
+          "avertissements": []
+        }
+      ],
+      "zones": [
+        {
+          "id": "Enjeux_arbres_Pt_20240923",
+          "couche": "Enjeux_arbres_Pt_20240923",
+          "filtre": null,
+          "ug_attribut": null,
+          "nb_entites": 17,
+          "surface_ha": 0.0,
+          "refs_cadastrales": [],
+          "type_erc_nom": null
+        },
+        {
+          "id": "Enjeux_bois_mort_Pt_20240923",
+          "couche": "Enjeux_bois_mort_Pt_20240923",
+          "filtre": null,
+          "ug_attribut": null,
+          "nb_entites": 1,
+          "surface_ha": 0.0,
+          "refs_cadastrales": [],
+          "type_erc_nom": null
+        },
+        {
+          "id": "Enjeux_lisieres_Li_20240923",
+          "couche": "Enjeux_lisieres_Li_20240923",
+          "filtre": null,
+          "ug_attribut": null,
+          "nb_entites": 4,
+          "surface_ha": 0.0,
+          "refs_cadastrales": [],
+          "type_erc_nom": null
+        }
+      ]
+    },
+    "referentiel": {
+      "projet": {
+        "nom": {
+          "valeur": "9 avenue Marc Nouaux 33610 Cestas - Tel : 05 56 49 59 78 - Mail : contact@riviere-environnement.fr",
+          "confiance": "moyenne",
+          "sources": [
+            {
+              "doc": "Plan_de_gestion_de_ddep.pdf",
+              "loc": "pied de page",
+              "extrait": "9 avenue Marc Nouaux 33610 Cestas - Tel : 05 56 49 59 78 - Mail : contact@riviere-environnement.fr"
+            }
+          ],
+          "note": null
+        },
+        "annee_fin": {
+          "valeur": 2055,
+          "confiance": "moyenne",
+          "sources": [
+            {
+              "doc": "Plan_de_gestion_de_ddep.pdf",
+              "loc": "p.1",
+              "extrait": "1,16 ha (2025-2055) | Espèces protégées"
+            }
+          ],
+          "note": null
+        },
+        "annee_N": {
+          "valeur": 2025,
+          "confiance": "haute",
+          "sources": [
+            {
+              "doc": "Plan_de_gestion_de_ddep.pdf",
+              "loc": "p.1",
+              "extrait": "1,16 ha (2025-2055) | Espèces protégées"
+            }
+          ],
+          "note": "Année N lue sur les colonnes du planning (année − rang)"
+        },
+        "annee_etat_zero": {
+          "valeur": 2025,
+          "confiance": "basse",
+          "sources": [
+            {
+              "doc": "Plan_de_gestion_de_ddep.pdf",
+              "loc": "p.1",
+              "extrait": "1,16 ha (2025-2055) | Espèces protégées"
+            }
+          ],
+          "note": null
+        }
+      },
+      "ugs": [
+        {
+          "ug_code": "UG1",
+          "libelle": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          },
+          "type_erc": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          },
+          "zone_sig": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": "Aucune géométrie rapprochée"
+          },
+          "surface_ha": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          }
+        },
+        {
+          "ug_code": "UG2",
+          "libelle": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          },
+          "type_erc": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          },
+          "zone_sig": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": "Aucune géométrie rapprochée"
+          },
+          "surface_ha": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          }
+        }
+      ],
+      "actions": [
+        {
+          "code": "ES1",
+          "intitule": {
+            "valeur": "Suivi des habitats naturels et de la flore à enjeu",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.34",
+                "extrait": "Suivi des habitats naturels et de la flore à enjeu"
+              },
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.27 tableau 1 (carte)",
+                "extrait": "Suivi des habitats naturels et de la flore à enjeu"
+              }
+            ],
+            "note": null
+          },
+          "nature": {
+            "valeur": "Etudes et Suivis écologiques",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.28",
+                "extrait": "Etudes et Suivis écologiques | ES1 | Suivi des habitats"
+              }
+            ],
+            "note": null
+          },
+          "ugs": {
+            "valeur": [
+              "UG1"
+            ],
+            "confiance": "moyenne",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.27 tableau 1 (carte)",
+                "extrait": "ES1 → UG1"
+              }
+            ],
+            "note": "Une seule source"
+          },
+          "cible": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          }
+        },
+        {
+          "code": "ES2",
+          "intitule": {
+            "valeur": "Suivi de l'avifaune",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.37",
+                "extrait": "Suivi de l'avifaune"
+              },
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.27 tableau 1 (carte)",
+                "extrait": "Suivi de l'avifaune"
+              }
+            ],
+            "note": null
+          },
+          "nature": {
+            "valeur": "Etudes et Suivis écologiques",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.28",
+                "extrait": "Etudes et Suivis écologiques | ES1 | Suivi des habitats"
+              }
+            ],
+            "note": null
+          },
+          "ugs": {
+            "valeur": [
+              "UG2"
+            ],
+            "confiance": "moyenne",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.27 tableau 1 (carte)",
+                "extrait": "ES2 → UG2"
+              }
+            ],
+            "note": "Une seule source"
+          },
+          "cible": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          }
+        },
+        {
+          "code": "FG1",
+          "intitule": {
+            "valeur": "Animation du plan de gestion",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.38",
+                "extrait": "Animation du plan de gestion"
+              },
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.27 tableau 1 (carte)",
+                "extrait": "Animation du plan de gestion"
+              }
+            ],
+            "note": null
+          },
+          "nature": {
+            "valeur": "Fonctionnement Général",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.28",
+                "extrait": "Fonctionnement Général | FG1 | Animation du plan"
+              }
+            ],
+            "note": null
+          },
+          "ugs": {
+            "valeur": [],
+            "confiance": "basse",
+            "sources": [],
+            "note": "Aucune UG trouvée"
+          },
+          "cible": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          }
+        },
+        {
+          "code": "FG2",
+          "intitule": {
+            "valeur": "Evaluation et mise à jour du plan de gestion",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.41",
+                "extrait": "Evaluation et mise à jour du plan de gestion"
+              },
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.27 tableau 1 (carte)",
+                "extrait": "Evaluation et mise à jour du plan de gestion"
+              }
+            ],
+            "note": null
+          },
+          "nature": {
+            "valeur": "Fonctionnement Général",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.28",
+                "extrait": "Fonctionnement Général | FG1 | Animation du plan"
+              }
+            ],
+            "note": null
+          },
+          "ugs": {
+            "valeur": [],
+            "confiance": "basse",
+            "sources": [],
+            "note": "Aucune UG trouvée"
+          },
+          "cible": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          }
+        },
+        {
+          "code": "RG1",
+          "intitule": {
+            "valeur": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.29",
+                "extrait": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion"
+              },
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.27 tableau 1 (carte)",
+                "extrait": "Réouverture du milieu pour accueillir des stations de Lotier grêle et hispide et gestion"
+              }
+            ],
+            "note": null
+          },
+          "nature": {
+            "valeur": "Restauration et Gestion",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.28",
+                "extrait": "Restauration et Gestion | RG1 | Réouverture du milieu"
+              }
+            ],
+            "note": null
+          },
+          "ugs": {
+            "valeur": [
+              "UG1"
+            ],
+            "confiance": "moyenne",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.27 tableau 1 (carte)",
+                "extrait": "RG1 → UG1"
+              }
+            ],
+            "note": "Une seule source"
+          },
+          "cible": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          }
+        },
+        {
+          "code": "RG2",
+          "intitule": {
+            "valeur": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.31",
+                "extrait": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés"
+              },
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.27 tableau 1 (carte)",
+                "extrait": "Création d'une mosaïque d'habitats favorable à l'avifaune des milieux semi-ouverts et boisés"
+              }
+            ],
+            "note": null
+          },
+          "nature": {
+            "valeur": "Restauration et Gestion",
+            "confiance": "haute",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.28",
+                "extrait": "Restauration et Gestion | RG1 | Réouverture du milieu"
+              }
+            ],
+            "note": null
+          },
+          "ugs": {
+            "valeur": [
+              "UG2"
+            ],
+            "confiance": "moyenne",
+            "sources": [
+              {
+                "doc": "Plan_de_gestion_de_ddep.pdf",
+                "loc": "p.27 tableau 1 (carte)",
+                "extrait": "RG2 → UG2"
+              }
+            ],
+            "note": "Une seule source"
+          },
+          "cible": {
+            "valeur": null,
+            "confiance": "basse",
+            "sources": [],
+            "note": null
+          }
+        }
+      ],
+      "obligations_surfaciques": [],
+      "questions": [
+        {
+          "id": "action_ug_absente:FG1",
+          "regle": "action_ug_absente",
+          "portee": "FG1",
+          "texte": "FG1 (Animation du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+          "options": [],
+          "proposition": null,
+          "sources": [],
+          "bloquante": true
+        },
+        {
+          "id": "action_ug_absente:FG2",
+          "regle": "action_ug_absente",
+          "portee": "FG2",
+          "texte": "FG2 (Evaluation et mise à jour du plan de gestion) : aucune UG trouvée. Sur quelles UG porte cette action ?",
+          "options": [],
+          "proposition": null,
+          "sources": [],
+          "bloquante": true
+        },
+        {
+          "id": "ug_sans_zone:UG1",
+          "regle": "ug_sans_zone",
+          "portee": "UG1",
+          "texte": "UG1 (None) : aucune géométrie trouvée dans le SIG. Quelle couche/entité la représente ?",
+          "options": [
+            "Enjeux_arbres_Pt_20240923",
+            "Enjeux_bois_mort_Pt_20240923",
+            "Enjeux_lisieres_Li_20240923",
+            "Pas de géométrie"
+          ],
+          "proposition": null,
+          "sources": [],
+          "bloquante": true
+        },
+        {
+          "id": "ug_sans_zone:UG2",
+          "regle": "ug_sans_zone",
+          "portee": "UG2",
+          "texte": "UG2 (None) : aucune géométrie trouvée dans le SIG. Quelle couche/entité la représente ?",
+          "options": [
+            "Enjeux_arbres_Pt_20240923",
+            "Enjeux_bois_mort_Pt_20240923",
+            "Enjeux_lisieres_Li_20240923",
+            "Pas de géométrie"
+          ],
+          "proposition": null,
+          "sources": [],
+          "bloquante": true
+        },
+        {
+          "id": "couche_orpheline:Enjeux_arbres_Pt_20240923",
+          "regle": "couche_orpheline",
+          "portee": "Enjeux_arbres_Pt_20240923",
+          "texte": "La couche « Enjeux_arbres_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+          "options": [
+            "Évitement sans gestion (contexte)",
+            "Nouvelle UG",
+            "Ignorer"
+          ],
+          "proposition": null,
+          "sources": [
+            {
+              "doc": "SIG",
+              "loc": "Enjeux_arbres_Pt_20240923",
+              "extrait": null
+            }
+          ],
+          "bloquante": true
+        },
+        {
+          "id": "couche_orpheline:Enjeux_bois_mort_Pt_20240923",
+          "regle": "couche_orpheline",
+          "portee": "Enjeux_bois_mort_Pt_20240923",
+          "texte": "La couche « Enjeux_bois_mort_Pt_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+          "options": [
+            "Évitement sans gestion (contexte)",
+            "Nouvelle UG",
+            "Ignorer"
+          ],
+          "proposition": null,
+          "sources": [
+            {
+              "doc": "SIG",
+              "loc": "Enjeux_bois_mort_Pt_20240923",
+              "extrait": null
+            }
+          ],
+          "bloquante": true
+        },
+        {
+          "id": "couche_orpheline:Enjeux_lisieres_Li_20240923",
+          "regle": "couche_orpheline",
+          "portee": "Enjeux_lisieres_Li_20240923",
+          "texte": "La couche « Enjeux_lisieres_Li_20240923 », 0.0 ha, type ?, ne correspond à aucune UG du plan de gestion. Que représente-t-elle ?",
+          "options": [
+            "Évitement sans gestion (contexte)",
+            "Nouvelle UG",
+            "Ignorer"
+          ],
+          "proposition": null,
+          "sources": [
+            {
+              "doc": "SIG",
+              "loc": "Enjeux_lisieres_Li_20240923",
+              "extrait": null
+            }
+          ],
+          "bloquante": true
+        }
+      ],
+      "anomalies": [
+        {
+          "texte": "L'intitulé de l'action RG2 dans le tableau de programmation de 2041-2055 est noté 'RG3' au lieu de 'RG2' à la page 25.",
+          "page": 25,
+          "citation": "RG3 | Création d'une mosaïque d'habitats favorable à l'avifaune",
+          "type": "incoherence_document",
+          "source": "Plan_de_gestion_de_ddep.pdf"
+        },
+        {
+          "texte": "Le champ de localisation de la fiche RG2 utilise 'Longueur concernée' avec une valeur en m² au lieu de 'Surface concernée' à la page 31.",
+          "page": 31,
+          "citation": "Longueur concernée | 4 625 m²",
+          "type": "incoherence_document",
+          "source": "Plan_de_gestion_de_ddep.pdf"
+        },
+        {
+          "texte": "Le phasage prévisionnel de la fiche ES1 indique des bornes de période incohérentes (2041 à 2046, 2047 à 2053) qui débordent sur les années suivantes à la page 36.",
+          "page": 36,
+          "citation": "N+16 à N+20 | N+21 à N+25 | N+26 à N+30",
+          "type": "incoherence_document",
+          "source": "Plan_de_gestion_de_ddep.pdf"
+        }
+      ],
+      "controles": [],
+      "decisions": {
+        "alias_codes": {},
+        "alias_parcelles": {},
+        "parcelles_a_ajouter": [],
+        "requalifications_blocs": {},
+        "couches_contexte": [],
+        "couches_ignorees": [],
+        "decisions_annexes": {},
+        "roles_tableaux": {},
+        "commentaires": [],
+        "arrete": {}
+      },
+      "stats": {
+        "cellules": 36,
+        "confiance": {
+          "moyenne": 6,
+          "haute": 13,
+          "basse": 17
+        },
+        "questions": 7,
+        "questions_bloquantes": 7,
+        "faits": 30,
+        "faits_user": 0,
+        "geomce_pret_pct": 11,
+        "anomalies": 3
+      }
+    },
+    "durees_s": {
+      "inventaire": 25.01,
+      "pdfvisuel": 0.01,
+      "carte": 9.61,
+      "sig": 0.1,
+      "referentiel": 0.03,
+      "reconciliation": 0.0,
+      "pipeline": 34.78
+    },
+    "nb_faits": 30
+  },
+  "validation": null,
+  "passe3": null,
+  "projet_id": null,
+  "started_at": "2026-10-14T16:01:34.892815+00:00",
+  "updated_at": "2026-10-14T16:02:09.688506+00:00"
+}

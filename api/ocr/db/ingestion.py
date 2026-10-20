@@ -26,7 +26,7 @@ import logging
 import os
 from pathlib import Path
 from typing import Any
-from uuid import UUID
+from uuid import UUID, uuid4
 
 import psycopg
 from psycopg.rows import dict_row
@@ -514,11 +514,9 @@ def dossier_depuis_referentiel(ref) -> DossierResult:
 
 
 def actions_depuis_referentiel(ref) -> ActionsResult:
-    import re
     out: list[ActionFiche] = []
     for a in ref.actions:
-        m = re.match(r"[A-Za-z]+", a.code or "")
-        cat = m.group(0).upper() if m else "MG"
+        cat = (str(a.intitule).strip() if a.intitule else "") or a.code or "sans catégorie"
         titre = str(a.intitule or a.code)
         out.append(ActionFiche(
             id=a.code,
@@ -545,42 +543,77 @@ def calendrier_depuis_passe3(res) -> tuple[EcheancesLieesResult, list[Occurrence
     return EcheancesLieesResult(echeances=echeances, liaisons=liaisons), occs
 
 
+def _organisation_courante(conn: psycopg.Connection, demandee: str | None = None) -> str:
+    """Organisation dont le compte est admin. L'insert RLS l'exige."""
+    with conn.cursor() as cur:
+        if demandee:
+            cur.execute(
+                """
+                select organisation_id::text as organisation_id
+                from prive.mes_appartenances()
+                where role = 'admin' and organisation_id = %s::uuid
+                """,
+                (demandee,),
+            )
+        else:
+            cur.execute(
+                """
+                select organisation_id::text as organisation_id
+                from prive.mes_appartenances()
+                where role = 'admin'
+                order by organisation_id
+                limit 1
+                """
+            )
+        row = cur.fetchone()
+    if not row:
+        raise ValueError("Aucune organisation administrée : impossible de créer le projet.")
+    return row["organisation_id"]
+
+
 def creer_projet_erc(
     conn: psycopg.Connection,
     ref,
     *,
     statut: str = "brouillon",
+    organisation_id: str | None = None,
 ) -> str:
-    """Projet issu du référentiel verrouillé. ``brouillon`` tant que le BE n'a pas relu."""
+    """Projet issu du référentiel verrouillé. ``brouillon`` tant que le BE n'a pas relu.
+
+    L'identifiant est choisi ici : un ``RETURNING`` sur cette table est refusé
+    par la politique de lecture, qui ne voit pas encore la ligne en cours d'insertion.
+    """
     p = ref.projet or {}
     commune, dept = p.get("commune"), None
     if isinstance(commune, dict):
         dept = commune.get("departement")
         commune = commune.get("nom")
     nom = _texte(p.get("nom")) or "Projet sans nom"
+    organisation_id = _organisation_courante(conn, organisation_id)
+    projet_id = str(uuid4())
     with conn.cursor() as cur:
         cur.execute(
             """
             insert into bancarisation.projets (
-                organisation_id, nom, reference_interne, commune, departement,
-                type_procedure, date_decision, duree_annees, statut, description
-            ) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-            returning id
+                id, nom, organisation_id, statut, type_dispositif, reference_interne,
+                commune, departement, date_decision, duree_annees, type_procedure,
+                description, cree_par
+            ) values (%s, %s, %s, %s, 'obligation', %s, %s, %s, %s, %s, %s, %s, auth.uid())
             """,
             (
-                ORGANISATION_ID_V0,
+                projet_id,
                 nom,
+                organisation_id,
+                statut,
                 _texte(p.get("reference_decision")),
                 commune,
                 str(dept) if dept else None,
-                _texte(p.get("type_procedure")),
                 _date_iso(p.get("date_decision")),
                 p.get("duree_ans"),
-                statut,
+                _texte(p.get("type_procedure")),
                 f"empreinte {ref.empreinte}",
             ),
         )
-        projet_id = str(cur.fetchone()["id"])
     log.info("Projet ERC créé : %s (%s)", projet_id, nom)
     return projet_id
 
@@ -593,6 +626,7 @@ def ingérer_changeset(
     projet_id: str | None = None,
     fichier_nom: str = "ingest_erc",
     replace: bool = False,
+    organisation_id: str | None = None,
 ) -> dict[str, Any]:
     """Applique le référentiel verrouillé + ResultatPasse3.
 
@@ -619,7 +653,9 @@ def ingérer_changeset(
     if projet_id:
         _verifier_projet(conn, projet_id)
     else:
-        projet_id = creer_projet_erc(conn, ref, statut="brouillon")
+        projet_id = creer_projet_erc(
+            conn, ref, statut="brouillon", organisation_id=organisation_id,
+        )
     recap = ingérer(
         conn,
         projet_id,
