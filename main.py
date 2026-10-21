@@ -1,4 +1,5 @@
 import logging
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -40,6 +41,7 @@ from api.carto.router import router as cao_router
 from api.admin.router import router as admin_router
 from api.acces.router import router as acces_router
 from api.transfert.router import router as transfert_router
+from api.export.router import router as export_router
 from auth.deps import JwtAuthMiddleware
 from auth.errors import http_from_db
 from security import IpDenylistMiddleware, docs_enabled
@@ -60,6 +62,15 @@ logging.getLogger("uvicorn.access").addFilter(_FiltreSuiviIngest())
 
 _docs = docs_enabled()
 
+
+@asynccontextmanager
+async def _duree_de_vie(_app: FastAPI):
+    from api.export.service import marquer_exports_interrompus
+
+    marquer_exports_interrompus()
+    yield
+
+
 app = FastAPI(
     title="Bancarisation API",
     version="0.1.0",
@@ -67,6 +78,7 @@ app = FastAPI(
     docs_url="/docs" if _docs else None,
     redoc_url="/redoc" if _docs else None,
     openapi_url="/openapi.json" if _docs else None,
+    lifespan=_duree_de_vie,
 )
 
 origins = os.getenv(
@@ -125,3 +137,4 @@ app.include_router(cao_router, prefix="/api", tags=["cao"])
 app.include_router(admin_router, prefix="/api", tags=["admin"])
 app.include_router(transfert_router, prefix="/api", tags=["transfert"])
 app.include_router(acces_router, prefix="/api", tags=["acces"])
+app.include_router(export_router, prefix="/api", tags=["export"])
