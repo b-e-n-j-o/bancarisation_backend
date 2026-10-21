@@ -11,3 +11,5 @@ venv
 .env.local
 *.pdf
 data/
+
+DOSSIERS_DE_TEST/
