@@ -31,11 +31,9 @@ def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExpor
     )
     produits = []
     for row in rows:
-        genre = "financiers" if row.get("type_bilan") == "financier" else "ecologiques"
-        libelle = "bilan-financier" if genre == "financiers" else "bilan-ecologique"
-        chemin = f"{dossier}/{genre}/{row['annee']}_{libelle}_VALIDE.pdf"
-        if row.get("version") and int(row["version"]) > 1:
-            chemin = f"{dossier}/{genre}/{row['annee']}_v{row['version']}_{libelle}_VALIDE.pdf"
+        from api.export.chemins_livrables import chemin_bilan
+
+        chemin = chemin_bilan(row.get("annee"), row.get("type_bilan"), row.get("version"))
         if not row.get("bucket_path"):
             ctx.avertir(
                 f"Bilan {row.get('type_bilan')} {row.get('annee')} validé sans PDF archivé."

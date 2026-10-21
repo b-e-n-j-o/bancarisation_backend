@@ -1,0 +1,14 @@
+{% extends "base.html.j2" %}
+{% block corps %}
+<h1>Notes par action</h1>
+{% for groupe in groupes %}
+<h2>{{ groupe.titre }}</h2>
+{% for note in groupe.notes %}
+<p><strong>{{ note.auteur or "Note" }}</strong>
+  <span class="muted">{{ note.organisation or "" }} · {{ note.created_at or "" }}</span><br>
+  {{ note.contenu }}</p>
+{% endfor %}
+{% else %}
+<p>Aucune note.</p>
+{% endfor %}
+{% endblock %}

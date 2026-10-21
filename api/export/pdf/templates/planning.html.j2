@@ -1,0 +1,47 @@
+{% extends "base.html.j2" %}
+{% block corps %}
+<h1>Planning pluriannuel</h1>
+<p class="legende">
+  <span><i class="puce" style="background:#15803d"></i>Réalisée</span>
+  <span><i class="puce" style="background:#1d4ed8"></i>Planifiée</span>
+  <span><i class="puce" style="background:#0369a1"></i>En cours</span>
+  <span><i class="puce" style="background:#b45309"></i>En retard</span>
+  <span><i class="puce" style="background:#a16207"></i>À confirmer</span>
+</p>
+{% for page in pages %}
+<section style="{{ 'page-break-before: always;' if not loop.first else '' }}">
+  <h2>{{ page.titre }}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Mesure</th>
+        <th>Action</th>
+        {% for annee in page.annees %}<th>{{ annee }}</th>{% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for ligne in page.lignes %}
+      <tr>
+        <td>{{ ligne.mesure }}</td>
+        <td>{{ ligne.action }}</td>
+        {% for cellule in ligne.cellules %}
+        <td style="background:{{ cellule.couleur }}; color:{{ cellule.encre }}; text-align:center;">
+          {{ cellule.texte }}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="legende muted">
+    <span><i class="puce" style="background:#15803d"></i>Réalisée</span>
+    <span><i class="puce" style="background:#1d4ed8"></i>Planifiée</span>
+    <span><i class="puce" style="background:#0369a1"></i>En cours</span>
+    <span><i class="puce" style="background:#b45309"></i>En retard</span>
+    <span><i class="puce" style="background:#a16207"></i>À confirmer</span>
+  </p>
+</section>
+{% else %}
+<p>Aucune action sur la période exportée.</p>
+{% endfor %}
+{% endblock %}

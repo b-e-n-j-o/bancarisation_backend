@@ -1,0 +1,56 @@
+{% extends "base.html.j2" %}
+{% block corps %}
+<h1>Fiche projet</h1>
+<p class="muted">{{ organisation.nom or "" }}</p>
+<table>
+  <tr><th>Champ</th><th>Valeur</th></tr>
+  {% for libelle, valeur in identite %}
+  <tr><td>{{ libelle }}</td><td>{{ valeur or "—" }}</td></tr>
+  {% endfor %}
+</table>
+
+<h2>Organisation et partenaires</h2>
+<p>Propriétaire : {{ organisation.nom or "—" }}</p>
+<table>
+  <tr><th>Organisation</th><th>Qualité</th><th>Niveau</th></tr>
+  {% for acces in partenaires %}
+  <tr><td>{{ acces.organisation or "—" }}</td><td>{{ acces.qualite or "—" }}</td><td>{{ acces.niveau or "—" }}</td></tr>
+  {% else %}
+  <tr><td colspan="3">Aucun partenaire.</td></tr>
+  {% endfor %}
+</table>
+
+<h2>Mesures</h2>
+<table>
+  <tr><th>Code</th><th>Libellé</th><th>Théma</th></tr>
+  {% for mesure in mesures %}
+  <tr><td>{{ mesure.code or "" }}</td><td>{{ mesure.titre or "" }}</td><td>{{ mesure.lib_thema or "" }}</td></tr>
+  {% else %}
+  <tr><td colspan="3">Aucune mesure.</td></tr>
+  {% endfor %}
+</table>
+
+<h2>Unités de gestion</h2>
+<table>
+  <tr><th>Code</th><th>Libellé</th><th>Type</th><th>Surface ou longueur</th><th>Mesures</th></tr>
+  {% for ug in unites %}
+  <tr>
+    <td>{{ ug.ug_id or "" }}</td>
+    <td>{{ ug.libelle or "" }}</td>
+    <td>{{ ug.genre }}</td>
+    <td>{{ ug.metrique_libelle or "—" }}</td>
+    <td>{{ ug.mesures or "" }}</td>
+  </tr>
+  {% else %}
+  <tr><td colspan="5">Aucune unité de gestion.</td></tr>
+  {% endfor %}
+</table>
+
+<h2>Chiffres clés</h2>
+<table>
+  <tr><th>Indicateur</th><th>Valeur</th></tr>
+  {% for libelle, valeur in chiffres %}
+  <tr><td>{{ libelle }}</td><td>{{ valeur }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

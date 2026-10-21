@@ -1,0 +1,31 @@
+{% extends "base.html.j2" %}
+{% block corps %}
+<h1>Fil du projet</h1>
+<h2>Chronologie</h2>
+<table>
+  <tr><th>Date</th><th>Type</th><th>Auteur</th><th>Libellé</th></tr>
+  {% for evenement in fil %}
+  <tr>
+    <td>{{ evenement.survenu_le }}</td>
+    <td>{{ evenement.type }}</td>
+    <td>{{ evenement.acteur or "" }}</td>
+    <td>{{ evenement.libelle or "" }}</td>
+  </tr>
+  {% else %}
+  <tr><td colspan="4">Aucun événement.</td></tr>
+  {% endfor %}
+</table>
+{% for demande in demandes %}
+<h2>{{ demande.demande.objet or "Demande" }}</h2>
+<p class="muted">Statut {{ demande.demande.statut or "—" }} · {{ demande.demande.auteur or "" }} · {{ demande.demande.cree_le or "" }}</p>
+{% for message in demande.messages %}
+<p><strong>{{ message.auteur_nom or message.acteur or "Message" }}</strong>
+  <span class="muted">{{ message.cree_le or "" }}</span><br>
+  {{ message.corps or "" }}
+  {% if message.pieces_chemins %}
+  <br><span class="muted">Pièces : {{ message.pieces_chemins | join(", ") }}</span>
+  {% endif %}
+</p>
+{% endfor %}
+{% endfor %}
+{% endblock %}

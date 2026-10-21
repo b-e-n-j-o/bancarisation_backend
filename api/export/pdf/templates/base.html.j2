@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>{{ titre }}</title>
+<style>
+  @page {
+    size: {{ page_size|default('A4') }};
+    margin: 16mm 14mm 16mm 14mm;
+    @top-left {
+      content: "KerERC – {{ projet_nom|css }}";
+      font-family: "DejaVu Sans", sans-serif;
+      font-size: 8pt;
+      color: #6b7280;
+    }
+    @bottom-left {
+      content: "Export KerERC – {{ projet_nom|css }} – généré le {{ genere_le|css }} – page " counter(page) " / " counter(pages);
+      font-family: "DejaVu Sans", sans-serif;
+      font-size: 8pt;
+      color: #6b7280;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { font-family: "DejaVu Sans", sans-serif; font-size: 10pt; color: #1c241c; }
+  h1 { font-size: 18pt; margin: 0 0 4mm; color: #245c3a; }
+  h2 { font-size: 13pt; margin: 6mm 0 2mm; color: #245c3a; }
+  table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; }
+  th { text-align: left; background: #245c3a; color: white; padding: 1.5mm 2mm; font-size: 8.5pt; }
+  td { padding: 1.2mm 2mm; border-bottom: 0.2mm solid #e2e8e2; vertical-align: top; font-size: 8.5pt; }
+  .muted { color: #5c6b5c; }
+  .legende span { display: inline-block; margin-right: 4mm; }
+  .puce { display: inline-block; width: 3mm; height: 3mm; margin-right: 1mm; vertical-align: middle; }
+</style>
+</head>
+<body>
+{% block corps %}{% endblock %}
+</body>
+</html>

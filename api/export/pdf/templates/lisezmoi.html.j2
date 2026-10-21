@@ -1,0 +1,43 @@
+{% extends "base.html.j2" %}
+{% block corps %}
+<h1>Lisez-moi</h1>
+<p>{{ projet_nom }} — {{ organisation_nom }}</p>
+<p class="muted">Généré le {{ genere_le }} par {{ demandeur or "—" }}.</p>
+<p>Options : budget {{ "inclus" if options.inclure_budget else "exclu" }},
+  documents {{ "inclus" if options.inclure_documents else "exclus" }}{% if options.annee_min or options.annee_max %},
+  années {{ options.annee_min or "…" }} à {{ options.annee_max or "…" }}{% endif %}.</p>
+
+<h2>Contenu de l'export</h2>
+<table>
+  <tr><th>Fichier</th><th>Description</th><th>Éléments</th></tr>
+  {% for fichier in fichiers %}
+  <tr><td>{{ fichier.chemin }}</td><td>{{ fichier.description }}</td><td>{{ fichier.nb_elements if fichier.nb_elements is not none else "—" }}</td></tr>
+  {% endfor %}
+</table>
+
+<h2>Comment ouvrir</h2>
+<p>Extraire le ZIP avant d'ouvrir les fichiers. Sinon les liens relatifs ne fonctionnent pas.</p>
+<ul>
+  <li>Les fichiers <code>.xlsx</code> s'ouvrent dans Excel ou LibreOffice.</li>
+  <li>Le fichier <code>.gpkg</code> se glisse dans QGIS.</li>
+  <li>Le fichier <code>.ics</code> s'importe dans Outlook, Google Agenda ou Thunderbird.</li>
+  <li>Le fichier <code>.vcf</code> s'importe dans un carnet d'adresses.</li>
+</ul>
+
+<h2>Reprise des données</h2>
+<p>Le dossier <code>data/</code> contient une table par fichier CSV, avec les identifiants conservés.
+  <code>dictionnaire_donnees.xlsx</code> décrit les colonnes.
+  Le GeoPackage est en Lambert 93 (EPSG:2154). Les GeoJSON sont en WGS84 (EPSG:4326).</p>
+
+<h2>Vérifier l'intégrité</h2>
+<p><code>manifest.json</code> porte l'empreinte SHA-256 de chaque fichier. Après extraction :</p>
+<p>Linux ou macOS : <code>sha256sum fichier</code></p>
+<p>PowerShell : <code>Get-FileHash fichier -Algorithm SHA256</code></p>
+
+{% if avertissements %}
+<h2>Avertissements</h2>
+<ul>
+  {% for message in avertissements %}<li>{{ message }}</li>{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

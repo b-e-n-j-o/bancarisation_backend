@@ -14,7 +14,11 @@ def envoyer_export_pret(
     destinataire: str,
     nom_projet: str,
     lien: str,
-    avec_avertissements: bool,
+    *,
+    taille_octets: int,
+    expire_le,
+    nb_avertissements: int,
+    conservation_jours: int,
 ) -> None:
     host = os.environ.get("SMTP_HOST", "").strip()
     user = os.environ.get("SMTP_USER", "").strip()
@@ -27,17 +31,20 @@ def envoyer_export_pret(
         raise RuntimeError("Pas d'adresse pour le demandeur.")
 
     precision = (
-        " L'archive contient des avertissements, détaillés dans la fenêtre d'export."
-        if avec_avertissements
+        f" {nb_avertissements} avertissement(s) sont détaillés dans la fenêtre d'export."
+        if nb_avertissements
         else ""
     )
+    taille = f"{taille_octets / (1024 * 1024):.1f} Mo" if taille_octets >= 1024 * 1024 else f"{max(1, taille_octets // 1024)} Ko"
+    expire = expire_le.strftime("%d/%m/%Y") if hasattr(expire_le, "strftime") else str(expire_le)[:10]
     msg = EmailMessage()
     msg["Subject"] = f"Export du projet {nom_projet}"
     msg["From"] = sender
     msg["To"] = destinataire
     msg.set_content(
-        f"L'export du projet {nom_projet} est prêt.{precision}\n"
-        f"Ouvrez KerERC pour le télécharger (le lien expire sous 7 jours) :\n{lien}\n"
+        f"L'export du projet {nom_projet} est prêt ({taille}).{precision}\n"
+        f"Il reste téléchargeable {conservation_jours} jours, jusqu'au {expire}.\n"
+        f"Ouvrez KerERC pour le télécharger :\n{lien}\n"
     )
     with smtplib.SMTP(host, port, timeout=30) as smtp:
         smtp.starttls()

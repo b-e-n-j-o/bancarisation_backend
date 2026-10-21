@@ -83,7 +83,7 @@ def charger_budget_projet(
           from bancarisation.budget_mouvement m
           left join bancarisation.occurrence o on o.id = m.occurrence_id
          where m.projet_id = %s
-           {filtre.replace("o.annee", "o.annee")}
+           {filtre}
          order by m.modifie_le
         """,
         [projet_id, *params_annees],

@@ -25,9 +25,9 @@ _TYPES_RECURRENCE = {
 }
 
 
-def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExport]:
+def charger(ctx: ExportContexte, conn: psycopg.Connection) -> dict:
+    """Actions, checklists et règles. Excel, ICS et planning PDF lisent ce résultat."""
     pid = str(ctx.projet_id)
-    ugs = _index_ug(conn, pid)
     filtre, params = annee_clause("o", ctx.options.annee_min, ctx.options.annee_max)
     supprime = "" if ctx.options.inclure_supprimees else " and o.statut <> 'supprime'"
     actions = lignes(
@@ -50,7 +50,22 @@ def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExpor
         """,
         [pid, *params],
     )
-    etapes = _etapes(conn, pid)
+    return {
+        "pid": pid,
+        "ugs": _index_ug(conn, pid),
+        "actions": actions,
+        "etapes": _etapes(conn, pid),
+        "regles": _regles(conn, pid),
+        "nom_projet": (lignes(conn, "select nom from bancarisation.projets where id = %s", (pid,)) or [{"nom": "Projet"}])[0]["nom"],
+    }
+
+
+def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExport]:
+    charge = charger(ctx, conn)
+    pid = charge["pid"]
+    ugs = charge["ugs"]
+    actions = charge["actions"]
+    etapes = charge["etapes"]
     compte_etapes = {}
     for etape in etapes:
         cle = etape["occurrence_id"]
@@ -95,6 +110,7 @@ def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExpor
             "titre": action.get("libelle_action") or action.get("titre"),
             "mesure": mesure,
             "ug": ug,
+            "fin": fin,
         })
 
     wb = nouveau_classeur()
@@ -135,8 +151,7 @@ def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExpor
     fic_xlsx = fichier(ctx, f"{dossier}/actions.xlsx", nom, "Actions du calendrier", len(lignes_actions))
     sauver(wb, fic_xlsx.chemin_local)
 
-    projet = lignes(conn, "select nom from bancarisation.projets where id = %s", (pid,))
-    nom_projet = projet[0]["nom"] if projet else "Projet"
+    nom_projet = charge["nom_projet"]
     ics = generer_ics(
         pour_ics,
         nom_projet=nom_projet,
@@ -147,7 +162,7 @@ def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExpor
     fic_ics = fichier(ctx, f"{dossier}/calendrier.ics", nom, "Calendrier des fenêtres", len(pour_ics), compresser=True)
     fic_ics.chemin_local.write_bytes(ics)
 
-    regles = _regles(conn, pid)
+    regles = charge["regles"]
     wb_regles = nouveau_classeur()
     feuille = wb_regles.active
     feuille.title = "Règles"
@@ -161,7 +176,18 @@ def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExpor
     )
     fic_regles = fichier(ctx, f"{dossier}/regles_recurrence.xlsx", nom, "Règles de récurrence", len(regles))
     sauver(wb_regles, fic_regles.chemin_local)
-    return [fic_xlsx, fic_ics, fic_regles]
+    produits = [fic_xlsx, fic_ics, fic_regles]
+    try:
+        from datetime import datetime
+
+        from api.export.pdf.planning import ecrire_planning
+
+        planning = fichier(ctx, f"{dossier}/planning_pluriannuel.pdf", nom, "Planning pluriannuel", len(pour_ics), compresser=False)
+        ecrire_planning(planning.chemin_local, nom_projet, datetime.now().strftime("%d/%m/%Y"), pour_ics)
+        produits.append(planning)
+    except Exception as exc:
+        ctx.avertir(f"Planning PDF : {exc}")
+    return produits
 
 
 def _etapes(conn, pid: str) -> list[dict]:

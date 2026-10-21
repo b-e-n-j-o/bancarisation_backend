@@ -59,6 +59,7 @@ class LigneDocument:
     occurrence_id: str | None
     liens: str
     echange: bool = False
+    chemin_ailleurs: str | None = None
 
 
 Telechargeur = Callable[[str, Path], str]
@@ -66,6 +67,7 @@ Telechargeur = Callable[[str, Path], str]
 
 def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExport]:
     lignes_doc = _lire(conn, str(ctx.projet_id))
+    _rattacher_ailleurs(ctx, conn, lignes_doc)
     return deposer_documents(ctx, lignes_doc, telecharger_binaire, ctx.options.inclure_documents)
 
 
@@ -88,18 +90,25 @@ def deposer_documents(
         relatif = f"{dossier}/{dossier_cat}/{annee}/{jour}_{nom_slug}{ext}"
         statut_fichier = "inclus"
         sha = ""
-        if not inclure:
+        if doc.chemin_ailleurs:
+            relatif = doc.chemin_ailleurs
+            ctx.alias_fichiers[doc.id] = relatif
+        elif not inclure:
             statut_fichier = "non inclus dans l'export"
+            relatif = ""
         elif not doc.bucket_path:
             statut_fichier = "fichier manquant"
+            relatif = ""
             ctx.avertir(f"Document sans chemin de stockage : {doc.nom}")
         else:
             dest = fichier(ctx, relatif, nom, doc.nom or "Document", compresser=_compressible(ext))
             try:
                 sha = telecharger(doc.bucket_path, dest.chemin_local)
                 produits.append(dest)
+                ctx.alias_fichiers[doc.id] = relatif
             except DocumentAbsent as exc:
                 statut_fichier = "fichier manquant"
+                relatif = ""
                 ctx.avertir(f"Fichier manquant ({doc.nom}) : {exc}")
                 if dest.chemin_local.exists():
                     dest.chemin_local.unlink()
@@ -180,6 +189,36 @@ def _lire(conn: psycopg.Connection, pid: str) -> list[LigneDocument]:
             echange=bool(doc["_echange"]),
         ))
     return sortie
+
+
+def _rattacher_ailleurs(ctx: ExportContexte, conn: psycopg.Connection, docs: list[LigneDocument]) -> None:
+    """Les bilans et les DXF sont déjà copiés ailleurs : on ne les redépose pas."""
+    from api.export.chemins_livrables import chemin_bilan
+
+    try:
+        with conn.transaction():
+            bilans = lignes(
+                conn,
+                """
+                select document_id::text as id, annee, type_bilan, version
+                  from bancarisation.rapport_bilan
+                 where projet_id = %s and document_id is not null and statut = 'valide'
+                """,
+                (str(ctx.projet_id),),
+            )
+    except Exception:
+        bilans = []
+    par_bilan = {row["id"]: row for row in bilans}
+    for doc in docs:
+        if doc.id in ctx.alias_fichiers:
+            doc.chemin_ailleurs = ctx.alias_fichiers[doc.id]
+            continue
+        bilan = par_bilan.get(doc.id)
+        if not bilan:
+            continue
+        if bilan.get("type_bilan") == "financier" and not ctx.options.inclure_budget:
+            continue
+        doc.chemin_ailleurs = chemin_bilan(bilan.get("annee"), bilan.get("type_bilan"), bilan.get("version"))
 
 
 def _ids_echanges(conn, pid: str) -> set[str]:

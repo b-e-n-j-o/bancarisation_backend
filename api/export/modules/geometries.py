@@ -38,11 +38,14 @@ def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExpor
     produits: list[FichierExport] = []
     gpkg = fichier(ctx, f"{dossier}/projet.gpkg", nom, "Géométries du projet (Lambert 93)", compresser=False)
     nb_couches = 0
+    pour_carte: list[tuple[str, list]] = []
     for couche, table, colonne in couches:
-        n = _ecrire_couche(ctx, conn, pid, couche, table, colonne, gpkg.chemin_local)
-        if n:
+        rows = _ecrire_couche(ctx, conn, pid, couche, table, colonne, gpkg.chemin_local)
+        if rows:
             nb_couches += 1
             _geojson(ctx, conn, pid, couche, table, colonne, produits)
+            if couche in {"emprise_projet", "ug_surf", "ug_lin", "ug_pct"}:
+                pour_carte.append((couche, rows))
         else:
             ctx.avertir(f"Couche {couche} vide, non créée.")
     if nb_couches:
@@ -51,6 +54,20 @@ def produire(ctx: ExportContexte, conn: psycopg.Connection) -> list[FichierExpor
     elif gpkg.chemin_local.exists():
         gpkg.chemin_local.unlink()
     produits.extend(_cao(ctx, conn, pid))
+    if pour_carte:
+        try:
+            from datetime import datetime
+
+            from api.export.pdf.carte_ug import ecrire_carte
+
+            pdf = fichier(ctx, f"{dossier}/carte_ug.pdf", nom, "Carte des unités de gestion", len(pour_carte), compresser=False)
+            nom_projet = (lignes(conn, "select nom from bancarisation.projets where id = %s", (pid,)) or [{"nom": "Projet"}])[0]["nom"]
+            ecrire_carte(pdf.chemin_local, nom_projet, datetime.now().strftime("%d/%m/%Y"), pour_carte)
+            produits.append(pdf)
+        except Exception as exc:
+            ctx.avertir(f"Carte des UG : {exc}")
+    elif not pour_carte:
+        ctx.avertir("Carte des UG non générée : aucune emprise ni UG.")
     return produits
 
 
@@ -116,7 +133,7 @@ def _attributs(conn, table: str) -> list[str]:
 def _ecrire_couche(ctx, conn, pid, couche, table, colonne, gpkg: Path) -> int:
     if not table_existe(conn, table):
         ctx.avertir(f"Table {table} absente, couche {couche} ignorée.")
-        return 0
+        return []
     attrs = _attributs(conn, table)
     select_attrs = ", ".join(f't."{a}"' for a in attrs) or "t.projet_id"
     where = _filtre(table)
@@ -134,15 +151,15 @@ def _ecrire_couche(ctx, conn, pid, couche, table, colonne, gpkg: Path) -> int:
             )
     except Exception as exc:
         ctx.avertir(f"Couche {couche} illisible : {exc}")
-        return 0
+        return []
     if not rows:
-        return 0
+        return []
     if couche.startswith("ug_"):
         _ajouter_mesures(conn, pid, rows)
         if "mesures_liees" not in attrs:
             attrs.append("mesures_liees")
     _ecrire_gpkg(gpkg, couche, rows, attrs)
-    return len(rows)
+    return rows
 
 
 def _filtre(table: str) -> str:
@@ -305,9 +322,11 @@ def _cao(ctx, conn, pid: str) -> list[FichierExport]:
         if not chemin:
             ctx.avertir(f"DXF {plan.get('nom_fichier')} : pas de fichier d'origine dans documents.")
             continue
+        from api.export.chemins_livrables import chemin_dxf
+
         dest = fichier(
             ctx,
-            f"{dossier}/cao/{stem}.dxf",
+            chemin_dxf(plan.get("nom_fichier")),
             nom,
             "DXF d'origine",
             compresser=True,
@@ -319,5 +338,7 @@ def _cao(ctx, conn, pid: str) -> list[FichierExport]:
             if dest.chemin_local.exists():
                 dest.chemin_local.unlink()
             continue
+        if plan.get("document_id"):
+            ctx.alias_fichiers[plan["document_id"]] = dest.chemin_archive
         produits.append(dest)
     return produits

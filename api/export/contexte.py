@@ -22,16 +22,19 @@ class ExportOptions:
     annee_min: int | None = None
     annee_max: int | None = None
     inclure_supprimees: bool = False
+    conservation_jours: int = 7
 
     @classmethod
     def depuis_json(cls, brut: dict[str, Any] | None) -> ExportOptions:
         data = brut or {}
+        jours = data.get("conservation_jours") or 7
         return cls(
             inclure_budget=bool(data.get("inclure_budget", True)),
             inclure_documents=bool(data.get("inclure_documents", True)),
             annee_min=_annee(data.get("annee_min")),
             annee_max=_annee(data.get("annee_max")),
             inclure_supprimees=bool(data.get("inclure_supprimees", False)),
+            conservation_jours=max(1, int(jours)),
         )
 
     def pour_json(self) -> dict[str, Any]:
@@ -41,6 +44,7 @@ class ExportOptions:
             "annee_min": self.annee_min,
             "annee_max": self.annee_max,
             "inclure_supprimees": self.inclure_supprimees,
+            "conservation_jours": self.conservation_jours,
         }
 
 
@@ -72,6 +76,8 @@ class ExportContexte:
     racine_zip: str = ""
     avertissements: list[str] = field(default_factory=list)
     chemins_pris: set[str] = field(default_factory=set)
+    # document_id -> chemin dans le ZIP, mis à jour si le nom est dédoublonné
+    alias_fichiers: dict[str, str] = field(default_factory=dict)
 
     def avertir(self, message: str) -> None:
         self.avertissements.append(message)

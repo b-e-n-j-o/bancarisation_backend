@@ -72,6 +72,7 @@ def _executer(export_id: UUID, user_id: UUID, email: str | None) -> None:
 
     options = ExportOptions.depuis_json(ligne.get("options"))
     dossier = Path(tempfile.mkdtemp(prefix="kererc-export-"))
+    debut = datetime.now(timezone.utc)
     try:
         ctx = ExportContexte(
             export_id=export_id,
@@ -106,13 +107,19 @@ def _executer(export_id: UUID, user_id: UUID, email: str | None) -> None:
         fichiers: list[FichierExport] = []
         modules_meta: dict[str, dict[str, Any]] = {}
         faits: list[str] = []
+        _verifier_espace(ctx)
         for module in MODULES:
             avant = len(ctx.avertissements)
             try:
                 with connect_export(ctx) as conn:
                     produits = module.produire(ctx, conn)
                 for fic in produits:
+                    ancien = fic.chemin_archive
                     fic.chemin_archive = reserver(fic.chemin_archive, ctx.racine_zip, ctx.chemins_pris)
+                    if fic.chemin_archive != ancien:
+                        for cle, chemin in list(ctx.alias_fichiers.items()):
+                            if chemin == ancien:
+                                ctx.alias_fichiers[cle] = fic.chemin_archive
                 fichiers.extend(produits)
                 messages = ctx.avertissements[avant:]
                 modules_meta[module.nom] = {
@@ -137,6 +144,33 @@ def _executer(export_id: UUID, user_id: UUID, email: str | None) -> None:
                 },
             )
 
+        from datetime import datetime as _dt
+
+        from api.export.pdf.index_html import ecrire_index, ecrire_lisezmoi
+
+        genere_le = _dt.now().strftime("%d/%m/%Y")
+        try:
+            fichiers.append(ecrire_lisezmoi(
+                ctx,
+                fichiers,
+                projet_nom=projet.get("nom") or "Projet",
+                organisation_nom=projet.get("organisation_nom") or "",
+                genere_le=genere_le,
+                demandeur=email,
+            ))
+        except Exception as exc:
+            ctx.avertir(f"LISEZMOI : {exc}")
+        try:
+            fichiers.append(ecrire_index(
+                ctx,
+                fichiers,
+                projet_nom=projet.get("nom") or "Projet",
+                organisation_nom=projet.get("organisation_nom") or "",
+                genere_le=genere_le,
+            ))
+        except Exception as exc:
+            ctx.avertir(f"index.html : {exc}")
+
         manifest = construire(
             ctx,
             fichiers,
@@ -146,13 +180,16 @@ def _executer(export_id: UUID, user_id: UUID, email: str | None) -> None:
             projet_nom=projet.get("nom") or "",
             reference=projet.get("reference_interne"),
         )
+        maintenant = datetime.now(timezone.utc)
+        manifest["duree_secondes"] = round((maintenant - debut).total_seconds(), 1)
         chemin_manifest = ecrire(dossier, manifest)
         zip_path = ecrire_zip(dossier, ctx.racine_zip, fichiers, chemin_manifest)
         sha, taille = empreinte_fichier(zip_path)
         storage_path = f"{ctx.organisation_id}/{ctx.projet_id}/{export_id}.zip"
         uploader(zip_path, storage_path)
         statut = "termine_avec_avertissements" if ctx.avertissements else "termine"
-        maintenant = datetime.now(timezone.utc)
+        jours = ctx.options.conservation_jours
+        expire = maintenant + timedelta(days=jours)
         _marquer(
             str(export_id),
             statut=statut,
@@ -161,7 +198,7 @@ def _executer(export_id: UUID, user_id: UUID, email: str | None) -> None:
             sha256=sha,
             manifest=manifest,
             termine_le=maintenant,
-            expire_le=maintenant + timedelta(days=7),
+            expire_le=expire,
             progression={"etape": "termine", "modules_faits": faits, "total": len(MODULES)},
         )
         lien = f"{ctx.url_front}/projets/{ctx.projet_id}?export={export_id}"
@@ -171,12 +208,41 @@ def _executer(export_id: UUID, user_id: UUID, email: str | None) -> None:
                     email,
                     projet.get("nom") or "projet",
                     lien,
-                    bool(ctx.avertissements),
+                    taille_octets=taille,
+                    expire_le=expire,
+                    nb_avertissements=len(ctx.avertissements),
+                    conservation_jours=jours,
                 )
         except Exception:
             logger.exception("Mail d'export non envoyé")
     finally:
         shutil.rmtree(dossier, ignore_errors=True)
+
+
+def _verifier_espace(ctx: ExportContexte) -> None:
+    estime = 100 * 1024 * 1024
+    if ctx.options.inclure_documents:
+        try:
+            with connect_export(ctx) as conn:
+                row = une(
+                    conn,
+                    """
+                    select coalesce(sum(taille_octets), 0)::bigint as taille
+                      from bancarisation.documents
+                     where projet_id = %s
+                    """,
+                    (str(ctx.projet_id),),
+                )
+            estime += int((row or {}).get("taille") or 0) * 1.2
+        except Exception:
+            logger.exception("Estimation de taille impossible")
+    libre = shutil.disk_usage(ctx.dossier_tmp).free
+    if libre < estime:
+        mo = lambda n: max(1, int(n / (1024 * 1024)))
+        raise RuntimeError(
+            f"Espace disque insuffisant pour l'export : il faut environ {mo(estime)} Mo, "
+            f"il reste {mo(libre)} Mo."
+        )
 
 
 def _marquer(export_id: str, **champs: Any) -> None:
