@@ -230,7 +230,8 @@ def _commentaires(conn, table: str, fichier_nom: str) -> list[list]:
         """
         select a.attname as colonne,
                format_type(a.atttypid, a.atttypmod) as type,
-               col_description(c.oid, a.attnum) as description
+               col_description(c.oid, a.attnum) as description,
+               a.attgenerated as generee
           from pg_attribute a
           join pg_class c on c.oid = a.attrelid
           join pg_namespace n on n.oid = c.relnamespace
@@ -242,7 +243,20 @@ def _commentaires(conn, table: str, fichier_nom: str) -> list[list]:
         """,
         (table,),
     )
+    generees = {
+        "geom_3857", "geom_4326", "geom_local", "surface_calculee_m2",
+        "bbox_local", "geom_intersection",
+    }
     return [
-        [fichier_nom, r["colonne"], r["type"], r.get("description") or ""]
+        [
+            fichier_nom,
+            r["colonne"],
+            r["type"],
+            (
+                "Générée ou dérivée — ne pas réinsérer. " + (r.get("description") or "")
+                if r["colonne"] in generees or r.get("generee") in ("s", "v")
+                else (r.get("description") or "")
+            ),
+        ]
         for r in rows
     ]

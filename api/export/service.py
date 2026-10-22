@@ -146,7 +146,13 @@ def _executer(export_id: UUID, user_id: UUID, email: str | None) -> None:
 
         from datetime import datetime as _dt
 
+        from api.export.fichiers_index import ecrire_index_fichiers
         from api.export.pdf.index_html import ecrire_index, ecrire_lisezmoi
+
+        index = ecrire_index_fichiers(ctx, fichiers)
+        if index is not None:
+            index.chemin_archive = reserver(index.chemin_archive, ctx.racine_zip, ctx.chemins_pris)
+            fichiers.append(index)
 
         genere_le = _dt.now().strftime("%d/%m/%Y")
         try:

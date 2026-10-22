@@ -68,7 +68,7 @@ def construire(
         )
     return {
         "format": "kererc-export-projet",
-        "version_format": "1.0",
+        "version_format": "1.1",
         "genere_le": datetime.now(_PARIS).isoformat(timespec="seconds"),
         "genere_par": {"user_id": str(ctx.user_id), "email": email},
         "organisation": {"id": str(ctx.organisation_id), "nom": organisation_nom},
