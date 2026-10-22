@@ -305,12 +305,14 @@ select tests.ok(not exists (
 
 select tests.ok(not exists (
   select 1 from pg_policies where schemaname = 'bancarisation'
-     and roles <> array['authenticated']::name[]),
-  'toutes les politiques sont réservées aux utilisateurs connectés');
+     and roles <> array['authenticated']::name[]
+     and not (tablename = 'export_projet' and roles = array['kererc_backend']::name[])),
+  'toutes les politiques sont réservées aux utilisateurs connectés (sauf le worker d''export)');
 
 select tests.ok(not exists (
   select 1 from pg_policies where schemaname = 'bancarisation'
      and (qual = 'true' or with_check = 'true')
+     and not (tablename = 'export_projet' and roles = array['kererc_backend']::name[])
      and tablename not in ('ref_geomce_categorie','role_contact_ref','parametre_signal','prestataires',
                            'geomce_communes','geomce_lin','geomce_pct','geomce_surf')),
   'lecture libre réservée aux référentiels');
@@ -561,6 +563,17 @@ select set_config('role', 'anon', true);
 select tests.echoue('select bancarisation.mon_contexte()', 'anon refusé sur mon_contexte');
 select tests.echoue('select * from bancarisation.mes_droits_projets()', 'anon refusé sur mes_droits_projets');
 reset role;
+
+-- Succès. Dans psql (et la CI), le SELECT ci-dessous. Ailleurs (éditeur SQL de Studio),
+-- une erreur volontaire : Studio relit après coup les objets créés par un script réussi
+-- et tombe sur « schema "tests" does not exist », puisque tout est annulé.
+do $$
+begin
+  if current_setting('application_name', true) <> 'psql' then
+    raise exception 'SUCCÈS (ceci n''est pas une erreur) : TOUS LES TESTS D''ISOLATION PASSENT. Tout a été annulé.'
+      using errcode = 'P0002';
+  end if;
+end $$;
 
 select 'TOUS LES TESTS PASSENT' as resultat,
        (select string_agg(version, ', ' order by version) from public.schema_migrations) as migrations;

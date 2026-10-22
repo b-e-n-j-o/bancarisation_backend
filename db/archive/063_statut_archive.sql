@@ -1,3 +1,6 @@
+-- 063_statut_archive.sql — appliquée dans Studio le 22 octobre 2026 (transaction et inscription incluses).
+begin;
+
 -- Le statut « archive » retire une tâche du calendrier sans la détruire.
 -- Les vues budgétaires déjà déployées ne filtraient que « supprime » :
 -- une tâche archivée (ou issue d'une fusion) continuerait à compter.
@@ -333,4 +336,7 @@ union all select * from sig_silence;
 revoke all on bancarisation.v_parc_signal from public, anon;
 grant select on bancarisation.v_parc_signal to authenticated;
 
+
+insert into public.schema_migrations (version) values ('063_statut_archive');
+commit;
 notify pgrst, 'reload schema';

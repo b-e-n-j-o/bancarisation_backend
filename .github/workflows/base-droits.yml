@@ -1,0 +1,50 @@
+# Dépôt backend : rejoue la base de zéro (baseline + migrations) et vérifie les droits.
+# Échec = la base produite par le dépôt n'est pas sûre : on ne déploie pas.
+#
+# Pour que l'échec BLOQUE le déploiement : désactiver le déploiement automatique du
+# backend dans Coolify, et le déclencher depuis le job « deployer » ci-dessous
+# (webhook Coolify), qui ne part que si « base » passe.
+name: Base et droits
+
+on:
+  pull_request:
+    paths:
+      - 'db/**'
+      - 'supabase/**'
+      - '.github/workflows/base-droits.yml'
+  push:
+    branches: [main]
+
+jobs:
+  base:
+    runs-on: ubuntu-latest
+    env:
+      DB_URL: postgresql://postgres:postgres@127.0.0.1:54322/postgres
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest   # à épingler une fois la CI verte (version affichée dans les logs)
+
+      - name: "Postgres Supabase vierge (Postgres 17, comme supabase-dev)"
+        run: supabase db start
+
+      - name: Baseline puis migrations
+        run: bash db/outils/appliquer.sh "$DB_URL"
+
+      - name: Structure
+        run: psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f db/tests/checks_structure.sql
+
+      - name: Isolation entre organisations
+        run: psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f db/tests/isolation.sql
+
+      - name: Matrice des rôles
+        run: psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f db/tests/roles.sql
+
+  # deployer:
+  #   needs: base
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: curl -fsS "${{ secrets.COOLIFY_WEBHOOK }}" -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
