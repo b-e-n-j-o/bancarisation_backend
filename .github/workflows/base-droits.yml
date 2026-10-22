@@ -27,7 +27,7 @@ jobs:
         with:
           version: latest   # à épingler une fois la CI verte (version affichée dans les logs)
 
-      - name: Postgres Supabase vierge (même version majeure que supabase-dev : 17)
+      - name: "Postgres Supabase vierge (Postgres 17, comme supabase-dev)"
         run: supabase db start
 
       - name: Baseline puis migrations
