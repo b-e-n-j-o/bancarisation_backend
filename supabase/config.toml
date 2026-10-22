@@ -1,0 +1,23 @@
+# Utilisé seulement par la CI (supabase db start) pour une base locale jetable.
+project_id = "kererc-ci"
+
+[db]
+port = 54322
+major_version = 17
+
+[api]
+enabled = false
+[studio]
+enabled = false
+[inbucket]
+enabled = false
+[realtime]
+enabled = false
+[storage]
+enabled = true
+[auth]
+enabled = true
+[edge_runtime]
+enabled = false
+[analytics]
+enabled = false
