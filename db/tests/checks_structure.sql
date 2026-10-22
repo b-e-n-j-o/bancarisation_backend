@@ -53,17 +53,19 @@ begin
     from pg_policies where schemaname = 'bancarisation' and cmd = 'ALL';
   if l is not null then ecarts := ecarts || ('politiques FOR ALL : ' || l); end if;
 
-  -- Exception unique : le worker d'export (068) écrit le statut avec kererc_backend, sans utilisateur.
+  -- Le worker (kererc_backend) écrit les journaux d'export et d'import sans utilisateur.
   select string_agg(tablename || '.' || policyname || ' ' || roles::text, ', ' order by tablename, policyname) into l
     from pg_policies where schemaname = 'bancarisation' and roles <> array['authenticated']::name[]
-     and not (tablename = 'export_projet' and roles = array['kererc_backend']::name[]);
+     and not (roles = array['kererc_backend']::name[]
+              and tablename in ('export_projet', 'import_projet', 'import_projet_id_map'));
   if l is not null then ecarts := ecarts || ('politiques pas réservées à authenticated : ' || l); end if;
 
   select string_agg(tablename || '.' || policyname, ', ' order by tablename, policyname) into l
     from pg_policies
    where schemaname = 'bancarisation'
      and (policyname = 'v0_open' or qual = 'true' or with_check = 'true')
-     and not (tablename = 'export_projet' and roles = array['kererc_backend']::name[])
+     and not (roles = array['kererc_backend']::name[]
+              and tablename in ('export_projet', 'import_projet', 'import_projet_id_map'))
      and tablename not in ('ref_geomce_categorie', 'role_contact_ref', 'parametre_signal', 'prestataires',
                            'geomce_communes', 'geomce_lin', 'geomce_pct', 'geomce_surf');
   if l is not null then ecarts := ecarts || ('accès libre hors référentiels : ' || l); end if;

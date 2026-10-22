@@ -306,13 +306,15 @@ select tests.ok(not exists (
 select tests.ok(not exists (
   select 1 from pg_policies where schemaname = 'bancarisation'
      and roles <> array['authenticated']::name[]
-     and not (tablename = 'export_projet' and roles = array['kererc_backend']::name[])),
-  'toutes les politiques sont réservées aux utilisateurs connectés (sauf le worker d''export)');
+     and not (roles = array['kererc_backend']::name[]
+              and tablename in ('export_projet', 'import_projet', 'import_projet_id_map'))),
+  'toutes les politiques sont réservées aux utilisateurs connectés (sauf le worker)');
 
 select tests.ok(not exists (
   select 1 from pg_policies where schemaname = 'bancarisation'
      and (qual = 'true' or with_check = 'true')
-     and not (tablename = 'export_projet' and roles = array['kererc_backend']::name[])
+     and not (roles = array['kererc_backend']::name[]
+              and tablename in ('export_projet', 'import_projet', 'import_projet_id_map'))
      and tablename not in ('ref_geomce_categorie','role_contact_ref','parametre_signal','prestataires',
                            'geomce_communes','geomce_lin','geomce_pct','geomce_surf')),
   'lecture libre réservée aux référentiels');
