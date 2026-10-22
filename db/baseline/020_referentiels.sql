@@ -25,7 +25,6 @@ SET row_security = off;
 
 SET SESSION AUTHORIZATION DEFAULT;
 
-ALTER TABLE bancarisation.parametre_signal DISABLE TRIGGER ALL;
 
 COPY bancarisation.parametre_signal (code, valeur, libelle, maj_le) FROM stdin;
 bilan_manquant_critique	2	Nombre de bilans non remis à partir duquel le signal est critique	2026-07-22 14:33:50.479379+00
@@ -39,13 +38,11 @@ silence_critique_mois	24	Absence d'activité (mois) rendant le signal critique	2
 \.
 
 
-ALTER TABLE bancarisation.parametre_signal ENABLE TRIGGER ALL;
 
 --
 -- Data for Name: ref_geomce_categorie; Type: TABLE DATA; Schema: bancarisation; Owner: postgres
 --
 
-ALTER TABLE bancarisation.ref_geomce_categorie DISABLE TRIGGER ALL;
 
 COPY bancarisation.ref_geomce_categorie (code, libelle, niveau, parent) FROM stdin;
 E	Évitement	1	\N
@@ -82,13 +79,11 @@ Zzzz	Autre (niveau 4) — à préciser dans GéoMCE	4	Zzz
 \.
 
 
-ALTER TABLE bancarisation.ref_geomce_categorie ENABLE TRIGGER ALL;
 
 --
 -- Data for Name: role_contact_ref; Type: TABLE DATA; Schema: bancarisation; Owner: postgres
 --
 
-ALTER TABLE bancarisation.role_contact_ref DISABLE TRIGGER ALL;
 
 COPY bancarisation.role_contact_ref (code, libelle, categorie, ordre) FROM stdin;
 maitre_ouvrage	Maître d'ouvrage	maitrise_ouvrage	10
@@ -119,7 +114,6 @@ autre	Autre	tiers	79
 \.
 
 
-ALTER TABLE bancarisation.role_contact_ref ENABLE TRIGGER ALL;
 
 --
 -- PostgreSQL database dump complete

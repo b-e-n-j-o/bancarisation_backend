@@ -80,7 +80,7 @@ for t in "${REFERENTIELS[@]}"; do
   fi
 done
 if ((${#ARGS[@]})); then
-  pg_dump "$DATABASE_URL" --data-only --disable-triggers "${ARGS[@]}" > "$SORTIE/020_referentiels.sql"
+  pg_dump "$DATABASE_URL" --data-only "${ARGS[@]}" > "$SORTIE/020_referentiels.sql"
 else
   echo "-- aucun référentiel" > "$SORTIE/020_referentiels.sql"
 fi
