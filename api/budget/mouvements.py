@@ -101,6 +101,8 @@ def modifier_occurrence_avec_contexte(
             row = None
             if maj:
                 maj["modifie_le"] = datetime.now(timezone.utc)
+                # Toute édition humaine fige l'occurrence : la règle ne la réécrira plus.
+                maj["fige"] = True
                 sets = ", ".join(f"{col} = %s" for col in maj)
                 cur.execute(
                     f"""

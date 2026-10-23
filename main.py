@@ -19,6 +19,7 @@ from api.budget.router import router as budget_router
 from api.dialogue.router import router as dialogue_router
 from api.documents.route import router as documents_router
 from api.ocr.router import router as ocr_router
+from api.calendrier.router import router as calendrier_router
 from api.ocr.arrete.router import router as ocr_arrete_router
 from api.ocr.match_prescriptions.router import router as match_prescriptions_router
 from api.ocr.multidocs.router import router as multidocs_router
@@ -121,6 +122,7 @@ app.include_router(prestataires_router, prefix="/api", tags=["prestataires"])
 app.include_router(documents_router, prefix="/api", tags=["documents"])
 app.include_router(planning_router, prefix="/api", tags=["planning"])
 app.include_router(ocr_router, prefix="/api", tags=["ocr"])
+app.include_router(calendrier_router, prefix="/api", tags=["calendrier"])
 app.include_router(multidocs_router, prefix="/api", tags=["ocr-multidocs"])
 app.include_router(ingest_erc_router, prefix="/api")
 app.include_router(arx_router, prefix="/api")
