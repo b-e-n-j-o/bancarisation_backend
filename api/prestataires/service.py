@@ -333,20 +333,25 @@ def detacher(projet_id: UUID, prestataire_id: UUID) -> None:
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT count(*)::int AS n
-                FROM bancarisation.occurrence
+                UPDATE bancarisation.occurrence
+                SET prestataire_id = NULL,
+                    prestataire = NULL
                 WHERE projet_id = %s
-                  AND prestataire_id = %s
                   AND statut <> 'supprime'
+                  AND (
+                    prestataire_id = %s
+                    OR (
+                      prestataire_id IS NULL
+                      AND lower(trim(coalesce(prestataire, ''))) = (
+                        SELECT lower(trim(nom))
+                        FROM bancarisation.prestataires
+                        WHERE id = %s
+                      )
+                    )
+                  )
                 """,
-                (str(projet_id), str(prestataire_id)),
+                (str(projet_id), str(prestataire_id), str(prestataire_id)),
             )
-            n = cur.fetchone()["n"]
-            if n > 0:
-                raise PermissionError(
-                    f"Impossible de retirer : {n} occurrence(s) active(s) "
-                    "référencent encore ce prestataire."
-                )
             cur.execute(
                 """
                 DELETE FROM bancarisation.projet_prestataire
