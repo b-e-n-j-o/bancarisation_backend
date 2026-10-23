@@ -354,6 +354,8 @@ def modifier_occurrence(
             row = None
             if maj:
                 maj["modifie_le"] = _now_iso()
+                # Une main a touché l'occurrence : la régénération ne l'écrasera plus.
+                maj["fige"] = True
                 sets = ", ".join(f"{k} = %s" for k in maj)
                 cur.execute(
                     f"UPDATE bancarisation.occurrence SET {sets} WHERE id = %s RETURNING *",
