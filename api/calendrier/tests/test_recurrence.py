@@ -71,6 +71,19 @@ def test_phrase_annuel_decale_et_fourchette():
     )
 
 
+def test_phrase_explicite_alignee_sur_n_du_projet():
+    fauches = {"type": "explicite", "ancrage_annee": 2026, "annees": list(range(2026, 2056))}
+    assert to_phrase(fauches, annee_projet=2025) == "Chaque année de N+1 à N+30"
+    seule = {"type": "explicite", "ancrage_annee": 2055, "annees": [2055]}
+    assert to_phrase(seule, annee_projet=2025) == "En N+30 (2055)"
+
+
+def test_phrase_sans_n_reste_en_annees_civiles():
+    seule = {"type": "explicite", "ancrage_annee": 2055, "annees": [2055]}
+    assert to_phrase(seule) == "En 2055 (année N du projet non renseignée)"
+    assert "En N (2055)" not in to_phrase(seule)
+
+
 def test_phrase_explicite_isole_et_mixte():
     seul = {"type": "explicite", "annee_N": 2025, "annees_explicites": [0]}
     assert to_phrase(seul) == "En N (2025)"

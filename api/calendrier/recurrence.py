@@ -64,20 +64,44 @@ class RecurrenceError(ValueError):
     """Règle illisible (annee_N absente, pas invalide, type inconnu)."""
 
 
-def _annee_n(recurrence: dict[str, Any]) -> int | None:
+# Ajouté à la phrase quand ni la règle ni le projet ne portent N.
+AVERTISSEMENT_N = "année N du projet non renseignée"
+
+
+def reference_n(recurrence: dict[str, Any], annee_projet: int | None = None) -> int | None:
+    """N de la règle, sinon N du projet. Jamais le minimum des années listées."""
     if recurrence.get("annee_N") is not None:
         return int(recurrence["annee_N"])
-    if recurrence.get("ancrage_annee") is not None:
+    if annee_projet is not None:
+        return int(annee_projet)
+    return None
+
+
+def _annee_n(recurrence: dict[str, Any], annee_projet: int | None = None) -> int | None:
+    """Référence pour dérouler. ``ancrage_annee`` ne sert qu'aux anciens types
+    (périodique, ponctuel…) : sur un explicite c'était souvent la première année
+    de la règle, pas l'année N du projet."""
+    resolue = reference_n(recurrence, annee_projet)
+    if resolue is not None:
+        return resolue
+    if (recurrence.get("type") or "") != "explicite" and recurrence.get("ancrage_annee") is not None:
         return int(recurrence["ancrage_annee"])
     return None
 
 
-def _exiger_annee_n(recurrence: dict[str, Any]) -> int:
-    annee = _annee_n(recurrence)
+def _injecter_n(recurrence: dict[str, Any], annee_projet: int | None) -> dict[str, Any]:
+    r = dict(recurrence)
+    if r.get("annee_N") is None and annee_projet is not None:
+        r["annee_N"] = int(annee_projet)
+    return r
+
+
+def _exiger_annee_n(recurrence: dict[str, Any], annee_projet: int | None = None) -> int:
+    annee = _annee_n(recurrence, annee_projet)
     if annee is None:
         raise RecurrenceError(
             "annee_N manquant : impossible de dérouler la récurrence "
-            "(ni annee_N, ni ancrage_annee)."
+            "(ni annee_N sur la règle, ni annee_n sur le projet)."
         )
     return annee
 
@@ -108,14 +132,22 @@ def _tri(annees: list[int]) -> list[int]:
     return sorted(set(annees))
 
 
-def _expand_explicite(recurrence: dict[str, Any], annee_n: int) -> list[int]:
+def _expand_explicite(recurrence: dict[str, Any], annee_n: int | None) -> list[int]:
     if recurrence.get("annees_explicites"):
+        if annee_n is None:
+            raise RecurrenceError(
+                "annee_N manquant : les années explicites sont relatives à N."
+            )
         return _tri(annee_n + int(a) for a in recurrence["annees_explicites"])
     brutes = [int(a) for a in (recurrence.get("annees") or [])]
     if not brutes:
         return []
     if any(a >= 1900 for a in brutes):
         return _tri(brutes)
+    if annee_n is None:
+        raise RecurrenceError(
+            "annee_N manquant : impossible de dérouler des années relatives."
+        )
     return _tri(annee_n + a for a in brutes)
 
 
@@ -164,12 +196,18 @@ def _expand_periodique(recurrence: dict[str, Any], annee_n: int) -> list[int]:
     return list(range(annee_n, fin + 1, pas))
 
 
-def expand(recurrence: dict[str, Any] | None) -> list[int]:
-    """Années calendaires de la règle, triées, sans doublon."""
-    r = recurrence or {}
+def expand(recurrence: dict[str, Any] | None, *, annee_projet: int | None = None) -> list[int]:
+    """Années calendaires de la règle, triées, sans doublon.
+
+    ``annee_projet`` est ``projets.annee_n``. Il ne remplace pas un ``annee_N``
+    déjà porté par la règle.
+    """
+    r = _injecter_n(recurrence or {}, annee_projet)
     type_ = r.get("type") or "non_precisee"
     if type_ in TYPES_SANS_ANNEES:
         return []
+    if type_ == "explicite":
+        return _expand_explicite(r, reference_n(r))
     annee_n = _exiger_annee_n(r)
     if type_ == "continue":
         return list(range(annee_n, annee_n + _duree(r) + 1))
@@ -177,8 +215,6 @@ def expand(recurrence: dict[str, Any] | None) -> list[int]:
         return _expand_paliers_nouveaux(r, annee_n)
     if type_ == "paliers":
         return _expand_paliers_anciens(r, annee_n)
-    if type_ == "explicite":
-        return _expand_explicite(r, annee_n)
     if type_ == "periodique":
         return _expand_periodique(r, annee_n)
     if type_ == "ponctuel":
@@ -260,6 +296,46 @@ def _phrase_palier(palier: dict[str, Any], duree: int, *, premier: bool) -> str:
     return coeur
 
 
+def _phrase_calendaire(annees: list[int]) -> str:
+    """Années civiles, quand N n'est connu ni sur la règle ni sur le projet."""
+    ys = sorted(set(int(a) for a in annees))
+    if not ys:
+        corps = "Aucune année"
+    elif len(ys) == 1:
+        corps = f"En {ys[0]}"
+    else:
+        groupes: list[list[int]] = []
+        i = 0
+        while i < len(ys):
+            j = i
+            while j + 1 < len(ys) and ys[j + 1] == ys[j] + 1:
+                j += 1
+            groupes.append(ys[i : j + 1])
+            i = j + 1
+        textes: list[str] = []
+        isolats: list[int] = []
+
+        def vider() -> None:
+            if not isolats:
+                return
+            labels = ", ".join(str(y) for y in isolats)
+            textes.append(f"puis en {labels}" if textes else f"En {labels}")
+            isolats.clear()
+
+        for groupe in groupes:
+            if len(groupe) >= 3:
+                vider()
+                texte = f"Chaque année de {groupe[0]} à {groupe[-1]}"
+                if textes:
+                    texte = texte[0].lower() + texte[1:]
+                textes.append(texte)
+            else:
+                isolats.extend(groupe)
+        vider()
+        corps = ", ".join(textes)
+    return f"{corps} ({AVERTISSEMENT_N})"
+
+
 def _phrase_liste_relative(relatifs: list[int], annee_n: int | None) -> str:
     ys = sorted(set(int(a) for a in relatifs))
     if not ys:
@@ -302,7 +378,8 @@ def _phrase_liste_relative(relatifs: list[int], annee_n: int | None) -> str:
 
 
 def _relatifs_affichage(recurrence: dict[str, Any]) -> tuple[list[int], int | None]:
-    annee_n = _annee_n(recurrence)
+    # N déjà injecté depuis le projet le cas échéant. Pas d'ancrage_annee ici.
+    annee_n = reference_n(recurrence)
     if recurrence.get("annees_explicites"):
         return [int(a) for a in recurrence["annees_explicites"]], annee_n
     brutes = [int(a) for a in (recurrence.get("annees") or [])]
@@ -351,8 +428,10 @@ def _corps(recurrence: dict[str, Any]) -> str:
         type_ == "paliers" and not (recurrence.get("paliers") or [])
     ):
         if type_ == "ponctuel":
-            annee_n = _annee_n(recurrence)
+            annee_n = reference_n(recurrence) or _annee_n(recurrence)
             return _phrase_liste_relative([0], annee_n)
+        if reference_n(recurrence) is None and (recurrence.get("annees") or []):
+            return _phrase_calendaire([int(a) for a in recurrence["annees"] if int(a) >= 1900] or recurrence["annees"])
         relatifs, annee_n = _relatifs_affichage(recurrence)
         if relatifs:
             return _phrase_liste_relative(relatifs, annee_n)
@@ -399,9 +478,14 @@ def to_phrase(
     *,
     traverse_nouvel_an: bool = False,
     avec_annees: bool = False,
+    annee_projet: int | None = None,
 ) -> str:
-    """Phrase lisible. ``avec_annees`` ajoute les années calendaires entre parenthèses."""
-    r = recurrence or {}
+    """Phrase lisible. ``avec_annees`` ajoute les années calendaires entre parenthèses.
+
+    ``annee_projet`` complète un ``annee_N`` absent. Sans les deux, la phrase
+    reste en années civiles et signale que N n'est pas connu.
+    """
+    r = _injecter_n(recurrence or {}, annee_projet)
     texte = _corps(r)
     fenetre = phrase_fenetre(fenetre_debut, fenetre_fin, traverse_nouvel_an)
     if fenetre:
@@ -483,10 +567,19 @@ def _socle(src: dict[str, Any], annee_n: int | None) -> dict[str, Any]:
     }
 
 
-def convertir(recurrence: dict[str, Any], annee_N: int | None = None) -> dict[str, Any]:
-    """Passe une règle (souvent ``explicite`` absolu) au format paliers, sans perdre une année."""
+def convertir(
+    recurrence: dict[str, Any],
+    annee_N: int | None = None,
+    *,
+    forcer: bool = False,
+) -> dict[str, Any]:
+    """Passe une règle (souvent ``explicite`` absolu) au format paliers, sans perdre une année.
+
+    ``annee_N`` est l'année du projet, posée seulement si la règle n'en a pas.
+    ``forcer`` écrase (option CLI ``--annee-n``).
+    """
     src = copy.deepcopy(recurrence or {})
-    if annee_N is not None:
+    if annee_N is not None and (forcer or src.get("annee_N") is None):
         src["annee_N"] = int(annee_N)
     type_ = src.get("type") or "non_precisee"
     annee_n = _annee_n(src)
@@ -525,8 +618,15 @@ def convertir(recurrence: dict[str, Any], annee_N: int | None = None) -> dict[st
         out["annees"] = expand(out)
         return out
 
+    if annee_n is None and type_ == "explicite":
+        # On ne prend pas min(annees) comme N : la phrase restera en années civiles.
+        out = _socle(src, None)
+        out["type"] = "explicite"
+        out["annees"] = expand(src)
+        return out
+
     if annee_n is None:
-        raise RecurrenceError("annee_N manquant : préciser annee_N ou ancrage_annee.")
+        raise RecurrenceError("annee_N manquant : préciser annee_N sur la règle ou annee_n sur le projet.")
 
     absolues = expand(src)
     relatifs = [a - annee_n for a in absolues]
@@ -552,6 +652,25 @@ def convertir(recurrence: dict[str, Any], annee_N: int | None = None) -> dict[st
         out["annees_explicites"] = relatifs
     out["annees"] = expand(out)
     return out
+
+
+def annee_du_projet(projet_id: str) -> int | None:
+    """``projets.annee_n``. None si la colonne ou la valeur est absente."""
+    import psycopg
+    from psycopg.rows import dict_row
+
+    from api.db.env import get_database_url
+
+    with psycopg.connect(get_database_url(), row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT annee_n FROM bancarisation.projets WHERE id = %s",
+                (projet_id,),
+            )
+            ligne = cur.fetchone()
+    if not ligne or ligne.get("annee_n") is None:
+        return None
+    return int(ligne["annee_n"])
 
 
 def _charger_projet(projet_id: str) -> list[dict[str, Any]]:
@@ -597,14 +716,22 @@ def _ecrire_converties(lignes: list[tuple[Any, dict[str, Any]]]) -> None:
 
 
 def convertir_projet(projet_id: str, *, annee_n: int | None = None, dry_run: bool = True) -> int:
-    """Convertit les échéances d'un projet. N'écrit qu'en l'absence de ``dry_run``."""
+    """Convertit les échéances d'un projet. N'écrit qu'en l'absence de ``dry_run``.
+
+    Sans ``annee_n``, lit ``projets.annee_n``. L'argument force cette année sur
+    chaque règle (``--annee-n``).
+    """
+    forcer = annee_n is not None
+    if annee_n is None:
+        annee_n = annee_du_projet(projet_id)
+    log.info("N du projet %s : %s%s", projet_id, annee_n, " (forcé)" if forcer else "")
     lignes = _charger_projet(projet_id)
     log.info("%s échéance(s) lue(s) pour %s", len(lignes), projet_id)
     a_ecrire: list[tuple[Any, dict[str, Any]]] = []
     for ligne in lignes:
         avant = ligne["recurrence"] or {}
         try:
-            apres = convertir(avant, annee_n)
+            apres = convertir(avant, annee_n, forcer=forcer)
         except RecurrenceError as exc:
             log.error("%s %s — %s", ligne["code_operation"], ligne["id"], exc)
             continue

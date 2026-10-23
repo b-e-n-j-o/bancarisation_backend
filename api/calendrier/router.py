@@ -78,9 +78,9 @@ def post_regenerer(projet_id: UUID, dry_run: bool = False) -> dict[str, Any]:
 
 @router.post("/projets/{projet_id}/echeances/apercu")
 def post_apercu_brouillon(projet_id: UUID, payload: ApercuRequest) -> dict[str, Any]:
-    del projet_id
     try:
         return apercu_brouillon(
+            projet_id,
             payload.recurrence,
             {
                 "fenetre_debut": payload.fenetre_debut,

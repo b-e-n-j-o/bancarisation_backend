@@ -75,15 +75,16 @@ def preparer_recurrence(recurrence: dict[str, Any], annee_n: int | None = None) 
     return brut
 
 
-def _phrase_sure(ligne: dict[str, Any]) -> tuple[str, list[int], str | None]:
+def _phrase_sure(ligne: dict[str, Any], annee_projet: int | None = None) -> tuple[str, list[int], str | None]:
     recurrence = ligne.get("recurrence") or {}
     try:
-        annees = expand(recurrence)
+        annees = expand(recurrence, annee_projet=annee_projet)
         phrase = to_phrase(
             recurrence,
             ligne.get("fenetre_debut"),
             ligne.get("fenetre_fin"),
             traverse_nouvel_an=bool(ligne.get("fenetre_traverse_nouvel_an")),
+            annee_projet=annee_projet,
         )
         return phrase, annees, None
     except RecurrenceError as exc:
@@ -117,9 +118,11 @@ def programme(projet_id: UUID | str) -> list[dict[str, Any]]:
                 (str(projet_id),),
             )
             lignes = [dict(ligne) for ligne in cur.fetchall()]
+            annee_projet = _lire_annee_projet(cur, str(projet_id))
     resultat = []
     for ligne in lignes:
-        phrase, annees, erreur = _phrase_sure(ligne)
+        phrase, annees, erreur = _phrase_sure(ligne, annee_projet)
+        ligne["annee_n_projet"] = annee_projet
         if erreur:
             avertissements = list(ligne.get("avertissements") or [])
             if erreur not in avertissements:
@@ -133,13 +136,19 @@ def programme(projet_id: UUID | str) -> list[dict[str, Any]]:
     return resultat
 
 
-def _reponse_apercu(regle: dict[str, Any], fenetre: dict[str, Any], nb_figees: int) -> dict[str, Any]:
+def _reponse_apercu(
+    regle: dict[str, Any],
+    fenetre: dict[str, Any],
+    nb_figees: int,
+    annee_projet: int | None = None,
+) -> dict[str, Any]:
     return {
         "phrase": to_phrase(
             regle,
             fenetre.get("fenetre_debut"),
             fenetre.get("fenetre_fin"),
             traverse_nouvel_an=bool(fenetre.get("fenetre_traverse_nouvel_an")),
+            annee_projet=annee_projet,
         ),
         "annees": regle.get("annees") or [],
         "nb_occurrences": len(regle.get("annees") or []),
@@ -149,25 +158,60 @@ def _reponse_apercu(regle: dict[str, Any], fenetre: dict[str, Any], nb_figees: i
     }
 
 
-def apercu_brouillon(recurrence: dict[str, Any], fenetre: dict[str, Any]) -> dict[str, Any]:
+def _lire_annee_projet(cur: Any, projet_id: str) -> int | None:
+    cur.execute(
+        "SELECT annee_n FROM bancarisation.projets WHERE id = %s",
+        (projet_id,),
+    )
+    ligne = cur.fetchone() or {}
+    valeur = ligne.get("annee_n")
+    return int(valeur) if valeur is not None else None
+
+
+def apercu_brouillon(
+    projet_id: UUID | str,
+    recurrence: dict[str, Any],
+    fenetre: dict[str, Any],
+) -> dict[str, Any]:
     """Aperçu d'une règle pas encore enregistrée."""
-    return _reponse_apercu(preparer_recurrence(recurrence), fenetre, 0)
+    with _connexion() as conn:
+        with conn.cursor() as cur:
+            annee_projet = _lire_annee_projet(cur, str(projet_id))
+    return _reponse_apercu(
+        preparer_recurrence(recurrence, annee_n=annee_projet),
+        fenetre,
+        0,
+        annee_projet,
+    )
 
 
-def apercu(echeance_id: UUID | str, recurrence: dict[str, Any], fenetre: dict[str, Any]) -> dict[str, Any]:
-    regle = preparer_recurrence(recurrence)
+def apercu(
+    echeance_id: UUID | str,
+    recurrence: dict[str, Any],
+    fenetre: dict[str, Any],
+) -> dict[str, Any]:
     with _connexion() as conn:
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT count(*) FILTER (WHERE fige OR date_realisation IS NOT NULL) AS nb_figees
-                FROM bancarisation.occurrence
-                WHERE echeance_id = %s AND statut IS DISTINCT FROM 'supprime'
+                SELECT p.annee_n,
+                       count(o.id) FILTER (
+                           WHERE o.fige OR o.date_realisation IS NOT NULL
+                       ) AS nb_figees
+                FROM bancarisation.echeance e
+                JOIN bancarisation.projets p ON p.id = e.projet_id
+                LEFT JOIN bancarisation.occurrence o
+                  ON o.echeance_id = e.id AND o.statut IS DISTINCT FROM 'supprime'
+                WHERE e.id = %s
+                GROUP BY p.annee_n
                 """,
                 (str(echeance_id),),
             )
-            compte = cur.fetchone() or {"nb_figees": 0}
-    return _reponse_apercu(regle, fenetre, int(compte["nb_figees"] or 0))
+            compte = cur.fetchone() or {"nb_figees": 0, "annee_n": None}
+    annee_projet = compte.get("annee_n")
+    annee_projet = int(annee_projet) if annee_projet is not None else None
+    regle = preparer_recurrence(recurrence, annee_n=annee_projet)
+    return _reponse_apercu(regle, fenetre, int(compte["nb_figees"] or 0), annee_projet)
 
 
 def _poser_audit(champs: dict[str, Any], acteur: str | None) -> None:

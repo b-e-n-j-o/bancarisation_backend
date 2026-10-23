@@ -133,8 +133,16 @@ def planifier(echeance: dict[str, Any], occurrences: list[dict[str, Any]]) -> Ra
         else:
             libres.append(occurrence)
 
-    occupees = set(figes)
-    rapport.annees_en_conflit = sorted(annee for annee in annees if annee in occupees)
+    # Une suppression humaine (figée + statut supprime) occupe l'année : on ne la recrée pas.
+    supprimees_main = {
+        int(o["annee"])
+        for o in occurrences
+        if o.get("fige") and o.get("statut") == "supprime"
+    }
+    occupees = set(figes) | supprimees_main
+    rapport.annees_en_conflit = sorted(
+        annee for annee in annees if annee in occupees and annee not in supprimees_main
+    )
 
     par_annee: dict[int, list[dict[str, Any]]] = {}
     for occurrence in libres:

@@ -29,7 +29,7 @@ def _echeance(**extra):
     return base
 
 
-def _occ(annee, *, fige=False, realisation=None, titre="Griffage", identifiant=None):
+def _occ(annee, *, fige=False, realisation=None, titre="Griffage", identifiant=None, statut="a_confirmer"):
     return {
         "id": identifiant or f"occ-{annee}",
         "annee": annee,
@@ -43,7 +43,7 @@ def _occ(annee, *, fige=False, realisation=None, titre="Griffage", identifiant=N
         "mois_debut": 3,
         "mois_fin": 4,
         "traverse_nouvel_an": False,
-        "statut": "a_confirmer",
+        "statut": statut,
         "origine": "ia",
     }
 
@@ -115,6 +115,16 @@ def test_idempotence():
     assert second.supprimees == []
     assert second.mises_a_jour == []
     assert _signature(appliquer_memoire(etat, second)) == _signature(etat)
+
+
+def test_figee_supprimee_ne_revient_pas():
+    echeance = _echeance()
+    existantes = [_occ(2026, fige=True, statut="supprime", titre="retirée")]
+    rapport = planifier(echeance, existantes)
+    assert 2026 not in [c["annee"] for c in rapport.creees]
+    assert not any(m["annee"] == 2026 for m in rapport.mises_a_jour)
+    assert "occ-2026" not in rapport.supprimees
+    assert "occ-2026" in rapport.conservees
 
 
 def test_occurrence_realisee_sans_drapeau_est_conservee():
